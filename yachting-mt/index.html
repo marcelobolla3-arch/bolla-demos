@@ -1,0 +1,96 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Yachting.mt · 24/7 AI assistant demo · BOLLA STUDIO</title><meta name="robots" content="noindex">
+<style>
+:root{--c:#1f6fb2;--n:#0d2238;--g:#e8f0f7}*{box-sizing:border-box}body{margin:0;font-family:-apple-system,Segoe UI,Roboto,Arial,sans-serif;background:#f4f7fa;color:#14202c}
+.top{background:var(--n);color:#fff}.top .in{max-width:1040px;margin:auto;padding:20px}
+h1{margin:0;font-size:23px}.pre{font-size:13px;letter-spacing:.04em;color:#9fc3e6;margin-bottom:6px;text-transform:uppercase}.sub{color:#c9d6e3;font-size:14px;margin-top:8px;line-height:1.45}
+nav{max-width:1040px;margin:14px auto 4px;padding:0 20px;display:flex;gap:8px;flex-wrap:wrap}nav button{background:#fff;color:var(--n);border:1px solid #cdd8e3;border-radius:20px;padding:8px 15px;cursor:pointer;font-size:14px}nav button.on{background:var(--c);border-color:var(--c);color:#fff}
+main{max-width:1040px;margin:auto;padding:10px 20px 40px}.tab{display:none}.tab.on{display:block}
+.wrap{display:grid;grid-template-columns:1fr 320px;gap:18px}@media(max-width:820px){.wrap{grid-template-columns:1fr}}
+.phone{background:#efeae2;border-radius:16px;border:1px solid #cdd8e3;overflow:hidden;display:flex;flex-direction:column;height:600px}
+.ph-h{background:#075e54;color:#fff;padding:11px 14px;display:flex;align-items:center;gap:10px}.av{width:36px;height:36px;border-radius:50%;background:#fff;color:var(--n);display:flex;align-items:center;justify-content:center;font-weight:800;font-size:13px}
+.ph-h small{display:block;color:#cfe9e4;font-size:12px}.msgs{flex:1;padding:14px;overflow-y:auto}
+.m{max-width:84%;padding:8px 11px;border-radius:9px;margin:6px 0;font-size:14px;line-height:1.42;white-space:pre-line;box-shadow:0 1px 1px rgba(0,0,0,.08)}.u{background:#d9fdd3;margin-left:auto}.b{background:#fff}.sys{background:#fff3c4;margin:8px auto;text-align:center;font-size:12.5px;max-width:92%}
+.opts{display:flex;flex-wrap:wrap;gap:6px;padding:8px 12px;background:#f7f7f7;border-top:1px solid #ddd;min-height:48px}.opts button{background:#fff;border:1px solid var(--c);color:var(--c);border-radius:16px;padding:6px 11px;font-size:13px;cursor:pointer}.opts button:hover{background:var(--g)}
+.inrow{display:flex;gap:6px;width:100%}.inrow input{flex:1;padding:8px 10px;border:1px solid #ccc;border-radius:16px;font-size:14px}.inrow button{background:var(--c);color:#fff;border:0}
+.side h3{margin:4px 0 8px;font-size:15px}.sc{display:block;width:100%;text-align:left;margin:6px 0;background:#fff;border:1px solid #cdd8e3;color:#14202c;border-radius:10px;padding:10px;cursor:pointer;font-size:14px}.sc:hover{border-color:var(--c)}
+.note{font-size:12.5px;color:#5b6b7b;margin-top:10px;line-height:1.45}.card{background:#fff;border:1px solid #dbe3ec;border-radius:12px;padding:16px;margin:10px 0}
+table{width:100%;border-collapse:collapse;font-size:13.5px}td,th{padding:8px;border-bottom:1px solid #e3e9ef;text-align:left;vertical-align:top}th{color:#5b6b7b;font-weight:600}
+.pill{font-size:12px;padding:2px 8px;border-radius:10px;background:#e3e9ef;white-space:nowrap}.p-new{background:#1f6fb2;color:#fff}.p-ho{background:#f0a500;color:#fff}.p-ok{background:#2e8b57;color:#fff}
+.steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px}.st{background:#fff;border:1px solid #dbe3ec;border-radius:12px;padding:14px}.st b{color:var(--c);font-size:13px}.st h4{margin:6px 0;font-size:15px}.st p{margin:0;font-size:13.5px;color:#3b4b5b;line-height:1.45}
+.det{font-size:12.5px;color:#3b4b5b}
+footer{max-width:1040px;margin:auto;padding:20px;color:#5b6b7b;font-size:13px;border-top:1px solid #dbe3ec}a{color:var(--c)}
+</style>
+<!-- GoatCounter (BOLLA STUDIO) -->
+<script>window.goatcounter={path:function(p){return '/yachting-mt'+((p.replace(/^\/yachting\-mt(?=[\/?#]|$)/,'')||'/').replace(/^\?/,'/?'))}};window.bsTrack=function(sub,title){try{if(window.goatcounter&&window.goatcounter.count)window.goatcounter.count({path:'/yachting-mt'+sub,title:title||sub})}catch(e){}}</script>
+<script data-goatcounter="https://bollastudio.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+</head><body>
+<div class="top"><div class="in"><div class="pre">Demo prepared for Stephen Duffy — Yachting.mt</div>
+<h1>A 24/7 assistant for quote requests and haul-outs</h1>
+<div class="sub">Owners write on WhatsApp or the website at any hour. The assistant collects what you need to quote (boat, length, marina, job, dates, photos), lines up the haul-out request and hands it to you, so nothing waits on an unanswered call or a full inbox. Free example by BOLLA STUDIO, no commitment. Conversations are illustrative.</div></div></div>
+<nav id="nav"><button data-t="chat" class="on">Try the assistant</button><button data-t="board">Request board</button><button data-t="how">How it works</button></nav>
+<main>
+<section class="tab on" id="t-chat"><div class="wrap">
+<div class="phone"><div class="ph-h"><div class="av">Y.MT</div><div><b>Yachting.mt</b><small>Assistant · replies 24/7 · Stephen confirms every quote</small></div></div><div class="msgs" id="msgs"></div><div class="opts" id="opts"></div></div>
+<div class="side"><h3>Start a conversation as an owner</h3>
+<button class="sc" data-f="quote">🛠️ Request a quote (any service)</button>
+<button class="sc" data-f="haul">⚓ Book a haul-out &amp; antifouling</button>
+<button class="sc" data-f="night">🌙 Owner abroad, writing at 23:40 on a Saturday</button>
+<button class="sc" data-f="urgent">🚨 "The boat is taking water"</button>
+<div class="note">Each completed conversation appears on the <b>Request board</b> tab with everything Stephen needs to reply. Quotes are never invented by the assistant: it collects the details and Stephen sends the written quote after looking at the boat, as today.</div></div>
+</div></section>
+
+<section class="tab" id="t-board"><div class="card"><h3 style="margin-top:0">Request board</h3>
+<div class="note" style="margin-top:0">Requests captured by the assistant, ready for Stephen. The first two are sample rows; anything you complete in the demo is added on top (stored only in your browser).</div>
+<table id="board"><thead><tr><th>Received</th><th>Owner / channel</th><th>Boat</th><th>Service</th><th>Details collected</th><th>Status</th></tr></thead><tbody></tbody></table>
+<div class="note">Statuses follow your process: <span class="pill p-new">New</span> → <span class="pill p-ho">With Stephen</span> (reply within one working day) → <span class="pill">Visit arranged</span> → <span class="pill">Written quote sent</span> → <span class="pill p-ok">Approved</span>. Nothing starts until the owner says yes.</div>
+<button class="sc" id="clr" style="width:auto;display:inline-block">Clear my demo requests</button></div></section>
+
+<section class="tab" id="t-how"><div class="card"><h3 style="margin-top:0">How it would work for Yachting.mt</h3>
+<div class="steps">
+<div class="st"><b>01</b><h4>Owner writes, any time</h4><p>On your WhatsApp (+356 9999 7714) or the website. The assistant replies in seconds, also evenings and weekends, in the owner's language.</p></div>
+<div class="st"><b>02</b><h4>It asks what you would ask</h4><p>Name and contact, boat type and length, marina, the job (engines, antifouling &amp; haul-out, teak, electrics, gelcoat &amp; GRP, management, RHIB &amp; tender storage, care plans), preferred dates and photos. For haul-outs: beam, draught, weight and time ashore, which the yard will ask for.</p></div>
+<div class="st"><b>03</b><h4>Hand-off to Stephen</h4><p>A tidy summary lands on the request board and on your phone. You reply, arrange the visit and send the written quote. The assistant never quotes a price on its own.</p></div>
+<div class="st"><b>04</b><h4>Haul-out slot lined up</h4><p>The owner picks preferred weeks; once you confirm the yard slot, the assistant tells the owner and sends reminders (paint and parts, lifting points, tanks low, someone to deliver the boat).</p></div>
+<div class="st"><b>05</b><h4>Owner kept in the loop</h4><p>Status updates at each step until relaunch, so owners abroad don't need to chase you, and you don't need to chase them.</p></div>
+<div class="st"><b>06</b><h4>Safety first</h4><p>Anything urgent (taking water, emergency) gets your phone number straight away and an instant alert to you, never a form.</p></div>
+</div>
+<p class="note">Built on your existing channels: WhatsApp Business, your website quote form and email. It can also feed your owner portal. Set-up and rules (what it may say, when to alert you) are agreed with you first.</p></div></section>
+</main>
+<footer>Demo built by <b>BOLLA STUDIO</b>, software engineering studio · AI agents, apps and automations · <a href="https://bollastudio.com">bollastudio.com</a> · <a href="https://linkedin.com/in/marcelo-bolla-ai">linkedin.com/in/marcelo-bolla-ai</a> · Marcelo Bolla, Olbia (Sardinia). Service details taken from yachting.mt; this page is not affiliated with or operated by Yachting.mt.</footer>
+<script>
+var M=document.getElementById('msgs'),O=document.getElementById('opts'),R={},busy=0;
+function add(t,c){var d=document.createElement('div');d.className='m '+c;d.textContent=t;M.appendChild(d);M.scrollTop=M.scrollHeight}
+function bot(t,cb){busy++;setTimeout(function(){add(t,'b');busy--;cb&&cb()},550)}
+function opts(list,cb){O.innerHTML='';list.forEach(function(o){var b=document.createElement('button');b.textContent=o;b.onclick=function(){O.innerHTML='';add(o,'u');cb(o)};O.appendChild(b)})}
+function ask(ph,cb,def){O.innerHTML='<div class="inrow"><input placeholder="'+ph+'" value="'+(def||'')+'"><button>Send</button></div>';var i=O.querySelector('input'),b=O.querySelector('button');function go(){var v=i.value.trim();if(!v)return;O.innerHTML='';add(v,'u');cb(v)}b.onclick=go;i.onkeydown=function(e){if(e.key==='Enter')go()};i.focus()}
+var SERV=['Engines','Antifouling & haul-out','Teak decks','Electrics','Gelcoat & GRP','Management & admin','RHIB & tender storage','Care plan','Not sure — send a photo'];
+var MAR=['Msida','Ta’ Xbiex','Grand Harbour','Kalkara','Portomaso','Marina di Valletta','Mġarr, Gozo','Other / at a yard'];
+function reset(){M.innerHTML='';O.innerHTML='';R={ch:'WhatsApp',t:new Date()}}
+function start(f){reset();bsTrack('/flow/'+f,'Flow '+f);
+ if(f==='urgent'){add('Hi, there is water in the bilge and it keeps rising','u');bot('Please don\u2019t wait for a written reply: call or WhatsApp Stephen now on +356 9999 7714.\nI have also alerted him with your message and number.',function(){add('🔔 Instant alert sent to Stephen: "URGENT — water rising in bilge", with the owner\u2019s number and marina.','sys');R.name='Owner (urgent)';R.boat='—';R.svc='URGENT: taking water';R.det='Told to call +356 9999 7714 immediately; Stephen alerted';R.st='ho';save();opts(['Start again'],function(){start('quote')})});return}
+ if(f==='night'){add('Sat 23:40 · Hello, I\u2019m in the UK, my boat is in Msida. Can someone look at the antifouling before winter?','u');R.mar='Msida';R.ch='WhatsApp · Sat 23:40 (owner in UK)';bot('Good evening! I\u2019m the Yachting.mt assistant. Stephen is back Monday 09:00 (Malta time), but I can take all the details now so he can reply first thing with next steps.\nWhat\u2019s your name?',function(){ask('Your name',function(v){R.name=v;R.svc='Antifouling & haul-out';boatType()},'James')});return}
+ if(f==='haul'){add('Hi, I\u2019d like to book a haul-out and antifouling','u');R.svc='Antifouling & haul-out';bot('Of course. Stephen books the slot at a yard with the right lift for your boat, meets it at the lift and sends photos of every stage.\nFirst, what\u2019s your name?',function(){ask('Your name',function(v){R.name=v;boatType()},'Laura')});return}
+ add('Hello, I\u2019d like a quote for some work on my boat','u');bot('Hello! I\u2019m the Yachting.mt assistant. I\u2019ll collect the details so Stephen can come back to you (within one working day).\nWhat\u2019s your name?',function(){ask('Your name',function(v){R.name=v;boatType()},'Marco')})}
+function boatType(){bot('Thanks '+R.name+'. What kind of boat is it?',function(){opts(['Motor yacht','Sailing yacht','Catamaran','RIB / tender'],function(v){R.type=v;bot('And her length (metres)?',function(){opts(['Under 10 m','10–15 m','15–20 m','Over 20 m'],function(v){R.len=v;R.mar?service():marina()})})})})}
+function marina(){bot('Where is she berthed?',function(){opts(MAR,function(v){R.mar=v;service()})})}
+function service(){if(R.svc)return R.svc==='Antifouling & haul-out'?haul():details();bot('What does she need?',function(){opts(SERV,function(v){R.svc=v;v==='Antifouling & haul-out'?haul():details()})})}
+function haul(){bot('For the yard slot, the yard will want a few more details. Beam, draught and approximate weight? (Rough is fine, e.g. "4.2 m, 1.1 m, 12 t")',function(){ask('Beam, draught, weight',function(v){R.dims=v;bot('Anything else while she\u2019s out? (anodes, seacocks and a relaunch check are standard)',function(){opts(['Just antifouling & anodes','Also topsides polish','Also stern gear / cutless bearing','Check for osmosis','Not sure, Stephen can advise'],function(v){R.extra=v;dates()})})},'4.2 m, 1.1 m, 12 t')})}
+function details(){bot('Can you describe the problem in a line? A photo helps too: it often saves a visit.',function(){ask('What does the boat need?',function(v){R.desc=v;opts(['📷 Attach photo','No photo for now'],function(p){R.photo=p.indexOf('Attach')>-1;if(R.photo)add('[photo_engine_bay.jpg]','u');dates()})},R.svc==='Engines'?'Engine overheating after 20 minutes':'')})}
+function dates(){var hw=R.svc==='Antifouling & haul-out';bot(hw?'Which weeks would suit you for the haul-out? Autumn and winter dates are usually easier to get than spring.':'When would suit for Stephen to look on board?',function(){opts(hw?['Mid-November','Late November','Early December','January','Flexible']:['This week','Next week','I\u2019m abroad — flexible'],function(v){R.when=v;contact()})})}
+function contact(){bot('Last thing: best phone or email to reply to? (Phone → reply on WhatsApp, email → reply by email)',function(){ask('Phone or email',function(v){R.ct=v;done()},'+44 7700 900123')})}
+function done(){var hw=R.svc==='Antifouling & haul-out';var s='Here\u2019s what I\u2019ve passed to Stephen:\n• '+R.type+', '+R.len+', '+(R.mar||'')+'\n• '+R.svc+(R.extra?' + '+R.extra:'')+(R.dims?'\n• Beam/draught/weight: '+R.dims:'')+(R.desc?'\n• "'+R.desc+'"':'')+'\n• Dates: '+R.when+'\n• Contact: '+R.ct;
+ bot(s,function(){bot(hw?'Next: Stephen checks yard availability for your preferred weeks and confirms the slot with you, together with the written quote. Nothing starts until you say yes. I\u2019ll message you as soon as the slot is confirmed.':'Next: Stephen replies within one working day. If he needs to see the boat he\u2019ll arrange a visit (usually within three working days), then you get a written quote. Nothing starts until you approve it.',function(){add('✅ Request added to the board and sent to Stephen\u2019s phone. Owner will get automatic updates at each step.','sys');R.boat=R.type+' · '+R.len+' · '+(R.mar||'');R.det=[R.dims?'B/D/W: '+R.dims:'',R.extra||'',R.desc?'"'+R.desc+'"':'',R.photo?'photo attached':'','Dates: '+R.when,'Contact: '+R.ct].filter(Boolean).join(' · ');R.st=hw?'slot':'new';save();bsTrack('/flow/completed','Flow completed');opts(['See it on the request board','Start again'],function(v){if(v.indexOf('board')>-1)show('board');else start('quote')})})})}
+var SAMPLE=[{t:'Sample · Sun 21:15',name:'Sample owner (website form)',ch:'',boat:'Sailing yacht · 10–15 m · Ta’ Xbiex',svc:'Antifouling & haul-out',det:'B/D/W given · Also stern gear · Dates: Late November · Contact: email',st:'slot'},{t:'Sample · Mon 07:02',name:'Sample owner (WhatsApp)',ch:'',boat:'Motor yacht · Under 10 m · Msida',svc:'Electrics',det:'"Shore power trips the breaker" · photo attached · Dates: Next week',st:'ho'}];
+var ST={new:['New','p-new'],ho:['With Stephen','p-ho'],slot:['Haul-out: slot to confirm with yard','p-ho']};
+function load(){try{return JSON.parse(localStorage.getItem('ymt_req')||'[]')}catch(e){return[]}}
+function save(){var a=load();var d=R.t;a.unshift({t:d.toLocaleDateString('en-GB',{weekday:'short'})+' '+d.toTimeString().slice(0,5),name:R.name,ch:R.ch,boat:R.boat,svc:R.svc,det:R.det,st:R.st});localStorage.setItem('ymt_req',JSON.stringify(a));render()}
+function esc(s){return String(s||'').replace(/[&<>"]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})}
+function render(){var tb=document.querySelector('#board tbody');tb.innerHTML='';load().concat(SAMPLE).forEach(function(r){var s=ST[r.st]||ST.new;tb.innerHTML+='<tr><td>'+esc(r.t)+'</td><td>'+esc(r.name)+(r.ch?'<div class="det">'+esc(r.ch)+'</div>':'')+'</td><td>'+esc(r.boat)+'</td><td>'+esc(r.svc)+'</td><td class="det">'+esc(r.det)+'</td><td><span class="pill '+s[1]+'">'+s[0]+'</span></td></tr>'})}
+function show(t){document.querySelectorAll('#nav button').forEach(function(x){x.classList.toggle('on',x.dataset.t===t)});document.querySelectorAll('.tab').forEach(function(x){x.classList.toggle('on',x.id==='t-'+t)});bsTrack('/tab/'+t,'Tab '+t)}
+document.querySelectorAll('#nav button').forEach(function(b){b.addEventListener('click',function(){show(b.dataset.t)})});
+document.querySelectorAll('.sc[data-f]').forEach(function(b){b.addEventListener('click',function(){start(b.dataset.f)})});
+document.getElementById('clr').onclick=function(){localStorage.removeItem('ymt_req');render()};
+render();start('haul');
+</script>
+</body></html>

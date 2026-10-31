@@ -1,0 +1,78 @@
+<!doctype html><html lang="es"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex,nofollow"><meta name="googlebot" content="noindex,nofollow">
+<title>La Cala · Cafetería en Barceloneta (DEMO)</title><meta name="description" content="Café y brunch junto al mar, en la Barceloneta."><meta name="theme-color" content="#0e7490">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Inter+Tight:wght@600;700;800&display=swap" rel="stylesheet">
+<style>:root{--a:#0e7490}
+*{box-sizing:border-box;margin:0;padding:0}html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{font-family:Inter,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;color:#1d1d1f;background:#fff;line-height:1.5;-webkit-font-smoothing:antialiased}
+img{display:block;max-width:100%}a{color:inherit;text-decoration:none}table{border-collapse:collapse;width:100%}
+h1,h2,h3{font-family:"Inter Tight",Inter,system-ui,sans-serif;letter-spacing:-.035em;line-height:1.04;font-weight:700}
+.demo{background:#1d1d1f;color:#f5f5f7;font-size:12px;text-align:center;padding:8px 14px;position:relative;z-index:70}
+.demo b{background:var(--a);color:#fff;border-radius:99px;padding:1px 8px;margin-right:6px;font-weight:700}
+.pill{display:inline-flex;align-items:center;justify-content:center;gap:6px;border-radius:980px;padding:12px 22px;font-weight:600;font-size:15px;transition:transform .25s ease,opacity .25s}
+.pill.pri{background:var(--a);color:#fff}.pill.sec{color:var(--a);box-shadow:inset 0 0 0 1.5px currentColor}.pill:hover{transform:translateY(-1px);opacity:.9}
+.muted{color:#6e6e73}.note{color:#86868b;font-size:13px;margin-top:12px}.eyebrow{color:var(--a);font-weight:600;font-size:14px}
+[data-r]{opacity:0;transform:translateY(22px);transition:opacity .9s cubic-bezier(.2,.7,.2,1),transform .9s cubic-bezier(.2,.7,.2,1)}[data-r].in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){[data-r]{opacity:1;transform:none;transition:none}*{animation:none!important}}
+.hrs th,.hrs td{text-align:left;padding:11px 0;border-bottom:1px solid #e8e8ed;font-weight:500}.hrs td{text-align:right;color:#424245}
+.hrs tr.today th,.hrs tr.today td{color:var(--a);font-weight:700}
+.chips{display:flex;flex-wrap:wrap;gap:8px}.chip{display:inline-flex;flex-direction:column;border-radius:16px;background:#f5f5f7;color:#1d1d1f;padding:10px 14px;font-size:13px;min-width:92px}
+.chip b{font-size:12px;color:#86868b;font-weight:600}.chip.off{color:#a1a1a6}.chip.today{background:var(--a);color:#fff}.chip.today b{color:rgba(255,255,255,.8)}
+.status{display:inline-flex;align-items:center;gap:6px;font-size:13px;font-weight:600}.status:before{content:"";width:8px;height:8px;border-radius:50%;background:#a1a1a6}.status.on:before{background:#30d158}
+.plist{list-style:none}.plist li{display:flex;align-items:baseline;gap:10px;padding:14px 0}
+.plist .n{font-weight:600;display:flex;flex-direction:column}.plist small{font-weight:400;color:#86868b;font-size:13px}
+.plist .dots{flex:1;border-bottom:1.5px dotted #c7c7cc;transform:translateY(-4px)}.plist .p{color:var(--a);font-weight:600;font-size:14px;white-space:nowrap}
+.faq details{border-bottom:1px solid #e8e8ed;padding:18px 0}.faq summary{cursor:pointer;font-weight:600;list-style:none;display:flex;justify-content:space-between;gap:12px}
+.faq summary::-webkit-details-marker{display:none}.faq summary:after{content:"+";color:var(--a);font-size:22px;line-height:1;transition:transform .3s}
+.faq details[open] summary:after{transform:rotate(45deg)}.faq p{color:#6e6e73;margin-top:10px}
+iframe.map{border:0;width:100%;display:block}
+
+.gh{padding:56px 20px 36px;max-width:1200px;margin:auto}.gh .eyebrow{display:block;margin-bottom:22px}
+.gh h1{font-size:clamp(54px,16vw,190px);line-height:.92;letter-spacing:-.06em;font-weight:800;overflow-wrap:anywhere}
+.gh h1 span{display:inline-block;margin-right:.18em;animation:rise 1s cubic-bezier(.2,.7,.2,1) both}.gh h1 span:nth-child(2){animation-delay:.08s}.gh h1 span:nth-child(3){animation-delay:.16s}.gh h1 span:nth-child(4){animation-delay:.24s}
+@keyframes rise{from{opacity:0;transform:translateY(40%)}}.gh h1 i{color:var(--a);font-style:normal}
+.meta{display:flex;flex-wrap:wrap;gap:10px 22px;margin-top:30px;font-size:15px;color:#424245;align-items:center}.meta b{color:#1d1d1f}
+.lead{font-size:clamp(20px,3vw,28px);color:#6e6e73;max-width:30ch;margin-top:20px;letter-spacing:-.01em}
+.gh .row{display:flex;gap:10px;flex-wrap:wrap;margin-top:26px}
+.wide{padding:0 12px}.wide img{width:100%;aspect-ratio:16/10;object-fit:cover;border-radius:32px;transform-origin:center top;will-change:transform}
+.rows{max-width:1100px;margin:auto;padding:100px 20px 40px}.lbl{font-size:13px;color:#86868b;letter-spacing:.06em;font-weight:600;font-family:Inter;margin-bottom:12px;text-transform:uppercase}
+.rows a{display:grid;grid-template-columns:44px 1fr auto;gap:14px;align-items:baseline;padding:22px 0;border-top:1px solid #e8e8ed;transition:padding .35s}
+.rows a:hover{padding-left:10px}.rows .k{color:#86868b;font-size:14px;font-weight:600}.rows .n{font-size:clamp(24px,4.4vw,44px);font-weight:700;letter-spacing:-.035em;line-height:1.1;font-family:"Inter Tight"}
+.rows .n small{display:block;font-size:15px;font-weight:400;color:#86868b;letter-spacing:0;margin-top:4px;font-family:Inter}.rows .p{color:var(--a);font-weight:600;font-size:14px}
+.cards{padding:72px 0}.cards .lbl,.cards .note{padding:0 20px;max-width:1100px;margin-left:auto;margin-right:auto}
+.cr{display:flex;gap:14px;overflow-x:auto;scroll-snap-type:x mandatory;padding:8px 20px 20px;scrollbar-width:none}.cr::-webkit-scrollbar{display:none}
+.cr .theme{flex:0 0 78%;scroll-snap-align:start;background:#f5f5f7;border-radius:28px;padding:30px 26px;min-height:220px;display:flex;flex-direction:column;justify-content:flex-end}
+.cr .theme:first-child{background:var(--a);color:#fff}.cr .theme:first-child p{color:rgba(255,255,255,.85)}
+.cr .theme h3{font-size:30px}.cr .theme p{color:#6e6e73;margin-top:8px}
+.hrs2{max-width:1100px;margin:auto;padding:40px 20px 80px}
+.big{padding:20px;display:grid;gap:12px;max-width:1100px;margin:auto}.big .pill{font-size:clamp(20px,4vw,30px);padding:26px;letter-spacing:-.02em}
+.big address{font-style:normal;text-align:center;color:#6e6e73;padding:18px 0}
+footer{text-align:center;font-size:12px;color:#86868b;padding:40px 20px 60px}footer a{text-decoration:underline}
+.v2 .gh{background:#1d1d1f;color:#f5f5f7;max-width:none;padding:64px 20px 48px}.v2 .gh .meta{color:#d2d2d7}.v2 .gh .meta b{color:#fff}.v2 .gh .lead{color:#a1a1a6}.v2 .gh .pill.sec{color:#f5f5f7}.v2 .wide{padding:12px}
+@media(min-width:800px){.cr .theme{flex-basis:32%}.big{grid-template-columns:1fr 1fr}.big address{grid-column:1/-1}}
+</style><!-- GoatCounter (BOLLA STUDIO) -->
+<script>window.goatcounter={path:function(p){return '/bolla-demo-la-cala-barceloneta'+((p.replace(/^\/la\-cala\-barceloneta(?=[\/?#]|$)/,'')||'/').replace(/^\?/,'/?'))}};window.bsTrack=function(sub,title){try{if(window.goatcounter&&window.goatcounter.count)window.goatcounter.count({path:'/bolla-demo-la-cala-barceloneta'+sub,title:title||sub})}catch(e){}}</script>
+<script data-goatcounter="https://bollastudio.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+</head>
+<body class="t-tipo"><div class="demo" role="note"><b>DEMO</b>Página de muestra preparada por BOLLA STUDIO para La Cala. No es la web oficial.</div>
+<header class="gh"><span class="eyebrow">Cafetería</span><h1><span>La</span><span>Cala<i>.</i></span></h1><p class="lead">Café y brunch junto al mar, en la Barceloneta.</p><div class="meta"><span><b>★ 4,8</b> · 3296 reseñas en Google</span><span>Barceloneta</span><span class="status" data-status></span></div><div class="row"><a class="pill pri" href="https://wa.me/34627257701?text=Hola%2C%20quer%C3%ADa%20pedir%20informaci%C3%B3n." target="_blank" rel="noopener">Escríbenos por WhatsApp</a><a class="pill sec" href="tel:+34627257701">Llamar</a></div></header>
+<div class="wide"><img data-scale class="" src="photos/cafe_4.webp" alt="Cafetería · La Cala" fetchpriority=high decoding="async"></div>
+<section class="rows"><p class="lbl">Servicios</p><a href="https://wa.me/34627257701?text=Hola%2C%20quer%C3%ADa%20pedir%20informaci%C3%B3n." data-r><span class="k">01</span><span class="n">Brunch<small>Platos de mañana.</small></span><span class="p">Consultar</span></a><a href="https://wa.me/34627257701?text=Hola%2C%20quer%C3%ADa%20pedir%20informaci%C3%B3n." data-r><span class="k">02</span><span class="n">Café<small>Espresso y con leche.</small></span><span class="p">Consultar</span></a><a href="https://wa.me/34627257701?text=Hola%2C%20quer%C3%ADa%20pedir%20informaci%C3%B3n." data-r><span class="k">03</span><span class="n">Desayunos<small>Desde las 8.</small></span><span class="p">Consultar</span></a><a href="https://wa.me/34627257701?text=Hola%2C%20quer%C3%ADa%20pedir%20informaci%C3%B3n." data-r><span class="k">04</span><span class="n">Para llevar<small>Pregunta en barra.</small></span><span class="p">Consultar</span></a></section>
+<section class="cards"><p class="lbl">Lo que destacan las reseñas</p><div class="cr"><article class="theme" data-r><h3>Junto al mar</h3><p>En el Carrer de l’Escar.</p></article><article class="theme" data-r><h3>Brunch</h3><p>Por la mañana, todos los días.</p></article><article class="theme" data-r><h3>3.296 reseñas</h3><p>Media de 4,8.</p></article></div><p class="note">Resumen neutral de reseñas públicas de Google Maps. Sin citas literales.</p></section>
+<section class="hrs2"><p class="lbl">Horario</p><div class="chips"><span class="chip" data-day="0"><b>Lu</b>8:00–13:30</span><span class="chip" data-day="1"><b>Ma</b>8:00–14:30</span><span class="chip" data-day="2"><b>Mi</b>8:00–14:30</span><span class="chip" data-day="3"><b>Ju</b>8:00–14:30</span><span class="chip" data-day="4"><b>Vi</b>8:00–14:30</span><span class="chip" data-day="5"><b>Sá</b>8:00–14:30</span><span class="chip" data-day="6"><b>Do</b>8:00–14:30</span></div><p class="note">Horario según la ficha pública; conviene confirmarlo por teléfono.</p></section>
+<section class="big"><a class="pill pri" href="https://wa.me/34627257701?text=Hola%2C%20quer%C3%ADa%20pedir%20informaci%C3%B3n." target="_blank" rel="noopener">Escríbenos por WhatsApp</a><a class="pill sec" href="tel:+34627257701">Llamar</a><address>Carrer de l&#x27;Escar, 18, 08039 Barcelona · <a href="tel:+34627257701">+34 627 25 77 01</a></address></section>
+<footer>La Cala — Página de muestra diseñada por <a href="https://bollastudio.com" target="_blank" rel="noopener">BOLLA STUDIO · bollastudio.com</a> · DEMO</footer>
+<script>
+(()=>{const io=new IntersectionObserver(es=>es.forEach(x=>{if(x.isIntersecting){x.target.classList.add('in');io.unobserve(x.target)}}),{threshold:.12,rootMargin:'0px 0px -6% 0px'});
+document.querySelectorAll('[data-r]').forEach(el=>io.observe(el));
+const H=["8:00\u201313:30", "8:00\u201314:30", "8:00\u201314:30", "8:00\u201314:30", "8:00\u201314:30", "8:00\u201314:30", "8:00\u201314:30"],L=["Abierto ahora", "Ahora cerrado", "Hoy", "Cerrado"],now=new Date(new Date().toLocaleString('en-US',{timeZone:'Europe/Madrid'})),d=(now.getDay()+6)%7;
+document.querySelectorAll('[data-day="'+d+'"]').forEach(x=>x.classList.add('today'));
+if(H){const v=H[d];let on=false;if(v){if(/24/.test(v)&&!/:/.test(v))on=true;const m=v.match(/(\d+):(\d+)\D+(\d+):(\d+)/);if(m){const a=+m[1]*60+ +m[2];let b=+m[3]*60+ +m[4];if(b<=a)b+=1440;const t=now.getHours()*60+now.getMinutes();on=(t>=a&&t<b)||(t+1440<b)}}
+document.querySelectorAll('[data-status]').forEach(x=>{x.textContent=(on?L[0]:L[1])+' · '+L[2]+' '+(v||L[3]);x.classList.toggle('on',on)})}
+document.querySelectorAll('[data-count]').forEach(el=>{const to=parseFloat(el.dataset.count),dec=el.dataset.dec|0,o=new IntersectionObserver(es=>{if(es[0].isIntersecting){o.disconnect();const t0=performance.now(),f=t=>{const k=Math.min(1,(t-t0)/1400);el.textContent=(to*(1-Math.pow(1-k,3))).toFixed(dec).replace('.',',');if(k<1)requestAnimationFrame(f)};requestAnimationFrame(f)}});o.observe(el)});
+document.querySelectorAll('[data-scale]').forEach(el=>{const f=()=>{const r=el.getBoundingClientRect(),k=Math.max(0,Math.min(1,1-r.top/innerHeight));el.style.transform='scale('+(0.92+0.08*k)+')'};addEventListener('scroll',f,{passive:true});f()});
+const nb=document.querySelector('[data-navbg]');if(nb){const f=()=>nb.classList.toggle('solid',scrollY>40);addEventListener('scroll',f,{passive:true});f()}
+})();
+</script></body></html>

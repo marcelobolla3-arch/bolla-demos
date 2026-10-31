@@ -1,0 +1,57 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Mabuhay Motors · 24h AI sales agent demo · BOLLA STUDIO</title><meta name="robots" content="noindex">
+<style>
+:root{--c:#1f8f4e}*{box-sizing:border-box}body{margin:0;font-family:-apple-system,Segoe UI,Roboto,Arial,sans-serif;background:#0f1115;color:#e9ecf1}
+header{padding:22px 20px 10px;max-width:1000px;margin:auto}h1{margin:0;font-size:24px}h1 span{color:var(--c)}.sub{color:#9aa3b2;font-size:14px;margin-top:6px}
+nav{max-width:1000px;margin:10px auto;padding:0 20px;display:flex;gap:8px;flex-wrap:wrap}nav button{background:#1b1f27;color:#e9ecf1;border:1px solid #2a303b;border-radius:20px;padding:8px 14px;cursor:pointer;font-size:14px}nav button.on{background:var(--c);border-color:var(--c);color:#fff}
+main{max-width:1000px;margin:auto;padding:10px 20px 40px}.tab{display:none}.tab.on{display:block}
+.wrap{display:grid;grid-template-columns:1fr 300px;gap:18px}@media(max-width:800px){.wrap{grid-template-columns:1fr}}
+.phone{background:#0b141a;border-radius:18px;border:1px solid #222;overflow:hidden;min-height:520px;display:flex;flex-direction:column}
+.ph-h{background:#202c33;padding:12px 14px;display:flex;align-items:center;gap:10px}.av{width:36px;height:36px;border-radius:50%;background:var(--c);display:flex;align-items:center;justify-content:center;font-weight:700}
+.ph-h small{display:block;color:#8fa1ad;font-size:12px}.msgs{flex:1;padding:14px;overflow-y:auto;max-height:520px}
+.m{max-width:82%;padding:8px 11px;border-radius:9px;margin:6px 0;font-size:14px;line-height:1.4;white-space:pre-line}.u{background:#005c4b;margin-left:auto}.b{background:#202c33}.m.ar{direction:rtl;text-align:right}
+.t{font-size:11px;color:#8fa1ad;margin-top:3px}.side h3{margin:4px 0 8px;font-size:15px}.sc{display:block;width:100%;text-align:left;margin:6px 0;background:#1b1f27;border:1px solid #2a303b;color:#e9ecf1;border-radius:10px;padding:10px;cursor:pointer;font-size:14px}.sc:hover{border-color:var(--c)}
+.note{font-size:12px;color:#9aa3b2;margin-top:10px}.card{background:#1b1f27;border:1px solid #2a303b;border-radius:12px;padding:14px;margin:10px 0}
+table{width:100%;border-collapse:collapse;font-size:14px}td,th{padding:8px;border-bottom:1px solid #2a303b;text-align:left}th{color:#9aa3b2;font-weight:500}
+.pill{font-size:12px;padding:2px 8px;border-radius:10px;background:#2a303b}.hot{background:var(--c);color:#fff}
+footer{max-width:1000px;margin:auto;padding:20px;color:#9aa3b2;font-size:13px;border-top:1px solid #222}a{color:var(--c)}
+</style>
+<!-- GoatCounter (BOLLA STUDIO) -->
+<script>window.goatcounter={path:function(p){return '/bolla-demo-mabuhay-motors'+((p.replace(/^\/mabuhay\-motors(?=[\/?#]|$)/,'')||'/').replace(/^\?/,'/?'))}};window.bsTrack=function(sub,title){try{if(window.goatcounter&&window.goatcounter.count)window.goatcounter.count({path:'/bolla-demo-mabuhay-motors'+sub,title:title||sub})}catch(e){}}</script>
+<script data-goatcounter="https://bollastudio.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+
+</head><body>
+<header><h1><span>Mabuhay Motors</span> · 24h AI sales agent (demo)</h1><div class="sub">Prepared by BOLLA STUDIO as a free, no-commitment example for Mabuhay Motors (Shop 67, Ras Al Khor used car market). WhatsApp + website chat, English and Arabic. Demo conversations are illustrative; the real agent would read your live stock.</div></header>
+<nav id="nav"><button data-t="chat" class="on">WhatsApp demo</button><button data-t="leads">Lead board</button><button data-t="how">How it works</button></nav>
+<main>
+<section class="tab on" id="t-chat"><div class="wrap">
+<div class="phone"><div class="ph-h"><div class="av">M</div><div><b>Mabuhay Motors</b><small>AI assistant · replies 24/7</small></div></div><div class="msgs" id="msgs"></div></div>
+<div class="side"><h3>Try a buyer question</h3>
+<button class="sc" data-s="stock">🚗 "Is it still available?" at 11:40 PM</button>
+<button class="sc" data-s="finance">💳 Finance / monthly payment</button>
+<button class="sc" data-s="trade">🔁 Trade-in my current car</button>
+<button class="sc" data-s="arabic">🇦🇪 Same question in Arabic</button>
+<button class="sc" data-s="drive">📅 Book a test drive</button>
+<button class="sc" data-s="follow">⏰ Automatic follow-up (no reply after 24h)</button>
+<div class="note">Every conversation ends as a qualified lead in your team's board and WhatsApp, with name, number, car of interest, budget and preferred visit time.</div></div>
+</div></section>
+<section class="tab" id="t-leads"><div class="card"><h3 style="margin-top:0">Lead board (example data)</h3>
+<table><tr><th>Buyer</th><th>Interested in</th><th>Need</th><th>Next step</th><th>Status</th></tr>
+<tr><td>Ahmed (WhatsApp)</td><td>Toyota RAV4 VXR Hybrid 2020 (GCC)</td><td>Bank finance, 20% down</td><td>Test drive Sat 11:00</td><td><span class="pill hot">Booked</span></td></tr>
+<tr><td>Sara (website)</td><td>Nissan Patrol 2017 V6 4.0L (GCC)</td><td>Trade-in: 2019 SUV</td><td>Valuation photos received</td><td><span class="pill">Waiting sales</span></td></tr>
+<tr><td>Omar (WhatsApp, Arabic)</td><td>Toyota RAV4 VXR Hybrid 2020 (GCC)</td><td>Cash, export question</td><td>Follow-up sent automatically</td><td><span class="pill">Follow-up 1/3</span></td></tr>
+</table><div class="note">Your salespeople only get buyers who already asked, qualified and booked. Nothing is lost at night or on busy weekends.</div></div></section>
+<section class="tab" id="t-how"><div class="card"><h3 style="margin-top:0">How it would work for Mabuhay Motors</h3>
+<ol><li>Connected to your WhatsApp Business number and your website chat.</li><li>Reads your stock (each car's specs, km, warranty, price as you list it) so answers are always current.</li><li>Answers stock, finance, trade-in, registration and documents questions in English and Arabic, 24/7.</li><li>Books test drives into your calendar and alerts the right salesperson.</li><li>Follows up automatically with buyers who went quiet, so no lead is forgotten.</li></ol>
+<p>Built and run by BOLLA STUDIO (software engineering: apps, AI agents, n8n automations). Want it with your real stock? Reply to the email or write on <a href="https://www.linkedin.com/in/marcelo-bolla-ai">LinkedIn</a>.</p></div></section>
+</main>
+<footer>Demo by <a href="https://bollastudio.com">BOLLA STUDIO</a> · Marcelo Bolla · <a href="https://www.linkedin.com/in/marcelo-bolla-ai">linkedin.com/in/marcelo-bolla-ai</a> · Not affiliated with Mabuhay Motors; prepared as a proposal.</footer>
+<script>
+var S={"stock": [["u", "Hi, is the Toyota RAV4 VXR Hybrid 2020 (GCC) still available?"], ["b", "Hi! Yes, it is currently in stock at Mabuhay Motors (Shop 67, Ras Al Khor used car market). I can send you the full spec sheet, more photos or a walk-around video. Would you like to see it in person this week?"], ["u", "Video please, and what about warranty?"], ["b", "Sending the video now. Warranty and service details are listed on the car page; I have shared them with you. Shall I reserve a viewing slot? We are open today and tomorrow."]], "finance": [["u", "Can I buy the Nissan Patrol 2017 V6 4.0L (GCC) on finance?"], ["b", "Yes. We work with UAE banks for auto finance. To give you an indicative monthly payment I need 3 things: your preferred down payment, the term (e.g. 36-60 months) and whether you are salaried in the UAE."], ["u", "20% down, 48 months, salaried"], ["b", "Thank you. A finance specialist from Mabuhay Motors will confirm the exact bank offer. Can I book you a 15-minute call or a visit with documents (Emirates ID, salary certificate)?"]], "trade": [["u", "I want to trade in my 2019 SUV for the Toyota RAV4 VXR Hybrid 2020 (GCC)"], ["b", "Happy to help. Please send: make/model, km, GCC or import, service history, and 4 photos (front, back, interior, odometer)."], ["u", "Toyota Land Cruiser 2019, 98,000 km, GCC, full service"], ["b", "Got it, photos received. Our team will give you a trade-in valuation and the difference to pay. Would you like to bring it in for inspection on Saturday at 11:00 or 17:00?"]], "arabic": [["u", "السلام عليكم، هل السيارة متوفرة؟ وهل يوجد تمويل؟", 1], ["b", "وعليكم السلام! نعم، السيارة متوفرة حالياً لدى Mabuhay Motors. يوجد تمويل عن طريق البنوك في الإمارات. هل تفضل حجز موعد لتجربة القيادة أو مكالمة مع مستشار التمويل؟", 1], ["u", "تجربة قيادة يوم السبت", 1], ["b", "تم! أرسل لي اسمك ورقم الهاتف وسأؤكد الموعد مع فريق المبيعات.", 1]], "drive": [["u", "Can I test drive tomorrow evening?"], ["b", "Of course. Available slots tomorrow: 17:00, 18:30 or 20:00. Which one works for you?"], ["u", "18:30"], ["b", "Booked: test drive tomorrow 18:30 at Mabuhay Motors, Shop 67, Ras Al Khor used car market. Please bring your driving licence. I will send you the location pin and a reminder 2 hours before."]], "follow": [["b", "Hi Omar, yesterday you asked about the Toyota RAV4 VXR Hybrid 2020 (GCC). It is still available. Would you like me to hold a viewing slot this weekend, or send you the finance options?"], ["u", "Yes, send finance options"], ["b", "Sent! A salesperson from Mabuhay Motors will also call you at your preferred time. Morning or evening?"]]};
+var box=document.getElementById('msgs');
+function add(m,i){setTimeout(function(){var d=document.createElement('div');d.className='m '+(m[0]=='u'?'u':'b')+(m[2]?' ar':'');d.innerHTML=m[1].replace(/</g,'&lt;')+'<div class="t">'+(m[0]=='u'?'Buyer':'AI assistant')+'</div>';box.appendChild(d);box.scrollTop=box.scrollHeight},i*900)}
+function play(k){box.innerHTML='';S[k].forEach(add);bsTrack('/scene/'+k,'Scene '+k)}
+document.querySelectorAll('.sc').forEach(function(b){b.addEventListener('click',function(){play(b.dataset.s)})});
+document.querySelectorAll('#nav button').forEach(function(b){b.addEventListener('click',function(){document.querySelectorAll('#nav button').forEach(function(x){x.classList.remove('on')});b.classList.add('on');document.querySelectorAll('.tab').forEach(function(t){t.classList.remove('on')});document.getElementById('t-'+b.dataset.t).classList.add('on');bsTrack('/tab/'+b.dataset.t,'Tab '+b.dataset.t)})});
+play('stock');
+</script></body></html>

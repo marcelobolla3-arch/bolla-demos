@@ -1,0 +1,37 @@
+<!doctype html><html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow">
+<title>Karoon Pilates Studio · Demo BOLLA STUDIO</title>
+<style>
+:root{--c:#7c3aed}*{box-sizing:border-box}body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif;background:#f6f5f2;color:#1f2937}
+.ban{background:#111;color:#fff;font-size:13px;text-align:center;padding:8px}
+header{background:var(--c);color:#fff;padding:36px 20px 28px;text-align:center}header h1{margin:0 0 6px;font-size:28px}header p{margin:0;opacity:.9}
+main{max-width:980px;margin:0 auto;padding:20px;display:grid;grid-template-columns:1fr 1fr;gap:20px}@media(max-width:800px){main{grid-template-columns:1fr}}
+.card{background:#fff;border-radius:14px;padding:20px;box-shadow:0 2px 10px rgba(0,0,0,.06)}h2{margin:0 0 4px;font-size:20px;color:var(--c)}.sub{margin:0 0 14px;color:#6b7280;font-size:14px}
+.form label{display:block;font-size:14px;margin:10px 0}.form select,.form input{display:block;width:100%;padding:10px;border:1px solid #d1d5db;border-radius:8px;margin-top:4px;font-size:15px}
+.chk input{display:inline;width:auto}.go{width:100%;padding:13px;border:0;border-radius:10px;background:var(--c);color:#fff;font-size:16px;font-weight:600;margin-top:10px;cursor:pointer}
+.res{margin-top:12px;font-size:14px;color:#065f46}.slots{display:flex;flex-wrap:wrap;gap:8px;margin:10px 0}.slots button{padding:8px 10px;border:1px solid var(--c);background:#fff;color:var(--c);border-radius:8px;cursor:pointer}.slots button.on{background:var(--c);color:#fff}
+.wa{background:#e5ddd5;border-radius:12px;padding:12px;min-height:330px}.wah{background:#075e54;color:#fff;margin:-12px -12px 10px;padding:10px 12px;border-radius:12px 12px 0 0;font-weight:600}
+.m{max-width:85%;padding:8px 10px;border-radius:8px;margin:6px 0;font-size:14px;line-height:1.35;opacity:0;transform:translateY(6px);transition:.4s}.m.show{opacity:1;transform:none}.me{background:#dcf8c6;margin-left:auto}.bot{background:#fff}
+.full{grid-column:1/-1}ul{padding-left:20px}li{margin:6px 0}footer{text-align:center;font-size:13px;color:#6b7280;padding:20px}
+</style>
+<!-- GoatCounter (BOLLA STUDIO) -->
+<script>window.goatcounter={path:function(p){return '/es-karoon-pilates-demo'+((p.replace(/^\/es\-karoon\-pilates(?=[\/?#]|$)/,'')||'/').replace(/^\?/,'/?'))}};window.bsTrack=function(sub,title){try{if(window.goatcounter&&window.goatcounter.count)window.goatcounter.count({path:'/es-karoon-pilates-demo'+sub,title:title||sub})}catch(e){}}</script>
+<script data-goatcounter="https://bollastudio.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+</head><body>
+<div class="ban">Demo de ejemplo preparada por BOLLA STUDIO para Karoon Pilates Studio · no es la web oficial</div>
+<header><h1>Karoon Pilates Studio</h1><p>estudio de pilates / gimnasio · Valencia</p></header>
+<main>
+<section class="card"><h2>Turnos online + recordatorios automáticos</h2><p class="sub">Ejemplo de agenda: el paciente/cliente elige y recibe recordatorio por WhatsApp.</p>
+<div class="form"><label>Servicio<select id="opt"><option>Sesión inicial</option><option>Pilates con máquinas</option><option>Pilates embarazo y postparto</option><option>Pilates aplicado al deporte</option><option>Pilates para mayores</option></select></label><div class="slots" id="slots"></div><label class="chk"><input type="checkbox" checked> Recordatorio por WhatsApp 24 h antes</label>
+<button class="go" onclick="book()">Confirmar turno</button><div id="res" class="res"></div></div></section>
+<section class="card"><h2>Agente IA 24 h en WhatsApp</h2><p class="sub">Simulación: así respondería el asistente a las 23:40, con todo cerrado.</p>
+<div class="wa"><div class="wah">Karoon Pilates Studio · asistente</div><div id="chat"><div class="m me">Hola, quiero probar una clase en el centro de Hernán Cortés</div><div class="m bot">¡Hola! La sesión inicial sirve para conocer el método Pilates clásico y que el equipo vea tu punto de partida. En Hernán Cortés tengo martes 19:00 o miércoles 10:00. ¿Te reservo una?</div><div class="m me">Martes 19:00</div><div class="m bot">Reservado ✅ Martes 19:00, Karoon Hernán Cortés 5. Trae ropa cómoda y calcetines (mejor antideslizantes). Te recuerdo el día antes; si no puedes venir, avísame aquí y lo movemos.</div></div></div>
+<button class="go" id="replay">▶ Ver la conversación otra vez</button></section>
+<section class="card full"><h2>Qué ganaría Karoon Pilates Studio</h2><ul><li>Agente IA en WhatsApp que contesta y agenda 24 h, también fuera de horario</li><li>Turnos que se reservan solos según vuestro agenda real</li><li>Recordatorios automáticos el día antes: menos ausencias y huecos vacíos</li><li>Seguimiento automático de quien preguntó y no reservó</li></ul><p class="sub">Todo se conecta a las herramientas que ya usan (WhatsApp, email, calendario). Los textos y horarios de esta demo son de ejemplo.</p></section>
+</main>
+<footer>Demo hecha por <b>BOLLA STUDIO</b> · bollastudio.com · Marcelo Bolla</footer>
+<script>
+function play(){var m=document.querySelectorAll('#chat .m');m.forEach(function(x){x.classList.remove('show')});m.forEach(function(x,i){setTimeout(function(){x.classList.add('show')},600+i*1400)})}
+play();document.getElementById('replay').onclick=function(){play();bsTrack('/chat','Chat replay')};
+var sl=document.getElementById('slots');if(sl){['Lun 10:00','Lun 17:30','Mar 9:30','Mié 12:00','Jue 18:00','Vie 10:30'].forEach(function(t){var b=document.createElement('button');b.textContent=t;b.onclick=function(){sl.querySelectorAll('button').forEach(function(x){x.classList.remove('on')});b.classList.add('on')};sl.appendChild(b)})}
+function book(){var o=document.getElementById('opt').value;document.getElementById('res').innerHTML='✅ Solicitud de ejemplo registrada: <b>'+o+'</b>. En el sistema real se confirma al momento y se envía por WhatsApp/email.';bsTrack('/book','Demo reserva')}
+</script></body></html>

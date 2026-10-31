@@ -1,0 +1,84 @@
+<!doctype html><html lang="es-PY"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex,nofollow"><meta name="googlebot" content="noindex,nofollow">
+<title>LomiTorre · Lomitería en Roberto L. Petit (DEMO)</title><meta name="description" content="Lomitería y pizzería en Capiatá, todos los días desde las 17:00."><meta name="theme-color" content="#be123c">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Inter+Tight:wght@600;700;800&display=swap" rel="stylesheet">
+<style>:root{--a:#be123c}
+*{box-sizing:border-box;margin:0;padding:0}html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{font-family:Inter,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;color:#1d1d1f;background:#fff;line-height:1.5;-webkit-font-smoothing:antialiased}
+img{display:block;max-width:100%}a{color:inherit;text-decoration:none}table{border-collapse:collapse;width:100%}
+h1,h2,h3{font-family:"Inter Tight",Inter,system-ui,sans-serif;letter-spacing:-.035em;line-height:1.04;font-weight:700}
+.demo{background:#1d1d1f;color:#f5f5f7;font-size:12px;text-align:center;padding:8px 14px;position:relative;z-index:70}
+.demo b{background:var(--a);color:#fff;border-radius:99px;padding:1px 8px;margin-right:6px;font-weight:700}
+.pill{display:inline-flex;align-items:center;justify-content:center;gap:6px;border-radius:980px;padding:12px 22px;font-weight:600;font-size:15px;transition:transform .25s ease,opacity .25s}
+.pill.pri{background:var(--a);color:#fff}.pill.sec{color:var(--a);box-shadow:inset 0 0 0 1.5px currentColor}.pill:hover{transform:translateY(-1px);opacity:.9}
+.muted{color:#6e6e73}.note{color:#86868b;font-size:13px;margin-top:12px}.eyebrow{color:var(--a);font-weight:600;font-size:14px}
+[data-r]{opacity:0;transform:translateY(22px);transition:opacity .9s cubic-bezier(.2,.7,.2,1),transform .9s cubic-bezier(.2,.7,.2,1)}[data-r].in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){[data-r]{opacity:1;transform:none;transition:none}*{animation:none!important}}
+.hrs th,.hrs td{text-align:left;padding:11px 0;border-bottom:1px solid #e8e8ed;font-weight:500}.hrs td{text-align:right;color:#424245}
+.hrs tr.today th,.hrs tr.today td{color:var(--a);font-weight:700}
+.chips{display:flex;flex-wrap:wrap;gap:8px}.chip{display:inline-flex;flex-direction:column;border-radius:16px;background:#f5f5f7;color:#1d1d1f;padding:10px 14px;font-size:13px;min-width:92px}
+.chip b{font-size:12px;color:#86868b;font-weight:600}.chip.off{color:#a1a1a6}.chip.today{background:var(--a);color:#fff}.chip.today b{color:rgba(255,255,255,.8)}
+.status{display:inline-flex;align-items:center;gap:6px;font-size:13px;font-weight:600}.status:before{content:"";width:8px;height:8px;border-radius:50%;background:#a1a1a6}.status.on:before{background:#30d158}
+.plist{list-style:none}.plist li{display:flex;align-items:baseline;gap:10px;padding:14px 0}
+.plist .n{font-weight:600;display:flex;flex-direction:column}.plist small{font-weight:400;color:#86868b;font-size:13px}
+.plist .dots{flex:1;border-bottom:1.5px dotted #c7c7cc;transform:translateY(-4px)}.plist .p{color:var(--a);font-weight:600;font-size:14px;white-space:nowrap}
+.faq details{border-bottom:1px solid #e8e8ed;padding:18px 0}.faq summary{cursor:pointer;font-weight:600;list-style:none;display:flex;justify-content:space-between;gap:12px}
+.faq summary::-webkit-details-marker{display:none}.faq summary:after{content:"+";color:var(--a);font-size:22px;line-height:1;transition:transform .3s}
+.faq details[open] summary:after{transform:rotate(45deg)}.faq p{color:#6e6e73;margin-top:10px}
+iframe.map{border:0;width:100%;display:block}
+
+.bars{display:grid;gap:10px}.bars .br{display:grid;grid-template-columns:34px 1fr auto;gap:12px;align-items:center;font-size:13px}.bars .br b{color:#86868b;font-weight:600}
+.bars .tr{position:relative;height:12px;border-radius:99px;background:#f0f0f2;overflow:hidden}.bars .tr i{position:absolute;top:0;bottom:0;border-radius:99px;background:color-mix(in srgb,var(--a) 55%,#fff)}
+.bars .br.today .tr i{background:var(--a)}.bars .br.today b,.bars .br.today em{color:var(--a);font-weight:700}.bars em{font-style:normal;color:#424245;min-width:92px;text-align:right}.bars .off em{color:#a1a1a6}
+.bars .tk{position:relative;height:16px;margin:0 104px 0 46px;font-size:10px;color:#a1a1a6}.bars .tk span{position:absolute;transform:translateX(-50%)}
+
+.ps{position:relative;min-height:auto;background:var(--a);color:#fff;padding:24px 20px 40px;overflow:hidden;display:flex;flex-direction:column;justify-content:space-between}
+.ps .tp{display:flex;justify-content:space-between;font-size:13px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;opacity:.9;position:relative;z-index:3}
+.ps h1{font-size:clamp(40px,min(17vw,calc(150vw / var(--L,8))),200px);line-height:.86;letter-spacing:-.065em;font-weight:800;position:relative;z-index:2;margin-top:min(64vw,330px)}.ps h1 span{display:block;animation:in .9s cubic-bezier(.2,.7,.2,1) both}.ps h1 span:nth-child(2){animation-delay:.08s}.ps h1 span:nth-child(3){animation-delay:.16s}.ps h1 span:nth-child(4){animation-delay:.24s}
+@keyframes in{from{opacity:0;transform:translateY(60px)}}
+.ps .ci{position:absolute;right:-14vw;top:56px;width:84vw;max-width:520px;aspect-ratio:1;border-radius:50%;overflow:hidden;z-index:1;box-shadow:0 0 0 10px rgba(255,255,255,.18)}.ps .ci img{width:100%;height:100%;object-fit:cover}
+.ps .stk{position:absolute;left:20px;top:min(48vw,260px);z-index:3;background:#fff;color:#1d1d1f;border-radius:50%;width:118px;height:118px;display:grid;place-items:center;text-align:center;transform:rotate(-12deg);font-size:12px;font-weight:600;line-height:1.15;box-shadow:0 14px 30px -10px rgba(0,0,0,.4)}
+.ps .stk b{display:block;font-family:"Inter Tight";font-size:34px;letter-spacing:-.04em;color:var(--a)}
+.ps .bt{position:relative;z-index:3}.ps .bt p{font-size:19px;max-width:30ch;margin:22px 0;opacity:.95}.ps .pill.pri{background:#fff;color:var(--a)}.ps .pill.sec{color:#fff}.ps .row{display:flex;gap:10px;flex-wrap:wrap}
+.bl{max-width:1180px;margin:auto;padding:90px 20px 0}.bl h2{font-size:14px;letter-spacing:.12em;text-transform:uppercase;color:var(--a);margin-bottom:18px;font-family:Inter}
+.bl .ln{border-top:1px solid #1d1d1f}.bl .ln div{display:grid;gap:4px;padding:20px 0;border-bottom:1px solid #1d1d1f}.bl .ln h3{font-size:clamp(32px,7vw,72px);letter-spacing:-.05em;transition:color .3s}.bl .ln div:hover h3{color:var(--a)}.bl .ln p{color:#6e6e73}
+.fs{display:flex;gap:10px;overflow-x:auto;scroll-snap-type:x mandatory;padding:80px 20px 10px;align-items:flex-end;scrollbar-width:none}.fs::-webkit-scrollbar{display:none}
+.fs img{flex:0 0 58%;min-width:0;object-fit:cover;border-radius:22px;scroll-snap-align:center}.fs img:nth-child(odd){aspect-ratio:3/4}.fs img:nth-child(even){aspect-ratio:1;flex-basis:44%}
+.td{max-width:1180px;margin:80px auto 0;padding:0 20px;display:grid;gap:22px}.td .c{background:#1d1d1f;color:#fff;border-radius:28px;padding:28px}.td .c h2{font-size:clamp(32px,6vw,54px)}.td .c .status{color:#fff;margin-top:12px;font-size:16px}
+.bb{max-width:1180px;margin:80px auto 0;padding:0 20px;display:flex;flex-wrap:wrap;gap:12px}.bb div{border-radius:999px;background:color-mix(in srgb,var(--a) 12%,#fff);padding:22px 28px;max-width:100%}.bb b{display:block;font-size:20px;letter-spacing:-.02em}.bb span{color:#6e6e73;font-size:14px}
+.ct{max-width:1180px;margin:80px auto 0;padding:0 20px}.ct h2{font-size:clamp(34px,8vw,84px);letter-spacing:-.055em}.ct p{color:#6e6e73;margin:12px 0 20px}.ct .mp{border-radius:30px;overflow:hidden}.ct iframe.map{height:360px}
+footer{margin-top:80px;background:var(--a);color:#fff;padding:40px 20px 34px;overflow:hidden}footer .gn{font-family:"Inter Tight";font-weight:800;font-size:clamp(40px,calc(165vw / var(--N,10)),190px);letter-spacing:-.07em;line-height:.85;white-space:nowrap}footer p{font-size:12px;opacity:.85;margin-top:20px}footer a{text-decoration:underline}
+@media(min-width:820px){.ps{padding:28px 48px 56px;min-height:88vh;display:flex;flex-direction:column;justify-content:space-between}.ps h1{margin-top:60px;max-width:62%}.ps .ci{right:6%;top:12%;width:38vw}.ps .stk{left:auto;right:calc(6% + 30px);top:auto;bottom:70px}.bl .ln div{grid-template-columns:1fr 340px;align-items:end}.fs img{flex-basis:30%}.fs img:nth-child(even){flex-basis:22%}.td{grid-template-columns:.8fr 1.2fr;align-items:center}}
+.v2 .ps{background:#f4efe6;color:#1d1d1f}.v2 .ps h1{color:var(--a)}.v2 .ps .pill.pri{background:var(--a);color:#fff}.v2 .ps .pill.sec{color:var(--a)}
+.v2 .ps .ci{border-radius:200px 200px 28px 28px;aspect-ratio:3/4;box-shadow:none;width:52vw}.v2 .ps .stk{background:var(--a);color:#fff;border-radius:22px;transform:rotate(6deg)}.v2 .ps .stk b{color:#fff}
+.v2 .bl .ln div{border-color:#d2d2d7}.v2 .bl .ln{border-color:#d2d2d7}.v2 .bb div{border-radius:22px;background:#f4efe6}.v2 footer{background:#1d1d1f}.v2 footer .gn{color:var(--a);filter:brightness(1.3)}
+@media(min-width:820px){.v2 .ps .ci{width:30vw}}
+</style><!-- GoatCounter (BOLLA STUDIO) -->
+<script>window.goatcounter={path:function(p){return '/bolla-demo-py-lomitorre-capiata'+((p.replace(/^\/py\-lomitorre\-capiata(?=[\/?#]|$)/,'')||'/').replace(/^\?/,'/?'))}};window.bsTrack=function(sub,title){try{if(window.goatcounter&&window.goatcounter.count)window.goatcounter.count({path:'/bolla-demo-py-lomitorre-capiata'+sub,title:title||sub})}catch(e){}}</script>
+<script data-goatcounter="https://bollastudio.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+</head>
+<body class="t-cartel"><div class="demo" role="note"><b>DEMO</b>Página de muestra preparada por BOLLA STUDIO para LomiTorre. No es la web oficial.</div>
+<header class="ps"><div class="tp"><span>Lomitería</span><span>Roberto L. Petit</span></div><div class="ci"><img class="" src="photos/lomi_2.webp" alt="Lomitería · LomiTorre" fetchpriority=high decoding="async"></div><div class="stk"><span><b>4,6</b>★ · 105<br>reseñas en Google</span></div>
+<h1 style="--L:9"><span>LomiTorre</span></h1><div class="bt"><p>Lomitería y pizzería en Capiatá, todos los días desde las 17:00.</p><div class="row"><a class="pill pri" href="https://wa.me/595961320436?text=Hola%2C%20quisiera%20hacer%20una%20consulta." target="_blank" rel="noopener">Escribir por WhatsApp</a><a class="pill sec" href="tel:+595961320436">Llamar</a></div></div></header>
+<section class="bl"><h2>Servicios</h2><div class="ln"><div data-r><h3>Lomitos</h3><p>La especialidad.</p></div><div data-r><h3>Pizzas y hamburguesas</h3><p>También en la carta.</p></div><div data-r><h3>Para llevar</h3><p>Consulte por WhatsApp.</p></div><div data-r><h3>Pedidos</h3><p>Por WhatsApp o por teléfono.</p></div></div></section>
+<div class="fs"><img class="" src="photos/lomi_3.webp" alt="Lomitería · LomiTorre" loading=lazy decoding="async"><img class="" src="photos/lomi_4.webp" alt="Lomitería · LomiTorre" loading=lazy decoding="async"><img class="" src="photos/lomi_5.webp" alt="Lomitería · LomiTorre" loading=lazy decoding="async"><img class="" src="photos/lomi_1.webp" alt="Lomitería · LomiTorre" loading=lazy decoding="async"><img class="" src="photos/lomi_2.webp" alt="Lomitería · LomiTorre" loading=lazy decoding="async"></div>
+<section class="td"><div class="c" data-r><h2>Hoy</h2><span class="status" data-status></span></div><div data-r><div class="bars"><div class="br" data-day="0"><b>Lu</b><span class="tr"><i style="left:61.1%;width:38.9%"></i></span><em>17:00–00:00</em></div><div class="br" data-day="1"><b>Ma</b><span class="tr"><i style="left:61.1%;width:38.9%"></i></span><em>17:00–00:00</em></div><div class="br" data-day="2"><b>Mi</b><span class="tr"><i style="left:61.1%;width:38.9%"></i></span><em>17:00–00:00</em></div><div class="br" data-day="3"><b>Ju</b><span class="tr"><i style="left:61.1%;width:38.9%"></i></span><em>17:00–00:00</em></div><div class="br" data-day="4"><b>Vi</b><span class="tr"><i style="left:61.1%;width:38.9%"></i></span><em>17:00–1:00</em></div><div class="br" data-day="5"><b>Sá</b><span class="tr"><i style="left:61.1%;width:38.9%"></i></span><em>17:00–1:00</em></div><div class="br" data-day="6"><b>Do</b><span class="tr"><i style="left:61.1%;width:38.9%"></i></span><em>17:00–00:00</em></div><div class="tk"><span style="left:11.1%">8h</span><span style="left:33.3%">12h</span><span style="left:55.6%">16h</span><span style="left:77.8%">20h</span></div></div><p class="note">Horario según la ficha pública; conviene confirmarlo por teléfono.</p></div></section>
+<section class="bb"><div data-r><b>Lomitos</b><span>Los más elogiados.</span></div><div data-r><b>Atención</b><span>Muy bien valorada.</span></div><div data-r><b>Todos los días</b><span>Desde las 17:00.</span></div></section>
+<p class="note" style="max-width:1180px;margin:14px auto 0;padding:0 20px">Las reseñas elogian los lomitos y la atención; las opiniones sobre las pizzas están divididas y hay quejas puntuales por demoras en el delivery. 105 reseñas con un promedio de 4,6. Resumen neutral de reseñas públicas de Google Maps. Sin citas textuales.</p>
+<section class="ct"><h2 data-r>Curupayty 202, Capiatá</h2><p><a href="tel:+595961320436">+595 961 320 436</a></p><div class="mp" data-r><iframe class="map" loading="lazy" title="Mapa" referrerpolicy="no-referrer-when-downgrade" src="https://maps.google.com/maps?q=LomiTorre%2C%20Curupayty%20202%2C%20Capiat%C3%A1&z=16&output=embed"></iframe></div></section>
+<section style="max-width:820px;margin:70px auto 0;padding:0 20px"><h2 style="font-size:clamp(28px,5vw,44px);margin-bottom:12px">Preguntas frecuentes</h2><div class="faq"><details data-r><summary>¿Qué hay hoy?</summary><p>Consulte por teléfono o WhatsApp y le contamos.</p></details><details data-r><summary>¿Se puede pedir para llevar?</summary><p>Escríbanos o llame y se lo confirmamos.</p></details><details data-r><summary>¿Dónde están?</summary><p>En Curupayty 202, Capiatá.</p></details></div></section>
+<footer><div class="gn" style="--N:9">LomiTorre</div><p>Curupayty 202, Capiatá · <a href="tel:+595961320436">+595 961 320 436</a><br>Página de muestra diseñada por <a href="https://bollastudio.com" target="_blank" rel="noopener">BOLLA STUDIO · bollastudio.com</a> · DEMO</p></footer>
+<script>
+(()=>{const io=new IntersectionObserver(es=>es.forEach(x=>{if(x.isIntersecting){x.target.classList.add('in');io.unobserve(x.target)}}),{threshold:.12,rootMargin:'0px 0px -6% 0px'});
+document.querySelectorAll('[data-r]').forEach(el=>io.observe(el));
+const H=["17:00\u201300:00", "17:00\u201300:00", "17:00\u201300:00", "17:00\u201300:00", "17:00\u20131:00", "17:00\u20131:00", "17:00\u201300:00"],L=["Abierto ahora", "Cerrado ahora", "Hoy", "Cerrado"],now=new Date(new Date().toLocaleString('en-US',{timeZone:'America/Asuncion'})),d=(now.getDay()+6)%7;
+document.querySelectorAll('[data-day="'+d+'"]').forEach(x=>x.classList.add('today'));
+if(H){const v=H[d];let on=false;if(v){if(/24/.test(v)&&!/:/.test(v))on=true;const m=v.match(/(\d+):(\d+)\D+(\d+):(\d+)/);if(m){const a=+m[1]*60+ +m[2];let b=+m[3]*60+ +m[4];if(b<=a)b+=1440;const t=now.getHours()*60+now.getMinutes();on=(t>=a&&t<b)||(t+1440<b)}}
+document.querySelectorAll('[data-status]').forEach(x=>{x.textContent=(on?L[0]:L[1])+' · '+L[2]+' '+(v||L[3]);x.classList.toggle('on',on)})}
+document.querySelectorAll('[data-count]').forEach(el=>{const to=parseFloat(el.dataset.count),dec=el.dataset.dec|0,o=new IntersectionObserver(es=>{if(es[0].isIntersecting){o.disconnect();const t0=performance.now(),f=t=>{const k=Math.min(1,(t-t0)/1400);el.textContent=(to*(1-Math.pow(1-k,3))).toFixed(dec).replace('.',',');if(k<1)requestAnimationFrame(f)};requestAnimationFrame(f)}});o.observe(el)});
+document.querySelectorAll('[data-scale]').forEach(el=>{const f=()=>{const r=el.getBoundingClientRect(),k=Math.max(0,Math.min(1,1-r.top/innerHeight));el.style.transform='scale('+(0.92+0.08*k)+')'};addEventListener('scroll',f,{passive:true});f()});
+const nb=document.querySelector('[data-navbg]');if(nb){const f=()=>nb.classList.toggle('solid',scrollY>40);addEventListener('scroll',f,{passive:true});f()}
+})();
+</script></body></html>

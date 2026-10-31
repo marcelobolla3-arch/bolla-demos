@@ -1,0 +1,84 @@
+<!doctype html><html lang="es"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex,nofollow"><meta name="googlebot" content="noindex,nofollow">
+<title>Finttel Mobile · Reparación de móviles en El Raval (DEMO)</title><meta name="description" content="Reparación de móviles y portátiles, fundas y accesorios en el Raval."><meta name="theme-color" content="#7c3aed">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Inter+Tight:wght@600;700;800&display=swap" rel="stylesheet">
+<style>:root{--a:#7c3aed}
+*{box-sizing:border-box;margin:0;padding:0}html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{font-family:Inter,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;color:#1d1d1f;background:#fff;line-height:1.5;-webkit-font-smoothing:antialiased}
+img{display:block;max-width:100%}a{color:inherit;text-decoration:none}table{border-collapse:collapse;width:100%}
+h1,h2,h3{font-family:"Inter Tight",Inter,system-ui,sans-serif;letter-spacing:-.035em;line-height:1.04;font-weight:700}
+.demo{background:#1d1d1f;color:#f5f5f7;font-size:12px;text-align:center;padding:8px 14px;position:relative;z-index:70}
+.demo b{background:var(--a);color:#fff;border-radius:99px;padding:1px 8px;margin-right:6px;font-weight:700}
+.pill{display:inline-flex;align-items:center;justify-content:center;gap:6px;border-radius:980px;padding:12px 22px;font-weight:600;font-size:15px;transition:transform .25s ease,opacity .25s}
+.pill.pri{background:var(--a);color:#fff}.pill.sec{color:var(--a);box-shadow:inset 0 0 0 1.5px currentColor}.pill:hover{transform:translateY(-1px);opacity:.9}
+.muted{color:#6e6e73}.note{color:#86868b;font-size:13px;margin-top:12px}.eyebrow{color:var(--a);font-weight:600;font-size:14px}
+[data-r]{opacity:0;transform:translateY(22px);transition:opacity .9s cubic-bezier(.2,.7,.2,1),transform .9s cubic-bezier(.2,.7,.2,1)}[data-r].in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){[data-r]{opacity:1;transform:none;transition:none}*{animation:none!important}}
+.hrs th,.hrs td{text-align:left;padding:11px 0;border-bottom:1px solid #e8e8ed;font-weight:500}.hrs td{text-align:right;color:#424245}
+.hrs tr.today th,.hrs tr.today td{color:var(--a);font-weight:700}
+.chips{display:flex;flex-wrap:wrap;gap:8px}.chip{display:inline-flex;flex-direction:column;border-radius:16px;background:#f5f5f7;color:#1d1d1f;padding:10px 14px;font-size:13px;min-width:92px}
+.chip b{font-size:12px;color:#86868b;font-weight:600}.chip.off{color:#a1a1a6}.chip.today{background:var(--a);color:#fff}.chip.today b{color:rgba(255,255,255,.8)}
+.status{display:inline-flex;align-items:center;gap:6px;font-size:13px;font-weight:600}.status:before{content:"";width:8px;height:8px;border-radius:50%;background:#a1a1a6}.status.on:before{background:#30d158}
+.plist{list-style:none}.plist li{display:flex;align-items:baseline;gap:10px;padding:14px 0}
+.plist .n{font-weight:600;display:flex;flex-direction:column}.plist small{font-weight:400;color:#86868b;font-size:13px}
+.plist .dots{flex:1;border-bottom:1.5px dotted #c7c7cc;transform:translateY(-4px)}.plist .p{color:var(--a);font-weight:600;font-size:14px;white-space:nowrap}
+.faq details{border-bottom:1px solid #e8e8ed;padding:18px 0}.faq summary{cursor:pointer;font-weight:600;list-style:none;display:flex;justify-content:space-between;gap:12px}
+.faq summary::-webkit-details-marker{display:none}.faq summary:after{content:"+";color:var(--a);font-size:22px;line-height:1;transition:transform .3s}
+.faq details[open] summary:after{transform:rotate(45deg)}.faq p{color:#6e6e73;margin-top:10px}
+iframe.map{border:0;width:100%;display:block}
+
+body{background:#000;color:#f5f5f7}.muted,.note{color:#86868b}
+.hd{display:flex;justify-content:space-between;align-items:center;padding:14px 20px;position:sticky;top:0;z-index:50;background:rgba(0,0,0,.72);backdrop-filter:blur(20px)}
+.hd b{font-size:15px}#m{display:none}.hd label{cursor:pointer;font-size:13px;border:1px solid #424245;border-radius:99px;padding:6px 14px}
+.ov{position:fixed;inset:0;background:#000;z-index:45;display:flex;flex-direction:column;gap:14px;padding:110px 30px;font-size:30px;font-weight:700;letter-spacing:-.03em;transform:translateY(-100%);transition:transform .5s cubic-bezier(.2,.7,.2,1)}
+#m:checked~.ov{transform:none}
+.hero{text-align:center;padding:72px 20px 30px}.hero h1{font-size:clamp(48px,12vw,128px);letter-spacing:-.055em;animation:up 1.2s cubic-bezier(.2,.7,.2,1) both;margin-top:8px}
+@keyframes up{from{opacity:0;transform:translateY(30px)}}.hero p{color:#a1a1a6;font-size:clamp(19px,3vw,26px);max-width:30ch;margin:18px auto 26px;animation:up 1.2s .15s both}
+.hero .row{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;animation:up 1.2s .3s both}.pill.sec{color:#f5f5f7}
+.shot{padding:30px 12px 0;max-width:1240px;margin:auto}.shot img{width:100%;aspect-ratio:16/10;object-fit:cover;border-radius:32px;transform-origin:center top}
+.bento{display:grid;gap:12px;padding:90px 12px;max-width:1240px;margin:auto;grid-template-columns:1fr 1fr}
+.bento>div{background:#1c1c1e;border-radius:28px;padding:24px;min-height:160px;display:flex;flex-direction:column;justify-content:space-between;gap:12px;overflow:hidden;transition:transform .4s}.bento>div:hover{transform:scale(.985)}
+.bento .w{grid-column:1/-1}.bento h3{font-size:13px;color:#86868b;font-family:Inter;letter-spacing:0;font-weight:600}
+.bento .rt{font-family:"Inter Tight";font-size:80px;font-weight:800;letter-spacing:-.06em;line-height:.9;color:var(--a)}
+.bento .acc{background:var(--a)}.bento .acc h3{color:rgba(255,255,255,.75)}.bento .acc .pill{background:#fff;color:#000;align-self:flex-start}.bento .acc p{font-size:24px;font-weight:700;letter-spacing:-.02em}
+.bento ul{list-style:none}.bento li{display:flex;justify-content:space-between;padding:10px 0;border-bottom:1px solid #2c2c2e}.bento li span{color:#86868b;font-size:13px}
+.bento .mp{padding:0}.bento .mp iframe{height:100%;min-height:240px;filter:invert(.9) hue-rotate(180deg) grayscale(.3)}
+.bento .hrs th,.bento .hrs td{border-color:#2c2c2e;color:#d2d2d7;padding:7px 0;font-size:14px}
+.gal{padding:0 0 80px}.gal .s{display:flex;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;padding:0 12px;scrollbar-width:none}.gal .s::-webkit-scrollbar{display:none}
+.gal img{flex:0 0 70%;aspect-ratio:1;object-fit:cover;border-radius:28px;scroll-snap-align:center}
+footer{border-top:1px solid #1c1c1e;padding:26px 20px 40px;font-size:12px;color:#6e6e73;text-align:center}footer a{color:#a1a1a6;text-decoration:underline}
+body.v2{background:#101012}.v2 .hero{text-align:left;max-width:1240px;margin:auto}.v2 .hero .row{justify-content:flex-start}.v2 .hero p{margin-left:0}.v2 .shot img{aspect-ratio:4/5}
+@media(min-width:900px){.v2 .shot img{aspect-ratio:21/9}}
+@media(min-width:900px){.bento{grid-template-columns:repeat(4,1fr)}.bento .w{grid-column:span 2}.bento .t2{grid-row:span 2}.gal img{flex-basis:32%}}
+</style><!-- GoatCounter (BOLLA STUDIO) -->
+<script>window.goatcounter={path:function(p){return '/bolla-demo-finttel-mobile'+((p.replace(/^\/finttel\-mobile(?=[\/?#]|$)/,'')||'/').replace(/^\?/,'/?'))}};window.bsTrack=function(sub,title){try{if(window.goatcounter&&window.goatcounter.count)window.goatcounter.count({path:'/bolla-demo-finttel-mobile'+sub,title:title||sub})}catch(e){}}</script>
+<script data-goatcounter="https://bollastudio.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+</head>
+<body class="t-noche v2"><div class="demo" role="note"><b>DEMO</b>Página de muestra preparada por BOLLA STUDIO para Finttel Mobile. No es la web oficial.</div>
+<input type="checkbox" id="m"><div class="hd"><b>Finttel Mobile</b><label for="m">Menú</label></div>
+<nav class="ov" onclick="document.getElementById('m').checked=false"><a href="#b">Servicios</a><a href="#g">El local</a><a href="tel:+34634228368">Llamar</a></nav>
+<header class="hero"><span class="eyebrow">Reparación de móviles · El Raval</span><h1>Finttel Mobile</h1><p>Reparación de móviles y portátiles, fundas y accesorios en el Raval.</p><div class="row"><a class="pill pri" href="https://wa.me/34634228368?text=Hola%2C%20quer%C3%ADa%20pedir%20informaci%C3%B3n." target="_blank" rel="noopener">Escríbenos por WhatsApp</a><a class="pill sec" href="tel:+34634228368">Llamar</a></div></header>
+<div class="shot"><img data-scale class="" src="photos/phone_1.webp" alt="Reparación de móviles · Finttel Mobile" fetchpriority=high decoding="async"></div>
+<section class="bento" id="b"><div data-r><h3>Valoración</h3><div class="rt" data-count="4.9" data-dec="1">4,9</div><p class="muted">75 reseñas en Google</p></div><div data-r><h3>Hoy</h3><span class="status" data-status></span></div>
+<div class="w t2" data-r><h3>Servicios</h3><ul><li>Pantallas<span>Consultar</span></li><li>Baterías<span>Consultar</span></li><li>Accesorios<span>Consultar</span></li><li>Copias<span>Consultar</span></li></ul></div>
+<div class="w acc" data-r><h3>WhatsApp</h3><p>Escríbenos por WhatsApp</p><a class="pill pri" href="https://wa.me/34634228368?text=Hola%2C%20quer%C3%ADa%20pedir%20informaci%C3%B3n." target="_blank" rel="noopener">Escríbenos por WhatsApp</a></div>
+<div class="w" data-r><h3>Horario</h3><table class="hrs"><tr data-day="0"><th>Lunes</th><td>10:00–22:00</td></tr><tr data-day="1"><th>Martes</th><td>10:00–22:00</td></tr><tr data-day="2"><th>Miércoles</th><td>10:00–22:00</td></tr><tr data-day="3"><th>Jueves</th><td>10:00–22:00</td></tr><tr data-day="4"><th>Viernes</th><td>10:00–22:00</td></tr><tr data-day="5"><th>Sábado</th><td>10:00–22:00</td></tr><tr data-day="6"><th>Domingo</th><td>14:00–21:00</td></tr></table><p class="note">Horario según la ficha pública; conviene confirmarlo por teléfono.</p></div>
+<div class="w" data-r><h3>Lo que destacan las reseñas</h3><p style="font-size:18px">Las reseñas destacan reparaciones rápidas de pantallas y baterías (a veces en 30 minutos), accesorios y fundas, y un dueño muy atento, también en domingo. 75 reseñas con media de 4,9.</p><p class="note">Resumen neutral de reseñas públicas de Google Maps. Sin citas literales.</p></div>
+<div data-r><h3>Dirección</h3><p style="font-size:18px;font-weight:600">Carrer Nou de la Rambla, 48a, 08001 Barcelona</p><p class="muted"><a href="tel:+34634228368">+34 634 22 83 68</a></p></div>
+<div class="mp" data-r><iframe class="map" loading="lazy" title="Mapa" referrerpolicy="no-referrer-when-downgrade" src="https://maps.google.com/maps?q=Finttel%20Mobile%2C%20Carrer%20Nou%20de%20la%20Rambla%2C%2048a%2C%2008001%20Barcelona&z=16&output=embed"></iframe></div></section>
+<section class="gal" id="g"><div class="s"><img class="" src="photos/phone_2.webp" alt="Reparación de móviles · Finttel Mobile" loading=lazy decoding="async"><img class="" src="photos/phone_3.webp" alt="Reparación de móviles · Finttel Mobile" loading=lazy decoding="async"><img class="" src="photos/phone_4.webp" alt="Reparación de móviles · Finttel Mobile" loading=lazy decoding="async"><img class="" src="photos/pc_1.webp" alt="Reparación de móviles · Finttel Mobile" loading=lazy decoding="async"></div></section>
+<footer>Finttel Mobile · Página de muestra diseñada por <a href="https://bollastudio.com" target="_blank" rel="noopener">BOLLA STUDIO · bollastudio.com</a> · DEMO</footer>
+<script>
+(()=>{const io=new IntersectionObserver(es=>es.forEach(x=>{if(x.isIntersecting){x.target.classList.add('in');io.unobserve(x.target)}}),{threshold:.12,rootMargin:'0px 0px -6% 0px'});
+document.querySelectorAll('[data-r]').forEach(el=>io.observe(el));
+const H=["10:00\u201322:00", "10:00\u201322:00", "10:00\u201322:00", "10:00\u201322:00", "10:00\u201322:00", "10:00\u201322:00", "14:00\u201321:00"],L=["Abierto ahora", "Ahora cerrado", "Hoy", "Cerrado"],now=new Date(new Date().toLocaleString('en-US',{timeZone:'Europe/Madrid'})),d=(now.getDay()+6)%7;
+document.querySelectorAll('[data-day="'+d+'"]').forEach(x=>x.classList.add('today'));
+if(H){const v=H[d];let on=false;if(v){if(/24/.test(v)&&!/:/.test(v))on=true;const m=v.match(/(\d+):(\d+)\D+(\d+):(\d+)/);if(m){const a=+m[1]*60+ +m[2];let b=+m[3]*60+ +m[4];if(b<=a)b+=1440;const t=now.getHours()*60+now.getMinutes();on=(t>=a&&t<b)||(t+1440<b)}}
+document.querySelectorAll('[data-status]').forEach(x=>{x.textContent=(on?L[0]:L[1])+' · '+L[2]+' '+(v||L[3]);x.classList.toggle('on',on)})}
+document.querySelectorAll('[data-count]').forEach(el=>{const to=parseFloat(el.dataset.count),dec=el.dataset.dec|0,o=new IntersectionObserver(es=>{if(es[0].isIntersecting){o.disconnect();const t0=performance.now(),f=t=>{const k=Math.min(1,(t-t0)/1400);el.textContent=(to*(1-Math.pow(1-k,3))).toFixed(dec).replace('.',',');if(k<1)requestAnimationFrame(f)};requestAnimationFrame(f)}});o.observe(el)});
+document.querySelectorAll('[data-scale]').forEach(el=>{const f=()=>{const r=el.getBoundingClientRect(),k=Math.max(0,Math.min(1,1-r.top/innerHeight));el.style.transform='scale('+(0.92+0.08*k)+')'};addEventListener('scroll',f,{passive:true});f()});
+const nb=document.querySelector('[data-navbg]');if(nb){const f=()=>nb.classList.toggle('solid',scrollY>40);addEventListener('scroll',f,{passive:true});f()}
+})();
+</script></body></html>

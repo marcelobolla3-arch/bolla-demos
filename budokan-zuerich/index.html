@@ -1,0 +1,397 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#111111">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Budokan">
+<title>Budokan Zürich – Dojo-App (Prototyp)</title>
+<link rel="manifest" href="manifest.json">
+<link rel="apple-touch-icon" href="img/apple-touch-icon.png">
+<link rel="icon" href="img/logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--red:#E10600;--red2:#fe0000;--ink:#111;--ink2:#2a2a2a;--mut:#6b6b6b;--line:#ececec;--bg:#f6f5f3;--card:#fff;--ok:#14894a;
+--st:env(safe-area-inset-top);--sb:env(safe-area-inset-bottom)}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0;background:#1b1b1b}
+body{font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;color:var(--ink);-webkit-font-smoothing:antialiased}
+.app{max-width:480px;margin:0 auto;min-height:100vh;min-height:100dvh;background:var(--bg);position:relative;box-shadow:0 0 60px rgba(0,0,0,.4)}
+.demo{position:sticky;top:0;z-index:60;background:#ffd400;color:#111;font-size:11px;font-weight:700;letter-spacing:.06em;text-align:center;padding:calc(5px + var(--st)) 10px 5px}
+.demo span{font-weight:500;letter-spacing:0;opacity:.75}
+header.top{background:#111;color:#fff;padding:14px 18px 18px;position:relative;overflow:hidden}
+header.top:after{content:"";position:absolute;right:-60px;top:-70px;width:200px;height:200px;border-radius:50%;background:var(--red);opacity:.92}
+.brand{display:flex;align-items:center;gap:12px;position:relative;z-index:1}
+.brand img{width:46px;height:46px;border-radius:50%;background:#fff;padding:2px}
+.brand b{display:block;font-size:17px;letter-spacing:-.01em}
+.brand small{color:#bdbdbd;font-size:12px}
+.hello{position:relative;z-index:1;margin-top:16px}
+.hello h1{font-size:24px;line-height:1.15;margin:0 0 4px;letter-spacing:-.02em;font-weight:800}
+.hello p{margin:0;color:#cfcfcf;font-size:13.5px}
+main{padding:16px 16px calc(96px + var(--sb))}
+.tab{display:none;animation:f .25s ease}.tab.on{display:block}
+@keyframes f{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+h2.sec{font-size:13px;text-transform:uppercase;letter-spacing:.08em;color:var(--mut);margin:20px 2px 10px;font-weight:700}
+.chips{display:flex;gap:8px;overflow-x:auto;padding:2px 2px 6px;scrollbar-width:none;margin:0 -16px;padding-left:16px;padding-right:16px}
+.chips::-webkit-scrollbar{display:none}
+.chip{flex:0 0 auto;border:1px solid var(--line);background:#fff;border-radius:999px;padding:8px 14px;font:600 13.5px Inter,sans-serif;color:var(--ink2);cursor:pointer}
+.chip.on{background:var(--ink);color:#fff;border-color:var(--ink)}
+.days{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-bottom:12px}
+.day{background:#fff;border:1px solid var(--line);border-radius:14px;padding:9px 0;text-align:center;cursor:pointer;font:inherit}
+.day b{display:block;font-size:16px}.day small{font-size:11px;color:var(--mut)}
+.day.on{background:var(--red);border-color:var(--red);color:#fff}.day.on small{color:#ffe1e0}
+.cls{display:flex;gap:12px;align-items:center;background:var(--card);border-radius:18px;padding:12px;margin-bottom:10px;box-shadow:0 1px 2px rgba(0,0,0,.04),0 4px 14px rgba(0,0,0,.04)}
+.cls .ph{width:62px;height:62px;border-radius:14px;background:#ddd center/cover;flex:0 0 auto}
+.cls .tx{flex:1;min-width:0}
+.cls .t{font-size:12.5px;font-weight:700;color:var(--red)}
+.cls .n{font-size:15.5px;font-weight:700;margin:1px 0;letter-spacing:-.01em}
+.cls .a{font-size:12.5px;color:var(--mut)}
+.btn{border:0;border-radius:12px;background:var(--ink);color:#fff;font:700 13.5px Inter,sans-serif;padding:10px 13px;cursor:pointer;white-space:nowrap}
+.btn.red{background:var(--red)}.btn.ghost{background:#f1f1f1;color:var(--ink)}
+.btn.done{background:#e8f6ee;color:var(--ok)}
+.btn.big{width:100%;padding:15px;font-size:15.5px;border-radius:14px}
+.note{font-size:12px;color:var(--mut);background:#fff;border:1px dashed #d8d8d8;border-radius:12px;padding:10px 12px;margin-top:12px;line-height:1.45}
+.tag{display:inline-block;font-size:10.5px;font-weight:700;letter-spacing:.04em;background:#fff3c4;color:#7a5b00;border-radius:6px;padding:2px 6px;vertical-align:middle}
+.tag.real{background:#e8f6ee;color:var(--ok)}
+.card{background:#fff;border-radius:20px;padding:18px;box-shadow:0 1px 2px rgba(0,0,0,.04),0 6px 20px rgba(0,0,0,.05);margin-bottom:12px}
+.hero{border-radius:20px;overflow:hidden;position:relative;height:160px;background:#111 center/cover;margin-bottom:14px}
+.hero:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,0) 30%,rgba(0,0,0,.8))}
+.hero div{position:absolute;left:16px;bottom:14px;right:16px;color:#fff;z-index:1}
+.hero b{font-size:20px;display:block;letter-spacing:-.01em}.hero span{font-size:13px;color:#e6e6e6}
+label{display:block;font-size:12.5px;font-weight:600;color:var(--ink2);margin:12px 0 6px}
+input,select,textarea{width:100%;font:500 16px Inter,sans-serif;padding:13px 14px;border:1px solid #e2e2e2;border-radius:12px;background:#fafafa;color:var(--ink);-webkit-appearance:none;appearance:none}
+select{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23666' stroke-width='2' fill='none'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 14px center}
+input:focus,select:focus{outline:2px solid var(--red);border-color:transparent;background:#fff}
+.row2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.slots{display:flex;flex-wrap:wrap;gap:8px}
+.slot{border:1px solid #e2e2e2;background:#fafafa;border-radius:10px;padding:9px 11px;font:600 13px Inter,sans-serif;cursor:pointer}
+.slot.on{background:var(--ink);color:#fff;border-color:var(--ink)}
+.ok{text-align:center;padding:26px 18px}
+.ok .ic{width:64px;height:64px;border-radius:50%;background:#e8f6ee;color:var(--ok);display:grid;place-items:center;margin:0 auto 12px}
+.ok h3{margin:0 0 6px;font-size:20px}
+.sum{text-align:left;background:#f7f7f7;border-radius:14px;padding:12px 14px;margin:14px 0;font-size:14px;line-height:1.7}
+.li{display:flex;gap:12px;align-items:flex-start;padding:10px 0;border-bottom:1px solid var(--line)}
+.li:last-child{border:0}
+.li .ic{width:36px;height:36px;border-radius:10px;background:#fdecec;color:var(--red);display:grid;place-items:center;flex:0 0 auto}
+.li b{font-size:14.5px;display:block}.li span{font-size:13px;color:var(--mut)}
+.prof{display:flex;gap:14px;align-items:center}
+.avatar{width:58px;height:58px;border-radius:50%;background:#111;color:#fff;display:grid;place-items:center;font-weight:800;font-size:20px}
+.belt{height:14px;border-radius:4px;background:linear-gradient(90deg,#f39c12,#e67e22);position:relative;margin:10px 0 4px}
+.belt:after{content:"";position:absolute;left:62%;top:0;bottom:0;width:22px;background:#111}
+.bar{height:10px;background:#eee;border-radius:99px;overflow:hidden}.bar i{display:block;height:100%;background:var(--red);border-radius:99px}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:12px}
+.stat{background:#f7f7f7;border-radius:14px;padding:12px 8px;text-align:center}.stat b{display:block;font-size:20px}.stat span{font-size:11.5px;color:var(--mut)}
+.week{display:flex;gap:5px;margin-top:10px}.week i{flex:1;height:30px;border-radius:6px;background:#eee}.week i.y{background:var(--red)}
+.ev{display:flex;gap:12px;padding:12px 0;border-bottom:1px solid var(--line)}.ev:last-child{border:0}
+.date{width:52px;flex:0 0 auto;text-align:center;background:#111;color:#fff;border-radius:12px;padding:7px 0}
+.date b{display:block;font-size:18px;line-height:1.1}.date span{font-size:10.5px;text-transform:uppercase;letter-spacing:.06em;color:#ff8c88}
+.ev h4{margin:2px 0 3px;font-size:14.5px}.ev p{margin:0;font-size:12.5px;color:var(--mut);line-height:1.4}
+nav.bot{position:fixed;bottom:0;left:50%;transform:translateX(-50%);width:100%;max-width:480px;background:rgba(255,255,255,.92);backdrop-filter:saturate(180%) blur(18px);-webkit-backdrop-filter:saturate(180%) blur(18px);border-top:1px solid var(--line);display:grid;grid-template-columns:repeat(4,1fr);padding:7px 4px calc(7px + var(--sb));z-index:50}
+nav.bot button{border:0;background:none;font:600 10.5px Inter,sans-serif;color:#8a8a8a;display:flex;flex-direction:column;align-items:center;gap:3px;cursor:pointer;padding:4px 0}
+nav.bot button.on{color:var(--red)}
+nav.bot svg{width:23px;height:23px}
+.fab{position:fixed;right:max(16px,calc(50% - 224px));bottom:calc(84px + var(--sb));width:58px;height:58px;border-radius:50%;background:#25D366;color:#fff;border:0;box-shadow:0 8px 24px rgba(37,211,102,.45);display:grid;place-items:center;z-index:55;cursor:pointer}
+.fab .badge{position:absolute;top:-2px;right:-2px;background:var(--red);color:#fff;font-size:10px;font-weight:800;border-radius:99px;padding:2px 6px;border:2px solid #fff}
+.sheet{position:fixed;inset:0;z-index:80;display:none;background:rgba(0,0,0,.45)}
+.sheet.on{display:block}
+.panel{position:absolute;left:50%;transform:translateX(-50%);bottom:0;width:100%;max-width:480px;background:#fff;border-radius:22px 22px 0 0;padding:18px 18px calc(18px + var(--sb));animation:up .25s ease}
+@keyframes up{from{transform:translate(-50%,40px);opacity:0}to{transform:translate(-50%,0);opacity:1}}
+.chat{position:fixed;inset:0;z-index:90;display:none;flex-direction:column;max-width:480px;margin:0 auto;background:#efe7de}
+.chat.on{display:flex}
+.chead{background:#075E54;color:#fff;display:flex;align-items:center;gap:10px;padding:calc(10px + var(--st)) 12px 10px}
+.chead img{width:38px;height:38px;border-radius:50%;background:#fff}
+.chead b{font-size:15px;display:block}.chead small{font-size:12px;color:#cfe9e4}
+.chead button{background:none;border:0;color:#fff;cursor:pointer;padding:4px}
+.msgs{flex:1;overflow-y:auto;padding:12px 10px;background:#efe7de url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40'%3E%3Ccircle cx='20' cy='20' r='1.2' fill='%23d9cfc3'/%3E%3C/svg%3E")}
+.m{max-width:84%;padding:8px 10px 6px;border-radius:10px;margin:4px 0;font-size:14.5px;line-height:1.4;box-shadow:0 1px 1px rgba(0,0,0,.08);white-space:pre-line}
+.m.in{background:#fff;border-top-left-radius:2px}
+.m.out{background:#dcf8c6;margin-left:auto;border-top-right-radius:2px}
+.m small{display:block;text-align:right;font-size:10.5px;color:#8a8a8a;margin-top:2px}
+.sys{text-align:center;font-size:11.5px;background:#fff6c7;color:#6d5a00;border-radius:8px;padding:6px 10px;margin:6px auto 10px;max-width:92%}
+.typing{display:inline-flex;gap:3px}.typing i{width:6px;height:6px;border-radius:50%;background:#9a9a9a;animation:b 1s infinite}.typing i:nth-child(2){animation-delay:.15s}.typing i:nth-child(3){animation-delay:.3s}
+@keyframes b{0%,60%,100%{opacity:.3}30%{opacity:1}}
+.qr{display:flex;gap:6px;overflow-x:auto;padding:8px 10px;background:#f0f0f0;scrollbar-width:none}
+.qr button{flex:0 0 auto;border:1px solid #cfe3dc;background:#fff;color:#075E54;border-radius:99px;padding:8px 12px;font:600 13px Inter,sans-serif;cursor:pointer}
+.cin{display:flex;gap:8px;padding:8px 10px calc(8px + var(--sb));background:#f0f0f0}
+.cin input{border-radius:22px;background:#fff;padding:11px 14px}
+.cin button{width:46px;height:46px;flex:0 0 auto;border-radius:50%;border:0;background:#075E54;color:#fff;display:grid;place-items:center;cursor:pointer}
+.toast{position:fixed;left:50%;bottom:calc(150px + var(--sb));transform:translateX(-50%) translateY(20px);background:#111;color:#fff;padding:12px 16px;border-radius:14px;font-size:14px;font-weight:600;opacity:0;transition:.25s;z-index:95;pointer-events:none;width:max-content;max-width:90%}
+.toast.on{opacity:1;transform:translateX(-50%)}
+.seg{display:grid;grid-template-columns:1fr 1fr;background:#f1f1f1;border-radius:12px;padding:3px;margin:12px 0}
+.seg button{border:0;background:none;border-radius:10px;padding:9px;font:600 13.5px Inter,sans-serif;color:var(--mut);cursor:pointer}.seg button.on{background:#fff;color:var(--ink);box-shadow:0 1px 3px rgba(0,0,0,.1)}
+.abo{display:flex;align-items:center;gap:10px;border:1px solid var(--line);border-radius:14px;padding:12px;margin-bottom:8px}
+.abo.pop{border-color:var(--red);box-shadow:0 0 0 1px var(--red) inset}
+.abo b{display:block;font-size:14.5px}.abo span{font-size:12.5px;color:var(--mut)}.abo .pr{margin-left:auto;text-align:right;white-space:nowrap}.abo .pr b{font-size:16px}
+.ev .btn{margin-left:auto;align-self:center;padding:8px 11px;font-size:12.5px}
+.btn svg{vertical-align:-4px;margin-right:6px}
+.qrbox{width:200px;height:200px;margin:14px auto;display:grid;grid-template-columns:repeat(21,1fr);border:10px solid #fff;box-shadow:0 0 0 1px #eee}
+.qrbox i{background:#fff}.qrbox i.k{background:#111}
+aside.intro{display:none}
+@media (min-width:1100px){
+ body{background:radial-gradient(circle at 75% 20%,#3a0c0b 0,#141414 55%)}
+ .app{margin-top:28px;margin-bottom:28px;border-radius:34px;overflow-y:auto;overflow-x:hidden;height:calc(100vh - 56px);min-height:0;scrollbar-width:none;box-shadow:0 30px 80px rgba(0,0,0,.6),0 0 0 10px #000}
+ nav.bot{bottom:28px;border-radius:0 0 34px 34px}
+ .fab{bottom:110px}
+ .app::-webkit-scrollbar{display:none}
+ body{overflow:hidden}
+ .chat{top:28px;bottom:28px;border-radius:34px;overflow:hidden}
+ .panel{bottom:28px;border-radius:22px 22px 34px 34px}
+ .toast{bottom:130px}
+ aside.intro{display:block;position:fixed;top:50%;transform:translateY(-50%);left:max(24px,calc(50% - 240px - 440px));width:380px;color:#fff}
+ aside.intro img{width:72px;border-radius:50%;background:#fff;padding:3px}
+ aside.intro h1{font-size:34px;line-height:1.1;letter-spacing:-.02em;margin:18px 0 10px}
+ aside.intro p{color:#cfcfcf;font-size:15px;line-height:1.55}
+ aside.intro ul{padding:0;list-style:none;margin:18px 0}aside.intro li{padding:7px 0;color:#eee;font-size:14.5px}aside.intro li:before{content:"●";color:var(--red);margin-right:10px}
+ aside.intro .pill{display:inline-block;background:#ffd400;color:#111;font-weight:700;font-size:12px;border-radius:99px;padding:5px 10px}
+}
+.foot{font-size:11.5px;color:#9a9a9a;text-align:center;margin-top:18px;line-height:1.5}
+</style>
+<!-- GoatCounter (BOLLA STUDIO) -->
+<script>window.goatcounter={path:function(p){return '/budokan-zuerich-demo'+((p.replace(/^\/budokan\-zuerich(?=[\/?#]|$)/,'')||'/').replace(/^\?/,'/?'))}};window.bsTrack=function(sub,title){try{if(window.goatcounter&&window.goatcounter.count)window.goatcounter.count({path:'/budokan-zuerich-demo'+sub,title:title||sub})}catch(e){}}</script>
+<script data-goatcounter="https://bollastudio.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+</head>
+<body>
+<aside class="intro"><img src="img/logo.png" alt="Budokan Zürich"><h1>Die Dojo-App für den Budokan Zürich</h1><p>Interaktiver Prototyp – rechts direkt ausprobieren. Auf dem Handy öffnen und „Zum Home-Bildschirm" wählen: dann läuft sie wie eine App.</p><ul><li>Stundenplan &amp; Reservation</li><li>Probetraining in 30 Sekunden buchen</li><li>Gurtgrad, Anwesenheit &amp; Prüfungen</li><li>Abos, Lehrgänge &amp; Events</li><li>WhatsApp-Assistent rund um die Uhr</li></ul><span class="pill">DEMO / PROTOTYP – BOLLA STUDIO</span></aside>
+<div class="app">
+<div class="demo">DEMO / PROTOTYP – BOLLA STUDIO <span>· nicht live</span></div>
+<header class="top">
+  <div class="brand"><img src="img/logo.png" alt="Budokan Zürich Logo"><div><b>Budokan Zürich</b><small>Kampfkunst seit 1976 · Wiedikon</small></div></div>
+  <div class="hello" id="hello"><h1>Grüezi! 👋</h1><p>8 Disziplinen · über 30 Trainer:innen · ein Dojo</p></div>
+</header>
+<main>
+<!-- STUNDENPLAN -->
+<section class="tab on" id="t-plan">
+  <div class="days" id="days"></div>
+  <div class="chips" id="cats"></div>
+  <h2 class="sec" id="dayTitle">Trainings</h2>
+  <div id="list"></div>
+  <div class="note"><span class="tag real">VON BUDOKAN.CH</span> Trainingszeiten gemäss Stundenplan auf budokan.ch (Stand Oktober 2026). Freitag bis Sonntag keine regulären Trainings. Die Reservation ist im Prototyp simuliert.</div>
+</section>
+
+<!-- PROBETRAINING -->
+<section class="tab" id="t-probe">
+  <div class="hero" style="background-image:url(img/bkz_judo_1-768x512.jpg)"><div><b>Probetraining – gratis</b><span>Einfach Sportanzug einpacken und mitmachen.</span></div></div>
+  <div class="card" id="probeForm">
+    <label>Disziplin</label>
+    <select id="pDisc"></select>
+    <label>Gruppe</label>
+    <select id="pGroup"></select>
+    <label>Wunschtermin <span style="color:#9a9a9a;font-weight:500">(nächste Trainings)</span></label>
+    <div class="slots" id="pSlots"></div>
+    <div class="row2"><div><label>Vorname, Name</label><input id="pName" placeholder="z. B. Lea Muster" autocomplete="name"></div><div><label>Alter</label><input id="pAge" inputmode="numeric" placeholder="z. B. 9"></div></div>
+    <label>E-Mail</label><input id="pMail" type="email" placeholder="name@beispiel.ch" autocomplete="email">
+    <label>Telefon</label><input id="pTel" type="tel" placeholder="079 000 00 00" autocomplete="tel">
+    <div style="height:16px"></div>
+    <button class="btn red big" id="pSend">Probetraining anfragen</button>
+    <div class="note">Heute läuft die Anmeldung über das Kontaktformular. In der App wählt man direkt Disziplin, Gruppe und Termin – das Team bestätigt mit einem Klick.</div>
+  </div>
+  <div class="card ok" id="probeOk" style="display:none"></div>
+  <div class="card">
+    <div class="li"><div class="ic">${I.pin}</div><div><b>Zweierstrasse 106, 8003 Zürich</b><span>Tram 9 &amp; 14 · S-Bahn bis Bahnhof Wiedikon</span></div></div>
+    <div class="li"><div class="ic">${I.clock}</div><div><b>10 Minuten vor Trainingsbeginn da sein</b><span>Spontan vorbeikommen ist in der Regel möglich</span></div></div>
+    <div class="li"><div class="ic">${I.shirt}</div><div><b>Mitbringen: leichte Sportkleidung</b><span>Probelektion gratis</span></div></div>
+  </div>
+</section>
+
+<!-- PROFIL -->
+<section class="tab" id="t-prof">
+  <div class="card">
+    <div class="prof"><div class="avatar">LM</div><div><b style="font-size:17px">Lea Muster</b> <span class="tag">BEISPIEL</span><div style="font-size:13px;color:var(--mut)">Judo · Kinder 10–14 Jahre</div></div></div>
+    <h2 class="sec" style="margin-top:18px">Aktueller Gurtgrad</h2>
+    <div style="display:flex;justify-content:space-between;font-size:14px"><b>4. Kyu · orange</b><span style="color:var(--mut)">nächster: 4. Kyu h-grün</span></div>
+    <div class="belt"></div>
+    <h2 class="sec">Prüfungsbereitschaft</h2>
+    <div style="display:flex;justify-content:space-between;font-size:13.5px;margin-bottom:6px"><span>Trainings seit letzter Prüfung</span><b>27 / 40</b></div>
+    <div class="bar"><i style="width:67.5%"></i></div>
+    <div style="font-size:12.5px;color:var(--mut);margin-top:8px">Nächste Prüfung: <b style="color:var(--ink)">Do 3. Dezember 2026</b> · Budo-Pass + Lizenz nötig · Prüfgebühr Fr. 20.–</div>
+    <div class="stats"><div class="stat"><b>27</b><span>Trainings</span></div><div class="stat"><b>86%</b><span>Anwesenheit</span></div><div class="stat"><b>3.</b><span>Rang CM</span></div></div>
+    <h2 class="sec">Letzte 8 Wochen</h2>
+    <div class="week"><i class="y"></i><i class="y"></i><i></i><i class="y"></i><i class="y"></i><i class="y"></i><i></i><i class="y"></i></div>
+  </div>
+  <div class="card">
+    <div style="display:flex;justify-content:space-between;align-items:center"><h2 class="sec" style="margin:0">Check-in im Dojo</h2><span class="tag">BEISPIEL</span></div>
+    <p style="font-size:13.5px;color:var(--mut);margin:8px 0 12px">QR-Code am Eingang scannen – die Anwesenheit zählt automatisch für die nächste Prüfung.</p>
+    <button class="btn big" id="checkin">${I.qr} Jetzt einchecken</button>
+  </div>
+  <div class="card">
+    <h2 class="sec" style="margin-top:0">Abos &amp; Mitgliedschaft</h2>
+    <div class="seg" id="aboSeg"><button class="on" data-p="h">Halbjahr</button><button data-p="j">Jahr</button></div>
+    <div id="abos"></div>
+    <div class="li" style="margin-top:4px"><div class="ic">${I.users}</div><div><b>Familienrabatt</b><span>Auf Anfrage – Geschwister direkt in der App verknüpfen</span></div><button class="btn ghost" id="family">Anfragen</button></div>
+    <div class="li"><div class="ic">${I.card}</div><div><b>Yoga Drop-in &amp; 10er-Abo</b><span>60 Min. CHF 30.– · 10er CHF 250.– · 75 Min. CHF 35.– · 10er CHF 300.– (6 Monate gültig)</span></div></div>
+    <div class="note" style="margin-top:8px"><span class="tag real">BUDOKAN.CH</span> Preise aus „Trainings 2026" und der Yoga-Seite. Online-Zahlung (TWINT/Karte) und automatische Verlängerung sind Beispiel-Funktionen.</div>
+  </div>
+  <div class="note"><span class="tag">BEISPIEL</span> Name, Gurtgrad, Trainings und Rang sind Beispieldaten. Die Prüfungsanforderungen (Judo: 4. Kyu h-grün ab 11 J., 40 Trainings) und der Prüfungstermin stammen aus der Aktivitäten-Übersicht 2026 des Budokan.</div>
+</section>
+
+<!-- NEWS -->
+<section class="tab" id="t-news">
+  <div class="hero" style="background-image:url(img/bkz_kendo_1-768x512.jpg)"><div><b>50 Jahre Budokan Zürich</b><span>Jubiläum am Sa 3.10.2026 · seit 1976 ein Zuhause für Kampfkunst</span></div></div>
+  <div class="chips" id="evCats" style="margin-bottom:8px"></div>
+  <div class="card" id="events"></div>
+  <div class="note"><span class="tag real">VON BUDOKAN.CH</span> Termine aus „Termine & Trainingszeiten" und der Aktivitäten-Übersicht 2026. In der App kommen sie automatisch als Push-Nachricht.</div>
+</section>
+<div class="foot">Prototyp von BOLLA STUDIO · Software-Studio für Apps, KI-Agenten &amp; Automatisierung<br>Daten von budokan.ch, Beispieldaten markiert.</div>
+</main>
+
+<button class="fab" id="fab" aria-label="WhatsApp-Assistent öffnen">${I.wa}<span class="badge">24h</span></button>
+
+<nav class="bot" id="nav">
+  <button class="on" data-t="plan">${I.cal}<span>Stundenplan</span></button>
+  <button data-t="probe">${I.star}<span>Probetraining</span></button>
+  <button data-t="prof">${I.user}<span>Mein Profil</span></button>
+  <button data-t="news">${I.news}<span>News</span></button>
+</nav>
+</div>
+
+<div class="sheet" id="sheet"><div class="panel" id="panel"></div></div>
+
+<div class="chat" id="chat">
+  <div class="chead"><button id="cBack" aria-label="Zurück">${I.back}</button><img src="img/logo.png" alt=""><div style="flex:1"><b>Budokan Zürich</b><small>KI-Assistent · antwortet 24 h</small></div></div>
+  <div class="msgs" id="msgs"></div>
+  <div class="qr" id="qr"></div>
+  <div class="cin"><input id="cTxt" placeholder="Nachricht" enterkeyhint="send"><button id="cSend" aria-label="Senden">${I.send}</button></div>
+</div>
+<div class="toast" id="toast"></div>
+
+<script>
+const I={
+cal:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="3"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>',
+star:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1z"/></svg>',
+user:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-6 8-6s8 2 8 6"/></svg>',
+news:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.7 21a2 2 0 0 1-3.4 0"/></svg>',
+pin:'<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s7-7.5 7-13a7 7 0 0 0-14 0c0 5.5 7 13 7 13z"/><circle cx="12" cy="9" r="2.5"/></svg>',
+clock:'<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>',
+shirt:'<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"><path d="M8 3l4 3 4-3 5 4-3 3v11H6V10L3 7z"/></svg>',
+card:'<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><rect x="2" y="5" width="20" height="14" rx="3"/><path d="M2 10h20"/></svg>',
+bell:'<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 9-3 9h18s-3-2-3-9"/></svg>',
+check:'<svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5L20 7"/></svg>',
+wa:'<svg width="30" height="30" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.6.8-.8 1-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.2-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.3.8 3.2.6a2.7 2.7 0 0 0 1.8-1.3 2.2 2.2 0 0 0 .2-1.3c-.1-.1-.2-.2-.4-.3z"/></svg>',
+back:'<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M15 18l-6-6 6-6"/></svg>',
+qr:'<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><path d="M14 14h3v3h-3zM20 14v.01M14 20h.01M17 20h4v-3"/></svg>',
+users:'<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="9" cy="8" r="3.5"/><path d="M2 20c0-3.5 3-5.5 7-5.5s7 2 7 5.5M16 4a3.5 3.5 0 0 1 0 7M22 20c0-3-2-4.8-5-5.3"/></svg>',
+send:'<svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M2 21l21-9L2 3v7l15 2-15 2z"/></svg>'};
+document.body.innerHTML=document.body.innerHTML.replace(/\$\{I\.(\w+)\}/g,(m,k)=>I[k]);
+
+const IMG={Judo:'bkz_judo_1-768x512.jpg',Karate:'bkz_karate_2-768x512.jpg',Kendo:'bkz_kendo_1-768x512.jpg','Ju-Jitsu':'bkz_jujitsu_1-768x512.jpg',Iaido:'bkz_iaido_3-768x512.jpg',Aikido:'bkz_aikido_11-768x512.jpg',Yoga:'yoga-300x234.jpeg'};
+// Quelle: budokan.ch/termine-trainingszeiten (Stand 21.10.2026); Yoga: BKZ Yoga Flyer 2026
+const S=[
+['Judo','Kinder 6–10 Jahre','kids',[1,4],'17:00'],
+['Judo','Kinder 10–14 Jahre','kids',[1,4],'18:00'],
+['Judo','Jugend & Erwachsene ab 14','adult',[2,4],'19:00–20:30'],
+['Karate Shotokan','Kinder 7–14 Jahre','kids',[1,3],'18:00'],
+['Karate Shotokan','Erwachsene & Fortgeschrittene, ab 14','adult',[1,3],'19:00–21:00'],
+['Kendo','Kinder ab 7 Jahren','kids',[2],'18:00–18:50'],
+['Kendo','Kinder ab 7 Jahren','kids',[4],'17:45–18:45'],
+['Kendo','Basic ab 14 Jahren','adult',[2,4],'19:00–20:00'],
+['Kendo','Erwachsene mit Bogu','adult',[2,4],'19:00–21:00'],
+['Kendo','Ji Geiko (Kyu & Dan)','adult',[1],'19:00–20:30'],
+['Iaido','ab 15 Jahren','adult',[1,3],'ab 19:00'],
+['Ju-Jitsu / Selbstverteidigung','Kinder ab 9 Jahren','kids',[2],'18:00–19:00'],
+['Ju-Jitsu / Selbstverteidigung','Jugend & Erwachsene ab 14','adult',[2,4],'19:00–20:30'],
+['Ju-Jitsu','Plus 50 Jahre','adult',[3],'ab 09:30'],
+['Aikido (Gastclub)','Kinder 10–14 Jahre','kids',[4],'ab 18:00'],
+['Aikido (Gastclub)','Alle ab 14 Jahren','adult',[2,4],'ab 19:00'],
+['Yoga – Hatha (mit Yuki)','ab 16 Jahren · 50 Min.','yoga',[1],'17:00'],
+['Yoga – Hatha (mit Romi)','ab 16 Jahren · 60 Min.','yoga',[3],'06:30'],
+['Yoga – Hatha & Yoga Nidra (mit Romi)','ab 16 Jahren · 75 Min.','yoga',[3],'18:00'],
+['Yoga – Hatha (mit Yuki)','ab 16 Jahren · 60 Min.','yoga',[4],'18:15']];
+const DN=['So','Mo','Di','Mi','Do','Fr','Sa'],DL=['Sonntag','Montag','Dienstag','Mittwoch','Donnerstag','Freitag','Samstag'];
+const MN=['Jan.','Feb.','März','Apr.','Mai','Juni','Juli','Aug.','Sept.','Okt.','Nov.','Dez.'];
+const disc=n=>Object.keys(IMG).find(k=>n.startsWith(k.split(' ')[0]))||'Judo';
+const startT=t=>t.replace('ab ','').slice(0,5);
+// nächste Termine (Mo–Do)
+function nextDates(n){const out=[];let d=new Date();d.setHours(0,0,0,0);while(out.length<n){const w=d.getDay();if(w>=1&&w<=4)out.push(new Date(d));d.setDate(d.getDate()+1)}return out}
+const DAYS=nextDates(4);let selDay=0,cat='all';const booked=new Set();
+const fmt=d=>DN[d.getDay()]+' '+d.getDate()+'. '+MN[d.getMonth()];
+function hello(){const h=new Date().getHours();document.querySelector('#hello h1').textContent=(h<11?'Guten Morgen':h<18?'Grüezi':'Guten Abend')+' 👋'}
+function renderDays(){document.getElementById('days').innerHTML=DAYS.map((d,i)=>`<button class="day ${i==selDay?'on':''}" data-i="${i}"><small>${DN[d.getDay()]}</small><b>${d.getDate()}</b><small>${MN[d.getMonth()]}</small></button>`).join('');
+document.querySelectorAll('.day').forEach(b=>b.onclick=()=>{selDay=+b.dataset.i;renderDays();renderList()})}
+const CATS=[['all','Alle'],['kids','Kinder'],['adult','Jugend & Erwachsene'],['yoga','Yoga']];
+function renderCats(){document.getElementById('cats').innerHTML=CATS.map(([k,l])=>`<button class="chip ${k==cat?'on':''}" data-k="${k}">${l}</button>`).join('');
+document.querySelectorAll('.chip').forEach(b=>b.onclick=()=>{cat=b.dataset.k;renderCats();renderList()})}
+function renderList(){const d=DAYS[selDay],w=d.getDay();
+const L=S.map((s,i)=>({s,i})).filter(({s})=>s[3].includes(w)&&(cat=='all'||s[2]==cat)).sort((a,b)=>startT(a.s[4]).localeCompare(startT(b.s[4])));
+document.getElementById('dayTitle').textContent=DL[w]+', '+d.getDate()+'. '+MN[d.getMonth()]+' · '+L.length+' Trainings';
+document.getElementById('list').innerHTML=L.map(({s,i})=>{const k=i+'-'+d.toDateString(),b=booked.has(k);return `<div class="cls"><div class="ph" style="background-image:url(img/${IMG[disc(s[0])]})"></div><div class="tx"><div class="t">${s[4]}</div><div class="n">${s[0]}</div><div class="a">${s[1]}</div></div><button class="btn ${b?'done':''}" data-k="${k}" data-i="${i}">${b?'✓ Dabei':'Reservieren'}</button></div>`}).join('')||'<div class="note">Keine Trainings in dieser Kategorie.</div>';
+document.querySelectorAll('#list .btn').forEach(b=>b.onclick=()=>book(b.dataset.k,+b.dataset.i))}
+function book(k,i){const s=S[i],d=DAYS[selDay];if(booked.has(k)){booked.delete(k);renderList();toast('Reservation storniert');return}
+openSheet(`<div style="display:flex;gap:12px;align-items:center"><div class="ph" style="width:56px;height:56px;border-radius:14px;background:url(img/${IMG[disc(s[0])]}) center/cover"></div><div><b style="font-size:17px">${s[0]}</b><div style="color:var(--mut);font-size:13px">${s[1]}</div></div></div>
+<div class="sum">📅 ${DL[d.getDay()]}, ${d.getDate()}. ${MN[d.getMonth()]}<br>🕖 ${s[4]}<br>📍 Budokan Zürich, Zweierstrasse 106</div>
+<button class="btn red big" id="cf">Platz reservieren</button><div style="height:8px"></div><button class="btn ghost big" onclick="closeSheet()">Abbrechen</button>`);
+document.getElementById('cf').onclick=()=>{booked.add(k);closeSheet();renderList();toast('✓ Reserviert – Erinnerung 2 h vorher (Demo)')}}
+function openSheet(h){document.getElementById('panel').innerHTML=h;document.getElementById('sheet').classList.add('on')}
+function closeSheet(){document.getElementById('sheet').classList.remove('on')}
+document.getElementById('sheet').onclick=e=>{if(e.target.id=='sheet')closeSheet()};
+function toast(t){const el=document.getElementById('toast');el.textContent=t;el.classList.add('on');clearTimeout(el._t);el._t=setTimeout(()=>el.classList.remove('on'),2400)}
+// Tabs
+document.querySelectorAll('#nav button').forEach(b=>b.onclick=()=>{document.querySelectorAll('#nav button').forEach(x=>x.classList.toggle('on',x==b));document.querySelectorAll('.tab').forEach(t=>t.classList.toggle('on',t.id=='t-'+b.dataset.t));(window.scrollTo({top:0,behavior:'smooth'}),document.querySelector('.app').scrollTo({top:0,behavior:'smooth'}))});
+// Probetraining
+const PD=['Judo','Karate Shotokan','Kendo','Ju-Jitsu','Iaido','Aikido (Gastclub)','Yoga'];let pSlot=null;
+const pDisc=document.getElementById('pDisc'),pGroup=document.getElementById('pGroup');
+pDisc.innerHTML=PD.map(p=>`<option>${p}</option>`).join('');
+function groups(){const p=pDisc.value;return S.map((s,i)=>({s,i})).filter(({s})=>s[0].startsWith(p.split(' ')[0]))}
+function fillGroups(){const g=groups();const seen=[];pGroup.innerHTML=g.filter(({s})=>{const k=s[1]+s[0];if(seen.includes(k))return false;seen.push(k);return true}).map(({s,i})=>`<option value="${i}">${s[0].startsWith('Yoga')?s[0].replace('Yoga – ','')+' · ':''}${s[1]}</option>`).join('');fillSlots()}
+function fillSlots(){const s=S[+pGroup.value];const key=s[1]+s[0].split(' ')[0];const same=S.filter(x=>x[0].split(' ')[0]==s[0].split(' ')[0]&&(x[1]==s[1]));const out=[];let d=new Date();d.setDate(d.getDate()+1);
+while(out.length<6){same.forEach(x=>{if(x[3].includes(d.getDay())&&out.length<6)out.push({d:new Date(d),t:x[4]})});d.setDate(d.getDate()+1)}
+pSlot=null;document.getElementById('pSlots').innerHTML=out.map((o,j)=>`<button class="slot" data-v="${fmt(o.d)}, ${o.t}">${fmt(o.d)} · ${startT(o.t)}</button>`).join('');
+document.querySelectorAll('.slot').forEach(b=>b.onclick=()=>{document.querySelectorAll('.slot').forEach(x=>x.classList.remove('on'));b.classList.add('on');pSlot=b.dataset.v})}
+pDisc.onchange=fillGroups;pGroup.onchange=fillSlots;fillGroups();
+document.getElementById('pSend').onclick=()=>{const n=document.getElementById('pName').value.trim()||'Lea Muster (Beispiel)';if(!pSlot){toast('Bitte einen Termin wählen');return}
+const s=S[+pGroup.value];document.getElementById('probeForm').style.display='none';const ok=document.getElementById('probeOk');ok.style.display='block';
+ok.innerHTML=`<div class="ic">${I.check}</div><h3>Anfrage gesendet!</h3><div style="color:var(--mut);font-size:14px">Danke, ${n.split(' ')[0]}. Das Budokan-Team bestätigt Ihr Probetraining per E-Mail und WhatsApp.</div>
+<div class="sum"><b>${s[0]}</b> · ${s[1]}<br>📅 ${pSlot}<br>📍 Zweierstrasse 106, 8003 Zürich<br>👕 Leichte Sportkleidung, 10 Min. vorher da sein<br>💸 Probelektion gratis</div>
+<button class="btn big" onclick="toast('Termin im Kalender gespeichert (Demo)')">In Kalender speichern</button><div style="height:8px"></div><button class="btn ghost big" id="again">Weitere Person anmelden</button><div class="note" style="text-align:left">Demo: Es wird nichts gesendet. Im Echtbetrieb landet die Anfrage beim Team und die Person erhält automatisch eine Erinnerung.</div>`;
+document.getElementById('again').onclick=()=>{ok.style.display='none';document.getElementById('probeForm').style.display='block'};(window.scrollTo({top:0,behavior:'smooth'}),document.querySelector('.app').scrollTo({top:0,behavior:'smooth'}))};
+// Events & Lehrgänge (budokan.ch Termine + Aktivitäten 2026)
+const EV=[['01','Nov.','SJV Technik-Kurs Ju-Jitsu','So 1.11.2026 · 13–17 Uhr','kurs'],['02','Nov.','Clubmeisterschaft – Runde 5','Woche 45, 2.–6. November 2026','cm'],['07','Nov.','SJV Kata-Kurs','Sa 7.11.2026 · 09–13 Uhr','kurs'],['03','Dez.','Prüfungen','Do 3.12.2026 · kein Training, ausser Kendo Kids','pr'],['10','Dez.','Clubmeisterschaft – Final','Do 10.12.2026 · ab 17.30 Finals Judo, Karate, JJ Fighting, Kendo · Demos Aikido, Iaido, Yoga · 20.15 Drink/Snack-Bar','cm'],['17','Dez.','Letztes Training 2026','Do 17.12.2026 · Spiel, Spass und Spezial-Themen','info'],['19','Dez.','Weihnachtsferien','19.12.2026 – 3.1.2027 · keine Trainings','info'],['02','Jan.','SJV Kata-Kurs 2027','Sa 2.1.2027','kurs']];
+const EC=[['all','Alle'],['kurs','Lehrgänge'],['pr','Prüfungen'],['cm','Clubmeisterschaft'],['info','Dojo-Info']];let ec='all';const joined=new Set();
+function renderEv(){document.getElementById('evCats').innerHTML=EC.map(([k,l])=>`<button class="chip ${k==ec?'on':''}" data-k="${k}">${l}</button>`).join('');
+document.querySelectorAll('#evCats .chip').forEach(b=>b.onclick=()=>{ec=b.dataset.k;renderEv()});
+document.getElementById('events').innerHTML='<h2 class="sec" style="margin-top:0">Nächste Termine</h2>'+EV.map((e,i)=>({e,i})).filter(({e})=>ec=='all'||e[4]==ec).map(({e,i})=>{const lab=e[4]=='info'?'Erinnern':e[4]=='pr'?'Anmelden':'Teilnehmen';const j=joined.has(i);return `<div class="ev"><div class="date"><b>${e[0]}</b><span>${e[1]}</span></div><div><h4>${e[2]}</h4><p>${e[3]}</p></div><button class="btn ${j?'done':''}" data-i="${i}">${j?'✓':lab}</button></div>`}).join('');
+document.querySelectorAll('#events .btn').forEach(b=>b.onclick=()=>evAct(+b.dataset.i))}
+function evAct(i){const e=EV[i];if(joined.has(i)){joined.delete(i);renderEv();toast('Abgemeldet');return}
+const pr=e[4]=='pr';openSheet(`<b style="font-size:18px">${e[2]}</b><div style="color:var(--mut);font-size:13.5px;margin-top:4px">${e[3]}</div>
+<div class="sum">${pr?'Voraussetzungen (Judo, Beispiel 4. Kyu h-grün): ab 11 Jahren · 40 Trainings · Budo-Pass + Lizenz<br>Prüf-/Registrationsgebühr: Fr. 20.–<br><span class="tag real">AKTIVITÄTEN 2026</span>':e[4]=='info'?'Sie erhalten eine Push-Erinnerung 1 Tag vorher.':'Anmeldung wird an die Trainer:innen weitergeleitet. Sie erhalten Details und Erinnerung in der App.'}</div>
+<button class="btn red big" id="evOk">${pr?'Zur Prüfung anmelden':e[4]=='info'?'Erinnerung aktivieren':'Verbindlich anmelden'}</button><div style="height:8px"></div><button class="btn ghost big" id="evNo">Abbrechen</button>`);
+document.getElementById('evNo').onclick=closeSheet;document.getElementById('evOk').onclick=()=>{joined.add(i);closeSheet();renderEv();toast('✓ '+(e[4]=='info'?'Erinnerung aktiv (Demo)':'Angemeldet (Demo)'))}}
+renderEv();
+// Abos (Preise: Trainings 2026 PDF)
+const AB=[['Kinder bis 15 Jahre','alle Kinder-Disziplinen',540,840],['Lehrlinge','',600,960],['Studenten bis 25 Jahre','',600,960],['Erwachsene','alle Disziplinen ausser Yoga',720,1200]];let per='h';
+function renderAbos(){document.getElementById('abos').innerHTML=AB.map((a,i)=>`<div class="abo ${i==0?'pop':''}"><div><b>${a[0]}</b><span>${i==0?'Ihr aktuelles Abo (Beispiel)':a[1]||'Mitgliedschaft'}</span></div><div class="pr"><b>CHF ${per=='h'?a[2]:a[3]}.–</b><span>/${per=='h'?'Halbjahr':'Jahr'}</span></div><button class="btn ${i==0?'ghost':''}" data-i="${i}">${i==0?'Verwalten':'Wählen'}</button></div>`).join('');
+document.querySelectorAll('#abos .btn').forEach(b=>b.onclick=()=>aboAct(+b.dataset.i))}
+function aboAct(i){const a=AB[i];openSheet(`<b style="font-size:18px">${i==0?'Abo verwalten':'Abo wechseln'}: ${a[0]}</b><div class="sum">Halbjahr: CHF ${a[2]}.–<br>Jahr: CHF ${a[3]}.–<br>Verbandsbeiträge separat (Budo-Pass + Lizenz)</div>
+<button class="btn red big" id="aOk">${i==0?'Auf Jahres-Abo umstellen':'Mit TWINT bezahlen (Demo)'}</button><div style="height:8px"></div><button class="btn ghost big" id="aNo">Schliessen</button>`);
+document.getElementById('aNo').onclick=closeSheet;document.getElementById('aOk').onclick=()=>{closeSheet();toast('✓ Demo: keine echte Zahlung')}}
+document.querySelectorAll('#aboSeg button').forEach(b=>b.onclick=()=>{per=b.dataset.p;document.querySelectorAll('#aboSeg button').forEach(x=>x.classList.toggle('on',x==b));renderAbos()});
+renderAbos();
+document.getElementById('family').onclick=()=>{openSheet(`<b style="font-size:18px">Familienrabatt anfragen</b><label>Wer trainiert noch?</label><input id="fam" placeholder="z. B. Bruder Tim, 8 Jahre, Judo"><div style="height:12px"></div><button class="btn red big" id="fOk">Anfrage senden</button>`);document.getElementById('fOk').onclick=()=>{closeSheet();toast('✓ Anfrage an das Team (Demo)')}};
+document.getElementById('checkin').onclick=()=>{let q='';let seed=7;for(let y=0;y<21;y++)for(let x=0;x<21;x++){const f=(x<7&&y<7)||(x>13&&y<7)||(x<7&&y>13);let k;if(f){const fx=x>13?x-14:x,fy=y>13?y-14:y;k=fx==0||fx==6||fy==0||fy==6||(fx>1&&fx<5&&fy>1&&fy<5)}else{seed=(seed*9301+49297)%233280;k=seed/233280>.5}q+=`<i class="${k?'k':''}"></i>`}
+openSheet(`<div style="text-align:center"><b style="font-size:18px">Check-in · Judo Kinder 10–14</b><div style="color:var(--mut);font-size:13px">Am Tablet beim Eingang zeigen (Beispiel)</div><div class="qrbox">${q}</div></div><button class="btn red big" id="ciOk">Eingecheckt ✓</button>`);document.getElementById('ciOk').onclick=()=>{closeSheet();toast('✓ Training 28 / 40 gezählt (Demo)')}};
+// Chat
+const QA=[
+{q:'Wann ist Judo für Kinder?',k:/judo|kind|sohn|tochter/i,a:'Judo für Kinder im Budokan:\n• 6–10 Jahre: Mo & Do, 17:00\n• 10–14 Jahre: Mo & Do, 18:00\n• ab 14 Jahren: Di & Do, 19:00–20:30\n\nDas erste Training ist gratis. Soll ich ein Probetraining anfragen? 🥋'},
+{q:'Was kostet die Mitgliedschaft?',k:/kost|preis|chf|mitglied|beitrag|abo/i,a:'Mitgliedschaft (CHF, Halbjahr / Jahr):\n• Kinder bis 15: 540.– / 840.–\n• Lehrlinge & Studenten bis 25: 600.– / 960.–\n• Erwachsene: 720.– / 1200.–\n• Probelektion: gratis\nYoga Drop-in ab CHF 30.–. Familienrabatte auf Anfrage.'},
+{q:'Was brauche ich fürs Probetraining?',k:/probe|schnupper|mitbring|anzug|kleid/i,a:'Einfach leichte Sportkleidung einpacken und mitmachen! Am besten 10 Minuten vor Trainingsbeginn da sein. Die Probelektion ist gratis.\n\nWelche Disziplin interessiert Sie? Ich schlage Ihnen den nächsten Termin vor.'},
+{q:'Wo ist das Dojo?',k:/wo |adresse|anfahrt|tram|parking|weg/i,a:'📍 Budokan Zürich, Zweierstrasse 106, 8003 Zürich (Wiedikon)\n🚋 Tram 9 & 14\n🚆 S-Bahn bis Bahnhof Wiedikon'},
+{q:'Training in den Ferien?',k:/ferien|feiertag|weihnacht/i,a:'Weihnachtsferien: 19. Dez. 2026 – 3. Jan. 2027, keine Trainings. Letztes Training 2026 ist am Do 17. Dezember.\nIn Sport-, Frühlings- und Herbstferien gibt es keine Kindertrainings; Trainings ab 19 Uhr finden regulär statt.'}];
+const msgs=document.getElementById('msgs');let greeted=false;
+const now=()=>new Date().toTimeString().slice(0,5);
+function addMsg(t,c){const m=document.createElement('div');m.className='m '+c;m.innerHTML=t.replace(/</g,'&lt;')+'<small>'+now()+(c=='out'?' ✓✓':'')+'</small>';msgs.appendChild(m);msgs.scrollTop=1e6}
+function botReply(t){const ty=document.createElement('div');ty.className='m in';ty.innerHTML='<span class="typing"><i></i><i></i><i></i></span>';msgs.appendChild(ty);msgs.scrollTop=1e6;
+setTimeout(()=>{ty.remove();const hit=QA.find(x=>x.k.test(t));addMsg(hit?hit.a:'Danke für Ihre Nachricht! Dazu habe ich keine sichere Antwort – ich leite sie an das Budokan-Team weiter (info@budokan.ch, +41 44 461 66 67). Sie erhalten bald eine Antwort.','in')},900)}
+function send(t){if(!t.trim()){toast('Frage eintippen oder Vorschlag antippen');cTxt.focus();return}addMsg(t,'out');botReply(t)}
+document.getElementById('qr').innerHTML=QA.map((x,i)=>`<button data-i="${i}">${x.q}</button>`).join('');
+document.querySelectorAll('#qr button').forEach(b=>b.onclick=()=>send(QA[+b.dataset.i].q));
+document.getElementById('fab').onclick=()=>{document.getElementById('chat').classList.add('on');if(!greeted){greeted=true;msgs.innerHTML='<div class="sys">Simuliertes Gespräch · Prototyp. Antworten basieren auf den Angaben von budokan.ch; Anmeldungen bestätigt immer das Team.</div>';setTimeout(()=>addMsg('Grüezi! 👋 Ich bin der digitale Assistent vom Budokan Zürich und antworte rund um die Uhr. Fragen Sie mich zu Trainingszeiten, Probetraining, Preisen oder Anfahrt.','in'),300)}};
+document.getElementById('cBack').onclick=()=>document.getElementById('chat').classList.remove('on');
+const cTxt=document.getElementById('cTxt');document.getElementById('cSend').onclick=()=>{send(cTxt.value);cTxt.value=''};cTxt.onkeydown=e=>{if(e.key=='Enter'){send(cTxt.value);cTxt.value=''}};
+hello();renderDays();renderCats();renderList();
+if(location.hash=='#chat')document.getElementById('fab').click();
+['probe','prof','news'].forEach(t=>{if(location.hash=='#'+t)document.querySelector(`#nav [data-t=${t}]`).click()});
+</script>
+<script>/* GoatCounter tab events */document.querySelectorAll('#nav button').forEach(function(b){b.addEventListener('click',function(){bsTrack('/tab/'+b.dataset.t,'Tab '+b.dataset.t)})});var _f=document.getElementById('fab');if(_f)_f.addEventListener('click',function(){bsTrack('/chat','Chat geöffnet')});</script>
+</body></html>

@@ -1,0 +1,284 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#111111">
+<title>Budokan Zürich – Kampfkunst seit 1976 (Website-Prototyp)</title>
+<meta name="description" content="Website-Prototyp für den Budokan Zürich: Judo, Karate, Kendo, Ju-Jitsu, Aikido, Iaido, Selbstverteidigung und Yoga in Zürich-Wiedikon.">
+<link rel="icon" href="img/logo.png"><link rel="apple-touch-icon" href="img/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root{--red:#E10600;--ink:#111;--mut:#666;--line:#e9e9e9;--bg:#f7f6f4}
+*{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:90px}
+body{margin:0;font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;color:var(--ink);background:#fff;-webkit-font-smoothing:antialiased}
+img{max-width:100%;display:block}
+.wrap{max-width:1180px;margin:0 auto;padding:0 24px}
+.demo{background:#ffd400;color:#111;text-align:center;font-size:12px;font-weight:700;letter-spacing:.06em;padding:6px 10px}
+.demo span{font-weight:500;letter-spacing:0;opacity:.75}
+header{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.9);backdrop-filter:saturate(180%) blur(14px);-webkit-backdrop-filter:saturate(180%) blur(14px);border-bottom:1px solid var(--line)}
+header .wrap{display:flex;align-items:center;gap:18px;height:72px}
+.logo{display:flex;align-items:center;gap:12px;text-decoration:none;color:var(--ink)}
+.logo img{width:46px;height:46px}.logo b{font-size:17px;letter-spacing:-.01em}.logo small{display:block;font-size:11.5px;color:var(--mut);font-weight:500}
+nav.main{margin-left:auto;display:flex;gap:26px}
+nav.main a{color:var(--ink);text-decoration:none;font-weight:600;font-size:14.5px}
+nav.main a:hover{color:var(--red)}
+.cta{display:inline-flex;align-items:center;gap:8px;background:var(--red);color:#fff;border:0;border-radius:12px;padding:12px 18px;font:700 14.5px Inter,sans-serif;text-decoration:none;cursor:pointer;transition:transform .15s,box-shadow .15s}
+.cta:hover{transform:translateY(-1px);box-shadow:0 8px 20px rgba(225,6,0,.3)}
+.cta.dark{background:#111}.cta.light{background:#fff;color:#111}
+.burger{display:none;margin-left:auto;background:none;border:0;cursor:pointer;padding:8px}
+.hero{position:relative;color:#fff;background:#111;overflow:hidden}
+.hero .bg{position:absolute;inset:0;background:url(img/bkz_judo_4-1536x1024.jpg) center 35%/cover;opacity:.55}
+.hero:before{content:"";position:absolute;right:-140px;top:-160px;width:520px;height:520px;border-radius:50%;background:var(--red);z-index:1;opacity:.9}
+.hero .wrap{position:relative;z-index:2;padding-top:110px;padding-bottom:110px}
+.eyebrow{display:inline-block;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.25);border-radius:99px;padding:6px 12px;font-size:13px;font-weight:600}
+.hero h1{font-size:clamp(38px,6vw,72px);line-height:1.02;letter-spacing:-.035em;margin:18px 0 16px;font-weight:900;max-width:760px}
+.hero p{font-size:clamp(16px,1.6vw,19px);color:#e3e3e3;max-width:560px;line-height:1.55;margin:0 0 28px}
+.hero .btns{display:flex;gap:12px;flex-wrap:wrap}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:0;background:#fff;border-radius:20px;box-shadow:0 20px 50px rgba(0,0,0,.12);margin-top:-56px;position:relative;z-index:3}
+.stats div{padding:24px;text-align:center;border-right:1px solid var(--line)}.stats div:last-child{border:0}
+.stats b{display:block;font-size:30px;letter-spacing:-.02em}.stats span{font-size:13.5px;color:var(--mut)}
+section{padding:96px 0}
+.kicker{color:var(--red);font-weight:800;font-size:13px;letter-spacing:.1em;text-transform:uppercase}
+h2{font-size:clamp(30px,3.6vw,44px);letter-spacing:-.03em;line-height:1.08;margin:10px 0 14px}
+.lead{color:var(--mut);font-size:17px;line-height:1.6;max-width:640px;margin:0}
+.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-top:40px}
+.d{border-radius:20px;overflow:hidden;background:#fff;border:1px solid var(--line);cursor:pointer;transition:transform .2s,box-shadow .2s;text-align:left;font:inherit;color:inherit;padding:0}
+.d:hover{transform:translateY(-4px);box-shadow:0 18px 40px rgba(0,0,0,.1)}
+.d .im{aspect-ratio:4/3;background:#ddd center/cover}
+.d .tx{padding:16px 18px 20px}.d h3{margin:0 0 6px;font-size:18px}.d p{margin:0;font-size:14px;color:var(--mut);line-height:1.5}
+.d .more{display:inline-block;margin-top:10px;font-size:13px;font-weight:700;color:var(--red)}
+.bgsoft{background:var(--bg)}
+.tabs{display:flex;gap:8px;margin:30px 0 18px;flex-wrap:wrap}
+.tabs button{border:1px solid var(--line);background:#fff;border-radius:99px;padding:10px 18px;font:600 14px Inter,sans-serif;cursor:pointer}
+.tabs button.on{background:#111;color:#fff;border-color:#111}
+.tbl{background:#fff;border-radius:20px;overflow:hidden;border:1px solid var(--line)}
+.tr{display:grid;grid-template-columns:1.3fr 1.2fr 1.6fr auto;gap:12px;align-items:center;padding:16px 22px;border-bottom:1px solid var(--line)}
+.tr:last-child{border:0}.tr.h{background:#111;color:#fff;font-size:12.5px;font-weight:700;letter-spacing:.06em;text-transform:uppercase}
+.tr b{font-size:15.5px}.tr span{color:var(--mut);font-size:14.5px}.tr .time{font-weight:600;color:var(--ink)}
+.small{border:1px solid var(--line);background:#fff;border-radius:10px;padding:8px 12px;font:700 13px Inter,sans-serif;cursor:pointer;white-space:nowrap}
+.small:hover{border-color:var(--red);color:var(--red)}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start}
+.form{background:#fff;border-radius:24px;padding:30px;box-shadow:0 20px 50px rgba(0,0,0,.08);border:1px solid var(--line)}
+label{display:block;font-size:13px;font-weight:600;margin:14px 0 6px}
+input,select,textarea{width:100%;font:500 16px Inter,sans-serif;padding:13px 14px;border:1px solid #e2e2e2;border-radius:12px;background:#fafafa;-webkit-appearance:none;appearance:none}
+textarea{min-height:90px;resize:vertical}
+select{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23666' stroke-width='2' fill='none'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 14px center}
+input:focus,select:focus,textarea:focus{outline:2px solid var(--red);border-color:transparent;background:#fff}
+.r2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.check{list-style:none;padding:0;margin:26px 0}.check li{display:flex;gap:12px;padding:10px 0;font-size:16px;line-height:1.5}
+.check li:before{content:"";flex:0 0 22px;height:22px;border-radius:50%;background:var(--red) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='4'%3E%3Cpath d='M4 12l5 5L20 6'/%3E%3C/svg%3E") center no-repeat;margin-top:1px}
+.prices{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:36px}
+.p{background:#fff;border:1px solid var(--line);border-radius:20px;padding:24px}
+.p.hl{background:#111;color:#fff;border-color:#111}.p.hl span{color:#bbb}
+.p h3{margin:0 0 14px;font-size:16px}.p b{font-size:30px;letter-spacing:-.02em}.p span{color:var(--mut);font-size:13.5px}
+.p .y{margin-top:8px;font-size:14px}
+.events{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:36px}
+.e{background:#fff;border:1px solid var(--line);border-radius:20px;padding:22px;display:flex;flex-direction:column}
+.e .dt{color:var(--red);font-weight:800;font-size:13px;letter-spacing:.05em;text-transform:uppercase}
+.e h3{margin:8px 0 6px;font-size:18px}.e p{margin:0 0 14px;color:var(--mut);font-size:14px;line-height:1.5}
+.e .small{margin-top:auto;align-self:flex-start}
+.map{border-radius:24px;overflow:hidden;border:1px solid var(--line);min-height:380px;background:#eee url(img/bkz_kendo_11-1536x1024.jpg) center/cover}
+.map iframe{width:100%;height:100%;min-height:380px;border:0;display:block}
+.info{display:grid;gap:14px}
+.info a.row,.info div.row{display:flex;gap:14px;align-items:center;background:#fff;border:1px solid var(--line);border-radius:16px;padding:16px 18px;text-decoration:none;color:inherit}
+.info a.row:hover{border-color:var(--red)}
+.ic{width:42px;height:42px;border-radius:12px;background:#fdecec;color:var(--red);display:grid;place-items:center;flex:0 0 auto}
+.info b{display:block;font-size:15.5px}.info span{color:var(--mut);font-size:14px}
+footer{background:#111;color:#bbb;padding:50px 0 calc(40px + env(safe-area-inset-bottom));font-size:14px}
+footer .wrap{display:flex;gap:30px;justify-content:space-between;flex-wrap:wrap;align-items:center}
+footer a{color:#fff}
+.modal{position:fixed;inset:0;background:rgba(0,0,0,.55);z-index:100;display:none;align-items:center;justify-content:center;padding:20px}
+.modal.on{display:flex}
+.mbox{background:#fff;border-radius:24px;max-width:560px;width:100%;max-height:88vh;overflow:auto;animation:pop .2s ease}
+@keyframes pop{from{transform:scale(.96);opacity:0}to{transform:none;opacity:1}}
+.mbox .mi{aspect-ratio:16/8;background:#ddd center/cover}
+.mbox .mc{padding:24px 26px 26px}.mbox h3{margin:0 0 8px;font-size:24px;letter-spacing:-.02em}
+.mbox p{color:#444;line-height:1.6;margin:0 0 14px}
+.mbox ul{padding-left:18px;color:#444;line-height:1.7;margin:0 0 18px}
+.x{position:absolute;right:14px;top:14px;width:38px;height:38px;border-radius:50%;border:0;background:#fff;box-shadow:0 2px 10px rgba(0,0,0,.2);cursor:pointer;font-size:20px}
+.mwrap{position:relative}
+.okc{text-align:center;padding:10px 0}.okc .big{width:68px;height:68px;border-radius:50%;background:#e8f6ee;color:#14894a;display:grid;place-items:center;margin:0 auto 14px;font-size:32px}
+.sum{background:#f6f6f6;border-radius:14px;padding:14px 16px;text-align:left;line-height:1.8;font-size:14.5px;margin:14px 0}
+.tag{display:inline-block;font-size:11px;font-weight:700;background:#e8f6ee;color:#14894a;border-radius:6px;padding:2px 7px;letter-spacing:.03em}
+.tag.ex{background:#fff3c4;color:#7a5b00}
+.wa{position:fixed;right:22px;bottom:calc(22px + env(safe-area-inset-bottom));z-index:60;background:#25D366;color:#fff;border:0;border-radius:99px;padding:14px 18px;font:700 14.5px Inter,sans-serif;display:flex;gap:8px;align-items:center;box-shadow:0 10px 30px rgba(37,211,102,.45);cursor:pointer}
+.mobnav{display:none}
+@media (max-width:980px){
+ .grid{grid-template-columns:repeat(2,1fr)}.prices{grid-template-columns:repeat(2,1fr)}.events{grid-template-columns:1fr 1fr}
+ .two{grid-template-columns:1fr;gap:32px}
+ nav.main,header .cta{display:none}.burger{display:block}
+ .mobnav.on{display:flex;flex-direction:column;position:fixed;top:0;left:0;right:0;bottom:0;background:#fff;z-index:90;padding:90px 24px 24px;gap:6px}
+ .mobnav a{font-size:24px;font-weight:800;color:#111;text-decoration:none;padding:12px 0;border-bottom:1px solid var(--line)}
+ .mobnav .close{position:absolute;right:20px;top:18px;font-size:28px;background:none;border:0;cursor:pointer}
+}
+@media (max-width:640px){
+ .wrap{padding:0 18px}section{padding:64px 0}
+ .hero .wrap{padding-top:64px;padding-bottom:96px}.hero:before{width:300px;height:300px;right:-120px;top:-100px}
+ .stats{grid-template-columns:1fr 1fr}.stats div:nth-child(2){border-right:0}.stats div:nth-child(-n+2){border-bottom:1px solid var(--line)}
+ .stats div{padding:18px 10px}.stats b{font-size:24px}
+ .grid{grid-template-columns:1fr 1fr;gap:12px}.d .tx{padding:12px 12px 14px}.d h3{font-size:15.5px}.d p{display:none}
+ .tr{grid-template-columns:1fr auto;padding:14px 16px;gap:4px 12px}.tr.h{display:none}
+ .tr>:nth-child(1){grid-column:1}.tr>:nth-child(2){grid-column:1;grid-row:2}.tr>:nth-child(3){grid-column:1;grid-row:3}.tr>:nth-child(4){grid-column:2;grid-row:1/4}
+ .prices{grid-template-columns:1fr 1fr;gap:10px}.p{padding:16px}.p b{font-size:22px}
+ .events{grid-template-columns:1fr}.form{padding:20px}.r2{grid-template-columns:1fr}
+ .wa span{display:none}.wa{padding:14px}
+ .logo small{display:none}
+ .demo span{display:none}
+}
+</style>
+<!-- GoatCounter (BOLLA STUDIO) -->
+<script>window.goatcounter={path:function(p){return '/budokan-zuerich-web'+((p.replace(/^\/budokan\-zuerich\-web(?=[\/?#]|$)/,'')||'/').replace(/^\?/,'/?'))}};window.bsTrack=function(sub,title){try{if(window.goatcounter&&window.goatcounter.count)window.goatcounter.count({path:'/budokan-zuerich-web'+sub,title:title||sub})}catch(e){}}</script>
+<script data-goatcounter="https://bollastudio.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+</head>
+<body>
+<div class="demo">DEMO / PROTOTYP – BOLLA STUDIO <span>· Website-Entwurf, nicht live</span></div>
+<header><div class="wrap">
+ <a class="logo" href="#top"><img src="img/logo.png" alt="Budokan Zürich Logo"><div><b>Budokan Zürich</b><small>Kampfkunst seit 1976</small></div></a>
+ <nav class="main"><a href="#disziplinen">Disziplinen</a><a href="#trainingszeiten">Trainingszeiten</a><a href="#preise">Preise</a><a href="#termine">Termine</a><a href="#kontakt">Kontakt</a></nav>
+ <a class="cta" href="#probetraining">Probetraining buchen</a>
+ <button class="burger" id="burger" aria-label="Menü öffnen"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#111" stroke-width="2.4" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+</div></header>
+<div class="mobnav" id="mobnav"><button class="close" id="mclose" aria-label="Menü schliessen">×</button><a href="#disziplinen">Disziplinen</a><a href="#trainingszeiten">Trainingszeiten</a><a href="#probetraining">Probetraining</a><a href="#preise">Preise</a><a href="#termine">Termine</a><a href="#kontakt">Kontakt</a></div>
+
+<div class="hero" id="top"><div class="bg"></div><div class="wrap">
+ <span class="eyebrow">🥋 Zürich-Wiedikon · seit 1976</span>
+ <h1>Kampfkunst für Kinder, Jugendliche &amp; Erwachsene.</h1>
+ <p>Judo, Karate, Kendo, Ju-Jitsu, Aikido, Iaido, Selbstverteidigung und Yoga – 8 Disziplinen, über 30 qualifizierte Trainer:innen, ein Dojo.</p>
+ <div class="btns"><a class="cta" href="#probetraining">Gratis Probetraining buchen</a><a class="cta light" href="#trainingszeiten">Trainingszeiten ansehen</a></div>
+</div></div>
+<div class="wrap"><div class="stats"><div><b>1976</b><span>gegründet</span></div><div><b>8</b><span>Disziplinen</span></div><div><b>30+</b><span>Trainer:innen</span></div><div><b>Gratis</b><span>Probelektion</span></div></div></div>
+
+<section id="disziplinen"><div class="wrap">
+ <div class="kicker">Unsere Disziplinen</div>
+ <h2>Von Judo über Kendo bis Yoga.</h2>
+ <p class="lead">Ob Sicherheit, Fitness oder Achtsamkeit – hier finden Kinder, Einsteiger und Fortgeschrittene die passende Disziplin.</p>
+ <div class="grid" id="grid"></div>
+</div></section>
+
+<section id="trainingszeiten" class="bgsoft"><div class="wrap">
+ <div class="kicker">Trainingszeiten</div>
+ <h2>Stundenplan 2026</h2>
+ <p class="lead">Montag bis Donnerstag im Dojo an der Zweierstrasse 106. Spontan vorbeikommen ist in der Regel möglich – am besten 10 Minuten vor Trainingsbeginn.</p>
+ <div class="tabs" id="tabs"></div>
+ <div class="tbl" id="tbl"></div>
+</div></section>
+
+<section id="probetraining"><div class="wrap two">
+ <div>
+  <div class="kicker">Probetraining</div>
+  <h2>Die erste Lektion ist gratis.</h2>
+  <p class="lead">Einfach Sportanzug einpacken und mitmachen. Disziplin und Wunschtermin wählen – das Team bestätigt per E-Mail.</p>
+  <ul class="check"><li>Für Kinder ab 5 Jahren, Jugendliche, Erwachsene und Plus 50</li><li>Altersgerechte Förderstufen: 5–7 · 7–10 · 10–13 · ab 14 Jahren</li><li>Mitglied bei Swiss Olympic, SJV, SKR und LIMITA</li><li>Tram 9 &amp; 14 · S-Bahn bis Bahnhof Wiedikon</li></ul>
+  <img src="img/bkz_karate_9-1024x683.jpg" alt="Karate im Budokan Zürich" style="border-radius:22px" loading="lazy">
+ </div>
+ <form class="form" id="pform" novalidate>
+  <h3 style="margin:0 0 4px;font-size:22px">Probetraining anfragen</h3>
+  <div style="color:var(--mut);font-size:14px">Antwort in der Regel innert 24 Stunden.</div>
+  <div class="r2"><div><label for="fd">Disziplin</label><select id="fd"></select></div><div><label for="fa">Alter</label><input id="fa" inputmode="numeric" placeholder="z. B. 9"></div></div>
+  <label for="fs">Wunschtermin</label><select id="fs"></select>
+  <div class="r2"><div><label for="fn">Name</label><input id="fn" placeholder="Vorname Nachname" autocomplete="name"></div><div><label for="ft">Telefon</label><input id="ft" type="tel" placeholder="079 000 00 00" autocomplete="tel"></div></div>
+  <label for="fm">E-Mail</label><input id="fm" type="email" placeholder="name@beispiel.ch" autocomplete="email">
+  <label for="fx">Nachricht (optional)</label><textarea id="fx" placeholder="z. B. Vorkenntnisse, Fragen …"></textarea>
+  <div style="height:16px"></div>
+  <button class="cta" style="width:100%;justify-content:center;padding:15px" type="submit">Probetraining anfragen</button>
+  <div style="font-size:12px;color:#888;margin-top:10px">Prototyp: Es werden keine Daten gesendet.</div>
+ </form>
+</div></section>
+
+<section id="preise" class="bgsoft"><div class="wrap">
+ <div class="kicker">Mitgliedschaft</div>
+ <h2>Transparente Preise.</h2>
+ <p class="lead">Mitgliederbeiträge in CHF. Privatlektionen und Familienrabatte auf Anfrage. Verbandsbeiträge (Budo-Pass + Lizenz) separat.</p>
+ <div class="prices">
+  <div class="p"><h3>Kinder bis 15 Jahre</h3><b>540.–</b> <span>/ Halbjahr</span><div class="y">840.– / Jahr</div></div>
+  <div class="p"><h3>Lehrlinge</h3><b>600.–</b> <span>/ Halbjahr</span><div class="y">960.– / Jahr</div></div>
+  <div class="p"><h3>Studenten bis 25</h3><b>600.–</b> <span>/ Halbjahr</span><div class="y">960.– / Jahr</div></div>
+  <div class="p hl"><h3>Erwachsene</h3><b>720.–</b> <span>/ Halbjahr</span><div class="y">1200.– / Jahr</div></div>
+ </div>
+ <p style="margin-top:20px;color:var(--mut);font-size:14.5px">Yoga: Drop-in 50–60 Min. CHF 30.– (10er-Abo CHF 250.–), 75 Min. CHF 35.– (10er-Abo CHF 300.–), Abo 6 Monate gültig. <button class="small" id="priceQ" style="margin-left:6px">Frage zu Preisen</button></p>
+</div></section>
+
+<section id="termine"><div class="wrap">
+ <div class="kicker">Termine &amp; Events</div>
+ <h2>Was als Nächstes ansteht.</h2>
+ <p class="lead">Lehrgänge, Prüfungen und Clubmeisterschaft – aus der Aktivitäten-Übersicht 2026.</p>
+ <div class="events" id="events"></div>
+</div></section>
+
+<section id="kontakt" class="bgsoft"><div class="wrap two">
+ <div>
+  <div class="kicker">Standort &amp; Kontakt</div>
+  <h2>Mitten in Zürich-Wiedikon.</h2>
+  <div class="info" style="margin-top:26px">
+   <a class="row" href="https://www.google.com/maps/search/?api=1&query=Budokan+Z%C3%BCrich+Zweierstrasse+106+8003+Z%C3%BCrich" target="_blank" rel="noopener"><div class="ic">📍</div><div><b>Zweierstrasse 106, 8003 Zürich</b><span>Route planen · Tram 9 &amp; 14 · S-Bahn Wiedikon</span></div></a>
+   <a class="row" href="tel:+41444616667"><div class="ic">📞</div><div><b>+41 44 461 66 67</b><span>Anrufen</span></div></a>
+   <a class="row" href="mailto:info@budokan.ch"><div class="ic">✉️</div><div><b>info@budokan.ch</b><span>E-Mail schreiben</span></div></a>
+   <div class="row" style="gap:10px;flex-wrap:wrap"><a class="small" href="https://www.instagram.com/kendo_budokanzurich/" target="_blank" rel="noopener" style="text-decoration:none;color:inherit">Instagram</a><a class="small" href="https://www.facebook.com/budokan.ch/" target="_blank" rel="noopener" style="text-decoration:none;color:inherit">Facebook</a></div>
+  </div>
+ </div>
+ <div class="map"><iframe title="Karte Budokan Zürich" referrerpolicy="no-referrer-when-downgrade" src="https://maps.google.com/maps?q=Zweierstrasse%20106%2C%208003%20Z%C3%BCrich&z=16&output=embed"></iframe></div>
+</div></section>
+
+<footer><div class="wrap">
+ <div style="display:flex;gap:14px;align-items:center"><img src="img/logo.png" alt="" style="width:44px"><div><b style="color:#fff">Budokan Zürich</b><br>Zweierstrasse 106 · 8003 Zürich</div></div>
+ <div>Website-Prototyp von BOLLA STUDIO · Inhalte und Bilder von budokan.ch</div>
+</div></footer>
+
+<button class="wa" id="waBtn" aria-label="WhatsApp-Assistent"><svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm4.5 12.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.6.8-.8 1-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.2-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.3.8 3.2.6a2.7 2.7 0 0 0 1.8-1.3 2.2 2.2 0 0 0 .2-1.3c-.1-.1-.2-.2-.4-.3z"/></svg><span>Fragen? 24 h WhatsApp</span></button>
+
+<div class="modal" id="modal"><div class="mbox mwrap" id="mbox"></div></div>
+
+<script>
+const D=[
+['Judo','bkz_judo_1-768x512.jpg','Für Kinder & Jugendliche – spielerisch lernen zu werfen, zu fallen & fair zu kämpfen.','Judo ist die am meisten verbreitete japanische Kampfsportart in Europa – als Ausgleichs-, Wettkampf- und Leistungssport. Gelernt werden Wurf-, Hebel-, Würge-, Fall- und Festhaltetechniken. Mitglied von SJV und ZJV.'],
+['Karate','bkz_karate_2-768x512.jpg','Kraft, Kontrolle & Disziplin – ideal für Körpergefühl & Selbstvertrauen.','Shotokan Karate mit Kihon (Grundschule), Kata (Form) und Kumite (Partnerübung). Mit dem Karate anfangen kann jeder – ohne besondere körperliche Voraussetzungen.'],
+['Kendo','bkz_kendo_1-768x512.jpg','Japanischer Schwertkampf mit Bambusschwert & Rüstung – für Geist und Reaktion.','Kendo ist aus dem Schwertkampf der Samurai-Kultur entstanden. Der Budokan organisiert jedes Jahr den internationalen Züri-Cup. Mitglied des Schweizerischen Kendo- und Iaido-Verbands.'],
+['Ju-Jitsu','bkz_jujitsu_1-768x512.jpg','Moderne Selbstverteidigung mit Techniken aus Judo, Aikido & Karate.','Ju-Jitsu gilt als die traditionelle Selbstverteidigung schlechthin – einfach und ausführbar im Ernstfall, auch als Wettkampfsport (Duo/Fighting). Für Jung und Alt, Frauen und Männer.'],
+['Aikido','bkz_aikido_11-768x512.jpg','Defensive Kampfkunst ohne Wettkampf – Harmonie und Bewegung.','Aikido ist ausschliesslich eine Kunst zur Selbstverteidigung, ohne Angriffsbewegungen. Für jedes Alter geeignet. Gastclub im Budokan, Leitung Bashar Ahmed.'],
+['Iaido','bkz_iaido_3-768x512.jpg','Die Kunst des Schwertziehens – meditativ, präzise, voller Stil.','Iaido stammt wie Kendo aus der Samurai-Zeit und wird mit imaginären Gegnern geübt. Es fördert Konzentration – ein ständiger Wechsel zwischen Ruhe und Bewegung.'],
+['Selbstverteidigung','bkz_disziplinen_quadrat-768x609.jpeg','Für Einsteiger:innen, Frauen & Senior:innen – einfache Techniken, mehr Sicherheit.','Kurse für Frauen und Kinder mit körperlicher und psychologischer Ebene. Die Kursleiterinnen sind ausgebildete PALLAS-Trainerinnen.'],
+['Yoga','yoga-300x234.jpeg','Atmung, Balance & Kraft – ideal als Ergänzung oder für sich allein.','Hatha / Vinyasa / Yin – kreative Mischung für Kraft, Flexibilität und einen ruhigen Geist. Klassen mit Yuki und Romi, Anmeldung spätestens 24 h vorher.']];
+const S={kids:[['Judo','Kinder 6–10 Jahre','Mo & Do · 17:00'],['Judo','Kinder 10–14 Jahre','Mo & Do · 18:00'],['Karate Shotokan','Kinder 7–14 Jahre','Mo & Mi · 18:00'],['Kendo','Kinder ab 7 Jahren','Di 18:00–18:50 · Do 17:45–18:45'],['Ju-Jitsu / Selbstverteidigung','Kinder ab 9 Jahren','Di · 18:00–19:00'],['Aikido (Gastclub)','10–14 Jahre','Do · ab 18:00'],['Judo','Jugend ab 14 Jahren','Di & Do · 19:00–20:30'],['Ju-Jitsu / Selbstverteidigung','Jugend ab 14 Jahren','Di & Do · 19:00–20:30']],
+adult:[['Judo','Erwachsene','Di & Do · 19:00–20:30'],['Karate Shotokan','Erwachsene & Fortgeschrittene','Mo & Mi · 19:00–21:00'],['Kendo','Erwachsene (Basic)','Di & Do · 19:00–20:00'],['Kendo','Erwachsene (mit Bogu)','Di & Do · 19:00–21:00'],['Kendo','Ji Geiko (Kyu & Dan)','Mo · 19:00–20:30'],['Iaido','ab 15 Jahren','Mo & Mi · ab 19:00'],['Ju-Jitsu / Selbstverteidigung','Erwachsene','Di & Do · 19:00–20:30'],['Ju-Jitsu','Plus 50 Jahre','Mi · ab 09:30'],['Aikido (Gastclub)','Alle ab 14 Jahren','Di & Do · ab 19:00']],
+yoga:[['Yoga – Hatha (mit Yuki)','ab 16 Jahren · 50 Min.','Mo · 17:00'],['Yoga – Hatha (mit Romi)','ab 16 Jahren · 60 Min.','Mi · 06:30'],['Yoga – Hatha & Yoga Nidra (mit Romi)','ab 16 Jahren · 75 Min.','Mi · 18:00'],['Yoga – Hatha (mit Yuki)','ab 16 Jahren · 60 Min.','Do · 18:15']]};
+const T=[['kids','Kinder & Jugendliche'],['adult','Erwachsene'],['yoga','Yoga']];let tab='kids';
+const EV=[['So 1. Nov. 2026','SJV Technik-Kurs Ju-Jitsu','13–17 Uhr'],['2.–6. Nov. 2026','Clubmeisterschaft – Runde 5','Woche 45, in den regulären Trainings'],['Sa 7. Nov. 2026','SJV Kata-Kurs','09–13 Uhr'],['Do 3. Dez. 2026','Prüfungen','Kein Training, ausser Kendo Kids. Prüf-/Registrationsgebühr Fr. 20.–'],['Do 10. Dez. 2026','Clubmeisterschaft – Final','Ab 17.30 Finals Judo, Karate, JJ Fighting, Kendo · Demos Aikido, Iaido, Yoga · 20.15 Drink/Snack-Bar'],['19. Dez. 2026 – 3. Jan. 2027','Weihnachtsferien','Keine Trainings. Letztes Training am Do 17. Dezember.']];
+const $=s=>document.querySelector(s);
+const modal=$('#modal'),mbox=$('#mbox');
+function openM(h){mbox.innerHTML='<button class="x" aria-label="Schliessen" onclick="closeM()">×</button>'+h;modal.classList.add('on');document.body.style.overflow='hidden'}
+function closeM(){modal.classList.remove('on');document.body.style.overflow=''}
+modal.onclick=e=>{if(e.target==modal)closeM()};document.addEventListener('keydown',e=>{if(e.key=='Escape')closeM()});
+$('#grid').innerHTML=D.map((d,i)=>`<button class="d" data-i="${i}"><div class="im" style="background-image:url(img/${d[1]})"></div><div class="tx"><h3>${d[0]}</h3><p>${d[2]}</p><span class="more">Mehr erfahren →</span></div></button>`).join('');
+document.querySelectorAll('.d').forEach(b=>b.onclick=()=>{const d=D[+b.dataset.i];const rows=[...S.kids,...S.adult,...S.yoga].filter(r=>r[0].startsWith(d[0].slice(0,4))||(d[0]=='Selbstverteidigung'&&r[0].includes('Selbstverteidigung')));
+openM(`<div class="mi" style="background-image:url(img/${d[1]})"></div><div class="mc"><h3>${d[0]}</h3><p>${d[3]}</p>${rows.length?'<b>Trainingszeiten</b><ul>'+rows.map(r=>`<li>${r[1]}: ${r[2]}</li>`).join('')+'</ul>':''}<a class="cta" href="#probetraining" onclick="closeM();pick('${d[0]}')">Probetraining ${d[0]} buchen</a></div>`)});
+function renderT(){$('#tabs').innerHTML=T.map(([k,l])=>`<button class="${k==tab?'on':''}" data-k="${k}">${l}</button>`).join('');
+document.querySelectorAll('#tabs button').forEach(b=>b.onclick=()=>{tab=b.dataset.k;renderT()});
+$('#tbl').innerHTML='<div class="tr h"><div>Disziplin</div><div>Gruppe</div><div>Tag &amp; Zeit</div><div></div></div>'+S[tab].map(r=>`<div class="tr"><b>${r[0]}</b><span>${r[1]}</span><span class="time">${r[2]}</span><button class="small" data-d="${r[0]}">Probetraining</button></div>`).join('');
+document.querySelectorAll('#tbl .small').forEach(b=>b.onclick=()=>{pick(b.dataset.d);location.hash='probetraining'})}
+renderT();
+const FD=['Judo','Karate Shotokan','Kendo','Ju-Jitsu / Selbstverteidigung','Aikido (Gastclub)','Iaido','Yoga'];
+$('#fd').innerHTML=FD.map(x=>`<option>${x}</option>`).join('');
+function slots(){const d=$('#fd').value;const rows=[...S.kids,...S.adult,...S.yoga].filter(r=>r[0].split(' ')[0]==d.split(' ')[0]);$('#fs').innerHTML=rows.map(r=>`<option>${r[1]} – ${r[2]}</option>`).join('')}
+$('#fd').onchange=slots;slots();
+function pick(n){const o=FD.find(x=>x.startsWith(n.split(' ')[0].replace('Selbstverteidigung','Ju-Jitsu')));if(o){$('#fd').value=o;slots()}}
+$('#pform').onsubmit=e=>{e.preventDefault();const n=$('#fn').value.trim(),m=$('#fm').value.trim();
+if(!n||!/.+@.+\..+/.test(m)){openM(`<div class="mc"><h3>Fast geschafft</h3><p>Bitte Name und eine gültige E-Mail-Adresse angeben, damit das Team das Probetraining bestätigen kann.</p><button class="cta" onclick="closeM();$('#fn').focus()">OK</button></div>`);return}
+openM(`<div class="mc okc"><div class="big">✓</div><h3>Danke, ${n.split(' ')[0]}!</h3><p>Ihre Anfrage für ein Probetraining ist angekommen. Das Budokan-Team bestätigt per E-Mail.</p><div class="sum"><b>${$('#fd').value}</b><br>📅 ${$('#fs').value}<br>📍 Zweierstrasse 106, 8003 Zürich<br>👕 Leichte Sportkleidung, 10 Min. vorher da sein</div><p style="font-size:13px;color:#888">Prototyp – es wurden keine Daten gesendet.</p><button class="cta dark" onclick="closeM()">Schliessen</button></div>`);$('#pform').reset();slots()};
+$('#events').innerHTML=EV.map((e,i)=>`<div class="e"><div class="dt">${e[0]}</div><h3>${e[1]}</h3><p>${e[2]}</p><button class="small" data-i="${i}">In Kalender eintragen</button></div>`).join('');
+document.querySelectorAll('#events .small').forEach(b=>b.onclick=()=>{const e=EV[+b.dataset.i];openM(`<div class="mc okc"><div class="big">📅</div><h3>${e[1]}</h3><p>${e[0]} · ${e[2]}</p><p style="font-size:13px;color:#888">Prototyp: In der fertigen Website wird hier eine Kalender-Datei (.ics) geladen.</p><button class="cta dark" onclick="closeM()">OK</button></div>`)});
+$('#priceQ').onclick=()=>openWA('Was kostet die Mitgliedschaft?');
+$('#burger').onclick=()=>$('#mobnav').classList.add('on');$('#mclose').onclick=()=>$('#mobnav').classList.remove('on');
+document.querySelectorAll('#mobnav a').forEach(a=>a.addEventListener('click',()=>$('#mobnav').classList.remove('on')));
+// WhatsApp-Assistent (simuliert)
+const QA=[['Was kostet die Mitgliedschaft?','Mitgliedschaft (CHF, Halbjahr / Jahr): Kinder bis 15: 540.– / 840.– · Lehrlinge & Studenten bis 25: 600.– / 960.– · Erwachsene: 720.– / 1200.–. Die Probelektion ist gratis.'],['Wann ist Judo für Kinder?','Judo Kinder 6–10 Jahre: Mo & Do 17:00 · 10–14 Jahre: Mo & Do 18:00 · ab 14: Di & Do 19:00–20:30. Soll ich ein Probetraining anfragen?'],['Was muss ich mitbringen?','Einfach leichte Sportkleidung einpacken und mitmachen – am besten 10 Minuten vor Trainingsbeginn da sein.'],['Wie komme ich hin?','Zweierstrasse 106, 8003 Zürich – Tram 9 & 14 oder S-Bahn bis Bahnhof Wiedikon.']];
+function openWA(first){openM(`<div style="background:#075E54;color:#fff;padding:16px 20px;border-radius:24px 24px 0 0"><b>Budokan Zürich · KI-Assistent</b><div style="font-size:12.5px;color:#cfe9e4">antwortet rund um die Uhr · simuliert</div></div><div id="cm" style="background:#efe7de;padding:14px;min-height:240px;max-height:46vh;overflow:auto"></div><div style="padding:12px;display:flex;flex-wrap:wrap;gap:8px">${QA.map((q,i)=>`<button class="small" data-q="${i}">${q[0]}</button>`).join('')}</div>`);
+const cm=$('#cm');const add=(t,me)=>{const d=document.createElement('div');d.style.cssText=`max-width:85%;padding:9px 12px;border-radius:10px;margin:5px 0;font-size:14.5px;line-height:1.45;background:${me?'#dcf8c6':'#fff'};${me?'margin-left:auto':''}`;d.textContent=t;cm.appendChild(d);cm.scrollTop=1e6};
+add('Grüezi! Ich bin der digitale Assistent vom Budokan Zürich. Wie kann ich helfen?');
+const ask=i=>{add(QA[i][0],1);setTimeout(()=>add(QA[i][1]),600)};
+mbox.querySelectorAll('[data-q]').forEach(b=>b.onclick=()=>ask(+b.dataset.q));
+const fi=QA.findIndex(q=>q[0]==first);if(fi>=0)ask(fi)}
+$('#waBtn').onclick=()=>openWA();
+</script>
+</body></html>

@@ -1,0 +1,87 @@
+<!doctype html><html lang="es-PY"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex,nofollow"><meta name="googlebot" content="noindex,nofollow">
+<title>Barber Club Py · Barbería en San Isidro (DEMO)</title><meta name="description" content="Barbería en Lambaré, sobre la calle Panambi Vera."><meta name="theme-color" content="#0a7c86">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Inter+Tight:wght@600;700;800&display=swap" rel="stylesheet">
+<style>:root{--a:#0a7c86}
+*{box-sizing:border-box;margin:0;padding:0}html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{font-family:Inter,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;color:#1d1d1f;background:#fff;line-height:1.5;-webkit-font-smoothing:antialiased}
+img{display:block;max-width:100%}a{color:inherit;text-decoration:none}table{border-collapse:collapse;width:100%}
+h1,h2,h3{font-family:"Inter Tight",Inter,system-ui,sans-serif;letter-spacing:-.035em;line-height:1.04;font-weight:700}
+.demo{background:#1d1d1f;color:#f5f5f7;font-size:12px;text-align:center;padding:8px 14px;position:relative;z-index:70}
+.demo b{background:var(--a);color:#fff;border-radius:99px;padding:1px 8px;margin-right:6px;font-weight:700}
+.pill{display:inline-flex;align-items:center;justify-content:center;gap:6px;border-radius:980px;padding:12px 22px;font-weight:600;font-size:15px;transition:transform .25s ease,opacity .25s}
+.pill.pri{background:var(--a);color:#fff}.pill.sec{color:var(--a);box-shadow:inset 0 0 0 1.5px currentColor}.pill:hover{transform:translateY(-1px);opacity:.9}
+.muted{color:#6e6e73}.note{color:#86868b;font-size:13px;margin-top:12px}.eyebrow{color:var(--a);font-weight:600;font-size:14px}
+[data-r]{opacity:0;transform:translateY(22px);transition:opacity .9s cubic-bezier(.2,.7,.2,1),transform .9s cubic-bezier(.2,.7,.2,1)}[data-r].in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){[data-r]{opacity:1;transform:none;transition:none}*{animation:none!important}}
+.hrs th,.hrs td{text-align:left;padding:11px 0;border-bottom:1px solid #e8e8ed;font-weight:500}.hrs td{text-align:right;color:#424245}
+.hrs tr.today th,.hrs tr.today td{color:var(--a);font-weight:700}
+.chips{display:flex;flex-wrap:wrap;gap:8px}.chip{display:inline-flex;flex-direction:column;border-radius:16px;background:#f5f5f7;color:#1d1d1f;padding:10px 14px;font-size:13px;min-width:92px}
+.chip b{font-size:12px;color:#86868b;font-weight:600}.chip.off{color:#a1a1a6}.chip.today{background:var(--a);color:#fff}.chip.today b{color:rgba(255,255,255,.8)}
+.status{display:inline-flex;align-items:center;gap:6px;font-size:13px;font-weight:600}.status:before{content:"";width:8px;height:8px;border-radius:50%;background:#a1a1a6}.status.on:before{background:#30d158}
+.plist{list-style:none}.plist li{display:flex;align-items:baseline;gap:10px;padding:14px 0}
+.plist .n{font-weight:600;display:flex;flex-direction:column}.plist small{font-weight:400;color:#86868b;font-size:13px}
+.plist .dots{flex:1;border-bottom:1.5px dotted #c7c7cc;transform:translateY(-4px)}.plist .p{color:var(--a);font-weight:600;font-size:14px;white-space:nowrap}
+.faq details{border-bottom:1px solid #e8e8ed;padding:18px 0}.faq summary{cursor:pointer;font-weight:600;list-style:none;display:flex;justify-content:space-between;gap:12px}
+.faq summary::-webkit-details-marker{display:none}.faq summary:after{content:"+";color:var(--a);font-size:22px;line-height:1;transition:transform .3s}
+.faq details[open] summary:after{transform:rotate(45deg)}.faq p{color:#6e6e73;margin-top:10px}
+iframe.map{border:0;width:100%;display:block}
+
+.tb{display:flex;justify-content:space-between;align-items:center;padding:14px 18px;border-bottom:1px solid #ececec}.tb b{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:13px;letter-spacing:.06em;text-transform:uppercase;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:62vw}
+.tb a{width:42px;height:42px;border-radius:50%;background:var(--a);color:#fff;display:grid;place-items:center;font-size:18px}
+.hx{max-width:1160px;margin:auto;padding:46px 20px 0;display:grid;gap:40px;align-items:center}.hx .k{font-family:ui-monospace,Menlo,monospace;font-size:12px;color:var(--a);letter-spacing:.08em;text-transform:uppercase}
+.hx h1{font-size:clamp(42px,10vw,96px);margin:12px 0 16px;letter-spacing:-.05em}.hx p{font-size:19px;color:#424245;max-width:32ch}.hx .row{display:flex;gap:10px;flex-wrap:wrap;margin-top:24px}.hx .rt{margin-top:18px;font-size:14px;color:#6e6e73}.hx .rt b{color:#1d1d1f}
+.dk{position:relative;height:420px;max-width:440px;width:100%;margin:0 auto}.dk img{position:absolute;width:72%;aspect-ratio:3/4;object-fit:cover;border-radius:20px;box-shadow:0 30px 60px -30px rgba(0,0,0,.5);border:6px solid #fff;transition:transform .6s cubic-bezier(.2,.7,.2,1)}
+.dk img:nth-child(1){left:0;top:30px;transform:rotate(-6deg)}.dk img:nth-child(2){right:0;top:0;transform:rotate(5deg)}.dk img:nth-child(3){left:16%;top:70px;transform:rotate(-1deg);z-index:2}.dk:hover img:nth-child(1){transform:rotate(-9deg) translateX(-10px)}.dk:hover img:nth-child(2){transform:rotate(8deg) translateX(10px)}
+.sp{max-width:1160px;margin:90px auto 0;padding:0 20px}.sp h2,.ck h2,.cal h2{font-size:clamp(28px,5vw,46px);margin-bottom:26px}
+.sp ol{list-style:none;display:grid;gap:22px;position:relative}.sp li{display:grid;grid-template-columns:52px 1fr;gap:14px;align-items:start;position:relative}
+.sp li span{width:52px;height:52px;border-radius:50%;display:grid;place-items:center;font-weight:700;background:#fff;box-shadow:inset 0 0 0 2px var(--a);color:var(--a);position:relative;z-index:2}
+.sp li:not(:last-child):after{content:"";position:absolute;left:25px;top:52px;bottom:-22px;width:2px;background:color-mix(in srgb,var(--a) 30%,#fff)}.sp h3{font-size:20px;margin-top:4px}.sp p{color:#6e6e73}
+.ck{max-width:1160px;margin:90px auto 0;padding:0 20px}.ck ul{list-style:none;display:grid;gap:10px}.ck li{display:grid;grid-template-columns:34px 1fr auto;gap:14px;align-items:center;background:#f5f5f7;border-radius:18px;padding:16px 18px}
+.ck li:before{content:"✓";width:34px;height:34px;border-radius:10px;background:var(--a);color:#fff;display:grid;place-items:center;font-weight:700}.ck li b{display:block}.ck li small{color:#6e6e73}.ck li em{font-style:normal;font-size:12px;color:var(--a);font-weight:700}
+.ph{margin:90px 0 0;background:var(--a);color:#fff;padding:54px 20px;text-align:center}.ph small{display:block;font-size:13px;opacity:.85;letter-spacing:.06em;text-transform:uppercase}.ph a.num{display:block;font-family:"Inter Tight";font-weight:800;letter-spacing:-.04em;font-size:clamp(38px,10vw,110px);line-height:1.05;margin:10px 0}
+.ph .pill.pri{background:#fff;color:var(--a)}
+.cal{max-width:1160px;margin:90px auto 0;padding:0 20px}.cal .g{display:grid;grid-template-columns:repeat(7,1fr);gap:6px}.cal .d{border-radius:16px;background:#f5f5f7;padding:12px 4px;text-align:center;min-height:120px;display:flex;flex-direction:column;gap:8px;font-size:12px}
+.cal .d b{font-size:13px;color:#86868b}.cal .d span{font-weight:600;line-height:1.25;word-break:break-word}.cal .d.off span{color:#a1a1a6;font-weight:500}.cal .d.today{background:var(--a);color:#fff}.cal .d.today b{color:rgba(255,255,255,.8)}
+.tm{max-width:1160px;margin:90px auto 0;padding:0 20px;display:grid;gap:12px}.tm article{border-top:2px solid #1d1d1f;padding-top:14px}.tm h3{font-size:20px}.tm p{color:#6e6e73;margin-top:6px}
+.lc{max-width:1160px;margin:90px auto 0;padding:0 20px;display:grid;gap:14px}.lc .a{background:#1d1d1f;color:#f5f5f7;border-radius:26px;padding:28px}.lc .a h2{font-size:32px;margin-bottom:10px}.lc .a p{color:#a1a1a6}.lc .a a{color:#fff;text-decoration:underline}
+.lc .m{border-radius:26px;overflow:hidden;min-height:300px}.lc .m iframe{height:100%;min-height:300px}
+footer{max-width:1160px;margin:70px auto 0;padding:24px 20px 50px;border-top:1px solid #e8e8ed;display:grid;gap:10px;font-size:12px;color:#6e6e73}footer b{color:#1d1d1f}footer a{text-decoration:underline}
+@media(min-width:860px){.hx{grid-template-columns:1.1fr .9fr}.sp ol{grid-template-columns:repeat(3,1fr)}.sp li{grid-template-columns:1fr}.sp li:not(:last-child):after{left:52px;right:-22px;top:25px;bottom:auto;width:auto;height:2px}
+.ck ul{grid-template-columns:1fr 1fr}.cal .d{min-height:150px;padding:18px 8px;font-size:14px}.tm{grid-template-columns:repeat(3,1fr);gap:30px}.lc{grid-template-columns:1fr 1.4fr}footer{grid-template-columns:1fr 1fr}}
+@media(max-width:520px){.cal .g{grid-template-columns:repeat(4,1fr)}}
+.v2{background-color:#f7f8fa;background-image:linear-gradient(#e9edf3 1px,transparent 1px),linear-gradient(90deg,#e9edf3 1px,transparent 1px);background-size:28px 28px}
+.v2 .tb{background:rgba(247,248,250,.9)}.v2 .dk{height:auto}.v2 .dk img{position:relative;width:100%;transform:none!important;border:0;border-radius:4px;aspect-ratio:4/5}.v2 .dk img:not(:last-child){display:none}
+.v2 .dk:before,.v2 .dk:after{content:"";position:absolute;width:38px;height:38px;border:3px solid var(--a);z-index:3}.v2 .dk:before{left:-10px;top:-10px;border-right:0;border-bottom:0}.v2 .dk:after{right:-10px;bottom:-10px;border-left:0;border-top:0}
+.v2 .ck li{background:#fff;box-shadow:0 0 0 1px #e3e6ec}.v2 .ck li:before{border-radius:50%}.v2 .cal .d{background:#fff;box-shadow:0 0 0 1px #e3e6ec}.v2 .cal .d.today{background:var(--a);color:#fff}.v2 .ph{background:#1d1d1f}.v2 .ph a.num{color:var(--a);filter:brightness(1.35)}.v2 .lc .a{background:var(--a)}.v2 .lc .a p{color:rgba(255,255,255,.85)}
+</style><!-- GoatCounter (BOLLA STUDIO) -->
+<script>window.goatcounter={path:function(p){return '/bolla-demo-py-barber-club-lambare'+((p.replace(/^\/py\-barber\-club\-lambare(?=[\/?#]|$)/,'')||'/').replace(/^\?/,'/?'))}};window.bsTrack=function(sub,title){try{if(window.goatcounter&&window.goatcounter.count)window.goatcounter.count({path:'/bolla-demo-py-barber-club-lambare'+sub,title:title||sub})}catch(e){}}</script>
+<script data-goatcounter="https://bollastudio.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+</head>
+<body class="t-taller v2"><div class="demo" role="note"><b>DEMO</b>Página de muestra preparada por BOLLA STUDIO para Barber Club Py. No es la web oficial.</div>
+<div class="tb"><b>Barber Club Py</b><a href="tel:+595971888665" aria-label="Llamar">✆</a></div>
+<header class="hx"><div><span class="k">Barbería — San Isidro</span><h1>Barber Club Py</h1><p>Barbería en Lambaré, sobre la calle Panambi Vera.</p><div class="row"><a class="pill pri" href="https://wa.me/595971888665?text=Hola%2C%20quisiera%20hacer%20una%20consulta." target="_blank" rel="noopener">Pedir turno por WhatsApp</a><a class="pill sec" href="tel:+595971888665">Llamar</a></div><p class="rt"><b>★ 4,9</b> de 5 · 137 reseñas en Google</p><div style="margin-top:12px"><span class="status" data-status></span></div></div>
+<div class="dk"><img class="" src="photos/barber_1.webp" alt="Barbería · Barber Club Py" fetchpriority=high decoding="async"><img class="" src="photos/barber_2.webp" alt="Barbería · Barber Club Py" fetchpriority=high decoding="async"><img class="" src="photos/barber_hero.webp" alt="Barbería · Barber Club Py" fetchpriority=high decoding="async"></div></header>
+<section class="sp"><h2 data-r>Cómo funciona</h2><ol><li data-r><span>1</span><div><h3>Escríbanos</h3><p>Cuéntenos qué necesita, por WhatsApp o por teléfono.</p></div></li><li data-r><span>2</span><div><h3>Le respondemos</h3><p>Le confirmamos horario o precio.</p></div></li><li data-r><span>3</span><div><h3>Listo</h3><p>Nos encuentra en Panambi Vera.</p></div></li></ol></section>
+<section class="ck"><h2 data-r>Servicios</h2><ul><li data-r><span><b>Corte</b><small>Clásico o degradado.</small></span><em>Consultar</em></li><li data-r><span><b>Barba</b><small>Perfilado y arreglo.</small></span><em>Consultar</em></li><li data-r><span><b>Corte + barba</b><small>El servicio completo.</small></span><em>Consultar</em></li><li data-r><span><b>Turno</b><small>Consulte disponibilidad por WhatsApp.</small></span><em>Consultar</em></li></ul></section>
+<section class="ph"><small>Contacto</small><a class="num" href="tel:+595971888665">+595 971 888 665</a><a class="pill pri" href="https://wa.me/595971888665?text=Hola%2C%20quisiera%20hacer%20una%20consulta." target="_blank" rel="noopener">Pedir turno por WhatsApp</a></section>
+<section class="cal"><h2 data-r>Horario</h2><div data-r><div class="g"><div class="d" data-day="0"><b>Lu</b><span>9:00<br>–<br>20:00</span></div><div class="d" data-day="1"><b>Ma</b><span>9:00<br>–<br>20:00</span></div><div class="d" data-day="2"><b>Mi</b><span>9:00<br>–<br>20:00</span></div><div class="d" data-day="3"><b>Ju</b><span>9:00<br>–<br>20:00</span></div><div class="d" data-day="4"><b>Vi</b><span>9:00<br>–<br>20:00</span></div><div class="d" data-day="5"><b>Sá</b><span>9:00<br>–<br>20:00</span></div><div class="d off" data-day="6"><b>Do</b><span>Cerrado</span></div></div><p class="note">Horario según la ficha pública; conviene confirmarlo por teléfono.</p></div></section>
+<section class="tm"><article data-r><h3>Buena atención</h3><p>Lo que más se repite en las reseñas.</p></article><article data-r><h3>Ambiente</h3><p>Acogedor, con deportes en la pantalla.</p></article><article data-r><h3>Clientes fieles</h3><p>Hay quien no cambia de barbería desde que llegó.</p></article></section>
+<p class="note" style="max-width:1160px;margin:14px auto 0;padding:0 20px">Las reseñas destacan la buena atención y un ambiente acogedor, donde también se puede mirar un partido mientras se espera; hay clientes que vuelven siempre. Alguna reseña reciente critica el resultado de un corte y su precio. 137 reseñas con un promedio de 4,9. Resumen neutral de reseñas públicas de Google Maps. Sin citas textuales.</p>
+<section class="lc"><div class="a" data-r><h2>Dirección</h2><p style="font-size:19px;color:inherit;font-weight:600">Panambi Vera 3321, Lambaré</p><p style="margin-top:10px"><a href="tel:+595971888665">+595 971 888 665</a></p><p style="margin-top:16px"><a href="https://www.google.com/maps/search/?api=1&query=Barber%20Club%20Py%2C%20Panambi%20Vera%203321%2C%20Lambar%C3%A9" target="_blank" rel="noopener">Cómo llegar ↗</a></p></div><div class="m"><iframe class="map" loading="lazy" title="Mapa" referrerpolicy="no-referrer-when-downgrade" src="https://maps.google.com/maps?q=Barber%20Club%20Py%2C%20Panambi%20Vera%203321%2C%20Lambar%C3%A9&z=16&output=embed"></iframe></div></section>
+<section style="max-width:1160px;margin:70px auto 0;padding:0 20px"><h2 style="font-size:clamp(28px,5vw,46px);margin-bottom:16px">Preguntas frecuentes</h2><div class="faq"><details data-r><summary>¿Cuánto cuesta?</summary><p>Cada trabajo es distinto: los precios se consultan sin compromiso.</p></details><details data-r><summary>¿Hace falta turno?</summary><p>Conviene avisar antes por teléfono o WhatsApp.</p></details><details data-r><summary>¿Dónde están?</summary><p>En Panambi Vera 3321, Lambaré.</p></details></div></section>
+<footer><div><b>Barber Club Py</b> · Barbería · Panambi Vera 3321, Lambaré</div><div>Página de muestra diseñada por <a href="https://bollastudio.com" target="_blank" rel="noopener">BOLLA STUDIO · bollastudio.com</a> · DEMO</div></footer>
+<script>
+(()=>{const io=new IntersectionObserver(es=>es.forEach(x=>{if(x.isIntersecting){x.target.classList.add('in');io.unobserve(x.target)}}),{threshold:.12,rootMargin:'0px 0px -6% 0px'});
+document.querySelectorAll('[data-r]').forEach(el=>io.observe(el));
+const H=["9:00\u201320:00", "9:00\u201320:00", "9:00\u201320:00", "9:00\u201320:00", "9:00\u201320:00", "9:00\u201320:00", null],L=["Abierto ahora", "Cerrado ahora", "Hoy", "Cerrado"],now=new Date(new Date().toLocaleString('en-US',{timeZone:'America/Asuncion'})),d=(now.getDay()+6)%7;
+document.querySelectorAll('[data-day="'+d+'"]').forEach(x=>x.classList.add('today'));
+if(H){const v=H[d];let on=false;if(v){if(/24/.test(v)&&!/:/.test(v))on=true;const m=v.match(/(\d+):(\d+)\D+(\d+):(\d+)/);if(m){const a=+m[1]*60+ +m[2];let b=+m[3]*60+ +m[4];if(b<=a)b+=1440;const t=now.getHours()*60+now.getMinutes();on=(t>=a&&t<b)||(t+1440<b)}}
+document.querySelectorAll('[data-status]').forEach(x=>{x.textContent=(on?L[0]:L[1])+' · '+L[2]+' '+(v||L[3]);x.classList.toggle('on',on)})}
+document.querySelectorAll('[data-count]').forEach(el=>{const to=parseFloat(el.dataset.count),dec=el.dataset.dec|0,o=new IntersectionObserver(es=>{if(es[0].isIntersecting){o.disconnect();const t0=performance.now(),f=t=>{const k=Math.min(1,(t-t0)/1400);el.textContent=(to*(1-Math.pow(1-k,3))).toFixed(dec).replace('.',',');if(k<1)requestAnimationFrame(f)};requestAnimationFrame(f)}});o.observe(el)});
+document.querySelectorAll('[data-scale]').forEach(el=>{const f=()=>{const r=el.getBoundingClientRect(),k=Math.max(0,Math.min(1,1-r.top/innerHeight));el.style.transform='scale('+(0.92+0.08*k)+')'};addEventListener('scroll',f,{passive:true});f()});
+const nb=document.querySelector('[data-navbg]');if(nb){const f=()=>nb.classList.toggle('solid',scrollY>40);addEventListener('scroll',f,{passive:true});f()}
+})();
+</script></body></html>

@@ -1,0 +1,36 @@
+<!doctype html><html lang="it"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Studio Dentistico Dr. Bettoni · Demo prenotazioni + WhatsApp</title><meta name="robots" content="noindex"><style>*{box-sizing:border-box}body{margin:0;font-family:-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;background:#f5f3ef;color:#1f2328}
+.top{background:#3a5a8c;color:#fff;padding:28px 20px 70px;text-align:center}.top small{opacity:.85;letter-spacing:.08em;text-transform:uppercase;font-size:12px}
+.top h1{margin:8px 0 6px;font-size:28px}.top p{margin:0;opacity:.9}.wrap{max-width:1020px;margin:-50px auto 40px;padding:0 16px;display:grid;grid-template-columns:1fr 1fr;gap:18px}
+@media(max-width:820px){.wrap{grid-template-columns:1fr}}.card{background:#fff;border-radius:16px;box-shadow:0 6px 24px rgba(0,0,0,.08);padding:20px}
+h2{margin:0 0 4px;font-size:20px}.muted{color:#666;font-size:14px;margin:0 0 14px}.opt{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px}
+.opt button,.slots button{border:1px solid #ddd;background:#fafafa;border-radius:10px;padding:9px 12px;cursor:pointer;font-size:14px}
+.opt button.on,.slots button.on{background:#3a5a8c;color:#fff;border-color:#3a5a8c}.slots{display:grid;grid-template-columns:repeat(2,1fr);gap:8px;margin:8px 0 14px}
+input{width:100%;padding:10px;border:1px solid #ddd;border-radius:10px;margin-bottom:10px;font-size:14px}.cta{width:100%;background:#3a5a8c;color:#fff;border:0;border-radius:12px;padding:13px;font-size:16px;cursor:pointer}
+.ok{display:none;margin-top:12px;background:#e8f7ee;color:#11643a;padding:12px;border-radius:10px;font-size:14px}
+.wa{background:#e5ddd5;border-radius:16px;overflow:hidden;box-shadow:0 6px 24px rgba(0,0,0,.08)}.wah{background:#075e54;color:#fff;padding:12px 16px;display:flex;align-items:center;gap:10px}
+.av{width:36px;height:36px;border-radius:50%;background:#25d366;display:flex;align-items:center;justify-content:center;font-weight:700}.wah b{display:block}.wah span{font-size:12px;opacity:.8}
+.msgs{padding:14px;min-height:380px;display:flex;flex-direction:column;gap:8px}.m{max-width:82%;padding:8px 11px;border-radius:9px;font-size:14px;line-height:1.35;box-shadow:0 1px 1px rgba(0,0,0,.1);opacity:0;transform:translateY(6px);transition:.35s}
+.m.show{opacity:1;transform:none}.m.c{align-self:flex-end;background:#dcf8c6}.m.a{align-self:flex-start;background:#fff}.replay{margin:0 14px 14px;background:#fff;border:0;border-radius:10px;padding:9px 12px;cursor:pointer}
+.feats{max-width:1020px;margin:0 auto 30px;padding:0 16px;display:grid;grid-template-columns:repeat(3,1fr);gap:14px}@media(max-width:820px){.feats{grid-template-columns:1fr}}
+.f{background:#fff;border-radius:14px;padding:16px}.f i{font-style:normal;font-size:24px}.f h3{margin:6px 0 4px;font-size:16px}.f p{margin:0;color:#555;font-size:14px}
+footer{text-align:center;color:#666;font-size:13px;padding:10px 16px 40px}footer a{color:#3a5a8c}.tag{display:inline-block;background:#fff3;border-radius:20px;padding:4px 10px;font-size:12px;margin-top:10px}</style><!-- GoatCounter (BOLLA STUDIO) -->
+<script>window.goatcounter={path:function(p){return '/bolla-dentista-bettoni-locarno'+((p.replace(/^\/dentista\-bettoni\-locarno(?=[\/?#]|$)/,'')||'/').replace(/^\?/,'/?'))}};window.bsTrack=function(sub,title){try{if(window.goatcounter&&window.goatcounter.count)window.goatcounter.count({path:'/bolla-dentista-bettoni-locarno'+sub,title:title||sub})}catch(e){}}</script>
+<script data-goatcounter="https://bollastudio.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+</head><body>
+<div class="top"><small>Demo gratuita · Locarno</small><h1>Studio Dentistico Dr. Bettoni</h1><p>Via Vela 11 – Via Bramantino 23, Locarno</p><div class="tag">Anteprima preparata da BOLLA STUDIO</div></div>
+<div class="wrap"><div class="card" id="book"><h2>Prenota la tua visita</h2><p class="muted">Scegli trattamento e orario: lo studio riceve la richiesta già in agenda.</p>
+<div class="opt" id="opt"><button class=on>Prima visita</button><button>Igiene e pulizia</button><button>Controllo / urgenza</button></div>
+<div class="muted" style="margin:0">Orari disponibili</div><div class="slots" id="slots"><button>Lun 9:30</button><button>Lun 15:00</button><button>Mar 11:00</button><button>Mer 17:30</button><button>Gio 10:00</button><button>Ven 16:30</button></div>
+<input placeholder="Nome e cognome"><input placeholder="Telefono WhatsApp"><button class="cta" id="cta">Conferma appuntamento</button><div class="ok" id="ok">Appuntamento confermato ✔ Promemoria WhatsApp 24 ore prima.</div></div>
+<div class="wa"><div class="wah"><div class="av">S</div><div><b>Studio Dentistico Dr. Bettoni</b><span>Assistente WhatsApp · online 24h</span></div></div><div class="msgs" id="msgs">
+<div class="m c">Buongiorno, vorrei prenotare una pulizia dei denti. Avete posto la prossima settimana?</div><div class="m a">Buongiorno! Certo. Per l&#x27;igiene ho disponibile martedì alle 11:00 o giovedì alle 10:00. Quale preferisce?</div><div class="m c">Giovedì alle 10 va benissimo.</div><div class="m a">Perfetto, ho fissato giovedì alle 10:00 presso Studio Dentistico Dr. Bettoni. Le manderò un promemoria il giorno prima. Se dovesse spostarlo, basta scrivermi qui.</div><div class="m c">Ottimo, grazie!</div><div class="m a">Grazie a lei, a giovedì! 😊</div></div><button class="replay" id="replay">↻ Rivedi la conversazione</button></div></div>
+<div class="feats"><div class="f"><i>📅</i><h3>Prenotazione automatica</h3><p>I pazienti scelgono l'orario libero anche quando lo studio è chiuso, senza telefonate.</p></div><div class="f"><i>🔔</i><h3>Promemoria WhatsApp</h3><p>Conferma e promemoria automatici: meno appuntamenti saltati, più poltrone occupate.</p></div><div class="f"><i>💬</i><h3>Agente WhatsApp 24h</h3><p>Risponde alle domande frequenti e sposta gli appuntamenti senza impegnare la segreteria.</p></div></div>
+<footer>Questa è una demo dimostrativa non collegata a sistemi reali. Preparata per Studio Dentistico Dr. Bettoni da <a href="https://bollastudio.com">BOLLA STUDIO</a> · Marcelo Bolla · <a href="https://www.linkedin.com/in/marcelo-bolla-ai">LinkedIn</a></footer>
+<script>
+document.querySelectorAll('#opt button').forEach(function(b){b.onclick=function(){document.querySelectorAll('#opt button').forEach(function(x){x.classList.remove('on')});b.classList.add('on');window.bsTrack&&bsTrack('/opt','Opzione')}});
+document.querySelectorAll('#slots button').forEach(function(b){b.onclick=function(){document.querySelectorAll('#slots button').forEach(function(x){x.classList.remove('on')});b.classList.add('on');window.bsTrack&&bsTrack('/slot','Orario scelto')}});
+document.getElementById('cta').onclick=function(){document.getElementById('ok').style.display='block';window.bsTrack&&bsTrack('/confirm','Conferma demo')};
+function play(){var m=document.querySelectorAll('.m');m.forEach(function(x){x.classList.remove('show')});m.forEach(function(x,i){setTimeout(function(){x.classList.add('show')},600+i*1300)})}
+document.getElementById('replay').onclick=function(){play();window.bsTrack&&bsTrack('/chat','Rivedi chat')};play();
+</script></body></html>

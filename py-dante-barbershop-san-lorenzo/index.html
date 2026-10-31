@@ -1,0 +1,76 @@
+<!doctype html><html lang="es-PY"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex,nofollow"><meta name="googlebot" content="noindex,nofollow">
+<title>Dante BarberShop · Barbería en San Miguel (DEMO)</title><meta name="description" content="Barbería en San Lorenzo, sobre la calle Clemente Romero."><meta name="theme-color" content="#c2185b">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Inter+Tight:wght@600;700;800&display=swap" rel="stylesheet">
+<style>:root{--a:#c2185b}
+*{box-sizing:border-box;margin:0;padding:0}html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{font-family:Inter,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;color:#1d1d1f;background:#fff;line-height:1.5;-webkit-font-smoothing:antialiased}
+img{display:block;max-width:100%}a{color:inherit;text-decoration:none}table{border-collapse:collapse;width:100%}
+h1,h2,h3{font-family:"Inter Tight",Inter,system-ui,sans-serif;letter-spacing:-.035em;line-height:1.04;font-weight:700}
+.demo{background:#1d1d1f;color:#f5f5f7;font-size:12px;text-align:center;padding:8px 14px;position:relative;z-index:70}
+.demo b{background:var(--a);color:#fff;border-radius:99px;padding:1px 8px;margin-right:6px;font-weight:700}
+.pill{display:inline-flex;align-items:center;justify-content:center;gap:6px;border-radius:980px;padding:12px 22px;font-weight:600;font-size:15px;transition:transform .25s ease,opacity .25s}
+.pill.pri{background:var(--a);color:#fff}.pill.sec{color:var(--a);box-shadow:inset 0 0 0 1.5px currentColor}.pill:hover{transform:translateY(-1px);opacity:.9}
+.muted{color:#6e6e73}.note{color:#86868b;font-size:13px;margin-top:12px}.eyebrow{color:var(--a);font-weight:600;font-size:14px}
+[data-r]{opacity:0;transform:translateY(22px);transition:opacity .9s cubic-bezier(.2,.7,.2,1),transform .9s cubic-bezier(.2,.7,.2,1)}[data-r].in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){[data-r]{opacity:1;transform:none;transition:none}*{animation:none!important}}
+.hrs th,.hrs td{text-align:left;padding:11px 0;border-bottom:1px solid #e8e8ed;font-weight:500}.hrs td{text-align:right;color:#424245}
+.hrs tr.today th,.hrs tr.today td{color:var(--a);font-weight:700}
+.chips{display:flex;flex-wrap:wrap;gap:8px}.chip{display:inline-flex;flex-direction:column;border-radius:16px;background:#f5f5f7;color:#1d1d1f;padding:10px 14px;font-size:13px;min-width:92px}
+.chip b{font-size:12px;color:#86868b;font-weight:600}.chip.off{color:#a1a1a6}.chip.today{background:var(--a);color:#fff}.chip.today b{color:rgba(255,255,255,.8)}
+.status{display:inline-flex;align-items:center;gap:6px;font-size:13px;font-weight:600}.status:before{content:"";width:8px;height:8px;border-radius:50%;background:#a1a1a6}.status.on:before{background:#30d158}
+.plist{list-style:none}.plist li{display:flex;align-items:baseline;gap:10px;padding:14px 0}
+.plist .n{font-weight:600;display:flex;flex-direction:column}.plist small{font-weight:400;color:#86868b;font-size:13px}
+.plist .dots{flex:1;border-bottom:1.5px dotted #c7c7cc;transform:translateY(-4px)}.plist .p{color:var(--a);font-weight:600;font-size:14px;white-space:nowrap}
+.faq details{border-bottom:1px solid #e8e8ed;padding:18px 0}.faq summary{cursor:pointer;font-weight:600;list-style:none;display:flex;justify-content:space-between;gap:12px}
+.faq summary::-webkit-details-marker{display:none}.faq summary:after{content:"+";color:var(--a);font-size:22px;line-height:1;transition:transform .3s}
+.faq details[open] summary:after{transform:rotate(45deg)}.faq p{color:#6e6e73;margin-top:10px}
+iframe.map{border:0;width:100%;display:block}
+
+.sb{position:sticky;top:0;z-index:50;display:flex;justify-content:space-between;align-items:center;padding:12px 18px;background:rgba(255,255,255,.85);backdrop-filter:blur(18px);border-bottom:1px solid #f0f0f2}
+.sb b{font-size:15px;letter-spacing:-.02em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:60vw}.sb details summary{list-style:none;cursor:pointer;font-size:13px;font-weight:600;background:#1d1d1f;color:#fff;border-radius:99px;padding:7px 14px}.sb details summary::-webkit-details-marker{display:none}
+.sb details[open] .sheet{position:fixed;left:8px;right:8px;bottom:8px;background:#fff;border-radius:28px;padding:26px;box-shadow:0 -20px 60px rgba(0,0,0,.25);display:grid;gap:12px;font-size:22px;font-weight:700;animation:sh .35s cubic-bezier(.2,.7,.2,1)}@keyframes sh{from{transform:translateY(40px);opacity:0}}
+.mq{overflow:hidden;white-space:nowrap;padding:22px 0 14px;border-bottom:1px solid #f0f0f2}.mq div{display:inline-block;animation:mq 26s linear infinite;font-family:"Inter Tight";font-weight:800;font-size:clamp(64px,16vw,170px);letter-spacing:-.06em;line-height:1}
+.mq span{padding-right:.4em}.mq span i{font-style:normal;color:var(--a)}@keyframes mq{to{transform:translateX(-50%)}}
+.ph{padding:12px}.ph img{width:100%;aspect-ratio:3/2;object-fit:cover;border-radius:24px}.cap{display:flex;flex-wrap:wrap;gap:8px;padding:6px 16px 0;align-items:center}.cap span{font-size:13px;background:#f5f5f7;border-radius:99px;padding:6px 12px}
+.lead{max-width:900px;padding:22px 18px 0;font-size:clamp(21px,3.4vw,30px);letter-spacing:-.02em;font-weight:500}.acts{display:flex;gap:10px;flex-wrap:wrap;padding:22px 18px 0}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;padding:56px 12px 0;max-width:1100px;margin:auto}.stats div{background:#f5f5f7;border-radius:22px;padding:20px 14px;text-align:center}
+.stats b{display:block;font-family:"Inter Tight";font-size:clamp(34px,8vw,64px);letter-spacing:-.05em;line-height:1;color:var(--a)}.stats span{font-size:12px;color:#6e6e73}
+.tiles{display:grid;gap:10px;padding:56px 12px 0;max-width:1100px;margin:auto}.tile{position:relative;border-radius:24px;overflow:hidden;min-height:190px;color:#fff;display:flex;align-items:flex-end}
+.tile img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .8s}.tile:hover img{transform:scale(1.05)}.tile:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,0) 30%,rgba(0,0,0,.7))}
+.tile div{position:relative;z-index:2;padding:20px}.tile h3{font-size:26px}.tile p{opacity:.85;font-size:14px}.tile em{font-style:normal;font-size:12px;font-weight:700;background:var(--a);border-radius:99px;padding:3px 10px;display:inline-block;margin-top:8px}
+.s{max-width:820px;margin:auto;padding:70px 20px 0}.s h2{font-size:clamp(28px,5vw,46px);margin-bottom:16px}
+iframe.map{height:400px;margin-top:70px}
+footer{overflow:hidden;white-space:nowrap;background:#1d1d1f;color:#f5f5f7;padding:28px 0 22px}footer .fm{display:inline-block;animation:mq 30s linear infinite;font-family:"Inter Tight";font-size:40px;font-weight:800;letter-spacing:-.04em}
+footer p{white-space:normal;text-align:center;font-size:12px;color:#a1a1a6;margin-top:16px;padding:0 20px}footer a{color:#fff;text-decoration:underline}
+@media(min-width:800px){.tiles{grid-template-columns:1fr 1fr}}
+.v2 .mq{background:var(--a);color:#fff;border:0}.v2 .mq span i{color:#1d1d1f}.v2 .ph img{aspect-ratio:16/10;border-radius:0}.v2 .ph{padding:0}.v2 .stats div{background:#fff;box-shadow:inset 0 0 0 1.5px #e8e8ed}.v2 .tile{min-height:240px}
+</style><!-- GoatCounter (BOLLA STUDIO) -->
+<script>window.goatcounter={path:function(p){return '/bolla-demo-py-dante-barbershop-san-lorenzo'+((p.replace(/^\/py\-dante\-barbershop\-san\-lorenzo(?=[\/?#]|$)/,'')||'/').replace(/^\?/,'/?'))}};window.bsTrack=function(sub,title){try{if(window.goatcounter&&window.goatcounter.count)window.goatcounter.count({path:'/bolla-demo-py-dante-barbershop-san-lorenzo'+sub,title:title||sub})}catch(e){}}</script>
+<script data-goatcounter="https://bollastudio.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+</head>
+<body class="t-marquee v2"><div class="demo" role="note"><b>DEMO</b>Página de muestra preparada por BOLLA STUDIO para Dante BarberShop. No es la web oficial.</div>
+<div class="sb"><b>Dante BarberShop</b><details><summary>Menú</summary><nav class="sheet"><a href="#sv">Servicios</a><a href="#hr">Horario</a><a href="#fq">Preguntas frecuentes</a><a class="pill pri" href="https://wa.me/595972168180?text=Hola%2C%20quisiera%20hacer%20una%20consulta." target="_blank" rel="noopener">Pedir turno por WhatsApp</a></nav></details></div>
+<div class="mq" aria-hidden="true"><div><span>Dante BarberShop<i>·</i></span><span>Dante BarberShop<i>·</i></span><span>Dante BarberShop<i>·</i></span><span>Dante BarberShop<i>·</i></span><span>Dante BarberShop<i>·</i></span><span>Dante BarberShop<i>·</i></span><span>Dante BarberShop<i>·</i></span><span>Dante BarberShop<i>·</i></span></div></div>
+<div class="ph"><img class="" src="photos/barber_3.webp" alt="Barbería · Dante BarberShop" fetchpriority=high decoding="async"></div><div class="cap"><span>Barbería</span><span>San Miguel</span><span class="status" data-status></span></div>
+<p class="lead">Barbería en San Lorenzo, sobre la calle Clemente Romero.</p><div class="acts"><a class="pill pri" href="https://wa.me/595972168180?text=Hola%2C%20quisiera%20hacer%20una%20consulta." target="_blank" rel="noopener">Pedir turno por WhatsApp</a><a class="pill sec" href="tel:+595972168180">Llamar</a></div>
+<section class="stats"><div data-r><b>4,9</b><span>Valoración</span></div><div data-r><b>42</b><span>reseñas en Google</span></div><div data-r><b>6</b><span>días abierto</span></div></section>
+<section class="tiles" id="sv"><article class="tile" data-r><img class="" src="photos/hair_2.webp" alt="Barbería · Dante BarberShop" loading=lazy decoding="async"><div><h3>Corte</h3><p>Clásico o degradado.</p><em>Consultar</em></div></article><article class="tile" data-r><img class="" src="photos/barber_hero.webp" alt="Barbería · Dante BarberShop" loading=lazy decoding="async"><div><h3>Barba</h3><p>Perfilado y arreglo.</p><em>Consultar</em></div></article><article class="tile" data-r><img class="" src="photos/barber_1.webp" alt="Barbería · Dante BarberShop" loading=lazy decoding="async"><div><h3>Corte + barba</h3><p>El servicio completo.</p><em>Consultar</em></div></article><article class="tile" data-r><img class="" src="photos/barber_2.webp" alt="Barbería · Dante BarberShop" loading=lazy decoding="async"><div><h3>Turno</h3><p>Consulte disponibilidad por WhatsApp.</p><em>Consultar</em></div></article></section>
+<section class="s" id="fq"><h2 data-r>Preguntas frecuentes</h2><div class="faq"><details data-r><summary>¿Cuánto cuesta?</summary><p>Cada trabajo es distinto: los precios se consultan sin compromiso.</p></details><details data-r><summary>¿Hace falta turno?</summary><p>Conviene avisar antes por teléfono o WhatsApp.</p></details><details data-r><summary>¿Dónde están?</summary><p>En Clemente Romero, San Lorenzo.</p></details></div></section>
+<section class="s" id="hr"><h2 data-r>Horario</h2><div data-r><table class="hrs"><tr data-day="0"><th>Lunes</th><td>14:00–19:30</td></tr><tr data-day="1"><th>Martes</th><td>9:00–19:30</td></tr><tr data-day="2"><th>Miércoles</th><td>9:00–19:30</td></tr><tr data-day="3"><th>Jueves</th><td>9:00–19:30</td></tr><tr data-day="4"><th>Viernes</th><td>9:00–19:30</td></tr><tr data-day="5"><th>Sábado</th><td>9:00–19:30</td></tr><tr data-day="6"><th>Domingo</th><td>Cerrado</td></tr></table><p class="note">Horario según la ficha pública; conviene confirmarlo por teléfono.</p></div><p class="note">Las reseñas destacan que Dante interpreta bien el corte que se le pide, su paciencia con los chicos, un local limpio y agradable y precios accesibles. 42 reseñas con un promedio de 4,9. Resumen neutral de reseñas públicas de Google Maps. Sin citas textuales.</p></section>
+<iframe class="map" loading="lazy" title="Mapa" referrerpolicy="no-referrer-when-downgrade" src="https://maps.google.com/maps?q=Dante%20BarberShop%2C%20Clemente%20Romero%2C%20San%20Lorenzo&z=16&output=embed"></iframe>
+<footer><div class="fm">Dante BarberShop · Dante BarberShop · Dante BarberShop · Dante BarberShop · Dante BarberShop · Dante BarberShop · </div><p>Clemente Romero, San Lorenzo · <a href="tel:+595972168180">+595 972 168 180</a><br>Página de muestra diseñada por <a href="https://bollastudio.com" target="_blank" rel="noopener">BOLLA STUDIO · bollastudio.com</a> · DEMO</p></footer>
+<script>
+(()=>{const io=new IntersectionObserver(es=>es.forEach(x=>{if(x.isIntersecting){x.target.classList.add('in');io.unobserve(x.target)}}),{threshold:.12,rootMargin:'0px 0px -6% 0px'});
+document.querySelectorAll('[data-r]').forEach(el=>io.observe(el));
+const H=["14:00\u201319:30", "9:00\u201319:30", "9:00\u201319:30", "9:00\u201319:30", "9:00\u201319:30", "9:00\u201319:30", null],L=["Abierto ahora", "Cerrado ahora", "Hoy", "Cerrado"],now=new Date(new Date().toLocaleString('en-US',{timeZone:'America/Asuncion'})),d=(now.getDay()+6)%7;
+document.querySelectorAll('[data-day="'+d+'"]').forEach(x=>x.classList.add('today'));
+if(H){const v=H[d];let on=false;if(v){if(/24/.test(v)&&!/:/.test(v))on=true;const m=v.match(/(\d+):(\d+)\D+(\d+):(\d+)/);if(m){const a=+m[1]*60+ +m[2];let b=+m[3]*60+ +m[4];if(b<=a)b+=1440;const t=now.getHours()*60+now.getMinutes();on=(t>=a&&t<b)||(t+1440<b)}}
+document.querySelectorAll('[data-status]').forEach(x=>{x.textContent=(on?L[0]:L[1])+' · '+L[2]+' '+(v||L[3]);x.classList.toggle('on',on)})}
+document.querySelectorAll('[data-count]').forEach(el=>{const to=parseFloat(el.dataset.count),dec=el.dataset.dec|0,o=new IntersectionObserver(es=>{if(es[0].isIntersecting){o.disconnect();const t0=performance.now(),f=t=>{const k=Math.min(1,(t-t0)/1400);el.textContent=(to*(1-Math.pow(1-k,3))).toFixed(dec).replace('.',',');if(k<1)requestAnimationFrame(f)};requestAnimationFrame(f)}});o.observe(el)});
+document.querySelectorAll('[data-scale]').forEach(el=>{const f=()=>{const r=el.getBoundingClientRect(),k=Math.max(0,Math.min(1,1-r.top/innerHeight));el.style.transform='scale('+(0.92+0.08*k)+')'};addEventListener('scroll',f,{passive:true});f()});
+const nb=document.querySelector('[data-navbg]');if(nb){const f=()=>nb.classList.toggle('solid',scrollY>40);addEventListener('scroll',f,{passive:true});f()}
+})();
+</script></body></html>

@@ -1,0 +1,494 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>DEMO · Agente WhatsApp per Specchietto e Specillo – Studio Dentistico Fiori</title>
+<meta name="description" content="Demo: come un agente WhatsApp fissa gli appuntamenti calcolando la durata di ogni trattamento, per lo Studio Dentistico Fiori di Iglesias.">
+<meta name="robots" content="noindex">
+<link rel="icon" href="fav.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--teal:#00a8aa;--teal-d:#007f82;--teal-l:#e3f5f5;--sky:#b8dcff;--steel:#7a8a9c;--ink:#16323a;--muted:#5d7178;--bg:#f4f8f9;--card:#fff;--line:#dbe7ea;--wa:#e7ffdb;--wa-bg:#efeae2;--ok:#1f9d61;--warn:#c47a00;--r:18px}
+*{box-sizing:border-box}html,body{margin:0}body{font-family:"Plus Jakarta Sans",system-ui,-apple-system,Segoe UI,Roboto,sans-serif;color:var(--ink);background:var(--bg);-webkit-font-smoothing:antialiased}
+button{font:inherit;cursor:pointer}
+.banner{background:repeating-linear-gradient(135deg,#0d5f62 0 14px,#0f6a6d 14px 28px);color:#fff;text-align:center;font-size:13px;padding:8px 12px;letter-spacing:.02em}
+.banner b{background:#fff;color:#0d5f62;border-radius:6px;padding:2px 8px;margin-right:8px;letter-spacing:.12em}
+header{background:#fff;border-bottom:1px solid var(--line)}
+.hwrap{max-width:1240px;margin:0 auto;padding:14px 20px;display:flex;align-items:center;gap:16px;justify-content:space-between}
+.hwrap img{height:48px;width:auto;display:block}
+.hinfo{font-size:13px;color:var(--muted);text-align:right;line-height:1.45}
+.hinfo strong{color:var(--ink)}
+.intro{max-width:1240px;margin:0 auto;padding:28px 20px 8px}
+.kicker{display:inline-block;font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--teal-d);background:var(--teal-l);padding:5px 10px;border-radius:999px}
+h1{font-size:clamp(26px,3.4vw,40px);line-height:1.15;margin:12px 0 8px;letter-spacing:-.02em}
+.intro p{color:var(--muted);max-width:780px;margin:0;font-size:16px;line-height:1.55}
+.stage{max-width:1240px;margin:0 auto;padding:20px;display:grid;grid-template-columns:380px 1fr;gap:28px;align-items:start}
+/* phone */
+.phone{background:#0f1f24;border-radius:42px;padding:12px;box-shadow:0 30px 60px -25px rgba(10,50,60,.45);position:sticky;top:16px}
+.screen{background:var(--wa-bg);border-radius:32px;overflow:hidden;height:640px;display:flex;flex-direction:column}
+.sbar{display:flex;justify-content:space-between;padding:10px 22px 4px;font-size:12px;font-weight:700;background:#075e54;color:#fff}
+.wahead{background:#075e54;color:#fff;display:flex;align-items:center;gap:10px;padding:8px 14px 12px}
+.wahead .av{width:38px;height:38px;border-radius:50%;background:#fff url(fav.jpg) center/80% no-repeat;flex:none}
+.wahead .nm{font-weight:700;font-size:14.5px;line-height:1.2}.wahead .st{font-size:12px;opacity:.85}
+.chat{flex:1;overflow-y:auto;padding:12px 10px 14px;display:flex;flex-direction:column;gap:6px;scroll-behavior:smooth;background-image:radial-gradient(rgba(0,0,0,.035) 1px,transparent 1px);background-size:14px 14px}
+.chat::-webkit-scrollbar{width:0}
+.b{min-width:86px;max-width:84%;padding:7px 10px 18px;border-radius:10px;font-size:14px;line-height:1.4;position:relative;box-shadow:0 1px 1px rgba(0,0,0,.08);animation:pop .28s ease-out both;word-wrap:break-word}
+.b .tm{position:absolute;right:8px;bottom:3px;font-size:10.5px;color:#667781}
+.b.in{align-self:flex-start;background:#fff;border-top-left-radius:2px}
+.b.out{align-self:flex-end;background:var(--wa);border-top-right-radius:2px}
+.b .who{display:block;font-size:12px;font-weight:700;color:var(--teal-d);margin-bottom:2px}
+.b.human .who{color:#b5446e}
+.b.sys{align-self:center;background:#fff7d6;color:#6b5a1e;font-size:12px;padding:6px 10px;text-align:center;max-width:92%}
+.div{align-self:center;background:#e1f2fb;color:#3c5a66;font-size:12px;font-weight:600;padding:5px 12px;border-radius:8px;margin:6px 0;animation:pop .28s both}
+.chips{display:flex;flex-wrap:wrap;gap:6px;align-self:flex-start;max-width:92%;animation:pop .3s both}
+.chips span{background:#fff;border:1px solid #cde3e4;color:var(--teal-d);font-size:12.5px;font-weight:600;padding:5px 10px;border-radius:999px}
+.chips span.sel{background:var(--teal);color:#fff;border-color:var(--teal)}
+.typing{align-self:flex-start;background:#fff;border-radius:10px;padding:10px 14px;display:flex;gap:4px;animation:pop .2s both}
+.typing i{width:7px;height:7px;border-radius:50%;background:#9aa9ae;animation:blink 1s infinite}.typing i:nth-child(2){animation-delay:.15s}.typing i:nth-child(3){animation-delay:.3s}
+.wainput{display:flex;gap:8px;padding:8px 10px 12px;background:var(--wa-bg)}
+.wainput div{flex:1;background:#fff;border-radius:22px;padding:10px 14px;font-size:13px;color:#8696a0}
+.wainput span{width:40px;height:40px;border-radius:50%;background:#00a884;display:grid;place-items:center;color:#fff;font-size:16px}
+@keyframes pop{from{opacity:0;transform:translateY(6px) scale(.98)}to{opacity:1;transform:none}}
+@keyframes blink{0%,60%,100%{opacity:.3}30%{opacity:1}}
+/* right side */
+.side{display:flex;flex-direction:column;gap:16px;min-width:0}
+.scenehead{display:flex;gap:14px;align-items:center}
+.snum{width:44px;height:44px;border-radius:14px;background:var(--teal);color:#fff;font-weight:800;display:grid;place-items:center;font-size:18px;flex:none}
+.scenehead h2{margin:0;font-size:22px;letter-spacing:-.01em}.scenehead p{margin:2px 0 0;color:var(--muted);font-size:14.5px}
+.panel{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:20px;min-height:430px;box-shadow:0 10px 30px -22px rgba(10,60,70,.35);position:relative;overflow:hidden}
+.card{display:none;animation:fade .35s both}.card.on{display:block}
+@keyframes fade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.lbl{font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin:0 0 10px}
+.esempio{display:inline-block;background:#fff1d6;color:#8a5a00;border:1px dashed #e0a43a;font-size:11.5px;font-weight:800;letter-spacing:.06em;padding:4px 9px;border-radius:8px;margin-bottom:12px}
+.hours{width:100%;border-collapse:collapse;font-size:14.5px}
+.hours td{padding:9px 10px;border-bottom:1px solid var(--line)}
+.hours td:last-child{text-align:right;font-weight:600}
+.hours tr.closed td{color:#a0563a}.hours tr.today td{background:var(--teal-l)}
+.status{display:flex;gap:12px;flex-wrap:wrap;margin-top:16px}
+.pill{display:inline-flex;align-items:center;gap:8px;border-radius:999px;padding:8px 14px;font-weight:700;font-size:13.5px}
+.pill.red{background:#fde8e3;color:#a33b22}.pill.green{background:#ddf5e8;color:#16764a}
+.dot{width:9px;height:9px;border-radius:50%;background:currentColor;box-shadow:0 0 0 0 currentColor;animation:pulse 1.6s infinite}
+@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(31,157,97,.5)}100%{box-shadow:0 0 0 10px rgba(31,157,97,0)}}
+.tags{display:flex;flex-wrap:wrap;gap:10px;margin:10px 0 18px}
+.tag{background:var(--teal-l);color:var(--teal-d);font-weight:700;border-radius:12px;padding:10px 14px;font-size:15px;opacity:0;transform:scale(.9);transition:.35s}
+.tag.on{opacity:1;transform:none}
+.note{font-size:13.5px;color:var(--muted);line-height:1.5;background:#f6fafb;border-left:3px solid var(--teal);padding:10px 12px;border-radius:8px}
+.ttable{width:100%;border-collapse:separate;border-spacing:0;font-size:14px;margin-bottom:14px}
+.ttable th{text-align:left;font-size:12px;color:var(--muted);font-weight:700;padding:6px 10px;border-bottom:1px solid var(--line)}
+.ttable td{padding:8px 10px;border-bottom:1px solid var(--line);transition:background .3s}
+.ttable td:last-child,.ttable th:last-child{text-align:right;font-weight:700;white-space:nowrap}
+.ttable tr.hit td{background:#fff6dc}.ttable tr.match td{background:#d9f3ef;color:#0b5f55}
+.result{display:flex;align-items:center;justify-content:space-between;gap:10px;background:var(--ink);color:#fff;border-radius:14px;padding:14px 18px;opacity:0;transform:translateY(6px);transition:.4s}
+.result.on{opacity:1;transform:none}.result b{font-size:24px}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+/* calendar */
+.cal{display:grid;grid-template-columns:44px repeat(5,1fr);gap:6px;font-size:12px}
+.cal .hd{text-align:center;font-weight:700;padding:6px 0;border-radius:8px;background:#f1f6f7}
+.cal .hd small{display:block;font-weight:500;color:var(--muted);font-size:10.5px}
+.col{position:relative;height:300px;background:#f8fbfb;border-radius:10px;border:1px solid var(--line);overflow:hidden}
+.col.closed{background:repeating-linear-gradient(135deg,#f3e9e6 0 8px,#fbf4f2 8px 16px)}
+.col.closed::after{content:"CHIUSO";position:absolute;inset:0;display:grid;place-items:center;font-weight:800;color:#a0563a;letter-spacing:.12em;font-size:11px;writing-mode:vertical-rl}
+.col .off{position:absolute;left:0;right:0;background:#eef1f2}
+.ev{position:absolute;left:3px;right:3px;border-radius:6px;background:#cfdde2;color:#3f5962;font-size:10px;padding:2px 4px;overflow:hidden;white-space:nowrap;text-overflow:ellipsis}
+.legend{display:flex;gap:14px;flex-wrap:wrap;font-size:12px;color:var(--muted);margin-top:10px}.legend i{display:inline-block;width:12px;height:12px;border-radius:3px;vertical-align:-2px;margin-right:5px}
+.ev.free{background:transparent;border:2px dashed var(--ok);color:var(--ok);font-weight:800;opacity:0;transition:.4s}
+.ev.free.on{opacity:1;background:#e3f7ec}
+.ev.booked{background:var(--teal);color:#fff;font-weight:700;border:none}
+.hrs{position:relative;height:300px;font-size:10px;color:var(--muted)}
+.hrs span{position:absolute;right:4px;transform:translateY(-50%)}
+.scan{position:absolute;top:0;bottom:0;width:3px;background:var(--warn);box-shadow:0 0 12px var(--warn);opacity:0;transition:left .8s ease,opacity .3s}
+.calwrap{position:relative}
+.colwrap.scanning .col{outline:2px solid var(--warn)}
+.colwrap.skip .col{outline:2px solid #d9826a}
+.colwrap.found .col{outline:2px solid var(--ok)}
+.sheet{width:100%;border-collapse:collapse;font-size:13px;font-family:ui-monospace,SFMono-Regular,Menlo,monospace}
+.sheet th{background:#1d6f42;color:#fff;font-weight:600;padding:7px 8px;text-align:left;font-family:"Plus Jakarta Sans",sans-serif;font-size:12px}
+.sheet td{border:1px solid #d6e2d9;padding:7px 8px;white-space:nowrap}
+.sheet tr.new td{background:#e5f6ea;animation:flash 1.4s 2}
+@keyframes flash{50%{background:#bfeccc}}
+.sheetwrap{overflow-x:auto;border-radius:10px;border:1px solid #d6e2d9}
+.src{display:flex;gap:8px;flex-wrap:wrap;margin:14px 0 0}.src span{border:1px solid var(--line);border-radius:999px;padding:5px 11px;font-size:12.5px;color:var(--muted);font-weight:600}
+.src span.act{border-color:var(--teal);color:var(--teal-d);background:var(--teal-l)}
+.group{background:var(--wa-bg);border-radius:14px;overflow:hidden;border:1px solid var(--line);max-width:520px}
+.group .gh{background:#075e54;color:#fff;padding:10px 14px;font-weight:700;font-size:14px}
+.group .gh small{display:block;font-weight:500;opacity:.85;font-size:12px}
+.group .gb{padding:12px;display:flex;flex-direction:column;gap:6px;min-height:200px}
+.call{display:flex;gap:14px;align-items:center;background:#0f2a30;color:#fff;border-radius:16px;padding:16px;margin-top:14px;opacity:.35;transition:.4s}
+.call.on{opacity:1}
+.ring{width:52px;height:52px;border-radius:50%;background:var(--ok);display:grid;place-items:center;font-size:22px;flex:none}
+.call.on .ring{animation:ring 1.2s infinite}
+@keyframes ring{0%{box-shadow:0 0 0 0 rgba(31,157,97,.6)}100%{box-shadow:0 0 0 16px rgba(31,157,97,0)}}
+.call p{margin:4px 0 0;font-size:13px;opacity:.9;line-height:1.45}
+.rem{display:flex;gap:10px;align-items:center;font-size:14px;padding:10px 0;border-bottom:1px solid var(--line)}
+.rem .ck{width:22px;height:22px;border-radius:6px;border:2px solid var(--line);display:grid;place-items:center;color:#fff;font-size:13px;transition:.3s;flex:none}
+.rem.on .ck{background:var(--ok);border-color:var(--ok)}
+.dash{border:1px solid var(--line);border-radius:14px;overflow:hidden}
+.dash .dh{display:flex;justify-content:space-between;align-items:center;padding:12px 14px;background:#f1f6f7;font-weight:700;font-size:14px;gap:8px;flex-wrap:wrap}
+.conv{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:12px 14px;border-top:1px solid var(--line);font-size:13.5px}
+.conv.hl{background:#fff6dc}
+.badge{font-size:11.5px;font-weight:800;padding:4px 9px;border-radius:999px;white-space:nowrap}
+.badge.ai{background:var(--teal-l);color:var(--teal-d)}.badge.hu{background:#fbe3ec;color:#a3355f}
+.takeover{background:#b5446e;color:#fff;border:none;border-radius:10px;padding:9px 14px;font-weight:700;font-size:13px;transition:.25s}
+.takeover.pressed{transform:scale(.94);box-shadow:0 0 0 6px rgba(181,68,110,.25)}
+.finalcta{margin-top:16px;display:none;background:linear-gradient(135deg,var(--teal),#0b7d86);color:#fff;border-radius:14px;padding:16px 18px;font-size:15px;line-height:1.5}
+.finalcta.on{display:block;animation:fade .4s both}
+/* controls */
+.controls{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:12px 14px;display:flex;flex-direction:column;gap:10px}
+.crow{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.cbtn{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--line);background:#fff;color:var(--ink);border-radius:12px;padding:9px 14px;font-weight:700;font-size:14px;transition:.2s}
+.cbtn:hover{border-color:var(--teal);color:var(--teal-d)}
+.cbtn.primary{background:var(--teal);border-color:var(--teal);color:#fff;min-width:112px;justify-content:center}
+.cbtn.primary:hover{background:var(--teal-d);color:#fff}
+.cbtn svg{width:16px;height:16px;fill:currentColor}
+.prog{flex:1;min-width:120px;height:8px;background:#e6eef0;border-radius:99px;overflow:hidden;cursor:pointer}
+.prog i{display:block;height:100%;width:0;background:var(--teal);border-radius:99px}
+.tc{font-size:12.5px;color:var(--muted);font-variant-numeric:tabular-nums;min-width:74px;text-align:right}
+.steps{display:flex;gap:6px;overflow-x:auto;scrollbar-width:none;padding-bottom:2px}.steps::-webkit-scrollbar{display:none}
+.steps button{border:1px solid var(--line);background:#f7fafb;border-radius:999px;padding:6px 11px;font-size:12.5px;font-weight:600;color:var(--muted);white-space:nowrap}
+.steps button.on{background:var(--ink);color:#fff;border-color:var(--ink)}
+.steps button.done{color:var(--teal-d);border-color:#bfe3e3}
+/* benefits */
+.benefits{max-width:1240px;margin:8px auto 0;padding:20px}
+.benefits h2{font-size:26px;margin:0 0 6px;letter-spacing:-.01em}.benefits>p{color:var(--muted);margin:0 0 18px}
+.bgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.bcard{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:20px}
+.bcard .ic{width:46px;height:46px;border-radius:14px;background:var(--teal-l);display:grid;place-items:center;font-size:22px;margin-bottom:12px}
+.bcard h3{margin:0 0 6px;font-size:17px}.bcard p{margin:0;color:var(--muted);font-size:14.5px;line-height:1.55}
+.how{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:16px}
+.how div{background:#fff;border:1px dashed #bcd8db;border-radius:14px;padding:14px;font-size:14px;color:var(--muted);line-height:1.5}
+.how b{display:block;color:var(--ink);margin-bottom:4px}
+footer{max-width:1240px;margin:10px auto 0;padding:24px 20px 40px;color:var(--muted);font-size:13px;line-height:1.6;border-top:1px solid var(--line)}
+footer a{color:var(--teal-d);font-weight:600}
+@media (max-width:1024px){.stage{grid-template-columns:340px 1fr}.how{grid-template-columns:1fr 1fr}}
+@media (max-width:820px){
+ .stage{grid-template-columns:1fr;gap:16px;padding:14px}
+ .phone{position:relative;top:0;max-width:370px;width:100%;margin:0 auto;border-radius:36px;padding:9px}
+ .screen{height:520px;border-radius:28px}
+ .hinfo{display:none}.hwrap{justify-content:center}.hwrap img{height:42px}
+ .intro{padding:18px 16px 0}.intro p{font-size:14.5px}
+ h1{font-size:24px}
+ .panel{min-height:0;padding:16px}
+ .grid2,.bgrid,.how{grid-template-columns:1fr}
+ .controls{position:fixed;left:8px;right:8px;bottom:8px;z-index:20;box-shadow:0 10px 30px -6px rgba(0,0,0,.28);padding:10px}
+ body{padding-bottom:118px}
+ .side{display:contents}
+ .stage>.phone{order:0}.controls{order:1}.scenehead{order:2}.panel{order:3}
+ .col,.hrs{height:240px}
+ .ev:not(.free){font-size:0;padding:0}
+ .benefits{padding:16px}
+}
+@media (max-width:420px){.cbtn .t{display:none}.cbtn.primary .t{display:inline}.tc{min-width:0}.scenehead h2{font-size:19px}}
+</style>
+<!-- GoatCounter (BOLLA STUDIO) -->
+<script>window.goatcounter={path:function(p){return '/studio-fiori-demo'+((p.replace(/^\/studio\-fiori(?=[\/?#]|$)/,'')||'/').replace(/^\?/,'/?'))}};window.bsTrack=function(sub,title){try{if(window.goatcounter&&window.goatcounter.count)window.goatcounter.count({path:'/studio-fiori-demo'+sub,title:title||sub})}catch(e){}}</script>
+<script data-goatcounter="https://bollastudio.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+</head>
+<body>
+<div class="banner"><b>DEMO</b>Simulazione dimostrativa preparata da BOLLA STUDIO · pazienti, agenda e tempi sono di esempio</div>
+<header><div class="hwrap">
+ <img src="logo.png" alt="Specchietto e Specillo – centro odontoiatrico" width="400" height="107">
+ <div class="hinfo"><strong>Studio Dentistico Fiori · Specchietto e Specillo</strong><br>Via Baracca 47, 09016 Iglesias (SU) · +39 328 838 2355</div>
+</div></header>
+
+<section class="intro">
+ <span class="kicker">Agente WhatsApp 24h · demo</span>
+ <h1>Il paziente prenota anche a studio chiuso.<br>Con i tempi giusti per ogni trattamento.</h1>
+ <p>Guardi il flusso completo: l’agente capisce quali cure servono, calcola quanto tempo riservare, trova lo spazio libero in agenda (rispettando il mercoledì di chiusura), avvisa il team e manda il promemoria. E la segreteria può intervenire in qualsiasi momento.</p>
+</section>
+
+<main class="stage" id="stage">
+ <div class="phone" aria-label="Simulazione chat WhatsApp">
+  <div class="screen">
+   <div class="sbar"><span id="clock">21:30</span><span>▂▄▆ 🔋</span></div>
+   <div class="wahead"><div class="av"></div><div><div class="nm">Specchietto e Specillo</div><div class="st" id="wastatus">Assistente virtuale · online</div></div></div>
+   <div class="chat" id="chat" aria-live="polite"></div>
+   <div class="wainput"><div>Scrivi un messaggio</div><span>➤</span></div>
+  </div>
+ </div>
+
+ <div class="side">
+  <div class="controls" id="controls">
+   <div class="crow">
+    <button class="cbtn primary" id="btnPlay" aria-label="Pausa"><svg viewBox="0 0 24 24" id="icoPlay"><path d="M6 5h4v14H6zM14 5h4v14h-4z"/></svg><span class="t" id="lblPlay">Pausa</span></button>
+    <button class="cbtn" id="btnPrev" aria-label="Scena precedente"><svg viewBox="0 0 24 24"><path d="M6 6h2v12H6zM20 6v12L9.5 12z"/></svg><span class="t">Indietro</span></button>
+    <button class="cbtn" id="btnNext" aria-label="Scena successiva"><svg viewBox="0 0 24 24"><path d="M16 6h2v12h-2zM4 6v12l10.5-6z"/></svg><span class="t">Avanti</span></button>
+    <button class="cbtn" id="btnRestart" aria-label="Ripeti dall'inizio"><svg viewBox="0 0 24 24"><path d="M12 5V2L7 6l5 4V7a5 5 0 1 1-5 5H5a7 7 0 1 0 7-7z"/></svg><span class="t">Ripeti</span></button>
+    <div class="prog" id="prog" title="Vai a un punto della demo"><i id="bar"></i></div>
+    <span class="tc" id="tc">0:00 / 0:00</span>
+   </div>
+   <div class="steps" id="steps"></div>
+  </div>
+  <div class="scenehead"><div class="snum" id="snum">1</div><div><h2 id="stitle"></h2><p id="ssub"></p></div></div>
+  <div class="panel" id="panel">
+
+   <!-- 1 -->
+   <div class="card" id="c0">
+    <p class="lbl">Orari dello studio (dal vostro sito)</p>
+    <table class="hours">
+     <tr><td>Lunedì</td><td>10.00 – 18.00</td></tr>
+     <tr class="today"><td>Martedì <small>· oggi</small></td><td>9.00 – 20.00</td></tr>
+     <tr class="closed"><td>Mercoledì</td><td>Chiuso</td></tr>
+     <tr><td>Giovedì</td><td>9.00 – 20.00</td></tr>
+     <tr><td>Venerdì</td><td>9.00 – 13.00</td></tr>
+    </table>
+    <div class="status"><span class="pill red">● Ore 21:30 · studio chiuso</span><span class="pill green" id="agentOn" style="opacity:0;transition:.4s"><span class="dot"></span> Agente WhatsApp attivo 24h</span></div>
+    <p class="note" style="margin-top:16px">Il messaggio non resta senza risposta fino al giorno dopo: l’agente risponde subito, con il tono e le informazioni del vostro studio.</p>
+   </div>
+
+   <!-- 2 -->
+   <div class="card" id="c1">
+    <p class="lbl">Trattamenti riconosciuti nel messaggio</p>
+    <div class="tags"><span class="tag" id="t1">🦷 Devitalizzazione</span><span class="tag" id="t2">✨ Pulizia (igiene)</span><span class="tag" id="t3">🔧 Estrazione</span></div>
+    <p class="note">L’agente fa domande semplici e riconosce le cure anche se il paziente le scrive “a parole sue”. Se il caso non è chiaro (dolore forte, urgenza, trattamento non in elenco) passa la conversazione alla segreteria.</p>
+   </div>
+
+   <!-- 3 -->
+   <div class="card" id="c2">
+    <span class="esempio">⚠ ESEMPIO, da configurare con i vostri tempi</span>
+    <div class="grid2">
+     <div><p class="lbl">Tempi per trattamento</p>
+      <table class="ttable">
+       <tr><th>Trattamento</th><th>Durata</th></tr>
+       <tr id="r1"><td>Pulizia / igiene</td><td>45'</td></tr>
+       <tr id="r2"><td>Devitalizzazione</td><td>60–90'</td></tr>
+       <tr id="r3"><td>Estrazione semplice</td><td>30'</td></tr>
+       <tr><td>Prima visita</td><td>30'</td></tr>
+       <tr><td>Controllo</td><td>20'</td></tr>
+      </table></div>
+     <div><p class="lbl">Combinazioni nella stessa seduta</p>
+      <table class="ttable">
+       <tr><th>Combinazione</th><th>Durata</th></tr>
+       <tr><td>Pulizia + estrazione</td><td>75'</td></tr>
+       <tr><td>Devitalizzazione + pulizia</td><td>120'</td></tr>
+       <tr id="r4"><td>Devitalizzazione + pulizia + estrazione</td><td>150'</td></tr>
+       <tr><td>Combinazione non prevista</td><td>→ segreteria</td></tr>
+      </table></div>
+    </div>
+    <div class="result" id="res"><span>Tempo da riservare in agenda</span><b>150' · 2 h 30</b></div>
+   </div>
+
+   <!-- 4 -->
+   <div class="card" id="c3">
+    <span class="esempio">⚠ Agenda di ESEMPIO · in produzione si legge la vostra agenda reale</span>
+    <p class="lbl">Ricerca di uno spazio libero di 150' · settimana corrente</p>
+    <div class="calwrap"><div class="cal" id="cal"></div></div>
+    <div class="legend"><span><i style="background:#cfdde2"></i>occupato</span><span><i style="background:#e3f7ec;border:2px dashed #1f9d61"></i>spazio libero di 150'</span><span><i style="background:#f3e9e6"></i>studio chiuso</span></div>
+   </div>
+
+   <!-- 5 -->
+   <div class="card" id="c4">
+    <p class="lbl">Appuntamento scritto in automatico</p>
+    <div class="sheetwrap"><table class="sheet" id="sheet">
+     <tr><th>Giorno</th><th>Ora</th><th>Paziente</th><th>Trattamenti</th><th>Durata</th><th>Sala</th><th>Origine</th></tr>
+     <tr><td>Giovedì</td><td>09:00</td><td>— (esempio)</td><td>Prima visita</td><td>30'</td><td>1</td><td>Telefono</td></tr>
+     <tr><td>Giovedì</td><td>11:00</td><td>— (esempio)</td><td>Igiene</td><td>45'</td><td>2</td><td>Segreteria</td></tr>
+    </table></div>
+    <div class="src"><span>Google Calendar</span><span>Gestionale dello studio</span><span class="act">Excel / Google Sheets</span></div>
+    <p class="note" style="margin-top:14px">Si collega a ciò che usate già: agenda, gestionale o un semplice foglio Excel. Nessun cambio di abitudini per il team.</p>
+   </div>
+
+   <!-- 6 -->
+   <div class="card" id="c5">
+    <p class="lbl">Avviso nel gruppo WhatsApp del team</p>
+    <div class="group"><div class="gh">👥 Team Studio · dottori e assistenti<small>Gruppo WhatsApp interno</small></div><div class="gb" id="groupbody"></div></div>
+   </div>
+
+   <!-- 7 -->
+   <div class="card" id="c6">
+    <p class="lbl">Promemoria automatici</p>
+    <div class="rem" id="rm1"><span class="ck">✓</span>Messaggio WhatsApp il giorno prima, alle 18:00</div>
+    <div class="rem" id="rm2"><span class="ck">✓</span>Il paziente conferma o chiede di spostare con un tocco</div>
+    <div class="rem" id="rm3"><span class="ck">✓</span>Se non risponde: chiamata vocale automatica (opzionale)</div>
+    <div class="call" id="call"><div class="ring">📞</div><div><strong>Chiamata vocale · promemoria</strong><p>«Buonasera, la chiamo dallo studio Specchietto e Specillo per ricordarle l’appuntamento di domani, giovedì, alle 15:00. Per confermare dica “sì”…»</p></div></div>
+    <p class="note" style="margin-top:14px">Il promemoria parte anche di mercoledì, quando lo studio è chiuso.</p>
+   </div>
+
+   <!-- 8 -->
+   <div class="card" id="c7">
+    <p class="lbl">Pannello della segreteria</p>
+    <div class="dash">
+     <div class="dh"><span>Conversazioni WhatsApp</span><button class="takeover" id="take" tabindex="-1">✋ Prendi il controllo</button></div>
+     <div class="conv hl"><span><b>Paziente di esempio</b><br><small>«posso portare anche mia figlia…»</small></span><span class="badge ai" id="convbadge">🤖 Agente</span></div>
+     <div class="conv"><span>Paziente di esempio 2<br><small>Conferma promemoria ✓</small></span><span class="badge ai">🤖 Agente</span></div>
+     <div class="conv"><span>Paziente di esempio 3<br><small>Domanda su un preventivo</small></span><span class="badge hu">👩‍💼 Segreteria</span></div>
+    </div>
+    <p class="note" style="margin-top:14px"><b>Il controllo resta sempre umano.</b> La segreteria vede tutte le conversazioni, può rispondere al posto dell’agente, correggere o spostare un appuntamento e mettere in pausa l’automazione quando vuole.</p>
+    <div class="finalcta" id="final">✅ Fine della demo. Questo è solo un esempio: tempi, combinazioni, messaggi e regole si configurano insieme a voi, sul modo in cui lavora il vostro studio.</div>
+   </div>
+
+  </div>
+ </div>
+</main>
+
+<section class="benefits">
+ <h2>Cosa cambia per lo studio</h2>
+ <p>Meno lavoro ripetitivo, più tempo per le persone.</p>
+ <div class="bgrid">
+  <div class="bcard"><div class="ic">☎️</div><h3>Meno ore al telefono</h3><p>Richieste di appuntamento, conferme e promemoria li gestisce l’agente. La segreteria interviene solo dove serve davvero.</p></div>
+  <div class="bcard"><div class="ic">🤝</div><h3>Più tempo con i pazienti in studio</h3><p>Meno interruzioni durante le sedute e più attenzione per chi è in sala d’attesa o in poltrona.</p></div>
+  <div class="bcard"><div class="ic">🌙</div><h3>Nessun paziente perso a studio chiuso</h3><p>La sera, il mercoledì o durante le cure: chi scrive riceve subito una risposta e un orario.</p></div>
+ </div>
+ <div class="how">
+  <div><b>1 · I vostri tempi</b>Ci indicate trattamenti, durate e combinazioni (o li ricaviamo dallo storico appuntamenti).</div>
+  <div><b>2 · Le vostre regole</b>Orari, sale, pause, casi da passare sempre alla segreteria.</div>
+  <div><b>3 · I vostri strumenti</b>Agenda, gestionale o Excel, e il gruppo WhatsApp del team.</div>
+  <div><b>4 · Voi decidete</b>La segreteria può intervenire, correggere o fermare l’agente in ogni momento.</div>
+ </div>
+</section>
+
+<footer>
+ Demo preparata per <strong>Studio Dentistico Fiori – Specchietto e Specillo</strong>, Via Baracca 47, 09016 Iglesias (SU). Orari e dati dello studio ripresi dal sito <a href="https://www.studiodentisticofiori.eu/" target="_blank" rel="noopener">studiodentisticofiori.eu</a>; pazienti, agenda e tempi dei trattamenti sono di esempio.<br>
+ Realizzata da <strong>BOLLA STUDIO</strong> – studio di ingegneria del software (app, agenti IA, automazioni) · <a href="https://bollastudio.com" target="_blank" rel="noopener">bollastudio.com</a> · <a href="https://www.linkedin.com/in/marcelo-bolla-ai" target="_blank" rel="noopener">LinkedIn</a> · <a href="https://wa.me/393445240254" target="_blank" rel="noopener">WhatsApp +39 344 524 0254</a>
+</footer>
+
+<script>
+(function(){
+const $=s=>document.querySelector(s);
+const chat=$('#chat');
+const SCENES=[
+ {t:'21:30, studio chiuso: il paziente scrive',s:'Martedì sera. Nessuno al telefono, ma l’agente risponde subito.'},
+ {t:'Quale trattamento serve?',s:'L’agente chiede le cure indicate dal dottore.'},
+ {t:'Calcolo della durata',s:'Tempi per trattamento e per combinazione: la seduta giusta, non un orario a caso.'},
+ {t:'Ricerca nell’agenda reale',s:'Cerca 150 minuti liberi, salta il mercoledì (chiuso) e propone gli orari.'},
+ {t:'Conferma e registrazione',s:'Il paziente sceglie, l’appuntamento si scrive in agenda o in Excel.'},
+ {t:'Avviso al team',s:'Dottori e assistenti lo vedono subito nel gruppo WhatsApp.'},
+ {t:'Promemoria il giorno prima',s:'WhatsApp automatico e, se serve, una chiamata vocale.'},
+ {t:'La segreteria può intervenire sempre',s:'L’umano ha sempre il controllo.'}
+];
+// ---- chat helpers
+function scroll(){chat.scrollTop=chat.scrollHeight}
+function typing(on){const t=chat.querySelector('.typing');if(t)t.remove();if(on){const d=document.createElement('div');d.className='typing';d.innerHTML='<i></i><i></i><i></i>';chat.appendChild(d)}scroll()}
+function msg(side,html,time,who,cls){typing(false);const d=document.createElement('div');d.className='b '+(side==='p'?'out':'in')+(cls?' '+cls:'');d.innerHTML=(who?'<span class="who">'+who+'</span>':'')+html+'<span class="tm">'+time+(side==='p'?' ✓✓':'')+'</span>';chat.appendChild(d);scroll()}
+function sys(html){const d=document.createElement('div');d.className='b sys';d.innerHTML=html;chat.appendChild(d);scroll()}
+function divider(t){const d=document.createElement('div');d.className='div';d.textContent=t;chat.appendChild(d);scroll()}
+function chips(list,id){const d=document.createElement('div');d.className='chips';if(id)d.id=id;d.innerHTML=list.map(x=>'<span>'+x+'</span>').join('');chat.appendChild(d);scroll()}
+function sel(id,i){const c=document.getElementById(id);if(c)c.children[i].classList.add('sel')}
+function on(id){const e=document.getElementById(id);if(e)e.classList.add('on')}
+function clock(t){$('#clock').textContent=t}
+const A='Assistente virtuale';
+// ---- calendar
+const DAYS=[['Lun',600,1080],['Mar',540,1200],['Mer',null,null],['Gio',540,1200],['Ven',540,780]];
+const START=540,END=1200,H=()=>document.querySelector('.col').clientHeight;
+function y(m){return (m-START)/(END-START)*100}
+const BUSY={0:[[600,690],[720,780],[900,1020]],1:[[540,600],[630,750],[840,960],[1020,1140]],3:[[540,570],[660,705],[720,840],[1080,1170]],4:[[540,570],[720,780]]};
+function hm(m){return Math.floor(m/60)+':'+String(m%60).padStart(2,'0')}
+function buildCal(){
+ const c=$('#cal');let h='<div></div>';DAYS.forEach(d=>h+='<div class="hd">'+d[0]+(d[1]===null?'<small>chiuso</small>':'<small>'+hm(d[1])+'–'+hm(d[2])+'</small>')+'</div>');
+ h+='<div class="hrs">';for(let m=START;m<=END;m+=120)h+='<span style="top:'+y(m)+'%">'+hm(m)+'</span>';h+='</div>';
+ DAYS.forEach((d,i)=>{h+='<div class="colwrap" id="cw'+i+'"><div class="col'+(d[1]===null?' closed':'')+'" id="col'+i+'">';
+  if(d[1]!==null){if(d[1]>START)h+='<div class="off" style="top:0;height:'+y(d[1])+'%"></div>';if(d[2]<END)h+='<div class="off" style="top:'+y(d[2])+'%;bottom:0"></div>';
+   (BUSY[i]||[]).forEach(b=>h+='<div class="ev" style="top:'+y(b[0])+'%;height:'+(y(b[1])-y(b[0]))+'%">occupato</div>');}
+  if(i===3)h+='<div class="ev free" id="f1" style="top:'+y(900)+'%;height:'+(y(1050)-y(900))+'%">15:00–17:30</div>';
+  if(i===4)h+='<div class="ev free" id="f2" style="top:'+y(570)+'%;height:'+(y(720)-y(570))+'%">9:30–12:00</div>';
+  h+='</div></div>'});
+ c.innerHTML=h;
+}
+function cw(i,cls){const e=document.getElementById('cw'+i);['scanning','skip','found'].forEach(k=>e.classList.remove(k));if(cls)e.classList.add(cls)}
+// ---- timeline (ms)
+const T=[];let acc=0;const starts=[];
+function scene(dur,evs){starts.push(acc);evs.forEach(e=>T.push([acc+e[0],e[1]]));acc+=dur}
+scene(8000,[
+ [0,()=>{show(0);clock('21:30')}],
+ [400,()=>divider('Martedì')],
+ [900,()=>msg('p','Buonasera, vorrei prenotare un appuntamento. So che a quest’ora siete chiusi 😅','21:30')],
+ [2300,()=>{typing(true);$('#agentOn').style.opacity=1}],
+ [3900,()=>msg('a','Buonasera! 😊 Sono l’assistente virtuale dello studio Specchietto e Specillo. Posso fissarle l’appuntamento anche adesso.','21:30',A)],
+]);
+scene(9000,[
+ [0,()=>show(1)],
+ [300,()=>typing(true)],
+ [1500,()=>msg('a','Di quale trattamento ha bisogno? Se il dottore le ha già indicato le cure, può scriverle qui.','21:30',A)],
+ [2100,()=>chips(['Pulizia','Devitalizzazione','Estrazione','Prima visita','Altro'],'ch1')],
+ [3600,()=>msg('p','Il dottore mi ha detto devitalizzazione, poi pulizia ed estrazione','21:31')],
+ [4600,()=>on('t1')],[5200,()=>on('t2')],[5800,()=>on('t3')],
+]);
+scene(9000,[
+ [0,()=>{show(2);typing(true)}],
+ [900,()=>document.getElementById('r2').classList.add('hit')],
+ [1500,()=>document.getElementById('r1').classList.add('hit')],
+ [2100,()=>document.getElementById('r3').classList.add('hit')],
+ [3200,()=>document.getElementById('r4').classList.add('match')],
+ [4300,()=>on('res')],
+ [5600,()=>msg('a','Perfetto. Per questi tre trattamenti lo studio riserva circa <b>2 ore e 30 minuti</b>. Cerco il primo spazio libero… 🔎','21:31',A)],
+]);
+scene(10000,[
+ [0,()=>{show(3);buildCal();typing(true)}],
+ [800,()=>cw(2,'skip')],
+ [2000,()=>{cw(2,'skip');cw(3,'scanning')}],
+ [3300,()=>{cw(3,'found');on('f1')}],
+ [4300,()=>cw(4,'scanning')],
+ [5400,()=>{cw(4,'found');on('f2')}],
+ [6600,()=>msg('a','Ho trovato questi orari liberi:<br>• <b>Giovedì 15:00–17:30</b><br>• <b>Venerdì 9:30–12:00</b><br><small>(il mercoledì lo studio è chiuso)</small>','21:31',A)],
+ [7200,()=>chips(['Giovedì 15:00','Venerdì 9:30','Altri orari'],'ch2')],
+]);
+scene(9000,[
+ [0,()=>{show(4)}],
+ [700,()=>sel('ch2',0)],
+ [1200,()=>msg('p','Giovedì alle 15 va benissimo!','21:32')],
+ [2300,()=>typing(true)],
+ [3300,()=>{const r=document.createElement('tr');r.className='new';r.innerHTML='<td>Giovedì</td><td>15:00</td><td>Paziente di esempio</td><td>Devit. + pulizia + estraz.</td><td>150\'</td><td>1</td><td>🤖 WhatsApp</td>';$('#sheet').appendChild(r)}],
+ [4300,()=>msg('a','Confermato ✅<br><b>Giovedì ore 15:00</b> · durata circa 2 h 30<br>📍 Via Baracca 47, Iglesias<br>Le scriverò un promemoria il giorno prima.','21:32',A)],
+]);
+scene(7500,[
+ [0,()=>{show(5);$('#groupbody').innerHTML=''}],
+ [900,()=>{const d=document.createElement('div');d.className='b in';d.style.maxWidth='100%';d.innerHTML='<span class="who">🤖 Assistente studio</span>🗓️ <b>Nuovo appuntamento</b><br>Giovedì 15:00–17:30 · Sala 1<br>Paziente di esempio<br>Devitalizzazione + pulizia + estrazione (150\')<br>Prenotato via WhatsApp alle 21:32<span class="tm">21:32</span>';$('#groupbody').appendChild(d)}],
+ [3300,()=>{const d=document.createElement('div');d.className='b out';d.innerHTML='👍 Visto, grazie<span class="tm">08:47</span>';$('#groupbody').appendChild(d)}],
+]);
+scene(10000,[
+ [0,()=>{show(6);clock('18:00')}],
+ [400,()=>divider('Mercoledì · studio chiuso')],
+ [800,()=>on('rm1')],
+ [1500,()=>msg('a','🔔 Promemoria: domani, <b>giovedì alle 15:00</b>, ha appuntamento allo studio Specchietto e Specillo (circa 2 h 30).<br>Risponda <b>1</b> per confermare o <b>2</b> per spostarlo.','18:00',A)],
+ [3200,()=>on('rm2')],
+ [4000,()=>msg('p','1','18:04')],
+ [4800,()=>{typing(true)}],
+ [5600,()=>msg('a','Grazie, a domani! 😊','18:04',A)],
+ [6600,()=>{on('rm3');on('call')}],
+]);
+scene(11000,[
+ [0,()=>{show(7);clock('18:10')}],
+ [700,()=>msg('p','Scusate, domani posso portare anche mia figlia per un controllo?','18:10')],
+ [2000,()=>$('#take').classList.add('pressed')],
+ [2600,()=>{$('#take').classList.remove('pressed');$('#take').textContent='✓ In gestione: segreteria';const b=$('#convbadge');b.className='badge hu';b.textContent='👩‍💼 Segreteria';$('#wastatus').textContent='Segreteria · online';sys('La segreteria ha preso in carico la conversazione · agente in pausa')}],
+ [4200,()=>typing(true)],
+ [5600,()=>msg('a','Certo! Ci penso io: domattina le scrivo un orario per sua figlia, così venite insieme. 😊','18:12','👩‍💼 Segreteria dello studio','human')],
+ [7200,()=>on('final')],
+]);
+const TOTAL=acc;
+// ---- engine
+let t=0,playing=true,applied=0,last=null,cur=-1;
+function show(i){cur=i;document.querySelectorAll('.card').forEach(c=>c.classList.remove('on'));document.getElementById('c'+i).classList.add('on');$('#snum').textContent=i+1;$('#stitle').textContent=SCENES[i].t;$('#ssub').textContent=SCENES[i].s;
+ document.querySelectorAll('#steps button').forEach((b,k)=>{b.classList.toggle('on',k===i);b.classList.toggle('done',k<i)});
+ const sb=document.querySelectorAll('#steps button')[i];if(sb&&sb.scrollIntoView){const p=sb.parentNode;p.scrollTo({left:sb.offsetLeft-p.clientWidth/2+sb.clientWidth/2,behavior:'smooth'})}}
+const tpl=$('#panel').innerHTML;
+function reset(){chat.innerHTML='';$('#panel').innerHTML=tpl;$('#wastatus').textContent='Assistente virtuale · online';applied=0}
+function applyTo(x){while(applied<T.length&&T[applied][0]<=x){T[applied][1]();applied++}}
+function seek(x){x=Math.max(0,Math.min(TOTAL,x));reset();t=x;chat.style.scrollBehavior='auto';applyTo(t);const tp=chat.querySelector('.typing');if(tp&&x>0&&!playing)tp.remove();chat.style.scrollBehavior='';ui()}
+function fmt(ms){const s=Math.floor(ms/1000);return Math.floor(s/60)+':'+String(s%60).padStart(2,'0')}
+function ui(){$('#bar').style.width=(t/TOTAL*100)+'%';$('#tc').textContent=fmt(t)+' / '+fmt(TOTAL);
+ $('#lblPlay').textContent=playing?'Pausa':(t>=TOTAL?'Riproduci':'Play');$('#btnPlay').setAttribute('aria-label',playing?'Pausa':'Play');
+ $('#icoPlay').innerHTML=playing?'<path d="M6 5h4v14H6zM14 5h4v14h-4z"/>':'<path d="M7 4v16l13-8z"/>';
+ document.body.dataset.state=playing?'playing':'paused';document.body.dataset.scene=cur;document.body.dataset.t=Math.round(t)}
+function loop(ts){if(last===null)last=ts;const dt=Math.min(100,ts-last);last=ts;if(playing){t+=dt;if(t>=TOTAL){t=TOTAL;playing=false}applyTo(t);ui()}requestAnimationFrame(loop)}
+// steps
+$('#steps').innerHTML=SCENES.map((s,i)=>'<button data-i="'+i+'">'+(i+1)+'. '+s.t.split(':')[0].replace('21','Ore 21:30')+'</button>').join('');
+const short=['21:30, studio chiuso','Trattamento','Durata','Agenda','Conferma','Team','Promemoria','Segreteria'];
+document.querySelectorAll('#steps button').forEach((b,i)=>{b.textContent=(i+1)+'. '+short[i];b.onclick=()=>{seek(starts[i]);playing=true;ui()}});
+function sceneAt(x){let i=0;starts.forEach((s,k)=>{if(x>=s)i=k});return i}
+$('#btnPlay').onclick=()=>{if(t>=TOTAL){seek(0);playing=true}else playing=!playing;last=null;ui()};
+$('#btnRestart').onclick=()=>{seek(0);playing=true;ui()};
+$('#btnNext').onclick=()=>{const i=sceneAt(t);if(i<starts.length-1){seek(starts[i+1]);playing=true;ui()}};
+$('#btnPrev').onclick=()=>{let i=sceneAt(t);if(t-starts[i]<1500&&i>0)i--;seek(starts[i]);playing=true;ui()};
+$('#prog').onclick=e=>{const r=e.currentTarget.getBoundingClientRect();seek((e.clientX-r.left)/r.width*TOTAL);ui()};
+document.addEventListener('keydown',e=>{if(e.code==='Space'&&e.target===document.body){e.preventDefault();$('#btnPlay').click()}});
+window.__demo={seek,get t(){return t},TOTAL,starts,get playing(){return playing}};
+// pause when tab hidden
+document.addEventListener('visibilitychange',()=>{last=null});
+applyTo(0);ui();requestAnimationFrame(loop);
+})();
+</script>
+<script>/* GoatCounter scene events (once per scene per visit) */(function(){var seen={};setInterval(function(){var c=document.querySelector('.card.on');if(!c)return;var n=parseInt(c.id.slice(1),10)+1;if(n&&!seen[n]){seen[n]=1;bsTrack('/scene/'+n,'Scena '+n)}},1000)})();</script>
+</body>
+</html>

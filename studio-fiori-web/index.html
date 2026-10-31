@@ -1,0 +1,299 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Specchietto e Specillo · Studio Dentistico Fiori · Iglesias (DEMO)</title>
+<meta name="description" content="Centro odontoiatrico Specchietto e Specillo – Studio Dentistico Fiori, Via Baracca 47, Iglesias (SU). Igiene, conservativa, endodonzia, protesi, chirurgia, implantologia, ortodonzia.">
+<meta name="robots" content="noindex">
+<link rel="icon" href="fav.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--teal:#00a8aa;--teal-d:#007a7d;--teal-dd:#0b4d52;--teal-l:#e4f6f6;--sky:#b8dcff;--sky-l:#eef6ff;--steel:#7a8a9c;--ink:#14303a;--muted:#5b6f77;--bg:#fbfdfd;--line:#e0eaec;--r:22px}
+*{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:84px}body{margin:0;font-family:"Plus Jakarta Sans",system-ui,sans-serif;color:var(--ink);background:var(--bg);-webkit-font-smoothing:antialiased;line-height:1.55}
+img{max-width:100%;height:auto;display:block}a{color:inherit}
+.wrap{max-width:1200px;margin:0 auto;padding:0 24px}
+.banner{background:repeating-linear-gradient(135deg,#0b4d52 0 14px,#0d585e 14px 28px);color:#fff;font-size:13px;text-align:center;padding:8px 12px}
+.banner b{background:#fff;color:#0b4d52;border-radius:6px;padding:2px 8px;margin-right:8px;letter-spacing:.12em}
+.banner a{color:#fff;font-weight:700}
+header{position:sticky;top:0;z-index:30;background:rgba(255,255,255,.92);backdrop-filter:saturate(1.4) blur(10px);border-bottom:1px solid var(--line)}
+.nav{display:flex;align-items:center;justify-content:space-between;gap:20px;height:72px}
+.nav .logo img{height:44px;width:auto}
+.menu{display:flex;gap:26px;align-items:center;font-weight:600;font-size:15px}
+.menu a{text-decoration:none;color:var(--ink)}.menu a:hover{color:var(--teal-d)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;border-radius:999px;padding:13px 22px;font-weight:700;font-size:15px;text-decoration:none;border:1.5px solid transparent;transition:.2s;white-space:nowrap}
+.btn svg{width:18px;height:18px;fill:currentColor}
+.btn.pri{background:var(--teal);color:#fff}.btn.pri:hover{background:var(--teal-d)}
+.btn.sec{border-color:#bcdfe0;color:var(--teal-dd);background:#fff}.btn.sec:hover{border-color:var(--teal)}
+.btn.sm{padding:10px 18px;font-size:14px}
+.burger{display:none;background:none;border:1px solid var(--line);border-radius:12px;width:44px;height:44px;cursor:pointer}
+.burger span{display:block;width:20px;height:2px;background:var(--ink);margin:4px auto;transition:.25s}
+/* hero */
+.hero{padding:56px 0 40px;background:radial-gradient(900px 420px at 90% 10%,var(--sky-l),transparent 60%),radial-gradient(700px 380px at 0% 100%,var(--teal-l),transparent 60%)}
+.hgrid{display:grid;grid-template-columns:1.05fr 1fr;gap:56px;align-items:center}
+.kick{display:inline-flex;align-items:center;gap:8px;font-size:12.5px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--teal-d);background:#fff;border:1px solid #cdeaea;padding:7px 12px;border-radius:999px}
+h1{font-family:Fraunces,Georgia,serif;font-weight:600;font-size:clamp(36px,5vw,62px);line-height:1.05;letter-spacing:-.02em;margin:18px 0 18px}
+h1 em{font-style:italic;color:var(--teal-d)}
+.lead{font-size:18px;color:var(--muted);max-width:560px;margin:0 0 28px}
+.ctas{display:flex;gap:12px;flex-wrap:wrap}
+.quick{display:flex;gap:22px;flex-wrap:wrap;margin-top:28px;font-size:14.5px;color:var(--muted)}
+.quick b{color:var(--ink)}
+.open{display:inline-flex;align-items:center;gap:8px;font-weight:700}
+.open i{width:9px;height:9px;border-radius:50%;background:#1f9d61}.open.no i{background:#c4553a}
+.himg{position:relative}
+.himg img{border-radius:28px;aspect-ratio:4/3.4;height:auto;object-fit:cover;width:100%;box-shadow:0 40px 80px -40px rgba(11,77,82,.45)}
+.float{position:absolute;background:#fff;border-radius:18px;padding:14px 16px;box-shadow:0 18px 40px -18px rgba(11,77,82,.35);font-size:14px;display:flex;gap:12px;align-items:center}
+.float.f1{left:-24px;bottom:28px}.float.f2{right:-16px;top:24px}
+.float .ic{width:40px;height:40px;border-radius:12px;display:grid;place-items:center;background:var(--teal-l);font-size:19px}
+.stars{color:#f2b01e;letter-spacing:1px}
+/* sections */
+section{padding:84px 0}
+.sh{max-width:680px;margin-bottom:40px}
+.sh .ey{font-size:12.5px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--teal-d)}
+h2{font-family:Fraunces,Georgia,serif;font-weight:600;font-size:clamp(30px,3.6vw,44px);line-height:1.1;letter-spacing:-.015em;margin:10px 0 12px}
+.sh p{color:var(--muted);font-size:17px;margin:0}
+.values{padding:0;margin-top:-8px}
+.vgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.v{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:24px;display:flex;gap:16px;align-items:flex-start}
+.v .ic{width:48px;height:48px;border-radius:14px;background:var(--teal-l);display:grid;place-items:center;font-size:22px;flex:none}
+.v h3{margin:0 0 4px;font-size:17px}.v p{margin:0;color:var(--muted);font-size:15px}
+.studio{display:grid;grid-template-columns:.9fr 1.1fr;gap:56px;align-items:center}
+.studio img{border-radius:28px;aspect-ratio:1/1;height:auto;object-fit:cover;width:100%}
+.feat{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:22px 0 28px;padding:0;list-style:none}
+.feat li{background:#fff;border:1px solid var(--line);border-radius:14px;padding:12px 14px;font-weight:600;font-size:15px;display:flex;gap:10px;align-items:center}
+.feat li::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--teal);flex:none}
+.tl{display:flex;gap:0;border-top:2px solid var(--line);padding-top:0}
+.tl div{flex:1;padding:14px 12px 0 0;position:relative}
+.tl div::before{content:"";position:absolute;top:-7px;left:0;width:12px;height:12px;border-radius:50%;background:var(--teal);border:3px solid #fff;box-shadow:0 0 0 1px var(--teal)}
+.tl b{font-family:Fraunces,serif;font-size:24px;color:var(--teal-dd);display:block}.tl span{font-size:14px;color:var(--muted)}
+.quote{font-family:Fraunces,serif;font-size:22px;font-style:italic;color:var(--teal-dd);margin:22px 0 0}
+.tr{background:linear-gradient(180deg,#f3fafa,#fff)}
+.tgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+.t{background:#fff;border:1px solid var(--line);border-radius:var(--r);overflow:hidden;display:flex;flex-direction:column;transition:.25s}
+.t:hover{transform:translateY(-4px);box-shadow:0 24px 40px -28px rgba(11,77,82,.45)}
+.t .ph{aspect-ratio:16/10;background:var(--teal-l);display:grid;place-items:center;font-size:40px;overflow:hidden}
+.t .ph img{width:100%;height:100%;object-fit:cover}
+.t .bd{padding:18px 18px 20px}.t h3{margin:0 0 6px;font-size:17.5px}.t p{margin:0;color:var(--muted);font-size:14.5px}
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.st{position:relative;border-radius:var(--r);overflow:hidden;background:#fff;border:1px solid var(--line)}
+.st img{aspect-ratio:3/2;object-fit:cover;width:100%}
+.st .bd{padding:20px}.st .n{font-family:Fraunces,serif;color:var(--teal);font-size:15px;font-weight:600}.st h3{margin:2px 0 6px;font-size:20px}.st p{margin:0;color:var(--muted);font-size:15px}
+.hours{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:start}
+.htable{background:#fff;border:1px solid var(--line);border-radius:var(--r);overflow:hidden}
+.hrow{display:flex;justify-content:space-between;padding:16px 22px;border-top:1px solid var(--line);font-size:16px}
+.hrow:first-child{border-top:none}.hrow b{font-weight:700}
+.hrow.cl{color:#a4513a}.hrow.today{background:var(--teal-l)}.hrow.today span:first-child::after{content:" · oggi";color:var(--teal-d);font-weight:700;font-size:13px}
+.cta247{background:var(--teal-dd);color:#fff;border-radius:var(--r);padding:28px;position:relative;overflow:hidden}
+.cta247::after{content:"";position:absolute;right:-60px;top:-60px;width:220px;height:220px;border-radius:50%;background:rgba(184,220,255,.15)}
+.cta247 h3{font-family:Fraunces,serif;font-weight:600;font-size:26px;margin:6px 0 10px;line-height:1.15}.cta247 p{opacity:.88;margin:0 0 20px}
+.cta247 .tagx{font-size:11.5px;font-weight:800;letter-spacing:.12em;background:#fff1d6;color:#8a5a00;border-radius:8px;padding:4px 9px}
+.cta247 .btn.sec{background:transparent;color:#fff;border-color:rgba(255,255,255,.45)}
+.rev{background:var(--sky-l)}
+.rgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.r{background:#fff;border-radius:var(--r);padding:26px;border:1px solid #dbe9f7;display:flex;flex-direction:column;gap:16px}
+.r blockquote{margin:0;font-size:16.5px;line-height:1.6}
+.r .who{display:flex;align-items:center;gap:12px;font-weight:700}
+.r .av{width:42px;height:42px;border-radius:50%;background:var(--teal);color:#fff;display:grid;place-items:center;font-weight:800}
+.r small{display:block;color:var(--muted);font-weight:500}
+.gbadge{display:inline-flex;align-items:center;gap:12px;background:#fff;border:1px solid #dbe9f7;border-radius:16px;padding:12px 18px;margin-top:22px;text-decoration:none}
+.gbadge b{font-size:22px}
+.contact{display:grid;grid-template-columns:1fr 1.2fr;gap:28px;align-items:stretch}
+.cinfo{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:28px;display:flex;flex-direction:column;gap:18px}
+.ci{display:flex;gap:14px;align-items:flex-start}.ci .ic{width:44px;height:44px;border-radius:12px;background:var(--teal-l);display:grid;place-items:center;font-size:19px;flex:none}
+.ci small{display:block;color:var(--muted);font-size:13px;font-weight:600;text-transform:uppercase;letter-spacing:.08em}
+.ci>div{min-width:0}.ci a,.ci span{font-weight:700;font-size:16.5px;text-decoration:none;overflow-wrap:anywhere}
+.contact>*,.hgrid>*,.studio>*,.hours>*{min-width:0}.ci a:hover{color:var(--teal-d)}
+.map{border-radius:var(--r);overflow:hidden;border:1px solid var(--line);min-height:420px;background:#e9f1f2}
+.map iframe{width:100%;height:100%;min-height:420px;border:0;display:block}
+footer{background:#0d2b31;color:#cfe1e3;padding:48px 0 110px;font-size:14.5px}
+.fgrid{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:32px}
+footer h4{color:#fff;margin:0 0 12px;font-size:15px}footer a{color:#cfe1e3;text-decoration:none}footer a:hover{color:#fff}
+footer ul{list-style:none;margin:0;padding:0;display:grid;gap:8px}
+.flogo{background:#fff;border-radius:14px;padding:10px 14px;display:inline-block;margin-bottom:14px}.flogo img{height:40px;width:auto}
+.credit{border-top:1px solid rgba(255,255,255,.12);margin-top:32px;padding-top:18px;font-size:13px;color:#9fb9bc}
+.credit a{color:#fff;font-weight:700}
+.fab{position:fixed;right:18px;bottom:18px;z-index:40;display:flex;gap:10px}
+.fab a{width:58px;height:58px;border-radius:50%;display:grid;place-items:center;box-shadow:0 14px 30px -10px rgba(0,0,0,.4);color:#fff}
+.fab .wa{background:#25d366}.fab .ph{background:var(--teal-d)}
+.fab svg{width:28px;height:28px;fill:#fff}
+.reveal{opacity:0;transform:translateY(18px);transition:opacity .7s,transform .7s}.reveal.in{opacity:1;transform:none}
+@media (max-width:1060px){.tgrid{grid-template-columns:repeat(2,1fr)}.menu{gap:18px}}
+@media (max-width:900px){
+ .burger{display:block}
+ .menu{position:fixed;inset:72px 0 auto 0;background:#fff;flex-direction:column;align-items:stretch;gap:0;padding:8px 20px 20px;border-bottom:1px solid var(--line);box-shadow:0 20px 30px -20px rgba(0,0,0,.25);transform:translateY(-8px);opacity:0;pointer-events:none;transition:.25s}
+ .menu a{padding:14px 4px;border-bottom:1px solid var(--line);font-size:17px}
+ .menu .btn{margin-top:14px;border-bottom:none}
+ body.mopen .menu{opacity:1;transform:none;pointer-events:auto}
+ body.mopen .burger span:nth-child(1){transform:translateY(6px) rotate(45deg)}body.mopen .burger span:nth-child(2){opacity:0}body.mopen .burger span:nth-child(3){transform:translateY(-6px) rotate(-45deg)}
+ .hgrid,.studio,.hours,.contact{grid-template-columns:1fr;gap:32px}
+ .vgrid,.steps,.rgrid{grid-template-columns:1fr}
+ .fgrid{grid-template-columns:1fr}
+ section{padding:60px 0}
+ .hero{padding:32px 0 36px}
+ .float.f1{left:10px;bottom:-18px}.float.f2{right:10px;top:-14px}
+}
+@media (max-width:560px){
+ .wrap{padding:0 18px}
+ .tgrid{grid-template-columns:1fr}
+ .feat{grid-template-columns:1fr}
+ .lead{font-size:16.5px}
+ .ctas .btn{flex:1 1 100%}
+ .nav .logo img{height:36px}
+ .float{font-size:13px;padding:10px 12px}.float .ic{width:34px;height:34px}
+ .tl b{font-size:20px}
+ .hrow{padding:14px 16px}
+}
+</style>
+<!-- GoatCounter (BOLLA STUDIO) -->
+<script>window.goatcounter={path:function(p){return '/studio-fiori-web'+((p.replace(/^\/studio\-fiori\-web(?=[\/?#]|$)/,'')||'/').replace(/^\?/,'/?'))}};window.bsTrack=function(sub,title){try{if(window.goatcounter&&window.goatcounter.count)window.goatcounter.count({path:'/studio-fiori-web'+sub,title:title||sub})}catch(e){}}</script>
+<script data-goatcounter="https://bollastudio.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+</head>
+<body>
+<div class="banner"><b>DEMO</b>Proposta di nuovo sito, realizzata in omaggio da BOLLA STUDIO. Non è il sito ufficiale: quello attuale è <a href="https://www.studiodentisticofiori.eu/" target="_blank" rel="noopener">studiodentisticofiori.eu</a></div>
+<header><div class="wrap nav">
+ <a class="logo" href="#top" aria-label="Specchietto e Specillo – home"><img src="logo.png" alt="Specchietto e Specillo – centro odontoiatrico" width="400" height="107"></a>
+ <nav class="menu" id="menu">
+  <a href="#studio">Lo studio</a><a href="#trattamenti">Trattamenti</a><a href="#orari">Orari</a><a href="#recensioni">Recensioni</a><a href="#contatti">Contatti</a>
+  <a class="btn pri sm" href="https://wa.me/393288382355?text=Buongiorno%2C%20vorrei%20prenotare%20un%20appuntamento." target="_blank" rel="noopener">Prenota</a>
+ </nav>
+ <button class="burger" id="burger" aria-label="Apri menu" aria-expanded="false" aria-controls="menu"><span></span><span></span><span></span></button>
+</div></header>
+
+<main id="top">
+<section class="hero"><div class="wrap hgrid">
+ <div>
+  <span class="kick">🦷 Centro odontoiatrico · Iglesias</span>
+  <h1>Non curiamo solo il paziente: <em>ci prendiamo cura di lui.</em></h1>
+  <p class="lead">Per noi ogni paziente è diverso dall’altro. Prepariamo un piano di trattamento individuale, con tecniche di ultima generazione e un team di medici in costante aggiornamento professionale.</p>
+  <div class="ctas">
+   <a class="btn pri" href="https://wa.me/393288382355?text=Buongiorno%2C%20vorrei%20prenotare%20un%20appuntamento." target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm5.3 14.2c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .1-3.3-.8-2.8-1.1-4.5-3.9-4.7-4.1-.1-.2-1.1-1.5-1.1-2.9s.7-2.1 1-2.4c.3-.3.6-.3.8-.3h.6c.2 0 .4 0 .6.5l.9 2.1c.1.2.1.4 0 .5l-.4.6-.4.4c-.1.2-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.3 2.4 1.5.3.1.5.1.6-.1l.9-1.1c.2-.3.4-.2.7-.1l2 .9c.3.2.5.2.6.4.1.1.1.7-.1 1.3z"/></svg>Prenota su WhatsApp</a>
+   <a class="btn sec" href="tel:+393288382355"><svg viewBox="0 0 24 24"><path d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1A17 17 0 0 1 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1z"/></svg>+39 328 838 2355</a>
+  </div>
+  <div class="quick"><span>📍 <b>Via Baracca 47</b>, 09016 Iglesias (SU)</span><span class="open" id="openNow"><i></i><span>Orari</span></span></div>
+ </div>
+ <div class="himg">
+  <img src="visitiamo.jpg" alt="Visita odontoiatrica a una bambina" width="1600" height="1067">
+  <div class="float f2"><div class="ic">⭐</div><div><b>5,0</b> <span class="stars">★★★★★</span><br><small>su Google · 1 recensione</small></div></div>
+  <div class="float f1"><div class="ic">🪥</div><div><b>2 sale odontoiatriche</b><br><small>e reparto sterilizzazione</small></div></div>
+ </div>
+</div></section>
+
+<section class="values"><div class="wrap vgrid">
+ <div class="v reveal"><div class="ic">🙋</div><div><h3>Approccio individuale</h3><p>Per noi ogni paziente è diverso dall’altro.</p></div></div>
+ <div class="v reveal"><div class="ic">🛡️</div><div><h3>Cura affidabile</h3><p>Concorderemo insieme un piano di cura efficace.</p></div></div>
+ <div class="v reveal"><div class="ic">💳</div><div><h3>Pagamenti personalizzati</h3><p>Preventivi a seguito di un’analisi dettagliata.</p></div></div>
+</div></section>
+
+<section id="studio"><div class="wrap studio">
+ <img class="reveal" src="chi.jpg" alt="Lo studio Specchietto e Specillo" width="640" height="640" loading="lazy">
+ <div class="reveal">
+  <span class="sh"><span class="ey">Lo studio</span></span>
+  <h2>Spazi pensati per ogni branca specialistica</h2>
+  <p style="color:var(--muted);font-size:17px;margin:0">Lo studio dentistico “Specchietto e Specillo” nasce dall’esigenza di avere spazi lavorativi mirati, per gestire al meglio le varie branche specialistiche. Siamo consapevoli dell’unicità di ogni persona e cerchiamo di adattarci il più possibile a ogni singola situazione.</p>
+  <ul class="feat"><li>2 sale odontoiatriche</li><li>Reparto sterilizzazione</li><li>Segreteria</li><li>Sala d’attesa comoda e accogliente</li><li>Bagno pazienti</li><li>Zona privata per il personale</li></ul>
+  <div class="tl"><div><b>2000</b><span>Partono i preparativi</span></div><div><b>2003</b><span>Si consolidano le professioni</span></div><div><b>2020</b><span>Nasce Specchietto e Specillo</span></div></div>
+  <p class="quote">«Per noi il cliente non è un cliente, ma un paziente.»</p>
+ </div>
+</div></section>
+
+<section id="trattamenti" class="tr"><div class="wrap">
+ <div class="sh"><span class="ey">Trattamenti</span><h2>Tutte le cure per il tuo sorriso</h2><p>Dalla prevenzione all’implantologia, con un piano di trattamento costruito su di te.</p></div>
+ <div class="tgrid">
+  <article class="t reveal"><div class="ph">🪥</div><div class="bd"><h3>Igiene e profilassi</h3><p>Ablazione del tartaro, pulizia delle radici, trattamento delle tasche gengivali e istruzioni per spazzolino, scovolino, filo interdentale e collutori.</p></div></article>
+  <article class="t reveal"><div class="ph">✨</div><div class="bd"><h3>Trattamenti estetici</h3><p>Faccette in ceramica, ponti e corone in porcellana, intarsi e sbiancamento dentale.</p></div></article>
+  <article class="t reveal"><div class="ph"><img src="conservativa.jpg" alt="" loading="lazy"></div><div class="bd"><h3>Conservativa</h3><p>Conserva il più possibile il tessuto dentale sano: carie, fratture, difetti di forma e colore.</p></div></article>
+  <article class="t reveal"><div class="ph"><img src="endodonzia.jpg" alt="" loading="lazy"></div><div class="bd"><h3>Endodonzia</h3><p>Le cure dei tessuti interni del dente, a partire dalla classica devitalizzazione.</p></div></article>
+  <article class="t reveal"><div class="ph">🦷</div><div class="bd"><h3>Protesi</h3><p>Protesi fisse o mobili, totali o parziali, per ritrovare funzione ed estetica.</p></div></article>
+  <article class="t reveal"><div class="ph"><img src="chirurgia.jpg" alt="" loading="lazy"></div><div class="bd"><h3>Chirurgia</h3><p>Interventi per le patologie del cavo orale, per ripristinare l’equilibrio estetico e funzionale.</p></div></article>
+  <article class="t reveal"><div class="ph">🔩</div><div class="bd"><h3>Implantologia</h3><p>Riabilitazione per chi ha perso i denti naturali, nell’estetica e nella masticazione.</p></div></article>
+  <article class="t reveal"><div class="ph"><img src="ortodonzia.jpg" alt="" loading="lazy"></div><div class="bd"><h3>Ortodonzia</h3><p>Correzione delle anomalie con effetti funzionali ed estetici, anche su muscoli e articolazioni.</p></div></article>
+ </div>
+</div></section>
+
+<section><div class="wrap">
+ <div class="sh"><span class="ey">Il nostro metodo</span><h2>Visita, piano, cura</h2><p>Prepariamo un piano di trattamento individuale e forniamo consigli mirati a ogni paziente.</p></div>
+ <div class="steps">
+  <div class="st reveal"><img src="visitiamo.jpg" alt="" loading="lazy"><div class="bd"><span class="n">01</span><h3>Visita</h3><p>Ascoltiamo le tue esigenze e valutiamo la situazione.</p></div></div>
+  <div class="st reveal"><img src="analizziamo.jpg" alt="" loading="lazy"><div class="bd"><span class="n">02</span><h3>Piano</h3><p>Un piano di cura efficace, con un preventivo chiaro dopo un’analisi dettagliata.</p></div></div>
+  <div class="st reveal"><img src="curiamo.jpg" alt="" loading="lazy"><div class="bd"><span class="n">03</span><h3>Cura</h3><p>Trattamenti affidabili e attenti, anche per i più piccoli.</p></div></div>
+ </div>
+</div></section>
+
+<section id="orari" style="padding-top:20px"><div class="wrap hours">
+ <div>
+  <div class="sh" style="margin-bottom:24px"><span class="ey">Orari</span><h2>Quando trovarci</h2><p>Il mercoledì lo studio è chiuso.</p></div>
+  <div class="htable" id="htable">
+   <div class="hrow" data-d="1"><span>Lunedì</span><b>10:00 – 18:00</b></div>
+   <div class="hrow" data-d="2"><span>Martedì</span><b>9:00 – 20:00</b></div>
+   <div class="hrow cl" data-d="3"><span>Mercoledì</span><b>Chiuso</b></div>
+   <div class="hrow" data-d="4"><span>Giovedì</span><b>9:00 – 20:00</b></div>
+   <div class="hrow" data-d="5"><span>Venerdì</span><b>9:00 – 13:00</b></div>
+   <div class="hrow cl" data-d="6"><span>Sabato</span><b>Chiuso</b></div>
+   <div class="hrow cl" data-d="0"><span>Domenica</span><b>Chiuso</b></div>
+  </div>
+ </div>
+ <div class="cta247 reveal">
+  <span class="tagx">DEMO</span>
+  <h3>E quando lo studio è chiuso?</h3>
+  <p>Con un assistente WhatsApp attivo 24 ore su 24 i pazienti possono chiedere un appuntamento anche la sera o il mercoledì, con i tempi giusti per ogni trattamento. La segreteria mantiene sempre il controllo.</p>
+  <div class="ctas"><a class="btn pri" href="https://studio-fiori-demo.surge.sh" target="_blank" rel="noopener">Guarda la demo dell’assistente</a><a class="btn sec" href="tel:+393288382355">Chiama lo studio</a></div>
+ </div>
+</div></section>
+
+<section id="recensioni" class="rev"><div class="wrap">
+ <div class="sh"><span class="ey">Recensioni</span><h2>Dicono di noi</h2><p>Testimonianze dei pazienti pubblicate sul sito dello studio.</p></div>
+ <div class="rgrid">
+  <figure class="r reveal" style="margin:0"><span class="stars">★★★★★</span><blockquote>«Trovare uno staff preparato e allo stesso tempo cordiale e disponibile non è più un sogno ma una realtà da Specchietto e Specillo.»</blockquote><figcaption class="who"><span class="av">M</span><span>Matteo<small>Paziente</small></span></figcaption></figure>
+  <figure class="r reveal" style="margin:0"><span class="stars">★★★★★</span><blockquote>«Quando la professionalità oltre alla pazienza, gentilezza e simpatia mettono a proprio agio. I bambini non si sentono spaventati dal dentista!»</blockquote><figcaption class="who"><span class="av">S</span><span>Simonetta<small>Paziente</small></span></figcaption></figure>
+  <figure class="r reveal" style="margin:0"><span class="stars">★★★★★</span><blockquote>«Altamente professionali e sempre attenti alle esigenze dei pazienti. Hanno trattato con molta cura i problemi di mia figlia.»</blockquote><figcaption class="who"><span class="av">L</span><span>Laura<small>Paziente</small></span></figcaption></figure>
+ </div>
+ <a class="gbadge" href="https://www.google.com/maps/search/?api=1&query=Centro+odontoiatrico+Specchietto+e+Specillo+Iglesias" target="_blank" rel="noopener"><span style="font-size:26px">G</span><span><b>5,0</b> <span class="stars">★★★★★</span><br><small style="color:var(--muted)">Valutazione su Google · 1 recensione · Vedi su Google Maps</small></span></a>
+</div></section>
+
+<section id="contatti"><div class="wrap">
+ <div class="sh"><span class="ey">Contatti</span><h2>Vieni a trovarci a Iglesias</h2><p>Per informazioni e appuntamenti chiamaci, scrivici o passa in studio.</p></div>
+ <div class="contact">
+  <div class="cinfo reveal">
+   <div class="ci"><div class="ic">📍</div><div><small>Indirizzo</small><span>Via Baracca 47<br>09016 Iglesias (SU)</span></div></div>
+   <div class="ci"><div class="ic">📞</div><div><small>Info e appuntamenti</small><a href="tel:+393288382355">+39 328 838 2355</a></div></div>
+   <div class="ci"><div class="ic">✉️</div><div><small>Pazienti</small><a href="mailto:info@studiodentisticofiori.eu">info@studiodentisticofiori.eu</a></div></div>
+   <div class="ci"><div class="ic">💼</div><div><small>Rappresentanti e rivenditori</small><a href="mailto:rappresentanti@studiodentisticofiori.eu">rappresentanti@studiodentisticofiori.eu</a></div></div>
+   <div class="ctas" style="margin-top:auto"><a class="btn pri" href="https://www.google.com/maps/dir/?api=1&destination=Via+Francesco+Baracca+47+09016+Iglesias+SU" target="_blank" rel="noopener">Indicazioni stradali</a><a class="btn sec" href="https://wa.me/393288382355?text=Buongiorno%2C%20vorrei%20prenotare%20un%20appuntamento." target="_blank" rel="noopener">WhatsApp</a></div>
+  </div>
+  <div class="map reveal"><iframe title="Mappa: Via Francesco Baracca 47, Iglesias" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://maps.google.com/maps?q=Via%20Francesco%20Baracca%2047%2C%2009016%20Iglesias%20SU&t=m&z=16&output=embed"></iframe></div>
+ </div>
+</div></section>
+</main>
+
+<footer><div class="wrap">
+ <div class="fgrid">
+  <div><span class="flogo"><img src="logo.png" alt="Specchietto e Specillo" width="400" height="107"></span><p style="margin:0">Studio Dentistico Fiori · Centro odontoiatrico Specchietto e Specillo<br>Via Baracca 47, 09016 Iglesias (SU)</p></div>
+  <div><h4>Navigazione</h4><ul><li><a href="#studio">Lo studio</a></li><li><a href="#trattamenti">Trattamenti</a></li><li><a href="#orari">Orari</a></li><li><a href="#recensioni">Recensioni</a></li><li><a href="#contatti">Contatti</a></li></ul></div>
+  <div><h4>Contatti</h4><ul><li><a href="tel:+393288382355">+39 328 838 2355</a></li><li><a href="mailto:info@studiodentisticofiori.eu">info@studiodentisticofiori.eu</a></li><li>Lun 10–18 · Mar 9–20 · Mer chiuso<br>Gio 9–20 · Ven 9–13</li></ul></div>
+ </div>
+ <div class="credit">DEMO · Proposta di sito realizzata in omaggio da <a href="https://bollastudio.com" target="_blank" rel="noopener">BOLLA STUDIO</a> – studio di ingegneria del software. Testi, foto e dati sono quelli pubblicati da Studio Dentistico Fiori sul proprio sito e su Google Maps.</div>
+</div></footer>
+
+<div class="fab"><a class="ph" href="tel:+393288382355" aria-label="Chiama lo studio"><svg viewBox="0 0 24 24"><path d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1A17 17 0 0 1 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1z"/></svg></a><a class="wa" href="https://wa.me/393288382355?text=Buongiorno%2C%20vorrei%20prenotare%20un%20appuntamento." target="_blank" rel="noopener" aria-label="Scrivici su WhatsApp"><svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm5.3 14.2c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .1-3.3-.8-2.8-1.1-4.5-3.9-4.7-4.1-.1-.2-1.1-1.5-1.1-2.9s.7-2.1 1-2.4c.3-.3.6-.3.8-.3h.6c.2 0 .4 0 .6.5l.9 2.1c.1.2.1.4 0 .5l-.4.6-.4.4c-.1.2-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.3 2.4 1.5.3.1.5.1.6-.1l.9-1.1c.2-.3.4-.2.7-.1l2 .9c.3.2.5.2.6.4.1.1.1.7-.1 1.3z"/></svg></a></div>
+
+<script>
+(function(){
+ const b=document.getElementById('burger');
+ b.addEventListener('click',()=>{const o=document.body.classList.toggle('mopen');b.setAttribute('aria-expanded',o);b.setAttribute('aria-label',o?'Chiudi menu':'Apri menu')});
+ document.querySelectorAll('#menu a').forEach(a=>a.addEventListener('click',()=>{document.body.classList.remove('mopen');b.setAttribute('aria-expanded','false')}));
+ // orari: oggi + aperto ora (ora di Roma)
+ const H={1:[600,1080],2:[540,1200],4:[540,1200],5:[540,780]};
+ const p=new Intl.DateTimeFormat('en-GB',{timeZone:'Europe/Rome',weekday:'short',hour:'2-digit',minute:'2-digit',hour12:false}).formatToParts(new Date());
+ const wd={Sun:0,Mon:1,Tue:2,Wed:3,Thu:4,Fri:5,Sat:6}[p.find(x=>x.type==='weekday').value];
+ const m=(+p.find(x=>x.type==='hour').value%24)*60+(+p.find(x=>x.type==='minute').value);
+ const row=document.querySelector('.hrow[data-d="'+wd+'"]');if(row)row.classList.add('today');
+ const h=H[wd],el=document.getElementById('openNow'),open=h&&m>=h[0]&&m<h[1];
+ el.classList.toggle('no',!open);el.querySelector('span').innerHTML=open?'Aperto ora · fino alle '+Math.floor(h[1]/60)+':00':'Chiuso ora · <a href="#orari">vedi orari</a>';
+ // reveal
+ const io='IntersectionObserver' in window?new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.12}):null;
+ document.querySelectorAll('.reveal').forEach(e=>io?io.observe(e):e.classList.add('in'));
+})();
+</script>
+</body>
+</html>
