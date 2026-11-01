@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Démo d'exemple : agent IA pour écoles de musique · BOLLA STUDIO</title>
+<meta name="robots" content="noindex">
+<style>
+:root{--c:#6c3483;--bg:#f4f2ee}
+*{box-sizing:border-box}body{margin:0;font-family:-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;background:var(--bg);color:#222;line-height:1.5}
+.top{background:#1d2a33;color:#d8dee2;font-size:13px;text-align:center;padding:8px 12px}.top a{color:#fff}
+header{max-width:1080px;margin:0 auto;padding:28px 20px 8px}
+.brand{font-weight:700;letter-spacing:.08em;font-size:.8rem;color:#9aa3ad}
+h1{font-size:30px;margin:6px 0 10px;color:var(--c)}.tag{font-size:13px;text-transform:uppercase;letter-spacing:.08em;color:#777}
+.ex{display:inline-block;background:#fff4d6;border:1px dashed #d9a400;color:#7a5b00;border-radius:6px;padding:1px 8px;font-size:12px;letter-spacing:0;text-transform:none;margin-left:6px}
+.intro{max-width:780px;color:#444}
+.grid{max-width:1080px;margin:14px auto 28px;padding:0 20px;display:grid;grid-template-columns:1fr 1fr;gap:24px}
+@media(max-width:820px){.grid{grid-template-columns:1fr}h1{font-size:24px}}
+.card{background:#fff;border-radius:16px;box-shadow:0 6px 24px rgba(0,0,0,.08);overflow:hidden}
+.wa-h{background:#075e54;color:#fff;padding:12px 16px;display:flex;align-items:center;gap:10px}
+.av{width:36px;height:36px;border-radius:50%;background:var(--c);display:flex;align-items:center;justify-content:center;font-weight:700}
+.wa-h small{display:block;opacity:.8;font-size:12px}
+.chat{background:#ece5dd;height:460px;overflow-y:auto;padding:14px;display:flex;flex-direction:column;gap:8px}
+.m{max-width:84%;padding:8px 11px;border-radius:9px;font-size:14px;white-space:pre-line;box-shadow:0 1px 1px rgba(0,0,0,.1)}
+.in{background:#fff;align-self:flex-start}.out{background:#dcf8c6;align-self:flex-end}
+.m.hand{background:#fff4d6;border:1px dashed #d9a400}
+.typing{font-style:italic;color:#666;font-size:13px}
+.qrl{padding:10px 10px 0;font-size:12px;color:#777;border-top:1px solid #eee}
+.qr{padding:6px 10px 12px;display:flex;flex-wrap:wrap;gap:6px}
+.qr button{border:1px solid var(--c);background:#fff;color:var(--c);border-radius:20px;padding:6px 12px;font-size:13px;cursor:pointer}
+.bk{padding:20px}.bk h3{margin:0 0 4px;color:var(--c)}.bk p{margin:0 0 12px;color:#666;font-size:14px}
+label{font-size:13px;color:#555;display:block;margin:10px 0 4px}
+select,input{width:100%;padding:10px;border:1px solid #ddd;border-radius:8px;font-size:14px;font-family:inherit}
+.slots{display:flex;flex-wrap:wrap;gap:6px}
+.slots button{border:1px solid #ddd;background:#fff;border-radius:8px;padding:8px 12px;cursor:pointer;font-size:13px}
+.slots button.on{background:var(--c);color:#fff;border-color:var(--c)}
+.cta{margin-top:16px;width:100%;background:var(--c);color:#fff;border:0;border-radius:10px;padding:13px;font-size:15px;cursor:pointer}
+.ok{display:none;margin-top:14px;background:#eaf7ea;border:1px solid #bfe3bf;padding:12px;border-radius:8px;font-size:14px}
+.split{max-width:1080px;margin:0 auto 24px;padding:0 20px;display:grid;grid-template-columns:1fr 1fr;gap:16px}
+@media(max-width:820px){.split{grid-template-columns:1fr}}
+.split div{background:#fff;border-radius:12px;padding:16px 18px;font-size:14px}.split h4{margin:0 0 6px;color:var(--c)}
+.split ul{margin:0;padding-left:18px}.split li{margin:3px 0}
+.feat{max-width:1080px;margin:0 auto 30px;padding:0 20px;display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+@media(max-width:820px){.feat{grid-template-columns:1fr}}
+.feat div{background:#fff;border-radius:12px;padding:16px;font-size:14px}.feat b{color:var(--c)}
+footer{text-align:center;font-size:13px;color:#777;padding:10px 20px 40px}footer a{color:var(--c)}
+</style>
+<!-- GoatCounter (BOLLA STUDIO): page /bolla-demo-musikschule-ch/fr/?p=<tag>; events under /bolla-demo-musikschule-ch/fr/...; ?internal=1 -> localStorage skipgc=t, nothing counted or loaded (?internal=0 resets) -->
+<script>
+(function(){
+ var BASE='/bolla-demo-musikschule-ch/fr';
+ var m=(location.search+location.hash).match(/[?&#]internal=([01])/);
+ try{ if(m){ if(m[1]==="1") localStorage.setItem("skipgc","t"); else localStorage.removeItem("skipgc"); } }catch(e){}
+ var internal=false; try{ internal=localStorage.getItem("skipgc")==="t"; }catch(e){}
+ var sm=location.search.match(/[?&]p=([^&#]*)/);
+ var tag=sm?decodeURIComponent(sm[1]).toLowerCase().replace(/[^a-z0-9-]/g,"").slice(0,60):"";
+ var q=[]; window.bsTrack=function(sub,title){ if(internal) return;
+   if(window.goatcounter&&window.goatcounter.count) window.goatcounter.count({path:BASE+sub,title:title||sub,event:true}); else q.push([BASE+sub,title||sub]); };
+ if(internal) return;
+ window.goatcounter={no_onload:true};
+ var s=document.createElement("script"); s.async=true; s.src="https://gc.zgo.at/count.js";
+ s.setAttribute("data-goatcounter","https://bollastudio.goatcounter.com/count");
+ s.onload=function(){ try{ window.goatcounter.count({path:BASE+'/'+(tag?'?p='+tag:''),title:'musikschule-ch demo fr'});
+   q.forEach(function(e){window.goatcounter.count({path:e[0],title:e[1],event:true});}); q=[]; }catch(e){} };
+ document.head.appendChild(s);
+})();
+</script>
+</head><body>
+<div class="top">Démo d'exemple pour écoles de musique en Suisse, préparée par <a href="https://bollastudio.com" target="_blank">BOLLA STUDIO</a> · «&nbsp;École de musique Clé de Sol&nbsp;» est un établissement fictif donné en exemple, aucune vraie réservation</div>
+<header><div class="brand">BOLLA STUDIO</div><div class="tag">Exemple · École de musique Clé de Sol, école fictive</div>
+<h1>Les demandes de cours d'essai traitées, pendant que vous enseignez</h1>
+<p class="intro">Un agent IA sur WhatsApp et sur votre site répond aux questions des parents et des adultes : quel instrument dès quel âge, cours d'essai, cours pour adultes, location d'instrument, vacances, durée des leçons, inscription. Il enregistre les inscriptions avec instrument, âge, niveau et disponibilités. Répartition et professeurs, c'est vous qui décidez.</p></header>
+<div class="grid">
+ <div class="card">
+  <div class="wa-h"><div class="av">É</div><div><b>École de musique Clé de Sol · Secrétariat</b><small>en ligne · répond tout de suite, 24h/24</small></div></div>
+  <div class="chat" id="chat"></div>
+  <div class="qrl">Essayez une question :</div><div class="qr" id="qr"></div>
+ </div>
+ <div class="card bk">
+  <h3>Cours d'essai ou inscription</h3>
+  <p>Voici comment l'agent enregistre une inscription dans le chat ou sur le site. Votre secrétariat organise la répartition.</p>
+  <label>Instrument / branche</label><select id="item"><option>Piano</option><option>Guitare</option><option>Violon</option><option>Batterie</option><option>Chant</option><option>Flûte / saxophone</option><option>Initiation musicale</option></select>
+  <label>À partir du</label><input type="date" id="arr">
+  <label>Moment préféré</label><div class="slots" id="slots"></div>
+  <label>Nom</label><input id="nm" placeholder="Prénom et nom">
+  <label>E-mail ou WhatsApp</label><input id="ph" placeholder="+41 … / nom@…">
+  <button class="cta" id="cta">Demander un cours d'essai</button>
+  <div class="ok" id="ok"></div>
+ </div>
+</div>
+<div class="split">
+ <div><h4>L'agent répond lui-même, jour et nuit</h4><ul><li>Quel instrument dès quel âge</li><li>Demandes de cours d'essai</li><li>Cours pour enfants et adultes</li><li>Durée des leçons, vacances, lieu des cours</li><li>Location d'instrument en général</li><li>Inscription avec âge, niveau, disponibilités</li><li>Absences selon vos règles</li></ul></div>
+ <div><h4>Reste entre vos mains</h4><ul><li>Répartition et professeurs</li><li>Tarifs et factures</li><li>Changements et résiliations</li><li>Concerts, examens, ensembles</li><li>Toute conversation que vous voulez reprendre vous-même</li></ul></div>
+</div>
+<div class="feat">
+ <div><b>Répond 24h/24 dans la langue du client</b><br>Français, allemand, italien, anglais et plus : aussi le soir, le week-end et en haute saison, quand personne n'a le temps de répondre au téléphone.</div>
+ <div><b>Uniquement vos informations</b><br>L'agent n'utilise que votre site, vos règles et vos documents. Ce qu'il ne sait pas avec certitude, il ne l'invente pas : il vous le transmet.</div>
+ <div><b>C'est vous qui décidez</b><br>Les demandes vous arrivent regroupées avec toutes les informations. Vous confirmez, refusez ou reprenez n'importe quelle conversation à tout moment.</div>
+</div>
+<footer>Démo d'exemple de <a href="https://bollastudio.com" target="_blank">BOLLA STUDIO</a> · Marcelo Bolla · <a href="mailto:marcelo@bollastudio.com">marcelo@bollastudio.com</a><br>«&nbsp;École de musique Clé de Sol&nbsp;» est un établissement fictif. Toutes les informations sont des exemples, sans vrais prix ni disponibilités. Pour votre entreprise, l'agent n'utilise que vos propres informations.</footer>
+<script>
+var D={"chat": [["in", "Bonsoir, mon fils a 7 ans et voudrait apprendre la guitare. C'est possible ?"], ["out", "Bonsoir ! Oui, la guitare est tout à fait possible dès 7 ans environ, avec une guitare enfant plus petite. Le mieux est de commencer par un cours d'essai pour rencontrer le professeur.\nQuels jours aurait-il du temps après l'école ?"], ["in", "Lundi ou mercredi après 16 h. Nous n'avons pas encore de guitare."], ["out", "C'est noté : cours d'essai guitare, 7 ans, lundi ou mercredi dès 16 h. Pour commencer, on peut louer une guitare enfant ; le professeur vous conseille volontiers lors de l'essai.\nPuis-je noter le prénom de votre fils et votre téléphone ?"], ["in", "Hugo, 079 … (maman : Marie Perret)"], ["out", "Merci, Madame Perret ! La demande pour Hugo est transmise au secrétariat. Vous recevrez une proposition de cours d'essai par WhatsApp. 🎸"]], "quick": {"Y a-t-il des cours pour adultes ?": "Oui, dans l'école d'exemple, les adultes sont bienvenus dans toutes les branches, aussi pour reprendre. (Pour votre école, l'agent utilise votre offre.)", "Combien dure une leçon ?": "Dans l'exemple, les leçons individuelles durent 25, 40 ou 50 minutes selon l'abonnement.", "Y a-t-il cours pendant les vacances scolaires ?": "Non, dans l'exemple, les cours suivent les vacances scolaires de la commune. Je vous envoie volontiers le calendrier.", "Quels instruments proposez-vous ?": "Dans l'exemple : piano, guitare, violon, batterie, chant, flûte traversière et saxophone.", "Mon enfant peut-il changer de professeur ?": ["hand", "La direction en discute personnellement, donc je ne décide rien. Je transmets votre demande, on vous recontacte. 📝"]}, "slots": ["Après-midi", "Soir", "Mercredi après-midi", "Samedi"], "ok": "✅ Demande de démo : {item} · dès le {date} · {slot}. Dans la vraie version, l'agent demande l'âge et le niveau et transmet l'inscription à votre secrétariat.", "pick": "Veuillez d'abord remplir les champs ci-dessus.", "lead": 14};
+var chat=document.getElementById('chat'),qr=document.getElementById('qr');
+function add(t,c){var e=document.createElement('div');e.className='m '+c;e.textContent=t;chat.appendChild(e);chat.scrollTop=chat.scrollHeight;return e}
+function play(i){if(i>=D.chat.length)return;var m=D.chat[i];
+ if(m[0]=='out'||m[0]=='hand'){var t=add('…','out typing');setTimeout(function(){t.remove();add(m[1],m[0]=='hand'?'out hand':'out');setTimeout(function(){play(i+1)},900)},1100)}
+ else{add(m[1],'in');setTimeout(function(){play(i+1)},800)}}
+Object.keys(D.quick).forEach(function(q){var b=document.createElement('button');b.textContent=q;b.onclick=function(){var a=D.quick[q];add(q,'in');window.bsTrack&&bsTrack('/chat/'+q.toLowerCase().normalize('NFD').replace(/[^a-z]+/g,'-').replace(/^-|-$/g,'').slice(0,50),'Chat '+q);var t=add('…','out typing');setTimeout(function(){t.remove();if(typeof a==='string')add(a,'out');else add(a[1],'out hand')},900)};qr.appendChild(b)});
+play(0);
+var arr=document.getElementById('arr'),d0=new Date();d0.setDate(d0.getDate()+D.lead);
+function iso(d){return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0')}
+arr.min=iso(new Date());arr.value=iso(d0);
+var slots=document.getElementById('slots'),slot=null;
+D.slots.forEach(function(n){var b=document.createElement('button');b.textContent=n;b.onclick=function(){[].forEach.call(slots.children,function(x){x.classList.remove('on')});b.classList.add('on');slot=n};slots.appendChild(b)});
+document.getElementById('cta').onclick=function(){var ok=document.getElementById('ok');ok.style.display='block';var v=arr.value;
+ if(!v||!slot){ok.textContent=D.pick;return}
+ var p=v.split('-');ok.textContent=D.ok.replace('{item}',document.getElementById('item').value).replace('{date}',p[2]+'.'+p[1]+'.'+p[0]).replace('{slot}',slot);
+ window.bsTrack&&bsTrack('/request/confirm','Demo-Anfrage')};
+</script>
+</body></html>
