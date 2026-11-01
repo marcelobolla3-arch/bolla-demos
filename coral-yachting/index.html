@@ -1,0 +1,452 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Coral Yachting · Demo asistente de chárter · BOLLA STUDIO</title>
+<meta name="robots" content="noindex">
+<style>
+:root{--n:#0b2a4a;--c:#e8604c;--s:#f3f6f9;--b:#d9e1ea}
+*{box-sizing:border-box}body{margin:0;font-family:-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;background:var(--s);color:#14202c;line-height:1.5}
+.top{background:#071d33;color:#c9d6e3;font-size:12.5px;text-align:center;padding:7px 12px}.top a{color:#fff}
+.hero{background:var(--n);color:#fff}.hero .in{max-width:1080px;margin:auto;padding:22px 20px 18px}
+.tag{font-size:12.5px;letter-spacing:.06em;text-transform:uppercase;color:#f4b3a8}
+h1{font-size:27px;margin:6px 0 8px}.intro{color:#c9d6e3;font-size:15px;max-width:800px;margin:0}
+.bar{max-width:1080px;margin:14px auto 0;padding:0 20px;display:flex;flex-wrap:wrap;gap:8px;align-items:center;justify-content:space-between}
+.langs,.tabs{display:flex;flex-wrap:wrap;gap:6px;align-items:center;font-size:13px;color:#5b6b7b}
+.langs button,.tabs button{border:1px solid var(--b);background:#fff;color:var(--n);border-radius:20px;padding:7px 14px;font-size:14px;cursor:pointer}
+.langs button.on{background:var(--c);border-color:var(--c);color:#fff}.tabs button.on{background:var(--n);border-color:var(--n);color:#fff}
+main{max-width:1080px;margin:auto;padding:12px 20px 30px}.tab{display:none}.tab.on{display:block}
+.wrap{display:grid;grid-template-columns:1fr 330px;gap:18px}@media(max-width:860px){.wrap{grid-template-columns:1fr}h1{font-size:22px}}
+.phone{background:#efeae2;border-radius:16px;border:1px solid var(--b);overflow:hidden;display:flex;flex-direction:column;height:620px}
+@media(max-width:860px){.phone{height:560px}}
+.ph-h{background:#075e54;color:#fff;padding:10px 14px;display:flex;align-items:center;gap:10px}
+.av{width:38px;height:38px;border-radius:50%;background:var(--c);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:13px;flex:none}
+.ph-h small{display:block;color:#cfe9e4;font-size:12px}
+.msgs{flex:1;padding:12px;overflow-y:auto}
+.m{max-width:86%;padding:8px 11px;border-radius:9px;margin:6px 0;font-size:14px;line-height:1.42;white-space:pre-line;box-shadow:0 1px 1px rgba(0,0,0,.08);overflow-wrap:anywhere}
+.u{background:#d9fdd3;margin-left:auto}.b{background:#fff}.b.h{background:#fff4d6;border:1px dashed #d9a400}
+.sys{background:#e3eefc;margin:8px auto;text-align:center;font-size:12.5px;max-width:94%}.typing{color:#777;font-style:italic}
+.chips{display:flex;gap:6px;overflow-x:auto;padding:8px 10px;background:#f7f7f7;border-top:1px solid #ddd}
+.chips button{flex:none;background:#fff;border:1px solid var(--n);color:var(--n);border-radius:16px;padding:5px 11px;font-size:13px;cursor:pointer}
+.inrow{display:flex;gap:6px;padding:8px 10px;background:#f0f0f0}.inrow input{flex:1;min-width:0;padding:9px 12px;border:1px solid #ccc;border-radius:18px;font-size:14px}
+.inrow button{background:#075e54;color:#fff;border:0;border-radius:18px;padding:0 16px;font-size:14px;cursor:pointer}
+.side h3{margin:2px 0 8px;font-size:15px}
+.sc{display:block;width:100%;text-align:left;margin:6px 0;background:#fff;border:1px solid var(--b);color:#14202c;border-radius:10px;padding:10px;cursor:pointer;font-size:14px}.sc:hover{border-color:var(--c)}
+.note{font-size:12.5px;color:#5b6b7b;line-height:1.45}
+.card{background:#fff;border:1px solid var(--b);border-radius:14px;padding:18px;margin:10px 0}
+.card h3{margin:0 0 4px;color:var(--n)}
+.fg{display:grid;grid-template-columns:1fr 1fr;gap:10px 14px}@media(max-width:640px){.fg{grid-template-columns:1fr}}
+label{font-size:13px;color:#4a5a6a;display:block;margin:8px 0 4px}
+select,input,textarea{width:100%;padding:10px;border:1px solid #cfd8e2;border-radius:8px;font-size:14px;font-family:inherit;background:#fff}
+.ex{display:flex;flex-wrap:wrap;gap:6px}.ex label{margin:0;display:flex;align-items:center;gap:6px;border:1px solid #cfd8e2;border-radius:18px;padding:6px 11px;cursor:pointer;font-size:13.5px;color:#14202c}.ex input{width:auto}
+.price{background:#fff7f4;border:1px solid #f4c4b9;border-radius:10px;padding:12px;margin-top:12px;font-size:14px}
+.price b.big{font-size:20px;color:var(--c)}.warn{background:#fff4d6;border:1px solid #f0d080;border-radius:8px;padding:9px;margin-top:8px;font-size:13px;display:none}
+.cta{margin-top:14px;width:100%;background:var(--c);color:#fff;border:0;border-radius:10px;padding:13px;font-size:15px;cursor:pointer;font-weight:600}
+.ok{display:none;margin-top:12px;background:#eaf7ea;border:1px solid #bfe3bf;padding:12px;border-radius:8px;font-size:14px;white-space:pre-line}
+.kpis{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin:12px 0}@media(max-width:760px){.kpis{grid-template-columns:repeat(2,1fr)}}
+.kpi{background:var(--s);border-radius:10px;padding:10px}.kpi b{display:block;font-size:22px;color:var(--n)}.kpi span{font-size:12.5px;color:#5b6b7b}
+.tw{overflow-x:auto}table{width:100%;border-collapse:collapse;font-size:13.5px;min-width:560px}td,th{padding:8px;border-bottom:1px solid #e3e9ef;text-align:left;vertical-align:top}th{color:#5b6b7b;font-weight:600}
+.pill{font-size:12px;padding:2px 8px;border-radius:10px;white-space:nowrap;background:#e3e9ef}.p-new{background:#1f6fb2;color:#fff}.p-ho{background:#f0a500;color:#fff}.p-ex{background:#eee;color:#777}
+.feat{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:18px}@media(max-width:860px){.feat{grid-template-columns:1fr}}
+.feat div{background:#fff;border:1px solid var(--b);border-radius:12px;padding:14px;font-size:14px}.feat b{color:var(--c)}
+footer{max-width:1080px;margin:auto;padding:16px 20px 40px;color:#5b6b7b;font-size:12.5px;border-top:1px solid var(--b)}footer a{color:var(--c)}
+.clr{background:none;border:1px solid var(--b);border-radius:8px;padding:6px 10px;font-size:12.5px;cursor:pointer;color:#5b6b7b}
+</style>
+<!-- GoatCounter (BOLLA STUDIO): page /coral-yachting/?p=<tag>; events under /coral-yachting/...; ?internal=1 -> nothing counted or loaded -->
+<script>
+(function(){
+ var BASE='/coral-yachting';
+ var m=(location.search+location.hash).match(/[?&#]internal=([01])/);
+ try{ if(m){ if(m[1]==="1") localStorage.setItem("skipgc","t"); else localStorage.removeItem("skipgc"); } }catch(e){}
+ var internal=false; try{ internal=localStorage.getItem("skipgc")==="t"; }catch(e){}
+ var sm=location.search.match(/[?&]p=([^&#]*)/);
+ var tag=sm?decodeURIComponent(sm[1]).toLowerCase().replace(/[^a-z0-9-]/g,"").slice(0,60):"";
+ var q=[]; window.bsTrack=function(sub,title){ if(internal) return;
+   if(window.goatcounter&&window.goatcounter.count) window.goatcounter.count({path:BASE+sub,title:title||sub,event:true}); else q.push([BASE+sub,title||sub]); };
+ if(internal) return;
+ window.goatcounter={no_onload:true};
+ var s=document.createElement("script"); s.async=true; s.src="https://gc.zgo.at/count.js";
+ s.setAttribute("data-goatcounter","https://bollastudio.goatcounter.com/count");
+ s.onload=function(){ try{ window.goatcounter.count({path:BASE+'/'+(tag?'?p='+tag:''),title:'Coral Yachting demo'});
+   q.forEach(function(e){window.goatcounter.count({path:e[0],title:e[1],event:true});}); q=[]; }catch(e){} };
+ document.head.appendChild(s);
+})();
+</script>
+</head><body>
+<div class="top" data-t="top"></div>
+<div class="hero"><div class="in"><div class="tag" data-t="tag"></div><h1 data-t="h1"></h1><p class="intro" data-t="intro"></p></div></div>
+<div class="bar">
+ <div class="tabs" id="tabs"><button data-tab="chat" class="on" data-t="tabChat"></button><button data-tab="form" data-t="tabForm"></button><button data-tab="rep" data-t="tabRep"></button></div>
+ <div class="langs" id="langs"><span data-t="langLbl"></span><button data-l="es" class="on">ES</button><button data-l="en">EN</button><button data-l="fr">FR</button><button data-l="de">DE</button></div>
+</div>
+<main>
+<section class="tab on" id="t-chat"><div class="wrap">
+ <div class="phone">
+  <div class="ph-h"><div class="av">CY</div><div><b>Coral Yachting · +34 690 65 45 20</b><small data-t="online"></small></div></div>
+  <div class="msgs" id="msgs"></div>
+  <div class="chips" id="chips"></div>
+  <div class="inrow"><input id="inp" autocomplete="off"><button id="send" data-t="send"></button></div>
+ </div>
+ <div class="side"><h3 data-t="sideTitle"></h3><div id="scen"></div><p class="note" data-t="sideNote"></p></div>
+</div></section>
+
+<section class="tab" id="t-form"><div class="card">
+ <h3 data-t="fTitle"></h3><p class="note" data-t="fSub"></p>
+ <div class="fg">
+  <div><label data-t="fBoat"></label><select id="boat"></select></div>
+  <div><label data-t="fDate"></label><input type="date" id="date" value="2027-07-15" min="2026-11-02"></div>
+  <div><label data-t="fGuests"></label><input type="number" id="guests" min="1" max="40" value="8"></div>
+  <div><label data-t="fName"></label><input id="nm"></div>
+  <div><label data-t="fContact"></label><input id="ct" placeholder="+34 … / name@…"></div>
+  <div><label data-t="fComments"></label><input id="cm"></div>
+ </div>
+ <label data-t="fExtras"></label><div class="ex" id="extras"></div>
+ <div class="warn" id="warn"></div>
+ <div class="price" id="price"></div>
+ <button class="cta" id="cta" data-t="fSubmit"></button>
+ <div class="ok" id="ok"></div>
+</div></section>
+
+<section class="tab" id="t-rep"><div class="card">
+ <h3 id="repTitle"></h3><p class="note" data-t="rSub"></p>
+ <div class="kpis" id="kpis"></div>
+ <h4 data-t="rReq"></h4><div class="tw"><table id="tReq"></table></div>
+ <h4 data-t="rHand"></h4><div class="tw"><table id="tHand"></table></div>
+ <p class="note" data-t="rFoot"></p>
+ <button class="clr" id="clr" data-t="rClear"></button>
+</div></section>
+
+<div class="feat"><div data-h="feat1"></div><div data-h="feat2"></div><div data-h="feat3"></div></div>
+</main>
+<footer data-h="foot"></footer>
+<script>
+var MONTHS={es:["enero","febrero","marzo","abril","mayo","junio","julio","agosto","septiembre","octubre","noviembre","diciembre"],en:["January","February","March","April","May","June","July","August","September","October","November","December"],fr:["janvier","février","mars","avril","mai","juin","juillet","août","septembre","octobre","novembre","décembre"],de:["Januar","Februar","März","April","Mai","Juni","Juli","August","September","Oktober","November","Dezember"]};
+var N=null;
+var BOATS=[
+ {id:"viamar",n:"De Antonio 28 «VIAMAR»",cap:9,base:"Marina Botafoch",r:[1200,1200,1200,1200,1200,1300,1400,1400,1250,1200,1200,1200],pad:1},
+ {id:"yolo",n:"Saxdor 320 GTO «YOLO»",cap:8,base:"Marina Botafoch",r:[N,N,N,N,1400,1660,1950,1950,1660,1400,N,N],pad:1},
+ {id:"ikigai",n:"De Antonio 36 «IKIGAI»",cap:11,base:"Marina Botafoch",r:[1490,1490,1490,1490,1490,1890,2190,2190,1790,1490,1490,1490],pad:1},
+ {id:"yolo2",n:"Fjord 44 «YOLO II»",cap:11,base:"Marina Botafoch",r:[N,N,N,N,1948,2670,2980,2980,2220,1948,N,N],pad:1},
+ {id:"sami",n:"Sunseeker Camargue 50 «SAMI DOS»",cap:12,base:"Marina Botafoch",r:[N,N,N,N,1997,2360,2602,2723,2300,1936,N,N],pad:1},
+ {id:"balok",n:"Lagoon 450 «BALOK» (catamarán)",cap:10,base:"Ibiza",r:[N,N,N,N,1300,1550,1850,1850,1550,1300,N,N],pad:0},
+ {id:"glastron",n:"Glastron 225 GTS (sin patrón)",cap:6,base:"Marina Botafoch",r:[N,N,N,N,484,544,605,605,544,484,N,N],pad:0,bare:1},
+ {id:"other",n:"",cap:12,base:"",r:null}
+];
+function eur(v){return v.toLocaleString('de-DE')+' €'}
+var T={
+es:{top:'Demo gratuita preparada para <b>Coral Yachting</b> por <a href="https://bollastudio.com" target="_blank">BOLLA STUDIO</a> · datos públicos de coralyachting.com (noviembre 2026) · no conectada a reservas reales',
+ tag:'Ibiza · Marina Botafoch · empresa familiar desde 1978',
+ h1:'Su WhatsApp de chárter, respondido al momento y en 4 idiomas',
+ intro:'Un asistente para WhatsApp y la web que contesta las preguntas que se repiten (qué incluye, capacidad, combustible, patrón, horarios, salidas desde Ibiza y Formentera) solo con lo que ya está publicado en su web, recoge solicitudes de reserva completas y pasa a una persona del equipo todo lo que no es seguro: disponibilidad, meteorología, cambios y cancelaciones.',
+ langLbl:'Idioma del cliente:',tabChat:'💬 Asistente WhatsApp',tabForm:'📝 Solicitud de reserva',tabRep:'📊 Informe diario',
+ online:'asistente · responde 24/7 · el equipo confirma cada reserva',send:'Enviar',ph:'Escribe como un cliente… ej. «¿qué incluye?»',
+ sideTitle:'Pruebe una conversación de cliente',sideNote:'Las respuestas salen de las fichas de barco, las tarifas y las FAQ de coralyachting.com. Los precios son el «precio base orientativo» publicado. Lo que no está en la web (disponibilidad, mal tiempo, cancelaciones, peticiones especiales) se pasa a una persona del equipo, nunca se inventa. Cada consulta queda en el «Informe diario».',
+ fTitle:'Solicitud de reserva directa',fSub:'Igual que el formulario «Reservar» de cada barco, pero dentro del chat o la web y en el idioma del cliente. El precio es el precio base orientativo publicado para ese mes; el presupuesto completo lo envía el equipo.',
+ fBoat:'Barco',fDate:'Fecha',fGuests:'Personas',fName:'Nombre',fContact:'WhatsApp o email',fComments:'Comentarios (opcional)',fExtras:'Extras',fSubmit:'Enviar solicitud',
+ other:'Otro barco / quiero que me recomienden',pers:'pers.',
+ ex:{seabob:'Seabob (desde 363 €/día)',paddle:'Paddle surf (desde 72 €/día)',catering:'Catering',transfer:'Transfer a mi barco',drinks:'Bebidas',skipper:'Patrón (+220 €/día)'},
+ pBase:'Precio base orientativo',perDay:'/día',pMonth:'tarifa publicada para',pNone:'No hay tarifa publicada para ese mes: la confirma el equipo.',pOther:'El equipo le recomienda barco según grupo, presupuesto y fecha.',
+ pNote:'No incluye combustible ni extras. Paddle surf incluido en este barco.',pNote2:'No incluye combustible ni extras.',
+ wCap:'⚠️ Este barco lleva hasta {c} personas. El asistente propone otro barco de la flota o dos barcos.',wLaw:'⚠️ Por ley, máximo 12 pasajeros por barco (más tripulación). Para más de 12: 2 o 3 barcos que fondean juntos; más de 20: goleta o catamarán para grupos.',
+ need:'Elija fecha y número de personas.',
+ okMsg:'✅ Solicitud de demo registrada.\n{s}\nEn la versión real, el cliente recibe esta confirmación en su idioma y el equipo la ve al momento con todo lo necesario para confirmar disponibilidad y enviar el presupuesto. Ya aparece en el «Informe diario».',
+ rTitle:'Informe diario · equipo de chárter · ',rSub:'Así sería el resumen que recibe el equipo cada mañana por WhatsApp o email. Se llena con lo que usted haga en esta demo (se guarda solo en su navegador). Las filas «Ejemplo» son ilustrativas, no son consultas reales.',
+ k:['Conversaciones','Respondidas por el asistente','Pasadas a una persona','Solicitudes de reserva','Idiomas'],
+ rReq:'Solicitudes de reserva para confirmar',rHand:'Para una persona del equipo',
+ hReq:['Hora','Barco','Fecha','Pers.','Extras','Precio base orientativo','Contacto','Estado'],hHand:['Hora','Idioma','Consulta del cliente','Motivo'],
+ stNew:'Nueva · confirmar disponibilidad',stHo:'Pendiente',exTag:'Ejemplo',
+ rFoot:'El equipo puede tomar cualquier conversación cuando quiera. Nada se confirma sin una persona del equipo.',rClear:'Borrar mis datos de la demo',
+ feat1:'<b>4 idiomas, 24/7</b><br>Español, inglés, francés y alemán, como su web. También de noche y en julio y agosto, cuando el WhatsApp no para.',
+ feat2:'<b>Solo datos de su web</b><br>Tarifas por mes, qué incluye cada barco, combustible, capacidad, horarios, pago y puertos base, tal como están en coralyachting.com. Lo que no sabe, no lo inventa.',
+ feat3:'<b>El equipo decide</b><br>Disponibilidad, meteorología, cambios, superyates y venta llegan resumidos a la persona adecuada. Cada mañana, un informe con todo lo pendiente.',
+ foot:'Demo gratuita de <a href="https://bollastudio.com" target="_blank">BOLLA STUDIO</a> · Marcelo Bolla · <a href="https://www.linkedin.com/in/marcelo-bolla-ai" target="_blank">LinkedIn</a><br>Datos de barcos, tarifas y condiciones tomados de <a href="https://www.coralyachting.com/" target="_blank">coralyachting.com</a> (noviembre 2026); precios orientativos. Esta página no está afiliada ni gestionada por Coral Yachting. Las conversaciones son ilustrativas.',
+ sysHand:'🙋 Pasado a una persona del equipo con la conversación completa. Queda en el «Informe diario».'},
+en:{top:'Free demo prepared for <b>Coral Yachting</b> by <a href="https://bollastudio.com" target="_blank">BOLLA STUDIO</a> · public data from coralyachting.com (November 2026) · not connected to real bookings',
+ tag:'Ibiza · Marina Botafoch · family business since 1978',
+ h1:'Your charter WhatsApp, answered instantly in 4 languages',
+ intro:'An assistant for WhatsApp and the website that answers the questions guests keep asking (what is included, capacity, fuel, skipper, times, departures from Ibiza and Formentera) using only what is already published on your website, collects complete booking requests and passes anything uncertain to a person on your team: availability, weather, changes and cancellations.',
+ langLbl:'Guest language:',tabChat:'💬 WhatsApp assistant',tabForm:'📝 Booking request',tabRep:'📊 Daily report',
+ online:'assistant · replies 24/7 · the team confirms every booking',send:'Send',ph:'Write as a guest… e.g. "what is included?"',
+ sideTitle:'Try a guest conversation',sideNote:'Answers come from the boat pages, rates and FAQ on coralyachting.com. Prices are the published "indicative base price". Anything not on the website (availability, bad weather, cancellations, special requests) goes to a person on the team and is never made up. Every enquiry ends up in the "Daily report".',
+ fTitle:'Direct booking request',fSub:'Just like the "Book" form on each boat page, but inside the chat or website and in the guest\'s language. The price is the indicative base price published for that month; the team sends the full quote.',
+ fBoat:'Boat',fDate:'Date',fGuests:'Guests',fName:'Name',fContact:'WhatsApp or email',fComments:'Comments (optional)',fExtras:'Extras',fSubmit:'Send request',
+ other:'Other boat / please recommend one',pers:'guests',
+ ex:{seabob:'Seabob (from €363/day)',paddle:'Paddle surf (from €72/day)',catering:'Catering',transfer:'Transfer to my boat',drinks:'Drinks',skipper:'Skipper (+€220/day)'},
+ pBase:'Indicative base price',perDay:'/day',pMonth:'published rate for',pNone:'No rate published for that month: the team will confirm it.',pOther:'The team recommends a boat based on group, budget and date.',
+ pNote:'Fuel and extras not included. Paddle surf included on this boat.',pNote2:'Fuel and extras not included.',
+ wCap:'⚠️ This boat takes up to {c} guests. The assistant suggests another boat from the fleet or two boats.',wLaw:'⚠️ By law, max. 12 passengers per boat (plus crew). Over 12: two or three boats anchoring together; over 20: a schooner or group catamaran.',
+ need:'Please choose a date and number of guests.',
+ okMsg:'✅ Demo request saved.\n{s}\nIn the real version the guest gets this confirmation in their language and the team sees it instantly with everything needed to confirm availability and send the quote. It is already in the "Daily report".',
+ rTitle:'Daily report · charter team · ',rSub:'This is the summary the team would get every morning by WhatsApp or email. It fills with what you do in this demo (stored only in your browser). Rows marked "Example" are illustrative, not real enquiries.',
+ k:['Conversations','Answered by the assistant','Passed to a person','Booking requests','Languages'],
+ rReq:'Booking requests to confirm',rHand:'For a person on the team',
+ hReq:['Time','Boat','Date','Guests','Extras','Indicative base price','Contact','Status'],hHand:['Time','Language','Guest enquiry','Reason'],
+ stNew:'New · confirm availability',stHo:'Pending',exTag:'Example',
+ rFoot:'The team can take over any conversation at any time. Nothing is confirmed without a person on the team.',rClear:'Clear my demo data',
+ feat1:'<b>4 languages, 24/7</b><br>Spanish, English, French and German, like your website. Also at night and in July and August, when WhatsApp never stops.',
+ feat2:'<b>Only your website\'s facts</b><br>Monthly rates, what each boat includes, fuel, capacity, times, payment and home ports, exactly as on coralyachting.com. What it doesn\'t know, it doesn\'t invent.',
+ feat3:'<b>Your team decides</b><br>Availability, weather, changes, superyachts and sales reach the right person already summarised. Every morning, a report of everything pending.',
+ foot:'Free demo by <a href="https://bollastudio.com" target="_blank">BOLLA STUDIO</a> · Marcelo Bolla · <a href="https://www.linkedin.com/in/marcelo-bolla-ai" target="_blank">LinkedIn</a><br>Boat data, rates and conditions taken from <a href="https://www.coralyachting.com/" target="_blank">coralyachting.com</a> (November 2026); indicative prices. This page is not affiliated with or operated by Coral Yachting. Conversations are illustrative.',
+ sysHand:'🙋 Passed to a person on the team with the full conversation. Logged in the "Daily report".'},
+fr:{top:'Démo gratuite préparée pour <b>Coral Yachting</b> par <a href="https://bollastudio.com" target="_blank">BOLLA STUDIO</a> · données publiques de coralyachting.com (novembre 2026) · non connectée aux vraies réservations',
+ tag:'Ibiza · Marina Botafoch · entreprise familiale depuis 1978',
+ h1:'Votre WhatsApp de location, répondu tout de suite en 4 langues',
+ intro:'Un assistant pour WhatsApp et le site qui répond aux questions qui reviennent sans cesse (ce qui est inclus, capacité, carburant, skipper, horaires, départs d\'Ibiza et de Formentera) uniquement avec ce qui est déjà publié sur votre site, recueille des demandes de réservation complètes et transmet à une personne de l\'équipe tout ce qui n\'est pas sûr : disponibilité, météo, changements et annulations.',
+ langLbl:'Langue du client :',tabChat:'💬 Assistant WhatsApp',tabForm:'📝 Demande de réservation',tabRep:'📊 Rapport du jour',
+ online:'assistant · répond 24h/24 · l\'équipe confirme chaque réservation',send:'Envoyer',ph:'Écrivez comme un client… ex. « qu\'est-ce qui est inclus ? »',
+ sideTitle:'Essayez une conversation client',sideNote:'Les réponses viennent des fiches bateaux, des tarifs et de la FAQ de coralyachting.com. Les prix sont le « prix de base indicatif » publié. Ce qui n\'est pas sur le site (disponibilité, mauvais temps, annulations, demandes spéciales) est transmis à une personne de l\'équipe, jamais inventé. Chaque demande apparaît dans le « Rapport du jour ».',
+ fTitle:'Demande de réservation directe',fSub:'Comme le formulaire « Réserver » de chaque bateau, mais dans le chat ou sur le site et dans la langue du client. Le prix est le prix de base indicatif publié pour ce mois ; l\'équipe envoie le devis complet.',
+ fBoat:'Bateau',fDate:'Date',fGuests:'Personnes',fName:'Nom',fContact:'WhatsApp ou e-mail',fComments:'Commentaires (facultatif)',fExtras:'Extras',fSubmit:'Envoyer la demande',
+ other:'Autre bateau / je souhaite un conseil',pers:'pers.',
+ ex:{seabob:'Seabob (dès 363 €/jour)',paddle:'Paddle (dès 72 €/jour)',catering:'Traiteur',transfer:'Transfert jusqu\'au bateau',drinks:'Boissons',skipper:'Skipper (+220 €/jour)'},
+ pBase:'Prix de base indicatif',perDay:'/jour',pMonth:'tarif publié pour',pNone:'Pas de tarif publié pour ce mois : l\'équipe le confirme.',pOther:'L\'équipe conseille un bateau selon le groupe, le budget et la date.',
+ pNote:'Carburant et extras non inclus. Paddle inclus sur ce bateau.',pNote2:'Carburant et extras non inclus.',
+ wCap:'⚠️ Ce bateau accueille jusqu\'à {c} personnes. L\'assistant propose un autre bateau de la flotte ou deux bateaux.',wLaw:'⚠️ Selon la loi, 12 passagers maximum par bateau (plus l\'équipage). Plus de 12 : deux ou trois bateaux mouillés côte à côte ; plus de 20 : goélette ou catamaran pour groupes.',
+ need:'Choisissez une date et le nombre de personnes.',
+ okMsg:'✅ Demande de démo enregistrée.\n{s}\nDans la vraie version, le client reçoit cette confirmation dans sa langue et l\'équipe la voit tout de suite avec tout ce qu\'il faut pour confirmer la disponibilité et envoyer le devis. Elle figure déjà dans le « Rapport du jour ».',
+ rTitle:'Rapport du jour · équipe charter · ',rSub:'Voici le résumé que l\'équipe recevrait chaque matin par WhatsApp ou e-mail. Il se remplit avec ce que vous faites dans cette démo (stocké uniquement dans votre navigateur). Les lignes « Exemple » sont illustratives, pas de vraies demandes.',
+ k:['Conversations','Répondues par l\'assistant','Transmises à une personne','Demandes de réservation','Langues'],
+ rReq:'Demandes de réservation à confirmer',rHand:'Pour une personne de l\'équipe',
+ hReq:['Heure','Bateau','Date','Pers.','Extras','Prix de base indicatif','Contact','Statut'],hHand:['Heure','Langue','Demande du client','Motif'],
+ stNew:'Nouvelle · confirmer la dispo',stHo:'En attente',exTag:'Exemple',
+ rFoot:'L\'équipe peut reprendre n\'importe quelle conversation à tout moment. Rien n\'est confirmé sans une personne de l\'équipe.',rClear:'Effacer mes données de démo',
+ feat1:'<b>4 langues, 24h/24</b><br>Espagnol, anglais, français et allemand, comme votre site. Aussi la nuit et en juillet-août, quand WhatsApp ne s\'arrête jamais.',
+ feat2:'<b>Uniquement les faits de votre site</b><br>Tarifs par mois, inclusions de chaque bateau, carburant, capacité, horaires, paiement et ports d\'attache, comme sur coralyachting.com. Ce qu\'il ne sait pas, il ne l\'invente pas.',
+ feat3:'<b>Votre équipe décide</b><br>Disponibilité, météo, changements, superyachts et ventes arrivent résumés à la bonne personne. Chaque matin, un rapport de tout ce qui est en attente.',
+ foot:'Démo gratuite de <a href="https://bollastudio.com" target="_blank">BOLLA STUDIO</a> · Marcelo Bolla · <a href="https://www.linkedin.com/in/marcelo-bolla-ai" target="_blank">LinkedIn</a><br>Bateaux, tarifs et conditions repris de <a href="https://www.coralyachting.com/" target="_blank">coralyachting.com</a> (novembre 2026) ; prix indicatifs. Cette page n\'est ni affiliée ni gérée par Coral Yachting. Conversations illustratives.',
+ sysHand:'🙋 Transmis à une personne de l\'équipe avec toute la conversation. Noté dans le « Rapport du jour ».'},
+de:{top:'Kostenlose Demo für <b>Coral Yachting</b>, vorbereitet von <a href="https://bollastudio.com" target="_blank">BOLLA STUDIO</a> · öffentliche Angaben von coralyachting.com (November 2026) · nicht mit echten Buchungen verbunden',
+ tag:'Ibiza · Marina Botafoch · Familienunternehmen seit 1978',
+ h1:'Ihr Charter-WhatsApp, sofort beantwortet und in 4 Sprachen',
+ intro:'Ein Assistent für WhatsApp und Website, der die immer gleichen Fragen beantwortet (was ist inklusive, Kapazität, Treibstoff, Skipper, Zeiten, Abfahrt ab Ibiza und Formentera), nur mit dem, was bereits auf Ihrer Website steht. Er nimmt vollständige Buchungsanfragen auf und gibt alles Unsichere an eine Person im Team weiter: Verfügbarkeit, Wetter, Umbuchungen und Stornierungen.',
+ langLbl:'Sprache des Gastes:',tabChat:'💬 WhatsApp-Assistent',tabForm:'📝 Buchungsanfrage',tabRep:'📊 Tagesbericht',
+ online:'Assistent · antwortet 24/7 · das Team bestätigt jede Buchung',send:'Senden',ph:'Schreiben Sie als Gast… z. B. „Was ist inklusive?“',
+ sideTitle:'Testen Sie ein Gästegespräch',sideNote:'Die Antworten stammen aus den Bootsseiten, Tarifen und FAQ von coralyachting.com. Preise sind der veröffentlichte „unverbindliche Grundpreis“. Was nicht auf der Website steht (Verfügbarkeit, schlechtes Wetter, Stornierungen, Sonderwünsche), geht an eine Person im Team und wird nie erfunden. Jede Anfrage landet im „Tagesbericht“.',
+ fTitle:'Direkte Buchungsanfrage',fSub:'Wie das Formular „Reservieren“ auf jeder Bootsseite, aber im Chat oder auf der Website und in der Sprache des Gastes. Der Preis ist der für diesen Monat veröffentlichte unverbindliche Grundpreis; das vollständige Angebot schickt das Team.',
+ fBoat:'Boot',fDate:'Datum',fGuests:'Personen',fName:'Name',fContact:'WhatsApp oder E-Mail',fComments:'Kommentar (optional)',fExtras:'Extras',fSubmit:'Anfrage senden',
+ other:'Anderes Boot / bitte beraten',pers:'Pers.',
+ ex:{seabob:'Seabob (ab 363 €/Tag)',paddle:'Paddle-Surf (ab 72 €/Tag)',catering:'Catering',transfer:'Transfer zum Boot',drinks:'Getränke',skipper:'Skipper (+220 €/Tag)'},
+ pBase:'Unverbindlicher Grundpreis',perDay:'/Tag',pMonth:'veröffentlichter Tarif für',pNone:'Für diesen Monat ist kein Tarif veröffentlicht: das Team bestätigt ihn.',pOther:'Das Team empfiehlt ein Boot nach Gruppe, Budget und Datum.',
+ pNote:'Treibstoff und Extras nicht inklusive. Paddle-Surf auf diesem Boot inklusive.',pNote2:'Treibstoff und Extras nicht inklusive.',
+ wCap:'⚠️ Dieses Boot ist für bis zu {c} Personen. Der Assistent schlägt ein anderes Boot der Flotte oder zwei Boote vor.',wLaw:'⚠️ Gesetzlich max. 12 Passagiere pro Boot (plus Crew). Über 12: zwei oder drei Boote, die nebeneinander ankern; über 20: Schoner oder Gruppenkatamaran.',
+ need:'Bitte Datum und Personenzahl wählen.',
+ okMsg:'✅ Demo-Anfrage gespeichert.\n{s}\nIn der echten Version erhält der Gast diese Bestätigung in seiner Sprache, und das Team sieht sie sofort mit allem, was es braucht, um die Verfügbarkeit zu bestätigen und das Angebot zu schicken. Sie steht schon im „Tagesbericht“.',
+ rTitle:'Tagesbericht · Charter-Team · ',rSub:'So sähe die Zusammenfassung aus, die das Team jeden Morgen per WhatsApp oder E-Mail bekommt. Sie füllt sich mit dem, was Sie in dieser Demo tun (nur in Ihrem Browser gespeichert). Zeilen mit „Beispiel“ sind illustrativ, keine echten Anfragen.',
+ k:['Gespräche','Vom Assistenten beantwortet','An eine Person übergeben','Buchungsanfragen','Sprachen'],
+ rReq:'Buchungsanfragen zur Bestätigung',rHand:'Für eine Person im Team',
+ hReq:['Zeit','Boot','Datum','Pers.','Extras','Unverbindl. Grundpreis','Kontakt','Status'],hHand:['Zeit','Sprache','Anfrage des Gastes','Grund'],
+ stNew:'Neu · Verfügbarkeit bestätigen',stHo:'Offen',exTag:'Beispiel',
+ rFoot:'Das Team kann jedes Gespräch jederzeit übernehmen. Nichts wird ohne eine Person im Team bestätigt.',rClear:'Meine Demo-Daten löschen',
+ feat1:'<b>4 Sprachen, 24/7</b><br>Spanisch, Englisch, Französisch und Deutsch, wie Ihre Website. Auch nachts und im Juli und August, wenn WhatsApp nicht stillsteht.',
+ feat2:'<b>Nur Fakten Ihrer Website</b><br>Monatstarife, Leistungen jedes Boots, Treibstoff, Kapazität, Zeiten, Zahlung und Heimathäfen, genau wie auf coralyachting.com. Was er nicht weiß, erfindet er nicht.',
+ feat3:'<b>Ihr Team entscheidet</b><br>Verfügbarkeit, Wetter, Umbuchungen, Superyachten und Verkauf kommen zusammengefasst bei der richtigen Person an. Jeden Morgen ein Bericht mit allem Offenen.',
+ foot:'Kostenlose Demo von <a href="https://bollastudio.com" target="_blank">BOLLA STUDIO</a> · Marcelo Bolla · <a href="https://www.linkedin.com/in/marcelo-bolla-ai" target="_blank">LinkedIn</a><br>Bootsdaten, Tarife und Bedingungen von <a href="https://www.coralyachting.com/" target="_blank">coralyachting.com</a> (November 2026); unverbindliche Preise. Diese Seite ist nicht mit Coral Yachting verbunden und wird nicht von Coral Yachting betrieben. Gespräche sind illustrativ.',
+ sysHand:'🙋 Mit dem ganzen Gespräch an eine Person im Team übergeben. Im „Tagesbericht“ vermerkt.'}
+};
+var HAND={libre:1,tiempo:1,cancel:1,fb:1,especial:1};
+var A={
+es:{hi:"¡Hola! 👋 Soy el asistente de Coral Yachting (Marina Botafoch, Ibiza). Le respondo al momento sobre barcos, precios orientativos, qué incluye, combustible, horarios o salidas. Lo que no sé con seguridad lo paso a una persona del equipo.",
+ incluye:"Depende del barco y está en cada ficha. Ejemplo, De Antonio 28 «VIAMAR»:\n✅ Incluye: amarre en puerto base, bebidas de cortesía, hielo, IVA, seguro del barco, tabla de paddle surf, toallas y tripulación.\n❌ No incluye: combustible, catering, propina de la tripulación, seabob, moto de agua, efoil ni tender.\n¿Qué barco le interesa? Le digo el de ese.",
+ combustible:"Con patrón: se calcula según las horas navegadas. Normalmente se pide un depósito de 2 horas de combustible por adelantado; si se gasta más se abona la diferencia y si se gasta menos se devuelve.\nSin patrón: el barco sale con el depósito lleno y al volver se reposta y se paga lo consumido.\nEjemplo: el VIAMAR consume unos 90 L/h según su ficha.",
+ capacidad:"Por ley en España un barco lleva como máximo 12 pasajeros más la tripulación. Cada ficha indica su capacidad: VIAMAR 9, De Antonio 36 «IKIGAI» 11, Sunseeker Camargue 50 «SAMI DOS» 12 + 1.\nSi son más de 12, lo mejor son 2 o 3 barcos que fondean juntos; a partir de 20 personas recomendamos una goleta o un catamarán para grupos.",
+ patron:"Casi toda la flota sale con patrón y tripulación. También hay barcos sin patrón, por ejemplo la Glastron 225 GTS (6 + 1 personas, desde 484 €/día orientativo; patrón opcional +220 €/día).\nQué titulación hace falta para llevarlo usted no está en la web: se lo confirma una persona del equipo.",
+ horario:"La mayoría de barcos salen a partir de las 10:00 y vuelven al puerto base antes de la puesta de sol (depende del barco y de la época). Si quieren ver el atardecer a bordo, lo consulto con el equipo.",
+ tiempo:"Nuestros brokers recomiendan la zona según el parte: si sopla en una costa, se busca una cala resguardada en otra.\nQué pasa con la fecha o el pago si el tiempo no permite salir no está publicado en la web, así que no se lo invento: lo paso ahora a una persona del equipo y le responde por aquí. 🙋",
+ cancel:"Las condiciones de cambio o cancelación no están publicadas en la web y pueden depender del barco, así que prefiero no adivinar. Paso su consulta a una persona del equipo y le contesta por aquí. 🙋",
+ salida:"Depende del barco. Puertos base de la flota: Marina Botafoch (la mayoría; ahí está nuestra oficina, local 323-324), Marina Ibiza, Santa Eulalia, San Antonio e Ibiza Port Nautic.\nIr a Formentera es el plan más habitual: en lancha o yate rápido, menos de media hora; en velero o catamarán, unas 3 h según el viento.\n¿Quieren embarcar o desembarcar en Formentera? Eso lo confirma el equipo según el barco.",
+ libre:"La disponibilidad la confirma el equipo al momento, porque los barcos también se reservan por otros canales. Dígame barco, fecha y número de personas (o use «Solicitud de reserva») y lo paso ya a una persona del equipo. 🙋\nEn la versión real, el asistente consulta el calendario de la flota y responde solo.",
+ pago:"Para reservar se abona el 50 % por adelantado, con tarjeta o transferencia; la reserva queda confirmada al recibir ese depósito. El resto se paga 15 días antes o el mismo día (según el barco), siempre antes de salir.",
+ ninos:"Sí, la gran mayoría de barcos son aptos para niños. Díganos la edad del más pequeño y le recomendamos el barco más adecuado para su seguridad.",
+ comida:"Como prefieran: pueden llevar su comida y bebida, pedir uno de nuestros menús de catering a bordo o comer en un restaurante (con antelación les podemos reservar mesa). Confirmamos qué ofrece cada barco.",
+ dormir:"Sí, según el barco: suelen ser de más de 16 m y algunos tienen coste extra por noche. Para pernoctar se pide un APA del 30 % de la tarifa por adelantado (combustible, comida, amarres…); al final se hace balance y se devuelve lo que sobre.",
+ precio:"Cada barco tiene su tarifa por mes publicada. Ejemplo VIAMAR (precio base orientativo por día): 1.200 € de enero a mayo y de octubre a diciembre, 1.300 € en junio, 1.400 € en julio y agosto, 1.250 € en septiembre.\nEl presupuesto completo (combustible, extras) se lo prepara el equipo.",
+ extras:"Extras: seabob desde 363 €/día, paddle surf desde 72 €/día (en muchos barcos ya va incluido), catering, bebidas y transfer hasta su barco. Los puede marcar en la «Solicitud de reserva».",
+ fb:"No tengo esa información confirmada en la web de Coral Yachting, así que no se la invento. Paso su pregunta a una persona del equipo y le responde por este mismo chat. 🙋",
+ especial:"¡Claro! Llevamos más de 30 años en el sector y hemos organizado desde pedidas de matrimonio hasta bodas a bordo, o el transfer desde su alojamiento al puerto. Para preparar algo así le paso ya con una persona del equipo, que le asesora en persona. 🙋",
+ why:{especial:"Petición especial",libre:"Disponibilidad",tiempo:"Meteo / cambio de fecha",cancel:"Cambio o cancelación",fb:"Dato no publicado"},
+ chips:[["¿Qué incluye?","incluye"],["¿Cuántas personas?","capacidad"],["¿Y el combustible?","combustible"],["¿Hay sin patrón?","patron"],["Horario","horario"],["¿Desde dónde salen?","salida"],["Precios","precio"],["¿Y si hace mal tiempo?","tiempo"],["Cancelar","cancel"],["¿Está libre el 15/7?","libre"],["Pago","pago"],["Niños","ninos"]],
+ sc:[["⛵ «¿VIAMAR para 8 el 15/7? ¿Y si hay viento?»",[["u","¡Hola! ¿Está libre el VIAMAR el 15 de julio para 8 personas? ¿Qué incluye?"],["b","¡Hola! El De Antonio 28 «VIAMAR» (2024, Marina Botafoch) lleva hasta 9 personas, así que 8 entran bien 👍\nPrecio base orientativo en julio: 1.400 €/día.\nIncluye amarre, bebidas de cortesía, hielo, IVA, seguro, paddle surf, toallas y tripulación. No incluye combustible (unos 90 L/h; se pide depósito de 2 h), catering ni propina."],["h","La disponibilidad del 15/7 se la confirma ahora una persona del equipo: ya le he pasado barco, fecha y personas. 🙋","libre"],["u","¿Y si ese día hace viento?"],["i","tiempo"]]],
+  ["👥 «Somos 15 amigos»",[["u","Somos 15 amigos, ¿hay un barco para todos? ¿Podemos llevar comida?"],["i","capacidad"],["i","comida"]]],
+  ["🏝️ «Estamos en Formentera»",[["u","Nos alojamos en Formentera. ¿Desde dónde salen y cuánto se tarda?"],["i","salida"]]],
+  ["🧭 «¿Sin patrón? ¿Y el combustible?»",[["u","Hello… perdón, ¿tienen barcos sin patrón? ¿Cómo va el combustible?"],["i","patron"],["i","combustible"]]],
+  ["🐶 Pregunta que no está en la web",[["u","¿Puedo llevar a mi perro a bordo?"],["i","fb"]]]]},
+en:{hi:"Hi! 👋 I'm the Coral Yachting assistant (Marina Botafoch, Ibiza). I answer straight away about boats, indicative prices, what's included, fuel, times or departures. Anything I'm not sure about goes to a person on the team.",
+ incluye:"It depends on the boat and is listed on each boat page. Example, De Antonio 28 \"VIAMAR\":\n✅ Included: mooring at home port, complimentary drinks, ice, VAT, boat insurance, paddle board, towels and crew.\n❌ Not included: fuel, catering, crew tip, seabob, jet ski, efoil or tender.\nWhich boat are you interested in? I'll tell you for that one.",
+ combustible:"Skippered boats: fuel is charged by the hours cruised. We normally ask for a 2-hour fuel deposit in advance; if more is used you pay the difference, if less, it's refunded.\nBareboat: the tank is full on departure; on return it's refilled and you pay for what you used.\nExample: VIAMAR uses about 90 L/h according to its boat page.",
+ capacidad:"By Spanish law a boat can carry max. 12 passengers plus crew. Each boat page shows its capacity: VIAMAR 9, De Antonio 36 \"IKIGAI\" 11, Sunseeker Camargue 50 \"SAMI DOS\" 12 + 1.\nFor more than 12, the best option is 2 or 3 boats anchoring together; for over 20 people we recommend a schooner or a group catamaran.",
+ patron:"Almost the whole fleet goes out with skipper and crew. There are also bareboat options, e.g. the Glastron 225 GTS (6 + 1 people, from €484/day indicative; optional skipper +€220/day).\nWhich licence you need to skipper it yourself isn't on the website, so a person on the team will confirm it.",
+ horario:"Most boats are available from 10:00 and return to their home port before sunset (depends on boat and season). If you'd like the sunset on board, I'll check with the team.",
+ tiempo:"Our brokers recommend the area based on the forecast: if the wind blows on one coast, they look for a sheltered cove on another.\nWhat happens to the date or payment if the weather doesn't allow going out isn't published on the website, so I won't make it up: I'm passing this to a person on the team, who'll reply here. 🙋",
+ cancel:"Change and cancellation terms aren't published on the website and may depend on the boat, so I'd rather not guess. I'm passing your question to a person on the team, who'll reply here. 🙋",
+ salida:"It depends on the boat. The fleet's home ports: Marina Botafoch (most boats; our office is there, unit 323-324), Marina Ibiza, Santa Eulalia, San Antonio and Ibiza Port Nautic.\nGoing to Formentera is the classic plan: under half an hour by speedboat or motor yacht; about 3 hours by sailing boat or catamaran, depending on the wind.\nWant to board or get off in Formentera? The team confirms that per boat.",
+ libre:"The team confirms availability straight away, because boats are also booked through other channels. Tell me boat, date and number of guests (or use \"Booking request\") and I'll pass it to a person on the team now. 🙋\nIn the real version, the assistant checks the fleet calendar and answers by itself.",
+ pago:"To book, 50% is paid in advance by card or bank transfer; the booking is confirmed once the deposit is received. The rest is paid 15 days before or on the day (depending on the boat), always before setting off.",
+ ninos:"Yes, the great majority of our boats are suitable for children. Tell us the age of the youngest and we'll recommend the right boat for their safety.",
+ comida:"Up to you: bring your own food and drinks, order one of our onboard catering menus or eat at a restaurant (booking ahead lets us reserve a table). We'll confirm what each boat offers.",
+ dormir:"Yes, depending on the boat: usually boats over 16 m, and some charge extra per night. For overnight stays a 30% APA (Advance Provisioning Allowance) is paid in advance for fuel, food, moorings…; at the end it's settled and any balance refunded.",
+ precio:"Each boat has a published monthly rate. Example VIAMAR (indicative base price per day): €1,200 January–May and October–December, €1,300 in June, €1,400 in July and August, €1,250 in September.\nThe team prepares the full quote (fuel, extras).",
+ extras:"Extras: seabob from €363/day, paddle surf from €72/day (already included on many boats), catering, drinks and transfer to your boat. You can tick them in the \"Booking request\".",
+ fb:"I don't have that confirmed on the Coral Yachting website, so I won't make it up. I'm passing your question to a person on the team, who'll reply in this chat. 🙋",
+ especial:"Of course! We have more than 30 years in the business and have organised everything from marriage proposals to weddings on board, or a transfer from your accommodation to the port. To plan something like that, I'm passing you to a person on the team for personal advice. 🙋",
+ why:{especial:"Special request",libre:"Availability",tiempo:"Weather / date change",cancel:"Change or cancellation",fb:"Not published"},
+ chips:[["What's included?","incluye"],["How many people?","capacidad"],["Fuel?","combustible"],["Bareboat?","patron"],["Times","horario"],["Where do you depart?","salida"],["Prices","precio"],["Bad weather?","tiempo"],["Cancel","cancel"],["Free on 15/7?","libre"],["Payment","pago"],["Kids","ninos"]],
+ sc:[["⛵ \"VIAMAR for 8 on 15/7? What if it's windy?\"",[["u","Hi! Is VIAMAR free on 15 July for 8 people? What's included?"],["b","Hi! The De Antonio 28 \"VIAMAR\" (2024, Marina Botafoch) takes up to 9 guests, so 8 is fine 👍\nIndicative base price in July: €1,400/day.\nIncluded: mooring, complimentary drinks, ice, VAT, insurance, paddle board, towels and crew. Not included: fuel (about 90 L/h; 2-hour deposit), catering or tip."],["h","A person on the team is now confirming availability for 15/7: I've passed on boat, date and guests. 🙋","libre"],["u","And what if it's windy that day?"],["i","tiempo"]]],
+  ["👥 \"We're 15 friends\"",[["u","We're 15 friends, is there one boat for all of us? Can we bring food?"],["i","capacidad"],["i","comida"]]],
+  ["🏝️ \"We're staying in Formentera\"",[["u","We're staying in Formentera. Where do you depart from and how long does it take?"],["i","salida"]]],
+  ["🧭 \"Bareboat? And fuel?\"",[["u","Do you have boats without skipper? How does fuel work?"],["i","patron"],["i","combustible"]]],
+  ["🐶 Question not on the website",[["u","Can I bring my dog on board?"],["i","fb"]]]]},
+fr:{hi:"Bonjour ! 👋 Je suis l'assistant de Coral Yachting (Marina Botafoch, Ibiza). Je réponds tout de suite sur les bateaux, les prix indicatifs, ce qui est inclus, le carburant, les horaires ou les départs. Ce dont je ne suis pas sûr, je le transmets à une personne de l'équipe.",
+ incluye:"Cela dépend du bateau et figure sur chaque fiche. Exemple, De Antonio 28 « VIAMAR » :\n✅ Inclus : amarrage au port d'attache, boissons offertes, glace, TVA, assurance, paddle, serviettes et équipage.\n❌ Non inclus : carburant, traiteur, pourboire de l'équipage, seabob, jet-ski, efoil et annexe.\nQuel bateau vous intéresse ? Je vous dis pour celui-là.",
+ combustible:"Avec skipper : le carburant est calculé selon les heures de navigation. On demande en général un dépôt de 2 heures de carburant à l'avance ; si vous consommez plus, vous payez la différence, sinon on vous rembourse.\nSans skipper : le réservoir est plein au départ ; au retour on refait le plein et vous payez ce qui a été consommé.\nExemple : le VIAMAR consomme environ 90 L/h selon sa fiche.",
+ capacidad:"Selon la loi espagnole, un bateau transporte au maximum 12 passagers plus l'équipage. Chaque fiche indique sa capacité : VIAMAR 9, De Antonio 36 « IKIGAI » 11, Sunseeker Camargue 50 « SAMI DOS » 12 + 1.\nAu-delà de 12, le mieux est 2 ou 3 bateaux qui mouillent côte à côte ; au-delà de 20 personnes, nous conseillons une goélette ou un catamaran pour groupes.",
+ patron:"Presque toute la flotte sort avec skipper et équipage. Il existe aussi des bateaux sans skipper, par exemple le Glastron 225 GTS (6 + 1 personnes, dès 484 €/jour indicatif ; skipper en option +220 €/jour).\nLe permis nécessaire pour le piloter vous-même n'est pas indiqué sur le site : une personne de l'équipe vous le confirme.",
+ horario:"La plupart des bateaux sont disponibles à partir de 10h00 et rentrent au port d'attache avant le coucher du soleil (selon le bateau et la saison). Pour le coucher de soleil à bord, je vérifie avec l'équipe.",
+ tiempo:"Nos brokers conseillent la zone selon la météo : si le vent souffle sur une côte, on cherche une crique abritée sur une autre.\nCe qui se passe pour la date ou le paiement si la météo empêche de sortir n'est pas publié sur le site, donc je ne l'invente pas : je transmets à une personne de l'équipe, qui vous répond ici. 🙋",
+ cancel:"Les conditions de modification ou d'annulation ne sont pas publiées sur le site et peuvent dépendre du bateau, je préfère donc ne pas deviner. Je transmets votre question à une personne de l'équipe, qui vous répond ici. 🙋",
+ salida:"Cela dépend du bateau. Ports d'attache de la flotte : Marina Botafoch (la plupart ; notre bureau y est, local 323-324), Marina Ibiza, Santa Eulalia, San Antonio et Ibiza Port Nautic.\nAller à Formentera est le grand classique : moins d'une demi-heure en vedette ou yacht à moteur ; environ 3 h en voilier ou catamaran, selon le vent.\nVous voulez embarquer ou débarquer à Formentera ? L'équipe le confirme selon le bateau.",
+ libre:"L'équipe confirme la disponibilité tout de suite, car les bateaux se réservent aussi par d'autres canaux. Donnez-moi bateau, date et nombre de personnes (ou utilisez « Demande de réservation ») et je transmets à une personne de l'équipe. 🙋\nDans la vraie version, l'assistant consulte le calendrier de la flotte et répond seul.",
+ pago:"Pour réserver, 50 % sont payés à l'avance par carte ou virement ; la réservation est confirmée à réception de cet acompte. Le solde se paie 15 jours avant ou le jour même (selon le bateau), toujours avant le départ.",
+ ninos:"Oui, la grande majorité de nos bateaux conviennent aux enfants. Indiquez-nous l'âge du plus jeune et nous vous conseillerons le bateau le plus adapté à sa sécurité.",
+ comida:"Comme vous préférez : apporter vos repas et boissons, commander un de nos menus traiteur à bord ou déjeuner au restaurant (en réservant tôt, nous pouvons réserver une table). Nous confirmons ce que propose chaque bateau.",
+ dormir:"Oui, selon le bateau : en général plus de 16 m, et certains facturent un supplément par nuit. Pour dormir à bord, on demande un APA de 30 % du tarif à l'avance (carburant, repas, amarrages…) ; à la fin on fait le bilan et on rembourse le solde.",
+ precio:"Chaque bateau a un tarif mensuel publié. Exemple VIAMAR (prix de base indicatif par jour) : 1 200 € de janvier à mai et d'octobre à décembre, 1 300 € en juin, 1 400 € en juillet et août, 1 250 € en septembre.\nL'équipe prépare le devis complet (carburant, extras).",
+ extras:"Extras : seabob dès 363 €/jour, paddle dès 72 €/jour (déjà inclus sur beaucoup de bateaux), traiteur, boissons et transfert jusqu'au bateau. Vous pouvez les cocher dans la « Demande de réservation ».",
+ fb:"Je n'ai pas cette information confirmée sur le site de Coral Yachting, donc je ne l'invente pas. Je transmets votre question à une personne de l'équipe, qui vous répond dans ce chat. 🙋",
+ especial:"Bien sûr ! Avec plus de 30 ans d'expérience, nous avons organisé des demandes en mariage, des mariages à bord ou le transfert depuis votre hébergement jusqu'au port. Pour préparer cela, je vous mets en contact avec une personne de l'équipe qui vous conseillera. 🙋",
+ why:{especial:"Demande spéciale",libre:"Disponibilité",tiempo:"Météo / changement de date",cancel:"Modification ou annulation",fb:"Info non publiée"},
+ chips:[["Qu'est-ce qui est inclus ?","incluye"],["Combien de personnes ?","capacidad"],["Carburant ?","combustible"],["Sans skipper ?","patron"],["Horaires","horario"],["D'où partez-vous ?","salida"],["Prix","precio"],["Et s'il fait mauvais ?","tiempo"],["Annuler","cancel"],["Libre le 15/7 ?","libre"],["Paiement","pago"],["Enfants","ninos"]],
+ sc:[["⛵ « VIAMAR pour 8 le 15/7 ? Et s'il y a du vent ? »",[["u","Bonjour ! Le VIAMAR est libre le 15 juillet pour 8 personnes ? Qu'est-ce qui est inclus ?"],["b","Bonjour ! Le De Antonio 28 « VIAMAR » (2024, Marina Botafoch) accueille jusqu'à 9 personnes, donc 8 c'est parfait 👍\nPrix de base indicatif en juillet : 1 400 €/jour.\nInclus : amarrage, boissons offertes, glace, TVA, assurance, paddle, serviettes et équipage. Non inclus : carburant (environ 90 L/h ; dépôt de 2 h), traiteur et pourboire."],["h","Une personne de l'équipe confirme maintenant la disponibilité du 15/7 : je lui ai transmis bateau, date et personnes. 🙋","libre"],["u","Et s'il y a du vent ce jour-là ?"],["i","tiempo"]]],
+  ["👥 « Nous sommes 15 amis »",[["u","Nous sommes 15 amis, il y a un bateau pour tous ? On peut apporter à manger ?"],["i","capacidad"],["i","comida"]]],
+  ["🏝️ « Nous logeons à Formentera »",[["u","Nous logeons à Formentera. D'où partez-vous et combien de temps faut-il ?"],["i","salida"]]],
+  ["🧭 « Sans skipper ? Et le carburant ? »",[["u","Vous avez des bateaux sans skipper ? Comment ça marche pour le carburant ?"],["i","patron"],["i","combustible"]]],
+  ["🐶 Question absente du site",[["u","Je peux emmener mon chien à bord ?"],["i","fb"]]]]},
+de:{hi:"Hallo! 👋 Ich bin der Assistent von Coral Yachting (Marina Botafoch, Ibiza). Ich antworte sofort zu Booten, unverbindlichen Preisen, Leistungen, Treibstoff, Zeiten oder Abfahrten. Was ich nicht sicher weiß, gebe ich an eine Person im Team weiter.",
+ incluye:"Das hängt vom Boot ab und steht auf jeder Bootsseite. Beispiel De Antonio 28 „VIAMAR“:\n✅ Inklusive: Liegeplatz im Heimathafen, Begrüßungsgetränke, Eis, MwSt., Bootsversicherung, Paddle-Board, Handtücher und Crew.\n❌ Nicht inklusive: Treibstoff, Catering, Trinkgeld, Seabob, Jetski, Efoil und Tender.\nWelches Boot interessiert Sie? Dann sage ich es Ihnen dafür.",
+ combustible:"Mit Skipper: Der Treibstoff wird nach Fahrstunden berechnet. Meist wird ein Treibstoffdepot für 2 Stunden im Voraus verlangt; bei mehr Verbrauch zahlen Sie die Differenz, bei weniger gibt es eine Rückerstattung.\nOhne Skipper: Der Tank ist bei Abfahrt voll; bei Rückkehr wird nachgetankt und der Verbrauch bezahlt.\nBeispiel: Die VIAMAR verbraucht laut Bootsseite etwa 90 L/h.",
+ capacidad:"Nach spanischem Gesetz darf ein Boot max. 12 Passagiere plus Crew befördern. Jede Bootsseite nennt die Kapazität: VIAMAR 9, De Antonio 36 „IKIGAI“ 11, Sunseeker Camargue 50 „SAMI DOS“ 12 + 1.\nBei mehr als 12 sind 2 oder 3 Boote ideal, die nebeneinander ankern; ab 20 Personen empfehlen wir einen Schoner oder Gruppenkatamaran.",
+ patron:"Fast die ganze Flotte fährt mit Skipper und Crew. Es gibt auch Boote ohne Skipper, z. B. die Glastron 225 GTS (6 + 1 Personen, ab 484 €/Tag unverbindlich; Skipper optional +220 €/Tag).\nWelcher Bootsführerschein nötig ist, steht nicht auf der Website: das bestätigt Ihnen eine Person im Team.",
+ horario:"Die meisten Boote sind ab 10:00 Uhr verfügbar und kehren vor Sonnenuntergang in den Heimathafen zurück (je nach Boot und Saison). Für den Sonnenuntergang an Bord frage ich beim Team nach.",
+ tiempo:"Unsere Broker empfehlen das Gebiet je nach Wetterbericht: Weht es an einer Küste, sucht man eine geschützte Bucht an einer anderen.\nWas mit Datum oder Zahlung passiert, wenn das Wetter keine Ausfahrt erlaubt, steht nicht auf der Website. Deshalb erfinde ich nichts: Ich gebe das jetzt an eine Person im Team weiter, die Ihnen hier antwortet. 🙋",
+ cancel:"Umbuchungs- und Stornobedingungen sind nicht auf der Website veröffentlicht und können vom Boot abhängen, darum rate ich lieber nicht. Ich gebe Ihre Frage an eine Person im Team weiter, die Ihnen hier antwortet. 🙋",
+ salida:"Das hängt vom Boot ab. Heimathäfen der Flotte: Marina Botafoch (die meisten; dort ist auch unser Büro, Lokal 323-324), Marina Ibiza, Santa Eulalia, San Antonio und Ibiza Port Nautic.\nNach Formentera ist der Klassiker: mit Speedboot oder Motoryacht unter einer halben Stunde; mit Segelboot oder Katamaran etwa 3 Stunden, je nach Wind.\nSie möchten in Formentera ein- oder aussteigen? Das bestätigt das Team je nach Boot.",
+ libre:"Die Verfügbarkeit bestätigt das Team sofort, weil die Boote auch über andere Kanäle gebucht werden. Nennen Sie mir Boot, Datum und Personenzahl (oder nutzen Sie die „Buchungsanfrage“), dann gebe ich es gleich an eine Person im Team weiter. 🙋\nIn der echten Version prüft der Assistent den Flottenkalender und antwortet selbst.",
+ pago:"Zur Buchung werden 50 % im Voraus per Karte oder Überweisung bezahlt; die Buchung ist mit Eingang der Anzahlung bestätigt. Der Rest wird 15 Tage vorher oder am selben Tag (je nach Boot) bezahlt, immer vor dem Auslaufen.",
+ ninos:"Ja, die allermeisten unserer Boote sind für Kinder geeignet. Nennen Sie uns das Alter des jüngsten Kindes, dann empfehlen wir das passende Boot für seine Sicherheit.",
+ comida:"Wie Sie möchten: eigenes Essen und Getränke mitbringen, eines unserer Catering-Menüs an Bord bestellen oder im Restaurant essen (bei früher Buchung reservieren wir einen Tisch). Wir bestätigen, was jedes Boot bietet.",
+ dormir:"Ja, je nach Boot: meist Boote über 16 m, manche mit Aufpreis pro Nacht. Für Übernachtungen wird ein APA von 30 % des Tarifs im Voraus verlangt (Treibstoff, Verpflegung, Liegeplätze…); am Ende wird abgerechnet und der Rest erstattet.",
+ precio:"Jedes Boot hat einen veröffentlichten Monatstarif. Beispiel VIAMAR (unverbindlicher Grundpreis pro Tag): 1.200 € von Januar bis Mai und Oktober bis Dezember, 1.300 € im Juni, 1.400 € im Juli und August, 1.250 € im September.\nDas vollständige Angebot (Treibstoff, Extras) erstellt das Team.",
+ extras:"Extras: Seabob ab 363 €/Tag, Paddle-Surf ab 72 €/Tag (auf vielen Booten schon inklusive), Catering, Getränke und Transfer zum Boot. Sie können sie in der „Buchungsanfrage“ ankreuzen.",
+ fb:"Dazu habe ich auf der Website von Coral Yachting keine bestätigte Angabe, deshalb erfinde ich nichts. Ich gebe Ihre Frage an eine Person im Team weiter, die Ihnen in diesem Chat antwortet. 🙋",
+ especial:"Sehr gern! Wir sind seit über 30 Jahren in der Branche und haben schon Heiratsanträge, Hochzeiten an Bord oder den Transfer von Ihrer Unterkunft zum Hafen organisiert. Damit wir so etwas vorbereiten, gebe ich Sie an eine Person im Team weiter, die Sie persönlich berät. 🙋",
+ why:{especial:"Sonderwunsch",libre:"Verfügbarkeit",tiempo:"Wetter / Umbuchung",cancel:"Umbuchung oder Storno",fb:"Nicht veröffentlicht"},
+ chips:[["Was ist inklusive?","incluye"],["Wie viele Personen?","capacidad"],["Treibstoff?","combustible"],["Ohne Skipper?","patron"],["Zeiten","horario"],["Wo geht es los?","salida"],["Preise","precio"],["Bei schlechtem Wetter?","tiempo"],["Stornieren","cancel"],["Am 15.7. frei?","libre"],["Zahlung","pago"],["Kinder","ninos"]],
+ sc:[["⛵ „VIAMAR für 8 am 15.7.? Und bei Wind?“",[["u","Hallo! Ist die VIAMAR am 15. Juli für 8 Personen frei? Was ist inklusive?"],["b","Hallo! Die De Antonio 28 „VIAMAR“ (2024, Marina Botafoch) ist für bis zu 9 Personen, 8 passen also gut 👍\nUnverbindlicher Grundpreis im Juli: 1.400 €/Tag.\nInklusive: Liegeplatz, Begrüßungsgetränke, Eis, MwSt., Versicherung, Paddle-Board, Handtücher und Crew. Nicht inklusive: Treibstoff (ca. 90 L/h; Depot für 2 Std.), Catering und Trinkgeld."],["h","Die Verfügbarkeit für den 15.7. bestätigt jetzt eine Person im Team: Boot, Datum und Personenzahl habe ich weitergegeben. 🙋","libre"],["u","Und wenn an dem Tag Wind ist?"],["i","tiempo"]]],
+  ["👥 „Wir sind 15 Freunde“",[["u","Wir sind 15 Freunde, gibt es ein Boot für alle? Dürfen wir Essen mitbringen?"],["i","capacidad"],["i","comida"]]],
+  ["🏝️ „Wir wohnen auf Formentera“",[["u","Wir wohnen auf Formentera. Wo legen Sie ab und wie lange dauert es?"],["i","salida"]]],
+  ["🧭 „Ohne Skipper? Und Treibstoff?“",[["u","Haben Sie Boote ohne Skipper? Wie läuft das mit dem Treibstoff?"],["i","patron"],["i","combustible"]]],
+  ["🐶 Frage, die nicht auf der Website steht",[["u","Darf ich meinen Hund mit an Bord nehmen?"],["i","fb"]]]]}
+};
+var RX=[
+ ["hi",/^(hola|hello|hi|hey|bonjour|salut|hallo|guten tag|buenas)\b[\s!.,]*$/],
+ ["especial",/boda|pedida|propuesta de matrimonio|cumple|despedida|evento|wedding|proposal|birthday|hen party|stag|event|mariage|demande en mariage|anniversaire|evenement|hochzeit|heiratsantrag|geburtstag|junggesell|veranstaltung/],
+ ["dormir",/dormir|pernoct|noche a bordo|sleep|overnight|nuit|dormir a bord|schlafen|ubernacht/],
+ ["ninos",/nin[oa]s|bebe|child|kid|baby|enfant|bebe|kind/],
+ ["cancel",/cancel|anul|storn|devol|reembols|refund|rembours|umbuch|cambiar (la )?fecha|change (the )?date|changer (la )?date/],
+ ["pago",/pag|deposit|senal|anticipo|pay|acompte|paiement|payer|zahl|anzahlung|tarjeta|card|carte|karte|transfer(e|encia)|virement|uberweis/],
+ ["libre",/libre|disponib|available|availab|free on|\bfree\b|frei|verfugbar|\bdispo/],
+ ["salida",/formentera|salid|salen|sale |puerto|marina|desde donde|embarc|depart|leave from|where.*(start|leave)|\bport\b|ou part|d'ou|abfahrt|ablegen|hafen|wo geht|einsteig/],
+ ["tiempo",/viento|meteo|lluvia|llueve|llover|mal tiempo|tormenta|mar (de fondo|movid)|weather|wind|rain|storm|wetter|regen|sturm|vent|pluie|mauvais temps|orage/],
+ ["combustible",/combust|gasoil|gasolin|fuel|petrol|carbur|essence|treibstoff|kraftstoff|diesel|sprit|tank/],
+ ["patron",/patron|skipper|capitan|licencia|titul|carnet|sin tripul|bareboat|licen|captain|permis|kapitan|fuhrerschein|ohne skipper|selbst fahren/],
+ ["extras",/seabob|paddle|catering|transfer|extra|bebida|drink|boisson|getrank|jet ?ski|moto de agua|efoil/],
+ ["comida",/comida|comer|food|eat|lunch|nourriture|repas|manger|dejeuner|essen|mittag|restaurant/],
+ ["horario",/hora|horario|a que hora|what time|times|heure|horaire|uhr|uhrzeit|zeiten|sunset|atardecer|puesta de sol|coucher|sonnenuntergang/],
+ ["incluye",/inclu|inklus|enthalten|inbegriffen/],
+ ["precio",/precio|cuesta|cuanto|tarifa|price|cost|how much|rate|prix|combien|tarif|preis|kostet|kosten/],
+ ["capacidad",/persona|capacidad|cuant[oa]s|somos|people|guests|how many|capacity|personne|capacite|combien de|nous sommes|personen|wie viele|wir sind|gruppe|grupo|group|groupe/]
+];
+var lang='es',run=0;
+var $=function(id){return document.getElementById(id)};
+function ls(k,d){try{return JSON.parse(localStorage.getItem(k))||d}catch(e){return d}}
+function lsSet(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}}
+function stats(){return ls('cy_stats',{conv:0,auto:0,hand:0,langs:{}})}
+function bump(f){var s=stats();s[f]=(s[f]||0)+1;s.langs[lang]=1;lsSet('cy_stats',s)}
+function nowStr(){var d=new Date();return ('0'+d.getHours()).slice(-2)+':'+('0'+d.getMinutes()).slice(-2)}
+function esc(s){return String(s==null?'':s).replace(/[&<>"]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})}
+var M=$('msgs');
+function add(t,c){var e=document.createElement('div');e.className='m '+c;e.textContent=t;M.appendChild(e);M.scrollTop=M.scrollHeight;return e}
+var lastQ='';
+function handLog(key,q){var h=ls('cy_hand',[]);h.unshift({t:nowStr(),l:lang.toUpperCase(),q:q||lastQ,r:key});lsSet('cy_hand',h.slice(0,30))}
+function botSay(text,isHand,key,r,cb){var t=add('…','b typing');setTimeout(function(){if(r!==run)return;t.remove();add(text,isHand?'b h':'b');
+ if(isHand){bump('hand');handLog(key);add(T[lang].sysHand,'sys')}else bump('auto');cb&&cb()},850)}
+function answer(key,r,cb){var a=A[lang];botSay(a[key]||a.fb,!!HAND[key],key,r,cb)}
+function norm(s){return s.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'')}
+function classify(s){var n=norm(s);for(var i=0;i<RX.length;i++){if(RX[i][1].test(n))return RX[i][0]}return 'fb'}
+function userAsk(text,key){lastQ=text;add(text,'u');var k=key||classify(text);window.bsTrack&&bsTrack('/ask/'+lang+'/'+k,'Ask '+k);answer(k,run)}
+function playScen(i){run++;var r=run;M.innerHTML='';var S=A[lang].sc[i][1];bump('conv');window.bsTrack&&bsTrack('/scenario/'+lang+'/'+(i+1),'Scenario '+(i+1));
+ (function step(j){if(r!==run||j>=S.length)return;var m=S[j];
+  if(m[0]=='u'){lastQ=m[1];add(m[1],'u');setTimeout(function(){step(j+1)},700)}
+  else if(m[0]=='b')botSay(m[1],false,null,r,function(){setTimeout(function(){step(j+1)},500)});
+  else if(m[0]=='h')botSay(m[1],true,m[2],r,function(){setTimeout(function(){step(j+1)},500)});
+  else answer(m[1],r,function(){setTimeout(function(){step(j+1)},500)})})(0)}
+function renderChat(){run++;M.innerHTML='';add(A[lang].hi,'b');var ch=$('chips');ch.innerHTML='';
+ A[lang].chips.forEach(function(c){var b=document.createElement('button');b.textContent=c[0];b.onclick=function(){userAsk(c[0],c[1])};ch.appendChild(b)});
+ var sc=$('scen');sc.innerHTML='';A[lang].sc.forEach(function(s,i){var b=document.createElement('button');b.className='sc';b.textContent=s[0];b.onclick=function(){playScen(i);if(window.innerWidth<860)M.scrollIntoView({behavior:'smooth',block:'center'})};sc.appendChild(b)});
+ $('inp').placeholder=T[lang].ph}
+var started={};
+function send(){var v=$('inp').value.trim();if(!v)return;$('inp').value='';if(!started[run]){started[run]=1;bump('conv')}userAsk(v)}
+$('send').onclick=send;$('inp').onkeydown=function(e){if(e.key==='Enter')send()};
+/* booking form */
+var EXK=['seabob','paddle','catering','transfer','drinks','skipper'];
+function boatName(b){return b.id==='other'?T[lang].other:b.n.replace('(catamarán)',{es:'(catamarán)',en:'(catamaran)',fr:'(catamaran)',de:'(Katamaran)'}[lang]).replace('(sin patrón)',{es:'(sin patrón)',en:'(bareboat)',fr:'(sans skipper)',de:'(ohne Skipper)'}[lang])}
+function renderForm(){var s=$('boat'),sel=s.value||'viamar';s.innerHTML='';BOATS.forEach(function(b){var o=document.createElement('option');o.value=b.id;o.textContent=b.id==='other'?T[lang].other:boatName(b)+' · '+b.cap+' '+T[lang].pers+' · '+b.base;s.appendChild(o)});s.value=sel;
+ var ex=$('extras'),was={};[].forEach.call(ex.querySelectorAll('input'),function(i){was[i.value]=i.checked});ex.innerHTML='';
+ EXK.forEach(function(k){var l=document.createElement('label');l.innerHTML='<input type="checkbox" value="'+k+'"'+(was[k]?' checked':'')+'> '+esc(T[lang].ex[k]);l.dataset.k=k;ex.appendChild(l)});
+ [].forEach.call(ex.querySelectorAll('input'),function(i){i.onchange=price});price()}
+function cur(){var b=BOATS.filter(function(x){return x.id===$('boat').value})[0]||BOATS[0];return b}
+function price(){var b=cur(),t=T[lang],v=$('date').value,g=+$('guests').value||0,p=$('price'),w=$('warn');
+ var sk=$('extras').querySelector('label[data-k="skipper"]');if(sk){sk.style.display=b.bare?'':'none';if(!b.bare)sk.querySelector('input').checked=false}
+ var pl=$('extras').querySelector('label[data-k="paddle"]');if(pl){pl.style.display=b.pad?'none':'';if(b.pad)pl.querySelector('input').checked=false}
+ var warn=[];if(g>12)warn.push(t.wLaw);else if(b.id!=='other'&&g>b.cap)warn.push(t.wCap.replace('{c}',b.cap));
+ w.style.display=warn.length?'block':'none';w.textContent=warn.join(' ');
+ if(b.id==='other'){p.textContent=t.pOther;return null}
+ if(!v){p.textContent=t.need;return null}
+ var mo=+v.split('-')[1]-1,r=b.r[mo];
+ if(r==null){p.textContent=t.pNone;return null}
+ var extra=[];if(b.bare&&$('extras').querySelector('input[value="skipper"]').checked)extra.push(t.ex.skipper);
+ p.innerHTML=esc(t.pBase)+' ('+esc(t.pMonth)+' '+esc(MONTHS[lang][mo])+'): <b class="big">'+eur(r)+esc(t.perDay)+'</b><br><span class="note">'+esc(b.pad?t.pNote:t.pNote2)+' · coralyachting.com</span>';
+ return eur(r)+t.perDay}
+['boat','date','guests'].forEach(function(id){$(id).addEventListener('input',price);$(id).addEventListener('change',price)});
+$('cta').onclick=function(){var b=cur(),v=$('date').value,g=$('guests').value,ok=$('ok');ok.style.display='block';
+ if(!v||!g){ok.textContent=T[lang].need;return}
+ var pr=price()||'—',exs=[].filter.call($('extras').querySelectorAll('input'),function(i){return i.checked&&i.parentNode.style.display!=='none'}).map(function(i){return T[lang].ex[i.value].replace(/ \(.*\)/,'')});
+ var d=v.split('-'),ds=d[2]+'/'+d[1]+'/'+d[0];
+ var rec={t:nowStr(),boat:b.id==='other'?T[lang].other:boatName(b),d:ds,g:g,ex:exs.join(', ')||'—',p:pr,c:$('ct').value||'—',n:$('nm').value,l:lang.toUpperCase(),cm:$('cm').value};
+ var a=ls('cy_req',[]);a.unshift(rec);lsSet('cy_req',a.slice(0,30));var s=stats();s.langs[lang]=1;lsSet('cy_stats',s);
+ var sum='• '+rec.boat+'\n• '+ds+' · '+g+' '+T[lang].pers+(exs.length?'\n• '+rec.ex:'')+(pr!=='—'?'\n• '+T[lang].pBase+': '+pr:'');
+ ok.textContent=T[lang].okMsg.replace('{s}',sum);window.bsTrack&&bsTrack('/booking/submit','Booking request '+b.id);renderRep()};
+/* report */
+function renderRep(){var t=T[lang],s=stats(),req=ls('cy_req',[]),hd=ls('cy_hand',[]);
+ var d=new Date();$('repTitle').textContent=t.rTitle+d.toLocaleDateString({es:'es-ES',en:'en-GB',fr:'fr-FR',de:'de-DE'}[lang],{weekday:'long',day:'numeric',month:'long'})+' · 08:00';
+ var L=Object.keys(s.langs||{}).map(function(x){return x.toUpperCase()}).join(' ')||'—';
+ var kv=[s.conv||0,s.auto||0,s.hand||0,req.length,L];$('kpis').innerHTML=kv.map(function(v,i){return '<div class="kpi"><b>'+esc(v)+'</b><span>'+esc(t.k[i])+'</span></div>'}).join('');
+ var ex1={t:t.exTag,boat:'De Antonio 28 «VIAMAR»',d:'15/07/2027',g:8,ex:t.ex.paddle.replace(/ \(.*\)/,'')==='x'?'':'—',p:eur(1400)+t.perDay,c:'—',ex_:1};
+ var rows=req.map(function(r){return '<tr><td>'+esc(r.t)+'</td><td>'+esc(r.boat)+(r.n?'<div class="note">'+esc(r.n)+' · '+esc(r.l)+'</div>':'<div class="note">'+esc(r.l)+'</div>')+'</td><td>'+esc(r.d)+'</td><td>'+esc(r.g)+'</td><td>'+esc(r.ex)+(r.cm?'<div class="note">"'+esc(r.cm)+'"</div>':'')+'</td><td>'+esc(r.p)+'</td><td>'+esc(r.c)+'</td><td><span class="pill p-new">'+esc(t.stNew)+'</span></td></tr>'}).join('');
+ rows+='<tr><td><span class="pill p-ex">'+esc(t.exTag)+'</span></td><td>'+esc(ex1.boat)+'</td><td>'+ex1.d+'</td><td>8</td><td>—</td><td>'+esc(ex1.p)+'</td><td>—</td><td><span class="pill p-ex">'+esc(t.exTag)+'</span></td></tr>';
+ $('tReq').innerHTML='<thead><tr>'+t.hReq.map(function(h){return '<th>'+esc(h)+'</th>'}).join('')+'</tr></thead><tbody>'+rows+'</tbody>';
+ var hr=hd.map(function(h){return '<tr><td>'+esc(h.t)+'</td><td>'+esc(h.l)+'</td><td>'+esc(h.q)+'</td><td><span class="pill p-ho">'+esc(A[lang].why[h.r]||h.r)+'</span></td></tr>'}).join('');
+ hr+='<tr><td><span class="pill p-ex">'+esc(t.exTag)+'</span></td><td>DE</td><td>'+esc(A.de.sc[0][1][3][1])+'</td><td><span class="pill p-ex">'+esc(A[lang].why.tiempo)+'</span></td></tr>';
+ $('tHand').innerHTML='<thead><tr>'+t.hHand.map(function(h){return '<th>'+esc(h)+'</th>'}).join('')+'</tr></thead><tbody>'+hr+'</tbody>'}
+$('clr').onclick=function(){['cy_req','cy_hand','cy_stats'].forEach(function(k){try{localStorage.removeItem(k)}catch(e){}});renderRep()};
+/* tabs + language */
+function show(tab){document.querySelectorAll('#tabs button').forEach(function(x){x.classList.toggle('on',x.dataset.tab===tab)});document.querySelectorAll('.tab').forEach(function(x){x.classList.toggle('on',x.id==='t-'+tab)});if(tab==='rep')renderRep();window.bsTrack&&bsTrack('/tab/'+tab,'Tab '+tab)}
+document.querySelectorAll('#tabs button').forEach(function(b){b.onclick=function(){show(b.dataset.tab)}});
+function setLang(l){lang=l;document.documentElement.lang=l;var t=T[l];
+ document.querySelectorAll('[data-t]').forEach(function(e){var k=e.dataset.t;if(k==='top')e.innerHTML=t.top;else if(t[k]!=null)e.textContent=t[k]});
+ document.querySelectorAll('[data-h]').forEach(function(e){e.innerHTML=t[e.dataset.h]});
+ document.querySelectorAll('#langs button').forEach(function(x){x.classList.toggle('on',x.dataset.l===l)});
+ renderChat();renderForm();renderRep()}
+document.querySelectorAll('#langs button').forEach(function(b){b.onclick=function(){setLang(b.dataset.l);window.bsTrack&&bsTrack('/lang/'+b.dataset.l,'Lang '+b.dataset.l)}});
+var ql=(location.search.match(/[?&]lang=(es|en|fr|de)/)||[])[1];
+setLang(ql||'es');
+setTimeout(function(){if(!M.querySelector('.u'))playScen(0)},1200);
+</script>
+</body></html>
