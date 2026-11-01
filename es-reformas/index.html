@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Agente de IA para estudios de interiorismo y empresas de reformas · Demo BOLLA STUDIO</title>
+<meta name="description" content="Un asistente que atiende a clientes 24/7: tipo de reforma, plazos, visita técnica, fotos y planos, y avisos al equipo.">
+<meta name="robots" content="noindex,nofollow">
+<style>
+:root{--c:#9a3b2a;--bg:#f5f4f1}
+*{box-sizing:border-box}body{margin:0;font-family:-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;background:var(--bg);color:#1f2328;line-height:1.5;-webkit-text-size-adjust:100%}
+.top{background:#1d232b;color:#d6dbe0;font-size:13px;text-align:center;padding:8px 12px}.top a{color:#fff}
+header{max-width:1080px;margin:0 auto;padding:26px 18px 6px}
+.tag{font-size:12px;text-transform:uppercase;letter-spacing:.08em;color:#6b7280}
+h1{font-size:30px;line-height:1.2;margin:6px 0 10px;color:var(--c)}
+.intro{max-width:800px;color:#3f444b;margin:0}
+.biz{display:inline-flex;align-items:center;gap:8px;margin-top:14px;background:#fff;border:1px dashed #c9ccd1;border-radius:10px;padding:8px 12px;font-size:14px}
+.biz b{color:var(--c)}.biz span{font-size:11px;font-weight:700;letter-spacing:.06em;background:#fff3cd;color:#7a5a00;border-radius:6px;padding:2px 6px}
+.grid{max-width:1080px;margin:16px auto 26px;padding:0 18px;display:grid;grid-template-columns:1fr 1fr;gap:22px}
+@media(max-width:820px){.grid{grid-template-columns:1fr}h1{font-size:24px}}
+.card{background:#fff;border-radius:16px;box-shadow:0 6px 24px rgba(0,0,0,.07);overflow:hidden}
+.wa-h{background:#075e54;color:#fff;padding:12px 16px;display:flex;align-items:center;gap:10px}
+.av{width:36px;height:36px;border-radius:50%;background:var(--c);display:flex;align-items:center;justify-content:center;font-size:18px;flex:none}
+.wa-h small{display:block;opacity:.85;font-size:12px}
+.chat{background:#ece5dd;height:440px;overflow-y:auto;padding:14px;display:flex;flex-direction:column;gap:8px}
+.m{max-width:86%;padding:8px 11px;border-radius:9px;font-size:14px;white-space:pre-line;box-shadow:0 1px 1px rgba(0,0,0,.1)}
+.in{background:#fff;align-self:flex-start}.out{background:#dcf8c6;align-self:flex-end}
+.m.hand{background:#fff4d6;border:1px dashed #d9a400}
+.sys{align-self:center;background:#e1f0fb;color:#1b4f72;font-size:12px;border-radius:8px;padding:6px 10px;max-width:92%;text-align:center;white-space:pre-line}
+.typing{font-style:italic;color:#666;font-size:13px}
+.qr{padding:10px;display:flex;flex-wrap:wrap;gap:6px;border-top:1px solid #eee}
+.qr .lbl{width:100%;font-size:12px;color:#6b7280}
+.qr button{border:1px solid var(--c);background:#fff;color:var(--c);border-radius:20px;padding:7px 12px;font-size:13px;cursor:pointer;font-family:inherit}
+.bk{padding:20px}.bk h3{margin:0 0 4px;color:var(--c);font-size:19px}.bk p{margin:0 0 10px;color:#5b616b;font-size:14px}
+label{font-size:13px;color:#555;display:block;margin:10px 0 4px}
+select,input,textarea{width:100%;padding:10px;border:1px solid #d6d9de;border-radius:8px;font-size:15px;font-family:inherit;background:#fff}
+.slots{display:flex;flex-wrap:wrap;gap:6px}
+.slots button{border:1px solid #d6d9de;background:#fff;border-radius:8px;padding:8px 11px;cursor:pointer;font-size:13px;font-family:inherit}
+.slots button.on{background:var(--c);color:#fff;border-color:var(--c)}
+.cta{margin-top:16px;width:100%;background:var(--c);color:#fff;border:0;border-radius:10px;padding:13px;font-size:15px;cursor:pointer;font-family:inherit}
+.ok{display:none;margin-top:14px;background:#eaf7ea;border:1px solid #bfe3bf;padding:12px;border-radius:8px;font-size:14px}
+.sec{max-width:1080px;margin:0 auto 26px;padding:0 18px}
+.sec h2{font-size:22px;margin:0 0 6px;color:#1f2328}.sec .sub{margin:0 0 14px;color:#5b616b}
+.feat{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+@media(max-width:900px){.feat{grid-template-columns:1fr 1fr}}@media(max-width:560px){.feat{grid-template-columns:1fr}}
+.feat div{background:#fff;border-radius:12px;padding:16px;font-size:14px;color:#3f444b}.feat b{color:var(--c);display:block;margin-bottom:4px;font-size:15px}
+.lanes{display:grid;grid-template-columns:1fr 1fr;gap:14px}@media(max-width:700px){.lanes{grid-template-columns:1fr}}
+.lane{background:#fff;border-radius:12px;padding:16px}.lane h3{margin:0 0 8px;font-size:16px}.lane ul{margin:0;padding-left:18px;font-size:14px;color:#3f444b}.lane li{margin:5px 0}
+.lane.a h3{color:#1f7a3a}.lane.h h3{color:#a15c00}
+.tabs{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:10px}
+.tabs button{border:1px solid var(--c);background:#fff;color:var(--c);border-radius:20px;padding:7px 14px;font-size:14px;cursor:pointer;font-family:inherit}
+.tabs button.on{background:var(--c);color:#fff}
+.rep{background:#fff;border-radius:12px;padding:14px;overflow-x:auto}
+.ex{display:inline-block;font-size:11px;font-weight:700;letter-spacing:.06em;background:#fff3cd;color:#7a5a00;border-radius:6px;padding:2px 6px;margin-bottom:8px}
+table{border-collapse:collapse;width:100%;font-size:13px;min-width:560px}th,td{border:1px solid #d9dde2;padding:6px 8px;text-align:left;vertical-align:top}th{background:#e8f1ea;color:#1d4d2b}
+.repwa{background:#ece5dd;border-radius:10px;padding:12px;max-width:440px}
+.repwa .m{max-width:100%}
+.crm{display:grid;gap:8px;max-width:560px}.crm div{border:1px solid #e3e6ea;border-radius:10px;padding:10px;font-size:14px}.crm small{color:#6b7280;display:block}
+.pill{display:inline-block;font-size:11px;border-radius:99px;padding:2px 8px;margin-left:6px;background:#e1f0fb;color:#1b4f72}.pill.w{background:#fff4d6;color:#7a5a00}
+.steps{counter-reset:s;list-style:none;padding:0;margin:0;display:grid;grid-template-columns:repeat(3,1fr);gap:14px}@media(max-width:800px){.steps{grid-template-columns:1fr}}
+.steps li{background:#fff;border-radius:12px;padding:16px;font-size:14px;color:#3f444b;counter-increment:s}.steps li:before{content:counter(s);display:inline-flex;width:26px;height:26px;border-radius:50%;background:var(--c);color:#fff;align-items:center;justify-content:center;font-weight:700;margin-right:8px}
+.contact{background:#fff;border-left:4px solid var(--c);border-radius:10px;padding:16px;font-size:15px}.contact a{color:var(--c);font-weight:600}
+footer{text-align:center;font-size:13px;color:#6b7280;padding:10px 18px 40px}footer a{color:var(--c)}
+</style>
+<!-- GoatCounter (BOLLA STUDIO): page /es-reformas/?p=<tag>; events under the same prefix; ?internal=1 -> nothing counted or loaded -->
+<script>
+(function(){
+ var BASE='/es-reformas';
+ var m=(location.search+location.hash).match(/[?&#]internal=([01])/);
+ try{ if(m){ if(m[1]==="1") localStorage.setItem("skipgc","t"); else localStorage.removeItem("skipgc"); } }catch(e){}
+ var internal=false; try{ internal=localStorage.getItem("skipgc")==="t"; }catch(e){}
+ var sm=location.search.match(/[?&]p=([^&#]*)/);
+ var tag=sm?decodeURIComponent(sm[1]).toLowerCase().replace(/[^a-z0-9-]/g,"").slice(0,60):"";
+ var q=[]; window.bsTrack=function(sub,title){ if(internal) return;
+   if(window.goatcounter&&window.goatcounter.count) window.goatcounter.count({path:BASE+sub,title:title||sub,event:true}); else q.push([BASE+sub,title||sub]); };
+ if(internal) return;
+ window.goatcounter={no_onload:true};
+ var s=document.createElement("script"); s.async=true; s.src="https://gc.zgo.at/count.js";
+ s.setAttribute("data-goatcounter","https://bollastudio.goatcounter.com/count");
+ s.onload=function(){ try{ window.goatcounter.count({path:BASE+'/'+(tag?'?p='+tag:''),title:'Demo reformas ES'});
+   q.forEach(function(e){window.goatcounter.count({path:e[0],title:e[1],event:true});}); q=[]; }catch(e){} };
+ document.head.appendChild(s);
+})();
+</script>
+</head><body>
+<div class="top">Demo de <a href="https://bollastudio.com" target="_blank" rel="noopener">BOLLA STUDIO</a> · el negocio que aparece es un <b>ejemplo ficticio</b>, no un cliente real · no está conectada a ninguna agenda real</div>
+<header><div class="tag">Demo para interiorismo y reformas · España</div>
+<h1>Menos llamadas para "solo quería un presupuesto", más visitas bien preparadas</h1>
+<p class="intro">Muchas consultas de reforma llegan sin datos: ni metros, ni fotos, ni plazo. Este asistente responde las preguntas de siempre (qué hacen, cómo trabajan, plazos orientativos, permisos), recoge todo lo que su equipo necesita para valorar el proyecto, reserva la visita técnica y le pasa la ficha completa.</p>
+<div class="biz">🛠️ <b>Estudio de Interiorismo y Reformas Arco</b> <span>EJEMPLO</span></div></header>
+<div class="grid">
+ <div class="card">
+  <div class="wa-h"><div class="av">🛠️</div><div><b>Estudio de Interiorismo y Reformas Arco</b><small>asistente · responde al momento, 24/7</small></div></div>
+  <div class="chat" id="chat" aria-live="polite"></div>
+  <div class="qr" id="qr"></div>
+ </div>
+ <div class="card bk" id="form">
+  <h3>Solicitar visita técnica</h3>
+  <p>El cliente describe el proyecto y elige hora; el agente prepara la ficha que su equipo necesita.</p>
+  <label>Tipo de proyecto</label><select data-k="tipo"><option>Reforma integral de vivienda</option><option>Cocina</option><option>Baño</option><option>Cocina y baño</option><option>Interiorismo (diseño y decoración)</option><option>Local comercial u oficina</option></select><label>Superficie aproximada</label><input data-k="m2" placeholder="p. ej. 80 m²"><label>Población o barrio</label><input data-k="zona" placeholder="p. ej. Centro"><label>¿Cuándo le gustaría empezar?</label><select data-k="plazo"><option>Lo antes posible</option><option>En 1-3 meses</option><option>En 3-6 meses</option><option>Solo estoy informándome</option></select>
+  <label>Horario de visita</label><div class="slots" id="slots"></div>
+  <label>Nombre</label><input data-k="nombre" placeholder="Nombre y apellidos">
+  <label>Teléfono o email</label><input data-k="contacto" placeholder="6xx xxx xxx / nombre@…">
+  <button class="cta" id="cta">Pedir visita técnica</button>
+  <div class="ok" id="ok"></div>
+ </div>
+</div>
+<section class="sec"><h2>Qué hace el agente</h2><p class="sub">Responde con la información de su estudio: qué hacen, cómo trabajan, zonas, proceso. Nunca da precios o plazos a ciegas.</p><div class="feat"><div><b>Responde 24/7</b>Servicios, proceso de trabajo, zonas, permisos en general: al momento, también el fin de semana.</div><div><b>Fichas completas</b>Recoge tipo de obra, metros, zona, plazo y fotos antes de la visita. Menos visitas en vano.</div><div><b>Visitas en agenda</b>Reserva la visita técnica según la disponibilidad que usted defina.</div><div><b>Le informa</b>Proyectos nuevos y pendientes en Excel, en su software de gestión o en su WhatsApp.</div></div></section>
+<section class="sec"><h2>Qué resuelve solo y qué pasa a una persona</h2><p class="sub">Usted decide la lista. El agente no improvisa: si no tiene una respuesta aprobada, lo dice y avisa a su equipo.</p>
+<div class="lanes"><div class="lane a"><h3>✓ Lo resuelve el agente</h3><ul><li>Qué servicios ofrecen y cómo trabajan</li><li>Recoger datos, medidas aproximadas y fotos del proyecto</li><li>Reservar, cambiar o anular la visita técnica</li><li>Explicar en general los pasos: visita, propuesta, presupuesto, obra</li><li>Seguimiento de quien pidió información y no reservó</li></ul></div><div class="lane h"><h3>→ Pasa a una persona</h3><ul><li>Presupuestos y plazos concretos</li><li>Permisos y licencias de un caso concreto</li><li>Incidencias en obras en curso: aviso inmediato</li><li>Condiciones de pago, financiación y reclamaciones</li></ul></div></div></section>
+<section class="sec"><h2>Lo que recibe usted</h2><p class="sub">Cada día (o al momento, si es urgente), un resumen de lo que se ha preguntado, lo que se ha reservado y lo que queda pendiente. Donde usted prefiera:</p>
+<div class="tabs" id="tabs"><button data-k="excel">Excel / Google Sheets</button><button data-k="soft">Su programa de gestión</button><button data-k="wa">Su WhatsApp</button></div>
+<div class="rep" id="rep"></div></section>
+<section class="sec"><h2>Cómo se pone en marcha</h2><ol class="steps"><li>Recogemos su información: servicios, zonas, proceso de trabajo y las preguntas que más le hacen.</li><li>Usted aprueba las respuestas y decide qué pasa siempre a su equipo: presupuestos, plazos, incidencias.</li><li>Lo conectamos a su WhatsApp, su web e Instagram y a su agenda. Puede entrar en cualquier conversación cuando quiera.</li></ol></section>
+<section class="sec"><div class="contact">¿Quiere verlo con las preguntas reales de su estudio? Escríbame y le preparo una prueba con su información: <a href="mailto:marcelo@bollastudio.com">marcelo@bollastudio.com</a> · <a href="https://bollastudio.com" target="_blank" rel="noopener">bollastudio.com</a><br><small>Marcelo Bolla · BOLLA STUDIO, estudio de ingeniería de software y ciencia de datos con más de 6 años de experiencia.</small></div></section>
+<footer>Demo de <a href="https://bollastudio.com" target="_blank" rel="noopener">BOLLA STUDIO</a> · Estudio de Interiorismo y Reformas Arco es un negocio ficticio creado para esta demo. Conversaciones, horarios y datos son de ejemplo.</footer>
+<script>
+var C={"chat": [["in", "Hola, queremos reformar la cocina y el baño de un piso de unos 80 m². ¿Hacen presupuestos?"], ["out", "Hola, gracias por escribir al Estudio Arco 🛠️\nSí. Para preparar bien la visita, ¿me cuenta unos datos?\n1. ¿En qué zona está el piso?\n2. ¿Vive en él o está vacío?\n3. ¿Quieren también diseño de interiorismo (distribución, materiales) o solo la obra?\nSi puede, envíeme fotos de la cocina y el baño tal y como están ahora."], ["in", "Centro de la ciudad, vivimos en él. Queremos diseño y obra. Le mando fotos."], ["sys", "📷 4 fotos recibidas y adjuntadas a la ficha del proyecto"], ["out", "Gracias, las fotos ayudan mucho. Siguiente paso: visita técnica en el piso para medir y ver instalaciones; después el equipo le presenta propuesta y presupuesto detallado.\nTengo visita el martes a las 9:30 o el jueves a las 16:00. ¿Cuál prefiere?"], ["in", "Jueves 16:00. ¿Cuánto dura una obra así? ¿Y necesitamos permiso?"], ["hand", "Reservado: visita técnica el jueves a las 16:00 ✅\nEl plazo y el tipo de permiso (licencia o comunicación previa) dependen del alcance de la obra y de su ayuntamiento; se lo confirmará el técnico en la visita, no le doy una cifra a ciegas. Paso ya la ficha con sus fotos al equipo."], ["sys", "→ Ficha al equipo: \"Cocina + baño, piso 80 m², habitado, centro, diseño + obra, 4 fotos. Visita jue 16:00.\""]], "quick": [["¿Hacen reformas integrales?", "out", "Sí: reformas integrales de viviendas y locales, y también parciales (cocinas, baños). Podemos encargarnos del proyecto de interiorismo, la obra y la coordinación de los gremios. ¿Qué tiene en mente?"], ["¿Cuánto cuesta reformar un baño?", "out", "Depende mucho de los metros, los materiales y el estado de las instalaciones, así que no le doy una cifra que luego no se cumpla. Con unas fotos y las medidas aproximadas el equipo le orienta, y tras la visita técnica recibe un presupuesto detallado por partidas."], ["Tengo un problema con mi obra en curso", "hand", "Lo siento. Le paso ahora mismo con el jefe de obra de su proyecto para que le llame. ¿Me indica su nombre y la dirección de la obra?", "⚠ Incidencia de obra en curso: aviso al jefe de obra."], ["¿Trabajan con locales comerciales?", "out", "Sí, también diseñamos y reformamos locales (comercios, oficinas, hostelería). En ese caso conviene revisar antes la licencia de actividad; lo vemos en la primera reunión."], ["¿Se puede financiar?", "hand", "Las condiciones de pago y financiación se las explica el equipo según el proyecto. Le dejo la pregunta anotada en su ficha y lo verán en la visita.", "→ Pregunta de financiación añadida a la ficha."]], "slots": ["Lun 9:30", "Mar 9:30", "Mar 17:00", "Mié 12:00", "Jue 16:00", "Vie 10:00"], "okText": "✅ Solicitud de ejemplo: {tipo} · {m2} · {zona} · empezar: {plazo} · visita {slot}. En la versión real la visita entra en la agenda del técnico, el cliente recibe confirmación y recordatorio, y su equipo recibe la ficha con fotos y datos.", "when": "WhatsApp · sábado, 10:52", "needSlot": "Elija primero un horario.", "rep": {"excel": "<div class=\"ex\">EJEMPLO · DATOS FICTICIOS<\/div><table><tr><th>Fecha<\/th><th>Canal<\/th><th>Proyecto<\/th><th>m²<\/th><th>Zona<\/th><th>Plazo<\/th><th>Resultado<\/th><\/tr><tr><td>Lun 09:14<\/td><td>Web<\/td><td>Reforma integral<\/td><td>95<\/td><td>Ensanche<\/td><td>1-3 meses<\/td><td>Visita mar 9:30<\/td><\/tr><tr><td>Mié 19:40<\/td><td>WhatsApp<\/td><td>Baño<\/td><td>6<\/td><td>Norte<\/td><td>Lo antes posible<\/td><td>Fotos recibidas · visita vie 10:00<\/td><\/tr><tr><td>Vie 22:03<\/td><td>Instagram<\/td><td>Interiorismo local<\/td><td>120<\/td><td>Centro<\/td><td>3-6 meses<\/td><td>Pasado a dirección<\/td><\/tr><tr><td>Sáb 10:52<\/td><td>WhatsApp<\/td><td>Cocina y baño<\/td><td>80<\/td><td>Centro<\/td><td>1-3 meses<\/td><td>Visita jue 16:00 · 4 fotos<\/td><\/tr><\/table>", "soft": "<div class=\"ex\">EJEMPLO · DATOS FICTICIOS<\/div><p style=\"margin:0 0 10px;font-size:14px;color:#5b616b\">Cada proyecto puede crearse en su software de gestión o CRM (si tiene conexión o API) con fotos y datos.<\/p><div class=\"crm\"><div><b>Cocina y baño · 80 m² · centro<\/b><span class=\"pill\">Visita<\/span><small>Jueves 16:00 · diseño + obra · vivienda habitada · 4 fotos<\/small><\/div><div><b>Obra en curso · calle (ejemplo)<\/b><span class=\"pill w\">Incidencia<\/span><small>Cliente avisa de un problema · jefe de obra avisado<\/small><\/div><div><b>Local 120 m²<\/b><span class=\"pill w\">Lead<\/span><small>Interiorismo para local comercial · revisar licencia de actividad<\/small><\/div><\/div>", "wa": "<div class=\"ex\">EJEMPLO · DATOS FICTICIOS<\/div><div class=\"repwa\"><div class=\"m in\">📋 Resumen de la semana · Estudio Arco\n• 21 consultas (9 en fin de semana o de noche)\n• 6 visitas técnicas reservadas con fotos y datos\n• 1 incidencia de obra pasada al jefe de obra\n• 4 consultas descartadas (fuera de zona o solo curiosidad)\nLo más pedido: reforma de baño.<\/div><\/div>"}};
+var chat=document.getElementById('chat'),qr=document.getElementById('qr'),run=0;
+function add(t,c){var e=document.createElement('div');e.className=c==='sys'?'sys':'m '+c;e.textContent=t;chat.appendChild(e);chat.scrollTop=chat.scrollHeight;return e}
+function play(i,r){if(r!==run)return;if(i>=C.chat.length)return;var m=C.chat[i];
+ if(m[0]==='out'||m[0]==='hand'){var t=add('…','out typing');setTimeout(function(){if(r!==run)return;t.remove();add(m[1],m[0]==='hand'?'out hand':'out');setTimeout(function(){play(i+1,r)},1000)},1200)}
+ else if(m[0]==='sys'){add(m[1],'sys');setTimeout(function(){play(i+1,r)},900)}
+ else{add(m[1],'in');setTimeout(function(){play(i+1,r)},900)}}
+function start(){run++;chat.innerHTML='';add(C.when,'sys');play(0,run)}
+var lb=document.createElement('div');lb.className='lbl';lb.textContent='Pruebe otras preguntas típicas:';qr.appendChild(lb);
+C.quick.forEach(function(x){var b=document.createElement('button');b.textContent=x[0];b.onclick=function(){run++;add(x[0],'in');
+ window.bsTrack&&bsTrack('/chat/'+x[0].toLowerCase().normalize('NFD').replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'').slice(0,50),'Chat '+x[0]);
+ var t=add('…','out typing');setTimeout(function(){t.remove();add(x[2],x[1]==='hand'?'out hand':'out');if(x[3])setTimeout(function(){add(x[3],'sys')},500)},1000)};qr.appendChild(b)});
+var rb=document.createElement('button');rb.textContent='↻ Repetir conversación';rb.onclick=function(){start();window.bsTrack&&bsTrack('/chat/replay','Chat replay')};qr.appendChild(rb);
+start();
+var slots=document.getElementById('slots'),slot=null;
+C.slots.forEach(function(s){var b=document.createElement('button');b.type='button';b.textContent=s;b.onclick=function(){[].forEach.call(slots.children,function(x){x.classList.remove('on')});b.classList.add('on');slot=s};slots.appendChild(b)});
+document.getElementById('cta').onclick=function(){var ok=document.getElementById('ok');ok.style.display='block';
+ if(!slot){ok.textContent=C.needSlot;return}
+ var v={};[].forEach.call(document.querySelectorAll('#form [data-k]'),function(e){v[e.dataset.k]=e.value.trim()});
+ var s=C.okText.replace(/\{(\w+)\}/g,function(_,k){return k==='slot'?slot:(v[k]||'—')});ok.textContent=s;
+ window.bsTrack&&bsTrack('/solicitud/confirmar','Demo solicitud')};
+var rep=document.getElementById('rep');
+function showRep(k){[].forEach.call(document.querySelectorAll('#tabs button'),function(b){b.classList.toggle('on',b.dataset.k===k)});rep.innerHTML=C.rep[k]}
+[].forEach.call(document.querySelectorAll('#tabs button'),function(b){b.onclick=function(){showRep(b.dataset.k);window.bsTrack&&bsTrack('/informe/'+b.dataset.k,'Informe '+b.dataset.k)}});
+showRep('excel');
+</script>
+</body></html>
