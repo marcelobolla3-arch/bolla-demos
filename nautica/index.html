@@ -485,7 +485,7 @@ function animateKB(force){const run=()=>{$$("#kbmsgs .bub").forEach((b,i)=>setTi
 window.__kbNow=()=>animateKB(true);
 
 /* ---------- i18n static ---------- */
-function applyLang(){const t=T();document.documentElement.lang=uiLang;$$("[data-i]").forEach(e=>{e.textContent=t[e.dataset.i];});
+function applyLang(){const t=T();document.documentElement.lang=uiLang;document.title="Lagoon 42 · "+t.tagline.split(" · ")[0]+" · BOLLA STUDIO";$$("[data-i]").forEach(e=>{e.textContent=t[e.dataset.i];});
  $("#q").placeholder=t.ask;$("#sendbtn").textContent=t.send;$$(".lang button").forEach(b=>b.setAttribute("aria-pressed",b.dataset.l===uiLang));
  $("#nightbtn").title=t.night;$("#nightbtn").setAttribute("aria-label",t.night);
  $("#chips").innerHTML=D.chips.map(id=>{const tp=D.topics.find(x=>x.id===id);return '<button class="chip" data-t="'+id+'">'+esc(tp.q[uiLang])+"</button>";}).join("");
