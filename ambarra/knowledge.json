@@ -1,0 +1,687 @@
+{
+  "researched_at": "2026-11-05 Europe/Rome (CET)",
+  "identity": {
+    "name": "Ambara Sardinian Lounge",
+    "aliases": [
+      "Ambàra",
+      "Ambara Lounge"
+    ],
+    "user_spelling": "Ambarra",
+    "google_kgmid": "/g/11rfrwsyl0",
+    "resolution": "Google share redirect returned target query Ambara Sardinian Lounge and kgmid; full Google listing blocked by unusual-traffic CAPTCHA. Official site corroborates place and contacts.",
+    "address": "Via di Li Graniti, 07052 Monte Petrosu, San Teodoro (SS), Sardegna, Italia",
+    "street_number": null,
+    "address_sources": [
+      "home",
+      "privacy",
+      "opentable"
+    ]
+  },
+  "sources": {
+    "maps_share": "https://share.google/uG3NFeKlDsjDIcqGB",
+    "maps_resolved": "https://www.google.com/share.google?q=uG3NFeKlDsjDIcqGB",
+    "maps_entity": "https://www.google.com/maps/search/?api=1&query=Ambara%20Sardinian%20Lounge%20Via%20di%20Li%20Graniti%20Monte%20Petrosu",
+    "home": "https://ambaralounge.it/",
+    "about": "https://ambaralounge.it/chi-siamo/",
+    "location": "https://ambaralounge.it/dove-siamo/",
+    "dinner": "https://ambaralounge.it/menu-cena/",
+    "breakfast": "https://ambaralounge.it/menu-colazione/",
+    "beverages": "https://ambaralounge.it/carta-dei-vini/",
+    "privacy": "https://ambaralounge.it/privacy-policy/",
+    "booking": "https://ambarasardinianlounge.plateform.app/r/ambarainstagram",
+    "events": "https://ambaralounge.it/eventi/",
+    "opentable": "https://www.opentable.com/r/ambara-sardinian-lounge-monte-petrosu",
+    "reviews_secondary": "https://restaurantguru.it/Ambara-Sardinian-Lounge-Monte-Petrosu"
+  },
+  "official": {
+    "website": "https://ambaralounge.it/",
+    "phone": "+393401991233",
+    "email": "info@ambaralounge.it",
+    "whatsapp": "https://wa.me/393401991233",
+    "instagram": "https://www.instagram.com/ambarasardinianlounge/",
+    "facebook": "https://www.facebook.com/ambaralounge",
+    "concept": "Ristorante lounge; cucina mediterranea con influenze internazionali, colazione internazionale, brunch, aperitivo, cena e American Bar.",
+    "chef": "Andrea Locci",
+    "parking": "Ampio parcheggio gratuito (about page)",
+    "hours": {
+      "breakfast": "07:30–11:30 (breakfast menu)",
+      "evening": "Tutte le sere 17:00–01:00 (dinner menu)",
+      "conflict": "Beverage page footer says breakfast/brunch 08:30–12:00; current seasonal opening and kitchen hours unconfirmed."
+    },
+    "events": {
+      "published_schedule": "DJ set mercoledì e venerdì 18:30–00:00; jazz moderno/swing/sound raffinati; serate karaoke selezionate",
+      "source": "home",
+      "dated_calendar_verified": false
+    },
+    "reservation": {
+      "public_provider": "Plateform",
+      "provider_evidence": "Official homepage repeated Prenota/Prenotazione Diretta links to plateform.app",
+      "url": "https://ambarasardinianlounge.plateform.app/r/ambarainstagram",
+      "live_availability_verified": false,
+      "provider_page": "Blank text response, likely client-rendered; no form submitted",
+      "internal_system_or_API_verified": false,
+      "direct_options": [
+        "WhatsApp",
+        "phone"
+      ],
+      "confirmation_policy": "Location page requests WhatsApp request and says restaurant will contact customer back."
+    },
+    "allergens": {
+      "source": "dinner/breakfast/beverages",
+      "policy": "Informare il personale di sala delle allergie; lo staff aiuta a scegliere e valuta eventuali modifiche.",
+      "caution": "Published numeric codes preserved verbatim, not independently validated. No complete legend verified. Do not infer absence of allergens or cross-contamination safety."
+    },
+    "takeaway": "Official menus invite direct phone orders and pickup; location page mentions food for boat/beach. No delivery promise.",
+    "privacy": "Published GDPR policy covers contact and reservation data; retention only as long as necessary, rights requests to info@ambaralounge.it."
+  },
+  "menus": {
+    "currency": "EUR",
+    "price_freshness": "Published online when accessed; no effective date or current stock verified",
+    "dinner": {
+      "source": "dinner",
+      "items": [
+        {
+          "name": "Battuta di tonno",
+          "price_eur": 20,
+          "description_it": "Crema di bufala, limone candito, polvere di capperi",
+          "published_allergen_codes": [
+            4,
+            7
+          ],
+          "unit": "portion"
+        },
+        {
+          "name": "Cozze, patate e asparagi",
+          "price_eur": 16,
+          "description_it": "Crema di patate, cozze, asparagi, aceto di vernaccia, olio all’arancio",
+          "published_allergen_codes": [
+            12,
+            14
+          ],
+          "unit": "portion"
+        },
+        {
+          "name": "Carpaccio scottato",
+          "price_eur": 16,
+          "description_it": "Manzo, melanzana affumicata, salsa agrodolce, cetrioli",
+          "published_allergen_codes": [
+            12
+          ],
+          "unit": "portion"
+        },
+        {
+          "name": "Tris di tartare di manzo",
+          "price_eur": 24,
+          "description_it": "Latticello di bufala, cipolle caramellate, ricotta nuorese e pomodori secchi",
+          "published_allergen_codes": [
+            7,
+            8,
+            9,
+            10,
+            12
+          ],
+          "unit": "portion"
+        },
+        {
+          "name": "Polpo alla piastra",
+          "price_eur": 18,
+          "description_it": "Salsa al pane carasau e pomodoro, olio al basilico",
+          "published_allergen_codes": [
+            5,
+            8,
+            12,
+            14
+          ],
+          "unit": "portion"
+        },
+        {
+          "name": "Rana catalana",
+          "price_eur": 19,
+          "description_it": "Rana pescatrice alla barbabietola, pomodori, cipolla rosa, limone nero",
+          "published_allergen_codes": [
+            4,
+            5,
+            8,
+            12
+          ],
+          "unit": "portion"
+        },
+        {
+          "name": "Hummus di ceci",
+          "price_eur": 15,
+          "description_it": "Alghe di mare e pane guttiau piccante",
+          "published_allergen_codes": [
+            1
+          ],
+          "unit": "portion"
+        },
+        {
+          "name": "Gnocchi e polpo",
+          "price_eur": 22,
+          "description_it": "Ragù di polpo, fave, menta, tonno essiccato",
+          "published_allergen_codes": [
+            1,
+            3,
+            7,
+            12,
+            14
+          ],
+          "unit": "portion"
+        },
+        {
+          "name": "Culurgiones",
+          "price_eur": 22,
+          "description_it": "Alla purpuza e zafferano, crema di bufala",
+          "published_allergen_codes": [
+            1,
+            3,
+            7,
+            12,
+            14
+          ],
+          "unit": "portion"
+        },
+        {
+          "name": "Linguine alle seppie",
+          "price_eur": 25,
+          "description_it": "Timo, limone, bottarga",
+          "published_allergen_codes": [
+            1,
+            4,
+            14
+          ],
+          "unit": "portion"
+        },
+        {
+          "name": "Fregola",
+          "price_eur": 22,
+          "description_it": "All’arrabbiata, cozze e guanciale",
+          "published_allergen_codes": [
+            1,
+            4,
+            9,
+            12,
+            14
+          ],
+          "unit": "portion"
+        },
+        {
+          "name": "La rana pescatrice all’Ambara",
+          "price_eur": 26,
+          "description_it": "Millefoglie di pane, coda di rospo, gremolada al timo limone",
+          "published_allergen_codes": [
+            1,
+            4,
+            5,
+            6,
+            7,
+            12,
+            14
+          ],
+          "unit": "portion"
+        },
+        {
+          "name": "Tagliatelle di calamari",
+          "price_eur": 21,
+          "description_it": "Calamari e peperoni fritti, salsa tartara",
+          "published_allergen_codes": [
+            1,
+            3,
+            5,
+            6,
+            8,
+            12,
+            14
+          ],
+          "unit": "portion"
+        },
+        {
+          "name": "Bavetta di manzo",
+          "price_eur": 28,
+          "description_it": "Angus, cavolo viola all’aceto di Cannonau, chimichurri al pomodoro secco",
+          "published_allergen_codes": [
+            5,
+            8,
+            12
+          ],
+          "unit": "portion"
+        },
+        {
+          "name": "Coscia di pollo disossata marinata agli agrumi",
+          "price_eur": 16,
+          "description_it": "",
+          "published_allergen_codes": [],
+          "unit": "portion"
+        },
+        {
+          "name": "Costata di Rubia Gallega",
+          "price_eur": 8,
+          "description_it": "",
+          "published_allergen_codes": [],
+          "unit": "100 g"
+        },
+        {
+          "name": "Costata di manzo Barrosa portoghese",
+          "price_eur": 8,
+          "description_it": "",
+          "published_allergen_codes": [],
+          "unit": "100 g"
+        },
+        {
+          "name": "Picanha di Angus e friggitelli alla griglia",
+          "price_eur": 24,
+          "description_it": "",
+          "published_allergen_codes": [],
+          "unit": "portion"
+        },
+        {
+          "name": "Cuberoll di scottona e friggitelli alla griglia",
+          "price_eur": 26,
+          "description_it": "",
+          "published_allergen_codes": [],
+          "unit": "portion"
+        },
+        {
+          "name": "Pescato del giorno",
+          "price_eur": 5,
+          "description_it": "Unità di prezzo non specificata nella pagina: non preventivare un totale",
+          "published_allergen_codes": [
+            4
+          ],
+          "unit": "UNKNOWN"
+        },
+        {
+          "name": "Cavolo viola marinato all’aceto di Cannonau",
+          "price_eur": 6,
+          "description_it": "",
+          "published_allergen_codes": [
+            12
+          ],
+          "unit": "portion"
+        },
+        {
+          "name": "Patate fritte",
+          "price_eur": 6,
+          "description_it": "",
+          "published_allergen_codes": [
+            1,
+            8
+          ],
+          "unit": "portion"
+        },
+        {
+          "name": "Patate arrosto al rosmarino",
+          "price_eur": 6,
+          "description_it": "",
+          "published_allergen_codes": [],
+          "unit": "portion"
+        },
+        {
+          "name": "Friggitelli",
+          "price_eur": 6,
+          "description_it": "",
+          "published_allergen_codes": [
+            1,
+            8
+          ],
+          "unit": "portion"
+        },
+        {
+          "name": "Insalata di pomodori",
+          "price_eur": 6,
+          "description_it": "",
+          "published_allergen_codes": [],
+          "unit": "portion"
+        },
+        {
+          "name": "Ambàra degustazione griglia",
+          "price_eur": 55,
+          "description_it": "Costata frollatura 60gg, picanha Black Angus, cuberol di scottona, pollo di Sardegna agli agrumi",
+          "published_allergen_codes": [],
+          "unit": "person"
+        },
+        {
+          "name": "La sebada tradizionale",
+          "price_eur": 8,
+          "description_it": "Miele millefiori",
+          "published_allergen_codes": [
+            1,
+            3,
+            7,
+            8
+          ],
+          "unit": "portion"
+        },
+        {
+          "name": "Tiramisù",
+          "price_eur": 7,
+          "description_it": "Savoiardi, caffè, mascarpone",
+          "published_allergen_codes": [
+            1,
+            7
+          ],
+          "unit": "portion"
+        },
+        {
+          "name": "Sorbetto ananas Ambàra",
+          "price_eur": 6,
+          "description_it": "",
+          "published_allergen_codes": [
+            12
+          ],
+          "unit": "portion"
+        },
+        {
+          "name": "Cremoso al cioccolato bianco",
+          "price_eur": 7,
+          "description_it": "Caramello salato e terra di cacao amaro",
+          "published_allergen_codes": [
+            1,
+            4,
+            7
+          ],
+          "unit": "portion"
+        },
+        {
+          "name": "Cheese cake",
+          "price_eur": 7,
+          "description_it": "Infornata, salsa ai frutti rossi",
+          "published_allergen_codes": [
+            1,
+            7,
+            8
+          ],
+          "unit": "portion"
+        }
+      ],
+      "cover_eur": 3
+    },
+    "breakfast": {
+      "source": "breakfast",
+      "items": [
+        {
+          "name": "Uova e un contorno",
+          "price_eur": 10,
+          "description_it": "",
+          "published_allergen_codes": [],
+          "unit": "portion"
+        },
+        {
+          "name": "Uova e due contorni",
+          "price_eur": 14,
+          "description_it": "",
+          "published_allergen_codes": [],
+          "unit": "portion"
+        },
+        {
+          "name": "Mediterraneo",
+          "price_eur": 16,
+          "description_it": "",
+          "published_allergen_codes": [],
+          "unit": "portion"
+        },
+        {
+          "name": "Caprese",
+          "price_eur": 14,
+          "description_it": "",
+          "published_allergen_codes": [],
+          "unit": "portion"
+        },
+        {
+          "name": "Ambara Cesar Salad",
+          "price_eur": 16,
+          "description_it": "",
+          "published_allergen_codes": [],
+          "unit": "portion"
+        },
+        {
+          "name": "Bruschetta alla bufala",
+          "price_eur": 12,
+          "description_it": "",
+          "published_allergen_codes": [],
+          "unit": "portion"
+        },
+        {
+          "name": "Crostone avocado e uovo in crema",
+          "price_eur": 12,
+          "description_it": "",
+          "published_allergen_codes": [],
+          "unit": "portion"
+        },
+        {
+          "name": "Ambara Avocado Toast",
+          "price_eur": 14,
+          "description_it": "",
+          "published_allergen_codes": [],
+          "unit": "portion"
+        },
+        {
+          "name": "Crostone al salmone",
+          "price_eur": 12,
+          "description_it": "",
+          "published_allergen_codes": [],
+          "unit": "portion"
+        },
+        {
+          "name": "Crostone vegano",
+          "price_eur": 12,
+          "description_it": "",
+          "published_allergen_codes": [],
+          "unit": "portion"
+        },
+        {
+          "name": "Pane tostato e prosciutto crudo",
+          "price_eur": 7,
+          "description_it": "",
+          "published_allergen_codes": [],
+          "unit": "portion"
+        },
+        {
+          "name": "Pane tostato, burro e marmellata",
+          "price_eur": 7,
+          "description_it": "",
+          "published_allergen_codes": [],
+          "unit": "portion"
+        },
+        {
+          "name": "Pancake",
+          "price_eur": 7,
+          "description_it": "",
+          "published_allergen_codes": [],
+          "unit": "portion"
+        },
+        {
+          "name": "Torta fatta in casa",
+          "price_eur": 5,
+          "description_it": "",
+          "published_allergen_codes": [],
+          "unit": "portion"
+        },
+        {
+          "name": "Crostata fatta in casa",
+          "price_eur": 4,
+          "description_it": "",
+          "published_allergen_codes": [],
+          "unit": "portion"
+        },
+        {
+          "name": "Croissant",
+          "price_eur": 2,
+          "description_it": "",
+          "published_allergen_codes": [],
+          "unit": "portion"
+        },
+        {
+          "name": "Croissant al pistacchio",
+          "price_eur": 2.5,
+          "description_it": "",
+          "published_allergen_codes": [],
+          "unit": "portion"
+        },
+        {
+          "name": "Brioches speciali",
+          "price_eur": 2.5,
+          "description_it": "",
+          "published_allergen_codes": [],
+          "unit": "portion"
+        },
+        {
+          "name": "Croissant salato farcito",
+          "price_eur": 4,
+          "description_it": "",
+          "published_allergen_codes": [],
+          "unit": "portion"
+        },
+        {
+          "name": "Toast",
+          "price_eur": 5,
+          "description_it": "",
+          "published_allergen_codes": [],
+          "unit": "portion"
+        },
+        {
+          "name": "Tramezzini",
+          "price_eur": 3.5,
+          "description_it": "",
+          "published_allergen_codes": [],
+          "unit": "portion"
+        },
+        {
+          "name": "Macedonia di frutta",
+          "price_eur": 5,
+          "description_it": "",
+          "published_allergen_codes": [],
+          "unit": "portion"
+        },
+        {
+          "name": "Yogurt naturale con frutta mista",
+          "price_eur": 7,
+          "description_it": "",
+          "published_allergen_codes": [],
+          "unit": "portion"
+        },
+        {
+          "name": "Yogurt di frutta con cereali",
+          "price_eur": 7,
+          "description_it": "",
+          "published_allergen_codes": [],
+          "unit": "portion"
+        },
+        {
+          "name": "Caffè espresso",
+          "price_eur": 1.2,
+          "description_it": "",
+          "published_allergen_codes": [],
+          "unit": "portion"
+        },
+        {
+          "name": "Cappuccino",
+          "price_eur": 2,
+          "description_it": "",
+          "published_allergen_codes": [],
+          "unit": "portion"
+        },
+        {
+          "name": "Caffè americano",
+          "price_eur": 1.5,
+          "description_it": "",
+          "published_allergen_codes": [],
+          "unit": "portion"
+        }
+      ],
+      "cover_eur": 3
+    },
+    "beverages": {
+      "source": "beverages",
+      "signature_cocktails_eur": 13,
+      "classic_cocktails_eur": 10,
+      "examples": [
+        {
+          "name": "Fiore del Sasso Vermentino di Gallura DOCG",
+          "price_eur": 33,
+          "description_it": "",
+          "published_allergen_codes": [],
+          "unit": "portion"
+        },
+        {
+          "name": "Sciala Vermentino di Gallura DOCG",
+          "price_eur": 35,
+          "description_it": "",
+          "published_allergen_codes": [],
+          "unit": "portion"
+        },
+        {
+          "name": "L’Ora Grande Cannonau DOC",
+          "price_eur": 38,
+          "description_it": "",
+          "published_allergen_codes": [],
+          "unit": "portion"
+        },
+        {
+          "name": "Ichnusa non filtrata 0,33",
+          "price_eur": 5,
+          "description_it": "",
+          "published_allergen_codes": [],
+          "unit": "portion"
+        },
+        {
+          "name": "Daura Gluten Free 0,33",
+          "price_eur": 5,
+          "description_it": "",
+          "published_allergen_codes": [],
+          "unit": "portion"
+        },
+        {
+          "name": "Warsteiner Alcohol Free 0,33",
+          "price_eur": 5,
+          "description_it": "",
+          "published_allergen_codes": [],
+          "unit": "portion"
+        }
+      ],
+      "cover_eur": 2,
+      "warning": "Cover differs from dinner/breakfast. Wine example unit not explicitly labelled on fetched text; do not assume glass price."
+    }
+  },
+  "third_party": {
+    "opentable": {
+      "booking_status": "Not available on OpenTable; restaurant is not on booking network (live fetched page)",
+      "price_band": "€31–€50",
+      "hours": "Daily 07:30–11:30 / 12:15–14:15 / 19:30–23:00",
+      "other_claims": [
+        "Mastercard/Visa",
+        "Business Casual",
+        "private lot"
+      ],
+      "warning": "Do not override official hours or prices. Indexed search snippet shows reservation widget and older menu, while fetched page explicitly says unavailable.",
+      "review": "One verified-diner review, dined June 9, 2025; 5/5 overall, compliments cocktails/staff/family evening. Customer opinion, not official fact."
+    },
+    "review_aggregator": {
+      "claims": "Restaurant Guru search result reports Google 4.7/5 and wheelchair accessibility/outdoor seating. Not independently verified on Maps; not safe to assert as official."
+    }
+  },
+  "unknowns": [
+    "Current Google Maps full listing/hours/categories/photos/attributes/review totals",
+    "Current seasonal opening, holidays, exact lunch/kitchen hours",
+    "Wheelchair access, accessible toilets and step-free route",
+    "Pets, children/highchairs, group capacity and private hire",
+    "Deposits, cancellation/no-show/late-arrival rules, table duration",
+    "Allergen legend, cross-contact controls, gluten-free/vegan adaptation guarantees",
+    "Current dated events and tickets/surcharges",
+    "API, credentials, vendor permissions and reservation synchronization capabilities",
+    "Google channel availability: no promise of Google Business Messages or native Google chat",
+    "Additional production languages and channel permissions not configured"
+  ],
+  "demo_rules": [
+    "All bookings simulated; never claim a real table held/confirmed",
+    "Primary Italian and English; additional languages proposed only, not a claim of restaurant staff languages",
+    "No live channel connections or reservation API proven",
+    "Unknown operational questions: explain not verified and refer to restaurant contact without claiming a transfer happened",
+    "Reference demo is Schloss Wülflingen, not a restaurant named El Castillo; do not import its facts"
+  ],
+  "reference": {
+    "demo": "https://demo.bollastudio.com/voz/schloss-wuelflingen/?p=schloss-wuelflingen",
+    "agent_id": "agent_3101m5z30nvbf06rvwp6def0k85b",
+    "inspected": false
+  }
+}
