@@ -1,0 +1,240 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%238d3b1f'/%3E%3Ctext x='16' y='22' text-anchor='middle' font-size='16' fill='white' font-family='Georgia'%3EA%3C/text%3E%3C/svg%3E">
+<title>Assistente vocale per Ambàra Sardinian Lounge · BOLLA STUDIO</title>
+<style>
+  :root{--ink:#1d1d1b;--muted:#6b6a66;--line:#e4e2dc;--bg:#faf9f6;--card:#ffffff;--accent:#8d3b1f}
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0}
+  body{background:var(--bg);color:var(--ink);font:16px/1.6 -apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;-webkit-font-smoothing:antialiased}
+  header,main,footer{max-width:760px;margin:0 auto;padding:0 24px}
+  header{display:flex;justify-content:space-between;align-items:center;gap:16px;padding-top:28px;padding-bottom:28px;border-bottom:1px solid var(--line)}
+  .brand{font-weight:600;letter-spacing:.28em;font-size:13px;text-decoration:none;color:var(--ink)}
+  .tools{display:flex;align-items:center;gap:8px}
+  .tag{font-size:13px;color:var(--muted)}
+  .langs{display:flex;gap:6px}
+  .langs button{border:1px solid var(--line);background:#fff;color:var(--ink);border-radius:999px;padding:6px 12px;font-size:13px;cursor:pointer}
+  .langs button.on{background:var(--ink);color:#fff;border-color:var(--ink)}
+  main{padding-top:56px;padding-bottom:40px}
+  .eyebrow{font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin:0 0 12px}
+  h1{font-family:Georgia,"Times New Roman",serif;font-weight:400;font-size:34px;line-height:1.25;margin:0 0 20px}
+  p.lead{font-size:18px;color:#3a3936;margin:0 0 36px;max-width:640px}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:28px 28px 22px;margin-bottom:28px}
+  .card h2{font-size:15px;font-weight:600;margin:0 0 14px}
+  ul{margin:0;padding-left:20px}
+  li{margin:0 0 8px}
+  .hint{display:flex;gap:12px;align-items:flex-start;font-size:15px;color:#3a3936}
+  .dot{flex:0 0 10px;height:10px;border-radius:50%;background:#2f6f5e;margin-top:7px}
+  .note{font-size:13px;color:var(--muted);margin-top:28px}
+  .back{font-size:14px}
+  .back a{color:var(--accent)}
+  footer{border-top:1px solid var(--line);padding-top:22px;padding-bottom:140px;font-size:13px;color:var(--muted);display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px}
+  footer a{color:var(--muted)}
+  .voice-hold{background:#fff;border:1px solid var(--line);border-radius:10px;padding:22px 24px;margin:0 0 28px}
+  .voice-hold b{display:block;font-size:15px;margin-bottom:6px}
+  .voice-hold p{margin:0;font-size:15px;color:#3a3936}
+  @media (max-width:560px){h1{font-size:27px}p.lead{font-size:16px}.card{padding:22px 20px 16px}}
+</style>
+<!--
+  Voice wrapper for the Ambàra prospect only.
+  AGENT_ID stays empty until the ElevenLabs agent created for Ambàra is supplied.
+  Do not paste another client's agent id here.
+  GoatCounter: page /ambarra/voice (optional ?p=). Event /ambarra/voice-start.
+  ?internal=1 sets localStorage skipgc and loads no counter. ?internal=0 clears it.
+-->
+<script>
+(function(){
+ var BASE='/ambarra/voice';
+ var m=(location.search+location.hash).match(/[?&#]internal=([01])/);
+ try{ if(m){ if(m[1]==="1") localStorage.setItem("skipgc","t"); else localStorage.removeItem("skipgc"); } }catch(e){}
+ var internal=false; try{ internal=localStorage.getItem("skipgc")==="t"; }catch(e){}
+ var sm=location.search.match(/[?&]p=([^&#]*)/);
+ var tag=sm?decodeURIComponent(sm[1]).toLowerCase().replace(/[^a-z0-9-]/g,"").slice(0,60):"";
+ var q=[]; window.bsTrack=function(sub,title){ if(internal) return;
+   if(window.goatcounter&&window.goatcounter.count) window.goatcounter.count({path:sub,title:title||sub,event:true}); else q.push([sub,title||sub]); };
+ if(internal) return;
+ window.goatcounter={no_onload:true};
+ var s=document.createElement("script"); s.async=true; s.src="https://gc.zgo.at/count.js";
+ s.setAttribute("data-goatcounter","https://bollastudio.goatcounter.com/count");
+ s.onload=function(){ try{ window.goatcounter.count({path:BASE+'/'+(tag?'?p='+tag:''),title:'Ambàra voice demo'});
+   q.forEach(function(e){window.goatcounter.count({path:e[0],title:e[1],event:true});}); q=[]; }catch(e){} };
+ document.head.appendChild(s);
+})();
+</script>
+</head>
+<body>
+<header>
+  <a class="brand" href="https://bollastudio.com" target="_blank" rel="noopener">BOLLA STUDIO</a>
+  <div class="tools">
+    <div class="langs" id="langs"><button type="button" data-l="it" class="on">IT</button><button type="button" data-l="en">EN</button></div>
+    <span class="tag">Demo</span>
+  </div>
+</header>
+<main>
+  <p class="eyebrow" data-k="eyebrow"></p>
+  <h1 data-k="h1"></h1>
+  <p class="lead" data-k="lead"></p>
+  <p class="back"><a id="back" href="../../ambarra/" data-k="back"></a></p>
+
+  <div class="card">
+    <h2 data-k="howTitle"></h2>
+    <div class="hint"><span class="dot"></span><span data-k="how"></span></div>
+  </div>
+
+  <div class="voice-hold" id="voiceHold" hidden>
+    <b data-k="holdTitle"></b>
+    <p data-k="hold"></p>
+  </div>
+
+  <div class="card">
+    <h2 data-k="tryTitle"></h2>
+    <ul>
+      <li data-k="try1"></li>
+      <li data-k="try2"></li>
+      <li data-k="try3"></li>
+      <li data-k="try4"></li>
+    </ul>
+  </div>
+
+  <p class="note" data-k="note"></p>
+</main>
+<footer>
+  <span>BOLLA STUDIO · <a href="https://bollastudio.com" target="_blank" rel="noopener">bollastudio.com</a></span>
+  <span>Demo</span>
+</footer>
+
+<script>
+/* Set this to the ElevenLabs agent created for Ambàra. Empty means the widget is not loaded. */
+var AGENT_ID = "";
+
+var COPY={
+ it:{
+  eyebrow:"Demo personale",
+  h1:"Assistente vocale per Ambàra Sardinian Lounge",
+  lead:"Qui si parla con l'assistente vocale preparato come esempio per Ambàra, a San Teodoro. Prende una richiesta di tavolo, risponde con i fatti pubblicati sul sito e annota ciò che deve vedere una persona del team.",
+  back:"← Demo WhatsApp, Instagram e Google",
+  howTitle:"Come funziona",
+  how:"Quando l'agente è collegato, il pulsante compare in basso a destra. Si avvia la conversazione nel browser, con il microfono, e si chiude con «Termina». Fino a quel momento il riquadro spiega che l'agente non è ancora configurato.",
+  tryTitle:"Per provare, a voce",
+  try1:"Un tavolo per sabato sera, senza aspettarsi una conferma",
+  try2:"Orari, indirizzo o la strada verso le spiagge indicate sul sito",
+  try3:"Un'allergia o un gruppo: deve passare a una persona",
+  try4:"La stessa domanda in inglese, o in un'altra lingua",
+  note:"Questa è una demo. Non parte nessuna telefonata, non si crea una prenotazione e non si collega il centralino del ristorante. I fatti usati dall'agente, quando sarà configurato, devono restare quelli pubblicati da Ambàra.",
+  holdTitle:"Voce non ancora collegata",
+  hold:"L'agente ElevenLabs di Ambàra non è configurato. Il widget del browser compare qui solo con il suo agent id. Non è stato usato l'agente di un altro cliente.",
+  widget:{
+    main_label:"Assistente vocale",
+    start_call:"Inizia la conversazione",
+    new_call:"Nuova conversazione",
+    end_call:"Termina",
+    listening_status:"In ascolto",
+    speaking_status:"Parla per interrompere",
+    connecting_status:"Connessione in corso",
+    accept_terms:"Accetta",
+    dismiss_terms:"Annulla",
+    end_call_confirm:"Termina la conversazione",
+    cancel_end_confirmation:"Annulla",
+    end_call_confirmation_title:"Terminare la conversazione?",
+    end_call_confirmation_description:"L'assistente smette di ascoltare. Si può iniziare una nuova conversazione quando si vuole.",
+    mute_microphone:"Disattiva il microfono",
+    user_ended_conversation:"Hai chiuso la conversazione",
+    agent_ended_conversation:"L'assistente ha chiuso la conversazione"
+  }
+ },
+ en:{
+  eyebrow:"Personal demo",
+  h1:"Voice assistant for Ambàra Sardinian Lounge",
+  lead:"Speak with the voice assistant prepared as an example for Ambàra, in San Teodoro. It takes a table request, answers from the facts published on the website, and notes anything a person on the team needs to see.",
+  back:"← WhatsApp, Instagram and Google demo",
+  howTitle:"How it works",
+  how:"Once the agent is connected, the button appears at the bottom right. The conversation runs in the browser, with the microphone, and ends with “End”. Until then, the card explains that the agent is not configured yet.",
+  tryTitle:"Worth trying, by voice",
+  try1:"A table for Saturday evening, without expecting a confirmation",
+  try2:"Hours, the address, or the road toward the beaches named on the website",
+  try3:"An allergy or a group: that should go to a person",
+  try4:"The same question in Italian, or in another language",
+  note:"This is a demo. No phone call is placed, no reservation is created, and the restaurant's phone system is not connected. When the agent is configured, it should keep to the facts Ambàra has published.",
+  holdTitle:"Voice not connected yet",
+  hold:"Ambàra's ElevenLabs agent is not configured. The browser widget appears here only with its own agent id. No other client's agent is used.",
+  widget:{
+    main_label:"Voice assistant",
+    start_call:"Start conversation",
+    new_call:"New conversation",
+    end_call:"End",
+    listening_status:"Listening",
+    speaking_status:"Speak to interrupt",
+    connecting_status:"Connecting",
+    accept_terms:"Accept",
+    dismiss_terms:"Cancel",
+    end_call_confirm:"End conversation",
+    cancel_end_confirmation:"Cancel",
+    end_call_confirmation_title:"End the conversation?",
+    end_call_confirmation_description:"The assistant will stop listening. You can start a new conversation whenever you want.",
+    mute_microphone:"Mute microphone",
+    user_ended_conversation:"You ended the conversation",
+    agent_ended_conversation:"The assistant ended the conversation"
+  }
+ }
+};
+
+function validAgent(id){
+  return /^agent_[a-z0-9]+$/i.test(id) && !/pendiente/i.test(id);
+}
+
+function apply(lang){
+  var t=COPY[lang];
+  document.documentElement.lang=lang;
+  document.querySelectorAll("[data-k]").forEach(function(el){
+    var k=el.getAttribute("data-k");
+    if(t[k]!=null && k!=="widget") el.textContent=t[k];
+  });
+  document.querySelectorAll("#langs button").forEach(function(b){b.classList.toggle("on", b.getAttribute("data-l")===lang);});
+  var back=document.getElementById("back");
+  var q=location.search||"";
+  back.setAttribute("href","../../ambarra/"+q);
+  var widget=document.querySelector("elevenlabs-convai");
+  if(widget) widget.setAttribute("text-contents", JSON.stringify(t.widget));
+  try{ sessionStorage.setItem("ambarraVoiceLang", lang); }catch(e){}
+}
+
+document.querySelectorAll("#langs button").forEach(function(b){
+  b.addEventListener("click", function(){
+    apply(b.getAttribute("data-l"));
+    if(window.bsTrack) window.bsTrack("/ambarra/voice-lang-"+b.getAttribute("data-l"), "Voice lang "+b.getAttribute("data-l"));
+  });
+});
+
+var saved="it";
+try{ saved=sessionStorage.getItem("ambarraVoiceLang")||"it"; }catch(e){}
+if(!COPY[saved]) saved="it";
+apply(saved);
+
+if(validAgent(AGENT_ID)){
+  var el=document.createElement("elevenlabs-convai");
+  el.setAttribute("agent-id", AGENT_ID);
+  el.setAttribute("placement","bottom-right");
+  el.setAttribute("text-contents", JSON.stringify(COPY[saved].widget));
+  document.body.appendChild(el);
+  var sc=document.createElement("script");
+  sc.src="https://unpkg.com/@elevenlabs/convai-widget-embed";
+  sc.async=true;
+  sc.type="text/javascript";
+  document.body.appendChild(sc);
+  (function(){
+    var last=0;
+    document.addEventListener("elevenlabs-convai:call", function(){
+      var n=Date.now(); if(n-last<4000) return; last=n;
+      if(window.bsTrack) window.bsTrack("/ambarra/voice-start","Conversazione vocale avviata");
+    }, true);
+  })();
+}else{
+  document.getElementById("voiceHold").hidden=false;
+}
+</script>
+</body>
+</html>

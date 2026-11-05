@@ -1,0 +1,607 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%238d3b1f'/%3E%3Ctext x='16' y='22' text-anchor='middle' font-size='16' fill='white' font-family='Georgia'%3EA%3C/text%3E%3C/svg%3E">
+<title>Ambàra Sardinian Lounge · Demo assistente · BOLLA STUDIO</title>
+<style>
+:root{--ink:#1d1d1b;--muted:#6b6a66;--line:#e4e2dc;--bg:#faf9f6;--card:#fff;--accent:#8d3b1f;--soft:#f6efe9}
+*{box-sizing:border-box}
+body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;background:var(--bg);color:var(--ink);line-height:1.5}
+a{color:var(--accent)}
+.top{background:#1d1d1b;color:#d9d6cf;font-size:12.5px;text-align:center;padding:8px 14px}
+.top a{color:#fff}
+.hero{max-width:1080px;margin:0 auto;padding:28px 20px 8px}
+.brand{font-weight:600;letter-spacing:.22em;font-size:12px;color:var(--muted);text-decoration:none}
+.tag{margin-top:14px;font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+h1{font-family:Georgia,"Times New Roman",serif;font-weight:400;font-size:34px;line-height:1.25;margin:8px 0 10px}
+.intro{max-width:760px;color:#3a3936;margin:0}
+.bar{max-width:1080px;margin:18px auto 0;padding:0 20px;display:flex;flex-wrap:wrap;gap:10px;align-items:center;justify-content:space-between}
+.tabs,.langs{display:flex;flex-wrap:wrap;gap:6px;align-items:center}
+.langs span{font-size:13px;color:var(--muted);margin-right:2px}
+.tabs button,.langs button{border:1px solid var(--line);background:#fff;color:var(--ink);border-radius:999px;padding:8px 14px;font-size:14px;cursor:pointer}
+.tabs button.on{background:var(--ink);color:#fff;border-color:var(--ink)}
+.langs button.on{background:var(--accent);color:#fff;border-color:var(--accent)}
+main{max-width:1080px;margin:0 auto;padding:16px 20px 28px}
+.pane{display:none}.pane.on{display:block}
+.wrap{display:grid;grid-template-columns:minmax(0,1fr) 320px;gap:18px}
+@media(max-width:860px){.wrap{grid-template-columns:1fr}h1{font-size:28px}}
+.phone{background:#fff;border:1px solid var(--line);border-radius:16px;overflow:hidden;display:flex;flex-direction:column;min-height:620px;height:620px}
+@media(max-width:860px){.phone{height:auto;min-height:0}.msgs{min-height:320px;max-height:70vh}}
+.ph-h{background:#1d1d1b;color:#fff;padding:12px 14px;display:flex;gap:10px;align-items:center}
+.av{width:38px;height:38px;border-radius:50%;background:var(--accent);display:flex;align-items:center;justify-content:center;font-weight:700;flex:none}
+.ph-h small{display:block;color:#cfcabe;font-size:12px}
+.banner{background:var(--soft);color:#5c3a2e;font-size:12.5px;padding:8px 12px;border-bottom:1px solid #eadfd6}
+.msgs{flex:1;overflow-y:auto;padding:14px;background:#f7f5f1;display:flex;flex-direction:column;gap:8px}
+.m{max-width:88%;padding:9px 12px;border-radius:12px;font-size:14.5px;line-height:1.45;white-space:pre-line;overflow-wrap:anywhere}
+.u{align-self:flex-end;background:#efe4da}
+.b{align-self:flex-start;background:#fff;border:1px solid var(--line)}
+.b.h{background:#fff4d6;border:1px dashed #d9a400}
+.sys{align-self:center;background:#eef3ea;border:1px solid #d5e3d2;font-size:12.5px;text-align:center;max-width:94%}
+.typing{color:var(--muted);font-style:italic}
+.chips{display:flex;gap:6px;overflow-x:auto;padding:8px 10px;border-top:1px solid var(--line);background:#fff}
+.chips button{flex:none;border:1px solid var(--line);background:#fff;border-radius:999px;padding:6px 10px;font-size:13px;cursor:pointer;color:var(--ink)}
+.inrow{display:flex;gap:8px;padding:10px;border-top:1px solid var(--line);background:#fff}
+.inrow input{flex:1;min-width:0;border:1px solid var(--line);border-radius:999px;padding:10px 14px;font:inherit;font-size:14px}
+.inrow button{border:0;background:var(--accent);color:#fff;border-radius:999px;padding:0 16px;font:inherit;font-size:14px;cursor:pointer}
+.side h2{font-size:16px;margin:0 0 8px}
+.sc{display:block;width:100%;text-align:left;margin:0 0 8px;background:#fff;border:1px solid var(--line);border-radius:12px;padding:10px 12px;cursor:pointer;font:inherit;font-size:14px;color:var(--ink)}
+.sc:hover{border-color:var(--accent)}
+.note{font-size:13px;color:var(--muted)}
+.card{background:#fff;border:1px solid var(--line);border-radius:16px;padding:18px}
+.card h2{font-family:Georgia,"Times New Roman",serif;font-weight:400;font-size:26px;margin:0 0 8px}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+@media(max-width:720px){.grid2{grid-template-columns:1fr}}
+label{display:block;font-size:13px;color:#444;margin:10px 0 4px}
+select,input[type="date"],input[type="number"],input[type="text"]{width:100%;padding:10px 12px;border:1px solid var(--line);border-radius:8px;font:inherit;font-size:14px;background:#fff}
+.slots{display:flex;flex-wrap:wrap;gap:6px}
+.slots button{border:1px solid var(--line);background:#fff;border-radius:8px;padding:7px 10px;font-size:13px;cursor:pointer}
+.slots button.on{background:var(--accent);color:#fff;border-color:var(--accent)}
+.cta{margin-top:14px;width:100%;background:var(--accent);color:#fff;border:0;border-radius:10px;padding:12px;font:inherit;font-size:15px;cursor:pointer}
+.ok{display:none;margin-top:12px;background:#eaf7ea;border:1px solid #bfe3bf;border-radius:8px;padding:12px;font-size:14px;white-space:pre-line}
+.facts{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:14px}
+@media(max-width:720px){.facts{grid-template-columns:1fr}}
+.fact{background:#fff;border:1px solid var(--line);border-radius:12px;padding:14px}
+.fact h3{margin:0 0 6px;font-size:15px}
+.fact p{margin:0;font-size:14px;color:#3a3936;white-space:pre-line}
+.warn{background:#fff4d6;border:1px dashed #d9a400;border-radius:12px;padding:12px 14px;font-size:14px;margin:12px 0}
+.feat{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:16px}
+@media(max-width:860px){.feat{grid-template-columns:1fr}}
+.feat div{background:#fff;border:1px solid var(--line);border-radius:12px;padding:14px;font-size:14px}
+.feat b{color:var(--accent)}
+table{width:100%;border-collapse:collapse;font-size:13.5px;min-width:640px}
+th,td{text-align:left;padding:8px;border-bottom:1px solid var(--line);vertical-align:top}
+th{color:var(--muted);font-weight:600}
+.tw{overflow-x:auto}
+.pill{display:inline-block;font-size:12px;padding:2px 8px;border-radius:999px;background:#efe4da}
+.kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin:12px 0}
+@media(max-width:720px){.kpis{grid-template-columns:1fr 1fr}}
+.kpi{background:var(--bg);border-radius:10px;padding:10px}
+.kpi b{display:block;font-size:22px}
+.kpi span{font-size:12px;color:var(--muted)}
+.linkrow{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+.linkrow a{text-decoration:none;background:var(--ink);color:#fff;border-radius:999px;padding:10px 14px;font-size:14px}
+.ghost{background:#fff;color:var(--ink);border:1px solid var(--line);border-radius:8px;padding:8px 12px;font:inherit;cursor:pointer}
+footer{max-width:1080px;margin:0 auto;padding:8px 20px 48px;color:var(--muted);font-size:12.5px}
+footer a{color:var(--accent)}
+</style>
+<!--
+  Isolated Ambàra prospect demo. Do not copy another client's ElevenLabs agent into this page.
+  Facts checked against ambaralounge.it on 2026-11-05. Booking software is not named: API not validated.
+  GoatCounter base /ambarra. ?p= records the prospect tag. ?internal=1 sets skipgc and loads nothing.
+-->
+<script>
+(function(){
+ var BASE='/ambarra';
+ var m=(location.search+location.hash).match(/[?&#]internal=([01])/);
+ try{ if(m){ if(m[1]==="1") localStorage.setItem("skipgc","t"); else localStorage.removeItem("skipgc"); } }catch(e){}
+ var internal=false; try{ internal=localStorage.getItem("skipgc")==="t"; }catch(e){}
+ var sm=location.search.match(/[?&]p=([^&#]*)/);
+ var tag=sm?decodeURIComponent(sm[1]).toLowerCase().replace(/[^a-z0-9-]/g,"").slice(0,60):"";
+ var q=[]; window.bsTrack=function(sub,title){ if(internal) return;
+   if(window.goatcounter&&window.goatcounter.count) window.goatcounter.count({path:BASE+sub,title:title||sub,event:true}); else q.push([BASE+sub,title||sub]); };
+ if(internal) return;
+ window.goatcounter={no_onload:true};
+ var s=document.createElement("script"); s.async=true; s.src="https://gc.zgo.at/count.js";
+ s.setAttribute("data-goatcounter","https://bollastudio.goatcounter.com/count");
+ s.onload=function(){ try{ window.goatcounter.count({path:BASE+'/'+(tag?'?p='+tag:''),title:'Ambàra demo'});
+   q.forEach(function(e){window.goatcounter.count({path:e[0],title:e[1],event:true});}); q=[]; }catch(e){} };
+ document.head.appendChild(s);
+})();
+</script>
+</head>
+<body>
+<div class="top" data-t="top"></div>
+<header class="hero">
+  <a class="brand" href="https://bollastudio.com" target="_blank" rel="noopener">BOLLA STUDIO</a>
+  <div class="tag" data-t="tag"></div>
+  <h1 data-t="h1"></h1>
+  <p class="intro" data-t="intro"></p>
+</header>
+<div class="bar">
+  <div class="tabs" id="tabs">
+    <button type="button" data-tab="wa" class="on" data-t="tabWa"></button>
+    <button type="button" data-tab="ig" data-t="tabIg"></button>
+    <button type="button" data-tab="google" data-t="tabGoogle"></button>
+    <button type="button" data-tab="voice" data-t="tabVoice"></button>
+    <button type="button" data-tab="team" data-t="tabTeam"></button>
+  </div>
+  <div class="langs" id="langs"><span data-t="langLbl"></span><button type="button" data-l="it" class="on">Italiano</button><button type="button" data-l="en">English</button></div>
+</div>
+<main>
+<section class="pane on" id="pane-chat">
+  <div class="wrap">
+    <div class="phone">
+      <div class="ph-h"><div class="av">A</div><div><b id="chName"></b><small id="chSub"></small></div></div>
+      <div class="banner" id="chBanner"></div>
+      <div class="msgs" id="msgs" aria-live="polite"></div>
+      <div class="chips" id="chips"></div>
+      <div class="inrow"><input id="inp" autocomplete="off" data-t="ph"><button type="button" id="send" data-t="send"></button></div>
+    </div>
+    <aside class="side">
+      <h2 data-t="sideTitle"></h2>
+      <div id="scen"></div>
+      <p class="note" data-t="sideNote"></p>
+    </aside>
+  </div>
+  <div class="card" style="margin-top:16px">
+    <h2 data-t="fTitle"></h2>
+    <p class="note" data-t="fSub"></p>
+    <div class="grid2">
+      <div><label for="item" data-t="fItem"></label><select id="item"></select></div>
+      <div><label for="guests" data-t="fGuests"></label><input id="guests" type="number" min="1" max="40" value="2"></div>
+      <div><label for="date" data-t="fDate"></label><input id="date" type="date"></div>
+      <div><label for="nm" data-t="fName"></label><input id="nm" type="text" autocomplete="off"></div>
+    </div>
+    <label data-t="fTime"></label>
+    <div class="slots" id="slots"></div>
+    <label for="ct" data-t="fContact"></label>
+    <input id="ct" type="text" autocomplete="off">
+    <label for="notes" data-t="fNotes"></label>
+    <input id="notes" type="text" autocomplete="off">
+    <button class="cta" id="cta" type="button" data-t="fSubmit"></button>
+    <div class="ok" id="ok"></div>
+  </div>
+</section>
+
+<section class="pane" id="pane-google">
+  <div class="card">
+    <h2 data-t="gTitle"></h2>
+    <p data-t="gLead"></p>
+    <div class="warn" data-t="gWarn"></div>
+    <div class="facts">
+      <article class="fact"><h3 data-t="gNowT"></h3><p data-t="gNow"></p></article>
+      <article class="fact"><h3 data-t="gNextT"></h3><p data-t="gNext"></p></article>
+      <article class="fact"><h3 data-t="gCardT"></h3><p id="gCard"></p></article>
+      <article class="fact"><h3 data-t="gNotT"></h3><p data-t="gNot"></p></article>
+    </div>
+  </div>
+</section>
+
+<section class="pane" id="pane-voice">
+  <div class="card">
+    <h2 data-t="vTitle"></h2>
+    <p data-t="vLead"></p>
+    <div class="warn" data-t="vWarn"></div>
+    <div class="linkrow"><a id="voiceLink" href="../voz/ambarra/" data-t="vLink"></a></div>
+  </div>
+</section>
+
+<section class="pane" id="pane-team">
+  <div class="card">
+    <h2 data-t="rTitle"></h2>
+    <p class="note" data-t="rSub"></p>
+    <div class="kpis" id="kpis"></div>
+    <h3 data-t="rReq"></h3>
+    <div class="tw"><table id="tReq"></table></div>
+    <h3 data-t="rHand"></h3>
+    <div class="tw"><table id="tHand"></table></div>
+    <p class="note" data-t="rFoot"></p>
+    <button class="ghost" id="clr" type="button" data-t="rClear"></button>
+  </div>
+</section>
+
+<div class="feat">
+  <div data-h="feat1"></div>
+  <div data-h="feat2"></div>
+  <div data-h="feat3"></div>
+</div>
+</main>
+<footer data-h="foot"></footer>
+<script>
+var SLOTS={
+ breakfast:["7:30","8:00","8:30","9:00","9:30","10:00","10:30","11:00","11:30"],
+ lunch:["12:00","12:30","13:00","13:30","14:00","14:30"],
+ evening:["17:00","17:30","18:00","18:30","19:00","19:30","20:00","20:30","21:00","21:30","22:00"]
+};
+var T={
+it:{
+ top:'Dimostrazione BOLLA STUDIO per <b>Ambàra Sardinian Lounge</b> · fatti da <a href="https://ambaralounge.it/" target="_blank" rel="noopener">ambaralounge.it</a> (5 novembre 2026) · nessun messaggio, nessuna prenotazione, nessun account collegato',
+ tag:'San Teodoro · Monte Petrosu · demo isolata',
+ h1:'Richieste, risposte e passaggio al team, prima in italiano',
+ intro:'La stessa dimostrazione sui canali che un ospite usa davvero: una simulazione WhatsApp, una simulazione Instagram e una sezione Google limitata a ciò che oggi si può fare. La voce è una pagina a parte, con l\'agente ElevenLabs del browser quando sarà configurato. Ogni risposta usa solo testi pubblicati dal ristorante. Un tavolo non risulta mai confermato.',
+ langLbl:'Lingua della pagina',
+ tabWa:'WhatsApp', tabIg:'Instagram', tabGoogle:'Google', tabVoice:'Voce', tabTeam:'Per il team',
+ chWa:'Simulazione WhatsApp · Ambàra', chIg:'Simulazione Instagram · Ambàra',
+ chSub:'Dimostrazione BOLLA · nessuno messaggio viene inviato',
+ banner:'Interfaccia BOLLA, non l\'app ufficiale. Non si entra in un account e non si scrive al ristorante.',
+ send:'Invia', ph:'Scrivi come un ospite…',
+ sideTitle:'Conversazioni di esempio',
+ sideNote:'Le risposte citano il sito pubblico. Orari di servizio e orario generale non combaciano sempre: la demo non sceglie una versione. Allergie, gruppi e dati assenti passano a una persona. Il registro resta in questo browser.',
+ fTitle:'Richiesta di tavolo, solo in dimostrazione',
+ fSub:'Gli orari proposti seguono le finestre pubblicate sulle pagine menu. Non sono tavoli liberi. Il software di prenotazione già in uso si potrà collegare solo dopo la verifica dell\'API: qui non c\'è nessun invio.',
+ fItem:'Occasione', fGuests:'Persone', fDate:'Data', fName:'Nome, se vuoi lasciarlo', fTime:'Orario richiesto', fContact:'Recapito, se vuoi lasciarlo', fNotes:'Nota (allergie, passeggino, torta…)', fSubmit:'Registra la richiesta di demo',
+ items:[['breakfast','Colazione'],['lunch','Pranzo'],['evening','Aperitivo o cena']],
+ pick:'Scegli data e orario. Non serve un account.',
+ ok:'Richiesta di dimostrazione annotata solo in questo browser.\n{s}\nNon è una prenotazione. Nessuna disponibilità è stata verificata. Nessun messaggio è stato inviato a WhatsApp, Instagram o al ristorante. Un collegamento futuro al software di prenotazione resta in attesa della verifica API.',
+ gTitle:'Google, solo sulle superfici che esistono',
+ gLead:'Chi cerca Ambàra su Google trova una scheda pubblica e, da lì, il sito o il telefono. Questa demo non apre una chat dentro Google e non modifica il profilo.',
+ gWarn:'Google Business Messages è un servizio chiuso. Non promettiamo una chat live su Google Maps, né un accesso all\'account Google del ristorante.',
+ gNowT:'Oggi, senza collegare nulla',
+ gNow:'La scheda Google può mostrare nome, indirizzo, orari, telefono e il link al sito, se il ristorante li ha pubblicati. Questa pagina non legge e non scrive quel profilo.',
+ gNextT:'Dove può arrivare l\'assistente',
+ gNext:'Il link del sito, sulla scheda, può aprire lo stesso assistente di questa demo. Un pulsante di prenotazione dipende dal software già in uso e da un\'API ancora da verificare. Fino ad allora la richiesta resta una nota per il team, non una conferma.',
+ gCardT:'Fatti del sito, da non contraddire',
+ gNotT:'Fuori da questa demo',
+ gNot:'Nessun login Google. Nessun messaggio inviato da Google. Nessuna risposta alle recensioni. Nessuna prenotazione «Reserve with Google» finché il provider e l\'API non sono verificati.',
+ vTitle:'Voce, nel browser',
+ vLead:'La pagina vocale segue lo stesso impianto della demo Schloss Wülflingen: un assistente ElevenLabs nel browser, con i testi del widget in italiano o in inglese. Per Ambàra l\'agent id non è ancora arrivato, quindi il widget non viene caricato.',
+ vWarn:'Nessuna chiamata in uscita. Nessun agente di un altro cliente. Quando l\'id di Ambàra sarà inserito in quella pagina, la conversazione sarà reale nel browser e resterà una demo: niente prenotazioni sul sistema del ristorante.',
+ vLink:'Apri la pagina vocale',
+ rTitle:'Registro per il team',
+ rSub:'Si riempie con ciò che fai in questa demo e resta solo in questo browser. Le righe non sono conversazioni del ristorante.',
+ k:['Messaggi','Risposte automatiche','Passati al team','Richieste tavolo'],
+ rReq:'Richieste da leggere, non confermate', rHand:'Da una persona del team',
+ hReq:['Ora','Canale','Richiesta','Stato'], hHand:['Ora','Lingua','Testo','Motivo'],
+ stNew:'Demo · non confermata',
+ rFoot:'In produzione il team può entrare in qualsiasi conversazione. Qui non c\'è una coda reale.',
+ rClear:'Cancella i dati di questa demo',
+ feat1:'<b>Italiano, inglese e altre lingue</b><br>La pagina è in italiano o in inglese. Se l\'ospite scrive in un\'altra lingua, la risposta di esempio segue quella lingua, sui fatti già pubblicati.',
+ feat2:'<b>Solo il sito di Ambàra</b><br>Indirizzo, telefono, orari e qualche piatto con il prezzo pubblicato. Se due pagine non coincidono, l\'assistente lo dice e non inventa la versione “giusta”.',
+ feat3:'<b>Il team conferma</b><br>Allergie, eventi e tutto ciò che non è sul sito passano a una persona. Il tavolo non è confermato e il software di prenotazione non è collegato.',
+ foot:'Demo di <a href="https://bollastudio.com" target="_blank" rel="noopener">BOLLA STUDIO</a> · non è il sito di Ambàra e non è gestita dal ristorante.<br>Fonti lette il 5 novembre 2026: <a href="https://ambaralounge.it/" target="_blank" rel="noopener">home</a>, <a href="https://ambaralounge.it/dove-siamo/" target="_blank" rel="noopener">dove siamo</a>, <a href="https://ambaralounge.it/menu-colazione/" target="_blank" rel="noopener">colazione</a>, <a href="https://ambaralounge.it/menu-pranzo/" target="_blank" rel="noopener">pranzo</a>, <a href="https://ambaralounge.it/menu-cena/" target="_blank" rel="noopener">cena</a>. L\'account Instagram non è indicato qui perché non risulta verificato su queste pagine. Nessun dato lascia il browser.',
+ sysHand:'Passato a una persona del team, solo in questo registro. Nessun messaggio è stato inviato.',
+ why:{allergy:'Allergia',group:'Gruppo o evento',fb:'Dato non pubblicato',parking:'Parcheggio non verificato'}
+},
+en:{
+ top:'BOLLA STUDIO demonstration for <b>Ambàra Sardinian Lounge</b> · facts from <a href="https://ambaralounge.it/" target="_blank" rel="noopener">ambaralounge.it</a> (5 November 2026) · no messages, no reservations, no account connected',
+ tag:'San Teodoro · Monte Petrosu · isolated demo',
+ h1:'Requests, answers and a handoff to the team, in English too',
+ intro:'The same demonstration on the channels a guest actually uses: a WhatsApp simulation, an Instagram simulation, and a Google section limited to what can be done today. Voice is a separate page, with the ElevenLabs browser agent once it is configured. Every answer uses only text the restaurant has published. A table is never confirmed.',
+ langLbl:'Page language',
+ tabWa:'WhatsApp', tabIg:'Instagram', tabGoogle:'Google', tabVoice:'Voice', tabTeam:'For the team',
+ chWa:'WhatsApp simulation · Ambàra', chIg:'Instagram simulation · Ambàra',
+ chSub:'BOLLA demonstration · no message is sent',
+ banner:'BOLLA interface, not the official app. There is no login and nothing is sent to the restaurant.',
+ send:'Send', ph:'Write as a guest…',
+ sideTitle:'Sample conversations',
+ sideNote:'Answers quote the public website. Service windows and the general hours do not always match: the demo does not pick a winner. Allergies, groups and missing facts go to a person. The log stays in this browser.',
+ fTitle:'Table request, demonstration only',
+ fSub:'The times follow the windows published on the menu pages. They are not open tables. The reservation software they already use can be connected only after the API is checked: nothing is sent from here.',
+ fItem:'Occasion', fGuests:'People', fDate:'Date', fName:'Name, if you want to leave one', fTime:'Requested time', fContact:'Contact, if you want to leave one', fNotes:'Note (allergies, pushchair, cake…)', fSubmit:'Save the demo request',
+ items:[['breakfast','Breakfast'],['lunch','Lunch'],['evening','Aperitivo or dinner']],
+ pick:'Choose a date and a time. No account is required.',
+ ok:'Demonstration request saved in this browser only.\n{s}\nThis is not a reservation. No availability was checked. No message was sent on WhatsApp, Instagram or to the restaurant. A future link to the reservation software is waiting on API validation.',
+ gTitle:'Google, only on surfaces that exist',
+ gLead:'Someone who finds Ambàra on Google gets a public listing and, from there, the website or the phone number. This demo does not open a chat inside Google and does not edit the profile.',
+ gWarn:'Google Business Messages has been shut down. This demo does not promise a live chat on Google Maps, or a sign-in to the restaurant\'s Google account.',
+ gNowT:'Today, with nothing connected',
+ gNow:'A Google listing can show name, address, hours, phone and the website link, if the restaurant published them. This page does not read or write that profile.',
+ gNextT:'Where the assistant can sit',
+ gNext:'The website link on the listing can open the same assistant as this demo. A booking button depends on the software they already use and on an API that still has to be checked. Until then a request is a note for the team, not a confirmation.',
+ gCardT:'Website facts, not to be contradicted',
+ gNotT:'Outside this demo',
+ gNot:'No Google login. No message sent from Google. No review replies. No Reserve with Google booking until the provider and the API are verified.',
+ vTitle:'Voice, in the browser',
+ vLead:'The voice page follows the same setup as the Schloss Wülflingen demo: an ElevenLabs assistant in the browser, with the widget copy in Italian or English. Ambàra\'s agent id has not arrived, so the widget is not loaded.',
+ vWarn:'No outbound call. No other client\'s agent. When Ambàra\'s id is placed on that page, the conversation is real in the browser and still a demo: nothing is reserved in the restaurant\'s system.',
+ vLink:'Open the voice page',
+ rTitle:'Log for the team',
+ rSub:'It fills with what you do in this demo and stays in this browser. The rows are not the restaurant\'s conversations.',
+ k:['Messages','Answered automatically','Passed to the team','Table requests'],
+ rReq:'Requests to read, not confirmed', rHand:'For a person on the team',
+ hReq:['Time','Channel','Request','Status'], hHand:['Time','Language','Text','Reason'],
+ stNew:'Demo · not confirmed',
+ rFoot:'In production the team can join any conversation. There is no live queue here.',
+ rClear:'Clear this demo\'s data',
+ feat1:'<b>Italian, English and other languages</b><br>The page is in Italian or English. If a guest writes in another language, the sample answer follows that language, using facts already published.',
+ feat2:'<b>Only Ambàra\'s website</b><br>Address, phone, hours and a few dishes with the published price. If two pages disagree, the assistant says so and does not invent the "right" version.',
+ feat3:'<b>The team confirms</b><br>Allergies, events and anything missing from the website go to a person. The table is not confirmed and the reservation software is not connected.',
+ foot:'Demo by <a href="https://bollastudio.com" target="_blank" rel="noopener">BOLLA STUDIO</a> · this is not Ambàra\'s website and it is not run by the restaurant.<br>Sources read on 5 November 2026: <a href="https://ambaralounge.it/" target="_blank" rel="noopener">home</a>, <a href="https://ambaralounge.it/dove-siamo/" target="_blank" rel="noopener">where we are</a>, <a href="https://ambaralounge.it/menu-colazione/" target="_blank" rel="noopener">breakfast</a>, <a href="https://ambaralounge.it/menu-pranzo/" target="_blank" rel="noopener">lunch</a>, <a href="https://ambaralounge.it/menu-cena/" target="_blank" rel="noopener">dinner</a>. No Instagram handle is shown, because none was verified on these pages. Nothing leaves the browser.',
+ sysHand:'Passed to a person on the team, in this log only. No message was sent.',
+ why:{allergy:'Allergy',group:'Group or event',fb:'Not published',parking:'Parking not verified'}
+}
+};
+var A={
+it:{
+ hi:'Buongiorno. Sono l\'assistente di dimostrazione di Ambàra Sardinian Lounge, a Monte Petrosu. Rispondo con ciò che è pubblicato sul sito. Un tavolo lo annoto come richiesta: non lo confermo.',
+ hours:'Sul blocco contatti del sito è pubblicato: aperti tutti i giorni 7:30–13:00 e 17:00–2:00.\nLe pagine dei menu indicano anche finestre di servizio: colazione 7:30–11:30, pranzo 12:00–14:30, sera 17:00–01:00.\nNon scelgo io quale prevale. Per un orario preciso risponde il team. Questa demo non verifica se c\'è posto.',
+ where:'Ambàra Sardinian Lounge, Monte Petrosu, Via di Li Graniti, 07052 San Teodoro, Sardegna.\nTelefono e WhatsApp pubblicati: +39 340 199 1233. Email: info@ambaralounge.it.\nIl sito cita la strada verso la Spiaggia dei Sassi Piatti, le calette di Punta Molara, Cala Girgolu e Porto Taverna, e i nuraghi nei dintorni.\nSulla distanza non do un solo numero: in homepage c\'è «a solo 1 km dalle spiagge», nella pagina Dove siamo «a soli 2 km dal mare». Il percorso lo conferma il team.',
+ menu:'La cucina è presentata sul sito come curata dallo chef Andrea Locci, dalla colazione ai cocktail.\nEsempi pubblicati sul menu cena: battuta di tonno 20 €, culurgiones 22 €, degustazione griglia 55 € a persona, coperto 3 €. Colazione: «uova e un contorno» 10 €, finestra 7:30–11:30.\nIl menu intero resta sul sito. I prezzi possono cambiare. Per gli allergeni avvisa la sala: non confermo una modifica al piatto.',
+ events:'Sul sito: DJ set dal vivo ogni mercoledì e venerdì, dalle 18:30 alle 00:00; jazz moderno; serate karaoke selezionate. Se una data precisa è in programma, lo conferma il team.',
+ book:'Posso annotare la richiesta: occasione, data, orario, persone, nome e un recapito. Resta una richiesta di dimostrazione.\nNon controllo i tavoli e non confermo la prenotazione. Il collegamento al software di prenotazione già in uso è possibile solo dopo la verifica dell\'API. Oggi non parte nessun messaggio.\nIl modulo sotto registra la stessa richiesta in questo browser.',
+ allergy:'Le allergie le conferma il personale di sala, come chiede anche il menu pubblicato. Passo la nota a una persona del team. Nessun messaggio reale è stato inviato.',
+ group:'Per un gruppo o un evento non invento una disponibilità. Passo la richiesta a una persona del team, con data, persone e occasione se le hai scritte.',
+ parking:'Non ho una nota di parcheggio verificata sulle pagine lette per questa demo. Lo passo al team, senza indovinare.',
+ fb:'Questo dato non è tra quelli letti sul sito, quindi non lo invento. Lo passo a una persona del team.',
+ chef:'Il sito indica la cucina come curata dallo chef Andrea Locci. Non ho altri nomi del team.',
+ beaches:'Il sito indica, come mete vicine, la Spiaggia dei Sassi Piatti, le calette di Punta Molara, Cala Girgolu e Porto Taverna, oltre a sentieri e nuraghi. Non fisso una distanza in chilometri: le due pagine del sito non dicono la stessa cifra.',
+ chips:[['Orari','hours'],['Dove siete','where'],['Dal menu','menu'],['DJ di venerdì','events'],['Tavolo sabato','book'],['Allergia','allergy'],['Evento per 20','group'],['In English','hours','en']],
+ sc:[
+  ['Tavolo per 4, sabato',[['u','Buonasera, avete un tavolo per 4 sabato alle 20:30?'],['b','Buonasera. Annoto la richiesta: sabato, 20:30, 4 persone, cena. Non vedo i tavoli liberi e non confermo la prenotazione.\nMi servono, se vuoi lasciarli, un nome e un recapito. Il team la legge insieme alle altre richieste. In una versione collegata, e solo dopo la verifica dell\'API, la stessa nota potrebbe entrare nel software di prenotazione che usate già. Da questa demo non parte nessun messaggio.']]],
+  ['Orari e spiagge',[['u','Che orari fate? E come si arriva verso le spiagge?'],['i','hours'],['i','beaches']]],
+  ['Ospite in inglese',[['u','Hi, could we request a table for 2 on Saturday at 20:00?'],['b','Hello. I can note the request: Saturday, 20:00, 2 people. I cannot see open tables and I will not confirm a reservation.\nIf you want, leave a name and a contact in the form below. The team reads it as a request. Connecting this to the reservation software they already use waits on an API check. Nothing is sent from this demo.','en']]],
+  ['Allergia, al team',[['u','Una di noi è celiaca. Si può modificare un piatto?'],['i','allergy']]]
+ ]
+},
+en:{
+ hi:'Hello. I am the demonstration assistant for Ambàra Sardinian Lounge, in Monte Petrosu. I answer from what is published on the website. I can note a table as a request: I do not confirm it.',
+ hours:'The contact block on the website says: open every day 7:30–13:00 and 17:00–02:00.\nThe menu pages also publish service windows: breakfast 7:30–11:30, lunch 12:00–14:30, evening 17:00–01:00.\nI do not decide which one wins. The team confirms a precise time. This demo does not check whether a table is free.',
+ where:'Ambàra Sardinian Lounge, Monte Petrosu, Via di Li Graniti, 07052 San Teodoro, Sardinia.\nPublished phone and WhatsApp: +39 340 199 1233. Email: info@ambaralounge.it.\nThe website names the road toward Spiaggia dei Sassi Piatti, the coves of Punta Molara, Cala Girgolu and Porto Taverna, and nuraghi nearby.\nI will not give a single distance: the homepage says “just 1 km from the beaches”, and the Where we are page says “just 2 km from the sea”. The team confirms the route.',
+ menu:'The website presents the kitchen as looked after by chef Andrea Locci, from breakfast through to cocktails.\nExamples published on the dinner menu: tuna battuta €20, culurgiones €22, grill tasting €55 per person, cover €3. Breakfast: “eggs and one side” €10, window 7:30–11:30.\nThe full menu stays on the website. Prices can change. For allergens, tell the dining-room staff: I will not confirm a change to a dish.',
+ events:'On the website: a live DJ set every Wednesday and Friday, from 18:30 to 00:00; modern jazz; selected karaoke nights. Whether a specific date is on, the team confirms.',
+ book:'I can note the request: occasion, date, time, party size, name and a contact. It stays a demonstration request.\nI do not check tables and I do not confirm the reservation. A link to the reservation software they already use is possible only after the API is checked. Nothing is sent today.\nThe form below saves the same request in this browser.',
+ allergy:'Allergies are confirmed by the dining-room staff, which is also what the published menu asks. I am passing the note to a person on the team. No real message was sent.',
+ group:'For a group or an event I will not invent availability. I am passing the request to a person on the team, with the date, party size and occasion if you wrote them.',
+ parking:'I do not have a verified parking note on the pages read for this demo. I am passing that to the team, rather than guessing.',
+ fb:'That fact is not among the ones read on the website, so I will not invent it. I am passing it to a person on the team.',
+ chef:'The website describes the kitchen as looked after by chef Andrea Locci. I do not have other names from the team.',
+ beaches:'The website names Spiaggia dei Sassi Piatti, the coves of Punta Molara, Cala Girgolu and Porto Taverna, plus paths and nuraghi. I am not stating one distance in kilometres: the two website pages do not give the same figure.',
+ chips:[['Hours','hours'],['Where are you?','where'],['From the menu','menu'],['Friday DJ','events'],['Saturday table','book'],['Allergy','allergy'],['Event for 20','group'],['In italiano','hours','it']],
+ sc:[
+  ['Table for 4, Saturday',[['u','Good evening, do you have a table for 4 on Saturday at 20:30?'],['b','Good evening. I am noting the request: Saturday, 20:30, 4 people, dinner. I cannot see open tables and I will not confirm the reservation.\nA name and a contact help, if you want to leave them. The team reads it with the other requests. In a connected version, and only after the API is checked, the same note could reach the reservation software you already use. Nothing is sent from this demo.']]],
+  ['Hours and beaches',[['u','What are your hours? And how do we get toward the beaches?'],['i','hours'],['i','beaches']]],
+  ['Guest in Italian',[['u','Buonasera, si può annotare un tavolo per 2 sabato alle 20?'],['b','Buonasera. Annoto la richiesta: sabato alle 20, 2 persone. Non vedo i tavoli liberi e non confermo la prenotazione.\nNome e recapito, se vuoi, nel modulo sotto. Il team la legge come richiesta. Il collegamento al software di prenotazione aspetta la verifica dell\'API. Da qui non parte nessun messaggio.','it']]],
+  ['Allergy, to the team',[['u','One of us is coeliac. Can a dish be changed?'],['i','allergy']]]
+ ]
+},
+de:{
+ hi:'Guten Tag. Ich bin der Demo-Assistent von Ambàra Sardinian Lounge in Monte Petrosu. Ich antworte mit dem, was auf der Website steht. Einen Tisch notiere ich als Anfrage, ich bestätige ihn nicht.',
+ hours:'Im Kontaktblock der Website steht: täglich 7:30–13:00 und 17:00–2:00 geöffnet.\nDie Menüseiten nennen dazu Servicezeiten: Frühstück 7:30–11:30, Mittagessen 12:00–14:30, Abend 17:00–01:00.\nIch entscheide nicht, welche Angabe gilt. Eine genaue Uhrzeit bestätigt das Team. Diese Demo prüft keine freien Tische.',
+ where:'Ambàra Sardinian Lounge, Monte Petrosu, Via di Li Graniti, 07052 San Teodoro, Sardinien.\nTelefon und WhatsApp auf der Website: +39 340 199 1233. E-Mail: info@ambaralounge.it.\nDie Website nennt den Weg zur Spiaggia dei Sassi Piatti, zu den Buchten von Punta Molara, nach Cala Girgolu und Porto Taverna.\nEine einzelne Entfernung nenne ich nicht: die Startseite schreibt «nur 1 km von den Stränden», die Seite Dove siamo «nur 2 km vom Meer». Den Weg bestätigt das Team.',
+ menu:'Die Website stellt die Küche als von Chef Andrea Locci geführt vor.\nBeispiele auf der Abendkarte: Thunfisch-Battuta 20 €, Culurgiones 22 €, Grill-Degustation 55 € pro Person, Gedeck 3 €.\nDie ganze Karte bleibt auf der Website. Bei Allergien antwortet der Service, nicht ich.',
+ events:'Auf der Website: Live-DJ jeden Mittwoch und Freitag, 18:30–00:00; moderner Jazz; ausgewählte Karaoke-Abende. Ob ein bestimmtes Datum stattfindet, bestätigt das Team.',
+ book:'Ich kann die Anfrage notieren: Anlass, Datum, Uhrzeit, Personen, Name und Kontakt. Sie bleibt eine Demo-Anfrage.\nIch sehe keine freien Tische und bestätige keine Reservierung. Eine Verbindung zur vorhandenen Reservierungssoftware geht erst nach der API-Prüfung. Es wird nichts gesendet.',
+ allergy:'Allergien bestätigt das Service-Team, so steht es auch auf der veröffentlichten Karte. Ich gebe die Notiz an eine Person im Team weiter. Es wurde keine echte Nachricht gesendet.',
+ group:'Für eine Gruppe oder ein Event erfinde ich keine Verfügbarkeit. Ich gebe die Anfrage an eine Person im Team weiter.',
+ parking:'Zum Parken habe ich auf den gelesenen Seiten keine geprüfte Angabe. Das geht an das Team, ohne Vermutung.',
+ fb:'Diese Angabe steht nicht in dem, was ich auf der Website gelesen habe. Ich erfinde sie nicht und gebe sie an das Team weiter.',
+ chef:'Die Website nennt Chef Andrea Locci für die Küche. Weitere Namen habe ich nicht.',
+ beaches:'Die Website nennt die Spiaggia dei Sassi Piatti, die Buchten von Punta Molara, Cala Girgolu und Porto Taverna, dazu Wege und Nuraghen. Eine einzelne Kilometerzahl nenne ich nicht.'
+},
+fr:{
+ hi:'Bonjour. Je suis l\'assistant de démonstration d\'Ambàra Sardinian Lounge, à Monte Petrosu. Je réponds avec ce qui est publié sur le site. Une table, je la note comme demande : je ne la confirme pas.',
+ hours:'Le bloc contact du site indique : ouvert tous les jours 7h30–13h00 et 17h00–2h00.\nLes pages menu publient aussi des services : petit-déjeuner 7h30–11h30, déjeuner 12h00–14h30, soir 17h00–01h00.\nJe ne choisis pas quelle indication prime. L\'équipe confirme un horaire précis. Cette démo ne vérifie pas les tables libres.',
+ where:'Ambàra Sardinian Lounge, Monte Petrosu, Via di Li Graniti, 07052 San Teodoro, Sardaigne.\nTéléphone et WhatsApp publiés : +39 340 199 1233. E-mail : info@ambaralounge.it.\nLe site cite la route vers la Spiaggia dei Sassi Piatti, les criques de Punta Molara, Cala Girgolu et Porto Taverna.\nJe ne donne pas une seule distance : la page d\'accueil dit « à seulement 1 km des plages », la page Dove siamo « à seulement 2 km de la mer ». L\'équipe confirme le trajet.',
+ menu:'Le site présente la cuisine comme suivie par le chef Andrea Locci.\nExemples publiés au menu du soir : battuta de thon 20 €, culurgiones 22 €, dégustation grill 55 € par personne, couvert 3 €.\nLa carte complète reste sur le site. Pour les allergènes, c\'est la salle qui répond.',
+ events:'Sur le site : DJ en direct chaque mercredi et vendredi, de 18h30 à 00h00 ; jazz moderne ; soirées karaoké choisies. Pour une date précise, l\'équipe confirme.',
+ book:'Je peux noter la demande : occasion, date, heure, personnes, nom et contact. Cela reste une demande de démonstration.\nJe ne vois pas les tables et je ne confirme pas la réservation. Le lien vers le logiciel de réservation déjà utilisé attend la vérification de l\'API. Rien n\'est envoyé.',
+ allergy:'Les allergies sont confirmées par la salle, comme le demande aussi le menu publié. Je transmets la note à une personne de l\'équipe. Aucun message réel n\'a été envoyé.',
+ group:'Pour un groupe ou un événement, je n\'invente pas de disponibilité. Je transmets la demande à une personne de l\'équipe.',
+ parking:'Je n\'ai pas de note de parking vérifiée sur les pages lues pour cette démo. Je le passe à l\'équipe, sans deviner.',
+ fb:'Cette information ne figure pas dans ce que j\'ai lu sur le site. Je ne l\'invente pas et je la passe à l\'équipe.',
+ chef:'Le site indique le chef Andrea Locci pour la cuisine. Je n\'ai pas d\'autres noms.',
+ beaches:'Le site cite la Spiaggia dei Sassi Piatti, les criques de Punta Molara, Cala Girgolu et Porto Taverna, ainsi que des sentiers et des nuraghi. Je ne fixe pas une seule distance en kilomètres.'
+},
+es:{
+ hi:'Buenos días. Soy el asistente de demostración de Ambàra Sardinian Lounge, en Monte Petrosu. Respondo con lo publicado en la web. Una mesa la anoto como solicitud: no la confirmo.',
+ hours:'El bloque de contacto de la web dice: abierto todos los días 7:30–13:00 y 17:00–2:00.\nLas páginas de menú publican además franjas de servicio: desayuno 7:30–11:30, almuerzo 12:00–14:30, noche 17:00–01:00.\nNo elijo cuál prevalece. El equipo confirma una hora concreta. Esta demo no comprueba si hay mesa.',
+ where:'Ambàra Sardinian Lounge, Monte Petrosu, Via di Li Graniti, 07052 San Teodoro, Cerdeña.\nTeléfono y WhatsApp publicados: +39 340 199 1233. Correo: info@ambaralounge.it.\nLa web cita el camino hacia la Spiaggia dei Sassi Piatti, las calas de Punta Molara, Cala Girgolu y Porto Taverna.\nNo doy una sola distancia: la portada dice «a solo 1 km de las playas» y la página Dove siamo «a solo 2 km del mar». El recorrido lo confirma el equipo.',
+ menu:'La web presenta la cocina a cargo del chef Andrea Locci.\nEjemplos publicados en la carta de la cena: battuta de atún 20 €, culurgiones 22 €, degustación a la parrilla 55 € por persona, cubierto 3 €.\nLa carta completa sigue en la web. Los alérgenos los confirma la sala.',
+ events:'En la web: DJ en directo cada miércoles y viernes, de 18:30 a 00:00; jazz moderno; noches de karaoke seleccionadas. Si una fecha concreta está en programa, lo confirma el equipo.',
+ book:'Puedo anotar la solicitud: ocasión, fecha, hora, personas, nombre y contacto. Sigue siendo una solicitud de demostración.\nNo veo las mesas libres y no confirmo la reserva. La conexión con el programa de reservas que ya usen espera la validación de la API. No se envía nada.',
+ allergy:'Las alergias las confirma el personal de sala, como pide también la carta publicada. Paso la nota a una persona del equipo. No se ha enviado ningún mensaje real.',
+ group:'Para un grupo o un evento no invento disponibilidad. Paso la solicitud a una persona del equipo.',
+ parking:'No tengo una nota de aparcamiento verificada en las páginas leídas para esta demo. Lo paso al equipo, sin adivinar.',
+ fb:'Ese dato no está entre lo leído en la web, así que no lo invento. Lo paso a una persona del equipo.',
+ chef:'La web indica al chef Andrea Locci para la cocina. No tengo otros nombres del equipo.',
+ beaches:'La web cita la Spiaggia dei Sassi Piatti, las calas de Punta Molara, Cala Girgolu y Porto Taverna, además de senderos y nuraghi. No fijo una sola distancia en kilómetros.'
+}
+};
+var HAND={allergy:1,group:1,parking:1,fb:1};
+var RX=[
+ ['hi',/^(ciao|buongiorno|buonasera|salve|hello|hi|hey|hallo|guten tag|bonjour|salut|hola|buenas)[\s!.,]*$/],
+ ['allergy',/allerg|celiac|celiach|coeliac|glutine|gluten|glutenfrei|intoller|lactos|nuss|noix|frutos secos|unvertrag/],
+ ['parking',/parchegg|parking|parkplatz|stationnement|aparcamiento/],
+ ['group',/evento|compleanno|privato|matrimonio|battesimo|wedding|birthday|private dining|geburtstag|hochzeit|mariage|anniversaire|cumple|boda|gruppo|\b([1-9][0-9])\s*(persone|pers\.|people|guests|personen|personnes|personas|gaste)/],
+ ['chef',/chef|locci|cuoco|koch\b/],
+ ['events',/\bdj\b|karaoke|jazz|venerdi sera|friday night|mittwoch|mercredi|miercoles/],
+ ['beaches',/spiagg|beach|cala |sassi piatti|molara|girgolu|taverna|nuragh|plage|strand|playa/],
+ ['hours',/orari|orario|apert|chius|hours|opening|open\b|close|offen|geoffnet|horaire|horario|a che ora|what time|wann/],
+ ['where',/dove|indirizzo|where|address|wo seid|wo ist|adresse|ou etes|donde|come si arriva|how (do|to) (we|i) get|anfahrt|weg nach/],
+ ['menu',/menu|carta|piatt|dish|speise|karte|plat\b|brunch|colazione|breakfast|pranzo|lunch|mittag|cena\b|dinner|cocktail|preis|prezzo|cuanto cuesta/],
+ ['book',/prenot|tavolo|book|reserv|tisch|mesa|disponib|table for|un tavolo|vorrei venire/]
+];
+var lang='it', channel='wa', run=0, slot=null;
+var $=function(id){return document.getElementById(id)};
+function ls(k,d){try{return JSON.parse(localStorage.getItem(k))||d}catch(e){return d}}
+function lsSet(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}}
+var SK={s:'bolla_ambarra_stats',h:'bolla_ambarra_hand',r:'bolla_ambarra_req'};
+function stats(){return ls(SK.s,{msg:0,auto:0,hand:0})}
+function bump(f){var s=stats();s[f]=(s[f]||0)+1;lsSet(SK.s,s)}
+function nowStr(){var d=new Date();return ('0'+d.getHours()).slice(-2)+':'+('0'+d.getMinutes()).slice(-2)}
+function norm(s){return String(s||'').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/ß/g,'ss')}
+function scoreLang(n){
+ var bags={
+  it:['ciao','buongiorno','buonasera','prenot','tavolo','orari','dove','colazione','pranzo','grazie','vorrei','siamo','persone','allerg','orario'],
+  en:['hello',' hi','please','table','book','hours','where','breakfast','lunch','dinner','thanks','people','allergy','open'],
+  de:['hallo','bitte','tisch','reserv','offnung','fruhstuck','abendessen','danke','personen','allerg','geoffnet','uhr'],
+  fr:['bonjour','salut','horaires','reservation','petit dejeuner','dejeuner','merci','personnes','allerg','ou etes'],
+  es:['hola','mesa','reserva','horario','donde','desayuno','almuerzo','gracias','personas','alerg']
+ };
+ var scores={it:0,en:0,de:0,fr:0,es:0}, k;
+ for(k in bags){bags[k].forEach(function(w){if(n.indexOf(w)>=0) scores[k]++})}
+ if(/\b(hello|hi|please)\b/.test(n)) scores.en+=2;
+ if(/\b(ciao|buongiorno|buonasera)\b/.test(n)) scores.it+=2;
+ if(/\b(hallo|guten tag)\b/.test(n)) scores.de+=2;
+ if(/\b(bonjour|salut)\b/.test(n)) scores.fr+=2;
+ if(/\bhola\b/.test(n)) scores.es+=2;
+ return scores;
+}
+function detectLang(raw){
+ var scores=scoreLang(norm(raw)), best=lang, n=scores[lang]||0, k;
+ for(k in scores){ if(scores[k]>n){ n=scores[k]; best=k } }
+ return n>0?best:lang;
+}
+function classify(raw){
+ var n=norm(raw), i;
+ for(i=0;i<RX.length;i++){ if(RX[i][1].test(n)) return RX[i][0] }
+ return 'fb';
+}
+var M=$('msgs');
+function add(t,c){var e=document.createElement('div');e.className='m '+c;e.textContent=t;M.appendChild(e);M.scrollTop=M.scrollHeight;return e}
+function handLog(key,q,replyLang){
+ var h=ls(SK.h,[]);
+ h.unshift({t:nowStr(),l:(replyLang||lang).toUpperCase(),q:q,r:key,ch:channel});
+ lsSet(SK.h,h.slice(0,30));
+}
+function botSay(text,isHand,key,r,replyLang,q,cb){
+ var t=add('…','b typing');
+ setTimeout(function(){
+  if(r!==run) return;
+  t.remove();
+  add(text,isHand?'b h':'b');
+  if(isHand){ bump('hand'); handLog(key,q,replyLang); add(T[lang].sysHand,'sys'); }
+  else bump('auto');
+  if(cb) cb();
+ },700);
+}
+function answer(key,r,replyLang,q){
+ var pack=A[replyLang]||A[lang];
+ var text=pack[key]||pack.fb;
+ botSay(text,!!HAND[key],key,r,replyLang,q);
+}
+function userAsk(text,key,replyLang){
+ var rl=replyLang||detectLang(text);
+ var k=key||classify(text);
+ add(text,'u'); bump('msg');
+ if(window.bsTrack) window.bsTrack('/ask/'+rl+'/'+k,'Ask '+k);
+ answer(k,run,rl,text);
+}
+function playScen(i){
+ run++; var r=run; M.innerHTML='';
+ var steps=A[lang].sc[i][1];
+ if(window.bsTrack) window.bsTrack('/scenario/'+lang+'/'+(i+1),'Scenario '+(i+1));
+ (function step(j){
+  if(r!==run||j>=steps.length) return;
+  var m=steps[j];
+  if(m[0]==='u'){ add(m[1],'u'); bump('msg'); setTimeout(function(){step(j+1)},550); return; }
+  var replyLang=m[2]||lang;
+  var text=m[1], key=null, isHand=false, q=m[1];
+  if(m[0]==='i'){
+    var said=steps.filter(function(s){return s[0]==='u'}).map(function(s){return s[1]}).join(' ');
+    replyLang=detectLang(said);
+    key=m[1]; q=said; isHand=!!HAND[key];
+    text=(A[replyLang]||A[lang])[key]||(A[replyLang]||A[lang]).fb;
+  }
+  botSay(text,isHand,key,r,replyLang,q,function(){step(j+1)});
+ })(0);
+}
+function renderChips(){
+ var ch=$('chips'); ch.innerHTML='';
+ A[lang].chips.forEach(function(c){
+  var b=document.createElement('button'); b.type='button'; b.textContent=c[0];
+  b.onclick=function(){ userAsk(c[0],c[1],c[2]||lang); };
+  ch.appendChild(b);
+ });
+ var sc=$('scen'); sc.innerHTML='';
+ A[lang].sc.forEach(function(s,i){
+  var b=document.createElement('button'); b.type='button'; b.className='sc'; b.textContent=s[0];
+  b.onclick=function(){ playScen(i); };
+  sc.appendChild(b);
+ });
+}
+function greet(){ run++; M.innerHTML=''; add(A[lang].hi,'b'); renderChips(); }
+function channelCopy(){
+ var t=T[lang];
+ $('chName').textContent=channel==='ig'?t.chIg:t.chWa;
+ $('chSub').textContent=t.chSub;
+ $('chBanner').textContent=t.banner;
+}
+function show(tab){
+ channel=tab==='ig'?'ig':(tab==='wa'?'wa':channel);
+ document.querySelectorAll('#tabs button').forEach(function(b){b.classList.toggle('on',b.dataset.tab===tab)});
+ var chat=tab==='wa'||tab==='ig';
+ $('pane-chat').classList.toggle('on',chat);
+ $('pane-google').classList.toggle('on',tab==='google');
+ $('pane-voice').classList.toggle('on',tab==='voice');
+ $('pane-team').classList.toggle('on',tab==='team');
+ if(chat) channelCopy();
+ if(tab==='team') renderTeam();
+ if(window.bsTrack) window.bsTrack('/tab/'+tab,'Tab '+tab);
+}
+function gCardText(){
+ return lang==='it'
+  ? 'Ambàra Sardinian Lounge\nMonte Petrosu, Via di Li Graniti, 07052 San Teodoro\nContatti sul sito: tutti i giorni 7:30–13:00 e 17:00–2:00\n+39 340 199 1233 · info@ambaralounge.it\nambaralounge.it\nNon è una scheda Google collegata.'
+  : 'Ambàra Sardinian Lounge\nMonte Petrosu, Via di Li Graniti, 07052 San Teodoro\nContact block on the website: every day 7:30–13:00 and 17:00–02:00\n+39 340 199 1233 · info@ambaralounge.it\nambaralounge.it\nThis is not a connected Google listing.';
+}
+function fillSelect(){
+ var s=$('item'), v=s.value||'evening'; s.innerHTML='';
+ T[lang].items.forEach(function(it){ var o=document.createElement('option'); o.value=it[0]; o.textContent=it[1]; s.appendChild(o); });
+ s.value=v; renderSlots();
+}
+function renderSlots(){
+ var box=$('slots'), key=$('item').value||'evening', list=SLOTS[key]||SLOTS.evening;
+ box.innerHTML=''; slot=null;
+ list.forEach(function(n){
+  var b=document.createElement('button'); b.type='button'; b.textContent=n;
+  b.onclick=function(){ [].forEach.call(box.children,function(x){x.classList.remove('on')}); b.classList.add('on'); slot=n; };
+  box.appendChild(b);
+ });
+}
+function renderTeam(){
+ var t=T[lang], s=stats(), req=ls(SK.r,[]), hd=ls(SK.h,[]);
+ var kv=[s.msg||0,s.auto||0,s.hand||0,req.length];
+ $('kpis').innerHTML=kv.map(function(v,i){return '<div class="kpi"><b>'+v+'</b><span>'+t.k[i]+'</span></div>'}).join('');
+ var rows=req.map(function(r){
+  return '<tr><td>'+esc(r.t)+'</td><td>'+esc(r.ch)+'</td><td>'+esc(r.sum)+'</td><td><span class="pill">'+esc(t.stNew)+'</span></td></tr>';
+ }).join('') || '<tr><td colspan="4">—</td></tr>';
+ $('tReq').innerHTML='<thead><tr>'+t.hReq.map(function(h){return '<th>'+esc(h)+'</th>'}).join('')+'</tr></thead><tbody>'+rows+'</tbody>';
+ var hr=hd.map(function(h){
+  var why=(A[lang]&&T[lang].why[h.r])||h.r;
+  return '<tr><td>'+esc(h.t)+'</td><td>'+esc(h.l)+'</td><td>'+esc(h.q)+'</td><td><span class="pill">'+esc(why)+'</span></td></tr>';
+ }).join('') || '<tr><td colspan="4">—</td></tr>';
+ $('tHand').innerHTML='<thead><tr>'+t.hHand.map(function(h){return '<th>'+esc(h)+'</th>'}).join('')+'</tr></thead><tbody>'+hr+'</tbody>';
+}
+function esc(s){return String(s==null?'':s).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})}
+function setLang(l){
+ lang=l; document.documentElement.lang=l; var t=T[l];
+ document.querySelectorAll('[data-t]').forEach(function(e){ var k=e.dataset.t; if(k==='top') e.innerHTML=t.top; else if(t[k]!=null) e.textContent=t[k]; });
+ document.querySelectorAll('[data-h]').forEach(function(e){ e.innerHTML=t[e.dataset.h]; });
+ document.querySelectorAll('#langs button').forEach(function(b){ b.classList.toggle('on', b.dataset.l===l); });
+ $('inp').placeholder=t.ph;
+ $('gCard').textContent=gCardText();
+ var q=location.search||'';
+ $('voiceLink').setAttribute('href','../voz/ambarra/'+q);
+ channelCopy(); fillSelect(); greet(); renderTeam();
+ clearTimeout(setLang._t);
+ setLang._t=setTimeout(function(){ if(lang===l && !M.querySelector('.u')) playScen(0); }, 350);
+}
+document.querySelectorAll('#tabs button').forEach(function(b){ b.onclick=function(){ show(b.dataset.tab); }; });
+document.querySelectorAll('#langs button').forEach(function(b){ b.onclick=function(){ setLang(b.dataset.l); if(window.bsTrack) window.bsTrack('/lang/'+b.dataset.l,'Lang '+b.dataset.l); }; });
+$('send').onclick=function(){ var v=$('inp').value.trim(); if(!v) return; $('inp').value=''; userAsk(v); };
+$('inp').addEventListener('keydown',function(e){ if(e.key==='Enter') $('send').click(); });
+$('item').addEventListener('change',renderSlots);
+$('cta').onclick=function(){
+ var ok=$('ok'); ok.style.display='block';
+ if(!$('date').value||!slot){ ok.textContent=T[lang].pick; return; }
+ var item=T[lang].items.filter(function(it){return it[0]===$('item').value})[0];
+ var sum=(item?item[1]:$('item').value)+' · '+$('date').value+' · '+slot+' · '+($('guests').value||'?')+' · '+($('nm').value||'—')+' · '+($('ct').value||'—')+($('notes').value?' · '+$('notes').value:'');
+ var rec={t:nowStr(),ch:channel==='ig'?'Instagram':'WhatsApp',sum:sum};
+ var a=ls(SK.r,[]); a.unshift(rec); lsSet(SK.r,a.slice(0,30));
+ ok.textContent=T[lang].ok.replace('{s}',sum);
+ if(window.bsTrack) window.bsTrack('/request/demo','Demo table request');
+ renderTeam();
+};
+$('clr').onclick=function(){ [SK.s,SK.h,SK.r].forEach(function(k){ try{localStorage.removeItem(k)}catch(e){} }); renderTeam(); };
+function iso(d){return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0')}
+var d0=new Date(); d0.setDate(d0.getDate()+2);
+$('date').min=iso(new Date());
+$('date').value=iso(d0);
+setLang('it');
+window.AmbarraDemo={detectLang:detectLang,classify:classify,norm:norm};
+</script>
+</body>
+</html>
