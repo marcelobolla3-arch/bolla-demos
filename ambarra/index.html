@@ -60,7 +60,8 @@ select,input[type="date"],input[type="number"],input[type="text"]{width:100%;pad
 .slots button{border:1px solid var(--line);background:#fff;border-radius:8px;padding:7px 10px;font-size:13px;cursor:pointer}
 .slots button.on{background:var(--accent);color:#fff;border-color:var(--accent)}
 .cta{margin-top:14px;width:100%;background:var(--accent);color:#fff;border:0;border-radius:10px;padding:12px;font:inherit;font-size:15px;cursor:pointer}
-.ok{display:none;margin-top:12px;background:#eaf7ea;border:1px solid #bfe3bf;border-radius:8px;padding:12px;font-size:14px;white-space:pre-line}
+.ok{display:none;margin-top:12px;background:#fff4d6;border:1px dashed #d9a400;border-radius:8px;padding:12px;font-size:14px;white-space:pre-line}
+.slots button,.chips button,.tabs button,.langs button,.inrow button,.cta{min-height:44px}
 .facts{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:14px}
 @media(max-width:720px){.facts{grid-template-columns:1fr}}
 .fact{background:#fff;border:1px solid var(--line);border-radius:12px;padding:14px}
@@ -89,7 +90,9 @@ footer a{color:var(--accent)}
 </style>
 <!--
   Isolated Ambàra prospect demo. Do not copy another client's ElevenLabs agent into this page.
-  Facts checked against ambaralounge.it on 2026-11-05. Booking software is not named: API not validated.
+  Facts checked against ambaralounge.it on 2026-11-05.
+  Public booking link: Plateform (homepage). API and internal PMS are not verified.
+  Instagram @ambarasardinianlounge is the homepage outbound link. The profile was not inspected.
   GoatCounter base /ambarra. ?p= records the prospect tag. ?internal=1 sets skipgc and loads nothing.
 -->
 <script>
@@ -221,7 +224,7 @@ it:{
  top:'Dimostrazione BOLLA STUDIO per <b>Ambàra Sardinian Lounge</b> · fatti da <a href="https://ambaralounge.it/" target="_blank" rel="noopener">ambaralounge.it</a> (5 novembre 2026) · nessun messaggio, nessuna prenotazione, nessun account collegato',
  tag:'San Teodoro · Monte Petrosu · demo isolata',
  h1:'Richieste, risposte e passaggio al team, prima in italiano',
- intro:'La stessa dimostrazione sui canali che un ospite usa davvero: una simulazione WhatsApp, una simulazione Instagram e una sezione Google limitata a ciò che oggi si può fare. La voce è una pagina a parte, con l\'agente ElevenLabs del browser quando sarà configurato. Ogni risposta usa solo testi pubblicati dal ristorante. Un tavolo non risulta mai confermato.',
+ intro:'La stessa dimostrazione sui canali che un ospite usa davvero: una simulazione WhatsApp, una simulazione Instagram e una sezione Google limitata a ciò che oggi si può fare. La voce è una pagina a parte, con l\'agente ElevenLabs del browser quando sarà configurato. Ogni risposta usa solo testi pubblicati dal ristorante. Il link pubblico di prenotazione sul sito è Plateform; l\'API non è verificata e un tavolo non risulta mai confermato.',
  langLbl:'Lingua della pagina',
  tabWa:'WhatsApp', tabIg:'Instagram', tabGoogle:'Google', tabVoice:'Voce', tabTeam:'Per il team',
  chWa:'Simulazione WhatsApp · Ambàra', chIg:'Simulazione Instagram · Ambàra',
@@ -231,21 +234,21 @@ it:{
  sideTitle:'Conversazioni di esempio',
  sideNote:'Le risposte citano il sito pubblico. Orari di servizio e orario generale non combaciano sempre: la demo non sceglie una versione. Allergie, gruppi e dati assenti passano a una persona. Il registro resta in questo browser.',
  fTitle:'Richiesta di tavolo, solo in dimostrazione',
- fSub:'Gli orari proposti seguono le finestre pubblicate sulle pagine menu. Non sono tavoli liberi. Il software di prenotazione già in uso si potrà collegare solo dopo la verifica dell\'API: qui non c\'è nessun invio.',
+ fSub:'Gli orari che si possono scegliere sono finestre pubblicate (colazione sulla pagina dedicata, sera sulla pagina cena), non tavoli liberi. La carta bevande indica un altro orario di colazione. Il link pubblico è Plateform; l\'API non è verificata e da qui non parte nessun invio.',
  fItem:'Occasione', fGuests:'Persone', fDate:'Data', fName:'Nome, se vuoi lasciarlo', fTime:'Orario richiesto', fContact:'Recapito, se vuoi lasciarlo', fNotes:'Nota (allergie, passeggino, torta…)', fSubmit:'Registra la richiesta di demo',
- items:[['breakfast','Colazione'],['lunch','Pranzo'],['evening','Aperitivo o cena']],
+ items:[['breakfast','Colazione'],['evening','Aperitivo o cena']],
  pick:'Scegli data e orario. Non serve un account.',
- ok:'Richiesta di dimostrazione annotata solo in questo browser.\n{s}\nNon è una prenotazione. Nessuna disponibilità è stata verificata. Nessun messaggio è stato inviato a WhatsApp, Instagram o al ristorante. Un collegamento futuro al software di prenotazione resta in attesa della verifica API.',
+ ok:'DEMO — prenotazione simulata / simulated reservation\nRichiesta annotata solo in questo browser.\n{s}\nNessuna prenotazione effettuata. Nessuna disponibilità è stata verificata e nulla è stato inviato a Plateform, WhatsApp, Instagram o al ristorante. L\'API di Plateform non è verificata.',
  gTitle:'Google, solo sulle superfici che esistono',
  gLead:'Chi cerca Ambàra su Google trova una scheda pubblica e, da lì, il sito o il telefono. Questa demo non apre una chat dentro Google e non modifica il profilo.',
- gWarn:'Google Business Messages è un servizio chiuso. Non promettiamo una chat live su Google Maps, né un accesso all\'account Google del ristorante.',
+ gWarn:'Google Business Messages, la chat dentro Google, è chiuso dal 31 luglio 2024. Non c\'è una chat live su Google Maps e non si entra nell\'account Google del ristorante.',
  gNowT:'Oggi, senza collegare nulla',
  gNow:'La scheda Google può mostrare nome, indirizzo, orari, telefono e il link al sito, se il ristorante li ha pubblicati. Questa pagina non legge e non scrive quel profilo.',
  gNextT:'Dove può arrivare l\'assistente',
- gNext:'Il link del sito, sulla scheda, può aprire lo stesso assistente di questa demo. Un pulsante di prenotazione dipende dal software già in uso e da un\'API ancora da verificare. Fino ad allora la richiesta resta una nota per il team, non una conferma.',
+ gNext:'Il sito ufficiale è ambaralounge.it. Per un tavolo, il link pubblico ripetuto in homepage è Plateform. Non risulta un Reserve with Google verificato e l\'API di Plateform non è verificata: questa demo non prenota. Dove Google mostra ancora un messaggio per alcuni profili, quello apre il numero del locale, non una chat Google.',
  gCardT:'Fatti del sito, da non contraddire',
  gNotT:'Fuori da questa demo',
- gNot:'Nessun login Google. Nessun messaggio inviato da Google. Nessuna risposta alle recensioni. Nessuna prenotazione «Reserve with Google» finché il provider e l\'API non sono verificati.',
+ gNot:'Nessun login Google. Nessun messaggio inviato da Google. Nessuna risposta pubblicata alle recensioni. Nessun Reserve with Google. Plateform resta un link pubblico, senza API verificata.',
  vTitle:'Voce, nel browser',
  vLead:'La pagina vocale segue lo stesso impianto della demo Schloss Wülflingen: un assistente ElevenLabs nel browser, con i testi del widget in italiano o in inglese. Per Ambàra l\'agent id non è ancora arrivato, quindi il widget non viene caricato.',
  vWarn:'Nessuna chiamata in uscita. Nessun agente di un altro cliente. Quando l\'id di Ambàra sarà inserito in quella pagina, la conversazione sarà reale nel browser e resterà una demo: niente prenotazioni sul sistema del ristorante.',
@@ -260,8 +263,8 @@ it:{
  rClear:'Cancella i dati di questa demo',
  feat1:'<b>Italiano, inglese e altre lingue</b><br>La pagina è in italiano o in inglese. Se l\'ospite scrive in un\'altra lingua, la risposta di esempio segue quella lingua, sui fatti già pubblicati.',
  feat2:'<b>Solo il sito di Ambàra</b><br>Indirizzo, telefono, orari e qualche piatto con il prezzo pubblicato. Se due pagine non coincidono, l\'assistente lo dice e non inventa la versione “giusta”.',
- feat3:'<b>Il team conferma</b><br>Allergie, eventi e tutto ciò che non è sul sito passano a una persona. Il tavolo non è confermato e il software di prenotazione non è collegato.',
- foot:'Demo di <a href="https://bollastudio.com" target="_blank" rel="noopener">BOLLA STUDIO</a> · non è il sito di Ambàra e non è gestita dal ristorante.<br>Fonti lette il 5 novembre 2026: <a href="https://ambaralounge.it/" target="_blank" rel="noopener">home</a>, <a href="https://ambaralounge.it/dove-siamo/" target="_blank" rel="noopener">dove siamo</a>, <a href="https://ambaralounge.it/menu-colazione/" target="_blank" rel="noopener">colazione</a>, <a href="https://ambaralounge.it/menu-pranzo/" target="_blank" rel="noopener">pranzo</a>, <a href="https://ambaralounge.it/menu-cena/" target="_blank" rel="noopener">cena</a>. L\'account Instagram non è indicato qui perché non risulta verificato su queste pagine. Nessun dato lascia il browser.',
+ feat3:'<b>Il team conferma</b><br>Allergie, eventi e tutto ciò che non è sul sito passano a una persona. Il tavolo non è confermato. Plateform è solo il link pubblico: l\'API non è collegata.',
+ foot:'Demo di <a href="https://bollastudio.com" target="_blank" rel="noopener">BOLLA STUDIO</a> · non è il sito di Ambàra e non è gestita dal ristorante.<br>Fonti lette il 5 novembre 2026: <a href="https://ambaralounge.it/" target="_blank" rel="noopener">home</a>, <a href="https://ambaralounge.it/chi-siamo/" target="_blank" rel="noopener">chi siamo</a>, <a href="https://ambaralounge.it/dove-siamo/" target="_blank" rel="noopener">dove siamo</a>, <a href="https://ambaralounge.it/menu-colazione/" target="_blank" rel="noopener">colazione</a>, <a href="https://ambaralounge.it/menu-cena/" target="_blank" rel="noopener">cena</a>, <a href="https://ambaralounge.it/carta-dei-vini/" target="_blank" rel="noopener">bevande</a>, <a href="https://www.instagram.com/ambarasardinianlounge/" target="_blank" rel="noopener">Instagram</a>, <a href="https://ambarasardinianlounge.plateform.app/r/ambarainstagram" target="_blank" rel="noopener">Plateform</a>. Il profilo Instagram non è stato ispezionato e l\'API di Plateform non è verificata. Nessun dato lascia il browser.',
  sysHand:'Passato a una persona del team, solo in questo registro. Nessun messaggio è stato inviato.',
  why:{allergy:'Allergia',group:'Gruppo o evento',fb:'Dato non pubblicato',parking:'Parcheggio non verificato'}
 },
@@ -269,7 +272,7 @@ en:{
  top:'BOLLA STUDIO demonstration for <b>Ambàra Sardinian Lounge</b> · facts from <a href="https://ambaralounge.it/" target="_blank" rel="noopener">ambaralounge.it</a> (5 November 2026) · no messages, no reservations, no account connected',
  tag:'San Teodoro · Monte Petrosu · isolated demo',
  h1:'Requests, answers and a handoff to the team, in English too',
- intro:'The same demonstration on the channels a guest actually uses: a WhatsApp simulation, an Instagram simulation, and a Google section limited to what can be done today. Voice is a separate page, with the ElevenLabs browser agent once it is configured. Every answer uses only text the restaurant has published. A table is never confirmed.',
+ intro:'The same demonstration on the channels a guest actually uses: a WhatsApp simulation, an Instagram simulation, and a Google section limited to what can be done today. Voice is a separate page, with the ElevenLabs browser agent once it is configured. Every answer uses only text the restaurant has published. The public booking link on the site is Plateform; the API is not verified and a table is never confirmed.',
  langLbl:'Page language',
  tabWa:'WhatsApp', tabIg:'Instagram', tabGoogle:'Google', tabVoice:'Voice', tabTeam:'For the team',
  chWa:'WhatsApp simulation · Ambàra', chIg:'Instagram simulation · Ambàra',
@@ -279,21 +282,21 @@ en:{
  sideTitle:'Sample conversations',
  sideNote:'Answers quote the public website. Service windows and the general hours do not always match: the demo does not pick a winner. Allergies, groups and missing facts go to a person. The log stays in this browser.',
  fTitle:'Table request, demonstration only',
- fSub:'The times follow the windows published on the menu pages. They are not open tables. The reservation software they already use can be connected only after the API is checked: nothing is sent from here.',
+ fSub:'The times you can choose sit inside published windows (breakfast on its own page, evening on the dinner page). They are not open tables. The drinks page gives a different breakfast window. Plateform is the public booking link; its API is not verified and nothing is sent from here.',
  fItem:'Occasion', fGuests:'People', fDate:'Date', fName:'Name, if you want to leave one', fTime:'Requested time', fContact:'Contact, if you want to leave one', fNotes:'Note (allergies, pushchair, cake…)', fSubmit:'Save the demo request',
- items:[['breakfast','Breakfast'],['lunch','Lunch'],['evening','Aperitivo or dinner']],
+ items:[['breakfast','Breakfast'],['evening','Aperitivo or dinner']],
  pick:'Choose a date and a time. No account is required.',
- ok:'Demonstration request saved in this browser only.\n{s}\nThis is not a reservation. No availability was checked. No message was sent on WhatsApp, Instagram or to the restaurant. A future link to the reservation software is waiting on API validation.',
+ ok:'DEMO — prenotazione simulata / simulated reservation\nRequest saved in this browser only.\n{s}\nNo reservation has been made. No availability was checked and nothing was sent to Plateform, WhatsApp, Instagram or the restaurant. The Plateform API is not verified.',
  gTitle:'Google, only on surfaces that exist',
  gLead:'Someone who finds Ambàra on Google gets a public listing and, from there, the website or the phone number. This demo does not open a chat inside Google and does not edit the profile.',
- gWarn:'Google Business Messages has been shut down. This demo does not promise a live chat on Google Maps, or a sign-in to the restaurant\'s Google account.',
+ gWarn:'Google Business Messages, the chat inside Google, ended on 31 July 2024. There is no live chat on Google Maps and no sign-in to the restaurant\'s Google account.',
  gNowT:'Today, with nothing connected',
  gNow:'A Google listing can show name, address, hours, phone and the website link, if the restaurant published them. This page does not read or write that profile.',
  gNextT:'Where the assistant can sit',
- gNext:'The website link on the listing can open the same assistant as this demo. A booking button depends on the software they already use and on an API that still has to be checked. Until then a request is a note for the team, not a confirmation.',
+ gNext:'The official website is ambaralounge.it. For a table, the public link repeated on the homepage is Plateform. Reserve with Google is not verified and the Plateform API is not verified: this demo does not book. Where Google still shows a message control for some profiles, that opens the business\'s own number, not a Google chat.',
  gCardT:'Website facts, not to be contradicted',
  gNotT:'Outside this demo',
- gNot:'No Google login. No message sent from Google. No review replies. No Reserve with Google booking until the provider and the API are verified.',
+ gNot:'No Google login. No message sent from Google. No review is posted. No Reserve with Google. Plateform stays a public link, without a verified API.',
  vTitle:'Voice, in the browser',
  vLead:'The voice page follows the same setup as the Schloss Wülflingen demo: an ElevenLabs assistant in the browser, with the widget copy in Italian or English. Ambàra\'s agent id has not arrived, so the widget is not loaded.',
  vWarn:'No outbound call. No other client\'s agent. When Ambàra\'s id is placed on that page, the conversation is real in the browser and still a demo: nothing is reserved in the restaurant\'s system.',
@@ -308,8 +311,8 @@ en:{
  rClear:'Clear this demo\'s data',
  feat1:'<b>Italian, English and other languages</b><br>The page is in Italian or English. If a guest writes in another language, the sample answer follows that language, using facts already published.',
  feat2:'<b>Only Ambàra\'s website</b><br>Address, phone, hours and a few dishes with the published price. If two pages disagree, the assistant says so and does not invent the "right" version.',
- feat3:'<b>The team confirms</b><br>Allergies, events and anything missing from the website go to a person. The table is not confirmed and the reservation software is not connected.',
- foot:'Demo by <a href="https://bollastudio.com" target="_blank" rel="noopener">BOLLA STUDIO</a> · this is not Ambàra\'s website and it is not run by the restaurant.<br>Sources read on 5 November 2026: <a href="https://ambaralounge.it/" target="_blank" rel="noopener">home</a>, <a href="https://ambaralounge.it/dove-siamo/" target="_blank" rel="noopener">where we are</a>, <a href="https://ambaralounge.it/menu-colazione/" target="_blank" rel="noopener">breakfast</a>, <a href="https://ambaralounge.it/menu-pranzo/" target="_blank" rel="noopener">lunch</a>, <a href="https://ambaralounge.it/menu-cena/" target="_blank" rel="noopener">dinner</a>. No Instagram handle is shown, because none was verified on these pages. Nothing leaves the browser.',
+ feat3:'<b>The team confirms</b><br>Allergies, events and anything missing from the website go to a person. The table is not confirmed. Plateform is only the public link: the API is not connected.',
+ foot:'Demo by <a href="https://bollastudio.com" target="_blank" rel="noopener">BOLLA STUDIO</a> · this is not Ambàra\'s website and it is not run by the restaurant.<br>Sources read on 5 November 2026: <a href="https://ambaralounge.it/" target="_blank" rel="noopener">home</a>, <a href="https://ambaralounge.it/chi-siamo/" target="_blank" rel="noopener">about</a>, <a href="https://ambaralounge.it/dove-siamo/" target="_blank" rel="noopener">where we are</a>, <a href="https://ambaralounge.it/menu-colazione/" target="_blank" rel="noopener">breakfast</a>, <a href="https://ambaralounge.it/menu-cena/" target="_blank" rel="noopener">dinner</a>, <a href="https://ambaralounge.it/carta-dei-vini/" target="_blank" rel="noopener">drinks</a>, <a href="https://www.instagram.com/ambarasardinianlounge/" target="_blank" rel="noopener">Instagram</a>, <a href="https://ambarasardinianlounge.plateform.app/r/ambarainstagram" target="_blank" rel="noopener">Plateform</a>. The Instagram profile was not inspected and the Plateform API is not verified. Nothing leaves the browser.',
  sysHand:'Passed to a person on the team, in this log only. No message was sent.',
  why:{allergy:'Allergy',group:'Group or event',fb:'Not published',parking:'Parking not verified'}
 }
@@ -317,92 +320,104 @@ en:{
 var A={
 it:{
  hi:'Buongiorno. Sono l\'assistente di dimostrazione di Ambàra Sardinian Lounge, a Monte Petrosu. Rispondo con ciò che è pubblicato sul sito. Un tavolo lo annoto come richiesta: non lo confermo.',
- hours:'Sul blocco contatti del sito è pubblicato: aperti tutti i giorni 7:30–13:00 e 17:00–2:00.\nLe pagine dei menu indicano anche finestre di servizio: colazione 7:30–11:30, pranzo 12:00–14:30, sera 17:00–01:00.\nNon scelgo io quale prevale. Per un orario preciso risponde il team. Questa demo non verifica se c\'è posto.',
- where:'Ambàra Sardinian Lounge, Monte Petrosu, Via di Li Graniti, 07052 San Teodoro, Sardegna.\nTelefono e WhatsApp pubblicati: +39 340 199 1233. Email: info@ambaralounge.it.\nIl sito cita la strada verso la Spiaggia dei Sassi Piatti, le calette di Punta Molara, Cala Girgolu e Porto Taverna, e i nuraghi nei dintorni.\nSulla distanza non do un solo numero: in homepage c\'è «a solo 1 km dalle spiagge», nella pagina Dove siamo «a soli 2 km dal mare». Il percorso lo conferma il team.',
- menu:'La cucina è presentata sul sito come curata dallo chef Andrea Locci, dalla colazione ai cocktail.\nEsempi pubblicati sul menu cena: battuta di tonno 20 €, culurgiones 22 €, degustazione griglia 55 € a persona, coperto 3 €. Colazione: «uova e un contorno» 10 €, finestra 7:30–11:30.\nIl menu intero resta sul sito. I prezzi possono cambiare. Per gli allergeni avvisa la sala: non confermo una modifica al piatto.',
+ hours:'La pagina dedicata alla colazione pubblica 07:30–11:30. Il piè di pagina della carta bevande indica invece colazione e brunch 08:30–12:00. Do priorità alla pagina dedicata e conviene confermare l\'orario del giorno.\nLa pagina della cena indica tutte le sere 17:00–01:00.\nUn orario di pranzo verificato non c\'è in questa demo: non lo invento. Non so se oggi è aperto e non controllo i tavoli.',
+ where:'Ambàra Sardinian Lounge, Monte Petrosu, Via di Li Graniti, 07052 San Teodoro, Sardegna. Nessun numero civico verificato.\nTelefono e WhatsApp pubblicati: +39 340 199 1233. Email: info@ambaralounge.it.\nInstagram pubblicato in homepage: @ambarasardinianlounge. Facebook: facebook.com/ambaralounge. I profili non sono stati ispezionati e questa demo non li collega.\nIl sito cita la strada verso la Spiaggia dei Sassi Piatti, le calette di Punta Molara, Cala Girgolu e Porto Taverna, e i nuraghi nei dintorni.\nSulla distanza non do un solo numero: in homepage c\'è «a solo 1 km dalle spiagge», nella pagina Dove siamo «a soli 2 km dal mare». Il percorso lo conferma il team.',
+ menu:'La cucina è presentata sul sito come curata dallo chef Andrea Locci, dalla colazione ai cocktail.\nEsempi pubblicati sul menu cena: battuta di tonno 20 €, culurgiones 22 €, degustazione griglia 55 € a persona. Il coperto sulla pagina cena e sulla colazione è 3 €; la carta bevande indica 2 €. Non c\'è un coperto unico. Colazione: «uova e un contorno» 10 €.\nIl menu intero resta sul sito. I prezzi possono cambiare. Per gli allergeni avvisa la sala: non confermo una modifica al piatto e non garantisco l\'assenza di contaminazioni.',
  events:'Sul sito: DJ set dal vivo ogni mercoledì e venerdì, dalle 18:30 alle 00:00; jazz moderno; serate karaoke selezionate. Se una data precisa è in programma, lo conferma il team.',
- book:'Posso annotare la richiesta: occasione, data, orario, persone, nome e un recapito. Resta una richiesta di dimostrazione.\nNon controllo i tavoli e non confermo la prenotazione. Il collegamento al software di prenotazione già in uso è possibile solo dopo la verifica dell\'API. Oggi non parte nessun messaggio.\nIl modulo sotto registra la stessa richiesta in questo browser.',
- allergy:'Le allergie le conferma il personale di sala, come chiede anche il menu pubblicato. Passo la nota a una persona del team. Nessun messaggio reale è stato inviato.',
+ book:'DEMO — prenotazione simulata / simulated reservation. Posso annotare la richiesta: occasione, data, orario, persone, nome e un recapito. Non controllo i tavoli e non confermo.\nSul sito il percorso pubblico è Plateform: https://ambarasardinianlounge.plateform.app/r/ambarainstagram . È il link pubblicato, non la prova di un\'API. Questa demo non invia nulla a Plateform e non usa OpenTable.\nIl modulo sotto registra la stessa richiesta solo in questo browser.',
+ instagram:'Il link Instagram pubblicato in homepage è https://www.instagram.com/ambarasardinianlounge/ (@ambarasardinianlounge). Facebook, sempre dalla homepage: https://www.facebook.com/ambaralounge . I profili non sono stati letti uno per uno. Questa simulazione non è collegata e non invia nulla.',
+ opentable:'La pagina live di OpenTable dice che Ambàra non è sul network di prenotazione. Non uso OpenTable. Il link pubblico sul sito è Plateform, e l\'API non è verificata.',
+ allergy:'Le allergie le conferma il personale di sala, come chiede anche il menu pubblicato. Non garantisco una preparazione adatta. Passo la nota a una persona del team. Nessun messaggio reale è stato inviato.',
  group:'Per un gruppo o un evento non invento una disponibilità. Passo la richiesta a una persona del team, con data, persone e occasione se le hai scritte.',
- parking:'Non ho una nota di parcheggio verificata sulle pagine lette per questa demo. Lo passo al team, senza indovinare.',
+ parking:'La pagina Chi siamo pubblica un ampio parcheggio gratuito. Non ho altri dettagli, per esempio il numero di posti.',
  fb:'Questo dato non è tra quelli letti sul sito, quindi non lo invento. Lo passo a una persona del team.',
  chef:'Il sito indica la cucina come curata dallo chef Andrea Locci. Non ho altri nomi del team.',
  beaches:'Il sito indica, come mete vicine, la Spiaggia dei Sassi Piatti, le calette di Punta Molara, Cala Girgolu e Porto Taverna, oltre a sentieri e nuraghi. Non fisso una distanza in chilometri: le due pagine del sito non dicono la stessa cifra.',
  chips:[['Orari','hours'],['Dove siete','where'],['Dal menu','menu'],['DJ di venerdì','events'],['Tavolo sabato','book'],['Allergia','allergy'],['Evento per 20','group'],['In English','hours','en']],
  sc:[
-  ['Tavolo per 4, sabato',[['u','Buonasera, avete un tavolo per 4 sabato alle 20:30?'],['b','Buonasera. Annoto la richiesta: sabato, 20:30, 4 persone, cena. Non vedo i tavoli liberi e non confermo la prenotazione.\nMi servono, se vuoi lasciarli, un nome e un recapito. Il team la legge insieme alle altre richieste. In una versione collegata, e solo dopo la verifica dell\'API, la stessa nota potrebbe entrare nel software di prenotazione che usate già. Da questa demo non parte nessun messaggio.']]],
+  ['Tavolo per 4, sabato',[['u','Buonasera, avete un tavolo per 4 sabato alle 20:30?'],['b','Buonasera. DEMO — prenotazione simulata / simulated reservation. Annoto la richiesta: sabato, 20:30, 4 persone, cena. Non vedo i tavoli liberi e non confermo.\nIl link pubblico sul sito è Plateform. L\'API non è verificata e da questa demo non parte nessun messaggio. Nome e recapito, se vuoi, restano solo nel modulo di questa pagina.']]],
   ['Orari e spiagge',[['u','Che orari fate? E come si arriva verso le spiagge?'],['i','hours'],['i','beaches']]],
-  ['Ospite in inglese',[['u','Hi, could we request a table for 2 on Saturday at 20:00?'],['b','Hello. I can note the request: Saturday, 20:00, 2 people. I cannot see open tables and I will not confirm a reservation.\nIf you want, leave a name and a contact in the form below. The team reads it as a request. Connecting this to the reservation software they already use waits on an API check. Nothing is sent from this demo.','en']]],
+  ['Ospite in inglese',[['u','Hi, could we request a table for 2 on Saturday at 20:00?'],['b','Hello. DEMO — prenotazione simulata / simulated reservation. I can note the request: Saturday, 20:00, 2 people. I cannot see open tables and I will not confirm it.\nThe public link is Plateform and the API is not verified. Nothing is sent from this demo.','en']]],
   ['Allergia, al team',[['u','Una di noi è celiaca. Si può modificare un piatto?'],['i','allergy']]]
  ]
 },
 en:{
  hi:'Hello. I am the demonstration assistant for Ambàra Sardinian Lounge, in Monte Petrosu. I answer from what is published on the website. I can note a table as a request: I do not confirm it.',
- hours:'The contact block on the website says: open every day 7:30–13:00 and 17:00–02:00.\nThe menu pages also publish service windows: breakfast 7:30–11:30, lunch 12:00–14:30, evening 17:00–01:00.\nI do not decide which one wins. The team confirms a precise time. This demo does not check whether a table is free.',
- where:'Ambàra Sardinian Lounge, Monte Petrosu, Via di Li Graniti, 07052 San Teodoro, Sardinia.\nPublished phone and WhatsApp: +39 340 199 1233. Email: info@ambaralounge.it.\nThe website names the road toward Spiaggia dei Sassi Piatti, the coves of Punta Molara, Cala Girgolu and Porto Taverna, and nuraghi nearby.\nI will not give a single distance: the homepage says “just 1 km from the beaches”, and the Where we are page says “just 2 km from the sea”. The team confirms the route.',
- menu:'The website presents the kitchen as looked after by chef Andrea Locci, from breakfast through to cocktails.\nExamples published on the dinner menu: tuna battuta €20, culurgiones €22, grill tasting €55 per person, cover €3. Breakfast: “eggs and one side” €10, window 7:30–11:30.\nThe full menu stays on the website. Prices can change. For allergens, tell the dining-room staff: I will not confirm a change to a dish.',
+ hours:'The dedicated breakfast page publishes 07:30–11:30. The drinks-page footer instead says breakfast and brunch 08:30–12:00. I prefer the dedicated page and the day itself should be confirmed.\nThe dinner page says every evening 17:00–01:00.\nA verified lunch service is not in this demo: I will not invent one. I do not know if it is open today and I do not check tables.',
+ where:'Ambàra Sardinian Lounge, Monte Petrosu, Via di Li Graniti, 07052 San Teodoro, Sardinia. No house number is verified.\nPublished phone and WhatsApp: +39 340 199 1233. Email: info@ambaralounge.it.\nInstagram published on the homepage: @ambarasardinianlounge. Facebook: facebook.com/ambaralounge. The profiles were not inspected and this demo does not connect them.\nThe website names the road toward Spiaggia dei Sassi Piatti, the coves of Punta Molara, Cala Girgolu and Porto Taverna, and nuraghi nearby.\nI will not give a single distance: the homepage says “just 1 km from the beaches”, and the Where we are page says “just 2 km from the sea”. The team confirms the route.',
+ menu:'The website presents the kitchen as looked after by chef Andrea Locci, from breakfast through to cocktails.\nExamples published on the dinner menu: tuna battuta €20, culurgiones €22, grill tasting €55 per person. Cover on the dinner and breakfast pages is €3; the drinks page says €2. There is no single cover charge. Breakfast: “eggs and one side” €10.\nThe full menu stays on the website. Prices can change. For allergens, tell the dining-room staff: I will not confirm a change to a dish and I cannot guarantee freedom from cross-contact.',
  events:'On the website: a live DJ set every Wednesday and Friday, from 18:30 to 00:00; modern jazz; selected karaoke nights. Whether a specific date is on, the team confirms.',
- book:'I can note the request: occasion, date, time, party size, name and a contact. It stays a demonstration request.\nI do not check tables and I do not confirm the reservation. A link to the reservation software they already use is possible only after the API is checked. Nothing is sent today.\nThe form below saves the same request in this browser.',
- allergy:'Allergies are confirmed by the dining-room staff, which is also what the published menu asks. I am passing the note to a person on the team. No real message was sent.',
+ book:'DEMO — prenotazione simulata / simulated reservation. I can note the request: occasion, date, time, party size, name and a contact. I do not check tables and I do not confirm it.\nThe public path on the website is Plateform: https://ambarasardinianlounge.plateform.app/r/ambarainstagram . That is the published link, not proof of an API. This demo sends nothing to Plateform and does not use OpenTable.\nThe form below saves the same request in this browser only.',
+ instagram:'The Instagram link published on the homepage is https://www.instagram.com/ambarasardinianlounge/ (@ambarasardinianlounge). Facebook, also from the homepage: https://www.facebook.com/ambaralounge . The profiles were not read one by one. This simulation is not connected and sends nothing.',
+ opentable:'The live OpenTable page says Ambàra is not on the booking network. I do not use OpenTable. The public link on the website is Plateform, and the API is not verified.',
+ allergy:'Allergies are confirmed by the dining-room staff, which is also what the published menu asks. I cannot guarantee suitable preparation. I am passing the note to a person on the team. No real message was sent.',
  group:'For a group or an event I will not invent availability. I am passing the request to a person on the team, with the date, party size and occasion if you wrote them.',
- parking:'I do not have a verified parking note on the pages read for this demo. I am passing that to the team, rather than guessing.',
+ parking:'The About page publishes a large free parking area. I do not have further details, such as the number of spaces.',
  fb:'That fact is not among the ones read on the website, so I will not invent it. I am passing it to a person on the team.',
  chef:'The website describes the kitchen as looked after by chef Andrea Locci. I do not have other names from the team.',
  beaches:'The website names Spiaggia dei Sassi Piatti, the coves of Punta Molara, Cala Girgolu and Porto Taverna, plus paths and nuraghi. I am not stating one distance in kilometres: the two website pages do not give the same figure.',
  chips:[['Hours','hours'],['Where are you?','where'],['From the menu','menu'],['Friday DJ','events'],['Saturday table','book'],['Allergy','allergy'],['Event for 20','group'],['In italiano','hours','it']],
  sc:[
-  ['Table for 4, Saturday',[['u','Good evening, do you have a table for 4 on Saturday at 20:30?'],['b','Good evening. I am noting the request: Saturday, 20:30, 4 people, dinner. I cannot see open tables and I will not confirm the reservation.\nA name and a contact help, if you want to leave them. The team reads it with the other requests. In a connected version, and only after the API is checked, the same note could reach the reservation software you already use. Nothing is sent from this demo.']]],
+  ['Table for 4, Saturday',[['u','Good evening, do you have a table for 4 on Saturday at 20:30?'],['b','Good evening. DEMO — prenotazione simulata / simulated reservation. I am noting the request: Saturday, 20:30, 4 people, dinner. I cannot see open tables and I will not confirm it.\nThe public link on the website is Plateform. The API is not verified and nothing is sent from this demo. A name and a contact, if you want them, stay in the form on this page only.']]],
   ['Hours and beaches',[['u','What are your hours? And how do we get toward the beaches?'],['i','hours'],['i','beaches']]],
-  ['Guest in Italian',[['u','Buonasera, si può annotare un tavolo per 2 sabato alle 20?'],['b','Buonasera. Annoto la richiesta: sabato alle 20, 2 persone. Non vedo i tavoli liberi e non confermo la prenotazione.\nNome e recapito, se vuoi, nel modulo sotto. Il team la legge come richiesta. Il collegamento al software di prenotazione aspetta la verifica dell\'API. Da qui non parte nessun messaggio.','it']]],
+  ['Guest in Italian',[['u','Buonasera, si può annotare un tavolo per 2 sabato alle 20?'],['b','Buonasera. DEMO — prenotazione simulata / simulated reservation. Annoto la richiesta: sabato alle 20, 2 persone. Non vedo i tavoli liberi e non confermo.\nIl link pubblico è Plateform e l\'API non è verificata. Da qui non parte nessun messaggio.','it']]],
   ['Allergy, to the team',[['u','One of us is coeliac. Can a dish be changed?'],['i','allergy']]]
  ]
 },
 de:{
  hi:'Guten Tag. Ich bin der Demo-Assistent von Ambàra Sardinian Lounge in Monte Petrosu. Ich antworte mit dem, was auf der Website steht. Einen Tisch notiere ich als Anfrage, ich bestätige ihn nicht.',
- hours:'Im Kontaktblock der Website steht: täglich 7:30–13:00 und 17:00–2:00 geöffnet.\nDie Menüseiten nennen dazu Servicezeiten: Frühstück 7:30–11:30, Mittagessen 12:00–14:30, Abend 17:00–01:00.\nIch entscheide nicht, welche Angabe gilt. Eine genaue Uhrzeit bestätigt das Team. Diese Demo prüft keine freien Tische.',
- where:'Ambàra Sardinian Lounge, Monte Petrosu, Via di Li Graniti, 07052 San Teodoro, Sardinien.\nTelefon und WhatsApp auf der Website: +39 340 199 1233. E-Mail: info@ambaralounge.it.\nDie Website nennt den Weg zur Spiaggia dei Sassi Piatti, zu den Buchten von Punta Molara, nach Cala Girgolu und Porto Taverna.\nEine einzelne Entfernung nenne ich nicht: die Startseite schreibt «nur 1 km von den Stränden», die Seite Dove siamo «nur 2 km vom Meer». Den Weg bestätigt das Team.',
- menu:'Die Website stellt die Küche als von Chef Andrea Locci geführt vor.\nBeispiele auf der Abendkarte: Thunfisch-Battuta 20 €, Culurgiones 22 €, Grill-Degustation 55 € pro Person, Gedeck 3 €.\nDie ganze Karte bleibt auf der Website. Bei Allergien antwortet der Service, nicht ich.',
+ hours:'Die Frühstücksseite nennt 07:30–11:30. Die Getränkekarte nennt stattdessen 08:30–12:00. Ich bevorzuge die eigene Seite und der Tag selbst ist zu bestätigen.\nDie Abendkarte sagt jeden Abend 17:00–01:00.\nEin geprüftes Mittagessen steht in dieser Demo nicht: ich erfinde es nicht. Ob jetzt geöffnet ist, weiss ich nicht, und ich prüfe keine Tische.',
+ where:'Ambàra Sardinian Lounge, Monte Petrosu, Via di Li Graniti, 07052 San Teodoro, Sardinien. Keine geprüfte Hausnummer.\nTelefon und WhatsApp auf der Website: +39 340 199 1233. E-Mail: info@ambaralounge.it.\nInstagram auf der Startseite: @ambarasardinianlounge. Facebook: facebook.com/ambaralounge. Die Profile wurden nicht geprüft und diese Demo verbindet sie nicht.\nDie Website nennt den Weg zur Spiaggia dei Sassi Piatti, zu den Buchten von Punta Molara, nach Cala Girgolu und Porto Taverna.\nEine einzelne Entfernung nenne ich nicht: die Startseite schreibt «nur 1 km von den Stränden», die Seite Dove siamo «nur 2 km vom Meer». Den Weg bestätigt das Team.',
+ menu:'Die Website stellt die Küche als von Chef Andrea Locci geführt vor.\nBeispiele auf der Abendkarte: Thunfisch-Battuta 20 €, Culurgiones 22 €, Grill-Degustation 55 € pro Person. Das Gedeck auf Abend- und Frühstückskarte ist 3 €, die Getränkekarte nennt 2 €. Es gibt kein einheitliches Gedeck.\nDie ganze Karte bleibt auf der Website. Bei Allergien antwortet der Service, nicht ich. Ich garantiere keine kreuzkontaktfreie Zubereitung.',
  events:'Auf der Website: Live-DJ jeden Mittwoch und Freitag, 18:30–00:00; moderner Jazz; ausgewählte Karaoke-Abende. Ob ein bestimmtes Datum stattfindet, bestätigt das Team.',
- book:'Ich kann die Anfrage notieren: Anlass, Datum, Uhrzeit, Personen, Name und Kontakt. Sie bleibt eine Demo-Anfrage.\nIch sehe keine freien Tische und bestätige keine Reservierung. Eine Verbindung zur vorhandenen Reservierungssoftware geht erst nach der API-Prüfung. Es wird nichts gesendet.',
- allergy:'Allergien bestätigt das Service-Team, so steht es auch auf der veröffentlichten Karte. Ich gebe die Notiz an eine Person im Team weiter. Es wurde keine echte Nachricht gesendet.',
+ book:'DEMO — prenotazione simulata / simulated reservation. Ich kann die Anfrage notieren. Ich sehe keine freien Tische und bestätige nichts.\nDer öffentliche Weg auf der Website ist Plateform: https://ambarasardinianlounge.plateform.app/r/ambarainstagram . Das ist der veröffentlichte Link, kein API-Nachweis. Diese Demo sendet nichts an Plateform und nutzt nicht OpenTable.',
+ instagram:'Der Instagram-Link auf der Startseite ist https://www.instagram.com/ambarasardinianlounge/ (@ambarasardinianlounge). Facebook, ebenfalls von der Startseite: https://www.facebook.com/ambaralounge . Die Profile wurden nicht einzeln gelesen. Diese Simulation ist nicht verbunden und sendet nichts.',
+ opentable:'Die live gelesene OpenTable-Seite sagt, Ambàra sei nicht im Buchungsnetz. Ich nutze OpenTable nicht. Der öffentliche Link ist Plateform, und die API ist nicht geprüft.',
+ allergy:'Allergien bestätigt das Service-Team, so steht es auch auf der veröffentlichten Karte. Ich garantiere keine geeignete Zubereitung. Ich gebe die Notiz an eine Person im Team weiter. Es wurde keine echte Nachricht gesendet.',
  group:'Für eine Gruppe oder ein Event erfinde ich keine Verfügbarkeit. Ich gebe die Anfrage an eine Person im Team weiter.',
- parking:'Zum Parken habe ich auf den gelesenen Seiten keine geprüfte Angabe. Das geht an das Team, ohne Vermutung.',
+ parking:'Die Seite Chi siamo nennt einen grossen kostenlosen Parkplatz. Weitere Details, etwa die Zahl der Plätze, habe ich nicht.',
  fb:'Diese Angabe steht nicht in dem, was ich auf der Website gelesen habe. Ich erfinde sie nicht und gebe sie an das Team weiter.',
  chef:'Die Website nennt Chef Andrea Locci für die Küche. Weitere Namen habe ich nicht.',
  beaches:'Die Website nennt die Spiaggia dei Sassi Piatti, die Buchten von Punta Molara, Cala Girgolu und Porto Taverna, dazu Wege und Nuraghen. Eine einzelne Kilometerzahl nenne ich nicht.'
 },
 fr:{
  hi:'Bonjour. Je suis l\'assistant de démonstration d\'Ambàra Sardinian Lounge, à Monte Petrosu. Je réponds avec ce qui est publié sur le site. Une table, je la note comme demande : je ne la confirme pas.',
- hours:'Le bloc contact du site indique : ouvert tous les jours 7h30–13h00 et 17h00–2h00.\nLes pages menu publient aussi des services : petit-déjeuner 7h30–11h30, déjeuner 12h00–14h30, soir 17h00–01h00.\nJe ne choisis pas quelle indication prime. L\'équipe confirme un horaire précis. Cette démo ne vérifie pas les tables libres.',
- where:'Ambàra Sardinian Lounge, Monte Petrosu, Via di Li Graniti, 07052 San Teodoro, Sardaigne.\nTéléphone et WhatsApp publiés : +39 340 199 1233. E-mail : info@ambaralounge.it.\nLe site cite la route vers la Spiaggia dei Sassi Piatti, les criques de Punta Molara, Cala Girgolu et Porto Taverna.\nJe ne donne pas une seule distance : la page d\'accueil dit « à seulement 1 km des plages », la page Dove siamo « à seulement 2 km de la mer ». L\'équipe confirme le trajet.',
- menu:'Le site présente la cuisine comme suivie par le chef Andrea Locci.\nExemples publiés au menu du soir : battuta de thon 20 €, culurgiones 22 €, dégustation grill 55 € par personne, couvert 3 €.\nLa carte complète reste sur le site. Pour les allergènes, c\'est la salle qui répond.',
+ hours:'La page du petit-déjeuner publie 07:30–11:30. Le pied de page de la carte des boissons indique 08:30–12:00. Je privilégie la page dédiée et le jour même est à confirmer.\nLa page du dîner indique tous les soirs 17:00–01:00.\nUn service de déjeuner vérifié n\'est pas dans cette démo : je ne l\'invente pas. Je ne sais pas si c\'est ouvert aujourd\'hui et je ne vérifie pas les tables.',
+ where:'Ambàra Sardinian Lounge, Monte Petrosu, Via di Li Graniti, 07052 San Teodoro, Sardaigne. Aucun numéro de rue vérifié.\nTéléphone et WhatsApp publiés : +39 340 199 1233. E-mail : info@ambaralounge.it.\nInstagram publié sur l\'accueil : @ambarasardinianlounge. Facebook : facebook.com/ambaralounge. Les profils n\'ont pas été inspectés et cette démo ne les connecte pas.\nLe site cite la route vers la Spiaggia dei Sassi Piatti, les criques de Punta Molara, Cala Girgolu et Porto Taverna.\nJe ne donne pas une seule distance : la page d\'accueil dit « à seulement 1 km des plages », la page Dove siamo « à seulement 2 km de la mer ». L\'équipe confirme le trajet.',
+ menu:'Le site présente la cuisine comme suivie par le chef Andrea Locci.\nExemples publiés au menu du soir : battuta de thon 20 €, culurgiones 22 €, dégustation grill 55 € par personne. Le couvert des pages dîner et petit-déjeuner est 3 € ; la carte des boissons indique 2 €. Il n\'y a pas un couvert unique.\nLa carte complète reste sur le site. Pour les allergènes, c\'est la salle qui répond. Je ne garantis pas l\'absence de contamination.',
  events:'Sur le site : DJ en direct chaque mercredi et vendredi, de 18h30 à 00h00 ; jazz moderne ; soirées karaoké choisies. Pour une date précise, l\'équipe confirme.',
- book:'Je peux noter la demande : occasion, date, heure, personnes, nom et contact. Cela reste une demande de démonstration.\nJe ne vois pas les tables et je ne confirme pas la réservation. Le lien vers le logiciel de réservation déjà utilisé attend la vérification de l\'API. Rien n\'est envoyé.',
- allergy:'Les allergies sont confirmées par la salle, comme le demande aussi le menu publié. Je transmets la note à une personne de l\'équipe. Aucun message réel n\'a été envoyé.',
+ book:'DEMO — prenotazione simulata / simulated reservation. Je peux noter la demande. Je ne vois pas les tables et je ne confirme pas.\nLe chemin public sur le site est Plateform : https://ambarasardinianlounge.plateform.app/r/ambarainstagram . C\'est le lien publié, pas la preuve d\'une API. Cette démo n\'envoie rien à Plateform et n\'utilise pas OpenTable.',
+ instagram:'Le lien Instagram publié sur l\'accueil est https://www.instagram.com/ambarasardinianlounge/ (@ambarasardinianlounge). Facebook, aussi depuis l\'accueil : https://www.facebook.com/ambaralounge . Les profils n\'ont pas été lus un par un. Cette simulation n\'est pas connectée et n\'envoie rien.',
+ opentable:'La page OpenTable lue en direct dit qu\'Ambàra n\'est pas sur le réseau de réservation. Je n\'utilise pas OpenTable. Le lien public est Plateform, et l\'API n\'est pas vérifiée.',
+ allergy:'Les allergies sont confirmées par la salle, comme le demande aussi le menu publié. Je ne garantis pas une préparation adaptée. Je transmets la note à une personne de l\'équipe. Aucun message réel n\'a été envoyé.',
  group:'Pour un groupe ou un événement, je n\'invente pas de disponibilité. Je transmets la demande à une personne de l\'équipe.',
- parking:'Je n\'ai pas de note de parking vérifiée sur les pages lues pour cette démo. Je le passe à l\'équipe, sans deviner.',
+ parking:'La page Chi siamo publie un grand parking gratuit. Je n\'ai pas d\'autres détails, par exemple le nombre de places.',
  fb:'Cette information ne figure pas dans ce que j\'ai lu sur le site. Je ne l\'invente pas et je la passe à l\'équipe.',
  chef:'Le site indique le chef Andrea Locci pour la cuisine. Je n\'ai pas d\'autres noms.',
  beaches:'Le site cite la Spiaggia dei Sassi Piatti, les criques de Punta Molara, Cala Girgolu et Porto Taverna, ainsi que des sentiers et des nuraghi. Je ne fixe pas une seule distance en kilomètres.'
 },
 es:{
  hi:'Buenos días. Soy el asistente de demostración de Ambàra Sardinian Lounge, en Monte Petrosu. Respondo con lo publicado en la web. Una mesa la anoto como solicitud: no la confirmo.',
- hours:'El bloque de contacto de la web dice: abierto todos los días 7:30–13:00 y 17:00–2:00.\nLas páginas de menú publican además franjas de servicio: desayuno 7:30–11:30, almuerzo 12:00–14:30, noche 17:00–01:00.\nNo elijo cuál prevalece. El equipo confirma una hora concreta. Esta demo no comprueba si hay mesa.',
- where:'Ambàra Sardinian Lounge, Monte Petrosu, Via di Li Graniti, 07052 San Teodoro, Cerdeña.\nTeléfono y WhatsApp publicados: +39 340 199 1233. Correo: info@ambaralounge.it.\nLa web cita el camino hacia la Spiaggia dei Sassi Piatti, las calas de Punta Molara, Cala Girgolu y Porto Taverna.\nNo doy una sola distancia: la portada dice «a solo 1 km de las playas» y la página Dove siamo «a solo 2 km del mar». El recorrido lo confirma el equipo.',
- menu:'La web presenta la cocina a cargo del chef Andrea Locci.\nEjemplos publicados en la carta de la cena: battuta de atún 20 €, culurgiones 22 €, degustación a la parrilla 55 € por persona, cubierto 3 €.\nLa carta completa sigue en la web. Los alérgenos los confirma la sala.',
+ hours:'La página del desayuno publica 07:30–11:30. El pie de la carta de bebidas indica 08:30–12:00. Doy prioridad a la página dedicada y conviene confirmar el día.\nLa página de la cena indica todas las noches 17:00–01:00.\nUn horario de almuerzo verificado no está en esta demo: no lo invento. No sé si hoy está abierto y no compruebo las mesas.',
+ where:'Ambàra Sardinian Lounge, Monte Petrosu, Via di Li Graniti, 07052 San Teodoro, Cerdeña. Sin número de portal verificado.\nTeléfono y WhatsApp publicados: +39 340 199 1233. Correo: info@ambaralounge.it.\nInstagram publicado en la portada: @ambarasardinianlounge. Facebook: facebook.com/ambaralounge. Los perfiles no se inspeccionaron y esta demo no los conecta.\nLa web cita el camino hacia la Spiaggia dei Sassi Piatti, las calas de Punta Molara, Cala Girgolu y Porto Taverna.\nNo doy una sola distancia: la portada dice «a solo 1 km de las playas» y la página Dove siamo «a solo 2 km del mar». El recorrido lo confirma el equipo.',
+ menu:'La web presenta la cocina a cargo del chef Andrea Locci.\nEjemplos publicados en la carta de la cena: battuta de atún 20 €, culurgiones 22 €, degustación a la parrilla 55 € por persona. El cubierto en cena y desayuno es 3 €; la carta de bebidas indica 2 €. No hay un cubierto único.\nLa carta completa sigue en la web. Los alérgenos los confirma la sala. No garantizo una preparación sin contaminación.',
  events:'En la web: DJ en directo cada miércoles y viernes, de 18:30 a 00:00; jazz moderno; noches de karaoke seleccionadas. Si una fecha concreta está en programa, lo confirma el equipo.',
- book:'Puedo anotar la solicitud: ocasión, fecha, hora, personas, nombre y contacto. Sigue siendo una solicitud de demostración.\nNo veo las mesas libres y no confirmo la reserva. La conexión con el programa de reservas que ya usen espera la validación de la API. No se envía nada.',
- allergy:'Las alergias las confirma el personal de sala, como pide también la carta publicada. Paso la nota a una persona del equipo. No se ha enviado ningún mensaje real.',
+ book:'DEMO — prenotazione simulata / simulated reservation. Puedo anotar la solicitud. No veo las mesas libres y no confirmo.\nEl camino público en la web es Plateform: https://ambarasardinianlounge.plateform.app/r/ambarainstagram . Es el enlace publicado, no la prueba de una API. Esta demo no envía nada a Plateform y no usa OpenTable.',
+ instagram:'El enlace de Instagram publicado en la portada es https://www.instagram.com/ambarasardinianlounge/ (@ambarasardinianlounge). Facebook, también desde la portada: https://www.facebook.com/ambaralounge . Los perfiles no se leyeron uno a uno. Esta simulación no está conectada y no envía nada.',
+ opentable:'La página viva de OpenTable dice que Ambàra no está en la red de reservas. No uso OpenTable. El enlace público es Plateform, y la API no está verificada.',
+ allergy:'Las alergias las confirma el personal de sala, como pide también la carta publicada. No garantizo una preparación adecuada. Paso la nota a una persona del equipo. No se ha enviado ningún mensaje real.',
  group:'Para un grupo o un evento no invento disponibilidad. Paso la solicitud a una persona del equipo.',
- parking:'No tengo una nota de aparcamiento verificada en las páginas leídas para esta demo. Lo paso al equipo, sin adivinar.',
+ parking:'La página Chi siamo publica un aparcamiento amplio y gratuito. No tengo más detalles, por ejemplo el número de plazas.',
  fb:'Ese dato no está entre lo leído en la web, así que no lo invento. Lo paso a una persona del equipo.',
  chef:'La web indica al chef Andrea Locci para la cocina. No tengo otros nombres del equipo.',
  beaches:'La web cita la Spiaggia dei Sassi Piatti, las calas de Punta Molara, Cala Girgolu y Porto Taverna, además de senderos y nuraghi. No fijo una sola distancia en kilómetros.'
 }
 };
-var HAND={allergy:1,group:1,parking:1,fb:1};
+var HAND={allergy:1,group:1,fb:1};
 var RX=[
  ['hi',/^(ciao|buongiorno|buonasera|salve|hello|hi|hey|hallo|guten tag|bonjour|salut|hola|buenas)[\s!.,]*$/],
+ ['opentable',/opentable|open table/],
+ ['instagram',/instagram|facebook/],
  ['allergy',/allerg|celiac|celiach|coeliac|glutine|gluten|glutenfrei|intoller|lactos|nuss|noix|frutos secos|unvertrag/],
  ['parking',/parchegg|parking|parkplatz|stationnement|aparcamiento/],
  ['group',/evento|compleanno|privato|matrimonio|battesimo|wedding|birthday|private dining|geburtstag|hochzeit|mariage|anniversaire|cumple|boda|gruppo|\b([1-9][0-9])\s*(persone|pers\.|people|guests|personen|personnes|personas|gaste)/],
@@ -534,8 +549,8 @@ function show(tab){
 }
 function gCardText(){
  return lang==='it'
-  ? 'Ambàra Sardinian Lounge\nMonte Petrosu, Via di Li Graniti, 07052 San Teodoro\nContatti sul sito: tutti i giorni 7:30–13:00 e 17:00–2:00\n+39 340 199 1233 · info@ambaralounge.it\nambaralounge.it\nNon è una scheda Google collegata.'
-  : 'Ambàra Sardinian Lounge\nMonte Petrosu, Via di Li Graniti, 07052 San Teodoro\nContact block on the website: every day 7:30–13:00 and 17:00–02:00\n+39 340 199 1233 · info@ambaralounge.it\nambaralounge.it\nThis is not a connected Google listing.';
+  ? 'Ambàra Sardinian Lounge\nMonte Petrosu, Via di Li Graniti, 07052 San Teodoro\nColazione, pagina dedicata: 07:30–11:30\nCarta bevande: 08:30–12:00\nSera, pagina cena: 17:00–01:00\n+39 340 199 1233 · info@ambaralounge.it\nInstagram: @ambarasardinianlounge\nPrenotazione pubblica: Plateform, API non verificata\nNon è una scheda Google collegata.'
+  : 'Ambàra Sardinian Lounge\nMonte Petrosu, Via di Li Graniti, 07052 San Teodoro\nBreakfast, dedicated page: 07:30–11:30\nDrinks page: 08:30–12:00\nEvening, dinner page: 17:00–01:00\n+39 340 199 1233 · info@ambaralounge.it\nInstagram: @ambarasardinianlounge\nPublic booking: Plateform, API not verified\nThis is not a connected Google listing.';
 }
 function fillSelect(){
  var s=$('item'), v=s.value||'evening'; s.innerHTML='';

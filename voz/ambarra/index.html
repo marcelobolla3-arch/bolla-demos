@@ -124,9 +124,9 @@ var COPY={
   try2:"Orari, indirizzo o la strada verso le spiagge indicate sul sito",
   try3:"Un'allergia o un gruppo: deve passare a una persona",
   try4:"La stessa domanda in inglese, o in un'altra lingua",
-  note:"Questa è una demo. Non parte nessuna telefonata, non si crea una prenotazione e non si collega il centralino del ristorante. I fatti usati dall'agente, quando sarà configurato, devono restare quelli pubblicati da Ambàra.",
+  note:"Questa è una demo. Non parte nessuna telefonata, non si crea una prenotazione e non si collega il centralino del ristorante. Il link pubblico di prenotazione sul sito è Plateform; l'API non è verificata e da qui non si invia nulla. I fatti usati dall'agente, quando sarà configurato, devono restare quelli pubblicati da Ambàra.",
   holdTitle:"Voce non ancora collegata",
-  hold:"L'agente ElevenLabs di Ambàra non è configurato. Il widget del browser compare qui solo con il suo agent id. Non è stato usato l'agente di un altro cliente.",
+  hold:"L'agente ElevenLabs di Ambàra non è configurato. Il widget del browser compare qui solo con il suo agent id. Non viene caricato l'agente di un'altra demo e non c'è audio sostitutivo.",
   widget:{
     main_label:"Assistente vocale",
     start_call:"Inizia la conversazione",
@@ -158,9 +158,9 @@ var COPY={
   try2:"Hours, the address, or the road toward the beaches named on the website",
   try3:"An allergy or a group: that should go to a person",
   try4:"The same question in Italian, or in another language",
-  note:"This is a demo. No phone call is placed, no reservation is created, and the restaurant's phone system is not connected. When the agent is configured, it should keep to the facts Ambàra has published.",
+  note:"This is a demo. No phone call is placed, no reservation is created, and the restaurant's phone system is not connected. The public booking link on the website is Plateform; the API is not verified and nothing is sent from here. When the agent is configured, it should keep to the facts Ambàra has published.",
   holdTitle:"Voice not connected yet",
-  hold:"Ambàra's ElevenLabs agent is not configured. The browser widget appears here only with its own agent id. No other client's agent is used.",
+  hold:"Ambàra's ElevenLabs agent is not configured. The browser widget appears here only with its own agent id. Another demo's agent is not loaded and there is no stand-in audio.",
   widget:{
     main_label:"Voice assistant",
     start_call:"Start conversation",
@@ -182,8 +182,11 @@ var COPY={
  }
 };
 
+/* Schloss Wülflingen's agent must never be mounted on this page. */
+var FORBIDDEN_AGENT={"agent_3101m5z30nvbf06rvwp6def0k85b":1};
 function validAgent(id){
-  return /^agent_[a-z0-9]+$/i.test(id) && !/pendiente/i.test(id);
+  id=String(id||"");
+  return /^agent_[a-z0-9]+$/i.test(id) && !/pendiente/i.test(id) && !FORBIDDEN_AGENT[id.toLowerCase()];
 }
 
 function apply(lang){
