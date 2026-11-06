@@ -3,6 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#1d1d1b">
 <meta name="robots" content="noindex, nofollow">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%238d3b1f'/%3E%3Ctext x='16' y='22' text-anchor='middle' font-size='16' fill='white' font-family='Georgia'%3EA%3C/text%3E%3C/svg%3E">
 <title>Assistente vocale per Ambàra Sardinian Lounge · BOLLA STUDIO</title>
@@ -10,34 +11,63 @@
   :root{--ink:#1d1d1b;--muted:#6b6a66;--line:#e4e2dc;--bg:#faf9f6;--card:#ffffff;--accent:#8d3b1f}
   *{box-sizing:border-box}
   html,body{margin:0;padding:0}
-  body{background:var(--bg);color:var(--ink);font:16px/1.6 -apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;-webkit-font-smoothing:antialiased}
-  header,main,footer{max-width:760px;margin:0 auto;padding:0 24px}
-  header{display:flex;justify-content:space-between;align-items:center;gap:16px;padding-top:28px;padding-bottom:28px;border-bottom:1px solid var(--line)}
-  .brand{font-weight:600;letter-spacing:.28em;font-size:13px;text-decoration:none;color:var(--ink)}
-  .tools{display:flex;align-items:center;gap:8px}
-  .tag{font-size:13px;color:var(--muted)}
-  .langs{display:flex;gap:6px}
-  .langs button{border:1px solid var(--line);background:#fff;color:var(--ink);border-radius:999px;padding:6px 12px;font-size:13px;cursor:pointer}
+  body{background:var(--bg);color:var(--ink);font:17px/1.5 -apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;-webkit-font-smoothing:antialiased}
+  a{color:var(--accent)}
+  :focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+  .studio{background:#1d1d1b;color:#f6f1ea;padding:16px 16px 14px}
+  .studio-in{max-width:760px;margin:0 auto}
+  .studio-kicker{margin:0;font-size:18px;line-height:1.35;font-weight:700}
+  .demo-pill{display:inline-block;background:#8d3b1f;color:#fff;font-size:13px;letter-spacing:.08em;font-weight:700;padding:5px 9px;border-radius:999px;vertical-align:middle;margin-right:6px}
+  .studio-plain{margin:8px 0 0;font-size:16px;line-height:1.45}
+  .studio-name{margin:12px 0 0;font-size:17px;font-weight:700}
+  .studio-actions{display:flex;flex-wrap:wrap;gap:8px;margin:8px 0 0;align-items:center}
+  .studio-tel{display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:0 16px;background:#fff;color:#1d1d1b;border-radius:999px;font-weight:700;text-decoration:none;font-size:17px}
+  .studio-web{display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:0 16px;border:1px solid rgba(255,255,255,.5);border-radius:999px;color:#fff;text-decoration:none;font-size:16px}
+  .studio-rest{margin:12px 0 0;background:rgba(255,255,255,.08);border-radius:10px;padding:10px 12px;font-size:15px;line-height:1.45;color:#f3efe8}
+  header,main,footer{max-width:760px;margin:0 auto;padding:0 20px}
+  header{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;padding-top:16px;padding-bottom:16px;border-bottom:1px solid var(--line)}
+  .brand{font-weight:600;letter-spacing:.22em;font-size:13px;text-decoration:none;color:var(--ink);min-height:44px;display:inline-flex;align-items:center}
+  .langs{display:flex;gap:8px}
+  .langs button{border:1px solid var(--line);background:#fff;color:var(--ink);border-radius:999px;padding:10px 16px;font-size:16px;cursor:pointer;min-height:44px}
   .langs button.on{background:var(--ink);color:#fff;border-color:var(--ink)}
-  main{padding-top:56px;padding-bottom:40px}
-  .eyebrow{font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin:0 0 12px}
-  h1{font-family:Georgia,"Times New Roman",serif;font-weight:400;font-size:34px;line-height:1.25;margin:0 0 20px}
-  p.lead{font-size:18px;color:#3a3936;margin:0 0 36px;max-width:640px}
-  .card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:28px 28px 22px;margin-bottom:28px}
-  .card h2{font-size:15px;font-weight:600;margin:0 0 14px}
-  ul{margin:0;padding-left:20px}
-  li{margin:0 0 8px}
-  .hint{display:flex;gap:12px;align-items:flex-start;font-size:15px;color:#3a3936}
-  .dot{flex:0 0 10px;height:10px;border-radius:50%;background:#2f6f5e;margin-top:7px}
-  .note{font-size:13px;color:var(--muted);margin-top:28px;max-width:540px}
-  .back{font-size:14px}
-  .back a{color:var(--accent)}
-  footer{border-top:1px solid var(--line);padding-top:22px;padding-bottom:140px;font-size:13px;color:var(--muted);display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px}
-  footer a{color:var(--muted)}
-  .voice-hold{background:#fff;border:1px solid var(--line);border-radius:10px;padding:22px 24px;margin:0 0 28px}
-  .voice-hold b{display:block;font-size:15px;margin-bottom:6px}
-  .voice-hold p{margin:0;font-size:15px;color:#3a3936}
-  @media (max-width:560px){h1{font-size:27px}p.lead{font-size:16px}.card{padding:22px 20px 16px}}
+  main{padding-top:22px;padding-bottom:28px}
+  .eyebrow{font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin:0 0 8px}
+  h1{font-family:Georgia,"Times New Roman",serif;font-weight:400;font-size:32px;line-height:1.25;margin:0 0 12px}
+  p.lead{font-size:18px;color:#3a3936;margin:0 0 18px}
+  .back{margin:0 0 18px;font-size:17px}
+  .back a{display:inline-flex;align-items:center;min-height:44px}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:16px 16px 8px;margin-bottom:16px}
+  .card h2{font-size:20px;font-weight:700;margin:0 0 12px}
+  .steps{list-style:none;margin:0;padding:0;counter-reset:step}
+  .steps li{counter-increment:step;display:flex;gap:12px;align-items:flex-start;margin:0 0 14px;font-size:18px;line-height:1.4}
+  .steps li::before{content:counter(step);flex:0 0 44px;width:44px;height:44px;border-radius:50%;background:var(--accent);color:#fff;font-weight:700;display:grid;place-items:center;font-size:18px}
+  .mic{margin:0 0 12px;padding:12px 14px;background:#fff4d6;border:1px dashed #d9a400;border-radius:12px;font-size:16px;line-height:1.45}
+  ul{margin:0;padding-left:22px}
+  ul li{margin:0 0 10px;font-size:17px}
+  .note{font-size:16px;color:#3a3936;margin:8px 0 0;line-height:1.5}
+  .voice-hold{background:#fff;border:1px solid var(--line);border-radius:16px;padding:16px;margin:0 0 16px}
+  .voice-hold[hidden]{display:none}
+  .voice-hold b{display:block;font-size:18px;margin-bottom:6px}
+  .voice-hold p{margin:0;font-size:17px;color:#3a3936}
+  footer{border-top:1px solid var(--line);padding-top:18px;padding-bottom:calc(260px + env(safe-area-inset-bottom));font-size:16px;color:#3a3936;line-height:1.5}
+  .foot-links{display:flex;flex-wrap:wrap;gap:8px;margin:10px 0 0;align-items:center}
+  footer .studio-tel{background:#1d1d1b;color:#fff}
+  footer .studio-web{color:#1d1d1b;border-color:#1d1d1b}
+  .point{position:fixed;z-index:2;right:16px;bottom:152px;max-width:min(220px,calc(100vw - 32px));pointer-events:none}
+  .point[hidden]{display:none}
+  .point-label{margin:0;background:var(--accent);color:#fff;font-weight:700;font-size:16px;line-height:1.25;padding:10px 12px;border-radius:14px;box-shadow:0 8px 20px rgba(29,29,27,.2);position:relative;animation:nudge 1.4s ease-in-out infinite}
+  .point-label::after{content:"";position:absolute;right:28px;bottom:-9px;border-width:9px 8px 0;border-style:solid;border-color:var(--accent) transparent transparent}
+  @keyframes nudge{0%,100%{transform:translateY(0)}50%{transform:translateY(5px)}}
+  @media (prefers-reduced-motion:reduce){.point-label{animation:none}}
+  @media (min-width:900px){
+    .point{right:300px;bottom:58px;max-width:240px}
+    .point-label::after{right:-9px;bottom:16px;border-width:8px 0 8px 9px;border-color:transparent transparent transparent var(--accent)}
+  }
+  @media (max-width:560px){
+    header,main,footer{padding-left:16px;padding-right:16px}
+    h1{font-size:28px}
+    header{align-items:flex-start}
+  }
 </style>
 <!--
   Voice wrapper for the Ambàra prospect only.
@@ -67,23 +97,41 @@
 </script>
 </head>
 <body>
+<div class="studio">
+  <div class="studio-in">
+    <p class="studio-kicker"><span class="demo-pill">DEMO</span> <span data-k="studioKicker"></span></p>
+    <p class="studio-plain" data-k="studioPlain"></p>
+    <p class="studio-name">Marcelo Bolla · BOLLA STUDIO</p>
+    <p class="studio-actions">
+      <a class="studio-tel" href="tel:+393445240254">+39 344 524 0254</a>
+      <a class="studio-web" href="https://bollastudio.com" target="_blank" rel="noopener">bollastudio.com</a>
+    </p>
+    <p class="studio-rest" data-k="studioRest"></p>
+  </div>
+</div>
 <header>
   <a class="brand" href="https://bollastudio.com" target="_blank" rel="noopener">BOLLA STUDIO</a>
-  <div class="tools">
-    <div class="langs" id="langs"><button type="button" data-l="it" class="on">IT</button><button type="button" data-l="en">EN</button></div>
-    <span class="tag">Demo</span>
-  </div>
+  <div class="langs" id="langs"><button type="button" data-l="it" class="on">Italiano</button><button type="button" data-l="en">English</button></div>
 </header>
 <main>
   <p class="eyebrow" data-k="eyebrow"></p>
   <h1 data-k="h1"></h1>
   <p class="lead" data-k="lead"></p>
-  <p class="back"><a id="back" href="../../ambarra/" data-k="back"></a></p>
 
   <div class="card">
     <h2 data-k="howTitle"></h2>
-    <div class="hint"><span class="dot"></span><span data-k="how"></span></div>
+    <ol class="steps">
+      <li data-k="how1"></li>
+      <li data-k="how2"></li>
+      <li data-k="how3"></li>
+      <li data-k="how4"></li>
+      <li data-k="how5"></li>
+      <li data-k="how6"></li>
+    </ol>
+    <p class="mic" data-k="mic"></p>
   </div>
+
+  <p class="back"><a id="back" href="../../ambarra/" data-k="back"></a></p>
 
   <div class="voice-hold" id="voiceHold" hidden>
     <b data-k="holdTitle"></b>
@@ -103,9 +151,16 @@
   <p class="note" data-k="note"></p>
 </main>
 <footer>
-  <span>BOLLA STUDIO · <a href="https://bollastudio.com" target="_blank" rel="noopener">bollastudio.com</a></span>
-  <span>Demo</span>
+  <p class="foot-line" data-k="foot"></p>
+  <p class="foot-links">
+    <a class="studio-tel" href="tel:+393445240254">+39 344 524 0254</a>
+    <a class="studio-web" href="https://bollastudio.com" target="_blank" rel="noopener">bollastudio.com</a>
+  </p>
 </footer>
+
+<div class="point" id="point">
+  <p class="point-label" data-k="point"></p>
+</div>
 
 <script>
 /* ElevenLabs agent created for Ambàra. Any other id is ignored. */
@@ -113,20 +168,31 @@ var AGENT_ID = "agent_6201m6q47bszfaz93zk0zaxrvbdb";
 
 var COPY={
  it:{
-  eyebrow:"Demo personale",
-  h1:"Assistente vocale per Ambàra Sardinian Lounge",
-  lead:"Qui si parla con l'assistente vocale preparato come esempio per Ambàra, a San Teodoro. Prende una richiesta di tavolo, risponde con i fatti pubblicati sul sito e annota ciò che deve vedere una persona del team.",
-  back:"← Demo WhatsApp, Instagram e Google",
-  howTitle:"Come funziona",
-  how:"Il pulsante è in basso a destra. Si avvia la conversazione nel browser, con il microfono, e si chiude con «Termina». È l'agente vocale di Ambàra. Non parte nessuna telefonata e un tavolo non viene confermato.",
-  tryTitle:"Per provare, a voce",
-  try1:"Un tavolo per sabato sera, senza aspettarsi una conferma",
-  try2:"Orari, indirizzo o la strada verso le spiagge indicate sul sito",
+  studioKicker:"creata da BOLLA STUDIO",
+  studioPlain:"Non è il sito ufficiale di Ambàra e non è gestita dal ristorante.",
+  studioRest:"Il telefono del ristorante, pubblicato sul suo sito, è +39 340 199 1233. Non è il numero di BOLLA STUDIO.",
+  eyebrow:"Prova da fare sul telefono",
+  h1:"Parla con l'assistente di Ambàra",
+  lead:"Si usa il microfono del telefono. L'assistente risponde con ciò che Ambàra ha scritto sul suo sito. Un tavolo si può chiedere, ma non viene confermato.",
+  back:"← Prova con WhatsApp, Instagram e Google",
+  howTitle:"Come si usa",
+  how1:"Guarda in basso a destra. C'è un pulsante rotondo.",
+  how2:"Tocca quel pulsante.",
+  how3:"Tocca «Inizia la conversazione».",
+  how4:"Se il telefono lo chiede, consenti il microfono.",
+  how5:"Parla.",
+  how6:"Per chiudere, tocca «Termina».",
+  mic:"Se non senti nulla, alza il volume del telefono e controlla il permesso del microfono.",
+  point:"Tocca qui in basso a destra",
+  tryTitle:"Cose che puoi dire",
+  try1:"Un tavolo per sabato sera, senza aspettarti una conferma",
+  try2:"Gli orari, l'indirizzo, o la strada verso le spiagge scritte sul sito",
   try3:"Un'allergia o un gruppo: deve passare a una persona",
   try4:"La stessa domanda in inglese, o in un'altra lingua",
-  note:"Questa è una demo. Non parte nessuna telefonata, non si crea una prenotazione e non si collega il centralino del ristorante. Il link pubblico di prenotazione sul sito è Plateform; l'API non è verificata e da qui non si invia nulla. L'agente usa i fatti pubblicati da Ambàra.",
-  holdTitle:"Voce non ancora collegata",
-  hold:"L'agente ElevenLabs di Ambàra non è configurato. Il widget del browser compare qui solo con il suo agent id. Non viene caricato l'agente di un'altra demo e non c'è audio sostitutivo.",
+  note:"Questa è una prova. Non parte nessuna telefonata e non si crea una prenotazione. Il ristorante pubblica un link che si chiama Plateform: da qui non si invia nulla e l'API non è verificata. L'assistente dice solo ciò che è già scritto sul sito di Ambàra.",
+  holdTitle:"Voce non disponibile",
+  hold:"Il pulsante per parlare non è pronto. Non viene usato l'assistente di un altro locale e non c'è un audio sostitutivo.",
+  foot:"Demo creata da Marcelo Bolla · BOLLA STUDIO. Non è il sito ufficiale di Ambàra e non è gestita dal ristorante.",
   widget:{
     main_label:"Assistente vocale",
     start_call:"Inizia la conversazione",
@@ -147,20 +213,31 @@ var COPY={
   }
  },
  en:{
-  eyebrow:"Personal demo",
-  h1:"Voice assistant for Ambàra Sardinian Lounge",
-  lead:"Speak with the voice assistant prepared as an example for Ambàra, in San Teodoro. It takes a table request, answers from the facts published on the website, and notes anything a person on the team needs to see.",
-  back:"← WhatsApp, Instagram and Google demo",
-  howTitle:"How it works",
-  how:"The button is at the bottom right. The conversation runs in the browser, with the microphone, and ends with “End”. This is Ambàra's voice agent. No phone call is placed and a table is not confirmed.",
-  tryTitle:"Worth trying, by voice",
+  studioKicker:"created by BOLLA STUDIO",
+  studioPlain:"This is not the official Ambàra website and the restaurant does not run it.",
+  studioRest:"The restaurant phone, published on its website, is +39 340 199 1233. That is not the BOLLA STUDIO number.",
+  eyebrow:"A trial for your phone",
+  h1:"Speak with the Ambàra assistant",
+  lead:"It uses the phone microphone. The assistant answers from what Ambàra has written on its website. You can ask for a table, but it is not confirmed.",
+  back:"← Try WhatsApp, Instagram and Google",
+  howTitle:"How to use it",
+  how1:"Look at the bottom right. There is a round button.",
+  how2:"Tap that button.",
+  how3:"Tap “Start conversation”.",
+  how4:"If the phone asks, allow the microphone.",
+  how5:"Speak.",
+  how6:"To finish, tap “End”.",
+  mic:"If you hear nothing, turn the volume up and check that the microphone is allowed.",
+  point:"Tap here, at the bottom right",
+  tryTitle:"Things you can say",
   try1:"A table for Saturday evening, without expecting a confirmation",
-  try2:"Hours, the address, or the road toward the beaches named on the website",
+  try2:"The hours, the address, or the road toward the beaches named on the website",
   try3:"An allergy or a group: that should go to a person",
   try4:"The same question in Italian, or in another language",
-  note:"This is a demo. No phone call is placed, no reservation is created, and the restaurant's phone system is not connected. The public booking link on the website is Plateform; the API is not verified and nothing is sent from here. The agent keeps to the facts Ambàra has published.",
-  holdTitle:"Voice not connected yet",
-  hold:"Ambàra's ElevenLabs agent is not configured. The browser widget appears here only with its own agent id. Another demo's agent is not loaded and there is no stand-in audio.",
+  note:"This is a trial. No phone call is placed and no reservation is created. The restaurant publishes a link called Plateform: nothing is sent from here and the API is not verified. The assistant says only what is already written on Ambàra's website.",
+  holdTitle:"Voice is not available",
+  hold:"The button for speaking is not ready. Another place's assistant is not used and there is no stand-in audio.",
+  foot:"Demo created by Marcelo Bolla · BOLLA STUDIO. This is not the official Ambàra website and the restaurant does not run it.",
   widget:{
     main_label:"Voice assistant",
     start_call:"Start conversation",
@@ -237,6 +314,8 @@ if(validAgent(AGENT_ID)){
   })();
 }else{
   document.getElementById("voiceHold").hidden=false;
+  var hint=document.getElementById("point");
+  if(hint) hint.hidden=true;
 }
 </script>
 </body>
