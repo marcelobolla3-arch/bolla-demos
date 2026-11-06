@@ -113,13 +113,16 @@ try {
     widget: !!document.querySelector("elevenlabs-convai"),
     agent: document.body.innerText.includes("agent_3101")
   })`);
-  if (voice.hidden) throw new Error("hold hidden");
-  if (voice.widget) throw new Error("voice widget mounted");
-  if (voice.agent) throw new Error("agent id visible");
-  if (!voice.text.toLowerCase().includes("non è configurato") && !voice.text.toLowerCase().includes("not configured")) {
-    throw new Error(voice.text);
-  }
-  await shot("voice-hold");
+  if (!voice.hidden) throw new Error("unconfigured card still visible");
+  if (!voice.widget) throw new Error("voice widget missing");
+  if (voice.agent) throw new Error("forbidden agent id visible");
+  const voiceAgent = await evaluate(`document.querySelector("elevenlabs-convai").getAttribute("agent-id")`);
+  if (voiceAgent !== "agent_6201m6q47bszfaz93zk0zaxrvbdb") throw new Error("agent " + voiceAgent);
+  const voiceLabel = await evaluate(`document.querySelector("elevenlabs-convai").getAttribute("text-contents")`);
+  if (!voiceLabel.includes("Inizia la conversazione")) throw new Error(voiceLabel);
+  const voiceLang = await evaluate(`document.documentElement.lang`);
+  if (voiceLang !== "it") throw new Error("lang " + voiceLang);
+  await shot("voice-widget");
   await go(390, 844);
   await send("Page.navigate", { url: "http://127.0.0.1:" + port + "/ambarra/?internal=1&lang=en" }, sessionId);
   await delay(800);

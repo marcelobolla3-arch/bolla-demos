@@ -29,7 +29,7 @@
   li{margin:0 0 8px}
   .hint{display:flex;gap:12px;align-items:flex-start;font-size:15px;color:#3a3936}
   .dot{flex:0 0 10px;height:10px;border-radius:50%;background:#2f6f5e;margin-top:7px}
-  .note{font-size:13px;color:var(--muted);margin-top:28px}
+  .note{font-size:13px;color:var(--muted);margin-top:28px;max-width:540px}
   .back{font-size:14px}
   .back a{color:var(--accent)}
   footer{border-top:1px solid var(--line);padding-top:22px;padding-bottom:140px;font-size:13px;color:var(--muted);display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px}
@@ -41,7 +41,7 @@
 </style>
 <!--
   Voice wrapper for the Ambàra prospect only.
-  AGENT_ID stays empty until the ElevenLabs agent created for Ambàra is supplied.
+  AGENT_ID is Ambàra's ElevenLabs agent. The forbidden id is refused and is not loaded.
   Do not paste another client's agent id here.
   GoatCounter: page /ambarra/voice (optional ?p=). Event /ambarra/voice-start.
   ?internal=1 sets localStorage skipgc and loads no counter. ?internal=0 clears it.
@@ -108,8 +108,8 @@
 </footer>
 
 <script>
-/* Set this to the ElevenLabs agent created for Ambàra. Empty means the widget is not loaded. */
-var AGENT_ID = "";
+/* ElevenLabs agent created for Ambàra. Any other id is ignored. */
+var AGENT_ID = "agent_6201m6q47bszfaz93zk0zaxrvbdb";
 
 var COPY={
  it:{
@@ -118,13 +118,13 @@ var COPY={
   lead:"Qui si parla con l'assistente vocale preparato come esempio per Ambàra, a San Teodoro. Prende una richiesta di tavolo, risponde con i fatti pubblicati sul sito e annota ciò che deve vedere una persona del team.",
   back:"← Demo WhatsApp, Instagram e Google",
   howTitle:"Come funziona",
-  how:"Quando l'agente è collegato, il pulsante compare in basso a destra. Si avvia la conversazione nel browser, con il microfono, e si chiude con «Termina». Fino a quel momento il riquadro spiega che l'agente non è ancora configurato.",
+  how:"Il pulsante è in basso a destra. Si avvia la conversazione nel browser, con il microfono, e si chiude con «Termina». È l'agente vocale di Ambàra. Non parte nessuna telefonata e un tavolo non viene confermato.",
   tryTitle:"Per provare, a voce",
   try1:"Un tavolo per sabato sera, senza aspettarsi una conferma",
   try2:"Orari, indirizzo o la strada verso le spiagge indicate sul sito",
   try3:"Un'allergia o un gruppo: deve passare a una persona",
   try4:"La stessa domanda in inglese, o in un'altra lingua",
-  note:"Questa è una demo. Non parte nessuna telefonata, non si crea una prenotazione e non si collega il centralino del ristorante. Il link pubblico di prenotazione sul sito è Plateform; l'API non è verificata e da qui non si invia nulla. I fatti usati dall'agente, quando sarà configurato, devono restare quelli pubblicati da Ambàra.",
+  note:"Questa è una demo. Non parte nessuna telefonata, non si crea una prenotazione e non si collega il centralino del ristorante. Il link pubblico di prenotazione sul sito è Plateform; l'API non è verificata e da qui non si invia nulla. L'agente usa i fatti pubblicati da Ambàra.",
   holdTitle:"Voce non ancora collegata",
   hold:"L'agente ElevenLabs di Ambàra non è configurato. Il widget del browser compare qui solo con il suo agent id. Non viene caricato l'agente di un'altra demo e non c'è audio sostitutivo.",
   widget:{
@@ -152,13 +152,13 @@ var COPY={
   lead:"Speak with the voice assistant prepared as an example for Ambàra, in San Teodoro. It takes a table request, answers from the facts published on the website, and notes anything a person on the team needs to see.",
   back:"← WhatsApp, Instagram and Google demo",
   howTitle:"How it works",
-  how:"Once the agent is connected, the button appears at the bottom right. The conversation runs in the browser, with the microphone, and ends with “End”. Until then, the card explains that the agent is not configured yet.",
+  how:"The button is at the bottom right. The conversation runs in the browser, with the microphone, and ends with “End”. This is Ambàra's voice agent. No phone call is placed and a table is not confirmed.",
   tryTitle:"Worth trying, by voice",
   try1:"A table for Saturday evening, without expecting a confirmation",
   try2:"Hours, the address, or the road toward the beaches named on the website",
   try3:"An allergy or a group: that should go to a person",
   try4:"The same question in Italian, or in another language",
-  note:"This is a demo. No phone call is placed, no reservation is created, and the restaurant's phone system is not connected. The public booking link on the website is Plateform; the API is not verified and nothing is sent from here. When the agent is configured, it should keep to the facts Ambàra has published.",
+  note:"This is a demo. No phone call is placed, no reservation is created, and the restaurant's phone system is not connected. The public booking link on the website is Plateform; the API is not verified and nothing is sent from here. The agent keeps to the facts Ambàra has published.",
   holdTitle:"Voice not connected yet",
   hold:"Ambàra's ElevenLabs agent is not configured. The browser widget appears here only with its own agent id. Another demo's agent is not loaded and there is no stand-in audio.",
   widget:{

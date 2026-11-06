@@ -12,14 +12,15 @@ test("the main script parses", () => {
   new Function(main);
 });
 
-test("the voice script parses and stays unconfigured", () => {
+test("the voice script parses and loads only Ambàra's agent", () => {
   const parts = voice.split("<script>");
   const main = parts[parts.length - 1].replace(/<\/script>[\s\S]*$/, "");
   new Function(main);
-  assert.match(voice, /var AGENT_ID = "";/);
+  assert.match(voice, /var AGENT_ID = "agent_6201m6q47bszfaz93zk0zaxrvbdb";/);
   assert.doesNotMatch(voice, /agent-id="agent_/);
-  assert.match(voice, /agent_3101m5z30nvbf06rvwp6def0k85b/);
   assert.match(voice, /FORBIDDEN_AGENT/);
+  assert.match(voice, /agent_3101m5z30nvbf06rvwp6def0k85b/);
+  assert.equal((voice.match(/agent_6201m6q47bszfaz93zk0zaxrvbdb/g) || []).length, 1);
 });
 
 test("Instagram and Plateform are named, and the API stays unverified", () => {
