@@ -61,17 +61,24 @@ try {
     await send("Emulation.setDeviceMetricsOverride", { width, height, deviceScaleFactor: 1, mobile: width < 700 }, sessionId);
   }
   await go(1280, 900);
-  await send("Page.navigate", { url: "http://127.0.0.1:" + port + "/ambarra/?internal=1" }, sessionId);
+  await send("Page.navigate", { url: "http://127.0.0.1:" + port + "/ambarra/?p=ambarra&internal=1" }, sessionId);
   await delay(1600);
   const loaded = await evaluate(`({
     h1: document.querySelector("h1").textContent,
     top: document.querySelector(".top").textContent,
     skip: localStorage.getItem("skipgc"),
     counter: !!document.querySelector('script[src*="gc.zgo.at"]'),
-    widget: !!document.querySelector("elevenlabs-convai")
+    widget: !!document.querySelector("elevenlabs-convai"),
+    howto: document.body.innerText.includes("Come usare (telefono)"),
+    step: document.body.innerText.includes("Tocca «Invia»"),
+    studio: !!document.querySelector('a[href="tel:+393445240254"]'),
+    restaurantLink: !!document.querySelector('a[href*="340"]')
   })`);
   if (!loaded.h1.includes("italiano")) throw new Error("h1 " + loaded.h1);
   if (!loaded.top.includes("Ambàra")) throw new Error("top " + loaded.top);
+  if (!loaded.howto || !loaded.step) throw new Error("missing phone steps");
+  if (!loaded.studio) throw new Error("studio phone missing");
+  if (loaded.restaurantLink) throw new Error("restaurant phone is a link");
   if (loaded.skip !== "t") throw new Error("skipgc " + loaded.skip);
   if (loaded.counter) throw new Error("counter loaded during internal QA");
   if (loaded.widget) throw new Error("widget on the channel page");
@@ -81,6 +88,9 @@ try {
   if (!hours.includes("07:30–11:30") || !hours.includes("08:30–12:00") || !hours.includes("17:00–01:00")) {
     throw new Error("hours " + hours.slice(0, 500));
   }
+  if (hours.includes("prenotazione simulata") || hours.includes("simulated reservation")) {
+    throw new Error("demo stamp still in the chat " + hours.slice(0, 400));
+  }
   await evaluate(`document.getElementById("inp").value = "Qual è il vostro Instagram?"; document.getElementById("send").click();`);
   await delay(900);
   const ig = await evaluate(`document.getElementById("msgs").innerText`);
@@ -89,9 +99,10 @@ try {
   await evaluate(`Array.from(document.querySelectorAll("#slots button")).find(b => b.textContent === "20:30").click(); document.getElementById("cta").click();`);
   await delay(200);
   const booked = await evaluate(`document.getElementById("ok").innerText`);
-  if (!booked.includes("DEMO — prenotazione simulata / simulated reservation")) throw new Error(booked);
-  if (!booked.includes("Nessuna prenotazione effettuata")) throw new Error(booked);
-  if (!booked.includes("Plateform")) throw new Error(booked);
+  if (!booked.includes("Ho preso nota della richiesta; lo staff di Ambàra la conferma.")) throw new Error(booked);
+  if (booked.includes("DEMO —") || booked.includes("Plateform") || booked.includes("simulated reservation")) throw new Error(booked);
+  const quiet = await evaluate(`document.querySelector("footer").innerText`);
+  if (!quiet.includes("nulla viene inviato a Plateform")) throw new Error(quiet.slice(-400));
   await shot("desktop-it");
   await evaluate(`document.querySelector('#langs button[data-l="en"]').click()`);
   await delay(500);
@@ -105,17 +116,23 @@ try {
   await evaluate(`document.querySelector('#tabs button[data-tab="voice"]').click()`);
   await delay(200);
   await shot("desktop-voice-link");
-  await send("Page.navigate", { url: "http://127.0.0.1:" + port + "/voz/ambarra/?internal=1" }, sessionId);
+  await send("Page.navigate", { url: "http://127.0.0.1:" + port + "/voz/ambarra/?p=ambarra&internal=1" }, sessionId);
   await delay(700);
   const voice = await evaluate(`({
     hidden: document.getElementById("voiceHold").hidden,
     text: document.getElementById("voiceHold").innerText,
     widget: !!document.querySelector("elevenlabs-convai"),
-    agent: document.body.innerText.includes("agent_3101")
+    agent: document.body.innerText.includes("agent_3101"),
+    steps: document.querySelectorAll(".steps li").length,
+    hint: document.getElementById("point") && !document.getElementById("point").hidden && document.getElementById("point").innerText.includes("Tocca qui in basso a destra"),
+    how: document.body.innerText.includes("«Inizia la conversazione»") && document.body.innerText.includes("«Termina»"),
+    mic: document.body.innerText.includes("permesso del microfono"),
+    studio: !!document.querySelector('a[href="tel:+393445240254"]')
   })`);
   if (!voice.hidden) throw new Error("unconfigured card still visible");
   if (!voice.widget) throw new Error("voice widget missing");
   if (voice.agent) throw new Error("forbidden agent id visible");
+  if (voice.steps !== 6 || !voice.how || !voice.hint || !voice.mic || !voice.studio) throw new Error("voice steps " + JSON.stringify(voice));
   const voiceAgent = await evaluate(`document.querySelector("elevenlabs-convai").getAttribute("agent-id")`);
   if (voiceAgent !== "agent_6201m6q47bszfaz93zk0zaxrvbdb") throw new Error("agent " + voiceAgent);
   const voiceLabel = await evaluate(`document.querySelector("elevenlabs-convai").getAttribute("text-contents")`);
@@ -124,12 +141,29 @@ try {
   if (voiceLang !== "it") throw new Error("lang " + voiceLang);
   await shot("voice-widget");
   await go(390, 844);
-  await send("Page.navigate", { url: "http://127.0.0.1:" + port + "/ambarra/?internal=1&lang=en" }, sessionId);
+  await send("Page.navigate", { url: "http://127.0.0.1:" + port + "/voz/ambarra/?p=ambarra&internal=1" }, sessionId);
+  await delay(900);
+  const voiceOverflow = await evaluate(`document.documentElement.scrollWidth > document.documentElement.clientWidth + 1`);
+  if (voiceOverflow) throw new Error("voice horizontal overflow");
+  await shot("voice-mobile");
+  await evaluate(`document.querySelector('#langs button[data-l="en"]').click()`);
+  await delay(300);
+  const voiceEn = await evaluate(`document.getElementById("point").innerText`);
+  if (!voiceEn.includes("Tap here")) throw new Error("voice en hint " + voiceEn);
+  await go(320, 700);
+  await send("Page.navigate", { url: "http://127.0.0.1:" + port + "/ambarra/?p=ambarra&internal=1" }, sessionId);
+  await delay(800);
+  const narrow = await evaluate(`document.documentElement.scrollWidth > document.documentElement.clientWidth + 1`);
+  if (narrow) throw new Error("narrow horizontal overflow");
+  await go(390, 844);
+  await send("Page.navigate", { url: "http://127.0.0.1:" + port + "/ambarra/?p=ambarra&internal=1" }, sessionId);
   await delay(800);
   const overflow = await evaluate(`document.documentElement.scrollWidth > document.documentElement.clientWidth + 1`);
   if (overflow) throw new Error("horizontal overflow");
   await evaluate(`document.querySelector('#langs button[data-l="en"]').click()`);
   await delay(400);
+  const phoneEn = await evaluate(`document.body.innerText.includes("How to use it (phone)") && document.body.innerText.includes("Tap “Send”")`);
+  if (!phoneEn) throw new Error("english phone steps missing");
   await shot("mobile-en");
   console.log("browser checks passed");
   console.log(outDir);

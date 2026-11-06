@@ -32,7 +32,35 @@ test("Instagram and Plateform are named, and the API stays unverified", () => {
   assert.match(page, /non è sul network/);
   assert.match(page, /not on the booking network/);
   assert.doesNotMatch(page, /none was verified|non risulta verificato su queste pagine|Booking software is not named/);
-  assert.doesNotMatch(page, /wa\.me|tel:/);
+  assert.doesNotMatch(page, /wa\.me/);
+  assert.doesNotMatch(page, /tel:\+393401991233/);
+  assert.doesNotMatch(page, /href="tel:[^"]*340/);
+});
+
+test("studio credit is visible and the restaurant phone is not a link", () => {
+  for (const html of [page, voice]) {
+    assert.match(html, /href="tel:\+393445240254"/);
+    assert.match(html, /Marcelo Bolla/);
+    assert.match(html, /https:\/\/bollastudio\.com/);
+    assert.match(html, /Non è il sito ufficiale di Ambàra/);
+    assert.match(html, /\+39 340 199 1233/);
+    assert.doesNotMatch(html, /wa\.me/);
+    assert.doesNotMatch(html, /tel:\+393401991233/);
+  }
+  assert.match(page, /Come usare \(telefono\)/);
+  assert.match(page, /Tocca «Invia»/);
+  assert.match(voice, /<ol class="steps">/);
+  assert.match(voice, /Tocca qui in basso a destra/);
+  assert.match(voice, /«Inizia la conversazione»/);
+  assert.match(voice, /«Termina»/);
+  assert.match(voice, /permesso del microfono/);
+  assert.doesNotMatch(voice, /agent-id="agent_/);
+  assert.doesNotMatch(page, /DEMO — prenotazione simulata/);
+  assert.doesNotMatch(page, /simulated reservation/);
+  assert.match(page, /Ho preso nota della richiesta; lo staff di Ambàra la conferma/);
+  assert.match(page, /I\\'ve noted the request; the Ambàra staff will confirm it/);
+  assert.match(page, /nulla viene inviato a Plateform/);
+  assert.match(page, /nothing is sent to Plateform/);
 });
 
 test("hours and cover keep the published conflict and drop unverified lunch", () => {
