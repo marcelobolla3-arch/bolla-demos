@@ -86,3 +86,21 @@ test("analytics skip and Schloss stay intact", () => {
   assert.doesNotMatch(page, /agent_3101m5z30nvbf06rvwp6def0k85b/);
   assert.doesNotMatch(page, /elevenlabs-convai/);
 });
+
+test("Spanish and locale switching are wired for the messaging demo", () => {
+  assert.match(page, /data-l="es"/);
+  assert.match(page, /data-l="de"/);
+  assert.match(page, /data-l="fr"/);
+  assert.match(page, /function browserLang/);
+  assert.match(page, /function initialLang/);
+  assert.match(page, /bolla_ambarra_lang/);
+  assert.match(page, /navigator\.languages/);
+  assert.match(page, /applyUi\(rl, \{keepChat:true\}\)/);
+  assert.match(page, /setLang\(initialLang\(\)\)/);
+  assert.match(page, /Idioma de la página/);
+  assert.match(page, /\['Horarios','hours'\]/);
+  assert.match(page, /\['Öffnungszeiten','hours'\]/);
+  assert.match(page, /\['Horaires','hours'\]/);
+  assert.match(page, /chips:.*Orari/);
+  assert.match(page, /chips:.*Hours/);
+});

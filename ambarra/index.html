@@ -183,7 +183,7 @@ footer a.tel{display:inline-flex;align-items:center;min-height:44px;padding:0 14
     <button type="button" data-tab="voice" data-t="tabVoice"></button>
     <button type="button" data-tab="team" data-t="tabTeam"></button>
   </div>
-  <div class="langs" id="langs"><span data-t="langLbl"></span><button type="button" data-l="it" class="on">Italiano</button><button type="button" data-l="en">English</button></div>
+  <div class="langs" id="langs"><span data-t="langLbl"></span><button type="button" data-l="it" class="on">Italiano</button><button type="button" data-l="en">English</button><button type="button" data-l="es">Español</button><button type="button" data-l="de">Deutsch</button><button type="button" data-l="fr">Français</button></div>
 </div>
 <main>
 <section class="pane on" id="pane-chat">
@@ -320,7 +320,7 @@ it:{
  stNew:'Da confermare',
  rFoot:'In produzione il team può entrare in qualsiasi conversazione. Qui non c\'è una coda reale. Le richieste di tavolo restano in questa pagina: nulla viene inviato a Plateform.',
  rClear:'Cancella i dati di questa demo',
- feat1:'<b>Italiano, inglese e altre lingue</b><br>La pagina è in italiano o in inglese. Se l\'ospite scrive in un\'altra lingua, la risposta di esempio segue quella lingua, sui fatti già pubblicati.',
+ feat1:'<b>Italiano, inglese, spagnolo, tedesco e francese</b><br>La pagina segue la lingua del browser. Se cambi lingua o scrivi in un\'altra lingua, anche gli esempi sotto passano a quella lingua, sui fatti già pubblicati.',
  feat2:'<b>Solo il sito di Ambàra</b><br>Indirizzo, telefono, orari e qualche piatto con il prezzo pubblicato. Se due pagine non coincidono, l\'assistente lo dice e non inventa la versione “giusta”.',
  feat3:'<b>Il team conferma</b><br>Allergie, eventi e tutto ciò che non è sul sito passano a una persona. Il tavolo non è confermato. Plateform è solo il link pubblico: l\'API non è collegata.',
  foot:'Demo creata da <b>Marcelo Bolla</b> · BOLLA STUDIO · <a class="tel" href="tel:+393445240254">+39 344 524 0254</a> · <a href="https://bollastudio.com" target="_blank" rel="noopener">bollastudio.com</a>. Non è il sito ufficiale di Ambàra e non è gestita dal ristorante.<br>Fonti lette il 5 novembre 2026: <a href="https://ambaralounge.it/" target="_blank" rel="noopener">home</a>, <a href="https://ambaralounge.it/chi-siamo/" target="_blank" rel="noopener">chi siamo</a>, <a href="https://ambaralounge.it/dove-siamo/" target="_blank" rel="noopener">dove siamo</a>, <a href="https://ambaralounge.it/menu-colazione/" target="_blank" rel="noopener">colazione</a>, <a href="https://ambaralounge.it/menu-cena/" target="_blank" rel="noopener">cena</a>, <a href="https://ambaralounge.it/carta-dei-vini/" target="_blank" rel="noopener">bevande</a>, <a href="https://www.instagram.com/ambarasardinianlounge/" target="_blank" rel="noopener">Instagram</a>, <a href="https://ambarasardinianlounge.plateform.app/r/ambarainstagram" target="_blank" rel="noopener">Plateform</a>. Il profilo Instagram non è stato ispezionato e l\'API di Plateform non è verificata. Nessun dato lascia il browser. Le richieste di tavolo restano in questa pagina: nulla viene inviato a Plateform.',
@@ -375,12 +375,177 @@ en:{
  stNew:'To be confirmed',
  rFoot:'In production the team can join any conversation. There is no live queue here. Table requests stay on this page: nothing is sent to Plateform.',
  rClear:'Clear this demo\'s data',
- feat1:'<b>Italian, English and other languages</b><br>The page is in Italian or English. If a guest writes in another language, the sample answer follows that language, using facts already published.',
+ feat1:'<b>Italian, English, Spanish, German and French</b><br>The page follows the browser language. If you change language or type in another language, the example chips below switch too, using facts already published.',
  feat2:'<b>Only Ambàra\'s website</b><br>Address, phone, hours and a few dishes with the published price. If two pages disagree, the assistant says so and does not invent the "right" version.',
  feat3:'<b>The team confirms</b><br>Allergies, events and anything missing from the website go to a person. The table is not confirmed. Plateform is only the public link: the API is not connected.',
  foot:'Demo created by <b>Marcelo Bolla</b> · BOLLA STUDIO · <a class="tel" href="tel:+393445240254">+39 344 524 0254</a> · <a href="https://bollastudio.com" target="_blank" rel="noopener">bollastudio.com</a>. This is not the official Ambàra website and the restaurant does not run it.<br>Sources read on 5 November 2026: <a href="https://ambaralounge.it/" target="_blank" rel="noopener">home</a>, <a href="https://ambaralounge.it/chi-siamo/" target="_blank" rel="noopener">about</a>, <a href="https://ambaralounge.it/dove-siamo/" target="_blank" rel="noopener">where we are</a>, <a href="https://ambaralounge.it/menu-colazione/" target="_blank" rel="noopener">breakfast</a>, <a href="https://ambaralounge.it/menu-cena/" target="_blank" rel="noopener">dinner</a>, <a href="https://ambaralounge.it/carta-dei-vini/" target="_blank" rel="noopener">drinks</a>, <a href="https://www.instagram.com/ambarasardinianlounge/" target="_blank" rel="noopener">Instagram</a>, <a href="https://ambarasardinianlounge.plateform.app/r/ambarainstagram" target="_blank" rel="noopener">Plateform</a>. The Instagram profile was not inspected and the Plateform API is not verified. Nothing leaves the browser. Table requests stay on this page: nothing is sent to Plateform.',
  sysHand:'Passed to a person on the team, in this log only. No message was sent.',
  why:{allergy:'Allergy',group:'Group or event',fb:'Not published',parking:'Parking not verified'}
+},
+es:{
+ top:'Prueba para <b>Ambàra Sardinian Lounge</b>. Desde aquí no se envía ningún mensaje ni ninguna reserva real.',
+ tag:'San Teodoro · Monte Petrosu · demo aislada',
+ h1:'Una prueba en español, para hacer en el teléfono',
+ intro:'Se escribe como en un mensaje. Las respuestas usan solo lo que Ambàra ha publicado en la web. Se puede anotar una mesa, pero no se confirma.',
+ studioKicker:'creada por BOLLA STUDIO',
+ studioPlain:'No es el sitio oficial de Ambàra y no la gestiona el restaurante.',
+ studioRest:'El teléfono del restaurante, publicado en su web, es +39 340 199 1233. No es el número de BOLLA STUDIO.',
+ howTitle:'Cómo usarla (teléfono)',
+ how1:'Toca, aquí abajo, la pestaña WhatsApp o Instagram.',
+ how2:'Escribe en el cuadro de abajo, como en un mensaje.',
+ how3:'Toca «Enviar».',
+ langLbl:'Idioma de la página',
+ tabWa:'WhatsApp', tabIg:'Instagram', tabGoogle:'Google', tabVoice:'Voz', tabTeam:'Para el equipo',
+ chWa:'Simulación WhatsApp · Ambàra', chIg:'Simulación Instagram · Ambàra',
+ chSub:'Demostración BOLLA · no se envía ningún mensaje',
+ banner:'Interfaz BOLLA, no la app oficial. No se entra en una cuenta y no se escribe al restaurante.',
+ send:'Enviar', ph:'Escribe como un huésped…',
+ sideTitle:'Conversaciones de ejemplo',
+ sideNote:'Las respuestas citan la web pública. Los horarios de servicio y el horario general no siempre coinciden: la demo no elige una versión. Alergias, grupos y datos ausentes pasan a una persona. El registro queda en este navegador.',
+ fTitle:'Solicitud de mesa',
+ fSub:'Los horarios que se pueden elegir son ventanas publicadas (desayuno en su página, noche en la página de cena), no mesas libres. La carta de bebidas indica otro horario de desayuno. El enlace público es Plateform; la API no está verificada y desde aquí no se envía nada.',
+ fItem:'Ocasión', fGuests:'Personas', fDate:'Fecha', fName:'Nombre, si quieres dejarlo', fTime:'Hora pedida', fContact:'Contacto, si quieres dejarlo', fNotes:'Nota (alergias, carrito, tarta…)', fSubmit:'Enviar la solicitud',
+ items:[['breakfast','Desayuno'],['evening','Aperitivo o cena']],
+ pick:'Elige fecha y hora. No hace falta una cuenta.',
+ ok:'He tomado nota de la solicitud; el equipo de Ambàra la confirma.\n{s}',
+ gTitle:'Google, solo en las superficies que existen',
+ gLead:'Quien busca Ambàra en Google encuentra una ficha pública y, desde ahí, la web o el teléfono. Esta demo no abre un chat dentro de Google y no modifica el perfil.',
+ gWarn:'Google Business Messages, el chat dentro de Google, cerró el 31 de julio de 2024. No hay un chat en vivo en Google Maps y no se entra en la cuenta Google del restaurante.',
+ gNowT:'Hoy, sin conectar nada',
+ gNow:'La ficha de Google puede mostrar nombre, dirección, horarios, teléfono y el enlace a la web, si el restaurante los publicó. Esta página no lee ni escribe ese perfil.',
+ gNextT:'Dónde puede llegar el asistente',
+ gNext:'El sitio oficial es ambaralounge.it. Para una mesa, el enlace público repetido en la portada es Plateform. No hay Reserve with Google verificado y la API de Plateform no está verificada: esta demo no reserva. Donde Google aún muestra un mensaje en algunos perfiles, eso abre el número del local, no un chat de Google.',
+ gCardT:'Hechos de la web, para no contradecir',
+ gNotT:'Fuera de esta demo',
+ gNot:'Sin login de Google. Sin mensaje enviado desde Google. Sin respuesta publicada a reseñas. Sin Reserve with Google. Plateform sigue siendo un enlace público, sin API verificada.',
+ vTitle:'Voz, en el teléfono',
+ vLead:'La voz está en otra página. Los pasos están numerados: dónde tocar, cómo hablar y cómo cerrar.',
+ vWarn:'No se hace ninguna llamada al restaurante. Una mesa no se confirma. Es solo una prueba.',
+ vLink:'Abrir la página de voz',
+ rTitle:'Registro para el equipo',
+ rSub:'Se llena con lo que haces en esta demo y queda solo en este navegador. Las filas no son conversaciones del restaurante.',
+ k:['Mensajes','Respuestas automáticas','Pasados al equipo','Solicitudes de mesa'],
+ rReq:'Solicitudes por leer, no confirmadas', rHand:'Para una persona del equipo',
+ hReq:['Hora','Canal','Solicitud','Estado'], hHand:['Hora','Idioma','Texto','Motivo'],
+ stNew:'Por confirmar',
+ rFoot:'En producción el equipo puede entrar en cualquier conversación. Aquí no hay una cola real. Las solicitudes de mesa quedan en esta página: no se envía nada a Plateform.',
+ rClear:'Borrar los datos de esta demo',
+ feat1:'<b>Italiano, inglés, español, alemán y francés</b><br>La página sigue el idioma del navegador. Si cambias el idioma o escribes en otro, los ejemplos de abajo también cambian, con los hechos ya publicados.',
+ feat2:'<b>Solo la web de Ambàra</b><br>Dirección, teléfono, horarios y algunos platos con el precio publicado. Si dos páginas no coinciden, el asistente lo dice y no inventa la versión “correcta”.',
+ feat3:'<b>El equipo confirma</b><br>Alergias, eventos y todo lo que no está en la web pasan a una persona. La mesa no se confirma. Plateform es solo el enlace público: la API no está conectada.',
+ foot:'Demo creada por <b>Marcelo Bolla</b> · BOLLA STUDIO · <a class="tel" href="tel:+393445240254">+39 344 524 0254</a> · <a href="https://bollastudio.com" target="_blank" rel="noopener">bollastudio.com</a>. No es el sitio oficial de Ambàra y no la gestiona el restaurante.<br>Fuentes leídas el 5 de noviembre de 2026: <a href="https://ambaralounge.it/" target="_blank" rel="noopener">home</a>, <a href="https://ambaralounge.it/chi-siamo/" target="_blank" rel="noopener">chi siamo</a>, <a href="https://ambaralounge.it/dove-siamo/" target="_blank" rel="noopener">dove siamo</a>, <a href="https://ambaralounge.it/menu-colazione/" target="_blank" rel="noopener">colazione</a>, <a href="https://ambaralounge.it/menu-cena/" target="_blank" rel="noopener">cena</a>, <a href="https://ambaralounge.it/carta-dei-vini/" target="_blank" rel="noopener">bebidas</a>, <a href="https://www.instagram.com/ambarasardinianlounge/" target="_blank" rel="noopener">Instagram</a>, <a href="https://ambarasardinianlounge.plateform.app/r/ambarainstagram" target="_blank" rel="noopener">Plateform</a>. El perfil de Instagram no se inspeccionó y la API de Plateform no está verificada. Ningún dato sale del navegador. Las solicitudes de mesa quedan en esta página: no se envía nada a Plateform.',
+ sysHand:'Pasado a una persona del equipo, solo en este registro. No se ha enviado ningún mensaje.',
+ why:{allergy:'Alergia',group:'Grupo o evento',fb:'Dato no publicado',parking:'Aparcamiento no verificado'}
+},
+de:{
+ top:'Probe für <b>Ambàra Sardinian Lounge</b>. Von hier geht keine Nachricht und keine echte Reservierung aus.',
+ tag:'San Teodoro · Monte Petrosu · isolierte Demo',
+ h1:'Eine Probe auf Deutsch, fürs Telefon',
+ intro:'Man schreibt wie in einer Nachricht. Die Antworten nutzen nur das, was Ambàra auf der Website veröffentlicht hat. Ein Tisch kann notiert werden, wird aber nicht bestätigt.',
+ studioKicker:'erstellt von BOLLA STUDIO',
+ studioPlain:'Das ist nicht die offizielle Ambàra-Website und das Restaurant betreibt sie nicht.',
+ studioRest:'Das Restauranttelefon, auf seiner Website veröffentlicht, ist +39 340 199 1233. Das ist nicht die Nummer von BOLLA STUDIO.',
+ howTitle:'So nutzt du es (Telefon)',
+ how1:'Tippe unten auf den Reiter WhatsApp oder Instagram.',
+ how2:'Schreibe im Feld unten, wie in einer Nachricht.',
+ how3:'Tippe «Senden».',
+ langLbl:'Seitensprache',
+ tabWa:'WhatsApp', tabIg:'Instagram', tabGoogle:'Google', tabVoice:'Stimme', tabTeam:'Für das Team',
+ chWa:'WhatsApp-Simulation · Ambàra', chIg:'Instagram-Simulation · Ambàra',
+ chSub:'BOLLA-Demonstration · es wird keine Nachricht gesendet',
+ banner:'BOLLA-Oberfläche, nicht die offizielle App. Kein Login und nichts geht an das Restaurant.',
+ send:'Senden', ph:'Schreibe wie ein Gast…',
+ sideTitle:'Beispielgespräche',
+ sideNote:'Antworten zitieren die öffentliche Website. Servicezeiten und allgemeine Öffnungszeiten stimmen nicht immer überein: die Demo wählt keine Version. Allergien, Gruppen und fehlende Fakten gehen an eine Person. Das Protokoll bleibt in diesem Browser.',
+ fTitle:'Tischanfrage',
+ fSub:'Die wählbaren Zeiten liegen in veröffentlichten Fenstern (Frühstück auf der eigenen Seite, Abend auf der Abendkarte), nicht als freie Tische. Die Getränkekarte nennt ein anderes Frühstücksfenster. Plateform ist der öffentliche Link; die API ist nicht geprüft und von hier wird nichts gesendet.',
+ fItem:'Anlass', fGuests:'Personen', fDate:'Datum', fName:'Name, wenn du einen hinterlassen willst', fTime:'Gewünschte Uhrzeit', fContact:'Kontakt, wenn du einen hinterlassen willst', fNotes:'Notiz (Allergien, Kinderwagen, Torte…)', fSubmit:'Anfrage senden',
+ items:[['breakfast','Frühstück'],['evening','Aperitivo oder Abendessen']],
+ pick:'Wähle Datum und Uhrzeit. Kein Konto nötig.',
+ ok:'Ich habe die Anfrage notiert; das Team von Ambàra bestätigt sie.\n{s}',
+ gTitle:'Google, nur auf Flächen die existieren',
+ gLead:'Wer Ambàra bei Google findet, sieht einen öffentlichen Eintrag und von dort die Website oder die Telefonnummer. Diese Demo öffnet keinen Chat in Google und ändert das Profil nicht.',
+ gWarn:'Google Business Messages, der Chat in Google, endete am 31. Juli 2024. Es gibt keinen Live-Chat auf Google Maps und keinen Login zum Google-Konto des Restaurants.',
+ gNowT:'Heute, ohne etwas zu verbinden',
+ gNow:'Ein Google-Eintrag kann Name, Adresse, Öffnungszeiten, Telefon und den Website-Link zeigen, wenn das Restaurant sie veröffentlicht hat. Diese Seite liest und schreibt dieses Profil nicht.',
+ gNextT:'Wo der Assistent sitzen kann',
+ gNext:'Die offizielle Website ist ambaralounge.it. Für einen Tisch ist der öffentliche Link auf der Startseite Plateform. Reserve with Google ist nicht geprüft und die Plateform-API ist nicht geprüft: diese Demo bucht nicht. Wo Google bei manchen Profilen noch eine Nachricht zeigt, öffnet das die Nummer des Lokals, keinen Google-Chat.',
+ gCardT:'Website-Fakten, nicht zu widersprechen',
+ gNotT:'Ausserhalb dieser Demo',
+ gNot:'Kein Google-Login. Keine Nachricht von Google. Keine Antwort auf Bewertungen. Kein Reserve with Google. Plateform bleibt ein öffentlicher Link ohne geprüfte API.',
+ vTitle:'Stimme, am Telefon',
+ vLead:'Die Stimme liegt auf einer anderen Seite. Die Schritte sind nummeriert: wo tippen, wie sprechen, wie beenden.',
+ vWarn:'Es wird kein Anruf beim Restaurant gestartet. Ein Tisch wird nicht bestätigt. Das ist nur eine Probe.',
+ vLink:'Stimmen-Seite öffnen',
+ rTitle:'Protokoll für das Team',
+ rSub:'Es füllt sich mit dem, was du in dieser Demo tust, und bleibt in diesem Browser. Die Zeilen sind nicht die Gespräche des Restaurants.',
+ k:['Nachrichten','Automatische Antworten','An das Team','Tischanfragen'],
+ rReq:'Anfragen zum Lesen, nicht bestätigt', rHand:'Für eine Person im Team',
+ hReq:['Zeit','Kanal','Anfrage','Status'], hHand:['Zeit','Sprache','Text','Grund'],
+ stNew:'Zu bestätigen',
+ rFoot:'In Produktion kann das Team in jedes Gespräch einsteigen. Hier gibt es keine echte Warteschlange. Tischanfragen bleiben auf dieser Seite: nichts geht an Plateform.',
+ rClear:'Demo-Daten löschen',
+ feat1:'<b>Italienisch, Englisch, Spanisch, Deutsch und Französisch</b><br>Die Seite folgt der Browsersprache. Wechselt du die Sprache oder schreibst du in einer anderen, wechseln auch die Beispiele unten, mit den bereits veröffentlichten Fakten.',
+ feat2:'<b>Nur die Ambàra-Website</b><br>Adresse, Telefon, Öffnungszeiten und einige Gerichte mit dem veröffentlichten Preis. Wenn zwei Seiten nicht übereinstimmen, sagt der Assistent das und erfindet keine „richtige“ Version.',
+ feat3:'<b>Das Team bestätigt</b><br>Allergien, Events und alles, was nicht auf der Website steht, gehen an eine Person. Der Tisch wird nicht bestätigt. Plateform ist nur der öffentliche Link: die API ist nicht verbunden.',
+ foot:'Demo erstellt von <b>Marcelo Bolla</b> · BOLLA STUDIO · <a class="tel" href="tel:+393445240254">+39 344 524 0254</a> · <a href="https://bollastudio.com" target="_blank" rel="noopener">bollastudio.com</a>. Das ist nicht die offizielle Ambàra-Website und das Restaurant betreibt sie nicht.<br>Quellen gelesen am 5. November 2026: <a href="https://ambaralounge.it/" target="_blank" rel="noopener">home</a>, <a href="https://ambaralounge.it/chi-siamo/" target="_blank" rel="noopener">chi siamo</a>, <a href="https://ambaralounge.it/dove-siamo/" target="_blank" rel="noopener">dove siamo</a>, <a href="https://ambaralounge.it/menu-colazione/" target="_blank" rel="noopener">colazione</a>, <a href="https://ambaralounge.it/menu-cena/" target="_blank" rel="noopener">cena</a>, <a href="https://ambaralounge.it/carta-dei-vini/" target="_blank" rel="noopener">Getränke</a>, <a href="https://www.instagram.com/ambarasardinianlounge/" target="_blank" rel="noopener">Instagram</a>, <a href="https://ambarasardinianlounge.plateform.app/r/ambarainstagram" target="_blank" rel="noopener">Plateform</a>. Das Instagram-Profil wurde nicht geprüft und die Plateform-API ist nicht geprüft. Nichts verlässt den Browser. Tischanfragen bleiben auf dieser Seite: nichts geht an Plateform.',
+ sysHand:'An eine Person im Team weitergegeben, nur in diesem Protokoll. Es wurde keine Nachricht gesendet.',
+ why:{allergy:'Allergie',group:'Gruppe oder Event',fb:'Nicht veröffentlicht',parking:'Parkplatz nicht geprüft'}
+},
+fr:{
+ top:'Essai pour <b>Ambàra Sardinian Lounge</b>. Aucun message ni aucune réservation réelle ne part d\'ici.',
+ tag:'San Teodoro · Monte Petrosu · démo isolée',
+ h1:'Un essai en français, à faire sur le téléphone',
+ intro:'On écrit comme dans un message. Les réponses utilisent seulement ce qu\'Ambàra a publié sur le site. Une table peut être notée, mais elle n\'est pas confirmée.',
+ studioKicker:'créée par BOLLA STUDIO',
+ studioPlain:'Ce n\'est pas le site officiel d\'Ambàra et le restaurant ne le gère pas.',
+ studioRest:'Le téléphone du restaurant, publié sur son site, est +39 340 199 1233. Ce n\'est pas le numéro de BOLLA STUDIO.',
+ howTitle:'Comment l\'utiliser (téléphone)',
+ how1:'Touchez, juste en dessous, l\'onglet WhatsApp ou Instagram.',
+ how2:'Écrivez dans le cadre en bas, comme dans un message.',
+ how3:'Touchez « Envoyer ».',
+ langLbl:'Langue de la page',
+ tabWa:'WhatsApp', tabIg:'Instagram', tabGoogle:'Google', tabVoice:'Voix', tabTeam:'Pour l\'équipe',
+ chWa:'Simulation WhatsApp · Ambàra', chIg:'Simulation Instagram · Ambàra',
+ chSub:'Démonstration BOLLA · aucun message n\'est envoyé',
+ banner:'Interface BOLLA, pas l\'appli officielle. Pas de connexion et rien n\'est envoyé au restaurant.',
+ send:'Envoyer', ph:'Écrivez comme un client…',
+ sideTitle:'Conversations d\'exemple',
+ sideNote:'Les réponses citent le site public. Les plages de service et l\'horaire général ne coïncident pas toujours : la démo ne choisit pas une version. Allergies, groupes et données absentes passent à une personne. Le journal reste dans ce navigateur.',
+ fTitle:'Demande de table',
+ fSub:'Les horaires que l\'on peut choisir sont des fenêtres publiées (petit-déjeuner sur sa page, soir sur la page dîner), pas des tables libres. La carte des boissons indique un autre horaire de petit-déjeuner. Le lien public est Plateform ; l\'API n\'est pas vérifiée et rien n\'est envoyé d\'ici.',
+ fItem:'Occasion', fGuests:'Personnes', fDate:'Date', fName:'Nom, si vous voulez en laisser un', fTime:'Heure demandée', fContact:'Contact, si vous voulez en laisser un', fNotes:'Note (allergies, poussette, gâteau…)', fSubmit:'Envoyer la demande',
+ items:[['breakfast','Petit-déjeuner'],['evening','Apéritif ou dîner']],
+ pick:'Choisissez une date et une heure. Aucun compte n\'est requis.',
+ ok:'J\'ai noté la demande ; l\'équipe d\'Ambàra la confirme.\n{s}',
+ gTitle:'Google, seulement sur les surfaces qui existent',
+ gLead:'Qui trouve Ambàra sur Google voit une fiche publique et, de là, le site ou le téléphone. Cette démo n\'ouvre pas un chat dans Google et ne modifie pas le profil.',
+ gWarn:'Google Business Messages, le chat dans Google, s\'est arrêté le 31 juillet 2024. Il n\'y a pas de chat en direct sur Google Maps et pas de connexion au compte Google du restaurant.',
+ gNowT:'Aujourd\'hui, sans rien connecter',
+ gNow:'Une fiche Google peut montrer le nom, l\'adresse, les horaires, le téléphone et le lien du site, si le restaurant les a publiés. Cette page ne lit ni n\'écrit ce profil.',
+ gNextT:'Où l\'assistant peut s\'asseoir',
+ gNext:'Le site officiel est ambaralounge.it. Pour une table, le lien public répété sur l\'accueil est Plateform. Reserve with Google n\'est pas vérifié et l\'API Plateform n\'est pas vérifiée : cette démo ne réserve pas. Là où Google montre encore un message pour certains profils, cela ouvre le numéro du lieu, pas un chat Google.',
+ gCardT:'Faits du site, à ne pas contredire',
+ gNotT:'Hors de cette démo',
+ gNot:'Pas de login Google. Pas de message envoyé depuis Google. Pas de réponse publiée aux avis. Pas de Reserve with Google. Plateform reste un lien public, sans API vérifiée.',
+ vTitle:'Voix, sur le téléphone',
+ vLead:'La voix est sur une autre page. Les étapes sont numérotées : où toucher, comment parler et comment terminer.',
+ vWarn:'Aucun appel n\'est passé au restaurant. Une table n\'est pas confirmée. Ce n\'est qu\'un essai.',
+ vLink:'Ouvrir la page voix',
+ rTitle:'Journal pour l\'équipe',
+ rSub:'Il se remplit avec ce que vous faites dans cette démo et reste dans ce navigateur. Les lignes ne sont pas les conversations du restaurant.',
+ k:['Messages','Réponses automatiques','Passés à l\'équipe','Demandes de table'],
+ rReq:'Demandes à lire, non confirmées', rHand:'Pour une personne de l\'équipe',
+ hReq:['Heure','Canal','Demande','État'], hHand:['Heure','Langue','Texte','Motif'],
+ stNew:'À confirmer',
+ rFoot:'En production l\'équipe peut entrer dans toute conversation. Ici il n\'y a pas de file réelle. Les demandes de table restent sur cette page : rien n\'est envoyé à Plateform.',
+ rClear:'Effacer les données de cette démo',
+ feat1:'<b>Italien, anglais, espagnol, allemand et français</b><br>La page suit la langue du navigateur. Si vous changez de langue ou écrivez dans une autre, les exemples en bas changent aussi, avec les faits déjà publiés.',
+ feat2:'<b>Seulement le site d\'Ambàra</b><br>Adresse, téléphone, horaires et quelques plats avec le prix publié. Si deux pages ne coïncident pas, l\'assistant le dit et n\'invente pas la « bonne » version.',
+ feat3:'<b>L\'équipe confirme</b><br>Allergies, événements et tout ce qui manque sur le site passent à une personne. La table n\'est pas confirmée. Plateform n\'est que le lien public : l\'API n\'est pas connectée.',
+ foot:'Démo créée par <b>Marcelo Bolla</b> · BOLLA STUDIO · <a class="tel" href="tel:+393445240254">+39 344 524 0254</a> · <a href="https://bollastudio.com" target="_blank" rel="noopener">bollastudio.com</a>. Ce n\'est pas le site officiel d\'Ambàra et le restaurant ne le gère pas.<br>Sources lues le 5 novembre 2026 : <a href="https://ambaralounge.it/" target="_blank" rel="noopener">home</a>, <a href="https://ambaralounge.it/chi-siamo/" target="_blank" rel="noopener">chi siamo</a>, <a href="https://ambaralounge.it/dove-siamo/" target="_blank" rel="noopener">dove siamo</a>, <a href="https://ambaralounge.it/menu-colazione/" target="_blank" rel="noopener">colazione</a>, <a href="https://ambaralounge.it/menu-cena/" target="_blank" rel="noopener">cena</a>, <a href="https://ambaralounge.it/carta-dei-vini/" target="_blank" rel="noopener">boissons</a>, <a href="https://www.instagram.com/ambarasardinianlounge/" target="_blank" rel="noopener">Instagram</a>, <a href="https://ambarasardinianlounge.plateform.app/r/ambarainstagram" target="_blank" rel="noopener">Plateform</a>. Le profil Instagram n\'a pas été inspecté et l\'API Plateform n\'est pas vérifiée. Rien ne quitte le navigateur. Les demandes de table restent sur cette page : rien n\'est envoyé à Plateform.',
+ sysHand:'Passé à une personne de l\'équipe, dans ce journal seulement. Aucun message n\'a été envoyé.',
+ why:{allergy:'Allergie',group:'Groupe ou événement',fb:'Non publié',parking:'Parking non vérifié'}
 }
 };
 var A={
@@ -444,7 +609,15 @@ de:{
  parking:'Die Seite Chi siamo nennt einen grossen kostenlosen Parkplatz. Weitere Details, etwa die Zahl der Plätze, habe ich nicht.',
  fb:'Diese Angabe steht nicht in dem, was ich auf der Website gelesen habe. Ich erfinde sie nicht und gebe sie an das Team weiter.',
  chef:'Die Website nennt Chef Andrea Locci für die Küche. Weitere Namen habe ich nicht.',
- beaches:'Die Website nennt die Spiaggia dei Sassi Piatti, die Buchten von Punta Molara, Cala Girgolu und Porto Taverna, dazu Wege und Nuraghen. Eine einzelne Kilometerzahl nenne ich nicht.'
+ beaches:'Die Website nennt die Spiaggia dei Sassi Piatti, die Buchten von Punta Molara, Cala Girgolu und Porto Taverna, dazu Wege und Nuraghen. Eine einzelne Kilometerzahl nenne ich nicht.',
+ chips:[['Öffnungszeiten','hours'],['Wo seid ihr?','where'],['Von der Karte','menu'],['Freitag DJ','events'],['Tisch Samstag','book'],['Allergie','allergy'],['Event für 20','group'],['In English','hours','en']],
+ sc:[
+  ['Tisch für 4, Samstag',[['u','Guten Abend, habt ihr einen Tisch für 4 am Samstag um 20:30?'],['b','Guten Abend. Ich habe die Anfrage notiert: Samstag, 20:30, 4 Personen, Abendessen. Das Team von Ambàra bestätigt sie.']]],
+  ['Öffnungszeiten und Strände',[['u','Welche Öffnungszeiten habt ihr? Und wie kommt man zu den Stränden?'],['i','hours'],['i','beaches']]],
+  ['Gast auf Englisch',[['u','Hi, could we request a table for 2 on Saturday at 20:00?'],['b','Hello. I\'ve noted the request: Saturday, 20:00, 2 people. The Ambàra staff will confirm it.','en']]],
+  ['Allergie, an das Team',[['u','Eine von uns ist zöliakiekrank. Kann ein Gericht geändert werden?'],['i','allergy']]]
+ ]
+
 },
 fr:{
  hi:'Bonjour. Je suis l\'assistant de démonstration d\'Ambàra Sardinian Lounge, à Monte Petrosu. Je réponds avec ce qui est publié sur le site. Une table, je la note comme demande : je ne la confirme pas.',
@@ -460,7 +633,15 @@ fr:{
  parking:'La page Chi siamo publie un grand parking gratuit. Je n\'ai pas d\'autres détails, par exemple le nombre de places.',
  fb:'Cette information ne figure pas dans ce que j\'ai lu sur le site. Je ne l\'invente pas et je la passe à l\'équipe.',
  chef:'Le site indique le chef Andrea Locci pour la cuisine. Je n\'ai pas d\'autres noms.',
- beaches:'Le site cite la Spiaggia dei Sassi Piatti, les criques de Punta Molara, Cala Girgolu et Porto Taverna, ainsi que des sentiers et des nuraghi. Je ne fixe pas une seule distance en kilomètres.'
+ beaches:'Le site cite la Spiaggia dei Sassi Piatti, les criques de Punta Molara, Cala Girgolu et Porto Taverna, ainsi que des sentiers et des nuraghi. Je ne fixe pas une seule distance en kilomètres.',
+ chips:[['Horaires','hours'],['Où êtes-vous ?','where'],['Du menu','menu'],['DJ du vendredi','events'],['Table samedi','book'],['Allergie','allergy'],['Événement pour 20','group'],['In English','hours','en']],
+ sc:[
+  ['Table pour 4, samedi',[['u','Bonsoir, avez-vous une table pour 4 samedi à 20:30 ?'],['b','Bonsoir. J\'ai noté la demande : samedi, 20:30, 4 personnes, dîner. L\'équipe d\'Ambàra la confirme.']]],
+  ['Horaires et plages',[['u','Quels sont vos horaires ? Et comment aller vers les plages ?'],['i','hours'],['i','beaches']]],
+  ['Client en anglais',[['u','Hi, could we request a table for 2 on Saturday at 20:00?'],['b','Hello. I\'ve noted the request: Saturday, 20:00, 2 people. The Ambàra staff will confirm it.','en']]],
+  ['Allergie, à l\'équipe',[['u','L\'une d\'entre nous est cœliaque. Peut-on modifier un plat ?'],['i','allergy']]]
+ ]
+
 },
 es:{
  hi:'Buenos días. Soy el asistente de demostración de Ambàra Sardinian Lounge, en Monte Petrosu. Respondo con lo publicado en la web. Una mesa la anoto como solicitud: no la confirmo.',
@@ -476,7 +657,15 @@ es:{
  parking:'La página Chi siamo publica un aparcamiento amplio y gratuito. No tengo más detalles, por ejemplo el número de plazas.',
  fb:'Ese dato no está entre lo leído en la web, así que no lo invento. Lo paso a una persona del equipo.',
  chef:'La web indica al chef Andrea Locci para la cocina. No tengo otros nombres del equipo.',
- beaches:'La web cita la Spiaggia dei Sassi Piatti, las calas de Punta Molara, Cala Girgolu y Porto Taverna, además de senderos y nuraghi. No fijo una sola distancia en kilómetros.'
+ beaches:'La web cita la Spiaggia dei Sassi Piatti, las calas de Punta Molara, Cala Girgolu y Porto Taverna, además de senderos y nuraghi. No fijo una sola distancia en kilómetros.',
+ chips:[['Horarios','hours'],['¿Dónde estáis?','where'],['Del menú','menu'],['DJ del viernes','events'],['Mesa sábado','book'],['Alergia','allergy'],['Evento para 20','group'],['In English','hours','en']],
+ sc:[
+  ['Mesa para 4, sábado',[['u','Buenas noches, ¿tenéis mesa para 4 el sábado a las 20:30?'],['b','Buenas noches. He tomado nota de la solicitud: sábado, 20:30, 4 personas, cena. El equipo de Ambàra la confirma.']]],
+  ['Horarios y playas',[['u','¿Qué horarios tenéis? ¿Y cómo se llega hacia las playas?'],['i','hours'],['i','beaches']]],
+  ['Huésped en inglés',[['u','Hi, could we request a table for 2 on Saturday at 20:00?'],['b','Hello. I\'ve noted the request: Saturday, 20:00, 2 people. The Ambàra staff will confirm it.','en']]],
+  ['Alergia, al equipo',[['u','Una de nosotras es celíaca. ¿Se puede cambiar un plato?'],['i','allergy']]]
+ ]
+
 }
 };
 var HAND={allergy:1,group:1,fb:1};
@@ -555,8 +744,13 @@ function answer(key,r,replyLang,q){
  botSay(text,!!HAND[key],key,r,replyLang,q);
 }
 function userAsk(text,key,replyLang){
+ var typed=!replyLang;
  var rl=replyLang||detectLang(text);
  var k=key||classify(text);
+ if(typed && rl && rl!==lang && T[rl] && A[rl] && A[rl].chips){
+  applyUi(rl, {keepChat:true});
+  if(window.bsTrack) window.bsTrack('/lang-auto/'+rl,'Auto lang '+rl);
+ }
  add(text,'u'); bump('msg');
  if(window.bsTrack) window.bsTrack('/ask/'+rl+'/'+k,'Ask '+k);
  answer(k,run,rl,text);
@@ -581,14 +775,15 @@ function playScen(i){
  })(0);
 }
 function renderChips(){
- var ch=$('chips'); ch.innerHTML='';
- A[lang].chips.forEach(function(c){
+ var pack=A[lang]||A.it, ch=$('chips'), sc=$('scen');
+ ch.innerHTML='';
+ (pack.chips||[]).forEach(function(c){
   var b=document.createElement('button'); b.type='button'; b.textContent=c[0];
   b.onclick=function(){ userAsk(c[0],c[1],c[2]||lang); };
   ch.appendChild(b);
  });
- var sc=$('scen'); sc.innerHTML='';
- A[lang].sc.forEach(function(s,i){
+ sc.innerHTML='';
+ (pack.sc||[]).forEach(function(s,i){
   var b=document.createElement('button'); b.type='button'; b.className='sc'; b.textContent=s[0];
   b.onclick=function(){ playScen(i); };
   sc.appendChild(b);
@@ -614,9 +809,14 @@ function show(tab){
  if(window.bsTrack) window.bsTrack('/tab/'+tab,'Tab '+tab);
 }
 function gCardText(){
- return lang==='it'
-  ? 'Ambàra Sardinian Lounge\nMonte Petrosu, Via di Li Graniti, 07052 San Teodoro\nColazione, pagina dedicata: 07:30–11:30\nCarta bevande: 08:30–12:00\nSera, pagina cena: 17:00–01:00\n+39 340 199 1233 · info@ambaralounge.it\nInstagram: @ambarasardinianlounge\nPrenotazione pubblica: Plateform, API non verificata\nNon è una scheda Google collegata.'
-  : 'Ambàra Sardinian Lounge\nMonte Petrosu, Via di Li Graniti, 07052 San Teodoro\nBreakfast, dedicated page: 07:30–11:30\nDrinks page: 08:30–12:00\nEvening, dinner page: 17:00–01:00\n+39 340 199 1233 · info@ambaralounge.it\nInstagram: @ambarasardinianlounge\nPublic booking: Plateform, API not verified\nThis is not a connected Google listing.';
+ var cards={
+  it:'Ambàra Sardinian Lounge\nMonte Petrosu, Via di Li Graniti, 07052 San Teodoro\nColazione, pagina dedicata: 07:30–11:30\nCarta bevande: 08:30–12:00\nSera, pagina cena: 17:00–01:00\n+39 340 199 1233 · info@ambaralounge.it\nInstagram: @ambarasardinianlounge\nPrenotazione pubblica: Plateform, API non verificata\nNon è una scheda Google collegata.',
+  en:'Ambàra Sardinian Lounge\nMonte Petrosu, Via di Li Graniti, 07052 San Teodoro\nBreakfast, dedicated page: 07:30–11:30\nDrinks page: 08:30–12:00\nEvening, dinner page: 17:00–01:00\n+39 340 199 1233 · info@ambaralounge.it\nInstagram: @ambarasardinianlounge\nPublic booking: Plateform, API not verified\nThis is not a connected Google listing.',
+  es:'Ambàra Sardinian Lounge\nMonte Petrosu, Via di Li Graniti, 07052 San Teodoro\nDesayuno, página dedicada: 07:30–11:30\nCarta de bebidas: 08:30–12:00\nNoche, página cena: 17:00–01:00\n+39 340 199 1233 · info@ambaralounge.it\nInstagram: @ambarasardinianlounge\nReserva pública: Plateform, API no verificada\nNo es una ficha de Google conectada.',
+  de:'Ambàra Sardinian Lounge\nMonte Petrosu, Via di Li Graniti, 07052 San Teodoro\nFrühstück, eigene Seite: 07:30–11:30\nGetränkekarte: 08:30–12:00\nAbend, Abendkarte: 17:00–01:00\n+39 340 199 1233 · info@ambaralounge.it\nInstagram: @ambarasardinianlounge\nÖffentliche Reservierung: Plateform, API nicht geprüft\nKein verbundenes Google-Profil.',
+  fr:'Ambàra Sardinian Lounge\nMonte Petrosu, Via di Li Graniti, 07052 San Teodoro\nPetit-déjeuner, page dédiée : 07:30–11:30\nCarte des boissons : 08:30–12:00\nSoir, page dîner : 17:00–01:00\n+39 340 199 1233 · info@ambaralounge.it\nInstagram : @ambarasardinianlounge\nRéservation publique : Plateform, API non vérifiée\nCe n\'est pas une fiche Google connectée.'
+ };
+ return cards[lang]||cards.en;
 }
 function fillSelect(){
  var s=$('item'), v=s.value||'evening'; s.innerHTML='';
@@ -647,8 +847,40 @@ function renderTeam(){
  $('tHand').innerHTML='<thead><tr>'+t.hHand.map(function(h){return '<th>'+esc(h)+'</th>'}).join('')+'</tr></thead><tbody>'+hr+'</tbody>';
 }
 function esc(s){return String(s==null?'':s).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})}
-function setLang(l){
- lang=l; document.documentElement.lang=l; var t=T[l];
+var LANGS=['it','en','es','de','fr'];
+var LANG_KEY='bolla_ambarra_lang';
+function browserLang(){
+ var list=[], i, c;
+ try{
+  if(navigator.languages && navigator.languages.length) list=[].slice.call(navigator.languages);
+  else if(navigator.language) list=[navigator.language];
+ }catch(e){}
+ for(i=0;i<list.length;i++){
+  c=String(list[i]||'').toLowerCase().replace('_','-');
+  c=c.split('-')[0];
+  if(LANGS.indexOf(c)>=0) return c;
+ }
+ return 'it';
+}
+function initialLang(){
+ try{
+  var u=new URLSearchParams(location.search||'');
+  var q=(u.get('lang')||'').toLowerCase().slice(0,2);
+  if(LANGS.indexOf(q)>=0) return q;
+ }catch(e){}
+ try{
+  var s=localStorage.getItem(LANG_KEY);
+  if(s && LANGS.indexOf(s)>=0) return s;
+ }catch(e){}
+ return browserLang();
+}
+function applyUi(l, opts){
+ opts=opts||{};
+ if(LANGS.indexOf(l)<0 || !T[l]) l='it';
+ if(!A[l] || !A[l].chips) l=(A.en && A.en.chips)?'en':'it';
+ lang=l; document.documentElement.lang=l;
+ try{ localStorage.setItem(LANG_KEY,l); }catch(e){}
+ var t=T[l];
  document.querySelectorAll('[data-t]').forEach(function(e){ var k=e.dataset.t; if(k==='top') e.innerHTML=t.top; else if(t[k]!=null) e.textContent=t[k]; });
  document.querySelectorAll('[data-h]').forEach(function(e){ e.innerHTML=t[e.dataset.h]; });
  document.querySelectorAll('#langs button').forEach(function(b){ b.classList.toggle('on', b.dataset.l===l); });
@@ -656,10 +888,16 @@ function setLang(l){
  $('gCard').textContent=gCardText();
  var q=location.search||'';
  $('voiceLink').setAttribute('href','../voz/ambarra/'+q);
- channelCopy(); fillSelect(); greet(); renderTeam();
- clearTimeout(setLang._t);
- setLang._t=setTimeout(function(){ if(lang===l && !M.querySelector('.u')) playScen(0); }, 350);
+ channelCopy(); fillSelect(); renderTeam();
+ if(opts.keepChat){
+  renderChips();
+  return;
+ }
+ greet();
+ clearTimeout(applyUi._t);
+ applyUi._t=setTimeout(function(){ if(lang===l && !M.querySelector('.u')) playScen(0); }, 350);
 }
+function setLang(l){ applyUi(l, {keepChat:false}); }
 document.querySelectorAll('#tabs button').forEach(function(b){ b.onclick=function(){ show(b.dataset.tab); }; });
 document.querySelectorAll('#langs button').forEach(function(b){ b.onclick=function(){ setLang(b.dataset.l); if(window.bsTrack) window.bsTrack('/lang/'+b.dataset.l,'Lang '+b.dataset.l); }; });
 $('send').onclick=function(){ var v=$('inp').value.trim(); if(!v) return; $('inp').value=''; userAsk(v); };
@@ -681,8 +919,8 @@ function iso(d){return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0'
 var d0=new Date(); d0.setDate(d0.getDate()+2);
 $('date').min=iso(new Date());
 $('date').value=iso(d0);
-setLang('it');
-window.AmbarraDemo={detectLang:detectLang,classify:classify,norm:norm};
+setLang(initialLang());
+window.AmbarraDemo={detectLang:detectLang,classify:classify,norm:norm,browserLang:browserLang,initialLang:initialLang,applyUi:applyUi,LANGS:LANGS};
 </script>
 </body>
 </html>

@@ -61,7 +61,7 @@ try {
     await send("Emulation.setDeviceMetricsOverride", { width, height, deviceScaleFactor: 1, mobile: width < 700 }, sessionId);
   }
   await go(1280, 900);
-  await send("Page.navigate", { url: "http://127.0.0.1:" + port + "/ambarra/?p=ambarra&internal=1" }, sessionId);
+  await send("Page.navigate", { url: "http://127.0.0.1:" + port + "/ambarra/?p=ambarra&internal=1&lang=it" }, sessionId);
   await delay(1600);
   const loaded = await evaluate(`({
     h1: document.querySelector("h1").textContent,
