@@ -22,8 +22,19 @@ iframe{width:100%;height:340px;border:0;border-radius:18px}.hours{background:#ff
 footer{background:#111;color:#aaa;padding:34px 0;font-size:14px}footer .w{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px}footer a{color:#fff}
 .fab{position:fixed;right:18px;bottom:18px;background:#25d366;color:#fff;width:58px;height:58px;border-radius:50%;display:grid;place-items:center;font-size:28px;text-decoration:none;box-shadow:0 8px 24px rgba(0,0,0,.25)}
 </style><!-- GoatCounter (BOLLA STUDIO) -->
-<script>window.goatcounter={path:function(p){return '/lilica-vet-py'+((p.replace(/^\/lilica\-vet\-py(?=[\/?#]|$)/,'')||'/').replace(/^\?/,'/?'))}};window.bsTrack=function(sub,title){try{if(window.goatcounter&&window.goatcounter.count)window.goatcounter.count({path:'/lilica-vet-py'+sub,title:title||sub})}catch(e){}}</script>
-<script data-goatcounter="https://bollastudio.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+<script id="bolla-metrics">(function(){
+var m=(location.search+location.hash).match(/[?&#]internal=([01])/);
+try{if(m){if(m[1]==="1")localStorage.setItem("skipgc","t");else localStorage.removeItem("skipgc");}}catch(e){}
+var internal=false;try{internal=localStorage.getItem("skipgc")==="t";}catch(e){}
+function tag(){var sm=location.search.match(/[?&]p=([^&#]*)/);return sm?decodeURIComponent(sm[1]).toLowerCase().replace(/[^a-z0-9-]/g,"").slice(0,60):"";}
+var PREFIX='/lilica-vet-py';
+window.bsTrack=function(sub,title){if(internal)return;var path=PREFIX+sub;var campaign=tag();if(campaign&&path.indexOf("?p=")<0)path+="?p="+campaign;try{if(window.goatcounter&&window.goatcounter.count)window.goatcounter.count({path:path,title:title||sub,event:true});}catch(e){}};
+if(internal)return;
+window.goatcounter={path:function(p){return PREFIX+((p.replace(/^\/lilica\-vet\-py(?=[\/?#]|$)/,'')||'/').replace(/^\?/,'/?'))}};
+var s=document.createElement("script");s.async=true;s.src="https://gc.zgo.at/count.js";
+s.setAttribute("data-goatcounter","https://bollastudio.goatcounter.com/count");
+document.head.appendChild(s);
+})();</script>
 </head><body>
 <div class="demo">Vista previa / demo — los textos marcados como ejemplo se reemplazan con la información real del negocio</div>
 <nav><div class="w"><div class="logo"><i>🐾</i>Veterinaria Lilica Vet</div><ul><li><a href="#servicios">Servicios</a></li><li><a href="#fotos">Fotos</a></li><li><a href="#contacto">Contacto</a></li></ul></div></nav>

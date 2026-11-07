@@ -58,8 +58,19 @@ iframe.map{border:0;width:100%;display:block}
 .v2 .g4 img{border-radius:999px}.v2 .af{background:#1d1d1f}.v2 .af .pill.pri{color:#1d1d1f}
 @media(min-width:820px){.v2 .mh .cd{left:auto;right:40px}.v2 .cards{grid-template-columns:1fr 1fr;column-gap:40px}}
 </style><!-- GoatCounter (BOLLA STUDIO) -->
-<script>window.goatcounter={path:function(p){return '/bolla-demo-py-serafina-floreria-lambare'+((p.replace(/^\/py\-serafina\-floreria\-lambare(?=[\/?#]|$)/,'')||'/').replace(/^\?/,'/?'))}};window.bsTrack=function(sub,title){try{if(window.goatcounter&&window.goatcounter.count)window.goatcounter.count({path:'/bolla-demo-py-serafina-floreria-lambare'+sub,title:title||sub})}catch(e){}}</script>
-<script data-goatcounter="https://bollastudio.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+<script id="bolla-metrics">(function(){
+var m=(location.search+location.hash).match(/[?&#]internal=([01])/);
+try{if(m){if(m[1]==="1")localStorage.setItem("skipgc","t");else localStorage.removeItem("skipgc");}}catch(e){}
+var internal=false;try{internal=localStorage.getItem("skipgc")==="t";}catch(e){}
+function tag(){var sm=location.search.match(/[?&]p=([^&#]*)/);return sm?decodeURIComponent(sm[1]).toLowerCase().replace(/[^a-z0-9-]/g,"").slice(0,60):"";}
+var PREFIX='/bolla-demo-py-serafina-floreria-lambare';
+window.bsTrack=function(sub,title){if(internal)return;var path=PREFIX+sub;var campaign=tag();if(campaign&&path.indexOf("?p=")<0)path+="?p="+campaign;try{if(window.goatcounter&&window.goatcounter.count)window.goatcounter.count({path:path,title:title||sub,event:true});}catch(e){}};
+if(internal)return;
+window.goatcounter={path:function(p){return PREFIX+((p.replace(/^\/py\-serafina\-floreria\-lambare(?=[\/?#]|$)/,'')||'/').replace(/^\?/,'/?'))}};
+var s=document.createElement("script");s.async=true;s.src="https://gc.zgo.at/count.js";
+s.setAttribute("data-goatcounter","https://bollastudio.goatcounter.com/count");
+document.head.appendChild(s);
+})();</script>
 </head>
 <body class="t-mapa"><div class="demo" role="note"><b>DEMO</b>Página de muestra preparada por BOLLA STUDIO para Serafina Florería. No es la web oficial.</div>
 <div class="tp"><b>Serafina Florería</b><span class="status" data-status></span></div>

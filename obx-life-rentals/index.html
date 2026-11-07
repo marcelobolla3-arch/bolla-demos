@@ -35,8 +35,19 @@ select,input{width:100%;padding:10px;border:1px solid #ddd;border-radius:8px;fon
 footer{text-align:center;font-size:13px;color:#777;padding:20px 20px 40px}footer a{color:var(--c)}
 </style>
 <!-- GoatCounter (BOLLA STUDIO) -->
-<script>window.goatcounter={path:function(p){return '/bolla-demo-obx-life-rentals'+((p.replace(/^\/obx\-life\-rentals(?=[\/?#]|$)/,'')||'/').replace(/^\?/,'/?'))}};window.bsTrack=function(sub,title){try{if(window.goatcounter&&window.goatcounter.count)window.goatcounter.count({path:'/bolla-demo-obx-life-rentals'+sub,title:title||sub})}catch(e){}}</script>
-<script data-goatcounter="https://bollastudio.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+<script id="bolla-metrics">(function(){
+var m=(location.search+location.hash).match(/[?&#]internal=([01])/);
+try{if(m){if(m[1]==="1")localStorage.setItem("skipgc","t");else localStorage.removeItem("skipgc");}}catch(e){}
+var internal=false;try{internal=localStorage.getItem("skipgc")==="t";}catch(e){}
+function tag(){var sm=location.search.match(/[?&]p=([^&#]*)/);return sm?decodeURIComponent(sm[1]).toLowerCase().replace(/[^a-z0-9-]/g,"").slice(0,60):"";}
+var PREFIX='/bolla-demo-obx-life-rentals';
+window.bsTrack=function(sub,title){if(internal)return;var path=PREFIX+sub;var campaign=tag();if(campaign&&path.indexOf("?p=")<0)path+="?p="+campaign;try{if(window.goatcounter&&window.goatcounter.count)window.goatcounter.count({path:path,title:title||sub,event:true});}catch(e){}};
+if(internal)return;
+window.goatcounter={path:function(p){return PREFIX+((p.replace(/^\/obx\-life\-rentals(?=[\/?#]|$)/,'')||'/').replace(/^\?/,'/?'))}};
+var s=document.createElement("script");s.async=true;s.src="https://gc.zgo.at/count.js";
+s.setAttribute("data-goatcounter","https://bollastudio.goatcounter.com/count");
+document.head.appendChild(s);
+})();</script>
 
 </head><body>
 <div class="top">Free demo prepared for <b>OBX Life Vacation Rentals</b> by <a href="https://bollastudio.com" target="_blank">BOLLA STUDIO</a> · sample data, not connected to real bookings</div>
@@ -73,7 +84,7 @@ function play(i){if(i>=D.chat.length)return;var m=D.chat[i];
  else{add(m[1],'in');setTimeout(function(){play(i+1)},800)}}
 play(0);
 var qr=document.getElementById('qr');
-D.quick.forEach(function(q){var b=document.createElement('button');b.textContent=q;b.onclick=function(){add(q,'in');window.bsTrack&&bsTrack('/chat/'+q.toLowerCase().replace(/[^a-z]+/g,'-'),'Chat '+q);var t=add('typing…','out typing');setTimeout(function(){t.remove();add(D.answers[q],'out')},900)};qr.appendChild(b)});
+D.quick.forEach(function(q){var b=document.createElement('button');b.textContent=q;b.onclick=function(){add(q,'in');window.bsTrack&&bsTrack('/chat/'+q.toLowerCase().replace(/[^a-z]+/g,'-'),'script-option');var t=add('typing…','out typing');setTimeout(function(){t.remove();add(D.answers[q],'out')},900)};qr.appendChild(b)});
 var sel=document.getElementById('item');D.items.forEach(function(x){var o=document.createElement('option');o.textContent=x;sel.appendChild(o)});
 var days=document.getElementById('days'),slots=document.getElementById('slots'),dSel=null,sSel=null;
 var names=['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];

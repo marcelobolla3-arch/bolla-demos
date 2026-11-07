@@ -103,7 +103,7 @@ function add(t,c){var e=document.createElement('div');e.className='m '+c;e.textC
 function play(i){if(i>=D.chat.length)return;var m=D.chat[i];
  if(m[0]=='out'||m[0]=='hand'){var t=add('…','out typing');setTimeout(function(){t.remove();add(m[1],m[0]=='hand'?'out hand':'out');setTimeout(function(){play(i+1)},900)},1100)}
  else{add(m[1],'in');setTimeout(function(){play(i+1)},800)}}
-Object.keys(D.quick).forEach(function(q){var b=document.createElement('button');b.textContent=q;b.onclick=function(){var a=D.quick[q];add(q,'in');window.bsTrack&&bsTrack('/chat/'+q.toLowerCase().normalize('NFD').replace(/[^a-z]+/g,'-').replace(/^-|-$/g,'').slice(0,50),'Chat '+q);var t=add('…','out typing');setTimeout(function(){t.remove();if(typeof a==='string')add(a,'out');else add(a[1],'out hand')},900)};qr.appendChild(b)});
+Object.keys(D.quick).forEach(function(q){var b=document.createElement('button');b.textContent=q;b.onclick=function(){var a=D.quick[q];add(q,'in');window.bsTrack&&bsTrack('/chat/'+q.toLowerCase().normalize('NFD').replace(/[^a-z]+/g,'-').replace(/^-|-$/g,'').slice(0,50),'script-option');var t=add('…','out typing');setTimeout(function(){t.remove();if(typeof a==='string')add(a,'out');else add(a[1],'out hand')},900)};qr.appendChild(b)});
 play(0);
 var arr=document.getElementById('arr'),d0=new Date();d0.setDate(d0.getDate()+D.lead);
 function iso(d){return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0')}

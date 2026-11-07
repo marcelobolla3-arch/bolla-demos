@@ -48,8 +48,19 @@ footer{text-align:center;padding:60px 22px 50px;font-size:12px;color:#86868b}foo
 .v2 .ar .ph{border-radius:26px 26px 999px 999px}.v2 .arches img{border-radius:18px 18px 999px 999px}.v2 .board{background:var(--a)}.v2 .board .plist .p{background:#fff;color:var(--a)}.v2 .board .plist .dots{border-color:rgba(255,255,255,.4)}.v2 .board .plist small{color:rgba(255,255,255,.75)}
 @media(min-width:800px){.v2 .ar{grid-template-columns:1fr 1fr}.v2 .ar h1{margin-top:0}}
 </style><!-- GoatCounter (BOLLA STUDIO) -->
-<script>window.goatcounter={path:function(p){return '/bolla-demo-salone-valentina-canazei'+((p.replace(/^\/salone\-valentina\-canazei(?=[\/?#]|$)/,'')||'/').replace(/^\?/,'/?'))}};window.bsTrack=function(sub,title){try{if(window.goatcounter&&window.goatcounter.count)window.goatcounter.count({path:'/bolla-demo-salone-valentina-canazei'+sub,title:title||sub})}catch(e){}}</script>
-<script data-goatcounter="https://bollastudio.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+<script id="bolla-metrics">(function(){
+var m=(location.search+location.hash).match(/[?&#]internal=([01])/);
+try{if(m){if(m[1]==="1")localStorage.setItem("skipgc","t");else localStorage.removeItem("skipgc");}}catch(e){}
+var internal=false;try{internal=localStorage.getItem("skipgc")==="t";}catch(e){}
+function tag(){var sm=location.search.match(/[?&]p=([^&#]*)/);return sm?decodeURIComponent(sm[1]).toLowerCase().replace(/[^a-z0-9-]/g,"").slice(0,60):"";}
+var PREFIX='/bolla-demo-salone-valentina-canazei';
+window.bsTrack=function(sub,title){if(internal)return;var path=PREFIX+sub;var campaign=tag();if(campaign&&path.indexOf("?p=")<0)path+="?p="+campaign;try{if(window.goatcounter&&window.goatcounter.count)window.goatcounter.count({path:path,title:title||sub,event:true});}catch(e){}};
+if(internal)return;
+window.goatcounter={path:function(p){return PREFIX+((p.replace(/^\/salone\-valentina\-canazei(?=[\/?#]|$)/,'')||'/').replace(/^\?/,'/?'))}};
+var s=document.createElement("script");s.async=true;s.src="https://gc.zgo.at/count.js";
+s.setAttribute("data-goatcounter","https://bollastudio.goatcounter.com/count");
+document.head.appendChild(s);
+})();</script>
 </head>
 <body class="t-arco v2"><div class="demo" role="note"><b>DEMO</b>Pagina di esempio preparata da BOLLA STUDIO per Salone Valentina. Non è il sito ufficiale.</div>
 <header class="top"><b>Parrucchiera · Canazei</b><nav><a href="#m">Servizi</a><a href="#h">Orari</a><a href="#c">Contatti</a></nav></header>

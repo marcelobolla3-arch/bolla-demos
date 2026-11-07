@@ -50,8 +50,19 @@ iframe.map{border:0;width:100%;display:block}
 .v2 .cover figure{order:-1}.v2 .cover figure img{aspect-ratio:1}.v2 .cover h1 em{color:#1d1d1f;text-decoration:underline;text-decoration-color:var(--a);text-decoration-thickness:6px;text-underline-offset:8px}
 @media(min-width:860px){.cover{grid-template-columns:1.1fr .9fr;align-items:end}.ed{grid-template-columns:300px 1fr}.ed .txt{columns:2}.gal figure{flex-basis:30%}.tb{grid-template-columns:1fr 1fr}.colo{grid-template-columns:repeat(3,1fr)}}
 </style><!-- GoatCounter (BOLLA STUDIO) -->
-<script>window.goatcounter={path:function(p){return '/bolla-demo-py-gomeria-ze-pilintra-luque'+((p.replace(/^\/py\-gomeria\-ze\-pilintra\-luque(?=[\/?#]|$)/,'')||'/').replace(/^\?/,'/?'))}};window.bsTrack=function(sub,title){try{if(window.goatcounter&&window.goatcounter.count)window.goatcounter.count({path:'/bolla-demo-py-gomeria-ze-pilintra-luque'+sub,title:title||sub})}catch(e){}}</script>
-<script data-goatcounter="https://bollastudio.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+<script id="bolla-metrics">(function(){
+var m=(location.search+location.hash).match(/[?&#]internal=([01])/);
+try{if(m){if(m[1]==="1")localStorage.setItem("skipgc","t");else localStorage.removeItem("skipgc");}}catch(e){}
+var internal=false;try{internal=localStorage.getItem("skipgc")==="t";}catch(e){}
+function tag(){var sm=location.search.match(/[?&]p=([^&#]*)/);return sm?decodeURIComponent(sm[1]).toLowerCase().replace(/[^a-z0-9-]/g,"").slice(0,60):"";}
+var PREFIX='/bolla-demo-py-gomeria-ze-pilintra-luque';
+window.bsTrack=function(sub,title){if(internal)return;var path=PREFIX+sub;var campaign=tag();if(campaign&&path.indexOf("?p=")<0)path+="?p="+campaign;try{if(window.goatcounter&&window.goatcounter.count)window.goatcounter.count({path:path,title:title||sub,event:true});}catch(e){}};
+if(internal)return;
+window.goatcounter={path:function(p){return PREFIX+((p.replace(/^\/py\-gomeria\-ze\-pilintra\-luque(?=[\/?#]|$)/,'')||'/').replace(/^\?/,'/?'))}};
+var s=document.createElement("script");s.async=true;s.src="https://gc.zgo.at/count.js";
+s.setAttribute("data-goatcounter","https://bollastudio.goatcounter.com/count");
+document.head.appendChild(s);
+})();</script>
 </head>
 <body class="t-revista v2"><div class="demo" role="note"><b>DEMO</b>Página de muestra preparada por BOLLA STUDIO para Gomería El Amigo Zé Pilintra. No es la web oficial.</div>
 <header class="mast"><div class="t">Gomería El Amigo Zé Pilintra</div><div class="sub"><span>Gomería</span><span>Segundo Barrio · Luque</span></div>

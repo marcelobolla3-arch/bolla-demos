@@ -53,8 +53,19 @@ footer{text-align:center;font-size:12px;color:#86868b;padding:40px 20px 60px}foo
 .v2 .gh{background:#1d1d1f;color:#f5f5f7;max-width:none;padding:64px 20px 48px}.v2 .gh .meta{color:#d2d2d7}.v2 .gh .meta b{color:#fff}.v2 .gh .lead{color:#a1a1a6}.v2 .gh .pill.sec{color:#f5f5f7}.v2 .wide{padding:12px}
 @media(min-width:800px){.cr .theme{flex-basis:32%}.big{grid-template-columns:1fr 1fr}.big address{grid-column:1/-1}}
 </style><!-- GoatCounter (BOLLA STUDIO) -->
-<script>window.goatcounter={path:function(p){return '/bolla-demo-pintures-decoracio-horta'+((p.replace(/^\/pintures\-decoracio\-horta(?=[\/?#]|$)/,'')||'/').replace(/^\?/,'/?'))}};window.bsTrack=function(sub,title){try{if(window.goatcounter&&window.goatcounter.count)window.goatcounter.count({path:'/bolla-demo-pintures-decoracio-horta'+sub,title:title||sub})}catch(e){}}</script>
-<script data-goatcounter="https://bollastudio.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+<script id="bolla-metrics">(function(){
+var m=(location.search+location.hash).match(/[?&#]internal=([01])/);
+try{if(m){if(m[1]==="1")localStorage.setItem("skipgc","t");else localStorage.removeItem("skipgc");}}catch(e){}
+var internal=false;try{internal=localStorage.getItem("skipgc")==="t";}catch(e){}
+function tag(){var sm=location.search.match(/[?&]p=([^&#]*)/);return sm?decodeURIComponent(sm[1]).toLowerCase().replace(/[^a-z0-9-]/g,"").slice(0,60):"";}
+var PREFIX='/bolla-demo-pintures-decoracio-horta';
+window.bsTrack=function(sub,title){if(internal)return;var path=PREFIX+sub;var campaign=tag();if(campaign&&path.indexOf("?p=")<0)path+="?p="+campaign;try{if(window.goatcounter&&window.goatcounter.count)window.goatcounter.count({path:path,title:title||sub,event:true});}catch(e){}};
+if(internal)return;
+window.goatcounter={path:function(p){return PREFIX+((p.replace(/^\/pintures\-decoracio\-horta(?=[\/?#]|$)/,'')||'/').replace(/^\?/,'/?'))}};
+var s=document.createElement("script");s.async=true;s.src="https://gc.zgo.at/count.js";
+s.setAttribute("data-goatcounter","https://bollastudio.goatcounter.com/count");
+document.head.appendChild(s);
+})();</script>
 </head>
 <body class="t-tipo v2"><div class="demo" role="note"><b>DEMO</b>Página de muestra preparada por BOLLA STUDIO para Pintures Decoració Barcelona. No es la web oficial.</div>
 <header class="gh"><span class="eyebrow">Pintura y decoración</span><h1><span>Pintures</span><span>Decoració</span><span>Barcelona<i>.</i></span></h1><p class="lead">Pintura y decoración de interiores desde Horta.</p><div class="meta"><span><b>★ 5,0</b> · 1 reseñas en Google</span><span>Horta</span><span class="status" data-status></span></div><div class="row"><a class="pill pri" href="https://wa.me/34658869073?text=Hola%2C%20quer%C3%ADa%20pedir%20informaci%C3%B3n." target="_blank" rel="noopener">Escríbenos por WhatsApp</a><a class="pill sec" href="tel:+34658869073">Llamar</a></div></header>

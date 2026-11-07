@@ -54,8 +54,19 @@ footer h4{color:#1d1d1f;font-size:12px;margin-bottom:8px}footer .cr{max-width:10
 .v2 .hero p{color:#a1a1a6}.v2 .hero h1{max-width:14ch}
 @media(min-width:760px){.v2 .hero .tx{left:auto;bottom:auto}.nav .ln{display:flex}.svc .plist{columns:2}.snap img{flex-basis:38%}.info{grid-template-columns:1fr 1fr}footer .cols{grid-template-columns:repeat(3,1fr)}.hero .tx{left:56px;bottom:64px}}
 </style><!-- GoatCounter (BOLLA STUDIO) -->
-<script>window.goatcounter={path:function(p){return '/bolla-demo-py-taller-lechon-lambare'+((p.replace(/^\/py\-taller\-lechon\-lambare(?=[\/?#]|$)/,'')||'/').replace(/^\?/,'/?'))}};window.bsTrack=function(sub,title){try{if(window.goatcounter&&window.goatcounter.count)window.goatcounter.count({path:'/bolla-demo-py-taller-lechon-lambare'+sub,title:title||sub})}catch(e){}}</script>
-<script data-goatcounter="https://bollastudio.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+<script id="bolla-metrics">(function(){
+var m=(location.search+location.hash).match(/[?&#]internal=([01])/);
+try{if(m){if(m[1]==="1")localStorage.setItem("skipgc","t");else localStorage.removeItem("skipgc");}}catch(e){}
+var internal=false;try{internal=localStorage.getItem("skipgc")==="t";}catch(e){}
+function tag(){var sm=location.search.match(/[?&]p=([^&#]*)/);return sm?decodeURIComponent(sm[1]).toLowerCase().replace(/[^a-z0-9-]/g,"").slice(0,60):"";}
+var PREFIX='/bolla-demo-py-taller-lechon-lambare';
+window.bsTrack=function(sub,title){if(internal)return;var path=PREFIX+sub;var campaign=tag();if(campaign&&path.indexOf("?p=")<0)path+="?p="+campaign;try{if(window.goatcounter&&window.goatcounter.count)window.goatcounter.count({path:path,title:title||sub,event:true});}catch(e){}};
+if(internal)return;
+window.goatcounter={path:function(p){return PREFIX+((p.replace(/^\/py\-taller\-lechon\-lambare(?=[\/?#]|$)/,'')||'/').replace(/^\?/,'/?'))}};
+var s=document.createElement("script");s.async=true;s.src="https://gc.zgo.at/count.js";
+s.setAttribute("data-goatcounter","https://bollastudio.goatcounter.com/count");
+document.head.appendChild(s);
+})();</script>
 </head>
 <body class="t-vitrina v2"><div class="demo" role="note"><b>DEMO</b>Página de muestra preparada por BOLLA STUDIO para Taller Lechón. No es la web oficial.</div>
 <nav class="nav"><span class="b">Taller Lechón</span><span class="ln"><a href="#svc">Servicios</a><a href="#gal">El local</a><a href="#info">Horario</a></span><a class="pill pri" href="https://wa.me/595981979092?text=Hola%2C%20quisiera%20hacer%20una%20consulta." target="_blank" rel="noopener">Escribir por WhatsApp</a></nav>

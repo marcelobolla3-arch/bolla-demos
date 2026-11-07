@@ -154,7 +154,7 @@ function play(lang,i,r){if(r!==run)return;var D=L[lang].chat;if(i>=D.length)retu
  if(m[0]=='out'){var t=add('…','out typing');setTimeout(function(){if(r!==run)return;t.remove();add(m[1],'out');setTimeout(function(){play(lang,i+1,r)},900)},1100)}
  else{add(m[1],'in');setTimeout(function(){play(lang,i+1,r)},800)}}
 function setLang(lang){run++;chat.innerHTML='';qr.innerHTML='';
- Object.keys(L[lang].quick).forEach(function(q){var b=document.createElement('button');b.textContent=q;b.onclick=function(){var a=L[lang].quick[q];add(q,'in');window.bsTrack&&bsTrack('/chat/'+lang+'/'+q.toLowerCase().normalize('NFD').replace(/[^a-z]+/g,'-').replace(/^-|-$/g,''),'Chat '+q);var t=add('…','out typing');setTimeout(function(){t.remove();if(typeof a==='string')add(a,'out');else add(a[1],'out hand')},900)};qr.appendChild(b)});
+ Object.keys(L[lang].quick).forEach(function(q){var b=document.createElement('button');b.textContent=q;b.onclick=function(){var a=L[lang].quick[q];add(q,'in');window.bsTrack&&bsTrack('/chat/'+lang+'/'+q.toLowerCase().normalize('NFD').replace(/[^a-z]+/g,'-').replace(/^-|-$/g,''),'script-option');var t=add('…','out typing');setTimeout(function(){t.remove();if(typeof a==='string')add(a,'out');else add(a[1],'out hand')},900)};qr.appendChild(b)});
  play(lang,0,run)}
 document.querySelectorAll('.langs button').forEach(function(b){b.onclick=function(){document.querySelectorAll('.langs button').forEach(function(x){x.classList.remove('on')});b.classList.add('on');setLang(b.dataset.l);window.bsTrack&&bsTrack('/lang/'+b.dataset.l,'Sprache '+b.dataset.l)}});
 setLang('de');

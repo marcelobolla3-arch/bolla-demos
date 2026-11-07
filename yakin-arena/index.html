@@ -106,7 +106,20 @@ footer{font-size:12px;padding:24px;border-top:1px solid var(--line)}
 .hwrap,.screen{max-width:1360px}.hero{height:520px}.hero h1{font-size:64px}
 }
 </style>
-<script data-goatcounter="https://bollastudio.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+<script id="bolla-metrics">(function(){
+var m=(location.search+location.hash).match(/[?&#]internal=([01])/);
+try{if(m){if(m[1]==="1")localStorage.setItem("skipgc","t");else localStorage.removeItem("skipgc");}}catch(e){}
+var internal=false;try{internal=localStorage.getItem("skipgc")==="t";}catch(e){}
+function tag(){var sm=location.search.match(/[?&]p=([^&#]*)/);return sm?decodeURIComponent(sm[1]).toLowerCase().replace(/[^a-z0-9-]/g,"").slice(0,60):"";}
+var PREFIX="/bolla-demo-yakin-arena";
+window.bsTrack=function(sub,title){if(internal)return;var path=PREFIX+sub;var campaign=tag();if(campaign&&path.indexOf("?p=")<0)path+="?p="+campaign;try{if(window.goatcounter&&window.goatcounter.count)window.goatcounter.count({path:path,title:title||sub,event:true});}catch(e){}};
+if(internal)return;
+window.goatcounter={no_onload:true};
+var s=document.createElement("script");s.async=true;s.src="https://gc.zgo.at/count.js";
+s.setAttribute("data-goatcounter","https://bollastudio.goatcounter.com/count");
+s.onload=function(){try{window.goatcounter.count({path:PREFIX+"/"+(tag()?"?p="+tag():""),title:"yakin-arena"});}catch(e){}};
+document.head.appendChild(s);
+})();</script>
 </head>
 <body>
 <div class="app">
@@ -194,11 +207,11 @@ footer{font-size:12px;padding:24px;border-top:1px solid var(--line)}
 
 </div>
 <script>
-function go(id,b){document.querySelectorAll('.screen').forEach(s=>s.classList.remove('on'));document.getElementById('s-'+id).classList.add('on');document.querySelectorAll('nav button').forEach(x=>x.classList.remove('on'));b.classList.add('on');scrollTo(0,0);if(window.goatcounter&&window.goatcounter.count)window.goatcounter.count({path:'/'+id,title:'Tab '+id})}
+function go(id,b){document.querySelectorAll('.screen').forEach(s=>s.classList.remove('on'));document.getElementById('s-'+id).classList.add('on');document.querySelectorAll('nav button').forEach(x=>x.classList.remove('on'));b.classList.add('on');scrollTo(0,0);if(window.bsTrack)window.bsTrack('/'+id,'section')}
 function j(b){b.textContent='Angemeldet ✓';b.classList.add('done')}
 const Q=['Wann kann ich spielen?','Kann ich Schläger mieten?','Wie buche ich einen Court?','Gibt es noch Fussball?','Restaurant reservieren'];
 const A=['Die Arena ist zum Buchen Montag bis Sonntag von 06:00 bis 00:00 Uhr offen, am Samstag und Sonntag ab 08:00 Uhr.','Ja, Padelschläger und Bälle können Sie direkt in der Yakin Arena mieten. Bitte denken Sie an Sportschuhe, sie sind obligatorisch.','Freie Zeiten und Preise sehen Sie live auf Playtomic. Tippen Sie auf Start und dann auf «Court buchen auf Playtomic».','Der Fussballplatz wurde abgebaut, die Yakin Arena ist jetzt eine reine Padel-Arena. Neu gibt es seit September 2025 den Retro Padel Court.','Das Restaurant «La Qualità» erreichen Sie unter 044 730 00 11 oder per E-Mail an info@laqualita.ch.'];
-function ask(i){const c=document.getElementById('chat');c.insertAdjacentHTML('beforeend','<div class="m u">'+Q[i]+'</div>');setTimeout(()=>{c.insertAdjacentHTML('beforeend','<div class="m b">'+A[i]+'</div>');scrollTo(0,document.body.scrollHeight)},450)}
+function ask(i){const c=document.getElementById('chat');c.insertAdjacentHTML('beforeend','<div class="m u">'+Q[i]+'</div>');if(window.bsTrack)window.bsTrack('/chat/'+i,'script-option');setTimeout(()=>{c.insertAdjacentHTML('beforeend','<div class="m b">'+A[i]+'</div>');scrollTo(0,document.body.scrollHeight)},450)}
 </script>
 </body>
 </html>

@@ -52,8 +52,19 @@ footer{max-width:1100px;margin:0 auto;padding:22px 12px 40px;font-size:12px;colo
 .side .nm{display:block;font-weight:700;font-size:20px;letter-spacing:-.03em;margin-bottom:22px;line-height:1.15}.side a{padding:9px 12px}.side a.on{background:#ececf0;color:#1d1d1f}.side a:hover{background:#f0f0f2}
 .side .pill{display:inline-flex;margin-top:auto;color:#fff;background:var(--a)}main{padding:24px}.grid2{grid-template-columns:1fr 1fr}.mas{columns:3}}
 </style><!-- GoatCounter (BOLLA STUDIO) -->
-<script>window.goatcounter={path:function(p){return '/bolla-demo-calzoleria-paparo-aosta'+((p.replace(/^\/calzoleria\-paparo\-aosta(?=[\/?#]|$)/,'')||'/').replace(/^\?/,'/?'))}};window.bsTrack=function(sub,title){try{if(window.goatcounter&&window.goatcounter.count)window.goatcounter.count({path:'/bolla-demo-calzoleria-paparo-aosta'+sub,title:title||sub})}catch(e){}}</script>
-<script data-goatcounter="https://bollastudio.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+<script id="bolla-metrics">(function(){
+var m=(location.search+location.hash).match(/[?&#]internal=([01])/);
+try{if(m){if(m[1]==="1")localStorage.setItem("skipgc","t");else localStorage.removeItem("skipgc");}}catch(e){}
+var internal=false;try{internal=localStorage.getItem("skipgc")==="t";}catch(e){}
+function tag(){var sm=location.search.match(/[?&]p=([^&#]*)/);return sm?decodeURIComponent(sm[1]).toLowerCase().replace(/[^a-z0-9-]/g,"").slice(0,60):"";}
+var PREFIX='/bolla-demo-calzoleria-paparo-aosta';
+window.bsTrack=function(sub,title){if(internal)return;var path=PREFIX+sub;var campaign=tag();if(campaign&&path.indexOf("?p=")<0)path+="?p="+campaign;try{if(window.goatcounter&&window.goatcounter.count)window.goatcounter.count({path:path,title:title||sub,event:true});}catch(e){}};
+if(internal)return;
+window.goatcounter={path:function(p){return PREFIX+((p.replace(/^\/calzoleria\-paparo\-aosta(?=[\/?#]|$)/,'')||'/').replace(/^\?/,'/?'))}};
+var s=document.createElement("script");s.async=true;s.src="https://gc.zgo.at/count.js";
+s.setAttribute("data-goatcounter","https://bollastudio.goatcounter.com/count");
+document.head.appendChild(s);
+})();</script>
 </head>
 <body class="t-lateral v2"><div class="demo" role="note"><b>DEMO</b>Pagina di esempio preparata da BOLLA STUDIO per Calzoleria Paparo 2001. Non è il sito ufficiale.</div>
 <aside class="side"><span class="nm">Calzoleria Paparo 2001</span><a class="on" href="#top">Home</a><a href="#hrs">Orari</a><a href="#svc">Servizi</a><a href="#gal">Il negozio</a><a href="#map">Contatti</a><a class="pill pri" href="https://wa.me/393405656731?text=Buongiorno%2C%20vorrei%20informazioni." target="_blank" rel="noopener">Scrivici su WhatsApp</a></aside>

@@ -49,8 +49,19 @@ footer{background:#f5f5f7;padding:36px 22px 120px;font-size:13px;color:#6e6e73}f
 .v2 .bk .pill{width:auto;margin:8px 6px 0 0}.v2 .bk h1{font-size:clamp(40px,10vw,72px)}
 @media(min-width:800px){.v2 .bk{max-width:760px;border-radius:32px;margin-bottom:40px}.mas{columns:3}footer .g{grid-template-columns:1fr 1fr 1fr}.ab{left:50%;right:auto;transform:translateX(-50%);bottom:16px;border-radius:99px;border:1px solid #e8e8ed;width:480px;padding:8px}}
 </style><!-- GoatCounter (BOLLA STUDIO) -->
-<script>window.goatcounter={path:function(p){return '/bolla-demo-py-peluqueria-mario-luque'+((p.replace(/^\/py\-peluqueria\-mario\-luque(?=[\/?#]|$)/,'')||'/').replace(/^\?/,'/?'))}};window.bsTrack=function(sub,title){try{if(window.goatcounter&&window.goatcounter.count)window.goatcounter.count({path:'/bolla-demo-py-peluqueria-mario-luque'+sub,title:title||sub})}catch(e){}}</script>
-<script data-goatcounter="https://bollastudio.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+<script id="bolla-metrics">(function(){
+var m=(location.search+location.hash).match(/[?&#]internal=([01])/);
+try{if(m){if(m[1]==="1")localStorage.setItem("skipgc","t");else localStorage.removeItem("skipgc");}}catch(e){}
+var internal=false;try{internal=localStorage.getItem("skipgc")==="t";}catch(e){}
+function tag(){var sm=location.search.match(/[?&]p=([^&#]*)/);return sm?decodeURIComponent(sm[1]).toLowerCase().replace(/[^a-z0-9-]/g,"").slice(0,60):"";}
+var PREFIX='/bolla-demo-py-peluqueria-mario-luque';
+window.bsTrack=function(sub,title){if(internal)return;var path=PREFIX+sub;var campaign=tag();if(campaign&&path.indexOf("?p=")<0)path+="?p="+campaign;try{if(window.goatcounter&&window.goatcounter.count)window.goatcounter.count({path:path,title:title||sub,event:true});}catch(e){}};
+if(internal)return;
+window.goatcounter={path:function(p){return PREFIX+((p.replace(/^\/py\-peluqueria\-mario\-luque(?=[\/?#]|$)/,'')||'/').replace(/^\?/,'/?'))}};
+var s=document.createElement("script");s.async=true;s.src="https://gc.zgo.at/count.js";
+s.setAttribute("data-goatcounter","https://bollastudio.goatcounter.com/count");
+document.head.appendChild(s);
+})();</script>
 </head>
 <body class="t-reserva"><div class="demo" role="note"><b>DEMO</b>Página de muestra preparada por BOLLA STUDIO para Peluquería Mario. No es la web oficial.</div>
 <header class="bg"><img class="" src="photos/hair_2.webp" alt="Peluquería · Peluquería Mario" fetchpriority=high decoding="async"><div class="bk"><span class="eyebrow">Peluquería · Yka’a</span><h1>Peluquería Mario</h1><p>Peluquería en Luque, barrio Yka’a.</p><span class="st"><span class="status" data-status></span></span><a class="pill pri" href="https://wa.me/595974408815?text=Hola%2C%20quisiera%20hacer%20una%20consulta." target="_blank" rel="noopener">Pedir turno por WhatsApp</a><a class="pill sec" href="tel:+595974408815">Llamar</a></div></header>

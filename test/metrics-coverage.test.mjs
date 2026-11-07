@@ -55,9 +55,9 @@ test("every demo page counts one visit and can record use, and redirects do not 
       assert.doesNotMatch(html, /gc\.zgo\.at\/count\.js/, path);
       continue;
     }
-    if (!html.includes("bollastudio.goatcounter.com/count")) missing.push(path);
-    const rel = path.slice(new URL(".", root).pathname.length);
-    if (auditedContent.has(rel) && !html.includes("skipgc")) missing.push(path);
+    if (!html.includes("bollastudio.goatcounter.com/count") || !html.includes("skipgc")) missing.push(path);
+    if (html.includes("window.bsTrack=function") && !html.includes("event:true") && !html.includes("event: true")) missing.push(path + " event");
+    if (html.includes("'Chat '+q") || html.includes("function play(k){box.innerHTML='';S[k].forEach(add);bsTrack")) missing.push(path + " open-or-title");
   }
   assert.equal(auditedContent.size, 83);
   assert.deepEqual(missing, []);
@@ -88,6 +88,20 @@ test("campaign usage is attached to the event and the question text is not the t
   assert.match(ambarraVoice, /var ep=sub\+\(tag && sub\.indexOf\("\?p="\)<0 \? "\?p="\+tag : ""\)/);
   const schloss = read(new URL("voz/schloss-wuelflingen/index.html", root));
   assert.match(schloss, /schloss-wuelflingen\/voice'\+\(campaign\?'\?p='\+campaign:''\)/);
+  const hicar = read(new URL("hicar/index.html", root));
+  assert.match(hicar, /if\(track\)bsTrack\('\/scene\/'\+k,'scene'\)/);
+  assert.match(hicar, /play\('stock'\)/);
+  assert.doesNotMatch(hicar, /play\('stock',1\)/);
+  for (const lang of ["en", "de", "es", "it"]) {
+    const page = read(new URL(`concesionarios/${lang}/index.html`, root));
+    assert.match(page, /src="video\.mp4"/);
+    assert.match(page, /video-play/);
+    assert.match(page, /Marcelo Bolla/);
+    assert.match(page, /bollastudio\.com/);
+    assert.doesNotMatch(page, /answers your dealership|atiende la llamada|nimmt die Anrufe|risponde alle chiamate/);
+  }
+  assert.match(read(new URL("concesionarios/en/index.html", root)), /aktiv-hotel-spa-hannigalp/);
+  assert.match(read(new URL("concesionarios/en/index.html", root)), /Watch a recorded example/);
 });
 
 test("a synthetic counter payload is labeled and this test does not send it", () => {
