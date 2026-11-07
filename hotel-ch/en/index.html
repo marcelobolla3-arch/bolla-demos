@@ -1,0 +1,293 @@
+<!doctype html>
+<!-- Swiss English example for hotel-ch. Same fictional hotel as /hotel-ch/de/ and /hotel-ch/fr/. -->
+<html lang="en" translate="no">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex">
+<meta name="google" content="notranslate">
+<title>Example demo: chat reception for hotels and B&amp;Bs · BOLLA STUDIO</title>
+<style>
+:root{--c:#7a1f2b;--ink:#1c1c1c;--bg:#f4f2ee}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Noto Sans","DejaVu Sans","Helvetica Neue",Arial,sans-serif;background:var(--bg);color:var(--ink);line-height:1.5;font-size:17px}
+.top{background:#1d2a33;color:#f2f5f7;padding:12px 16px;text-align:center}
+.top a{color:#fff}
+.langs{display:flex;flex-wrap:wrap;justify-content:center;gap:8px;padding:12px 16px;background:#243640}
+.langs a{display:inline-flex;align-items:center;justify-content:center;min-height:48px;min-width:48px;padding:10px 16px;border-radius:12px;background:#fff;color:#1d2a33;font-weight:700;text-decoration:none;border:2px solid #fff}
+.langs a[aria-current="page"]{background:var(--c);color:#fff;border-color:var(--c)}
+header,main{max-width:1080px;margin:0 auto;padding:8px 16px 0}
+.brand{font-weight:800;letter-spacing:.08em;font-size:.85rem;color:#5c6770}
+.by{margin:4px 0 8px;font-size:16px}
+.by a{color:var(--c)}
+.tag{font-size:14px;letter-spacing:.04em;color:#555;margin:0}
+h1{font-size:1.7rem;line-height:1.25;margin:8px 0 10px;color:var(--c)}
+.intro{margin:0 0 12px;color:#333}
+.badge{display:inline-block;background:#fff4d6;border:1px dashed #8a6a10;color:#5c4300;border-radius:8px;padding:4px 8px;font-size:14px;font-weight:700}
+.notice,.voice{background:#fff;border-radius:12px;padding:12px 14px;margin:12px 0;font-size:16px}
+.notice{border:2px solid #8a6a10}
+.voice{border:2px solid #1d2a33}
+.howto{background:#fff;border-radius:12px;padding:14px 16px;margin:12px 0 16px}
+.howto h2{margin:0 0 8px;font-size:1.25rem;color:var(--c)}
+.steps{margin:0;padding-left:1.3rem}
+.steps li{margin:8px 0}
+.grid{display:grid;gap:16px;margin:0 0 16px}
+.card{background:#fff;border-radius:16px;box-shadow:0 6px 24px rgba(0,0,0,.08);overflow:hidden}
+.wa-h{background:#1d2a33;color:#fff;padding:12px 16px;display:flex;align-items:center;gap:10px}
+.av{width:44px;height:44px;border-radius:50%;background:var(--c);display:flex;align-items:center;justify-content:center;font-weight:800}
+.wa-h small{display:block;opacity:.9;font-size:14px}
+.chat{background:#ece5dd;min-height:280px;max-height:52vh;overflow-y:auto;padding:12px;display:flex;flex-direction:column;gap:8px}
+.m{max-width:92%;padding:10px 12px;border-radius:10px;font-size:16px;white-space:pre-line;box-shadow:0 1px 1px rgba(0,0,0,.08)}
+.in{background:#fff;align-self:flex-start}.out{background:#e7f6e7;align-self:flex-end}
+.m.hand{background:#fff4d6;border:1px dashed #8a6a10}
+.qrl{padding:10px 12px 0;font-size:15px;color:#444}
+.qr{padding:8px 12px 12px;display:flex;flex-direction:column;gap:8px}
+.qr button,.slots button,.cta,.ask-row button{min-height:48px;font-size:17px;border-radius:12px;cursor:pointer}
+.qr button{width:100%;text-align:left;border:2px solid var(--c);background:#fff;color:var(--c);padding:12px 14px}
+.bk{padding:16px}
+.bk h3{margin:0 0 6px;color:var(--c);font-size:1.25rem}
+.bk p{margin:0 0 10px;color:#444}
+label{font-size:16px;color:#333;display:block;margin:12px 0 6px;font-weight:650}
+select,input{width:100%;padding:12px;border:1px solid #bbb;border-radius:10px;font-size:16px;font-family:inherit;min-height:48px}
+.slots{display:flex;flex-wrap:wrap;gap:8px}
+.slots button{border:2px solid #bbb;background:#fff;padding:10px 14px}
+.slots button.on{background:var(--c);color:#fff;border-color:var(--c)}
+.cta{margin-top:16px;width:100%;background:var(--c);color:#fff;border:0;padding:14px;font-weight:700}
+.ok{margin-top:14px;background:#eaf7ea;border:1px solid #8fbf8f;padding:12px;border-radius:10px;font-size:16px}
+.ask{padding:0 12px 14px}
+.ask-row{display:flex;flex-direction:column;gap:8px}
+.ask-row button{background:#1d2a33;color:#fff;border:0;padding:12px 16px;font-weight:700}
+.split,.feat{display:grid;gap:12px;margin:0 0 16px}
+.split div,.feat div{background:#fff;border-radius:12px;padding:14px 16px}
+.split h2,.feat b{color:var(--c)}
+.split ul{margin:8px 0 0;padding-left:1.2rem}
+.split li{margin:6px 0}
+footer{text-align:center;font-size:15px;color:#444;padding:8px 16px 40px}
+footer a{color:var(--c)}
+:focus-visible{outline:3px solid #0b57d0;outline-offset:2px}
+@media(min-width:800px){
+  h1{font-size:2rem}
+  .grid,.split{grid-template-columns:1fr 1fr}
+  .feat{grid-template-columns:1fr 1fr 1fr}
+  .qr{flex-direction:row;flex-wrap:wrap}
+  .qr button{width:auto}
+  .ask-row{flex-direction:row}
+  .ask-row input{flex:1}
+  .chat{max-height:460px}
+}
+</style>
+<!-- GoatCounter (BOLLA STUDIO): ?p= is a visit label for counting only. It does not personalize the page. ?internal=1 sets localStorage skipgc=t and loads nothing. -->
+<script>
+(function(){
+ var BASE="/bolla-demo-hotel-ch/en";
+ var m=(location.search+location.hash).match(/[?&#]internal=([01])/);
+ try{ if(m){ if(m[1]==="1") localStorage.setItem("skipgc","t"); else localStorage.removeItem("skipgc"); } }catch(e){}
+ var internal=false; try{ internal=localStorage.getItem("skipgc")==="t"; }catch(e){}
+ var sm=location.search.match(/[?&]p=([^&#]*)/);
+ var tag=sm?decodeURIComponent(sm[1]).toLowerCase().replace(/[^a-z0-9-]/g,"").slice(0,60):"";
+ var q=[]; window.bsTrack=function(sub,title){ if(internal) return;
+   if(window.goatcounter&&window.goatcounter.count) window.goatcounter.count({path:BASE+sub,title:title||sub,event:true}); else q.push([BASE+sub,title||sub]); };
+ if(internal) return;
+ window.goatcounter={no_onload:true};
+ var s=document.createElement("script"); s.async=true; s.src="https://gc.zgo.at/count.js";
+ s.setAttribute("data-goatcounter","https://bollastudio.goatcounter.com/count");
+ s.onload=function(){ try{ window.goatcounter.count({path:BASE+'/'+(tag?'?p='+tag:''),title:"hotel-ch demo en"});
+   q.forEach(function(e){window.goatcounter.count({path:e[0],title:e[1],event:true});}); q=[]; }catch(e){} };
+ document.head.appendChild(s);
+})();
+</script>
+</head>
+<body data-demo="static-example" data-lang="en">
+<div class="top">Example demo for hotels and B&amp;Bs in Switzerland, prepared by <a href="https://bollastudio.com" target="_blank" rel="noopener">BOLLA STUDIO</a> · “Hotel Bergsonne” is a fictional example, not an official business. No real bookings. This chat is a scripted example, not a live assistant.</div>
+<nav class="langs" aria-label="Language"><a href="../de/" hreflang="de" lang="de" data-keep-query>Deutsch</a><a href="./" hreflang="en" lang="en" data-keep-query aria-current="page">English</a><a href="../fr/" hreflang="fr" lang="fr" data-keep-query>Français</a></nav>
+<header>
+  <div class="brand">BOLLA STUDIO</div>
+  <p class="by">Marcelo Bolla · <a href="https://bollastudio.com" target="_blank" rel="noopener">bollastudio.com</a></p>
+  <p class="tag"><span class="badge">Scripted example</span> Hotel Bergsonne, a fictional hotel in the Alps</p>
+  <h1>Your reception, even at 11 p.m. and in English</h1>
+  <p class="intro">This scripted chat shows the questions guests ask a Swiss hotel every day: a room, how to arrive, parking, dogs, breakfast, check-in and cancellation. It notes the details of a request. The hotel team would confirm availability and price. This page does not check a booking system, does not take payment, and does not send the request.</p>
+  <p class="notice" role="note">Simulation: every reply is written in advance. Nothing is sent, nothing is booked, and this page is not connected to WhatsApp, a booking system, or a voice agent. If the address contains ?p=, that is only a visit label for BOLLA STUDIO. It does not change the page and it is not personalization.</p>
+  <p class="voice" role="note">This screen is a scripted chat example. It does not play audio. A voice assistant is not connected and is not running here. Voice, if commissioned separately, would be a different setup, not this page.</p>
+</header>
+<main>
+<section class="howto" aria-labelledby="howto-title">
+  <h2 id="howto-title">How to try this example</h2>
+  <ol class="steps"><li>Read the sample conversation. It is already on the screen.</li><li>Tap a large question button, or type your own question in English and tap Send.</li><li>Choose a room, an arrival date and the number of nights, then tap “Ask about availability”. You will only see an example note. Nothing is booked.</li></ol>
+</section>
+<div class="grid">
+  <div class="card">
+    <div class="wa-h"><div class="av" aria-hidden="true">H</div><div><b>Hotel Bergsonne · example reception</b><small>Scripted example · prepared English replies, not a live assistant</small></div></div>
+    <div class="chat" id="chat" role="log" aria-live="polite" aria-relevant="additions" aria-label="Scripted example conversation"></div>
+    <div class="qrl" id="qr-label">Try a question</div>
+    <div class="qr" id="qr" role="group" aria-labelledby="qr-label"></div>
+    <form class="ask" id="ask-form" action="#" method="post">
+      <label for="ask">Type a question in English</label>
+      <div class="ask-row">
+        <input id="ask" name="ask" type="text" autocomplete="off" enterkeyhint="send" placeholder="For example: Are dogs allowed?">
+        <button type="submit">Send</button>
+      </div>
+    </form>
+  </div>
+  <div class="card bk">
+    <h3>Reservation request, shown as an example</h3>
+    <p>This is how a chat can note a request for the hotel. Availability and price would be confirmed by reception. This page does not confirm them.</p>
+    <label for="item">Room</label>
+    <select id="item"><option>Double room</option><option>Double room with mountain view</option><option>Single room</option><option>Family room</option></select>
+    <label for="arr">Arrival date</label>
+    <input id="arr" type="date">
+    <p id="slots-label" style="margin:12px 0 6px;font-weight:650">Nights</p>
+    <div class="slots" id="slots" role="group" aria-labelledby="slots-label"></div>
+    <label for="nm">Name (not saved)</label>
+    <input id="nm" type="text" autocomplete="off" placeholder="First and last name" aria-describedby="local-only">
+    <label for="ph">Email or mobile (not saved)</label>
+    <input id="ph" type="text" autocomplete="off" placeholder="name@example.com" aria-describedby="local-only">
+    <p id="local-only">These two fields stay in your browser. This page does not read them, save them, or send them.</p>
+    <button class="cta" id="cta" type="button">Ask about availability</button>
+    <div class="ok" id="ok" role="status" hidden></div>
+  </div>
+</div>
+<div class="split">
+  <div><h2>What this example chat can show</h2><ul><li>A room request with dates, guests and room type</li><li>Arrival by train or car, parking and luggage</li><li>Check-in, check-out and a late arrival</li><li>Dogs, children, a cot and allergies as a note</li><li>Breakfast, half board and the spa, as sample facts</li><li>Cancellation terms and the visitor’s tax, using the hotel’s own rules</li><li>A guest card and sample ideas for the area</li></ul></div>
+  <div><h2>What stays with the hotel</h2><ul><li>Confirming a reservation and a price</li><li>Special requests, groups, banquets and company bookings</li><li>Exceptions on cancellation or a deposit</li><li>Complaints and sensitive cases</li><li>Any conversation the team wants to handle itself</li></ul></div>
+</div>
+<div class="feat"><div><b>English on this page</b><br>This page answers in English. German and French examples are separate pages. There is no live interpreter and no voice agent here.</div><div><b>Sample facts only</b><br>Answers use fictional facts for Hotel Bergsonne. They are not a real hotel’s rules. If a person must decide, the example says so instead of inventing an answer.</div><div><b>The hotel would decide</b><br>In a commissioned chat, these details would be handed to reception. This button does not send email and does not book a room.</div></div>
+</main>
+<footer>Example demo by <a href="https://bollastudio.com" target="_blank" rel="noopener">BOLLA STUDIO</a> · Marcelo Bolla · <a href="mailto:marcelo@bollastudio.com">marcelo@bollastudio.com</a><br>“Hotel Bergsonne” is a fictional example, not an official business. All figures are samples, with no real prices or availability. Nothing on this page is booked, stored, or sent.</footer>
+<script type="application/json" id="demo-pack">{"lang":"en","chat":[["in","Hello, do you have a double room for 2 from 12 to 15 February? We are coming by train."],["out","Hello. I can note that as an example: 12–15 February (3 nights), a double room for 2, arriving by train.\nWould you like a mountain view, or does that not matter?"],["in","Mountain view, please. How do we get from the station to the hotel?"],["out","In this example the station is about a 5-minute walk. The hotel could meet the luggage if you gave an arrival time.\nA name and an email would be noted for reception, who would confirm availability and price. This page does not send that note."],["in","Anna Keller. Thank you."],["out","Thank you, Ms Keller. Example note only: mountain-view double, 12–15 February, 2 guests, arriving by train. Reception would confirm. Nothing was sent from this page."]],"rules":[{"id":"dogs","button":"Are dogs allowed?","keys":["dog","dogs","pet","pets","hund"],"text":"Yes. In this example hotel, well-behaved dogs are welcome if you mention them in the request. A real hotel’s chat would use that hotel’s own rule. Nothing here is booked."},{"id":"checkin","button":"What time is check-in?","keys":["check in","check-in","check out","checkout"],"text":"In this example, check-in is from 3:00 p.m. and check-out is by 10:00 a.m. Luggage can be left earlier on the day of arrival. These are sample hours, not a live calendar."},{"id":"parking","button":"Is there parking?","keys":["parking","car park"],"text":"This example hotel has guest parking. Mention that you are coming by car. This page cannot reserve a space."},{"id":"breakfast","button":"Is breakfast included?","keys":["breakfast"],"text":"In this example, the breakfast buffet is included, every day from 7:30 to 10:00 a.m. A real hotel’s chat would use that hotel’s own rule."},{"id":"dinner","button":"Can you arrange dinner for 8 on Saturday?","keys":["dinner","banquet","8 people","eight people"],"hand":true,"text":"A person at reception would decide this, so this example does not invent an answer. The date, the number of guests and a contact would be passed to the hotel. Nothing was sent from this page."}],"fallback":"This is a scripted example, not a live assistant. I only have prepared English answers for the sample questions. I do not book, I do not send messages, and I am not connected to WhatsApp, a booking system, or a voice agent. Please tap one of the buttons or use words from those questions.","empty":"Please type a question in English, then tap Send.","ok":"Example only: {item} · arrival {date} · {slot}. Nothing was booked and nothing was sent. This page does not check a booking system. A commissioned chat would pass these details to reception for a person to confirm.","pick":"Please choose the arrival date and the number of nights first.","lead":14,"slots":["1 night","2 nights","3 nights","4 nights","5 nights","6 nights","7 nights"],"months":["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"],"dateStyle":"dmy-name"}</script>
+<script id="bolla-lang-links">
+document.querySelectorAll("[data-keep-query]").forEach(function(a){
+  try{var u=new URL(a.getAttribute("href"),location.href);a.href=u.pathname+location.search+location.hash;}catch(e){}
+});
+</script>
+<script id="sector-demo">
+(function(){
+  var PACK = JSON.parse(document.getElementById("demo-pack").textContent);
+  var chat = document.getElementById("chat");
+  var qr = document.getElementById("qr");
+  function reduceMotion(){
+    return !!(window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches);
+  }
+  function add(t, kind){
+    var e = document.createElement("div");
+    e.className = "m " + (kind === "in" ? "in" : "out") + (kind === "hand" ? " hand" : "");
+    e.textContent = t;
+    chat.appendChild(e);
+    chat.scrollTop = chat.scrollHeight;
+    return e;
+  }
+  function showAnswer(entry){
+    add(entry.text, entry.hand ? "hand" : "out");
+  }
+  function norm(s){
+    return String(s || "").toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/[^a-z0-9\u0400-\u04ff]+/g, " ").replace(/\s+/g, " ").trim();
+  }
+  function answerFor(raw){
+    var n = norm(raw);
+    if (!n) return { text: PACK.empty, hand: false, id: "empty" };
+    var best = null, bestLen = 0;
+    PACK.rules.forEach(function(r){
+      (r.keys || []).forEach(function(k){
+        var nk = norm(k);
+        if (nk.length < 3) return;
+        if (n.indexOf(nk) >= 0 && nk.length > bestLen){ best = r; bestLen = nk.length; }
+      });
+    });
+    if (!best) return { text: PACK.fallback, hand: false, id: "fallback" };
+    return { text: best.text, hand: !!best.hand, id: best.id || "match" };
+  }
+  window.__sectorDemo = { mode: "static-example", lang: PACK.lang, answerFor: answerFor, liveAI: false };
+  function play(i){
+    if (i >= PACK.chat.length) return;
+    var m = PACK.chat[i];
+    var kind = m[0] === "in" ? "in" : (m[0] === "hand" ? "hand" : "out");
+    if (kind === "in"){
+      add(m[1], "in");
+      if (reduceMotion()) play(i + 1); else setTimeout(function(){ play(i + 1); }, 350);
+      return;
+    }
+    if (reduceMotion()){ add(m[1], kind); play(i + 1); return; }
+    var t = add("\u2026", "out");
+    t.setAttribute("aria-hidden", "true");
+    setTimeout(function(){
+      t.remove();
+      add(m[1], kind);
+      setTimeout(function(){ play(i + 1); }, 650);
+    }, 500);
+  }
+  PACK.rules.forEach(function(r){
+    if (!r.button) return;
+    var b = document.createElement("button");
+    b.type = "button";
+    b.className = "qbtn";
+    b.textContent = r.button;
+    b.onclick = function(){
+      add(r.button, "in");
+      if (window.bsTrack && r.id) window.bsTrack("/chat/" + r.id, "example");
+      var entry = { text: r.text, hand: !!r.hand };
+      if (reduceMotion()) showAnswer(entry);
+      else {
+        var t = add("\u2026", "out");
+        t.setAttribute("aria-hidden", "true");
+        setTimeout(function(){ t.remove(); showAnswer(entry); }, 450);
+      }
+    };
+    qr.appendChild(b);
+  });
+  play(0);
+  document.getElementById("ask-form").addEventListener("submit", function(ev){
+    ev.preventDefault();
+    var input = document.getElementById("ask");
+    var q = input.value || "";
+    if (!norm(q)){ showAnswer({ text: PACK.empty, hand: false }); return; }
+    add(q, "in");
+    showAnswer(answerFor(q));
+    input.value = "";
+  });
+  function iso(d){
+    return d.getFullYear() + "-" + String(d.getMonth() + 1).padStart(2, "0") + "-" + String(d.getDate()).padStart(2, "0");
+  }
+  function formatDate(v){
+    var p = v.split("-");
+    var d = Number(p[2]), m = Number(p[1]), y = p[0];
+    if (PACK.dateStyle === "dmy-numeric"){
+      return String(d).padStart(2, "0") + "." + String(m).padStart(2, "0") + "." + y;
+    }
+    return d + " " + PACK.months[m - 1] + " " + y;
+  }
+  var arr = document.getElementById("arr");
+  var today = new Date();
+  arr.min = iso(today);
+  var d0 = new Date();
+  d0.setDate(d0.getDate() + (PACK.lead || 7));
+  arr.value = iso(d0);
+  var slotsEl = document.getElementById("slots");
+  var slot = null;
+  (PACK.slots || []).forEach(function(n){
+    var b = document.createElement("button");
+    b.type = "button";
+    b.textContent = n;
+    b.setAttribute("aria-pressed", "false");
+    b.onclick = function(){
+      [].forEach.call(slotsEl.children, function(x){
+        x.classList.remove("on");
+        x.setAttribute("aria-pressed", "false");
+      });
+      b.classList.add("on");
+      b.setAttribute("aria-pressed", "true");
+      slot = n;
+    };
+    slotsEl.appendChild(b);
+  });
+  document.getElementById("cta").addEventListener("click", function(){
+    var ok = document.getElementById("ok");
+    ok.hidden = false;
+    var v = arr.value;
+    if (!v || !slot){ ok.textContent = PACK.pick; return; }
+    var item = document.getElementById("item").value;
+    ok.textContent = PACK.ok.replace("{item}", item).replace("{date}", formatDate(v)).replace("{slot}", slot);
+    if (window.bsTrack) window.bsTrack("/request/confirm", "example");
+  });
+})();
+</script>
+</body></html>
