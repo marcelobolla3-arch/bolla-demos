@@ -48,8 +48,19 @@ footer p{white-space:normal;text-align:center;font-size:12px;color:#a1a1a6;margi
 @media(min-width:800px){.tiles{grid-template-columns:1fr 1fr}}
 .v2 .mq{background:var(--a);color:#fff;border:0}.v2 .mq span i{color:#1d1d1f}.v2 .ph img{aspect-ratio:16/10;border-radius:0}.v2 .ph{padding:0}.v2 .stats div{background:#fff;box-shadow:inset 0 0 0 1.5px #e8e8ed}.v2 .tile{min-height:240px}
 </style><!-- GoatCounter (BOLLA STUDIO) -->
-<script>window.goatcounter={path:function(p){return '/bolla-demo-khyber-wisal-bcn'+((p.replace(/^\/khyber\-wisal\-bcn(?=[\/?#]|$)/,'')||'/').replace(/^\?/,'/?'))}};window.bsTrack=function(sub,title){try{if(window.goatcounter&&window.goatcounter.count)window.goatcounter.count({path:'/bolla-demo-khyber-wisal-bcn'+sub,title:title||sub})}catch(e){}}</script>
-<script data-goatcounter="https://bollastudio.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+<script id="bolla-metrics">(function(){
+var m=(location.search+location.hash).match(/[?&#]internal=([01])/);
+try{if(m){if(m[1]==="1")localStorage.setItem("skipgc","t");else localStorage.removeItem("skipgc");}}catch(e){}
+var internal=false;try{internal=localStorage.getItem("skipgc")==="t";}catch(e){}
+function tag(){var sm=location.search.match(/[?&]p=([^&#]*)/);return sm?decodeURIComponent(sm[1]).toLowerCase().replace(/[^a-z0-9-]/g,"").slice(0,60):"";}
+var PREFIX='/bolla-demo-khyber-wisal-bcn';
+window.bsTrack=function(sub,title){if(internal)return;var path=PREFIX+sub;var campaign=tag();if(campaign&&path.indexOf("?p=")<0)path+="?p="+campaign;try{if(window.goatcounter&&window.goatcounter.count)window.goatcounter.count({path:path,title:title||sub,event:true});}catch(e){}};
+if(internal)return;
+window.goatcounter={path:function(p){return PREFIX+((p.replace(/^\/khyber\-wisal\-bcn(?=[\/?#]|$)/,'')||'/').replace(/^\?/,'/?'))}};
+var s=document.createElement("script");s.async=true;s.src="https://gc.zgo.at/count.js";
+s.setAttribute("data-goatcounter","https://bollastudio.goatcounter.com/count");
+document.head.appendChild(s);
+})();</script>
 </head>
 <body class="t-marquee"><div class="demo" role="note"><b>DEMO</b>Página de muestra preparada por BOLLA STUDIO para Khyber Wisal Barcelona. No es la web oficial.</div>
 <div class="sb"><b>Khyber Wisal Barcelona</b><details><summary>Menú</summary><nav class="sheet"><a href="#sv">Servicios</a><a href="#hr">Horario</a><a href="#fq">Preguntas frecuentes</a><a class="pill pri" href="https://wa.me/34624631637?text=Hola%2C%20quer%C3%ADa%20pedir%20informaci%C3%B3n." target="_blank" rel="noopener">Escríbenos por WhatsApp</a></nav></details></div>

@@ -43,8 +43,19 @@ iframe.map{border:0;width:100%;display:block}
 @media(min-width:860px){.ix{display:grid;grid-template-columns:1.1fr .9fr;gap:50px;align-items:end}.rw{grid-template-columns:260px 1fr}.rw>.ct{border-top:2px solid #1d1d1f}.tbf{grid-template-columns:repeat(4,1fr)}}
 .v2{background:#f4f1ea}.v2 .ix h1{font-weight:600;letter-spacing:-.045em}.v2 .rw .lb b{color:#1d1d1f}.v2 .rw .lb span{color:var(--a)}.v2 .th{grid-template-columns:1fr 1fr 1.6fr}.v2 .th img:first-child{grid-row:auto;aspect-ratio:1;height:auto}.v2 .th img:last-child{grid-column:3;grid-row:1/3;aspect-ratio:auto;height:100%}
 </style><!-- GoatCounter (BOLLA STUDIO) -->
-<script>window.goatcounter={path:function(p){return '/bolla-demo-cafe-cafe-industria'+((p.replace(/^\/cafe\-cafe\-industria(?=[\/?#]|$)/,'')||'/').replace(/^\?/,'/?'))}};window.bsTrack=function(sub,title){try{if(window.goatcounter&&window.goatcounter.count)window.goatcounter.count({path:'/bolla-demo-cafe-cafe-industria'+sub,title:title||sub})}catch(e){}}</script>
-<script data-goatcounter="https://bollastudio.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+<script id="bolla-metrics">(function(){
+var m=(location.search+location.hash).match(/[?&#]internal=([01])/);
+try{if(m){if(m[1]==="1")localStorage.setItem("skipgc","t");else localStorage.removeItem("skipgc");}}catch(e){}
+var internal=false;try{internal=localStorage.getItem("skipgc")==="t";}catch(e){}
+function tag(){var sm=location.search.match(/[?&]p=([^&#]*)/);return sm?decodeURIComponent(sm[1]).toLowerCase().replace(/[^a-z0-9-]/g,"").slice(0,60):"";}
+var PREFIX='/bolla-demo-cafe-cafe-industria';
+window.bsTrack=function(sub,title){if(internal)return;var path=PREFIX+sub;var campaign=tag();if(campaign&&path.indexOf("?p=")<0)path+="?p="+campaign;try{if(window.goatcounter&&window.goatcounter.count)window.goatcounter.count({path:path,title:title||sub,event:true});}catch(e){}};
+if(internal)return;
+window.goatcounter={path:function(p){return PREFIX+((p.replace(/^\/cafe\-cafe\-industria(?=[\/?#]|$)/,'')||'/').replace(/^\?/,'/?'))}};
+var s=document.createElement("script");s.async=true;s.src="https://gc.zgo.at/count.js";
+s.setAttribute("data-goatcounter","https://bollastudio.goatcounter.com/count");
+document.head.appendChild(s);
+})();</script>
 </head>
 <body class="t-indice"><div class="demo" role="note"><b>DEMO</b>Página de muestra preparada por BOLLA STUDIO para Café Café. No es la web oficial.</div>
 <header class="ix"><div><span class="k">Cafetería — Eixample (Sagrada Família)</span><h1>Café Café</h1><p class="lead">Cafetería de barrio en Indústria, con comida española y china.</p><div class="row"><a class="pill pri" href="https://wa.me/34615633751?text=Hola%2C%20quer%C3%ADa%20pedir%20informaci%C3%B3n." target="_blank" rel="noopener">Escríbenos por WhatsApp</a><a class="pill sec" href="tel:+34615633751">Llamar</a></div></div><ol><li><a href="#svc"><span>01</span>Servicios<em>4</em></a></li><li><a href="#hrs"><span>02</span>Horario<em></em></a></li><li><a href="#rev"><span>03</span>Lo que destacan las reseñas<em>4,0 ★</em></a></li><li><a href="#gal"><span>04</span>El local<em></em></a></li><li><a href="#ct"><span>05</span>Contacto<em></em></a></li></ol></header>

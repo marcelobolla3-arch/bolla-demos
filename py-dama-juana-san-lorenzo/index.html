@@ -45,8 +45,19 @@ footer{background:#f5f5f7;position:relative;z-index:2;text-align:center;padding:
 .v2 .hr{display:flex;flex-direction:column-reverse}.v2 .hr .ph{aspect-ratio:16/12}.v2 .hr .tx{padding:22px 10px 22px}.v2 .hr h1{font-size:clamp(50px,13vw,130px);letter-spacing:-.055em}
 @media(min-width:820px){.v2 .hr .ph{order:0}.hr{display:grid;grid-template-columns:1fr 1.1fr;gap:30px;align-items:center;padding:24px}.hr .ph{order:2;aspect-ratio:auto;height:78vh}.hr .tx{padding:40px}.g4{grid-template-columns:repeat(4,1fr)}.p5 .ct{grid-template-columns:1fr 1fr}.p4 .ths{display:grid;grid-template-columns:repeat(3,1fr);gap:28px}}
 </style><!-- GoatCounter (BOLLA STUDIO) -->
-<script>window.goatcounter={path:function(p){return '/bolla-demo-py-dama-juana-san-lorenzo'+((p.replace(/^\/py\-dama\-juana\-san\-lorenzo(?=[\/?#]|$)/,'')||'/').replace(/^\?/,'/?'))}};window.bsTrack=function(sub,title){try{if(window.goatcounter&&window.goatcounter.count)window.goatcounter.count({path:'/bolla-demo-py-dama-juana-san-lorenzo'+sub,title:title||sub})}catch(e){}}</script>
-<script data-goatcounter="https://bollastudio.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+<script id="bolla-metrics">(function(){
+var m=(location.search+location.hash).match(/[?&#]internal=([01])/);
+try{if(m){if(m[1]==="1")localStorage.setItem("skipgc","t");else localStorage.removeItem("skipgc");}}catch(e){}
+var internal=false;try{internal=localStorage.getItem("skipgc")==="t";}catch(e){}
+function tag(){var sm=location.search.match(/[?&]p=([^&#]*)/);return sm?decodeURIComponent(sm[1]).toLowerCase().replace(/[^a-z0-9-]/g,"").slice(0,60):"";}
+var PREFIX='/bolla-demo-py-dama-juana-san-lorenzo';
+window.bsTrack=function(sub,title){if(internal)return;var path=PREFIX+sub;var campaign=tag();if(campaign&&path.indexOf("?p=")<0)path+="?p="+campaign;try{if(window.goatcounter&&window.goatcounter.count)window.goatcounter.count({path:path,title:title||sub,event:true});}catch(e){}};
+if(internal)return;
+window.goatcounter={path:function(p){return PREFIX+((p.replace(/^\/py\-dama\-juana\-san\-lorenzo(?=[\/?#]|$)/,'')||'/').replace(/^\?/,'/?'))}};
+var s=document.createElement("script");s.async=true;s.src="https://gc.zgo.at/count.js";
+s.setAttribute("data-goatcounter","https://bollastudio.goatcounter.com/count");
+document.head.appendChild(s);
+})();</script>
 </head>
 <body class="t-paneles v2"><div class="demo" role="note"><b>DEMO</b>Página de muestra preparada por BOLLA STUDIO para Dama Juana. No es la web oficial.</div>
 <nav class="dots"><a href="#h" title="Inicio"></a><a href="#p1" title="Servicios"></a><a href="#p2" title="El local"></a><a href="#p3" title="Horario"></a><a href="#p4" title="Lo que destacan las reseñas"></a><a href="#p5" title="Contacto"></a></nav>

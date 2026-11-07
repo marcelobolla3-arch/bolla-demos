@@ -53,8 +53,19 @@ body.v2{background:#101012}.v2 .hero{text-align:left;max-width:1240px;margin:aut
 @media(min-width:900px){.v2 .shot img{aspect-ratio:21/9}}
 @media(min-width:900px){.bento{grid-template-columns:repeat(4,1fr)}.bento .w{grid-column:span 2}.bento .t2{grid-row:span 2}.gal img{flex-basis:32%}}
 </style><!-- GoatCounter (BOLLA STUDIO) -->
-<script>window.goatcounter={path:function(p){return '/bolla-demo-tapiceria-hilario'+((p.replace(/^\/tapiceria\-hilario(?=[\/?#]|$)/,'')||'/').replace(/^\?/,'/?'))}};window.bsTrack=function(sub,title){try{if(window.goatcounter&&window.goatcounter.count)window.goatcounter.count({path:'/bolla-demo-tapiceria-hilario'+sub,title:title||sub})}catch(e){}}</script>
-<script data-goatcounter="https://bollastudio.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+<script id="bolla-metrics">(function(){
+var m=(location.search+location.hash).match(/[?&#]internal=([01])/);
+try{if(m){if(m[1]==="1")localStorage.setItem("skipgc","t");else localStorage.removeItem("skipgc");}}catch(e){}
+var internal=false;try{internal=localStorage.getItem("skipgc")==="t";}catch(e){}
+function tag(){var sm=location.search.match(/[?&]p=([^&#]*)/);return sm?decodeURIComponent(sm[1]).toLowerCase().replace(/[^a-z0-9-]/g,"").slice(0,60):"";}
+var PREFIX='/bolla-demo-tapiceria-hilario';
+window.bsTrack=function(sub,title){if(internal)return;var path=PREFIX+sub;var campaign=tag();if(campaign&&path.indexOf("?p=")<0)path+="?p="+campaign;try{if(window.goatcounter&&window.goatcounter.count)window.goatcounter.count({path:path,title:title||sub,event:true});}catch(e){}};
+if(internal)return;
+window.goatcounter={path:function(p){return PREFIX+((p.replace(/^\/tapiceria\-hilario(?=[\/?#]|$)/,'')||'/').replace(/^\?/,'/?'))}};
+var s=document.createElement("script");s.async=true;s.src="https://gc.zgo.at/count.js";
+s.setAttribute("data-goatcounter","https://bollastudio.goatcounter.com/count");
+document.head.appendChild(s);
+})();</script>
 </head>
 <body class="t-noche"><div class="demo" role="note"><b>DEMO</b>Página de muestra preparada por BOLLA STUDIO para Tapicería Hilario. No es la web oficial.</div>
 <input type="checkbox" id="m"><div class="hd"><b>Tapicería Hilario</b><label for="m">Menú</label></div>

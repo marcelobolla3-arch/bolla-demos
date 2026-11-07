@@ -15,8 +15,19 @@ input{width:100%;padding:10px;border:1px solid #ddd;border-radius:10px;margin-bo
 .feats{max-width:1020px;margin:0 auto 30px;padding:0 16px;display:grid;grid-template-columns:repeat(3,1fr);gap:14px}@media(max-width:820px){.feats{grid-template-columns:1fr}}
 .f{background:#fff;border-radius:14px;padding:16px}.f i{font-style:normal;font-size:24px}.f h3{margin:6px 0 4px;font-size:16px}.f p{margin:0;color:#555;font-size:14px}
 footer{text-align:center;color:#666;font-size:13px;padding:10px 16px 40px}footer a{color:#2a6f97}.tag{display:inline-block;background:#fff3;border-radius:20px;padding:4px 10px;font-size:12px;margin-top:10px}</style><!-- GoatCounter (BOLLA STUDIO) -->
-<script>window.goatcounter={path:function(p){return '/bolla-dentista-mirios-firenze'+((p.replace(/^\/dentista\-mirios\-firenze(?=[\/?#]|$)/,'')||'/').replace(/^\?/,'/?'))}};window.bsTrack=function(sub,title){try{if(window.goatcounter&&window.goatcounter.count)window.goatcounter.count({path:'/bolla-dentista-mirios-firenze'+sub,title:title||sub})}catch(e){}}</script>
-<script data-goatcounter="https://bollastudio.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+<script id="bolla-metrics">(function(){
+var m=(location.search+location.hash).match(/[?&#]internal=([01])/);
+try{if(m){if(m[1]==="1")localStorage.setItem("skipgc","t");else localStorage.removeItem("skipgc");}}catch(e){}
+var internal=false;try{internal=localStorage.getItem("skipgc")==="t";}catch(e){}
+function tag(){var sm=location.search.match(/[?&]p=([^&#]*)/);return sm?decodeURIComponent(sm[1]).toLowerCase().replace(/[^a-z0-9-]/g,"").slice(0,60):"";}
+var PREFIX='/bolla-dentista-mirios-firenze';
+window.bsTrack=function(sub,title){if(internal)return;var path=PREFIX+sub;var campaign=tag();if(campaign&&path.indexOf("?p=")<0)path+="?p="+campaign;try{if(window.goatcounter&&window.goatcounter.count)window.goatcounter.count({path:path,title:title||sub,event:true});}catch(e){}};
+if(internal)return;
+window.goatcounter={path:function(p){return PREFIX+((p.replace(/^\/dentista\-mirios\-firenze(?=[\/?#]|$)/,'')||'/').replace(/^\?/,'/?'))}};
+var s=document.createElement("script");s.async=true;s.src="https://gc.zgo.at/count.js";
+s.setAttribute("data-goatcounter","https://bollastudio.goatcounter.com/count");
+document.head.appendChild(s);
+})();</script>
 </head><body>
 <div class="top"><small>Demo gratuita · Firenze</small><h1>Studio Dentistico Mirios</h1><p>Via La Farina 15, Firenze · sede anche a Scarperia</p><div class="tag">Anteprima preparata da BOLLA STUDIO</div></div>
 <div class="wrap"><div class="card" id="book"><h2>Prenota la tua visita</h2><p class="muted">Scegli trattamento e orario: lo studio riceve la richiesta già in agenda.</p>

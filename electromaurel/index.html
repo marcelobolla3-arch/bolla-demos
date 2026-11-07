@@ -52,8 +52,19 @@ footer{padding:28px 22px;font-size:12px;color:#86868b;text-align:center;border-t
 .v2 .split .ph{order:2;margin:0 12px 12px;border-radius:28px}.v2 .split .tx{padding-top:28px}
 @media(min-width:820px){.split{grid-template-columns:1fr 1fr;min-height:80vh}.split .ph{aspect-ratio:auto;order:2;position:relative}.split .ph img{position:absolute;inset:0}.v2 .split .ph{order:0;margin:12px;border-radius:32px;overflow:hidden}.split .tx{padding:64px}.mas{columns:3;max-width:1100px;margin:auto}.hw{grid-template-columns:1.4fr 1fr}.svcs{grid-template-columns:1fr 1fr}.wab{max-width:1100px;margin:0 auto}}
 </style><!-- GoatCounter (BOLLA STUDIO) -->
-<script>window.goatcounter={path:function(p){return '/bolla-demo-electromaurel'+((p.replace(/^\/electromaurel(?=[\/?#]|$)/,'')||'/').replace(/^\?/,'/?'))}};window.bsTrack=function(sub,title){try{if(window.goatcounter&&window.goatcounter.count)window.goatcounter.count({path:'/bolla-demo-electromaurel'+sub,title:title||sub})}catch(e){}}</script>
-<script data-goatcounter="https://bollastudio.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+<script id="bolla-metrics">(function(){
+var m=(location.search+location.hash).match(/[?&#]internal=([01])/);
+try{if(m){if(m[1]==="1")localStorage.setItem("skipgc","t");else localStorage.removeItem("skipgc");}}catch(e){}
+var internal=false;try{internal=localStorage.getItem("skipgc")==="t";}catch(e){}
+function tag(){var sm=location.search.match(/[?&]p=([^&#]*)/);return sm?decodeURIComponent(sm[1]).toLowerCase().replace(/[^a-z0-9-]/g,"").slice(0,60):"";}
+var PREFIX='/bolla-demo-electromaurel';
+window.bsTrack=function(sub,title){if(internal)return;var path=PREFIX+sub;var campaign=tag();if(campaign&&path.indexOf("?p=")<0)path+="?p="+campaign;try{if(window.goatcounter&&window.goatcounter.count)window.goatcounter.count({path:path,title:title||sub,event:true});}catch(e){}};
+if(internal)return;
+window.goatcounter={path:function(p){return PREFIX+((p.replace(/^\/electromaurel(?=[\/?#]|$)/,'')||'/').replace(/^\?/,'/?'))}};
+var s=document.createElement("script");s.async=true;s.src="https://gc.zgo.at/count.js";
+s.setAttribute("data-goatcounter","https://bollastudio.goatcounter.com/count");
+document.head.appendChild(s);
+})();</script>
 </head>
 <body class="t-split"><div class="demo" role="note"><b>DEMO</b>Página de muestra preparada por BOLLA STUDIO para Electromaurel. No es la web oficial.</div>
 <input type="checkbox" id="m"><div class="top"><b>Electromaurel</b><label for="m" class="burg" aria-label="Menú"><i></i></label></div>

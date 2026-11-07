@@ -56,8 +56,19 @@ footer{padding:50px 22px 40px;text-align:center}footer .wm{font-family:"Inter Ti
 .v2 .car .eyebrow{color:var(--a)!important;opacity:1!important}.v2 .car .pill.sec{color:var(--a)}.v2 .car p{color:#6e6e73;margin:12px 0 20px}.v2 .car h1{font-size:clamp(46px,12vw,110px);letter-spacing:-.055em}.v2 .car .dots{bottom:30px}
 @media(min-width:800px){.v2 .car .tx{max-width:900px;margin:0 auto;width:100%}.stp ol{grid-template-columns:repeat(3,1fr)}.wa>div{flex-direction:row;align-items:center;justify-content:space-between;padding:56px}}
 </style><!-- GoatCounter (BOLLA STUDIO) -->
-<script>window.goatcounter={path:function(p){return '/bolla-demo-py-peluqueria-magda-asuncion'+((p.replace(/^\/py\-peluqueria\-magda\-asuncion(?=[\/?#]|$)/,'')||'/').replace(/^\?/,'/?'))}};window.bsTrack=function(sub,title){try{if(window.goatcounter&&window.goatcounter.count)window.goatcounter.count({path:'/bolla-demo-py-peluqueria-magda-asuncion'+sub,title:title||sub})}catch(e){}}</script>
-<script data-goatcounter="https://bollastudio.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+<script id="bolla-metrics">(function(){
+var m=(location.search+location.hash).match(/[?&#]internal=([01])/);
+try{if(m){if(m[1]==="1")localStorage.setItem("skipgc","t");else localStorage.removeItem("skipgc");}}catch(e){}
+var internal=false;try{internal=localStorage.getItem("skipgc")==="t";}catch(e){}
+function tag(){var sm=location.search.match(/[?&]p=([^&#]*)/);return sm?decodeURIComponent(sm[1]).toLowerCase().replace(/[^a-z0-9-]/g,"").slice(0,60):"";}
+var PREFIX='/bolla-demo-py-peluqueria-magda-asuncion';
+window.bsTrack=function(sub,title){if(internal)return;var path=PREFIX+sub;var campaign=tag();if(campaign&&path.indexOf("?p=")<0)path+="?p="+campaign;try{if(window.goatcounter&&window.goatcounter.count)window.goatcounter.count({path:path,title:title||sub,event:true});}catch(e){}};
+if(internal)return;
+window.goatcounter={path:function(p){return PREFIX+((p.replace(/^\/py\-peluqueria\-magda\-asuncion(?=[\/?#]|$)/,'')||'/').replace(/^\?/,'/?'))}};
+var s=document.createElement("script");s.async=true;s.src="https://gc.zgo.at/count.js";
+s.setAttribute("data-goatcounter","https://bollastudio.goatcounter.com/count");
+document.head.appendChild(s);
+})();</script>
 </head>
 <body class="t-carrusel v2"><div class="demo" role="note"><b>DEMO</b>Página de muestra preparada por BOLLA STUDIO para Peluquería Magda. No es la web oficial.</div>
 <nav class="bar" data-navbg><a class="l" href="#svc">Servicios</a><span class="wm">Peluquería Magda</span><a class="r" href="tel:+595982853881">Llamar</a></nav>

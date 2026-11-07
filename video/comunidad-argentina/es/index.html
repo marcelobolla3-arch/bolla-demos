@@ -22,16 +22,44 @@
     <h1>Cómo se ve el agente en la práctica</h1>
     <p>Video corto de BOLLA STUDIO. El agente atiende a los clientes por WhatsApp, en la web y por teléfono, las 24 horas.</p>
     <p class="langs">
-      <a href="../es/">ES</a>
-      <a href="../en/">EN</a>
-      <a href="../it/">IT</a>
-      <a href="../de/">DE</a>
-      <a href="../fr/">FR</a>
+      <a href="../es/" data-keep-query>ES</a>
+      <a href="../en/" data-keep-query>EN</a>
+      <a href="../it/" data-keep-query>IT</a>
+      <a href="../de/" data-keep-query>DE</a>
+      <a href="../fr/" data-keep-query>FR</a>
     </p>
     <video controls playsinline preload="metadata" src="reel.mp4">
       Tu navegador no reproduce el video. <a href="reel.mp4">Descargalo acá</a>.
     </video>
     <p class="meta"><a href="https://bollastudio.com">bollastudio.com</a> · Marcelo Bolla</p>
   </main>
+<script id="bolla-metrics">
+(function(){
+ var BASE='/bolla-video-comunidad-argentina/es';
+ var m=(location.search+location.hash).match(/[?&#]internal=([01])/);
+ try{ if(m){ if(m[1]==="1") localStorage.setItem("skipgc","t"); else localStorage.removeItem("skipgc"); } }catch(e){}
+ var internal=false; try{ internal=localStorage.getItem("skipgc")==="t"; }catch(e){}
+ var sm=location.search.match(/[?&]p=([^&#]*)/);
+ var tag=sm?decodeURIComponent(sm[1]).toLowerCase().replace(/[^a-z0-9-]/g,"").slice(0,60):"";
+ var q=[]; window.bsTrack=function(sub,title){ if(internal) return;
+  var ep=BASE+sub+(tag?'?p='+tag:'');
+  if(window.goatcounter&&window.goatcounter.count) window.goatcounter.count({path:ep,title:title||sub,event:true}); else q.push([ep,title||sub]); };
+ if(internal) return;
+ window.goatcounter={no_onload:true};
+ var s=document.createElement("script"); s.async=true; s.src="https://gc.zgo.at/count.js";
+ s.setAttribute("data-goatcounter","https://bollastudio.goatcounter.com/count");
+ s.onload=function(){ try{ window.goatcounter.count({path:BASE+'/'+(tag?'?p='+tag:''),title:'video comunidad-argentina es'});
+  q.forEach(function(e){window.goatcounter.count({path:e[0],title:e[1],event:true});}); q=[]; }catch(e){} };
+ document.head.appendChild(s);
+ var played=false;
+ document.addEventListener('play',function(ev){
+  if(played||!ev.target||String(ev.target.tagName)!=='VIDEO') return;
+  played=true; window.bsTrack('/play','video-play');
+ },true);
+})();
+document.querySelectorAll('[data-keep-query]').forEach(function(a){
+ try{ var u=new URL(a.getAttribute('href'),location.href); a.href=u.pathname+location.search+location.hash; }catch(e){}
+});
+</script>
 </body>
 </html>

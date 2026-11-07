@@ -1,8 +1,19 @@
 <!doctype html><html lang="it"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>La Brace – assistente AI 24/7 · demo BOLLA STUDIO</title><meta name="robots" content="noindex">
 <style>body{margin:0;font-family:system-ui,sans-serif;background:#f3f4f6;color:#111}header{background:#1f3a5f;color:#fff;padding:22px 20px}header h1{margin:0;font-size:22px}header p{margin:6px 0 0;opacity:.9}main{max-width:900px;margin:0 auto;padding:18px;display:grid;gap:18px;grid-template-columns:1fr 1fr}@media(max-width:760px){main{grid-template-columns:1fr}}.card{background:#fff;border-radius:14px;padding:16px;box-shadow:0 1px 4px rgba(0,0,0,.08)}#nav button{display:block;width:100%;margin:6px 0;padding:11px;border:1px solid #ddd;border-radius:10px;background:#fff;text-align:left;cursor:pointer;font-size:15px}#nav button.on{border-color:#1f3a5f;background:#1f3a5f15}.phone{background:#e5ddd5;border-radius:14px;min-height:380px;padding:12px;display:flex;flex-direction:column;gap:8px}.m{max-width:82%;padding:8px 11px;border-radius:10px;font-size:14px;line-height:1.35}.g{align-self:flex-end;background:#dcf8c6}.b{align-self:flex-start;background:#fff}.ph{background:#1f3a5f;color:#fff;margin:-12px -12px 4px;padding:10px 12px;border-radius:14px 14px 0 0;font-weight:600}footer{text-align:center;color:#666;font-size:13px;padding:20px}</style>
 <!-- GoatCounter (BOLLA STUDIO) -->
-<script>window.goatcounter={path:function(p){return '/la-brace-manno'+((p.replace(/^\/la\-brace\-manno(?=[\/?#]|$)/,'')||'/').replace(/^\?/,'/?'))}};window.bsTrack=function(sub,title){try{if(window.goatcounter&&window.goatcounter.count)window.goatcounter.count({path:'/la-brace-manno'+sub,title:title||sub})}catch(e){}}</script>
-<script data-goatcounter="https://bollastudio.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+<script id="bolla-metrics">(function(){
+var m=(location.search+location.hash).match(/[?&#]internal=([01])/);
+try{if(m){if(m[1]==="1")localStorage.setItem("skipgc","t");else localStorage.removeItem("skipgc");}}catch(e){}
+var internal=false;try{internal=localStorage.getItem("skipgc")==="t";}catch(e){}
+function tag(){var sm=location.search.match(/[?&]p=([^&#]*)/);return sm?decodeURIComponent(sm[1]).toLowerCase().replace(/[^a-z0-9-]/g,"").slice(0,60):"";}
+var PREFIX='/la-brace-manno';
+window.bsTrack=function(sub,title){if(internal)return;var path=PREFIX+sub;var campaign=tag();if(campaign&&path.indexOf("?p=")<0)path+="?p="+campaign;try{if(window.goatcounter&&window.goatcounter.count)window.goatcounter.count({path:path,title:title||sub,event:true});}catch(e){}};
+if(internal)return;
+window.goatcounter={path:function(p){return PREFIX+((p.replace(/^\/la\-brace\-manno(?=[\/?#]|$)/,'')||'/').replace(/^\?/,'/?'))}};
+var s=document.createElement("script");s.async=true;s.src="https://gc.zgo.at/count.js";
+s.setAttribute("data-goatcounter","https://bollastudio.goatcounter.com/count");
+document.head.appendChild(s);
+})();</script>
 </head><body><header><h1>La Brace</h1><p>Manno · assistente AI 24/7 – demo gratuita</p></header>
 <main><section class="card"><h3 style="margin-top:0">Provi una conversazione</h3><p style="color:#444;font-size:14px">Molte richieste arrivano la sera o nel weekend. Questo assistente risponde subito su WhatsApp, sul sito e al telefono, in italiano, tedesco e altre lingue, raccoglie i dati e lascia tutto pronto per il vostro team.</p><nav id="nav"><button data-t="sera">23:10 – richiesta tavolo</button><button data-t="evento">Evento / festa privata</button><button data-t="de">Deutsch – Reservierung</button></nav><p style="font-size:12px;color:#777">Demo con conversazioni di esempio. In produzione funziona sul vostro numero WhatsApp e sul sito, e il vostro team può subentrare in qualsiasi chat.</p></section>
 <section class="card"><div class="phone" id="ph"></div></section></main>
