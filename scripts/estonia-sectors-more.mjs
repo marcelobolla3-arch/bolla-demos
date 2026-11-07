@@ -73,7 +73,7 @@ export const estoniaMore = [
     ],
   }, {
     title: "Пример чата для парикмахерской · BOLLA STUDIO",
-    bannerBefore: "Нейтральный пример чата для парикмахерских, подготовила",
+    bannerBefore: "Нейтральный пример чата для парикмахерских. Его подготовила",
     bannerAfter: "«Салон Пример» вымышленный, это не настоящий салон. Настоящих записей нет. Этот чат — записанный пример, не живой помощник.",
     tag: "Салон Пример, вымышленный салон",
     h1: "Запись, пока ножницы в руках",
@@ -160,11 +160,11 @@ export const estoniaMore = [
       { id: "documents", button: "Milliseid dokumente on vaja?", keys: ["dokumen"], text: "See näidisbüroo küsib enda ankeeti ja isikutunnistust. Ta võib küsida veel. See ei ole õigusnõuanne ja sellelt lehelt ei laeta midagi üles." },
       { id: "parking", button: "Kas parkla on olemas?", keys: ["parkl"], text: "Selle näidiskorteriga võib parkla olla olemas. Päris kuulutus kasutaks selle kuulutuse fakte. Siin ei reserveerita midagi." },
       { id: "repair", button: "Mul tilgub kraan. Olen üürnik.", keys: ["kraan", "tilgub"], text: "Aitäh teatamast. Tellitud vestluses läheks aadress haldurile. See leht ei saada teadet ega fotot." },
-      { id: "rent", button: "Kas üüri saab läbi rääkida?", keys: ["üüri", "lãbi", "labi", "läbi"], hand: true, text: "Selle otsustaks büroo või omanik, seepärast näidis ei nimeta summat. Midagi ei saadetud." },
+      { id: "rent", button: "Kas üüri saab läbi rääkida?", keys: ["üüri", "labi", "läbi"], hand: true, text: "Selle otsustaks büroo või omanik, seepärast näidis ei nimeta summat. Midagi ei saadetud." },
     ],
   }, {
     title: "Пример чата для агентства недвижимости · BOLLA STUDIO",
-    bannerBefore: "Нейтральный пример чата для агентств недвижимости, подготовила",
+    bannerBefore: "Нейтральный пример чата для агентств недвижимости. Его подготовила",
     bannerAfter: "«Агентство Пример» вымышленное, это не настоящее агентство. Настоящих просмотров нет. Этот чат — записанный пример, не живой помощник.",
     tag: "Агентство Пример, вымышленное агентство",
     h1: "Вопросы по объявлению до открытия почты",
@@ -255,7 +255,7 @@ export const estoniaMore = [
     ],
   }, {
     title: "Пример чата для физиотерапии · BOLLA STUDIO",
-    bannerBefore: "Нейтральный пример чата для физиотерапии, подготовила",
+    bannerBefore: "Нейтральный пример чата для физиотерапии. Его подготовила",
     bannerAfter: "«Физиотерапия Пример» вымышленная, это не настоящий кабинет. Настоящих записей нет. Этот чат — записанный пример, не живой помощник.",
     tag: "Физиотерапия Пример, вымышленный кабинет",
     h1: "Новые пациенты, пока вы ведёте приём",
