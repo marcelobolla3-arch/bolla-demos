@@ -21,6 +21,7 @@ function langsFor(codes, current) {
 function withCampaign(html) {
   const from = "if(window.goatcounter&&window.goatcounter.count) window.goatcounter.count({path:BASE+sub,title:title||sub,event:true}); else q.push([BASE+sub,title||sub]);";
   const to = "var ep=BASE+sub+(tag?'?p='+tag:'');if(window.goatcounter&&window.goatcounter.count) window.goatcounter.count({path:ep,title:title||sub,event:true}); else q.push([ep,title||sub]);";
+  if (html.includes(to)) return html;
   if (!html.includes(from)) throw new Error("event line missing");
   return html.replace(from, to);
 }
@@ -206,7 +207,7 @@ const pages = [
       bannerAfter: "“Example Sailing” is fictional, not a real operator. No departure is confirmed. This chat is a scripted example, not a live assistant.",
       tag: "Example Sailing, a fictional Tallinn example",
       h1: "Example: a yacht, a catamaran or a sailing course",
-      intro: "This scripted chat shows a Tallinn example: a day hire, a sailing course, a date and the number of people. Weather is only what the company itself would say. This page does not guarantee the weather or a clock time. The team would say whether a trip is possible. This page does not.",
+      intro: "This scripted chat shows a Tallinn example: a day hire, a sailing course, a date and the number of people. Weather is only what the company itself would say. This page does not guarantee the weather or a departure time. The team would say whether a trip is possible. This page does not.",
       chatTitle: "Example Sailing · example enquiry",
       askPlaceholder: "For example: Is there a sailing course?",
       formTitle: "Enquiry, shown as an example",
@@ -223,15 +224,15 @@ const pages = [
       footerNote: "“Example Sailing” is fictional, not a real charter company or school. No price, place or departure time is real. Nothing is booked, stored, or sent. This is not the page /charter-de/.",
       chat: [
         ["in", "Hello, is a catamaran free on Saturday for four people?"],
-        ["out", "Hello. I can note Saturday, four people, a catamaran, as an example.\nThis page does not confirm a free place or a clock time."],
+        ["out", "Hello. I can note Saturday, four people, a catamaran, as an example.\nThis page does not confirm a free place or a departure time."],
         ["in", "Sample Guest. What if the weather is bad?"],
-        ["out", "Thank you. The company would speak about the weather. This example does not guarantee the trip or a clock time. The team would say whether the plan stays or changes. Nothing was sent from this page."],
+        ["out", "Thank you. The company would speak about the weather. This example does not guarantee the trip or a departure time. The team would say whether the plan stays or changes. Nothing was sent from this page."],
       ],
       rules: [
         { id: "yacht", button: "Can we ask about a yacht or a catamaran?", keys: ["yacht", "catamaran"], text: "Yes. In this example you can ask about a day hire of a yacht or a catamaran. This page does not know if a place is free or what it costs. The team would answer." },
         { id: "course", button: "Is there a sailing course?", keys: ["course", "sailing"], text: "In this example you can ask about a sailing course. The team would confirm the date and the level. Nobody is enrolled from this page." },
         { id: "party", button: "There are four of us. Does the date work?", keys: ["four", "date", "people"], text: "The number of people and the date can be noted as an example. The team would say whether that day works. This page does not confirm it." },
-        { id: "weather", button: "What if the weather is bad?", keys: ["weather", "wind", "rain"], hand: true, text: "The company would look at the weather. This example does not guarantee the weather, the departure or a clock time. The team would decide. Nothing was sent." },
+        { id: "weather", button: "What if the weather is bad?", keys: ["weather", "wind", "rain"], hand: true, text: "The company would look at the weather. This example does not guarantee the weather or a departure time. The team would decide. Nothing was sent." },
         { id: "safety", button: "What about safety and equipment?", keys: ["safety", "lifejacket", "equipment"], hand: true, text: "The team would explain safety and equipment under their own rules. This example does not give a technical or safety manual. Nothing was sent." },
       ],
     },

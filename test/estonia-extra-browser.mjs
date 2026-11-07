@@ -3,23 +3,29 @@ import { mkdirSync, writeFileSync } from "node:fs";
 import http from "node:http";
 import { setTimeout as delay } from "node:timers/promises";
 
-const port = 8781;
+const port = 8782;
 const outDir = "/opt/cursor/artifacts";
 mkdirSync(outDir, { recursive: true });
 const root = new URL("..", import.meta.url).pathname;
 const server = spawn("python3", ["-m", "http.server", String(port)], { cwd: root, stdio: "ignore" });
 const chrome = spawn("google-chrome", [
   "--headless=new", "--disable-gpu", "--no-sandbox",
-  "--remote-debugging-port=9344",
+  "--remote-debugging-port=9345",
   "--user-data-dir=/tmp/estonia-extra-chrome",
   "about:blank",
 ], { stdio: "ignore" });
 
-const shots = [
-  ["barber/et/?p=ee-extra&internal=1", "ee-barber-et-375", "Näidisbarber", "Kas teete habet?", "habet"],
-  ["charter/et/?p=ee-extra&internal=1", "ee-charter-et-375", "Näidispurje", "Kas on purjekursust?", "kursus"],
-  ["charter/en/?p=ee-extra&internal=1", "ee-charter-en-375", "Example Sailing", "Is there a sailing course?", "enrolled"],
-  ["marina-pirita/et/?p=ee-extra&internal=1", "ee-marina-pirita-et-375", "Näidissadam", "Kas see on hotell?", "Ei"],
+const pages = [
+  { path: "barber/et/", shot: null, lang: "et", marker: "Näidisbarber", button: "Kas teete habet?", expect: "habet", other: "/barber/en/" },
+  { path: "barber/en/", shot: "ee-barber-en-375", lang: "en", marker: "Example Barber", button: "Do you do beards?", expect: "beard", other: "/barber/et/" },
+  { path: "charter/et/", shot: null, lang: "et", marker: "Näidispurje", button: "Kas on purjekursust?", expect: "kursus", other: "/charter/en/" },
+  { path: "charter/en/", shot: "ee-charter-en-375", lang: "en", marker: "Example Sailing", button: "What if the weather is bad?", expect: "departure time", other: "/charter/et/" },
+  { path: "marina-pirita/et/", shot: null, lang: "et", marker: "Näidissadam", button: "Kas see on hotell?", expect: "Ei", other: null },
+];
+const entries = [
+  ["barber/?lang=en&p=qa-ee-5&internal=1", "/barber/en/", "qa-ee-5"],
+  ["charter/?lang=et&p=qa-ee-5&internal=1", "/charter/et/", "qa-ee-5"],
+  ["marina-pirita/?p=qa-ee-5&internal=1", "/marina-pirita/et/", "qa-ee-5"],
 ];
 
 let socket;
@@ -29,7 +35,7 @@ try {
   for (let i = 0; i < 40 && !version; i += 1) {
     try {
       const body = await new Promise((resolve, reject) => {
-        http.get("http://127.0.0.1:9344/json/version", (res) => {
+        http.get("http://127.0.0.1:9345/json/version", (res) => {
           const chunks = [];
           res.on("data", (c) => chunks.push(c));
           res.on("end", () => resolve(Buffer.concat(chunks).toString("utf8")));
@@ -71,6 +77,7 @@ try {
     { urlPattern: "*gc.zgo.at*", requestStage: "Request" },
   ] }, sessionId);
   await send("Emulation.setDeviceMetricsOverride", { width: 375, height: 812, deviceScaleFactor: 1, mobile: true }, sessionId);
+  await send("Emulation.setEmulatedMedia", { features: [{ name: "prefers-reduced-motion", value: "reduce" }] }, sessionId);
   async function drain() {
     while (paused.length) {
       const item = paused.shift();
@@ -85,36 +92,66 @@ try {
     return result.result.value;
   }
   const report = [];
-  for (const [path, name, marker, question, expect] of shots) {
-    await send("Page.navigate", { url: `http://127.0.0.1:${port}/${path}` }, sessionId);
-    await delay(900);
+  for (const page of pages) {
+    const url = `http://127.0.0.1:${port}/${page.path}?p=qa-ee-5&internal=1`;
+    await send("Page.navigate", { url }, sessionId);
+    await delay(800);
     await drain();
+    await evaluate(`(() => {
+      var buttons = Array.from(document.querySelectorAll("#qr button"));
+      var b = buttons.find((x) => x.textContent.indexOf(${JSON.stringify(page.button)}) >= 0);
+      if (!b) throw new Error("missing button");
+      b.click();
+    })()`);
+    await delay(200);
     const state = await evaluate(`(() => {
-      var demo = window.__sectorDemo;
-      var answer = demo.answerFor(${JSON.stringify(question)}).text;
-      var link = document.querySelector('a[data-keep-query]');
+      var text = document.body.innerText;
+      var chat = document.getElementById("chat").innerText;
+      var other = ${page.other ? JSON.stringify(page.other) : "null"};
+      var link = other ? Array.from(document.querySelectorAll("a[data-keep-query]")).find((a) => a.pathname === other) : null;
       return {
         width: document.documentElement.clientWidth,
-        marker: document.body.innerText.includes(${JSON.stringify(marker)}),
-        answer: answer,
-        live: demo.liveAI,
+        lang: document.documentElement.lang,
+        marker: text.includes(${JSON.stringify(page.marker)}),
+        bolla: text.includes("BOLLA STUDIO"),
+        scripted: text.includes("Kirjutatud näidis") || text.includes("Scripted example"),
+        plain: text.includes("isikupärastamine") || text.includes("not personalization"),
+        unsent: text.includes("ei saadeta") || text.includes("Nothing is sent"),
+        chat: chat,
+        live: window.__sectorDemo.liveAI,
         href: link ? link.href : "",
         gc: !!document.querySelector('script[src*="gc.zgo.at"]')
       };
     })()`);
-    if (state.width !== 375 || !state.marker || state.live !== false || state.gc || !String(state.answer).includes(expect)) {
-      throw new Error(name + " " + JSON.stringify(state));
+    const variants = {
+      health: state.width === 375 && state.lang === page.lang && !state.gc,
+      belonging: state.marker && state.bolla,
+      click: String(state.chat).includes(page.expect) && state.live === false,
+      transparency: state.scripted && state.plain,
+      noBooking: state.unsent && (!page.other || (state.href.includes("p=qa-ee-5") && state.href.includes("internal=1"))),
+    };
+    if (Object.values(variants).some((ok) => !ok)) throw new Error(page.path + " " + JSON.stringify({ variants, state }));
+    if (page.shot) {
+      const image = await send("Page.captureScreenshot", { format: "png" }, sessionId);
+      writeFileSync(`${outDir}/${page.shot}.png`, Buffer.from(image.data, "base64"));
     }
-    if (path.startsWith("barber/et") && !String(state.href).includes("p=ee-extra")) throw new Error("query dropped " + state.href);
-    const image = await send("Page.captureScreenshot", { format: "png" }, sessionId);
-    writeFileSync(`${outDir}/${name}.png`, Buffer.from(image.data, "base64"));
-    report.push({ name, width: state.width, answer: state.answer.slice(0, 80), blocked: blocked.length });
+    report.push({ path: page.path, variants, chat: state.chat.slice(0, 120) });
+  }
+  for (const [path, landed, tag] of entries) {
+    await send("Page.navigate", { url: `http://127.0.0.1:${port}/${path}` }, sessionId);
+    await delay(700);
+    await drain();
+    const where = await evaluate("location.pathname + location.search");
+    if (!String(where).startsWith(landed) || !String(where).includes("p=" + tag) || !String(where).includes("internal=1")) {
+      throw new Error("entry " + path + " -> " + where);
+    }
+    report.push({ entry: path, landed: where });
   }
   clearInterval(pump);
   await drain();
   if (blocked.length !== 0) throw new Error("counter requests " + blocked.join(" "));
   writeFileSync(`${outDir}/ee-extra-browser.json`, JSON.stringify({ ok: true, blocked: blocked.length, report }, null, 2));
-  console.log(JSON.stringify({ ok: true, blocked: 0, pages: report.map((r) => r.name) }));
+  console.log(JSON.stringify({ ok: true, blocked: 0, rows: report.map((r) => r.path || r.entry) }));
 } catch (error) {
   console.error(error);
   process.exitCode = 1;

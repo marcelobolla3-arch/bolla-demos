@@ -66,7 +66,8 @@ test("the men’s barber is not the hair salon and the charter is not the Berlin
   const charterEn = read("charter/en/index.html");
   assert.match(charterEt, /Tallinn/);
   assert.match(charterEt, /ei garanteeri/);
-  assert.match(charterEn, /does not guarantee/);
+  assert.match(charterEn, /does not guarantee the weather or a departure time/);
+  assert.doesNotMatch(charterEn, /clock time/);
   assert.match(charterEn, /not the page \/charter-de\//);
   assert.doesNotMatch(charterEt + charterEn, /Lagoon|Berlin|kst-berlin|Unterwelten/);
   assert.doesNotMatch(visible(charterEt) + visible(charterEn), /lifejacket drill|ohutusjuhend on järgmine|departure is at/);
