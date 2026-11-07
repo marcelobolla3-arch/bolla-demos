@@ -129,8 +129,19 @@ footer a{color:#fff}
 }
 </style>
 <!-- GoatCounter (BOLLA STUDIO) -->
-<script>window.goatcounter={path:function(p){return '/budokan-zuerich-web'+((p.replace(/^\/budokan\-zuerich\-web(?=[\/?#]|$)/,'')||'/').replace(/^\?/,'/?'))}};window.bsTrack=function(sub,title){try{if(window.goatcounter&&window.goatcounter.count)window.goatcounter.count({path:'/budokan-zuerich-web'+sub,title:title||sub})}catch(e){}}</script>
-<script data-goatcounter="https://bollastudio.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+<script id="bolla-metrics">(function(){
+var m=(location.search+location.hash).match(/[?&#]internal=([01])/);
+try{if(m){if(m[1]==="1")localStorage.setItem("skipgc","t");else localStorage.removeItem("skipgc");}}catch(e){}
+var internal=false;try{internal=localStorage.getItem("skipgc")==="t";}catch(e){}
+function tag(){var sm=location.search.match(/[?&]p=([^&#]*)/);return sm?decodeURIComponent(sm[1]).toLowerCase().replace(/[^a-z0-9-]/g,"").slice(0,60):"";}
+var PREFIX='/budokan-zuerich-web';
+window.bsTrack=function(sub,title){if(internal)return;var path=PREFIX+sub;var campaign=tag();if(campaign&&path.indexOf("?p=")<0)path+="?p="+campaign;try{if(window.goatcounter&&window.goatcounter.count)window.goatcounter.count({path:path,title:title||sub,event:true});}catch(e){}};
+if(internal)return;
+window.goatcounter={path:function(p){return PREFIX+((p.replace(/^\/budokan\-zuerich\-web(?=[\/?#]|$)/,'')||'/').replace(/^\?/,'/?'))}};
+var s=document.createElement("script");s.async=true;s.src="https://gc.zgo.at/count.js";
+s.setAttribute("data-goatcounter","https://bollastudio.goatcounter.com/count");
+document.head.appendChild(s);
+})();</script>
 </head>
 <body>
 <div class="demo">DEMO / PROTOTYP – BOLLA STUDIO <span>· Website-Entwurf, nicht live</span></div>
@@ -265,9 +276,9 @@ $('#fd').onchange=slots;slots();
 function pick(n){const o=FD.find(x=>x.startsWith(n.split(' ')[0].replace('Selbstverteidigung','Ju-Jitsu')));if(o){$('#fd').value=o;slots()}}
 $('#pform').onsubmit=e=>{e.preventDefault();const n=$('#fn').value.trim(),m=$('#fm').value.trim();
 if(!n||!/.+@.+\..+/.test(m)){openM(`<div class="mc"><h3>Fast geschafft</h3><p>Bitte Name und eine gültige E-Mail-Adresse angeben, damit das Team das Probetraining bestätigen kann.</p><button class="cta" onclick="closeM();$('#fn').focus()">OK</button></div>`);return}
-openM(`<div class="mc okc"><div class="big">✓</div><h3>Danke, ${n.split(' ')[0]}!</h3><p>Ihre Anfrage für ein Probetraining ist angekommen. Das Budokan-Team bestätigt per E-Mail.</p><div class="sum"><b>${$('#fd').value}</b><br>📅 ${$('#fs').value}<br>📍 Zweierstrasse 106, 8003 Zürich<br>👕 Leichte Sportkleidung, 10 Min. vorher da sein</div><p style="font-size:13px;color:#888">Prototyp – es wurden keine Daten gesendet.</p><button class="cta dark" onclick="closeM()">Schliessen</button></div>`);$('#pform').reset();slots()};
+openM(`<div class="mc okc"><div class="big">✓</div><h3>Danke, ${n.split(' ')[0]}!</h3><p>Ihre Anfrage für ein Probetraining ist angekommen. Das Budokan-Team bestätigt per E-Mail.</p><div class="sum"><b>${$('#fd').value}</b><br>📅 ${$('#fs').value}<br>📍 Zweierstrasse 106, 8003 Zürich<br>👕 Leichte Sportkleidung, 10 Min. vorher da sein</div><p style="font-size:13px;color:#888">Prototyp – es wurden keine Daten gesendet.</p><button class="cta dark" onclick="closeM()">Schliessen</button></div>`);if(window.bsTrack)bsTrack('/trial/confirm','trial-confirm');$('#pform').reset();slots()};
 $('#events').innerHTML=EV.map((e,i)=>`<div class="e"><div class="dt">${e[0]}</div><h3>${e[1]}</h3><p>${e[2]}</p><button class="small" data-i="${i}">In Kalender eintragen</button></div>`).join('');
-document.querySelectorAll('#events .small').forEach(b=>b.onclick=()=>{const e=EV[+b.dataset.i];openM(`<div class="mc okc"><div class="big">📅</div><h3>${e[1]}</h3><p>${e[0]} · ${e[2]}</p><p style="font-size:13px;color:#888">Prototyp: In der fertigen Website wird hier eine Kalender-Datei (.ics) geladen.</p><button class="cta dark" onclick="closeM()">OK</button></div>`)});
+document.querySelectorAll('#events .small').forEach(b=>b.onclick=()=>{const e=EV[+b.dataset.i];if(window.bsTrack)bsTrack('/calendar','calendar');openM(`<div class="mc okc"><div class="big">📅</div><h3>${e[1]}</h3><p>${e[0]} · ${e[2]}</p><p style="font-size:13px;color:#888">Prototyp: In der fertigen Website wird hier eine Kalender-Datei (.ics) geladen.</p><button class="cta dark" onclick="closeM()">OK</button></div>`)});
 $('#priceQ').onclick=()=>openWA('Was kostet die Mitgliedschaft?');
 $('#burger').onclick=()=>$('#mobnav').classList.add('on');$('#mclose').onclick=()=>$('#mobnav').classList.remove('on');
 document.querySelectorAll('#mobnav a').forEach(a=>a.addEventListener('click',()=>$('#mobnav').classList.remove('on')));
@@ -276,7 +287,7 @@ const QA=[['Was kostet die Mitgliedschaft?','Mitgliedschaft (CHF, Halbjahr / Jah
 function openWA(first){openM(`<div style="background:#075E54;color:#fff;padding:16px 20px;border-radius:24px 24px 0 0"><b>Budokan Zürich · KI-Assistent</b><div style="font-size:12.5px;color:#cfe9e4">antwortet rund um die Uhr · simuliert</div></div><div id="cm" style="background:#efe7de;padding:14px;min-height:240px;max-height:46vh;overflow:auto"></div><div style="padding:12px;display:flex;flex-wrap:wrap;gap:8px">${QA.map((q,i)=>`<button class="small" data-q="${i}">${q[0]}</button>`).join('')}</div>`);
 const cm=$('#cm');const add=(t,me)=>{const d=document.createElement('div');d.style.cssText=`max-width:85%;padding:9px 12px;border-radius:10px;margin:5px 0;font-size:14.5px;line-height:1.45;background:${me?'#dcf8c6':'#fff'};${me?'margin-left:auto':''}`;d.textContent=t;cm.appendChild(d);cm.scrollTop=1e6};
 add('Grüezi! Ich bin der digitale Assistent vom Budokan Zürich. Wie kann ich helfen?');
-const ask=i=>{add(QA[i][0],1);setTimeout(()=>add(QA[i][1]),600)};
+const ask=i=>{add(QA[i][0],1);if(window.bsTrack)bsTrack('/chat/'+i,'script-option');setTimeout(()=>add(QA[i][1]),600)};
 mbox.querySelectorAll('[data-q]').forEach(b=>b.onclick=()=>ask(+b.dataset.q));
 const fi=QA.findIndex(q=>q[0]==first);if(fi>=0)ask(fi)}
 $('#waBtn').onclick=()=>openWA();

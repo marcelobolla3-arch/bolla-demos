@@ -17,8 +17,19 @@ table{width:100%;border-collapse:collapse;font-size:14px}td,th{padding:8px;borde
 footer{max-width:1000px;margin:auto;padding:20px;color:#9aa3b2;font-size:13px;border-top:1px solid #222}a{color:var(--c)}
 </style>
 <!-- GoatCounter (BOLLA STUDIO) -->
-<script>window.goatcounter={path:function(p){return '/bolla-demo-mabuhay-motors'+((p.replace(/^\/mabuhay\-motors(?=[\/?#]|$)/,'')||'/').replace(/^\?/,'/?'))}};window.bsTrack=function(sub,title){try{if(window.goatcounter&&window.goatcounter.count)window.goatcounter.count({path:'/bolla-demo-mabuhay-motors'+sub,title:title||sub})}catch(e){}}</script>
-<script data-goatcounter="https://bollastudio.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+<script id="bolla-metrics">(function(){
+var m=(location.search+location.hash).match(/[?&#]internal=([01])/);
+try{if(m){if(m[1]==="1")localStorage.setItem("skipgc","t");else localStorage.removeItem("skipgc");}}catch(e){}
+var internal=false;try{internal=localStorage.getItem("skipgc")==="t";}catch(e){}
+function tag(){var sm=location.search.match(/[?&]p=([^&#]*)/);return sm?decodeURIComponent(sm[1]).toLowerCase().replace(/[^a-z0-9-]/g,"").slice(0,60):"";}
+var PREFIX='/bolla-demo-mabuhay-motors';
+window.bsTrack=function(sub,title){if(internal)return;var path=PREFIX+sub;var campaign=tag();if(campaign&&path.indexOf("?p=")<0)path+="?p="+campaign;try{if(window.goatcounter&&window.goatcounter.count)window.goatcounter.count({path:path,title:title||sub,event:true});}catch(e){}};
+if(internal)return;
+window.goatcounter={path:function(p){return PREFIX+((p.replace(/^\/mabuhay\-motors(?=[\/?#]|$)/,'')||'/').replace(/^\?/,'/?'))}};
+var s=document.createElement("script");s.async=true;s.src="https://gc.zgo.at/count.js";
+s.setAttribute("data-goatcounter","https://bollastudio.goatcounter.com/count");
+document.head.appendChild(s);
+})();</script>
 
 </head><body>
 <header><h1><span>Mabuhay Motors</span> · 24h AI sales agent (demo)</h1><div class="sub">Prepared by BOLLA STUDIO as a free, no-commitment example for Mabuhay Motors (Shop 67, Ras Al Khor used car market). WhatsApp + website chat, English and Arabic. Demo conversations are illustrative; the real agent would read your live stock.</div></header>
@@ -50,8 +61,8 @@ footer{max-width:1000px;margin:auto;padding:20px;color:#9aa3b2;font-size:13px;bo
 var S={"stock": [["u", "Hi, is the Toyota RAV4 VXR Hybrid 2020 (GCC) still available?"], ["b", "Hi! Yes, it is currently in stock at Mabuhay Motors (Shop 67, Ras Al Khor used car market). I can send you the full spec sheet, more photos or a walk-around video. Would you like to see it in person this week?"], ["u", "Video please, and what about warranty?"], ["b", "Sending the video now. Warranty and service details are listed on the car page; I have shared them with you. Shall I reserve a viewing slot? We are open today and tomorrow."]], "finance": [["u", "Can I buy the Nissan Patrol 2017 V6 4.0L (GCC) on finance?"], ["b", "Yes. We work with UAE banks for auto finance. To give you an indicative monthly payment I need 3 things: your preferred down payment, the term (e.g. 36-60 months) and whether you are salaried in the UAE."], ["u", "20% down, 48 months, salaried"], ["b", "Thank you. A finance specialist from Mabuhay Motors will confirm the exact bank offer. Can I book you a 15-minute call or a visit with documents (Emirates ID, salary certificate)?"]], "trade": [["u", "I want to trade in my 2019 SUV for the Toyota RAV4 VXR Hybrid 2020 (GCC)"], ["b", "Happy to help. Please send: make/model, km, GCC or import, service history, and 4 photos (front, back, interior, odometer)."], ["u", "Toyota Land Cruiser 2019, 98,000 km, GCC, full service"], ["b", "Got it, photos received. Our team will give you a trade-in valuation and the difference to pay. Would you like to bring it in for inspection on Saturday at 11:00 or 17:00?"]], "arabic": [["u", "السلام عليكم، هل السيارة متوفرة؟ وهل يوجد تمويل؟", 1], ["b", "وعليكم السلام! نعم، السيارة متوفرة حالياً لدى Mabuhay Motors. يوجد تمويل عن طريق البنوك في الإمارات. هل تفضل حجز موعد لتجربة القيادة أو مكالمة مع مستشار التمويل؟", 1], ["u", "تجربة قيادة يوم السبت", 1], ["b", "تم! أرسل لي اسمك ورقم الهاتف وسأؤكد الموعد مع فريق المبيعات.", 1]], "drive": [["u", "Can I test drive tomorrow evening?"], ["b", "Of course. Available slots tomorrow: 17:00, 18:30 or 20:00. Which one works for you?"], ["u", "18:30"], ["b", "Booked: test drive tomorrow 18:30 at Mabuhay Motors, Shop 67, Ras Al Khor used car market. Please bring your driving licence. I will send you the location pin and a reminder 2 hours before."]], "follow": [["b", "Hi Omar, yesterday you asked about the Toyota RAV4 VXR Hybrid 2020 (GCC). It is still available. Would you like me to hold a viewing slot this weekend, or send you the finance options?"], ["u", "Yes, send finance options"], ["b", "Sent! A salesperson from Mabuhay Motors will also call you at your preferred time. Morning or evening?"]]};
 var box=document.getElementById('msgs');
 function add(m,i){setTimeout(function(){var d=document.createElement('div');d.className='m '+(m[0]=='u'?'u':'b')+(m[2]?' ar':'');d.innerHTML=m[1].replace(/</g,'&lt;')+'<div class="t">'+(m[0]=='u'?'Buyer':'AI assistant')+'</div>';box.appendChild(d);box.scrollTop=box.scrollHeight},i*900)}
-function play(k){box.innerHTML='';S[k].forEach(add);bsTrack('/scene/'+k,'Scene '+k)}
-document.querySelectorAll('.sc').forEach(function(b){b.addEventListener('click',function(){play(b.dataset.s)})});
+function play(k,track){box.innerHTML='';S[k].forEach(add);if(track)bsTrack('/scene/'+k,'scene')}
+document.querySelectorAll('.sc').forEach(function(b){b.addEventListener('click',function(){play(b.dataset.s,1)})});
 document.querySelectorAll('#nav button').forEach(function(b){b.addEventListener('click',function(){document.querySelectorAll('#nav button').forEach(function(x){x.classList.remove('on')});b.classList.add('on');document.querySelectorAll('.tab').forEach(function(t){t.classList.remove('on')});document.getElementById('t-'+b.dataset.t).classList.add('on');bsTrack('/tab/'+b.dataset.t,'Tab '+b.dataset.t)})});
 play('stock');
 </script></body></html>

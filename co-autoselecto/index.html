@@ -41,8 +41,19 @@ ol.fu li b{color:#38bdf8;font-weight:600}
 footer{text-align:center;color:#64748b;font-size:.8rem;padding:0 18px 28px}footer a{color:#38bdf8}
 </style>
 <!-- GoatCounter (BOLLA STUDIO) -->
-<script>window.goatcounter={path:function(p){return '/co-autoselecto-demo'+((p.replace(/^\/co\-autoselecto(?=[\/?#]|$)/,'')||'/').replace(/^\?/,'/?'))}};window.bsTrack=function(sub,title){try{if(window.goatcounter&&window.goatcounter.count)window.goatcounter.count({path:'/co-autoselecto-demo'+sub,title:title||sub})}catch(e){}}</script>
-<script data-goatcounter="https://bollastudio.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+<script id="bolla-metrics">(function(){
+var m=(location.search+location.hash).match(/[?&#]internal=([01])/);
+try{if(m){if(m[1]==="1")localStorage.setItem("skipgc","t");else localStorage.removeItem("skipgc");}}catch(e){}
+var internal=false;try{internal=localStorage.getItem("skipgc")==="t";}catch(e){}
+function tag(){var sm=location.search.match(/[?&]p=([^&#]*)/);return sm?decodeURIComponent(sm[1]).toLowerCase().replace(/[^a-z0-9-]/g,"").slice(0,60):"";}
+var PREFIX='/co-autoselecto-demo';
+window.bsTrack=function(sub,title){if(internal)return;var path=PREFIX+sub;var campaign=tag();if(campaign&&path.indexOf("?p=")<0)path+="?p="+campaign;try{if(window.goatcounter&&window.goatcounter.count)window.goatcounter.count({path:path,title:title||sub,event:true});}catch(e){}};
+if(internal)return;
+window.goatcounter={path:function(p){return PREFIX+((p.replace(/^\/co\-autoselecto(?=[\/?#]|$)/,'')||'/').replace(/^\?/,'/?'))}};
+var s=document.createElement("script");s.async=true;s.src="https://gc.zgo.at/count.js";
+s.setAttribute("data-goatcounter","https://bollastudio.goatcounter.com/count");
+document.head.appendChild(s);
+})();</script>
 </head><body>
 <header>
 <h1>Autoselecto · <span>Asistente de IA 24 h</span></h1>

@@ -12,8 +12,18 @@ p,li{line-height:1.55;color:#cfd3da}a{color:#7cc4ff}ul{padding-left:20px}li{marg
 .c{background:#2b3240;margin-right:auto}.a{background:#1f4d3a;margin-left:auto}.s{color:#9aa3ad;font-size:.82rem;text-align:center;margin:10px 0}
 .who{font-size:.72rem;color:#9aa3ad;display:block;margin-bottom:2px}
 .cta{background:#171a21;border-left:3px solid #7cc4ff;padding:12px 14px;border-radius:6px;margin-top:28px}</style>
-<script>(function(){var i=false,m=null;try{m=/[?&#]internal=([01])/.exec(location.search+location.hash);if(m){if(m[1]==='1')localStorage.setItem('skipgc','t');else localStorage.removeItem('skipgc')}i=localStorage.getItem('skipgc')==='t'}catch(e){i=!!(m&&m[1]==='1')}var s=new URLSearchParams(location.search).get('p');s=s?s.toLowerCase().replace(/[^a-z0-9_-]/g,'').slice(0,60):'';var base=s?'/'+s+'/demo-es-general':'/demo-es-general';window.goatcounter={no_onload:i,path:function(p){return base}};})()</script>
-<script data-goatcounter="https://bollastudio.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+<script id="bolla-metrics">(function(){
+var m=(location.search+location.hash).match(/[?&#]internal=([01])/);
+try{if(m){if(m[1]==="1")localStorage.setItem("skipgc","t");else localStorage.removeItem("skipgc");}}catch(e){}
+var internal=false;try{internal=localStorage.getItem("skipgc")==="t";}catch(e){}
+if(internal)return;
+var s=new URLSearchParams(location.search).get("p");s=s?s.toLowerCase().replace(/[^a-z0-9_-]/g,"").slice(0,60):"";
+var base=s?"/"+s+"/demo-es-general":"/demo-es-general";
+window.goatcounter={path:function(){return base}};
+var el=document.createElement("script");el.async=true;el.src="https://gc.zgo.at/count.js";
+el.setAttribute("data-goatcounter","https://bollastudio.goatcounter.com/count");
+document.head.appendChild(el);
+})();</script>
 </head><body><main>
 <div class="brand">BOLLA STUDIO</div>
 <h1>Un agente de IA que atiende a sus clientes 24/7</h1>

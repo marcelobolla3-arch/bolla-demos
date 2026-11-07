@@ -49,8 +49,19 @@ footer{background:#1d1d1f;color:#a1a1a6;padding:40px 22px 110px;font-size:13px}f
 .v2 .col{grid-template-columns:1fr 1fr 1fr;grid-template-rows:280px;align-items:start}.v2 .col img:nth-child(1){grid-row:auto;height:250px}.v2 .col img:nth-child(2){margin-top:30px;height:250px}.v2 .col img:nth-child(3){height:250px}
 @media(min-width:820px){.v2 .col{grid-template-rows:460px}.v2 .col img{height:430px!important}.v2 .ttl{max-width:900px;margin:0 auto}.col{grid-template-rows:300px 260px;max-width:1200px;margin:auto}.ttl{max-width:620px;margin:-120px 0 0 6%}.mc{grid-template-columns:1fr 1fr}}
 </style><!-- GoatCounter (BOLLA STUDIO) -->
-<script>window.goatcounter={path:function(p){return '/bolla-demo-glow-bcn-unas'+((p.replace(/^\/glow\-bcn\-unas(?=[\/?#]|$)/,'')||'/').replace(/^\?/,'/?'))}};window.bsTrack=function(sub,title){try{if(window.goatcounter&&window.goatcounter.count)window.goatcounter.count({path:'/bolla-demo-glow-bcn-unas'+sub,title:title||sub})}catch(e){}}</script>
-<script data-goatcounter="https://bollastudio.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+<script id="bolla-metrics">(function(){
+var m=(location.search+location.hash).match(/[?&#]internal=([01])/);
+try{if(m){if(m[1]==="1")localStorage.setItem("skipgc","t");else localStorage.removeItem("skipgc");}}catch(e){}
+var internal=false;try{internal=localStorage.getItem("skipgc")==="t";}catch(e){}
+function tag(){var sm=location.search.match(/[?&]p=([^&#]*)/);return sm?decodeURIComponent(sm[1]).toLowerCase().replace(/[^a-z0-9-]/g,"").slice(0,60):"";}
+var PREFIX='/bolla-demo-glow-bcn-unas';
+window.bsTrack=function(sub,title){if(internal)return;var path=PREFIX+sub;var campaign=tag();if(campaign&&path.indexOf("?p=")<0)path+="?p="+campaign;try{if(window.goatcounter&&window.goatcounter.count)window.goatcounter.count({path:path,title:title||sub,event:true});}catch(e){}};
+if(internal)return;
+window.goatcounter={path:function(p){return PREFIX+((p.replace(/^\/glow\-bcn\-unas(?=[\/?#]|$)/,'')||'/').replace(/^\?/,'/?'))}};
+var s=document.createElement("script");s.async=true;s.src="https://gc.zgo.at/count.js";
+s.setAttribute("data-goatcounter","https://bollastudio.goatcounter.com/count");
+document.head.appendChild(s);
+})();</script>
 </head>
 <body class="t-collage"><div class="demo" role="note"><b>DEMO</b>Página de muestra preparada por BOLLA STUDIO para Nails salón GLOW BCN. No es la web oficial.</div>
 <nav class="tabs"><a href="#top" class="c">Inicio</a><a href="#svc">Servicios</a><a href="#hrs">Horario</a><a href="#ct">Contacto</a></nav>
