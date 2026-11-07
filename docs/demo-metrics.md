@@ -47,11 +47,11 @@ Hay 621 `index.html`. 581 tienen el endpoint y `skipgc`. 39 son redireccionamien
 | Redirecciones | 39 | Sin contador, conservan la búsqueda | Igual. El destino cuenta la visita. |
 | Suiza, neutras y Berlín, páginas de idioma | 95 | Visita y eventos, con `skipgc` | El evento lleva `?p=`. El título del botón deja de ser la frase. |
 | Video comunidad-argentina | 5 | Sin contador | Una visita y la primera reproducción. |
-| Concesionarios en, de, es, it | 4 | Visita automática, sin filtro | Una visita y la primera reproducción. El texto dice que es un video grabado. |
+| Concesionarios en, de, es, it | 4 | Visita automática, sin filtro | Una visita y la primera reproducción. `p` es el tramo `/etiqueta/video-<idioma>`. El texto dice que es un video grabado. |
 | Voz Schloss, Ambàra, Lagoon | 3 | Visita; Lagoon sin filtro; la campaña no iba en todos los eventos | Filtro y `?p=` en el evento. El widget no cambia. |
 | Náutica y náutica-cat | 2 | Visita y preguntas, `p` como tramo | Igual. |
 | Ambàra y Coral, chat | 2 | Visita y eventos | El evento lleva `?p=`. |
-| Prospectos de una página | 460 | Visita sin `skipgc`. El uso no era `event`. Cuatro contaban la escena al abrir. | `skipgc`, una visita, uso con `event: true` y `?p=`. 236 tienen un clic medible. 224 solo tienen visita: no hay un control de uso. |
+| Prospectos de una página | 460 | Visita sin `skipgc`. El uso no era `event`. Cuatro contaban la escena al abrir. | `skipgc`, una visita, uso con `event: true` y `?p=`. 237 tienen un clic medible, incluido Budokan Zürich. 223 solo tienen visita: 205 sin controles y 18 con menú de folleto. Ese menú no es uso. |
 | Yakin Arena | 1 | Visita de la URL y pestañas en rutas `/home` o `/chat` | Visita `/bolla-demo-yakin-arena/`. La sección y la opción van por id, como evento. |
 | Dental Dubai y `/es/` | 2 | Visita con filtro parcial | El filtro no carga el script. `/es/` sigue usando `p` como tramo y no tiene botones. |
 

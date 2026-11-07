@@ -102,6 +102,10 @@ test("campaign usage is attached to the event and the question text is not the t
   }
   assert.match(read(new URL("concesionarios/en/index.html", root)), /aktiv-hotel-spa-hannigalp/);
   assert.match(read(new URL("concesionarios/en/index.html", root)), /Watch a recorded example/);
+  const budokan = read(new URL("budokan-zuerich-web/index.html", root));
+  assert.match(budokan, /bsTrack\('\/trial\/confirm','trial-confirm'\)/);
+  assert.match(budokan, /bsTrack\('\/chat\/'\+i,'script-option'\)/);
+  assert.doesNotMatch(budokan, /bsTrack\([^)]*\$\('#fn'\)|bsTrack\([^)]*\$\('#fm'\)/);
 });
 
 test("a synthetic counter payload is labeled and this test does not send it", () => {
