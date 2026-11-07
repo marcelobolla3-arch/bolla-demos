@@ -62,6 +62,7 @@ test("ten sourced German cases stay static and keep operators apart", () => {
     if (item.kind === "faq") assert.match(text, /Veröffentlichte FAQ/);
     if (item.kind === "derived") assert.match(text, /Abgeleitetes Beispiel, keine veröffentlichte FAQ-Frage/);
     assert.match(text, /Das muss das Team prüfen/);
+    assert.match(text, /erneut gelesen am 7\. November 2026/);
     assert.match(text, /Beispiel – keine Anfrage gesendet|sendet keine Anfrage|sendet nichts|verkauft keine Tickets/);
     for (const needle of item.must) assert.match(text, new RegExp(needle.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")), item.id + " missing " + needle);
     for (const needle of item.mustNot) assert.doesNotMatch(text, new RegExp(needle.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")), item.id + " unexpected " + needle);
@@ -122,4 +123,16 @@ test("German pages are the primary static demos and English is only a second vie
   assert.doesNotMatch(charter, /voz\/lagoon42|agent_PENDIENTE|12 V|Gasflaschen/);
   assert.match(read("nautica/index.html"), /LANGS=\["it","en","es"\]/);
   assert.match(read("voz/lagoon42/index.html"), /agent_PENDIENTE/);
+});
+
+test("old Swiss routes still say KI and the new Berlin script does not inherit that claim", () => {
+  const oldDe = read("hotel-ch/de/index.html");
+  const oldFr = read("hotel-ch/fr/index.html");
+  assert.match(oldDe, /Ein KI-Agent für WhatsApp/);
+  assert.doesNotMatch(oldDe, /Statisches FAQ-Skript|erneut gelesen am 7\. November 2026/);
+  assert.match(oldFr, /Un agent IA sur WhatsApp/);
+  const neu = read("industrie-de/de/index.html");
+  assert.match(neu, /Statisches FAQ-Skript · keine freie KI/);
+  assert.match(neu, /erneut gelesen am 7\. November 2026/);
+  assert.doesNotMatch(neu, /Ein KI-Agent für WhatsApp/);
 });
