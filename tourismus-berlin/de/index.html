@@ -1,0 +1,293 @@
+<!doctype html>
+<!-- Static Berlin example tourismus-berlin de. Not an operator website. -->
+<html lang="de" translate="no">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex">
+<meta name="google" content="notranslate">
+<title>Beispiel: Tourenanfragen Berlin · BOLLA STUDIO</title>
+<style>
+:root{--c:#7a1f2b;--ink:#1c1c1c;--bg:#f4f2ee}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Noto Sans","DejaVu Sans","Helvetica Neue",Arial,sans-serif;background:var(--bg);color:var(--ink);line-height:1.5;font-size:17px}
+.top{background:#1d2a33;color:#f2f5f7;padding:12px 16px;text-align:center}
+.top a{color:#fff}
+.langs{display:flex;flex-wrap:wrap;justify-content:center;gap:8px;padding:12px 16px;background:#243640}
+.langs a{display:inline-flex;align-items:center;justify-content:center;min-height:48px;min-width:48px;padding:10px 16px;border-radius:12px;background:#fff;color:#1d2a33;font-weight:700;text-decoration:none;border:2px solid #fff}
+.langs a[aria-current="page"]{background:var(--c);color:#fff;border-color:var(--c)}
+header,main{max-width:1080px;margin:0 auto;padding:8px 16px 0}
+.brand{font-weight:800;letter-spacing:.08em;font-size:.85rem;color:#5c6770}
+.by{margin:4px 0 8px;font-size:16px}
+.by a{color:var(--c)}
+.tag{font-size:14px;letter-spacing:.04em;color:#555;margin:0}
+h1{font-size:1.7rem;line-height:1.25;margin:8px 0 10px;color:var(--c)}
+.intro{margin:0 0 12px;color:#333}
+.badge{display:inline-block;background:#fff4d6;border:1px dashed #8a6a10;color:#5c4300;border-radius:8px;padding:4px 8px;font-size:14px;font-weight:700}
+.notice,.voice{background:#fff;border-radius:12px;padding:12px 14px;margin:12px 0;font-size:16px}
+.notice{border:2px solid #8a6a10}
+.voice{border:2px solid #1d2a33}
+.howto{background:#fff;border-radius:12px;padding:14px 16px;margin:12px 0 16px}
+.howto h2{margin:0 0 8px;font-size:1.25rem;color:var(--c)}
+.steps{margin:0;padding-left:1.3rem}
+.steps li{margin:8px 0}
+.grid{display:grid;gap:16px;margin:0 0 16px}
+.card{background:#fff;border-radius:16px;box-shadow:0 6px 24px rgba(0,0,0,.08);overflow:hidden}
+.wa-h{background:#1d2a33;color:#fff;padding:12px 16px;display:flex;align-items:center;gap:10px}
+.av{width:44px;height:44px;border-radius:50%;background:var(--c);display:flex;align-items:center;justify-content:center;font-weight:800}
+.wa-h small{display:block;opacity:.9;font-size:14px}
+.chat{background:#ece5dd;min-height:280px;max-height:52vh;overflow-y:auto;padding:12px;display:flex;flex-direction:column;gap:8px}
+.m{max-width:92%;padding:10px 12px;border-radius:10px;font-size:16px;white-space:pre-line;box-shadow:0 1px 1px rgba(0,0,0,.08)}
+.in{background:#fff;align-self:flex-start}.out{background:#e7f6e7;align-self:flex-end}
+.m.hand{background:#fff4d6;border:1px dashed #8a6a10}
+.qrl{padding:10px 12px 0;font-size:15px;color:#444}
+.qr{padding:8px 12px 12px;display:flex;flex-direction:column;gap:8px}
+.qr button,.slots button,.cta,.ask-row button{min-height:48px;font-size:17px;border-radius:12px;cursor:pointer}
+.qr button{width:100%;text-align:left;border:2px solid var(--c);background:#fff;color:var(--c);padding:12px 14px}
+.bk{padding:16px}
+.bk h3{margin:0 0 6px;color:var(--c);font-size:1.25rem}
+.bk p{margin:0 0 10px;color:#444}
+label{font-size:16px;color:#333;display:block;margin:12px 0 6px;font-weight:650}
+select,input{width:100%;padding:12px;border:1px solid #bbb;border-radius:10px;font-size:16px;font-family:inherit;min-height:48px}
+.slots{display:flex;flex-wrap:wrap;gap:8px}
+.slots button{border:2px solid #bbb;background:#fff;padding:10px 14px}
+.slots button.on{background:var(--c);color:#fff;border-color:var(--c)}
+.cta{margin-top:16px;width:100%;background:var(--c);color:#fff;border:0;padding:14px;font-weight:700}
+.ok{margin-top:14px;background:#eaf7ea;border:1px solid #8fbf8f;padding:12px;border-radius:10px;font-size:16px}
+.ask{padding:0 12px 14px}
+.ask-row{display:flex;flex-direction:column;gap:8px}
+.ask-row button{background:#1d2a33;color:#fff;border:0;padding:12px 16px;font-weight:700}
+.split,.feat{display:grid;gap:12px;margin:0 0 16px}
+.split div,.feat div{background:#fff;border-radius:12px;padding:14px 16px}
+.split h2,.feat b{color:var(--c)}
+.split ul{margin:8px 0 0;padding-left:1.2rem}
+.split li{margin:6px 0}
+footer{text-align:center;font-size:15px;color:#444;padding:8px 16px 40px}
+footer a{color:var(--c)}
+:focus-visible{outline:3px solid #0b57d0;outline-offset:2px}
+@media(min-width:800px){
+  h1{font-size:2rem}
+  .grid,.split{grid-template-columns:1fr 1fr}
+  .feat{grid-template-columns:1fr 1fr 1fr}
+  .qr{flex-direction:row;flex-wrap:wrap}
+  .qr button{width:auto}
+  .ask-row{flex-direction:row}
+  .ask-row input{flex:1}
+  .chat{max-height:460px}
+}
+</style>
+<!-- GoatCounter (BOLLA STUDIO): ?p= is a visit label for counting only. It does not personalize the page. ?internal=1 sets localStorage skipgc=t and loads nothing. -->
+<script>
+(function(){
+ var BASE="/bolla-demo-tourismus-berlin/de";
+ var m=(location.search+location.hash).match(/[?&#]internal=([01])/);
+ try{ if(m){ if(m[1]==="1") localStorage.setItem("skipgc","t"); else localStorage.removeItem("skipgc"); } }catch(e){}
+ var internal=false; try{ internal=localStorage.getItem("skipgc")==="t"; }catch(e){}
+ var sm=location.search.match(/[?&]p=([^&#]*)/);
+ var tag=sm?decodeURIComponent(sm[1]).toLowerCase().replace(/[^a-z0-9-]/g,"").slice(0,60):"";
+ var q=[]; window.bsTrack=function(sub,title){ if(internal) return;
+   if(window.goatcounter&&window.goatcounter.count) window.goatcounter.count({path:BASE+sub,title:title||sub,event:true}); else q.push([BASE+sub,title||sub]); };
+ if(internal) return;
+ window.goatcounter={no_onload:true};
+ var s=document.createElement("script"); s.async=true; s.src="https://gc.zgo.at/count.js";
+ s.setAttribute("data-goatcounter","https://bollastudio.goatcounter.com/count");
+ s.onload=function(){ try{ window.goatcounter.count({path:BASE+'/'+(tag?'?p='+tag:''),title:"tourismus-berlin demo de"});
+   q.forEach(function(e){window.goatcounter.count({path:e[0],title:e[1],event:true});}); q=[]; }catch(e){} };
+ document.head.appendChild(s);
+})();
+</script>
+</head>
+<body data-demo="static-example" data-lang="de">
+<div class="top">Statisches Beispiel für Touren- und Gruppenanfragen in Berlin, vorbereitet von <a href="https://bollastudio.com" target="_blank" rel="noopener">BOLLA STUDIO</a> · Keine dieser Firmen. Die Radtour und die Gruppenführung bleiben zwei Quellen. Beispiel – keine Anfrage gesendet.</div>
+<nav class="langs" aria-label="Sprache"><a href="./" hreflang="de" lang="de" data-keep-query aria-current="page">Deutsch</a><a href="../en/" hreflang="en" lang="en" data-keep-query>English</a></nav>
+<header>
+  <div class="brand">BOLLA STUDIO</div>
+  <p class="by">Marcelo Bolla · <a href="https://bollastudio.com" target="_blank" rel="noopener">bollastudio.com</a></p>
+  <p class="tag"><span class="badge">Statisches Beispiel</span> Fiktives Beispiel, nicht Berlin on Bike und nicht die Berliner Unterwelten</p>
+  <h1>Tourenfragen und Gruppenanfragen, ohne Terminbestätigung</h1>
+  <p class="intro">Dieses statische Skript trennt zwei öffentliche Quellen. Die private Radtour stammt von der FAQ auf berlinonbike.de. Die Gruppenführung stammt vom Kontakttext der Berliner Unterwelten. 3,5 Stunden gelten nur für die genannte Standard-Radtour, nicht für die andere Quelle. Eine Anfrage ist keine Bestätigung.</p>
+  <p class="notice" role="note">Beispiel – keine Anfrage gesendet. Jede Antwort steht vorher fest. Sie nennt eine öffentliche Quelle mit Datum oder sagt: Das muss das Team prüfen. Nichts wird verschickt und nichts wird gebucht. Diese Seite ist nicht mit WhatsApp, einem Buchungssystem oder einem Sprachassistenten verbunden. Steht ?p= in der Adresse, ist das nur ein Besuchskennzeichen für BOLLA STUDIO. Es ändert die Seite nicht und ist keine Personalisierung.</p>
+  <p class="voice" role="note">Dieser Bildschirm ist ein statisches Chat-Beispiel. Es wird kein Ton abgespielt. Ein Sprachassistent ist nicht verbunden und läuft hier nicht.</p>
+</header>
+<main>
+<section class="howto" aria-labelledby="howto-title">
+  <h2 id="howto-title">So probieren Sie dieses Beispiel</h2>
+  <ol class="steps"><li>Lesen Sie das Beispielgespräch. Es steht schon auf dem Bildschirm.</li><li>Tippen Sie eine große Frage oder schreiben Sie eine Frage auf Deutsch und tippen Sie auf Senden.</li><li>Wählen Sie Datum und eine Angabe und tippen Sie auf die große Schaltfläche. Sie sehen nur eine Beispielnotiz. Es wird nichts gesendet.</li></ol>
+</section>
+<div class="grid">
+  <div class="card">
+    <div class="wa-h"><div class="av" aria-hidden="true">T</div><div><b>Beispiel Touren · statisches Skript</b><small>Statisches FAQ-Skript · keine freie KI</small></div></div>
+    <div class="chat" id="chat" role="log" aria-live="polite" aria-relevant="additions" aria-label="Statisches Beispielgespräch"></div>
+    <div class="qrl" id="qr-label">Eine vorbereitete Frage tippen</div>
+    <div class="qr" id="qr" role="group" aria-labelledby="qr-label"></div>
+    <form class="ask" id="ask-form" action="#" method="post">
+      <label for="ask">Eigene Frage auf Deutsch</label>
+      <div class="ask-row">
+        <input id="ask" name="ask" type="text" autocomplete="off" enterkeyhint="send" placeholder="Zum Beispiel: Wie lange dauert die private Tour?">
+        <button type="submit">Senden</button>
+      </div>
+    </form>
+  </div>
+  <div class="card bk">
+    <h3>Fiktive Anfragenotiz, nur hier</h3>
+    <p>Datum, Personen und Thema sind Beispieldaten. Keine Namen von Kindern, keine Gesundheitsdaten, nichts wird gesendet.</p>
+    <label for="item">Beispielthema</label>
+    <select id="item"><option>Private Radtour, Standard 3,5 Stunden, Quelle berlinonbike.de</option><option>Andere Dauer, nur Anfrage, Quelle berlinonbike.de</option><option>Gruppenführung, andere Quelle, Berliner Unterwelten</option></select>
+    <label for="arr">Wunschdatum</label>
+    <input id="arr" type="date">
+    <p id="slots-label" style="margin:12px 0 6px;font-weight:650">Personen, nur Beispielzahl</p>
+    <div class="slots" id="slots" role="group" aria-labelledby="slots-label"></div>
+    <label for="nm">Name (wird nicht gespeichert)</label>
+    <input id="nm" type="text" autocomplete="off" placeholder="Nur ein Beispielname" aria-describedby="local-only">
+    <label for="ph">Kontakt (wird nicht gespeichert)</label>
+    <input id="ph" type="text" autocomplete="off" placeholder="name@example.com" aria-describedby="local-only">
+    <p id="local-only">Diese zwei Felder bleiben im Browser. Diese Seite liest sie nicht, speichert sie nicht und sendet sie nicht.</p>
+    <button class="cta" id="cta" type="button">Beispielnotiz zeigen</button>
+    <div class="ok" id="ok" role="status" hidden></div>
+  </div>
+</div>
+<div class="split">
+  <div><h2>Quelle Radtour</h2><ul><li>berlinonbike.de, private Radtour, FAQ, 7. November 2026</li><li>Route und Themen können an die Gruppe angepasst werden</li><li>Standarddauer 3,5 Stunden; andere Dauer nur als Anfrage</li><li>Keine Bestätigung eines Guides oder eines Preises</li></ul></div>
+  <div><h2>Quelle Gruppenführung</h2><ul><li>Berliner Unterwelten, Kontakttext Führungen, 7. November 2026</li><li>Ein angefragter Termin ist noch nicht verbindlich</li><li>Das Team schickt ein Angebot oder eine andere Uhrzeit</li><li>Diese Demo ändert keine bestehende Buchung</li></ul></div>
+</div>
+<div class="feat"><div><b>Statisches Skript</b><br>Die Antworten sind vorher geschrieben. Das ist keine freie KI, kein RAG und kein Gedächtnis.</div><div><b>Quelle und Datum</b><br>Jede vorbereitete Antwort nennt die öffentliche Seite und den 7. November 2026. Fehlt eine Quelle, heißt es: Das muss das Team prüfen.</div><div><b>Ein Mensch entscheidet</b><br>Die Notiz bleibt auf dem Bildschirm. Es entsteht kein Ticket, keine Reservierung und keine Nachricht.</div></div>
+</main>
+<footer>Beispiel-Demo von <a href="https://bollastudio.com" target="_blank" rel="noopener">BOLLA STUDIO</a> · Marcelo Bolla · <a href="mailto:marcelo@bollastudio.com">marcelo@bollastudio.com</a><br>Dies ist nicht die Website von Berlin on Bike und nicht die der Berliner Unterwelten. Die Zahlen im Formular sind Beispiele. Diese Seite ist keine Unternehmenswebsite. Sie ist nur ein Chat-Beispiel von BOLLA STUDIO.</footer>
+<script type="application/json" id="demo-pack">{"lang":"de","chat":[["in","Guten Tag, können wir Route und Themen selbst bestimmen?"],["out","Guten Tag. Das ist ein statisches Skript, keine freie KI.\nVeröffentlichte FAQ. Laut der öffentlichen FAQ auf berlinonbike.de zur privaten Radtour, abgerufen am 7. November 2026, können Route und Themen an die Interessen der Gruppe angepasst werden. Sonderthemen und maßgeschneiderte Programme werden individuell angefragt. Eine Bestätigung liegt damit noch nicht vor. Das muss das Team prüfen. Diese Demo ist nicht Berlin on Bike und sendet nichts."],["in","Beispiel: 6 Personen, Thema Stadtgeschichte, keine Namensliste."],["out","Beispiel – keine Anfrage gesendet. Auf diesem Bildschirm stünde nur: 6 Personen, Thema Stadtgeschichte. Kein Guide ist festgelegt."]],"rules":[{"id":"t1","button":"FAQ · Können wir Route und Themen selbst bestimmen?","keys":["route und themen","selbst bestimmen"],"text":"Veröffentlichte FAQ. Quelle: öffentliche FAQ https://berlinonbike.de/alle-touren/private-radtour/, abgerufen am 7. November 2026. Bei privaten Touren können Route und Themen an die Interessen der Gruppe angepasst werden. Sonderthemen und maßgeschneiderte Programme werden individuell angefragt; eine Bestätigung liegt damit noch nicht vor. Das muss das Team prüfen. Diese Demo ist nicht Berlin on Bike und sendet nichts. Beispiel – keine Anfrage gesendet."},{"id":"t2","button":"FAQ · Wie lange dauert eine private Fahrradtour durch Berlin?","keys":["wie lange","3,5","fahrradtour"],"text":"Veröffentlichte FAQ. Quelle: öffentliche FAQ https://berlinonbike.de/alle-touren/private-radtour/, abgerufen am 7. November 2026. Die private Standardtour dauert 3,5 Stunden. Kürzere oder längere Touren können individuell angefragt werden. Das muss das Team prüfen, ob die gewünschte Dauer passt. Diese Angabe gehört nur zu dieser Radtour-Quelle, nicht zur Gruppenführung der Berliner Unterwelten. Kein Preis. Beispiel – keine Anfrage gesendet."},{"id":"t3","button":"Abgeleitet · Ist mein Termin für die Gruppenführung schon verbindlich?","keys":["verbindlich","gruppenfuehrung","gruppenführung"],"hand":true,"text":"Abgeleitetes Beispiel, keine veröffentlichte FAQ-Frage. Quelle: öffentlicher Text https://www.berliner-unterwelten.de/footer-menue/spalte-2/kontakt/kontaktformular/fuehrungen.html, abgerufen am 7. November 2026. Nein. Angefragte Termine sind laut Website noch nicht verbindlich. Sie erhalten ein Angebot, nach Möglichkeit zum Wunschtermin oder mit einer alternativen Startzeit. Das muss das Team prüfen. Diese Demo ist nicht die Berliner Unterwelten, bestätigt keinen Termin und ändert keine Buchung. Beispiel – keine Anfrage gesendet."},{"id":"edge-guide","button":"Randfall · Ist der Guide am Samstag um 10 Uhr bestätigt?","keys":["guide","bestaetigt","bestätigt"],"hand":true,"text":"Randfall, keine veröffentlichte FAQ-Frage. Das muss das Team prüfen. Eine Anfrage ist keine Bestätigung. Dieses statische Skript legt keinen Guide und keine Uhrzeit fest. Beispiel – keine Anfrage gesendet."}],"fallback":"Das muss das Team prüfen. Dieses statische Skript hat für diese Frage keine vorbereitete Quelle. Es versteht den Satz nicht frei, bucht nicht und sendet nichts.","empty":"Bitte eine Frage auf Deutsch eingeben und dann auf Senden tippen.","ok":"Beispiel – keine Anfrage gesendet. Notiz nur auf diesem Bildschirm: {item} · {date} · {slot}. Nichts wurde geprüft, gespeichert oder verschickt.","pick":"Bitte zuerst das Datum und eine Angabe oben wählen.","lead":7,"slots":["2 Personen","6 Personen","12 Personen","20 Personen"],"months":["Jan.","Feb.","März","Apr.","Mai","Juni","Juli","Aug.","Sept.","Okt.","Nov.","Dez."],"dateStyle":"dmy-numeric"}</script>
+<script id="bolla-lang-links">
+document.querySelectorAll("[data-keep-query]").forEach(function(a){
+  try{var u=new URL(a.getAttribute("href"),location.href);a.href=u.pathname+location.search+location.hash;}catch(e){}
+});
+</script>
+<script id="sector-demo">
+(function(){
+  var PACK = JSON.parse(document.getElementById("demo-pack").textContent);
+  var chat = document.getElementById("chat");
+  var qr = document.getElementById("qr");
+  function reduceMotion(){
+    return !!(window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches);
+  }
+  function add(t, kind){
+    var e = document.createElement("div");
+    e.className = "m " + (kind === "in" ? "in" : "out") + (kind === "hand" ? " hand" : "");
+    e.textContent = t;
+    chat.appendChild(e);
+    chat.scrollTop = chat.scrollHeight;
+    return e;
+  }
+  function showAnswer(entry){
+    add(entry.text, entry.hand ? "hand" : "out");
+  }
+  function norm(s){
+    return String(s || "").toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/[^a-z0-9\u0400-\u04ff]+/g, " ").replace(/\s+/g, " ").trim();
+  }
+  function answerFor(raw){
+    var n = norm(raw);
+    if (!n) return { text: PACK.empty, hand: false, id: "empty" };
+    var best = null, bestLen = 0;
+    PACK.rules.forEach(function(r){
+      (r.keys || []).forEach(function(k){
+        var nk = norm(k);
+        if (nk.length < 3) return;
+        if (n.indexOf(nk) >= 0 && nk.length > bestLen){ best = r; bestLen = nk.length; }
+      });
+    });
+    if (!best) return { text: PACK.fallback, hand: false, id: "fallback" };
+    return { text: best.text, hand: !!best.hand, id: best.id || "match" };
+  }
+  window.__sectorDemo = { mode: "static-example", lang: PACK.lang, answerFor: answerFor, liveAI: false };
+  function play(i){
+    if (i >= PACK.chat.length) return;
+    var m = PACK.chat[i];
+    var kind = m[0] === "in" ? "in" : (m[0] === "hand" ? "hand" : "out");
+    if (kind === "in"){
+      add(m[1], "in");
+      if (reduceMotion()) play(i + 1); else setTimeout(function(){ play(i + 1); }, 350);
+      return;
+    }
+    if (reduceMotion()){ add(m[1], kind); play(i + 1); return; }
+    var t = add("\u2026", "out");
+    t.setAttribute("aria-hidden", "true");
+    setTimeout(function(){
+      t.remove();
+      add(m[1], kind);
+      setTimeout(function(){ play(i + 1); }, 650);
+    }, 500);
+  }
+  PACK.rules.forEach(function(r){
+    if (!r.button) return;
+    var b = document.createElement("button");
+    b.type = "button";
+    b.className = "qbtn";
+    b.textContent = r.button;
+    b.onclick = function(){
+      add(r.button, "in");
+      if (window.bsTrack && r.id) window.bsTrack("/chat/" + r.id, "example");
+      var entry = { text: r.text, hand: !!r.hand };
+      if (reduceMotion()) showAnswer(entry);
+      else {
+        var t = add("\u2026", "out");
+        t.setAttribute("aria-hidden", "true");
+        setTimeout(function(){ t.remove(); showAnswer(entry); }, 450);
+      }
+    };
+    qr.appendChild(b);
+  });
+  play(0);
+  document.getElementById("ask-form").addEventListener("submit", function(ev){
+    ev.preventDefault();
+    var input = document.getElementById("ask");
+    var q = input.value || "";
+    if (!norm(q)){ showAnswer({ text: PACK.empty, hand: false }); return; }
+    add(q, "in");
+    showAnswer(answerFor(q));
+    input.value = "";
+  });
+  function iso(d){
+    return d.getFullYear() + "-" + String(d.getMonth() + 1).padStart(2, "0") + "-" + String(d.getDate()).padStart(2, "0");
+  }
+  function formatDate(v){
+    var p = v.split("-");
+    var d = Number(p[2]), m = Number(p[1]), y = p[0];
+    if (PACK.dateStyle === "dmy-numeric"){
+      return String(d).padStart(2, "0") + "." + String(m).padStart(2, "0") + "." + y;
+    }
+    return d + " " + PACK.months[m - 1] + " " + y;
+  }
+  var arr = document.getElementById("arr");
+  var today = new Date();
+  arr.min = iso(today);
+  var d0 = new Date();
+  d0.setDate(d0.getDate() + (PACK.lead || 7));
+  arr.value = iso(d0);
+  var slotsEl = document.getElementById("slots");
+  var slot = null;
+  (PACK.slots || []).forEach(function(n){
+    var b = document.createElement("button");
+    b.type = "button";
+    b.textContent = n;
+    b.setAttribute("aria-pressed", "false");
+    b.onclick = function(){
+      [].forEach.call(slotsEl.children, function(x){
+        x.classList.remove("on");
+        x.setAttribute("aria-pressed", "false");
+      });
+      b.classList.add("on");
+      b.setAttribute("aria-pressed", "true");
+      slot = n;
+    };
+    slotsEl.appendChild(b);
+  });
+  document.getElementById("cta").addEventListener("click", function(){
+    var ok = document.getElementById("ok");
+    ok.hidden = false;
+    var v = arr.value;
+    if (!v || !slot){ ok.textContent = PACK.pick; return; }
+    var item = document.getElementById("item").value;
+    ok.textContent = PACK.ok.replace("{item}", item).replace("{date}", formatDate(v)).replace("{slot}", slot);
+    if (window.bsTrack) window.bsTrack("/request/confirm", "example");
+  });
+})();
+</script>
+</body></html>
