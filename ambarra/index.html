@@ -134,7 +134,7 @@ footer a.tel{display:inline-flex;align-items:center;min-height:44px;padding:0 14
  var sm=location.search.match(/[?&]p=([^&#]*)/);
  var tag=sm?decodeURIComponent(sm[1]).toLowerCase().replace(/[^a-z0-9-]/g,"").slice(0,60):"";
  var q=[]; window.bsTrack=function(sub,title){ if(internal) return;
-   if(window.goatcounter&&window.goatcounter.count) window.goatcounter.count({path:BASE+sub,title:title||sub,event:true}); else q.push([BASE+sub,title||sub]); };
+   var ep=BASE+sub+(tag?'?p='+tag:'');if(window.goatcounter&&window.goatcounter.count) window.goatcounter.count({path:ep,title:title||sub,event:true}); else q.push([ep,title||sub]); };
  if(internal) return;
  window.goatcounter={no_onload:true};
  var s=document.createElement("script"); s.async=true; s.src="https://gc.zgo.at/count.js";

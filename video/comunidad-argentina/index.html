@@ -4,8 +4,8 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>BOLLA STUDIO · cómo funciona el agente</title>
-  <meta http-equiv="refresh" content="0; url=es/" />
   <link rel="canonical" href="https://demo.bollastudio.com/video/comunidad-argentina/es/" />
+  <script>location.replace("es/"+location.search+location.hash)</script>
   <style>
     body { font-family: system-ui, sans-serif; background:#0b0b0c; color:#f4f4f5; padding:24px; }
     a { color:#93c5fd; }
@@ -13,6 +13,17 @@
 </head>
 <body>
   <p>Elegí el idioma del video:</p>
-  <p><a href="es/">Español</a> · <a href="en/">English</a> · <a href="it/">Italiano</a> · <a href="de/">Deutsch</a> · <a href="fr/">Français</a></p>
+  <p>
+    <a href="es/" data-keep-query>Español</a> ·
+    <a href="en/" data-keep-query>English</a> ·
+    <a href="it/" data-keep-query>Italiano</a> ·
+    <a href="de/" data-keep-query>Deutsch</a> ·
+    <a href="fr/" data-keep-query>Français</a>
+  </p>
+  <script>
+  document.querySelectorAll("[data-keep-query]").forEach(function(a){
+    try{var u=new URL(a.getAttribute("href"),location.href);a.href=u.pathname+location.search+location.hash;}catch(e){}
+  });
+  </script>
 </body>
 </html>
