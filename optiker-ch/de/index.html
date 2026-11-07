@@ -5,7 +5,7 @@
 <style>
 :root{--c:#2c3e50;--bg:#f4f2ee}
 *{box-sizing:border-box}body{margin:0;font-family:-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;background:var(--bg);color:#222;line-height:1.5}
-.top{background:#1d2a33;color:#d8dee2;font-size:13px;text-align:center;padding:8px 12px}.top a{color:#fff}
+.top{background:#1d2a33;color:#d8dee2;font-size:13px;text-align:center;padding:8px 12px}.top a{color:#fff}.top .lang{display:flex;flex-wrap:wrap;justify-content:center;gap:8px;margin-top:8px}.top .lang a{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:8px 14px;background:#243640;border-radius:10px;font-size:16px;font-weight:700;text-decoration:none}
 header{max-width:1080px;margin:0 auto;padding:28px 20px 8px}
 .brand{font-weight:700;letter-spacing:.08em;font-size:.8rem;color:#9aa3ad}
 h1{font-size:30px;margin:6px 0 10px;color:var(--c)}.tag{font-size:13px;text-transform:uppercase;letter-spacing:.08em;color:#777}
@@ -63,7 +63,8 @@ footer{text-align:center;font-size:13px;color:#777;padding:10px 20px 40px}footer
 })();
 </script>
 </head><body>
-<div class="top">Beispiel-Demo für Optikergeschäfte in der Schweiz, vorbereitet von <a href="https://bollastudio.com" target="_blank">BOLLA STUDIO</a> · «Optik Klarblick» ist ein fiktiver Beispielbetrieb, keine echten Buchungen</div>
+<div class="top">Beispiel-Demo für Optikergeschäfte in der Schweiz, vorbereitet von <a href="https://bollastudio.com" target="_blank">BOLLA STUDIO</a> · «Optik Klarblick» ist ein fiktiver Beispielbetrieb, keine echten Buchungen
+<nav class="lang" aria-label="Sprache"><a href="./" hreflang="de" lang="de" data-keep-query aria-current="page">Deutsch</a><a href="../en/" hreflang="en" lang="en" data-keep-query>English</a><a href="../fr/" hreflang="fr" lang="fr" data-keep-query>Français</a></nav></div>
 <header><div class="brand">BOLLA STUDIO</div><div class="tag">Beispiel · Optik Klarblick, fiktives Optikergeschäft</div>
 <h1>Sehtest-Termine gebucht, während Sie beraten</h1>
 <p class="intro">Ein KI-Agent für WhatsApp und Ihre Website beantwortet die Fragen, die während einer Beratung liegen bleiben: Sehtest-Termin, ist meine Brille fertig, Kontaktlinsen nachbestellen, Reparatur, Sonnenbrille mit Korrektur, Öffnungszeiten. Er nimmt Termine und Bestellungen mit allen Angaben auf. Messung und Beratung machen Sie.</p></header>
@@ -113,5 +114,10 @@ document.getElementById('cta').onclick=function(){var ok=document.getElementById
  if(!v||!slot){ok.textContent=D.pick;return}
  var p=v.split('-');ok.textContent=D.ok.replace('{item}',document.getElementById('item').value).replace('{date}',p[2]+'.'+p[1]+'.'+p[0]).replace('{slot}',slot);
  window.bsTrack&&bsTrack('/request/confirm','Demo-Anfrage')};
+</script>
+<script id="bolla-lang-links">
+document.querySelectorAll("[data-keep-query]").forEach(function(a){
+  try{var u=new URL(a.getAttribute("href"),location.href);a.href=u.pathname+location.search+location.hash;}catch(e){}
+});
 </script>
 </body></html>
