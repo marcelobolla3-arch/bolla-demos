@@ -6,7 +6,7 @@ import path from "node:path";
 import { test } from "node:test";
 import vm from "node:vm";
 import { evaluate, withChrome } from "../garage-crotta-lugano/test/browser.mjs";
-import { VOICE_LISTEN_MS, speechCanBeHeardOnce, voiceExchangeDone, wavCoversListenWindow } from "../garage-crotta-lugano/test/voice-fixture.mjs";
+import { VOICE_LISTEN_MS, speechCanBeHeardOnce, speechRegionsFromSilenceLog, voiceExchangeDone, wavCoversListenWindow } from "../garage-crotta-lugano/test/voice-fixture.mjs";
 
 const root = new URL("..", import.meta.url);
 const read = (rel) => readFileSync(new URL(rel, root), "utf8");
@@ -78,9 +78,13 @@ test("a fake microphone clip must outlast the listen window so the phrase is not
   assert.equal(wavCoversListenWindow(40, VOICE_LISTEN_MS), true);
   const repeated = { userTranscripts: ["drawings", "drawings", "drawings", "drawings", "drawings"], assistantReplies: ["Hello", "I do not understand drawings"] };
   assert.equal(voiceExchangeDone(repeated), true);
-  assert.equal(voiceExchangeDone({ userTranscripts: [], assistantReplies: ["Hello"] }), false);
-  assert.equal(speechCanBeHeardOnce({ durationSeconds: 43.7, speechStart: 1.25, speechEnd: 3.2, listenMs: VOICE_LISTEN_MS }), false);
-  assert.equal(speechCanBeHeardOnce({ durationSeconds: 43.7, speechStart: 8, speechEnd: 11, listenMs: VOICE_LISTEN_MS }), true);
+  assert.equal(voiceExchangeDone({ userTranscripts: ["..."], assistantReplies: ["Hello", "Are you still there?"] }), false);
+  assert.equal(speechCanBeHeardOnce({ durationSeconds: 43.7, speechStart: 1.25, speechEnd: 3.2, listenMs: VOICE_LISTEN_MS, regions: [{}] }), false);
+  assert.equal(speechCanBeHeardOnce({ durationSeconds: 44, speechStart: 12, speechEnd: 14.5, listenMs: VOICE_LISTEN_MS, regions: [{}] }), true);
+  assert.equal(speechCanBeHeardOnce({ durationSeconds: 44, speechStart: 12, speechEnd: 14.5, listenMs: VOICE_LISTEN_MS, regions: [{}, {}] }), false);
+  const early = speechRegionsFromSilenceLog("silence_start: 0\nsilence_end: 1.25\nsilence_start: 3.2\nsilence_end: 43.7\n", 43.7);
+  assert.equal(early.length, 1);
+  assert.equal(speechCanBeHeardOnce({ durationSeconds: 43.7, ...early[0], regions: early, listenMs: VOICE_LISTEN_MS }), false);
 });
 
 test("a send or a start click is not a completed reply or a connected call", () => {

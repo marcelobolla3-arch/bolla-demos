@@ -1,9 +1,9 @@
-import { execFileSync } from "node:child_process";
+import { execFileSync, spawnSync } from "node:child_process";
 import { createServer } from "node:http";
 import { readFileSync, mkdirSync, writeFileSync } from "node:fs";
 import path from "node:path";
 import { evaluate, withChrome } from "./browser.mjs";
-import { VOICE_LISTEN_MS, voiceExchangeDone, wavCoversListenWindow } from "./voice-fixture.mjs";
+import { VOICE_LISTEN_MS, speechCanBeHeardOnce, speechRegionsFromSilenceLog, voiceExchangeDone, wavCoversListenWindow } from "./voice-fixture.mjs";
 
 if (process.env.CROTTa_RUNTIME !== "1") {
   console.error("Refusing a live provider session. Set CROTTa_RUNTIME=1 for one bounded probe.");
@@ -137,6 +137,13 @@ function wavDurationSeconds(file) {
   return Number(String(out).trim());
 }
 
+function measuredSpeech(file, durationSeconds) {
+  const probe = spawnSync("ffmpeg", ["-i", file, "-af", "silencedetect=noise=-35dB:d=0.3", "-f", "null", "-"], { encoding: "utf8" });
+  const regions = speechRegionsFromSilenceLog(probe.stderr || "", durationSeconds);
+  if (regions.length !== 1) return null;
+  return { ...regions[0], regions };
+}
+
 async function chooseLanguage(page) {
   const selected = await evaluate(page, `window.CrottaRuntime.setLanguage(${JSON.stringify(lang)}) && window.__crottaLanguage`);
   return selected;
@@ -165,10 +172,13 @@ try {
     let wavOk = true;
     if (wav) {
       const seconds = wavDurationSeconds(wav);
+      const speech = measuredSpeech(wav, seconds);
       report.wavSeconds = seconds;
-      if (!wavCoversListenWindow(seconds)) {
+      report.speech = speech;
+      const heard = speech && speechCanBeHeardOnce({ durationSeconds: seconds, speechStart: speech.speechStart, speechEnd: speech.speechEnd, regions: speech.regions });
+      if (!wavCoversListenWindow(seconds) || !heard) {
         wavOk = false;
-        report.voice = { skipped: "synthetic clip is shorter than the listen window, so Chromium would repeat it; voice session was not started", wavSeconds: seconds };
+        report.voice = { skipped: "synthetic clip would repeat or its only speech region ends before recognition is listening; voice session was not started", wavSeconds: seconds, speech };
       }
     }
     if (wavOk) await withChrome({
@@ -178,26 +188,7 @@ try {
       args: wav ? [`--use-file-for-fake-audio-capture=${wav}`] : [],
     }, async (page, attempted) => {
       report.language = await chooseLanguage(page);
-      const mic = await evaluate(page, `new Promise((resolve) => {
-        navigator.mediaDevices.getUserMedia({audio:true}).then((stream) => {
-          const ctx = new AudioContext();
-          const src = ctx.createMediaStreamSource(stream);
-          const analyser = ctx.createAnalyser();
-          src.connect(analyser);
-          const data = new Uint8Array(analyser.fftSize);
-          let peak = 0;
-          const timer = setInterval(() => {
-            analyser.getByteTimeDomainData(data);
-            for (const value of data) peak = Math.max(peak, Math.abs(value - 128));
-          }, 100);
-          setTimeout(() => { clearInterval(timer); stream.getTracks().forEach((track) => track.stop()); resolve({peak}); }, 2500);
-        }).catch((error) => resolve({error: String(error)}));
-      })`);
-      report.voiceMic = mic;
-      if (!mic || mic.error || !mic.peak || mic.peak < 2) {
-        report.voice = { skipped: "fake microphone produced no audible samples; voice session was not started", mic };
-        return;
-      }
+      report.voiceMic = { skipped: "the capture file is opened only by the session, so the phrase is not played before recognition" };
       report.voice = await probe(page, "document.getElementById('voice-start').click()", voiceStop, VOICE_LISTEN_MS);
       report.voice.analyticsAttempts = attempted.filter((url) => /goatcounter|zgo\.at/.test(url));
       report.voice.twoWay = voiceReady(report.voice);
