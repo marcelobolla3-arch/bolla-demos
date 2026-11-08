@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Voce dimostrativa · Garage Nedy Crotta · BOLLA STUDIO</title>
+<link rel="stylesheet" href="../crotta.css">
+<script id="bolla-metrics">
+(function(){
+var BASE="/bolla-garage-crotta-lugano/voce";
+var VISIT="crotta-voce";
+function pick(search,key){var m=String(search||"").match(new RegExp("[?&]"+key+"=([^&#]*)"));if(!m)return "";try{return decodeURIComponent(m[1]).toLowerCase().replace(/[^a-z0-9-]/g,"").slice(0,60);}catch(e){return "";}}
+function tag(){return pick(location.search,"p")||pick(location.search,"link_id");}
+var m=(location.search+location.hash).match(/[?&#]internal=([01])/);
+try{if(m){if(m[1]==="1")localStorage.setItem("skipgc","t");else localStorage.removeItem("skipgc");}}catch(e){}
+var internal=false;try{internal=localStorage.getItem("skipgc")==="t";}catch(e){}
+try{document.documentElement.setAttribute("data-crotta-metrics",internal?"off":"on");}catch(e){}
+var q=[];
+window.bsTrack=function(sub,title){if(internal)return;var path=BASE+sub;var campaign=tag();if(campaign&&path.indexOf("?p=")<0)path+="?p="+campaign;var row={path:path,title:title||sub,event:true};if(window.goatcounter&&window.goatcounter.count)window.goatcounter.count(row);else q.push(row);};
+if(internal)return;
+window.goatcounter={no_onload:true};
+var s=document.createElement("script");s.async=true;s.src="https://gc.zgo.at/count.js";
+s.setAttribute("data-goatcounter","https://bollastudio.goatcounter.com/count");
+s.onload=function(){try{window.goatcounter.count({path:BASE+"/"+(tag()?"?p="+tag():""),title:VISIT});q.forEach(function(e){window.goatcounter.count(e);});q=[];}catch(e){}};
+document.head.appendChild(s);
+})();
+</script>
+</head>
+<body id="crotta-voice">
+<header class="band">
+  <div class="band-in">
+    <span class="pill">DEMO</span>
+    <h1>Voce dimostrativa per Garage Nedy Crotta</h1>
+    <p class="disclaimer">Demo non ufficiale realizzata da BOLLA STUDIO; nessuna prenotazione o richiesta viene inviata al garage.</p>
+    <p class="privacy">Demo non ufficiale BOLLA STUDIO. Non inserire dati personali. La conversazione è elaborata da ElevenLabs; la registrazione audio è disattivata. I dati tecnici possono essere trasmessi ai servizi collegati di BOLLA STUDIO.</p>
+  </div>
+</header>
+<main class="wrap">
+  <nav>
+    <a data-keep-query href="../chat/">Prova in chat</a>
+    <a data-keep-query href="../">Esempio con risposte già scritte</a>
+  </nav>
+  <p class="detail">Su questo agente ElevenLabs ha l'impostazione di conservazione di 1 giorno e la registrazione audio disattivata. È un'impostazione del fornitore, non una cancellazione globale dopo un giorno: l'esportazione di archivio del workspace può ancora includere la trascrizione e un webhook può inviare riepilogo e metadati. Il microfono si usa solo dal vivo, durante questa conversazione.</p>
+  <p>Indirizzo usato qui: Via al Campanile 1, Lugano. Il sito scrive anche 6900; una verifica su mappa indica 6962 per la stessa via. Questa pagina non sceglie un CAP e non mostra una posizione su mappa.</p>
+  <section class="panel">
+    <h2>Conversazione vocale, nei due sensi</h2>
+    <p class="note">Premere «Inizia» non significa che la linea sia connessa. Lo stato passa a «Connesso» solo quando il fornitore apre la sessione. Serve il microfono del browser. Non c'è un audio preregistrato.</p>
+    <p id="voice-status" class="status" data-runtime="idle" role="status">Non connesso</p>
+    <div class="voice-actions">
+      <button type="button" id="voice-start">Inizia</button>
+      <button type="button" id="voice-end" class="secondary">Termina</button>
+    </div>
+    <div id="voice-log" class="log" aria-live="polite"></div>
+    <p id="voice-notice" class="note"></p>
+    <p id="voice-session" class="session"></p>
+    <h2>Cose che può dire</h2>
+    <ul>
+      <li>Gli orari di apertura.</li>
+      <li>Una richiesta di tagliando, senza nome né telefono.</li>
+      <li>Un giro di prova gratuito: la conferma resta al garage, da qui non parte nulla.</li>
+      <li>Quali marchi hanno il banner di rivenditore ufficiale.</li>
+    </ul>
+  </section>
+  <section class="panel">
+    <h2>Dal sito pubblico, 8 novembre 2026</h2>
+    <div class="facts">
+      <div><b>Orari</b> Lun–ven 07:30–12:00 e 13:30–18:00. Sabato 09:00–12:00. Domenica chiuso.</div>
+      <div><b>Marchi</b> Banner «rivenditore ufficiale»: Vespa, Moto Guzzi, Aprilia. Specializzazione sul gruppo Piaggio. Le altre marche del footer non sono trattate qui come concessionari ufficiali.</div>
+      <div><b>Officina</b> Riparazioni e servizi auto e moto, cambio gomme, collaudi, preparazioni per pista, customizzazione, importazione, compravendita.</div>
+      <div><b>Contatti pubblicati</b> Servizi 091 972 18 28. Email garage.crotta@bluewin.ch. Questa pagina non chiama e non scrive.</div>
+    </div>
+  </section>
+  <p class="note">L'assistente vocale risponde solo se la pagina è aperta su https://demo.bollastudio.com. Fonti: garagecrotta.ch (home, chi siamo, officina, concessionario, contatti).</p>
+</main>
+<script src="../runtime/crotta-runtime.js"></script>
+</body>
+</html>
