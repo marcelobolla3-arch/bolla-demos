@@ -1,7 +1,9 @@
+import { execFileSync } from "node:child_process";
 import { createServer } from "node:http";
 import { readFileSync, mkdirSync, writeFileSync } from "node:fs";
 import path from "node:path";
 import { evaluate, withChrome } from "./browser.mjs";
+import { VOICE_LISTEN_MS, voiceExchangeDone, wavCoversListenWindow } from "./voice-fixture.mjs";
 
 if (process.env.CROTTa_RUNTIME !== "1") {
   console.error("Refusing a live provider session. Set CROTTa_RUNTIME=1 for one bounded probe.");
@@ -44,7 +46,7 @@ async function sleep(ms) {
 function summarize(ev, started) {
   const users = (ev && ev.userTranscripts) || [];
   const agents = (ev && ev.assistantReplies) || [];
-  const events = ((ev && ev.events) || []).map((item) => item.kind);
+  const events = ((ev && ev.events) || []).map((item) => ({ kind: item.kind, path: item.path, title: item.title }));
   return {
     conversationId: (ev && ev.conversationId) || "",
     userTranscripts: users,
@@ -57,17 +59,17 @@ function summarize(ev, started) {
   };
 }
 
-async function probe(page, clickExpression, ready) {
+async function probe(page, clickExpression, stop, maxMs) {
   const origin = await evaluate(page, "location.origin");
   const started = Date.now();
   await evaluate(page, clickExpression);
   let last = null;
-  while (Date.now() - started < 40000) {
+  while (Date.now() - started < maxMs) {
     last = await evaluate(page, "({conversationId: window.__crottaEvidence && window.__crottaEvidence.conversationId, userTranscripts: (window.__crottaEvidence && window.__crottaEvidence.userTranscripts) || [], assistantReplies: (window.__crottaEvidence && window.__crottaEvidence.assistantReplies) || [], audioChunks: window.__crottaEvidence && window.__crottaEvidence.audioChunks, audioBytes: window.__crottaEvidence && window.__crottaEvidence.audioBytes, audioPeak: window.__crottaEvidence && window.__crottaEvidence.audioPeak, events: (window.__crottaEvidence && window.__crottaEvidence.events) || []})");
     const status = await evaluate(page, "document.querySelector('.status')?.getAttribute('data-runtime') || ''");
     const errored = last && last.events && last.events.some((item) => item.kind === "chat-error" || item.kind === "voice-error");
     if (errored || status === "error") break;
-    if (ready(last)) break;
+    if (stop(last)) break;
     await sleep(400);
   }
   await evaluate(page, "document.getElementById('chat-end')?.click(); document.getElementById('voice-end')?.click();");
@@ -110,11 +112,29 @@ function chatReady(ev) {
   return users.some((text) => HEARD[lang].hours.test(text)) && agents.some((text) => HOURS.test(text));
 }
 
+const expectMonday = process.env.CROTTa_VOICE_EXPECT === "monday";
+
 function voiceReady(ev) {
   const users = (ev && ev.userTranscripts) || [];
   const agents = (ev && ev.assistantReplies) || [];
   const audio = (ev && ev.audioBytes) > 800 && (ev && ev.audioPeak) > 80;
-  return users.some((text) => HEARD[lang].brands.test(text)) && agents.some((text) => BRANDS.test(text)) && audio;
+  if (expectMonday) {
+    const heard = users.some((text) => /monday|open|time/i.test(text));
+    const answered = agents.some((text) => /monday|07:30|7:30|13:30/i.test(text));
+    return heard && answered && audio;
+  }
+  const heard = users.some((text) => HEARD[lang].brands.test(text));
+  const answered = agents.some((text) => BRANDS.test(text));
+  return heard && answered && audio;
+}
+
+function voiceStop(ev) {
+  return voiceExchangeDone(ev) || voiceReady(ev);
+}
+
+function wavDurationSeconds(file) {
+  const out = execFileSync("ffprobe", ["-v", "error", "-show_entries", "format=duration", "-of", "csv=p=0", file], { encoding: "utf8" });
+  return Number(String(out).trim());
 }
 
 async function chooseLanguage(page) {
@@ -131,7 +151,7 @@ try {
       watch,
     }, async (page, attempted) => {
       report.language = await chooseLanguage(page);
-      report.chat = await probe(page, "document.querySelector('[data-ask]').click()", chatReady);
+      report.chat = await probe(page, "document.querySelector('[data-ask]').click()", chatReady, 20000);
       report.chat.analyticsAttempts = attempted.filter((url) => /goatcounter|zgo\.at/.test(url));
       report.chat.twoWay = chatReady(report.chat);
       await shot(page, "crotta-chat-runtime");
@@ -142,7 +162,16 @@ try {
   }
   if (part !== "chat") {
     try {
-    await withChrome({
+    let wavOk = true;
+    if (wav) {
+      const seconds = wavDurationSeconds(wav);
+      report.wavSeconds = seconds;
+      if (!wavCoversListenWindow(seconds)) {
+        wavOk = false;
+        report.voice = { skipped: "synthetic clip is shorter than the listen window, so Chromium would repeat it; voice session was not started", wavSeconds: seconds };
+      }
+    }
+    if (wavOk) await withChrome({
       url: `http://127.0.0.1:${port}/garage-crotta-lugano/voce/?internal=1`,
       fail,
       watch,
@@ -169,10 +198,11 @@ try {
         report.voice = { skipped: "fake microphone produced no audible samples; voice session was not started", mic };
         return;
       }
-      report.voice = await probe(page, "document.getElementById('voice-start').click()", voiceReady);
+      report.voice = await probe(page, "document.getElementById('voice-start').click()", voiceStop, VOICE_LISTEN_MS);
       report.voice.analyticsAttempts = attempted.filter((url) => /goatcounter|zgo\.at/.test(url));
       report.voice.twoWay = voiceReady(report.voice);
-      report.voice.greetingOnly = !report.voice.twoWay && ((report.voice.assistantReplies || []).length > 0) && !((report.voice.userTranscripts || []).some((text) => /march/i.test(text)));
+      report.voice.userTurns = (report.voice.userTranscripts || []).length;
+      report.voice.greetingOnly = !report.voice.twoWay && ((report.voice.assistantReplies || []).length > 0) && (report.voice.userTurns === 0);
       await shot(page, "crotta-voce-runtime");
     });
     } catch (error) {

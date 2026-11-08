@@ -6,6 +6,7 @@ import path from "node:path";
 import { test } from "node:test";
 import vm from "node:vm";
 import { evaluate, withChrome } from "../garage-crotta-lugano/test/browser.mjs";
+import { VOICE_LISTEN_MS, speechCanBeHeardOnce, voiceExchangeDone, wavCoversListenWindow } from "../garage-crotta-lugano/test/voice-fixture.mjs";
 
 const root = new URL("..", import.meta.url);
 const read = (rel) => readFileSync(new URL(rel, root), "utf8");
@@ -70,6 +71,16 @@ test("language is a bounded override and does not reset a live session", () => {
     assert.match(copy.disclaimer, /BOLLA STUDIO/);
     assert.equal(copy.asks[0][1].length > 8, true);
   }
+});
+
+test("a fake microphone clip must outlast the listen window so the phrase is not repeated", () => {
+  assert.equal(wavCoversListenWindow(6.2, VOICE_LISTEN_MS), false);
+  assert.equal(wavCoversListenWindow(40, VOICE_LISTEN_MS), true);
+  const repeated = { userTranscripts: ["drawings", "drawings", "drawings", "drawings", "drawings"], assistantReplies: ["Hello", "I do not understand drawings"] };
+  assert.equal(voiceExchangeDone(repeated), true);
+  assert.equal(voiceExchangeDone({ userTranscripts: [], assistantReplies: ["Hello"] }), false);
+  assert.equal(speechCanBeHeardOnce({ durationSeconds: 43.7, speechStart: 1.25, speechEnd: 3.2, listenMs: VOICE_LISTEN_MS }), false);
+  assert.equal(speechCanBeHeardOnce({ durationSeconds: 43.7, speechStart: 8, speechEnd: 11, listenMs: VOICE_LISTEN_MS }), true);
 });
 
 test("a send or a start click is not a completed reply or a connected call", () => {
