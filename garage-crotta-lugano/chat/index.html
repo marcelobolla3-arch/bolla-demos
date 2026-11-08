@@ -31,9 +31,9 @@ document.head.appendChild(s);
 <header class="band">
   <div class="band-in">
     <span class="pill">DEMO</span>
-    <h1>Chat dimostrativa per Garage Nedy Crotta</h1>
-    <p class="disclaimer">Demo non ufficiale realizzata da BOLLA STUDIO; nessuna prenotazione o richiesta viene inviata al garage.</p>
-    <p class="privacy">Demo non ufficiale BOLLA STUDIO. Non inserire dati personali. La conversazione è elaborata da ElevenLabs; la registrazione audio è disattivata. I dati tecnici possono essere trasmessi ai servizi collegati di BOLLA STUDIO.</p>
+    <h1 data-i18n="h1">Chat dimostrativa per Garage Nedy Crotta</h1>
+    <p class="disclaimer" data-i18n="disclaimer">Demo non ufficiale realizzata da BOLLA STUDIO; nessuna prenotazione o richiesta viene inviata al garage.</p>
+    <p class="privacy" data-i18n="privacy">Demo non ufficiale BOLLA STUDIO. Non inserire dati personali. La conversazione è elaborata da ElevenLabs; la registrazione audio è disattivata. I dati tecnici possono essere trasmessi ai servizi collegati di BOLLA STUDIO.</p>
   </div>
 </header>
 <main class="wrap">
@@ -41,12 +41,20 @@ document.head.appendChild(s);
     <a data-keep-query href="../voce/">Prova vocale</a>
     <a data-keep-query href="../">Esempio con risposte già scritte</a>
   </nav>
-  <p class="detail">Su questo agente ElevenLabs ha l'impostazione di conservazione di 1 giorno e la registrazione audio disattivata. È un'impostazione del fornitore, non una cancellazione globale dopo un giorno: l'esportazione di archivio del workspace può ancora includere la trascrizione e un webhook può inviare riepilogo e metadati.</p>
-  <p>Indirizzo usato qui: Via al Campanile 1, Lugano. Il sito scrive anche 6900; una verifica su mappa indica 6962 per la stessa via. Questa pagina non sceglie un CAP e non mostra una posizione su mappa.</p>
-  <p class="note">L'assistente risponde solo se la pagina è aperta su https://demo.bollastudio.com. Un altro indirizzo viene rifiutato dal fornitore. Inviare un messaggio non è, da solo, una risposta.</p>
+  <div class="langs" id="crotta-langs" role="group" aria-label="Lingua della demo">
+    <button type="button" data-lang="it" class="on" aria-pressed="true">Italiano</button>
+    <button type="button" data-lang="de" aria-pressed="false">Deutsch</button>
+    <button type="button" data-lang="en" aria-pressed="false">English</button>
+    <button type="button" data-lang="fr" aria-pressed="false">Français</button>
+  </div>
+  <p id="lang-note" data-i18n="langNote">Il sito del garage è solo in italiano. Questa demo può rispondere in italiano, tedesco, inglese e francese, le lingue pubblicate dall'ente turistico Lugano Region. Non significa che il personale o la clientela del garage le parlino.</p>
+  <p id="lang-lock" class="note" role="status"></p>
+  <p class="detail" data-i18n="detail">Su questo agente ElevenLabs ha l'impostazione di conservazione di 1 giorno e la registrazione audio disattivata. È un'impostazione del fornitore, non una cancellazione globale dopo un giorno: l'esportazione di archivio del workspace può ancora includere la trascrizione e un webhook può inviare riepilogo e metadati.</p>
+  <p data-i18n="address">Indirizzo usato qui: Via al Campanile 1, Lugano. Il sito scrive anche 6900; una verifica su mappa indica 6962 per la stessa via. Questa pagina non sceglie un CAP e non mostra una posizione su mappa.</p>
+  <p class="note" data-i18n="origin">L'assistente risponde solo se la pagina è aperta su https://demo.bollastudio.com. Un altro indirizzo viene rifiutato dal fornitore. Inviare un messaggio non è, da solo, una risposta.</p>
   <div class="split">
     <section class="panel" aria-labelledby="chat-title">
-      <h2 id="chat-title">Conversazione libera, solo testo</h2>
+      <h2 id="chat-title" data-i18n="panelTitle">Conversazione libera, solo testo</h2>
       <p id="chat-status" class="status" data-runtime="idle" role="status">Non connesso</p>
       <div id="chat-log" class="log" aria-live="polite"></div>
       <div class="row">
@@ -64,17 +72,17 @@ document.head.appendChild(s);
       <p id="chat-session" class="session"></p>
     </section>
     <section class="panel">
-      <h2>Dal sito pubblico, 8 novembre 2026</h2>
+      <h2 data-i18n="factsTitle">Dal sito pubblico, 8 novembre 2026</h2>
       <div class="facts">
-        <div><b>Orari</b> Lun–ven 07:30–12:00 e 13:30–18:00. Sabato 09:00–12:00. Domenica chiuso.</div>
-        <div><b>Marchi</b> Banner «rivenditore ufficiale»: Vespa, Moto Guzzi, Aprilia. Specializzazione sul gruppo Piaggio. Le altre marche del footer non sono trattate qui come concessionari ufficiali.</div>
-        <div><b>Officina</b> Riparazioni e servizi auto e moto, cambio gomme, collaudi, preparazioni per pista, customizzazione, importazione, compravendita. Partner citati: Pirelli, Michelin, Continental, ELF, Brembo.</div>
-        <div><b>Contatti pubblicati</b> Servizi 091 972 18 28. Email garage.crotta@bluewin.ch. Questa pagina non chiama e non scrive.</div>
+        <div><b data-i18n="hoursLabel">Orari</b> <span data-i18n="hours">Lun–ven 07:30–12:00 e 13:30–18:00. Sabato 09:00–12:00. Domenica chiuso.</span></div>
+        <div><b data-i18n="brandsLabel">Marchi</b> <span data-i18n="brands">Banner «rivenditore ufficiale»: Vespa, Moto Guzzi, Aprilia. Specializzazione sul gruppo Piaggio. Le altre marche del footer non sono trattate qui come concessionari ufficiali.</span></div>
+        <div><b data-i18n="shopLabel">Officina</b> <span data-i18n="shop">Riparazioni e servizi auto e moto, cambio gomme, collaudi, preparazioni per pista, customizzazione, importazione, compravendita. Partner citati: Pirelli, Michelin, Continental, ELF, Brembo.</span></div>
+        <div><b data-i18n="contactLabel">Contatti pubblicati</b> <span data-i18n="contact">Servizi 091 972 18 28. Email garage.crotta@bluewin.ch. Questa pagina non chiama e non scrive.</span></div>
       </div>
-      <p class="note">Il sito ha un modulo per il giro di prova gratuito e per un preventivo. Qui la richiesta resta nel testo e non viene inoltrata: la conferma è del garage.</p>
+      <p class="note" data-i18n="testRide">Il sito ha un modulo per il giro di prova gratuito e per un preventivo. Qui la richiesta resta nel testo e non viene inoltrata: la conferma è del garage.</p>
     </section>
   </div>
-  <p class="note">Fonti: garagecrotta.ch (home, chi siamo, officina, concessionario, contatti). La pagina <a data-keep-query href="../">/garage-crotta-lugano/</a> resta un esempio con risposte preparate, non è questa chat.</p>
+  <p class="note" data-i18n="sources">Fonti: garagecrotta.ch (home, chi siamo, officina, concessionario, contatti). La pagina /garage-crotta-lugano/ resta un esempio con risposte preparate, non è questa chat.</p>
 </main>
 <script src="../runtime/crotta-runtime.js"></script>
 </body>

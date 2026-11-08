@@ -31,6 +31,9 @@ button{font:inherit;cursor:pointer}
 .facts div{background:var(--soft);border-radius:10px;padding:10px 12px}
 .facts b{display:block}
 ul{margin:8px 0 0;padding-left:18px}
+.langs{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 12px}
+.langs button{min-height:44px;border:1px solid var(--line);background:#fff;color:var(--ink);border-radius:999px;padding:0 14px}
+.langs button.on{background:var(--accent);color:#fff;border-color:var(--accent)}
 nav{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 12px}
 nav a{display:inline-flex;align-items:center;min-height:44px;padding:0 12px;border:1px solid var(--line);border-radius:999px;text-decoration:none;background:#fff}
 .session{font-size:14px;color:var(--muted);overflow-wrap:anywhere}

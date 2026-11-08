@@ -61,14 +61,14 @@ Il contatore resta GoatCounter, `https://bollastudio.goatcounter.com/count`. Una
 | Fatto | Percorso | Titolo | `event` |
 | --- | --- | --- | --- |
 | Visita chat | `/bolla-garage-crotta-lugano/chat/` | `crotta-chat` | no |
-| Risposta di testo completata | `/bolla-garage-crotta-lugano/chat/response` | `chat-response` | sì |
-| Errore chat | `/bolla-garage-crotta-lugano/chat/error` | `chat-error` | sì |
+| Risposta di testo completata, dopo un messaggio dell'utente | `/bolla-garage-crotta-lugano/chat/response/{it\|de\|en\|fr}` | `chat-response` | sì |
+| Errore chat | `/bolla-garage-crotta-lugano/chat/error/{it\|de\|en\|fr}` | `chat-error` | sì |
 | Visita voce | `/bolla-garage-crotta-lugano/voce/` | `crotta-voce` | no |
-| Voce connessa, dopo che l'assistente parla o scrive | `/bolla-garage-crotta-lugano/voce/connected` | `voice-connected` | sì |
-| Voce chiusa | `/bolla-garage-crotta-lugano/voce/ended` | `voice-ended` | sì |
-| Errore voce | `/bolla-garage-crotta-lugano/voce/error` | `voice-error` | sì |
+| Voce connessa, dopo che l'assistente parla o scrive | `/bolla-garage-crotta-lugano/voce/connected/{it\|de\|en\|fr}` | `voice-connected` | sì |
+| Voce chiusa | `/bolla-garage-crotta-lugano/voce/ended/{it\|de\|en\|fr}` | `voice-ended` | sì |
+| Errore voce | `/bolla-garage-crotta-lugano/voce/error/{it\|de\|en\|fr}` | `voice-error` | sì |
 
-Non vanno nel contatore: il testo, il nome, il telefono, l'email, l'id di conversazione. Il clic su Invia o su Inizia non è un evento. Il saluto iniziale, prima di un messaggio dell'utente, non è un uso. Dopo ogni messaggio inviato conta una sola risposta completata: `onMessage` con ruolo `agent` oppure lo `stop` di `agent_chat_response_part`, una volta per `response_id`. I delta non contano. Una domanda e una risposta fanno un evento, non due. La voce connessa parte quando l'assistente è in linea: `onModeChange` con `speaking`, un messaggio `agent`, o `onAudio`. `onConnect`, lo stato `connected` e `conversation_initiation_metadata` da soli non bastano: il fornitore può rifiutare il dominio dopo aver assegnato un id. La chiusura parte da `onDisconnect` solo dopo che l'assistente è stato in linea. Se la sessione si chiude prima, l'evento è `voice-error`. L'errore parte anche da `onError`, da `client_error` o dal rifiuto di `startSession`. Lo stato `disconnected` prima della risposta non è una chiusura.
+Non vanno nel contatore: il testo, il nome, il telefono, l'email, l'id di conversazione. Il clic su Invia o su Inizia non è un evento. Il saluto iniziale, prima di un messaggio dell'utente, non è un uso. Dopo ogni messaggio inviato conta una sola risposta completata: `onMessage` con ruolo `agent` oppure lo `stop` di `agent_chat_response_part`, una volta per `response_id`. I delta non contano. Una domanda e una risposta fanno un evento, non due. La lingua della sessione, solo `it`, `de`, `en` o `fr`, è l'ultimo tratto del percorso di uso. Il selettore imposta `overrides.agent.language` e non `first_message`. Se una sessione è aperta, il cambio di lingua non la riavvia: va chiusa prima. Il sito del garage resta italiano; le lingue aggiunte sono quelle pubblicate da Lugano Region, non una dichiarazione sul personale o sulla clientela. La voce connessa parte quando l'assistente è in linea: `onModeChange` con `speaking`, un messaggio `agent`, o `onAudio`. `onConnect`, lo stato `connected` e `conversation_initiation_metadata` da soli non bastano: il fornitore può rifiutare il dominio dopo aver assegnato un id. La chiusura parte da `onDisconnect` solo dopo che l'assistente è stato in linea. Se la sessione si chiude prima, l'evento è `voice-error`. L'errore parte anche da `onError`, da `client_error` o dal rifiuto di `startSession`. Lo stato `disconnected` prima della risposta non è una chiusura.
 
 L'id di conversazione può comparire sulla pagina come riferimento tecnico della sessione in corso. Non è un identificatore della persona.
 
@@ -93,3 +93,18 @@ Voce WebRTC `conv_6701m6wxbzexfa4vt9yw5kw8drfq`: il microfono finto ha letto il 
 La voce successiva usa il WebSocket documentato, non WebRTC. Una sola sessione, `conv_5401m6wxpnp8e33bf82scpedarc9`, stato `done`, 12 secondi, `text_only` false, `is_livekit` false, `authorization_method` public. Origin reale `http://127.0.0.1:43473`. Il parlato sintetico è stato riconosciuto (`source_medium` audio): «Quali marchi trattate?». L'assistente ha risposto indicando i banner ufficiali Vespa, Moto Guzzi e Aprilia e la specializzazione Piaggio. Il browser ha ricevuto 26 chunk audio, 357000 byte, picco 27526. Il fornitore conta 11,16 secondi di audio in uscita e 3,37 secondi di audio in entrata. `record_voice` è false, quindi la conversazione salvata ha `has_audio` false. Il contatore interno: `voice-connected` poi `voice-ended`. Nessuna richiesta al contatore di produzione. Nessuna seconda prova.
 
 Il saluto non conta come uso della chat: una domanda inviata produce un solo `chat-response`. La sessione di chat già chiusa era stata misurata col codice precedente e non è stata ripetuta.
+
+## Lingue, 8 novembre 2026
+
+Selettore su chat e voce: italiano predefinito, più tedesco, inglese e francese. Sono le lingue del sito di Lugano Region. Il sito del garage resta italiano. Il selettore manda solo `overrides.agent.language`. Non manda `first_message`. Una sessione aperta non viene cambiata in silenzio.
+
+QA locale, una chat e una voce per lingua, in serie, Origin `http://127.0.0.1`, contatore bloccato. Versione agente `agtvrsn_9401m6wzhvrkf6e9pz1r20vaqta6`.
+
+- Tedesco chat `conv_4601m6wzwks2fp2vb2qdmv5vb9qx`: «Welche sind die Öffnungszeiten?» → orari in tedesco. Un solo `chat-response`.
+- Tedesco voce `conv_0201m6wzx5x4e63rhnt5vy9t3rdf`: «Welche Marken sind offiziell?» riconosciuto, risposta con Vespa, Moto Guzzi e Aprilia, audio ricevuto.
+- Inglese chat `conv_0701m6wzxmqyfr0sjpv2xc3btm01`: «What are the opening hours?» → orari in inglese. Un solo `chat-response`.
+- Inglese voce `conv_8601m6wzy6stfk2v06a7kb9vcws3`: il file durava 6,2 secondi e Chromium lo ripete. In 40 secondi la stessa frase è uscita cinque volte come «Which drawings are official?». Non è stata ripetuta.
+- Inglese voce, file con la frase nei primi 3 secondi, `conv_8501m6x09kbjey5vgvjtn7hpa3vr`: 0 secondi di audio in ingresso, `user_turn_timeout`, «...» e «Are you still there?».
+- Inglese voce, una sola prova dopo lo spostamento della frase a 12 secondi, `conv_4801m6x0gkpger4ra1ssd4604e2q`: riconosciuto dall'audio «What time do you open on Monday?». Risposta: il lunedì si apre dalle sette e mezzo a mezzogiorno e dalle tredici e mezzo alle sei. 25 chunk audio. Eventi `voice-connected` e `voice-ended` sul percorso `/en`. 3,5 secondi di audio in ingresso, 11,4 in uscita. Nessun altro tentativo.
+- Francese chat `conv_8101m6wzzh8fe5dv44g5n2phtnk1`: «Quels sont les horaires d'ouverture ?» → orari in francese. Un solo `chat-response`.
+- Francese voce `conv_5701m6x00433e9pvn3csftd49q1e`. Trascrizione utente: «Quel marque sous officiel ?». Risposta: «Le garage est revendeur officiel Vespa, Moto Guzzi et Aprilia, et il est spécialisé dans le groupe Piaggio.» Poi: «Il connaît aussi bien les motos anglaises que japonaises.» I tre marchi ufficiali e la specializzazione Piaggio sono sul sito. Non dice che Piaggio sia un concessionario ufficiale. Nessuna nuova chiamata francese.

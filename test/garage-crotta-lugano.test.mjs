@@ -6,6 +6,7 @@ import path from "node:path";
 import { test } from "node:test";
 import vm from "node:vm";
 import { evaluate, withChrome } from "../garage-crotta-lugano/test/browser.mjs";
+import { VOICE_LISTEN_MS, speechCanBeHeardOnce, speechRegionsFromSilenceLog, voiceExchangeDone, wavCoversListenWindow } from "../garage-crotta-lugano/test/voice-fixture.mjs";
 
 const root = new URL("..", import.meta.url);
 const read = (rel) => readFileSync(new URL(rel, root), "utf8");
@@ -16,6 +17,7 @@ const legacy = read("garage-crotta-lugano/index.html");
 const notice = "Demo non ufficiale realizzata da BOLLA STUDIO; nessuna prenotazione o richiesta viene inviata al garage.";
 const privacy = "Demo non ufficiale BOLLA STUDIO. Non inserire dati personali. La conversazione è elaborata da ElevenLabs; la registrazione audio è disattivata. I dati tecnici possono essere trasmessi ai servizi collegati di BOLLA STUDIO.";
 
+let runtimeRoot;
 function loadRuntime() {
   const sandbox = {
     console,
@@ -25,6 +27,7 @@ function loadRuntime() {
   };
   sandbox.window = sandbox;
   sandbox.globalThis = sandbox;
+  runtimeRoot = sandbox;
   vm.runInNewContext(runtimeSrc, sandbox, { filename: "crotta-runtime.js" });
   return sandbox.CrottaRuntime;
 }
@@ -42,12 +45,46 @@ test("only the dedicated Crotta agent can start", () => {
   assert.throws(() => api.assertAgent("agent_3101m5z30nvbf06rvwp6def0k85b"), /agent-forbidden/);
   assert.throws(() => api.assertAgent("agent_other"), /agent-rejected/);
   assert.match(api.SDK_URL, /@elevenlabs\/client@1\.35\.0/);
-  assert.doesNotMatch(runtimeSrc, /xi-api-key|ELEVENLABS_API_KEY|demo\.bollastudio\.com/);
+  assert.doesNotMatch(runtimeSrc, /xi-api-key|ELEVENLABS_API_KEY/);
+  assert.doesNotMatch(runtimeSrc, /origin:\s*["']https:\/\/demo\.bollastudio\.com/);
   assert.match(runtimeSrc, /textOnly: true/);
   assert.doesNotMatch(runtimeSrc, /connectionType: "webrtc"/);
   assert.match(runtimeSrc, /connectionType: "websocket"/);
   assert.match(runtimeSrc, /voice-uses-websocket/);
   assert.match(runtimeSrc, /if \(!options \|\| options\.origin\) throw new Error\("origin-override"\)/);
+});
+
+test("language is a bounded override and does not reset a live session", () => {
+  assert.equal(api.setLanguage("de"), true);
+  assert.equal(api.activeLanguage(), "de");
+  assert.equal(api.metricPath("/response"), "/response/de");
+  assert.equal(api.setLanguage("pt"), false);
+  runtimeRoot.__crottaStatus = "connected";
+  assert.equal(api.setLanguage("fr"), false);
+  assert.equal(api.activeLanguage(), "de");
+  runtimeRoot.__crottaStatus = "idle";
+  assert.equal(api.setLanguage("it"), true);
+  for (const code of ["de", "en", "fr"]) {
+    const copy = api.COPY[code];
+    assert.match(copy.langNote, /nicht|does not mean|ne signifie pas/i);
+    assert.doesNotMatch(copy.langNote, /il garage parla|the garage speaks|die Werkstatt spricht|le garage parle/i);
+    assert.match(copy.disclaimer, /BOLLA STUDIO/);
+    assert.equal(copy.asks[0][1].length > 8, true);
+  }
+});
+
+test("a fake microphone clip must outlast the listen window so the phrase is not repeated", () => {
+  assert.equal(wavCoversListenWindow(6.2, VOICE_LISTEN_MS), false);
+  assert.equal(wavCoversListenWindow(40, VOICE_LISTEN_MS), true);
+  const repeated = { userTranscripts: ["drawings", "drawings", "drawings", "drawings", "drawings"], assistantReplies: ["Hello", "I do not understand drawings"] };
+  assert.equal(voiceExchangeDone(repeated), true);
+  assert.equal(voiceExchangeDone({ userTranscripts: ["..."], assistantReplies: ["Hello", "Are you still there?"] }), false);
+  assert.equal(speechCanBeHeardOnce({ durationSeconds: 43.7, speechStart: 1.25, speechEnd: 3.2, listenMs: VOICE_LISTEN_MS, regions: [{}] }), false);
+  assert.equal(speechCanBeHeardOnce({ durationSeconds: 44, speechStart: 12, speechEnd: 14.5, listenMs: VOICE_LISTEN_MS, regions: [{}] }), true);
+  assert.equal(speechCanBeHeardOnce({ durationSeconds: 44, speechStart: 12, speechEnd: 14.5, listenMs: VOICE_LISTEN_MS, regions: [{}, {}] }), false);
+  const early = speechRegionsFromSilenceLog("silence_start: 0\nsilence_end: 1.25\nsilence_start: 3.2\nsilence_end: 43.7\n", 43.7);
+  assert.equal(early.length, 1);
+  assert.equal(speechCanBeHeardOnce({ durationSeconds: 43.7, ...early[0], regions: early, listenMs: VOICE_LISTEN_MS }), false);
 });
 
 test("a send or a start click is not a completed reply or a connected call", () => {
@@ -111,6 +148,9 @@ test("the chat controller does not count the click, and an agent message does", 
       assert.equal(options.textOnly, true);
       assert.equal(options.connectionType, "websocket");
       assert.equal(options.origin, undefined);
+      assert.equal(options.overrides.agent.language, "it");
+      assert.equal(options.overrides.agent.firstMessage, undefined);
+      assert.equal(options.overrides.conversation.textOnly, true);
       handlers = options;
       options.onMessage({ role: "agent", message: "Buongiorno.", response_id: "greet", event_id: 1 });
       return {
@@ -138,6 +178,9 @@ test("a rejected voice start is an error and not a connection", async () => {
     startSession(options) {
       assert.equal(options.connectionType, "websocket");
       assert.equal(options.textOnly, undefined);
+      assert.equal(options.overrides.agent.language, "it");
+      assert.equal(options.overrides.agent.firstMessage, undefined);
+      assert.equal(options.overrides.conversation, undefined);
       options.onError("origin rejected");
       options.onStatusChange({ status: "disconnected" });
       throw new Error("origin rejected");
@@ -336,12 +379,19 @@ test("page load with internal=1 does not request the counter or the provider", {
         assert.equal(await evaluate(page, "document.querySelectorAll('script[src*=\"zgo.at\"],script[src*=\"goatcounter\"]').length"), 0);
         const text = await evaluate(page, "document.body.innerText");
         assert.match(text, /Demo non ufficiale realizzata da BOLLA STUDIO/);
-        assert.match(text, /Non connesso/);
+        assert.match(text, /Non connesso|Not connected|Nicht verbunden|Non connecté/);
         for (const [label, width, height] of [["375", 375, 1400], ["desktop", 1280, 1400]]) {
           await page.send("Emulation.setDeviceMetricsOverride", { width, height, deviceScaleFactor: 1, mobile: width < 600 });
           const shot = await page.send("Page.captureScreenshot", { format: "png", captureBeyondViewport: true });
           await writeFile(path.join(shots, `crotta-${name}-${label}.png`), Buffer.from(shot.data, "base64"));
         }
+        await evaluate(page, "document.querySelector('[data-lang=\"de\"]').click()");
+        const german = await evaluate(page, "document.body.innerText");
+        assert.match(german, /Inoffizielle Demo von BOLLA STUDIO/);
+        assert.match(german, /Das heißt nicht/);
+        await page.send("Emulation.setDeviceMetricsOverride", { width: 375, height: 1400, deviceScaleFactor: 1, mobile: true });
+        const deShot = await page.send("Page.captureScreenshot", { format: "png", captureBeyondViewport: true });
+        await writeFile(path.join(shots, `crotta-${name}-de-375.png`), Buffer.from(deShot.data, "base64"));
       });
       } catch (error) {
         if (/fetch failed|chrome-debug|cdp socket|load timeout/.test(String(error && error.message))) {
