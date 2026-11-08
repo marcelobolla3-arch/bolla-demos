@@ -82,6 +82,10 @@ Limiti dell'agente: 2 sessioni contemporanee, 50 al giorno, 300 secondi. Non acq
 
 ## Prova dal vivo, 8 novembre 2026
 
-Chrome headless, Origin reale `http://127.0.0.1` (non quello di produzione), contatore bloccato prima del caricamento. Nessun dispositivo audio in `/dev/snd`. Il fornitore ha rifiutato la sessione: codice 3000, «Access denied. Your domain is not authorized to connect to this agent», `authorization_method` invalid. Nessun messaggio e nessun audio.
+Prima prova, allowlist solo `demo.bollastudio.com`: il fornitore ha rifiutato l'avvio (codice 3000). Id senza messaggi: `conv_0401m6wwsayaeervdmrkghh28h8q`, `conv_5101m6wwsc60fjqbqmntccvmq14b`, `conv_5101m6wwwcsdepsrkm1y1a6kqy6r`.
 
-Id, tutti falliti, zero messaggi: `conv_0401m6wwsayaeervdmrkghh28h8q`, `conv_5101m6wwsc60fjqbqmntccvmq14b` (chat), `conv_5101m6wwwcsdepsrkm1y1a6kqy6r` (voce, `has_audio` false). Non sono risposte dell'assistente. Per una prova vera serve aggiungere temporaneamente l'host locale all'allowlist e poi toglierlo. Questa sessione non lo ha fatto e non ha ripetuto la chat dopo il rifiuto.
+Seconda prova, dopo l'allowlist con `localhost` e `127.0.0.1`, versione `agtvrsn_8901m6wx51bten59rk9q48wbzvsj`. Origin reale `http://127.0.0.1`, contatore bloccato prima del caricamento, una chat e una voce, senza ripetizioni.
+
+Chat `conv_9001m6wxbtfhearbg7ac24va93pf`: `text_only` true, stato `done`, circa 1 secondo. L'utente ha scritto «Quali sono gli orari di apertura?». L'assistente ha completato: «Certamente. Gli orari indicati sul sito sono questi: dal lunedì al venerdì dalle 07:30 alle 12:00 e dalle 13:30 alle 18:00. Il sabato dalle 09:00 alle 12:00. La domenica è chiuso.» Il contatore interno ha registrato due `chat-response` (saluto e risposta). Nessuna richiesta al contatore di produzione.
+
+Voce `conv_6701m6wxbzexfa4vt9yw5kw8drfq`: il microfono finto di Chromium ha letto un WAV sintetico di espeak-ng, «Quali marchi trattate?», e il livello in pagina è arrivato al massimo. La sessione WebRTC è stata rifiutata prima di ogni trascrizione e di ogni audio dell'assistente: codice 3000, dominio non autorizzato, `authorization_method` invalid, zero messaggi, `has_audio` false. Non è un dialogo nei due sensi e non è un saluto. Il contatore interno ha registrato `voice-error`. Nessuna seconda voce è stata avviata.

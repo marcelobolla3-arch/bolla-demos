@@ -41,26 +41,40 @@ async function sleep(ms) {
   await new Promise((resolve) => setTimeout(resolve, ms));
 }
 
-async function probe(page, clickExpression) {
-  await evaluate(page, clickExpression);
+function summarize(ev, started) {
+  const users = (ev && ev.userTranscripts) || [];
+  const agents = (ev && ev.assistantReplies) || [];
+  const events = ((ev && ev.events) || []).map((item) => item.kind);
+  return {
+    conversationId: (ev && ev.conversationId) || "",
+    userTranscripts: users,
+    assistantReplies: agents,
+    audioChunks: (ev && ev.audioChunks) || 0,
+    audioBytes: (ev && ev.audioBytes) || 0,
+    audioPeak: (ev && ev.audioPeak) || 0,
+    metricEvents: events,
+    durationMs: Date.now() - started,
+  };
+}
+
+async function probe(page, clickExpression, ready) {
+  const origin = await evaluate(page, "location.origin");
   const started = Date.now();
+  await evaluate(page, clickExpression);
   let last = null;
-  while (Date.now() - started < 20000) {
-    last = await evaluate(page, "window.__crottaEvidence || null");
+  while (Date.now() - started < 40000) {
+    last = await evaluate(page, "({conversationId: window.__crottaEvidence && window.__crottaEvidence.conversationId, userTranscripts: (window.__crottaEvidence && window.__crottaEvidence.userTranscripts) || [], assistantReplies: (window.__crottaEvidence && window.__crottaEvidence.assistantReplies) || [], audioChunks: window.__crottaEvidence && window.__crottaEvidence.audioChunks, audioBytes: window.__crottaEvidence && window.__crottaEvidence.audioBytes, audioPeak: window.__crottaEvidence && window.__crottaEvidence.audioPeak, events: (window.__crottaEvidence && window.__crottaEvidence.events) || []})");
     const status = await evaluate(page, "document.querySelector('.status')?.getAttribute('data-runtime') || ''");
     const errored = last && last.events && last.events.some((item) => item.kind === "chat-error" || item.kind === "voice-error");
     if (errored || status === "error") break;
-    if (last && last.replies >= 1 && last.conversationId && status === "connected") {
-      if (clickExpression.includes("data-ask") && last.replies >= 2) break;
-      if (!clickExpression.includes("data-ask")) break;
-    }
-    await sleep(500);
+    if (ready(last)) break;
+    await sleep(400);
   }
   await evaluate(page, "document.getElementById('chat-end')?.click(); document.getElementById('voice-end')?.click();");
-  await sleep(500);
+  await sleep(600);
   const finalEvidence = await evaluate(page, "window.__crottaEvidence || null");
   const status = await evaluate(page, "document.querySelector('.status')?.textContent || ''");
-  return { evidence: finalEvidence, status };
+  return { origin, status, ...summarize(finalEvidence, started) };
 }
 
 const server = await serve();
@@ -68,50 +82,103 @@ const port = server.address().port;
 const fail = ["*goatcounter.com*", "*zgo.at*"];
 const watch = ["goatcounter", "zgo.at"];
 const part = process.env.CROTTa_PART || "both";
+const wav = process.env.CROTTa_WAV || "";
 const report = {
   originSpoofed: false,
   analyticsBlockedBeforeLoad: true,
-  chat: part === "voice" ? { skipped: "not repeated; two failed handshakes were already recorded" } : null,
-  voice: part === "chat" ? { skipped: "not requested" } : null,
+  allowlistVersion: "agtvrsn_8901m6wx51bten59rk9q48wbzvsj",
+  chat: null,
+  voice: null,
 };
 async function shot(page, name) {
   const image = await page.send("Page.captureScreenshot", { format: "png" });
   writeFileSync(`/opt/cursor/artifacts/${name}.png`, Buffer.from(image.data, "base64"));
 }
+function chatReady(ev) {
+  const users = (ev && ev.userTranscripts) || [];
+  const agents = (ev && ev.assistantReplies) || [];
+  const asked = users.some((text) => /orari/i.test(text));
+  const answered = agents.some((text) => /07:30|7:30|sabato|13:30/i.test(text));
+  return asked && answered;
+}
+
+function voiceReady(ev) {
+  const users = (ev && ev.userTranscripts) || [];
+  const agents = (ev && ev.assistantReplies) || [];
+  const heard = users.some((text) => /march/i.test(text));
+  const answered = agents.some((text) => /vespa|guzzi|aprilia|piaggio/i.test(text));
+  const audio = (ev && ev.audioBytes) > 800 && (ev && ev.audioPeak) > 80;
+  return heard && answered && audio;
+}
+
 try {
   if (part !== "voice") {
+    try {
     await withChrome({
       url: `http://127.0.0.1:${port}/garage-crotta-lugano/chat/?internal=1`,
       fail,
       watch,
     }, async (page, attempted) => {
-      if (attempted.some((url) => /goatcounter|zgo\.at/.test(url))) throw new Error("analytics request before chat probe");
-      report.chat = await probe(page, "document.querySelector('[data-ask]').click()");
+      report.chat = await probe(page, "document.querySelector('[data-ask]').click()", chatReady);
+      report.chat.analyticsAttempts = attempted.filter((url) => /goatcounter|zgo\.at/.test(url));
+      report.chat.twoWay = chatReady(report.chat);
       await shot(page, "crotta-chat-runtime");
     });
+    } catch (error) {
+      report.chat = { error: String(error && error.message || error), repeated: false };
+    }
   }
   if (part !== "chat") {
+    try {
     await withChrome({
       url: `http://127.0.0.1:${port}/garage-crotta-lugano/voce/?internal=1`,
       fail,
       watch,
+      args: wav ? [`--use-file-for-fake-audio-capture=${wav}`] : [],
     }, async (page, attempted) => {
-      if (attempted.some((url) => /goatcounter|zgo\.at/.test(url))) throw new Error("analytics request before voice probe");
-      report.voice = await probe(page, "document.getElementById('voice-start').click()");
+      const mic = await evaluate(page, `new Promise((resolve) => {
+        navigator.mediaDevices.getUserMedia({audio:true}).then((stream) => {
+          const ctx = new AudioContext();
+          const src = ctx.createMediaStreamSource(stream);
+          const analyser = ctx.createAnalyser();
+          src.connect(analyser);
+          const data = new Uint8Array(analyser.fftSize);
+          let peak = 0;
+          const timer = setInterval(() => {
+            analyser.getByteTimeDomainData(data);
+            for (const value of data) peak = Math.max(peak, Math.abs(value - 128));
+          }, 100);
+          setTimeout(() => { clearInterval(timer); stream.getTracks().forEach((track) => track.stop()); resolve({peak}); }, 2500);
+        }).catch((error) => resolve({error: String(error)}));
+      })`);
+      report.voiceMic = mic;
+      if (!mic || mic.error || !mic.peak || mic.peak < 2) {
+        report.voice = { skipped: "fake microphone produced no audible samples; voice session was not started", mic };
+        return;
+      }
+      report.voice = await probe(page, "document.getElementById('voice-start').click()", voiceReady);
+      report.voice.analyticsAttempts = attempted.filter((url) => /goatcounter|zgo\.at/.test(url));
+      report.voice.twoWay = voiceReady(report.voice);
+      report.voice.greetingOnly = !report.voice.twoWay && ((report.voice.assistantReplies || []).length > 0) && !((report.voice.userTranscripts || []).some((text) => /march/i.test(text)));
       await shot(page, "crotta-voce-runtime");
     });
+    } catch (error) {
+      report.voice = { error: String(error && error.message || error), repeated: false };
+    }
   }
 } finally {
   server.close();
 }
 mkdirSync(path.dirname(evidencePath), { recursive: true });
 writeFileSync(evidencePath, JSON.stringify(report, null, 2));
-const chatId = report.chat && report.chat.evidence ? report.chat.evidence.conversationId : "";
-const voiceId = report.voice && report.voice.evidence ? report.voice.evidence.conversationId : "";
 console.log(JSON.stringify({
-  chatStatus: report.chat && report.chat.status,
-  chatId: chatId || null,
-  chatReplies: report.chat && report.chat.evidence ? report.chat.evidence.replies : 0,
-  voiceStatus: report.voice && (report.voice.status || report.voice.skipped),
-  voiceId: voiceId || null,
+  chatId: report.chat && report.chat.conversationId || null,
+  chatTwoWay: report.chat && report.chat.twoWay || false,
+  chatMetrics: report.chat && report.chat.metricEvents || [],
+  voiceId: report.voice && report.voice.conversationId || null,
+  voiceTwoWay: report.voice && report.voice.twoWay || false,
+  voiceSkipped: report.voice && report.voice.skipped || null,
+  voiceMetrics: report.voice && report.voice.metricEvents || [],
+  analyticsChat: report.chat && report.chat.analyticsAttempts || [],
+  analyticsVoice: report.voice && report.voice.analyticsAttempts || [],
 }));

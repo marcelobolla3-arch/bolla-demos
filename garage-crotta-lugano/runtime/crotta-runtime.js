@@ -118,7 +118,17 @@
 
   function evidence() {
     if (!root.__crottaEvidence) {
-      root.__crottaEvidence = { events: [], conversationId: "", replies: 0, lastReply: "" };
+      root.__crottaEvidence = {
+        events: [],
+        conversationId: "",
+        replies: 0,
+        lastReply: "",
+        userTranscripts: [],
+        assistantReplies: [],
+        audioChunks: 0,
+        audioBytes: 0,
+        audioPeak: 0
+      };
     }
     return root.__crottaEvidence;
   }
@@ -358,7 +368,24 @@
           if (b.state.mode === "speaking") b.push(b.meter.observe({ type: "assistant-live" }));
           b.emit();
         },
-        onAudio: function () {
+        onAudio: function (base64) {
+          var ev = evidence();
+          ev.audioChunks += 1;
+          if (typeof base64 === "string" && base64 && typeof atob === "function") {
+            try {
+              var raw = atob(base64);
+              ev.audioBytes += raw.length;
+              var peak = ev.audioPeak || 0;
+              var step = Math.max(2, (Math.floor(raw.length / 200) || 1) * 2);
+              for (var i = 0; i + 1 < raw.length; i += step) {
+                var sample = raw.charCodeAt(i) | (raw.charCodeAt(i + 1) << 8);
+                if (sample > 32767) sample -= 65536;
+                var abs = sample < 0 ? -sample : sample;
+                if (abs > peak) peak = abs;
+              }
+              ev.audioPeak = peak;
+            } catch (e) { /* ignore a chunk that is not base64 */ }
+          }
           b.push(b.meter.observe({ type: "assistant-live" }));
         },
         onMessage: function (payload) {
@@ -442,6 +469,8 @@
     var replies = state.messages.filter(function (message) { return message.role === "agent" && message.text; });
     ev.replies = replies.length;
     ev.lastReply = replies.length ? replies[replies.length - 1].text : ev.lastReply;
+    ev.userTranscripts = state.messages.filter(function (message) { return message.role === "user" && message.text; }).map(function (message) { return message.text; });
+    ev.assistantReplies = replies.map(function (message) { return message.text; });
   }
 
   function mountChat(doc) {
