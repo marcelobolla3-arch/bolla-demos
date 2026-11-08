@@ -30,6 +30,8 @@
     var connected = false;
     var ended = false;
     var errorOpen = false;
+    var userSentCount = 0;
+    var emittedAnswers = 0;
 
     function armTurn() {
       turnCounted = false;
@@ -51,6 +53,10 @@
     }
     function chatReply(id) {
       if (!noteCompleted(id)) return [];
+      // The opening greeting arrives before any user message and is not a use.
+      // One sent user message can produce one usage event.
+      if (emittedAnswers >= userSentCount) return [];
+      emittedAnswers += 1;
       return [{ kind: "chat-response", path: "/response", title: "chat-response" }];
     }
     function noteError(kind, path, title) {
@@ -61,6 +67,10 @@
 
     function observe(event) {
       if (!event || typeof event !== "object") return [];
+      if (event.type === "user-sent") {
+        userSentCount += 1;
+        return [];
+      }
       if (event.type === "user-send" || event.type === "arm") armTurn();
       if (event.type === "start-click" || event.type === "user-send" || event.type === "arm") armAttempt();
       if (event.type === "start-click" || event.type === "end-click" || event.type === "user-send" || event.type === "arm") return [];
@@ -152,6 +162,7 @@
       assertAgent(options.agentId);
       if (expectText && options.textOnly !== true) throw new Error("chat-must-be-text");
       if (!expectText && options.textOnly === true) throw new Error("voice-must-not-be-text");
+      if (!expectText && options.connectionType !== "websocket") throw new Error("voice-uses-websocket");
       return loadSdk().then(function (mod) {
         var Conversation = mod.Conversation || (mod.default && mod.default.Conversation);
         if (!Conversation || !Conversation.startSession) throw new Error("sdk-shape");
@@ -183,6 +194,21 @@
     var session = null;
     var starting = null;
     var errorSent = false;
+    var welcome = null;
+    var settleWelcome = null;
+    function armWelcome() {
+      if (welcome) return welcome;
+      welcome = new Promise(function (resolve) {
+        var settled = false;
+        settleWelcome = function () {
+          if (settled) return;
+          settled = true;
+          resolve();
+        };
+        setTimeout(settleWelcome, 800);
+      });
+      return welcome;
+    }
     function reportError(message) {
       b.state.status = "error";
       b.state.errorText = String(message || "errore");
@@ -230,6 +256,7 @@
           if (role !== "agent") return;
           var id = payload.response_id || (payload.event_id != null ? "event:" + payload.event_id : "agent");
           upsert(id, payload.message || "");
+          if (payload.message && String(payload.message).trim() && settleWelcome) settleWelcome();
           b.push(b.meter.observe({ type: "message", payload: payload }));
         },
         onAgentChatResponsePart: function (part) {
@@ -252,6 +279,7 @@
       b.state.status = "connecting";
       b.state.errorText = "";
       errorSent = false;
+      armWelcome();
       b.emit();
       var options = handlers();
       starting = Promise.resolve().then(function () {
@@ -284,8 +312,11 @@
         b.state.messages.push({ role: "user", text: clean, id: "local-" + b.state.messages.length });
         b.emit();
         return ensure().then(function (current) {
-          if (current && current.sendUserMessage) current.sendUserMessage(clean);
-          return { sent: true };
+          return welcome.then(function () {
+            if (current && current.sendUserMessage) current.sendUserMessage(clean);
+            b.meter.observe({ type: "user-sent" });
+            return { sent: true };
+          });
         }, function () {
           return { sent: false, error: true };
         });
@@ -331,7 +362,11 @@
     function options() {
       return {
         agentId: AGENT_ID,
-        connectionType: "webrtc",
+        // Documented public voice transport. WebRTC fetches a LiveKit token and
+        // was rejected for this origin; the WebSocket carries mic audio both ways
+        // and uses the same browser Origin as the working text session.
+        // options.origin is the API host, not a page Origin, and is left unset.
+        connectionType: "websocket",
         onConnect: function (props) {
           b.state.status = "connected";
           b.remember(props && props.conversationId);

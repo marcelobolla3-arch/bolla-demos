@@ -19,6 +19,8 @@ const privacy = "Demo non ufficiale BOLLA STUDIO. Non inserire dati personali. L
 function loadRuntime() {
   const sandbox = {
     console,
+    setTimeout,
+    clearTimeout,
     document: { getElementById() { return null; }, readyState: "complete" },
   };
   sandbox.window = sandbox;
@@ -42,8 +44,9 @@ test("only the dedicated Crotta agent can start", () => {
   assert.match(api.SDK_URL, /@elevenlabs\/client@1\.35\.0/);
   assert.doesNotMatch(runtimeSrc, /xi-api-key|ELEVENLABS_API_KEY|demo\.bollastudio\.com/);
   assert.match(runtimeSrc, /textOnly: true/);
-  assert.match(runtimeSrc, /connectionType: "webrtc"/);
+  assert.doesNotMatch(runtimeSrc, /connectionType: "webrtc"/);
   assert.match(runtimeSrc, /connectionType: "websocket"/);
+  assert.match(runtimeSrc, /voice-uses-websocket/);
   assert.match(runtimeSrc, /if \(!options \|\| options\.origin\) throw new Error\("origin-override"\)/);
 });
 
@@ -64,17 +67,20 @@ test("a send or a start click is not a completed reply or a connected call", () 
 test("a completed assistant reply is counted once and the text stays out of the metric", () => {
   const chat = api.createMeter("chat");
   const full = "Lunedì venerdì 07:30-12:00.";
+  const welcome = chat.observe({ type: "message", payload: { role: "agent", message: "Buongiorno.", response_id: "greet", event_id: 1 } });
+  assert.deepEqual(metric(welcome), []);
+  chat.observe({ type: "user-sent" });
   const first = chat.observe({ type: "part", part: { type: "stop", response_id: "r1", event_id: 4 } });
   const second = chat.observe({ type: "message", payload: { role: "agent", source: "ai", message: full, response_id: "r1", event_id: 5 } });
+  const extra = chat.observe({ type: "message", payload: { role: "agent", message: "Altro.", response_id: "r2", event_id: 6 } });
   assert.deepEqual(metric(first), [{ kind: "chat-response", path: "/response", title: "chat-response" }]);
   assert.deepEqual(metric(second), []);
+  assert.deepEqual(metric(extra), []);
   assert.equal(JSON.stringify(first).includes(full), false);
   assert.equal(JSON.stringify(metric(first[0])).includes("message"), false);
-  const next = api.createMeter("chat");
-  next.observe({ type: "user-send" });
-  const onlyMessage = next.observe({ type: "message", payload: { role: "agent", message: full, event_id: 9 } });
-  assert.equal(onlyMessage[0].title, "chat-response");
-  assert.deepEqual(metric(next.observe({ type: "message", payload: { role: "agent", message: full, event_id: 9 } })), []);
+  chat.observe({ type: "user-sent" });
+  const third = chat.observe({ type: "message", payload: { role: "agent", message: full, response_id: "r3", event_id: 7 } });
+  assert.equal(third[0].title, "chat-response");
 });
 
 test("voice connection, end and error come from session callbacks", () => {
@@ -106,6 +112,7 @@ test("the chat controller does not count the click, and an agent message does", 
       assert.equal(options.connectionType, "websocket");
       assert.equal(options.origin, undefined);
       handlers = options;
+      options.onMessage({ role: "agent", message: "Buongiorno.", response_id: "greet", event_id: 1 });
       return {
         sendUserMessage() {},
         endSession() { options.onDisconnect(); },
@@ -129,7 +136,7 @@ test("a rejected voice start is an error and not a connection", async () => {
   const metrics = [];
   const voice = api.createVoiceController({
     startSession(options) {
-      assert.equal(options.connectionType, "webrtc");
+      assert.equal(options.connectionType, "websocket");
       assert.equal(options.textOnly, undefined);
       options.onError("origin rejected");
       options.onStatusChange({ status: "disconnected" });
