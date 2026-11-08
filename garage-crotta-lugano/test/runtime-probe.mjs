@@ -94,21 +94,32 @@ async function shot(page, name) {
   const image = await page.send("Page.captureScreenshot", { format: "png" });
   writeFileSync(`/opt/cursor/artifacts/${name}.png`, Buffer.from(image.data, "base64"));
 }
+const lang = process.env.CROTTa_LANG || "it";
+const HEARD = {
+  it: { hours: /orari/i, brands: /march/i },
+  de: { hours: /öffnungs|offnungs|zeiten/i, brands: /marken/i },
+  en: { hours: /opening|hours/i, brands: /brand/i },
+  fr: { hours: /horaire/i, brands: /marque/i },
+};
+const HOURS = /07:30|7:30|13:30|montag|monday|lundi|samstag|saturday|samedi|sonntag|sunday|dimanche|domenica/i;
+const BRANDS = /vespa|guzzi|aprilia|piaggio/i;
+
 function chatReady(ev) {
   const users = (ev && ev.userTranscripts) || [];
   const agents = (ev && ev.assistantReplies) || [];
-  const asked = users.some((text) => /orari/i.test(text));
-  const answered = agents.some((text) => /07:30|7:30|sabato|13:30/i.test(text));
-  return asked && answered;
+  return users.some((text) => HEARD[lang].hours.test(text)) && agents.some((text) => HOURS.test(text));
 }
 
 function voiceReady(ev) {
   const users = (ev && ev.userTranscripts) || [];
   const agents = (ev && ev.assistantReplies) || [];
-  const heard = users.some((text) => /march/i.test(text));
-  const answered = agents.some((text) => /vespa|guzzi|aprilia|piaggio/i.test(text));
   const audio = (ev && ev.audioBytes) > 800 && (ev && ev.audioPeak) > 80;
-  return heard && answered && audio;
+  return users.some((text) => HEARD[lang].brands.test(text)) && agents.some((text) => BRANDS.test(text)) && audio;
+}
+
+async function chooseLanguage(page) {
+  const selected = await evaluate(page, `window.CrottaRuntime.setLanguage(${JSON.stringify(lang)}) && window.__crottaLanguage`);
+  return selected;
 }
 
 try {
@@ -119,6 +130,7 @@ try {
       fail,
       watch,
     }, async (page, attempted) => {
+      report.language = await chooseLanguage(page);
       report.chat = await probe(page, "document.querySelector('[data-ask]').click()", chatReady);
       report.chat.analyticsAttempts = attempted.filter((url) => /goatcounter|zgo\.at/.test(url));
       report.chat.twoWay = chatReady(report.chat);
@@ -136,6 +148,7 @@ try {
       watch,
       args: wav ? [`--use-file-for-fake-audio-capture=${wav}`] : [],
     }, async (page, attempted) => {
+      report.language = await chooseLanguage(page);
       const mic = await evaluate(page, `new Promise((resolve) => {
         navigator.mediaDevices.getUserMedia({audio:true}).then((stream) => {
           const ctx = new AudioContext();
