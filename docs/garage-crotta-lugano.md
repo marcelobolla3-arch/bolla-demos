@@ -93,3 +93,16 @@ Voce WebRTC `conv_6701m6wxbzexfa4vt9yw5kw8drfq`: il microfono finto ha letto il 
 La voce successiva usa il WebSocket documentato, non WebRTC. Una sola sessione, `conv_5401m6wxpnp8e33bf82scpedarc9`, stato `done`, 12 secondi, `text_only` false, `is_livekit` false, `authorization_method` public. Origin reale `http://127.0.0.1:43473`. Il parlato sintetico è stato riconosciuto (`source_medium` audio): «Quali marchi trattate?». L'assistente ha risposto indicando i banner ufficiali Vespa, Moto Guzzi e Aprilia e la specializzazione Piaggio. Il browser ha ricevuto 26 chunk audio, 357000 byte, picco 27526. Il fornitore conta 11,16 secondi di audio in uscita e 3,37 secondi di audio in entrata. `record_voice` è false, quindi la conversazione salvata ha `has_audio` false. Il contatore interno: `voice-connected` poi `voice-ended`. Nessuna richiesta al contatore di produzione. Nessuna seconda prova.
 
 Il saluto non conta come uso della chat: una domanda inviata produce un solo `chat-response`. La sessione di chat già chiusa era stata misurata col codice precedente e non è stata ripetuta.
+
+## Lingue, 8 novembre 2026
+
+Selettore su chat e voce: italiano predefinito, più tedesco, inglese e francese. Sono le lingue del sito di Lugano Region. Il sito del garage resta italiano. Il selettore manda solo `overrides.agent.language`. Non manda `first_message`. Una sessione aperta non viene cambiata in silenzio.
+
+QA locale, una chat e una voce per lingua, in serie, Origin `http://127.0.0.1`, contatore bloccato. Versione agente `agtvrsn_9401m6wzhvrkf6e9pz1r20vaqta6`.
+
+- Tedesco chat `conv_4601m6wzwks2fp2vb2qdmv5vb9qx`: «Welche sind die Öffnungszeiten?» → orari in tedesco. Un solo `chat-response`.
+- Tedesco voce `conv_0201m6wzx5x4e63rhnt5vy9t3rdf`: «Welche Marken sind offiziell?» riconosciuto, risposta con Vespa, Moto Guzzi e Aprilia, audio ricevuto.
+- Inglese chat `conv_0701m6wzxmqyfr0sjpv2xc3btm01`: «What are the opening hours?» → orari in inglese. Un solo `chat-response`.
+- Inglese voce `conv_8601m6wzy6stfk2v06a7kb9vcws3`: il WAV diceva «Which brands are official?». Il riconoscimento ha trascritto «Which drawings are official?» e l'assistente non ha citato i marchi. Audio in uscita sì, risposta pertinente no. Non ripetuta.
+- Francese chat `conv_8101m6wzzh8fe5dv44g5n2phtnk1`: «Quels sont les horaires d'ouverture ?» → orari in francese. Un solo `chat-response`.
+- Francese voce `conv_5701m6x00433e9pvn3csftd49q1e`: «Quel marque sous officiel ?» riconosciuto, risposta con Vespa, Moto Guzzi, Aprilia e Piaggio, audio ricevuto.
