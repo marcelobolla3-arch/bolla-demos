@@ -216,6 +216,21 @@ test("German replies match whole words and reject false friends", () => {
     ["Sonderpreis", "price"],
     ["Wie hoch ist das Honorar?", "price"],
     ["Wie hoch ist die Gebühr?", "price"],
+    ["Welche Kosten gibt es?", "price"],
+    ["Termin", "appointment"],
+    ["Termine", "appointment"],
+    ["Termin vereinbaren", "appointment"],
+    ["einen Termin buchen", "appointment"],
+    ["Ich möchte einen Termin buchen", "appointment"],
+    ["Zahnreinigung", "cleaning"],
+    ["professionelle Zahnreinigung", "cleaning"],
+    ["PZR", "cleaning"],
+    ["absagen", "cancel"],
+    ["Termin absagen", "cancel"],
+    ["verschieben", "cancel"],
+    ["stornieren", "cancel"],
+    ["Terminologie", "fallback"],
+    ["nur eine Reinigung der Fenster", "fallback"],
     ["Notfall", "emergency"],
     ["Notfälle", "emergency"],
     ["Jemand ist bewusstlos", "emergency"],
@@ -282,8 +297,30 @@ test("German replies match whole words and reject false friends", () => {
   assert.doesNotMatch(pain.text, /Ibuprofen|spülen Sie|kühlen Sie|Milligramm|Dosierung/i);
 
   const price = demo.answerFor("Was kostet ein Implantat?");
+  assert.equal(price.id, "price");
   assert.match(price.text, /keinen Betrag in Euro/);
   assert.doesNotMatch(price.text, /€|\b\d+\s*Euro\b|Euro\s*\d/i);
+
+  const appointment = demo.answerFor("Termin vereinbaren");
+  assert.equal(appointment.id, "appointment");
+  assert.match(appointment.text, /reserviert nicht/);
+  assert.match(appointment.text, /nennt keinen Preis/);
+  assert.doesNotMatch(appointment.text, /€|\b\d|bestätigt um|ist gebucht/i);
+  const cleaning = demo.answerFor("professionelle Zahnreinigung");
+  assert.equal(cleaning.id, "cleaning");
+  assert.match(cleaning.text, /keinen Preis/);
+  assert.match(cleaning.text, /reserviert nicht/);
+  assert.doesNotMatch(cleaning.text, /€|\b\d/);
+  const cancel = demo.answerFor("Termin absagen");
+  assert.equal(cancel.id, "cancel");
+  assert.match(cancel.text, /sagt nichts ab/);
+  assert.match(cancel.text, /nichts gesendet/);
+  assert.doesNotMatch(cancel.text, /€|\b\d|ist storniert|wurde abgesagt/i);
+  for (const id of ["appointment", "cleaning", "cancel"]) {
+    const rule = pack.rules.find((item) => item.id === id);
+    assert.equal(rule.button, undefined, id);
+    assert.equal(rule.priority, undefined, id);
+  }
   assert.match(html, /erfunden|erfundenen|erfundene/);
   assert.match(html, /geschriebenes Beispiel|Geschriebenes Beispiel/);
   assert.match(html, /kein Assistent in Echtzeit/);
