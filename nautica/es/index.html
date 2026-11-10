@@ -383,13 +383,14 @@ function miniPlan(zones){const d=document.createElement("div");d.className="mini
 const SW={it:"il lo la i gli le un una di del della dei delle che non come dove perche cosa quando si ci mi ho ha e il nel sulla sul per con acqua barca accendo funziona posso devo sono qual quale questo questa c'e ce entra odore puzza bagno allarme suona salpancora dov".split(" "),
  en:"the an is are how do does where what why when can i my it of to on in with won't wont doesn't not there boat turn work works which smell water coming we our you should there's s t please".split(" "),
  es:"el la los las un una de del que no como donde por que cuando se me mi es esta hay puedo tengo hace agua barco funciona enciendo olor huele cual sale entra bano y pon llevanos tenemos hacemos esto estan son".split(" "),
- fr:"le les une des du aux je tu il elle nous vous est sont pas avec dans sur pour qui quoi comment pourquoi quand cette cet mon ma mes ton votre notre bateau eau ou ne ca peux peut faut suis ouvre ferme".split(" ")};
+ fr:"le les une des du aux je tu il elle nous vous est sont pas avec dans sur pour qui quoi comment pourquoi quand cette cet mon ma mes ton votre notre bateau eau ou ne ca peux peut faut suis ouvre ferme de la et un".split(" ")};
 function detect(q){const w=norm(q).split(" ");const sc={it:0,en:0,es:0,fr:0};
  for(const L of LANGS)for(const x of w)if(SW[L].includes(x))sc[L]++;
  if(/[¿¡ñ]/.test(q))sc.es+=2; if(/\b(perche|cos'|c'e|dov'e|l'acqua)\b/.test(q.toLowerCase()))sc.it+=2;
  if(/[œ«»]/.test(q)||/\b(qu'|c'est|n'est|j'|l'eau|d'eau|où|ça|bateau)\b/i.test(q))sc.fr+=2;
+ if(/\bil y(?: a)?\b/.test(norm(q)))sc.fr+=2;
  const best=LANGS.slice().sort((a,b)=>sc[b]-sc[a]);
- return (sc[best[0]]>=1&&sc[best[0]]>sc[best[1]])?best[0]:null;}
+ return (sc[best[0]]>=2&&sc[best[0]]>=sc[best[1]]+2)?best[0]:null;}
 
 /* ---------- curated matching ---------- */
 const STOP=new Set(("il lo la i gli le un una di del della dei delle che non come dove perche cosa quando si ci mi ho ha e nel sulla sul per con qual quale questo questa sono "+

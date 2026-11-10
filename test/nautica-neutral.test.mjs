@@ -241,3 +241,121 @@ test("French questions use the same matcher and emergencies stay on channel 16 o
   ];
   for (const [question, id] of cases) assert.equal(sandbox.matchTopic(question).id, id, question);
 });
+
+function makeEl() {
+  return {
+    innerHTML: "",
+    textContent: "",
+    className: "",
+    children: [],
+    style: {},
+    dataset: {},
+    classList: { add() {}, remove() {}, contains() { return false; } },
+    setAttribute() {},
+    addEventListener() {},
+    querySelector() { return makeEl(); },
+    querySelectorAll() { return []; },
+    appendChild(child) { this.children.push(child); return child; },
+    insertBefore(node) { return node; },
+    closest() { return this; },
+    remove() {},
+    getBBox() { return {}; },
+    scrollIntoView() {},
+  };
+}
+
+function loadBoat(html) {
+  const data = dataOf(html);
+  const uiScript = html.match(/<script>\s*(const UI=\{[\s\S]*?)<\/script>/)[1];
+  const start = html.indexOf("const D=window.DATA");
+  const end = html.indexOf("window.__ask=ask;", start);
+  assert.ok(start > 0 && end > start);
+  const document = {
+    querySelector() { return makeEl(); },
+    querySelectorAll() { return []; },
+    createElement() { return makeEl(); },
+    getElementById() { return makeEl(); },
+  };
+  const sandbox = {
+    document,
+    localStorage: { getItem() { return null; } },
+    navigator: { language: "it" },
+    location: { search: "", pathname: "/nautica/", hash: "" },
+    URLSearchParams,
+    requestAnimationFrame() {},
+    matchMedia() { return { matches: true }; },
+    console,
+  };
+  sandbox.window = sandbox;
+  sandbox.window.DATA = data;
+  sandbox.window.bsTrack = () => {};
+  sandbox.window.BS = { slug: "lagoon42" };
+  vm.createContext(sandbox);
+  vm.runInContext(`${uiScript}\n${html.slice(start, end + "window.__ask=ask;".length)}
+this.setPageLang=function(l){uiLang=l;};
+this.askCard=function(q){
+  const det=detect(q);
+  const L=det||uiLang;
+  const m=matchTopic(q);
+  if(!m) return {L, html:"", det, id:null};
+  const tp=D.topics.find(function(x){return x.id===m.id;});
+  const card=answerCurated(tp,L,det&&det!==uiLang);
+  return {L, html:card.innerHTML, det, id:m.id};
+};
+this.detect=detect;`, sandbox, { filename: "nautica-ask.js" });
+  return { data, ui: uiOf(html), boat: sandbox };
+}
+
+const typedEmergencies = {
+  it: ["entra acqua nello scafo", "sento odore di gas", "c'è un incendio", "uomo a mare"],
+  en: ["water is coming in", "I smell gas", "there is a fire", "man overboard"],
+  es: ["entra agua", "huele a gas", "hay fuego", "hombre al agua"],
+  fr: ["de l'eau entre dans la coque", "je sens le gaz", "il y a un incendie", "Il y a de la fumée / un feu", "homme à la mer"],
+};
+
+function escText(value) {
+  return String(value).replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+}
+
+function assertPageLanguage(card, lang, ui, label) {
+  assert.equal(card.L, lang, label);
+  assert.match(card.html, new RegExp(`${ui.UI[lang].calls} 112`), label);
+  if (lang === "it") assert.match(card.html, /1530/, label);
+  else assert.doesNotMatch(card.html, /1530/, label);
+  for (const other of ["it", "en", "es", "fr"]) {
+    if (other === lang || ui.UI[other].calls === ui.UI[lang].calls) continue;
+    assert.doesNotMatch(card.html, new RegExp(`${ui.UI[other].calls} 112`), `${label} ${other}`);
+  }
+}
+
+test("prepared questions and typed emergencies answer in the page language", () => {
+  const html = read("nautica/index.html");
+  const { data, ui, boat } = loadBoat(html);
+  assert.equal(boat.detect("il y a de la fumée / un feu"), "fr");
+  assert.equal(boat.detect("il y a du feu"), "fr");
+  assert.equal(boat.detect("il y du monde à bord"), "fr");
+  for (const lang of ["it", "en", "es", "fr"]) {
+    boat.setPageLang(lang);
+    for (const topic of data.topics) {
+      const card = boat.askCard(topic.q[lang]);
+      assert.equal(card.id, topic.id, `${lang} ${topic.q[lang]}`);
+      assert.equal(card.L, lang, `${lang} ${topic.q[lang]}`);
+      assert.ok(card.html.includes(escText(topic.title[lang])), `${lang} title ${topic.q[lang]}`);
+      assert.ok(card.html.includes(escText(topic.lead[lang])), `${lang} lead ${topic.q[lang]}`);
+      if (topic.level === "emergency") assertPageLanguage(card, lang, ui, `${lang} ${topic.id}`);
+      else assert.doesNotMatch(card.html, /tel:112/, `${lang} ${topic.id}`);
+    }
+    for (const question of typedEmergencies[lang]) {
+      const card = boat.askCard(question);
+      assert.equal(data.topics.find((topic) => topic.id === card.id).level, "emergency", question);
+      assert.ok(card.html.includes(escText(data.topics.find((topic) => topic.id === card.id).lead[lang])), question);
+      assertPageLanguage(card, lang, ui, question);
+    }
+  }
+  boat.setPageLang("fr");
+  const smoke = boat.askCard("Il y a de la fumée / un feu");
+  assert.equal(smoke.id, "fire");
+  assert.match(smoke.html, /Préviens tout de suite le skipper et appelle : VHF 16 ou 112/);
+  assert.match(smoke.html, /Appeler 112/);
+  assert.doesNotMatch(smoke.html, /Llamar|Avisa ya al patrón/);
+});
