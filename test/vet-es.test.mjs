@@ -205,6 +205,9 @@ test("vet/es answerFor covers the script and refuses Spanish false friends", () 
     ["exotismo", "fallback"],
     ["viajo en tren", "fallback"],
     ["viajero", "fallback"],
+    ["viajemos", "fallback"],
+    ["vamos al parque", "fallback"],
+    ["vamos a viajero", "fallback"],
     ["no respira", "emergency"],
     ["el gato no respira", "emergency"],
     ["incendio", "emergency"],
@@ -234,6 +237,10 @@ test("vet/es answerFor covers the script and refuses Spanish false friends", () 
     ["un reptil", "exotico"],
     ["pasaporte", "viaje"],
     ["quiero viajar", "viaje"],
+    ["viajamos", "viaje"],
+    ["vamos a viajar", "viaje"],
+    ["viajar con el perro", "viaje"],
+    ["viajar con el gato", "viaje"],
     ["   ", "empty"],
     ["¿¿¿", "empty"],
   ];
@@ -266,6 +273,18 @@ test("vet/es answerFor covers the script and refuses Spanish false friends", () 
     assert.doesNotMatch(reply.text, /€|\d|%|gratis/i, id);
   }
   assert.match(demo.answerFor("vacuna").text, /no indica un precio/);
+  const trip = demo.answerFor("viajamos");
+  assert.equal(trip.id, "viaje");
+  assert.equal(trip.text, pack.rules.find((rule) => rule.id === "viaje").text);
+  assert.match(trip.text, /no expide un pasaporte/);
+  assert.match(trip.text, /no indica un precio/);
+  assert.doesNotMatch(trip.text, /112/);
+  for (const phrase of ["vamos a viajar", "viajar con el perro", "viajar con el gato"]) {
+    assert.equal(demo.answerFor(phrase).id, "viaje", phrase);
+    assert.equal(demo.answerFor(phrase).text, trip.text, phrase);
+  }
+  assert.match(demo.answerFor("viajero").text, /no está entre las respuestas preparadas/);
+  assert.match(demo.answerFor("vamos al parque").text, /no está entre las respuestas preparadas/);
   assert.match(demo.answerFor("sangría").text, /no está entre las respuestas preparadas/);
   assert.match(demo.answerFor("no comer").text, /no está entre las respuestas preparadas/);
 
