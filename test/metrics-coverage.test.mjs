@@ -106,8 +106,9 @@ test("campaign usage is attached to the event and the question text is not the t
     assert.match(page, /skipgc/);
     assert.doesNotMatch(page, /answers your dealership|atiende la llamada|nimmt die Anrufe|risponde alle chiamate/);
   }
-  assert.match(read(new URL("concesionarios/en/index.html", root)), /id="bolla-p-redirect"/);
-  assert.doesNotMatch(read(new URL("concesionarios/en/index.html", root)), /aktiv-hotel-spa-hannigalp/);
+  const dealer = read(new URL("concesionarios/en/index.html", root));
+  assert.match(dealer, /id="bolla-p-redirect"/);
+  assert.equal(JSON.parse(dealer.match(/var DEST=(\{.*?\});/)[1]).fcad07227666865f, "/hotel-ch/de/");
   assert.match(read(new URL("concesionarios/en/index.html", root)), /An illustrative example of how the assistant replies/);
   const budokan = read(new URL("budokan-zuerich-web/index.html", root));
   assert.match(budokan, /bsTrack\('\/trial\/confirm','trial-confirm'\)/);

@@ -1,4 +1,6 @@
 import assert from "node:assert/strict";
+import { execFileSync } from "node:child_process";
+import { createHash } from "node:crypto";
 import { readdirSync, readFileSync, statSync } from "node:fs";
 import { join } from "node:path";
 import { test } from "node:test";
@@ -52,7 +54,6 @@ test("concesionarios files do not keep the nautical video or the banned place na
     assert.match(html, /bolla-p-redirect/);
     assert.match(html, /q0\.get\("p"\)/);
     assert.match(html, /internal=1/);
-    assert.doesNotMatch(html, /aktiv-hotel-spa-hannigalp/);
   }
   for (const lang of ["es", "it"]) {
     assert.doesNotMatch(read(`concesionarios/${lang}/index.html`), /bolla-p-redirect/);
@@ -268,21 +269,14 @@ test("the campaign path stays /p/video-lang and chat events omit the typed text"
   assert.match(deVisible, /\bSie\b/);
 });
 
-function htmlFiles(dir, out = []) {
-  for (const name of readdirSync(dir)) {
-    if (name === ".git" || name === "node_modules") continue;
-    const next = join(dir, name);
-    if (statSync(next).isDirectory()) htmlFiles(next, out);
-    else if (name.endsWith(".html")) out.push(next);
-  }
-  return out;
+function prospectMap(html) {
+  const dest = redirectScript(html).match(/var DEST=(\{.*?\});/);
+  assert.ok(dest, "hashed map missing");
+  return JSON.parse(dest[1]);
 }
 
 test("the prospect redirect publishes 94 hashes and no plaintext slug keys", () => {
-  const script = redirectScript(pages.en);
-  const dest = script.match(/var DEST=(\{.*?\});/);
-  assert.ok(dest, "hashed map missing");
-  const map = JSON.parse(dest[1]);
+  const map = prospectMap(pages.en);
   const keys = Object.keys(map);
   assert.equal(keys.length, 94);
   for (const key of keys) assert.match(key, /^[0-9a-f]{16}$/, key);
@@ -290,18 +284,35 @@ test("the prospect redirect publishes 94 hashes and no plaintext slug keys", () 
     assert.match(path, /^\/[a-z0-9-]+\/[a-z]{2}\/$/);
     assert.doesNotMatch(path, /\?/);
   }
-  assert.equal(redirectScript(pages.de), script);
-  const named = [
-    "aktiv-hotel-spa-hannigalp",
-    "agentur-wyss",
-    "agence-casalp",
-    "fahrschule-hefti",
-    "zahnarzt-dr-calvano-forte",
-  ];
-  for (const file of htmlFiles(new URL(".", repo).pathname)) {
-    const text = readFileSync(file, "utf8");
-    for (const slug of named) assert.equal(text.includes(slug), false, file + " contains " + slug);
+  assert.equal(redirectScript(pages.de), redirectScript(pages.en));
+  assert.equal(map.fcad07227666865f, "/hotel-ch/de/");
+  assert.equal(map.d26d1440d5da6449, "/immobilien-ch/de/");
+  assert.equal(map["1a4116d708f47e62"], "/ferienwohnung-ch/fr/");
+  assert.equal(map["5545d17a893e80a8"], "/fahrschule-ch/de/");
+  assert.equal(map.ecae45dad3a7108a, "/zahnarzt-ch/de/");
+});
+
+test("no file served by Pages contains one of the 94 prospect slugs", () => {
+  const banned = new Set(Object.keys(prospectMap(pages.en)));
+  assert.equal(banned.size, 94);
+  const rootDir = new URL(".", repo).pathname;
+  const files = execFileSync("git", ["ls-files", "-z"], { cwd: rootDir, encoding: "utf8" }).split("\0").filter(Boolean);
+  assert.ok(files.length > 500);
+  const hits = [];
+  for (const file of files) {
+    const runs = readFileSync(join(rootDir, file)).toString("latin1").toLowerCase().match(/[a-z0-9_-]{7,200}/g) || [];
+    for (const run of runs) {
+      const max = Math.min(run.length, 32);
+      for (let len = 7; len <= max; len++) {
+        for (let i = 0; i + len <= run.length; i++) {
+          const token = run.slice(i, i + len);
+          const hash = createHash("sha256").update("bolla-p-v1:" + token).digest("hex").slice(0, 16);
+          if (banned.has(hash)) hits.push(file);
+        }
+      }
+    }
   }
+  assert.deepEqual([...new Set(hits)], []);
 });
 
 function redirectScript(html) {
@@ -327,31 +338,33 @@ async function land(search, useSubtle) {
   return replaced;
 }
 
-test("five real prospect slugs still redirect to the same route", async () => {
-  const samples = [
-    "aktiv-hotel-spa-hannigalp",
-    "agentur-wyss",
-    "agence-casalp",
-    "fahrschule-hefti",
-    "zahnarzt-dr-calvano-forte",
-  ];
-  assert.equal(new Set(samples).size, 5);
-  const bySlug = new Map([
-    ["aktiv-hotel-spa-hannigalp", "/hotel-ch/de/"],
-    ["agentur-wyss", "/immobilien-ch/de/"],
-    ["agence-casalp", "/ferienwohnung-ch/fr/"],
-    ["fahrschule-hefti", "/fahrschule-ch/de/"],
-    ["zahnarzt-dr-calvano-forte", "/zahnarzt-ch/de/"],
-  ]);
-  for (const slug of samples) {
-    const expected = bySlug.get(slug) + "?p=" + slug;
-    assert.equal(await land("?p=" + slug, true), expected, "subtle " + slug);
-    assert.equal(await land("?p=" + slug, false), expected, "sync " + slug);
-    assert.equal(await land("?p=" + slug.toUpperCase(), false), expected, "case " + slug);
-    assert.equal(await land("?p=" + slug + "&internal=1", true), expected + "&internal=1");
-    assert.equal(await land("?p=" + slug + "&internal=0", false), expected);
-  }
-  assert.equal(await land("?p=not-a-prospect", false), "");
+test("a synthetic label does not redirect, and a hashed label does", async () => {
+  const synthetic = "ejemplo-sintetico";
+  assert.equal(await land("?p=" + synthetic, true), "");
+  assert.equal(await land("?p=" + synthetic, false), "");
+  assert.equal(await land("?p=" + synthetic + "&internal=1", false), "");
   assert.equal(await land("", true), "");
-  assert.equal(redirectScript(pages.de), redirectScript(pages.en));
+  const hex = createHash("sha256").update("bolla-p-v1:" + synthetic).digest("hex").slice(0, 16);
+  const code = redirectScript(pages.en).replace(/var DEST=\{.*?\}/, `var DEST={"${hex}":"/hotel-ch/de/"}`);
+  async function landCode(search, useSubtle) {
+    let replaced = "";
+    const sandbox = {
+      location: { search, replace(url) { replaced = url; } },
+      URLSearchParams,
+      TextEncoder,
+      Uint8Array,
+      Promise,
+      crypto: useSubtle ? globalThis.crypto : undefined,
+    };
+    sandbox.window = sandbox;
+    vm.createContext(sandbox);
+    vm.runInContext(code, sandbox, { filename: "bolla-p-redirect.js" });
+    if (sandbox.__bollaRedirect) await sandbox.__bollaRedirect;
+    return replaced;
+  }
+  const expected = "/hotel-ch/de/?p=" + synthetic;
+  assert.equal(await landCode("?p=" + synthetic, true), expected);
+  assert.equal(await landCode("?p=" + synthetic.toUpperCase(), false), expected);
+  assert.equal(await landCode("?p=" + synthetic + "&internal=1", true), expected + "&internal=1");
+  assert.equal(await landCode("?p=" + synthetic + "&internal=0", false), expected);
 });

@@ -153,7 +153,9 @@ test("veterinary English keeps Italian, and prospect redirects still point at Ge
   assert.match(it, /Demo di esempio/);
   const map = read("concesionarios/en/index.html");
   assert.match(map, /id="bolla-p-redirect"/);
-  assert.doesNotMatch(map, /aktiv-hotel-spa-hannigalp|agentur-wyss/);
+  const dest = JSON.parse(map.match(/var DEST=(\{.*?\});/)[1]);
+  assert.equal(dest.fcad07227666865f, "/hotel-ch/de/");
+  assert.equal(dest.d26d1440d5da6449, "/immobilien-ch/de/");
 });
 
 test("English replies do not call a live model and the fallback stays English", () => {

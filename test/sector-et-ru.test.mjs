@@ -117,5 +117,6 @@ test("neutral et/ru/en pages stay off the Swiss demos and answer in one language
   assert.match(visible(read("restaurant/en/index.html")), /yacht charter/);
   const map = read("concesionarios/en/index.html");
   assert.match(map, /id="bolla-p-redirect"/);
-  assert.doesNotMatch(map, /aktiv-hotel-spa-hannigalp/);
+  const dest = JSON.parse(map.match(/var DEST=(\{.*?\});/)[1]);
+  assert.equal(dest.fcad07227666865f, "/hotel-ch/de/");
 });

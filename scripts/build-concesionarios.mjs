@@ -1,10 +1,12 @@
 /**
  * Writes the four static car-dealership example pages.
  * The visit path stays /<p>/video-<lang>. Chat events use a fixed category name.
- * The prospect redirect is a hash-to-path map. The plaintext slugs are not stored here.
+ * The prospect redirect committed here is only hash -> sector path.
+ * A gitignored MAPPING.md (slug, then the path) can rebuild that table. Its names are never written into the repo.
  */
-import { writeFileSync } from "node:fs";
-import { pathToFileURL } from "node:url";
+import { createHash } from "node:crypto";
+import { existsSync, readFileSync, writeFileSync } from "node:fs";
+import { fileURLToPath, pathToFileURL } from "node:url";
 
 const PROSPECT_DEST = {"1a4116d708f47e62":"/ferienwohnung-ch/fr/","d26d1440d5da6449":"/immobilien-ch/de/","887545aa99f01ce6":"/paragliding-ch/de/","fcad07227666865f":"/hotel-ch/de/","2cf3a89023bfc2b5":"/ferienwohnung-ch/de/","0610b747f7a6aae4":"/ferienwohnung-ch/fr/","16edf1d82a37bd29":"/hotel-ch/de/","10f2233647466f84":"/ferienwohnung-ch/de/","b916410e7820c480":"/skiverleih-ch/de/","21e73994f5def343":"/immobilien-ch/de/","2a535c62261e24c7":"/immobilien-ch/fr/","c5910d9f8c10d011":"/schifffahrt-ch/de/","3152e617c2429d9c":"/velomiete-ch/de/","b383241df7bd20f1":"/ferienwohnung-ch/de/","988a78e70052333d":"/physio-ch/de/","08427c8c4fe24cf4":"/optiker-ch/de/","0e05b26f964feb37":"/hotel-ch/de/","37125f5b84753354":"/ferienwohnung-ch/de/","2f8695f662b678e5":"/skiverleih-ch/de/","c08d66cc4b849d78":"/coiffeur-ch/de/","2e0ec12fdb1b0577":"/physio-ch/de/","0536e47e929df1b2":"/fitness-ch/de/","ea4a9e7e51b70c6e":"/bergbahn-ch/de/","5545d17a893e80a8":"/fahrschule-ch/de/","644b5b8ea51b2e72":"/fahrschule-ch/de/","f5a6af06f5ce865b":"/fahrschule-ch/de/","e41745cd8d31408d":"/ferienwohnung-ch/de/","9223f0e881c05e81":"/skiverleih-ch/fr/","25bd2bae288f66a9":"/skiverleih-ch/de/","b4d5ea049e3f4b7c":"/hotel-ch/de/","5f2600d37729f7e2":"/ferienwohnung-ch/de/","fa28e3e60759e29c":"/ausfluege-ch/fr/","4ca385f3a45ec5ad":"/paragliding-ch/fr/","19184d5c8765adb9":"/velomiete-ch/de/","b443379c9d167e8f":"/umzug-ch/de/","61c9256fcdca75c1":"/hotel-ch/de/","6e42b6389fc5138a":"/hotel-ch/de/","5787e027dd94cd80":"/hotel-ch/de/","29c89092dbad00f0":"/hotel-ch/de/","d0f92b49f07c2a93":"/hotel-ch/de/","ec6bb44b8e3006fa":"/hotel-ch/fr/","68576aa3546524d9":"/hotel-ch/de/","b9cb343966234036":"/hotel-ch/de/","85c01d02e481f7d5":"/hotel-ch/fr/","63196b7c77cc3452":"/hotel-ch/de/","4e815cf04dd6b6f5":"/hotel-ch/fr/","ec3017616f2ac3f4":"/hotel-ch/de/","7b5c0b0865b0d2a8":"/hotel-ch/de/","507867147000695b":"/hotel-ch/de/","3706abae274769b9":"/hotel-ch/de/","faae2bba5108bf54":"/hotel-ch/de/","c972445bb5366a12":"/hotel-ch/de/","2c3dca7750859214":"/skiverleih-ch/fr/","0ffbc3653d34e773":"/tierarzt-ch/de/","b0b9e2bf925bc4e9":"/tierarzt-ch/de/","4b9d9b9863318f36":"/aesthetik-ch/de/","53cfa4ef117b5655":"/bergbahn-ch/de/","8a9af6c52d4e706e":"/immobilien-ch/de/","1c0c4c85041a54e8":"/hotel-ch/fr/","c7f398784bab1c43":"/coiffeur-ch/fr/","3135e301d084d3e2":"/velomiete-ch/fr/","7103b4d23157e603":"/coiffeur-ch/de/","4445fbb4c938c2a5":"/immobilien-ch/de/","3fd63b226fb973bc":"/skiverleih-ch/fr/","80430ee27587caa4":"/skiverleih-ch/de/","84f05a2f67e6332c":"/fitness-ch/de/","2ecc1c27effa9c6e":"/musikschule-ch/de/","e15bd02cf0db0397":"/coiffeur-ch/de/","292c86b16a632790":"/canyoning-ch/de/","eb0dc2bff9f10df8":"/hotel-ch/de/","0b73316865caef13":"/paragliding-ch/de/","cb3da5fccad6e1e8":"/hotel-ch/de/","30dfb5f2fe2a38af":"/physio-ch/de/","cfb63bb2fc89fa87":"/skiverleih-ch/de/","0ed9defceb9d8347":"/skischule-ch/de/","3f2a2188c0ab59ec":"/velomiete-ch/fr/","956af4b6de58132b":"/bergbahn-ch/de/","1ac561b5f7e70edc":"/velomiete-ch/de/","16e48e83c8c7ff24":"/skiverleih-ch/de/","ce989eca6753bcda":"/ferienwohnung-ch/de/","58cb663235a9c406":"/bergbahn-ch/de/","89b57ed9f4d4d44d":"/ferienwohnung-ch/fr/","6f029266fdde4cfb":"/ferienwohnung-ch/de/","b5c6ba6cda9af18e":"/paragliding-ch/de/","fa8d639d2729d225":"/ferienwohnung-ch/de/","4ab23e9bb029674e":"/skiverleih-ch/de/","be5f6443abb74bee":"/ferienwohnung-ch/fr/","bd841ec3a50d3529":"/velowerkstatt-ch/de/","cfe9b4b07954b0fe":"/skiverleih-ch/fr/","d08c86156e56ec84":"/skiverleih-ch/de/","ecae45dad3a7108a":"/zahnarzt-ch/de/","7ad9970a9580ffc8":"/zahnarzt-ch/de/","cb14ddda86b75553":"/umzug-ch/de/","a88e7e4438d2c528":"/ferienwohnung-ch/de/"};
 
@@ -49,7 +51,25 @@ try{
 })();</script>`;
 }
 
-const redirect = prospectRedirectTag(PROSPECT_DEST);
+function destFromMapping(file) {
+  if (!existsSync(file)) return null;
+  const map = {};
+  for (const line of readFileSync(file, "utf8").split(/\r?\n/)) {
+    const trimmed = line.trim();
+    if (!trimmed || trimmed.startsWith("#")) continue;
+    const parts = trimmed.split(/\s+/);
+    if (parts.length < 2) continue;
+    const slug = parts[0];
+    const sector = parts[1].split("?")[0];
+    if (!/^[a-z0-9_-]{7,40}$/.test(slug) || !/^\/[a-z0-9-]+\/[a-z]{2}\/$/.test(sector)) continue;
+    const key = createHash("sha256").update("bolla-p-v1:" + slug).digest("hex").slice(0, 16);
+    map[key] = sector;
+  }
+  return Object.keys(map).length ? map : null;
+}
+
+const mappingFile = fileURLToPath(new URL("../MAPPING.md", import.meta.url));
+const redirect = prospectRedirectTag(destFromMapping(mappingFile) || PROSPECT_DEST);
 
 function esc(s) {
   return String(s)
