@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="de" translate="no">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<meta name="google" content="notranslate">
+<title>La Peccadille · Funktionsfähige Demos · BOLLA STUDIO</title>
+<style>
+:root{--c:#8d3b1f;--ink:#1c1c1c;--bg:#f4f2ee}
+*{box-sizing:border-box}
+html,body{margin:0;max-width:100%}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Noto Sans","DejaVu Sans","Helvetica Neue",Arial,sans-serif;background:var(--bg);color:var(--ink);line-height:1.35;font-size:16px}
+.top{background:#1d2a33;color:#f2f5f7;padding:8px 12px;text-align:center;font-size:15px}
+.top a{color:#fff}
+header,main,footer{max-width:960px;margin:0 auto;padding-left:12px;padding-right:12px;min-width:0}
+header{padding-top:12px}
+.brand{font-weight:800;letter-spacing:.08em;font-size:.75rem;color:#5c6770}
+.by{margin:2px 0 6px;font-size:15px}
+.by a,footer a{color:var(--c)}
+h1{font-size:1.4rem;line-height:1.15;margin:0 0 6px;color:var(--c)}
+.intro{margin:0;color:#222}
+.actions{display:grid;gap:8px;margin:10px 0 0;min-width:0}
+.card{background:#fff;border-radius:14px;padding:10px 12px;box-shadow:0 6px 24px rgba(0,0,0,.08);min-width:0;display:flex;flex-direction:column}
+.card h2{margin:0 0 4px;font-size:1.05rem;color:var(--c)}
+.card p{margin:0 0 8px}
+.btn{display:flex;align-items:center;justify-content:center;width:100%;min-height:48px;margin-top:auto;padding:10px 8px;border-radius:12px;background:#1d2a33;color:#fff;font-weight:700;font-size:16px;line-height:1.2;text-decoration:none;text-align:center}
+.btn.voice{background:var(--c)}
+.hint{margin:8px 0 0;font-size:14px;color:#333}
+.handoff,.notice{background:#fff;border-radius:12px;padding:10px 12px;margin:10px 0 0}
+.handoff{border:2px solid #1d2a33}
+.notice{border:2px solid #8a6a10}
+footer{text-align:center;font-size:14px;color:#333;padding-top:12px;padding-bottom:16px}
+:focus-visible{outline:3px solid #0b57d0;outline-offset:3px}
+@media(min-width:800px){
+  h1{font-size:2rem}
+  .actions{grid-template-columns:1fr 1fr;gap:16px}
+  .card{padding:16px}
+}
+</style>
+<!-- GoatCounter (BOLLA STUDIO): page /bolla-demo-peccadille/?p=<tag>; events /bolla-demo-peccadille/chat and /voice. ?p= is a visit label for counting only. It does not personalize the page. ?internal=1 sets localStorage skipgc=t and loads nothing. The voice link is not given internal=1. -->
+<script id="bolla-metrics">
+(function(){
+ var BASE='/bolla-demo-peccadille';
+ var m=(location.search+location.hash).match(/[?&#]internal=([01])/);
+ try{ if(m){ if(m[1]==="1") localStorage.setItem("skipgc","t"); else localStorage.removeItem("skipgc"); } }catch(e){}
+ var internal=false; try{ internal=localStorage.getItem("skipgc")==="t"; }catch(e){}
+ try{ document.documentElement.setAttribute("data-peccadille-metrics", internal?"off":"on"); }catch(e){}
+ var sm=location.search.match(/[?&]p=([^&#]*)/);
+ var tag=sm?decodeURIComponent(sm[1]).toLowerCase().replace(/[^a-z0-9-]/g,"").slice(0,60):"";
+ var q=[]; window.bsTrack=function(sub,title){ if(internal) return;
+   var ep=BASE+sub+(tag?'?p='+tag:'');if(window.goatcounter&&window.goatcounter.count) window.goatcounter.count({path:ep,title:title||sub,event:true}); else q.push([ep,title||sub]); };
+ if(internal) return;
+ window.goatcounter={no_onload:true};
+ var s=document.createElement("script"); s.async=true; s.src="https://gc.zgo.at/count.js";
+ s.setAttribute("data-goatcounter","https://bollastudio.goatcounter.com/count");
+ s.onload=function(){ try{ window.goatcounter.count({path:BASE+'/'+(tag?'?p='+tag:''),title:'peccadille'});
+   q.forEach(function(e){window.goatcounter.count({path:e[0],title:e[1],event:true});}); q=[]; }catch(e){} };
+ document.head.appendChild(s);
+})();
+</script>
+</head>
+<body>
+<div class="top">Funktionsfähige Demos von <a href="https://bollastudio.com" target="_blank" rel="noopener noreferrer">BOLLA STUDIO</a>. Kein offizieller Kanal des Restaurants. Keine echte Reservierung.</div>
+<header>
+  <div class="brand">BOLLA STUDIO</div>
+  <p class="by">Marcelo Bolla · <a href="https://bollastudio.com" target="_blank" rel="noopener noreferrer">bollastudio.com</a></p>
+  <h1>Zwei funktionsfähige Demos für La Peccadille</h1>
+  <p class="intro">Hier kannst du zwei funktionsfähige Demos von BOLLA STUDIO öffnen. Die Demos sind kein offizieller Kanal des Restaurants La Peccadille. Es wird keine echte Reservierung vorgenommen.</p>
+</header>
+<main>
+  <div class="actions">
+    <section class="card" aria-labelledby="chat-title">
+      <h2 id="chat-title">Chat im WhatsApp-Stil</h2>
+      <p id="chat-note">Allgemeines Beispiel mit dem fiktiven Restaurant Lindenhof, als Chat im Browser im WhatsApp-Stil. Es ist kein echtes WhatsApp und nicht auf La Peccadille zugeschnitten.</p>
+      <a class="btn" id="chat-link" data-track="/chat" data-title="chat" aria-describedby="chat-note" href="https://demo.bollastudio.com/restaurant-ch/de/?p=de-ber-32-peccadille" target="_blank" rel="noopener noreferrer">Chat im WhatsApp-Stil öffnen</a>
+    </section>
+    <section class="card" aria-labelledby="voice-title">
+      <h2 id="voice-title">Sprachdemo für La Peccadille</h2>
+      <p id="voice-note">Vorbereitet mit öffentlichen Angaben von La Peccadille. Diese Demo ist nicht mit dem Restaurant, mit Zenchef oder mit einer Telefonanlage verbunden.</p>
+      <a class="btn voice" id="voice-link" data-track="/voice" data-title="voice" aria-describedby="voice-note" href="https://elevenlabs.io/app/talk-to?agent_id=agent_9701m72qec37f23r4wryyfqn0vpr" target="_blank" rel="noopener noreferrer">Sprachdemo für La Peccadille öffnen</a>
+    </section>
+  </div>
+  <p class="hint">Beide Links öffnen einen neuen Tab. Ein Klick öffnet nur die Demo.</p>
+  <p class="handoff">Sobald der Agent eingebunden ist, kann das Team die Gespräche und die Antworten vom Hauptcomputer des Restaurants oder vom Handy aus mitverfolgen und jederzeit selbst eingreifen.</p>
+  <p class="notice" role="note">Diese Seite zählt einen Aufruf. Wenn du den Chat oder die Sprachdemo öffnest, wird das jeweils extra gezählt. Ein Aufruf heißt nicht, dass du zugehört oder die Demo abgeschlossen hast. Steht ?p= in der Adresse, ist das nur ein Besuchskennzeichen für BOLLA STUDIO. Es ändert die Seite nicht und ist keine Personalisierung.</p>
+</main>
+<footer>Funktionsfähige Demos von <a href="https://bollastudio.com" target="_blank" rel="noopener noreferrer">BOLLA STUDIO</a> · Marcelo Bolla · <a href="mailto:marcelo@bollastudio.com">marcelo@bollastudio.com</a><br>Kein offizieller Kanal von La Peccadille. Keine echte Reservierung.</footer>
+<script id="peccadille-links">
+(function(){
+  var CHAT="https://demo.bollastudio.com/restaurant-ch/de/";
+  var FALLBACK="de-ber-32-peccadille";
+  function tag(){
+    var sm=location.search.match(/[?&]p=([^&#]*)/);
+    if(!sm) return "";
+    try{ return decodeURIComponent(sm[1]).toLowerCase().replace(/[^a-z0-9-]/g,"").slice(0,60); }
+    catch(e){ return ""; }
+  }
+  var m=(location.search+location.hash).match(/[?&#]internal=([01])/);
+  var internal=m?m[1]==="1":false;
+  if(!m){ try{ internal=localStorage.getItem("skipgc")==="t"; }catch(e){} }
+  var chat=document.getElementById("chat-link");
+  if(chat){
+    var campaign=tag()||FALLBACK;
+    chat.href=CHAT+"?p="+campaign+(internal?"&internal=1":"");
+  }
+  document.querySelectorAll("[data-track]").forEach(function(a){
+    a.addEventListener("click",function(){
+      if(window.bsTrack) window.bsTrack(a.getAttribute("data-track"), a.getAttribute("data-title"));
+    });
+  });
+})();
+</script>
+</body>
+</html>
