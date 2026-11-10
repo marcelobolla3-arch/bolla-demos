@@ -49,7 +49,7 @@ Náutica, náutica-cat, `/es/` y concesionarios siguen metiendo `p` como tramo d
 
 ## Inventario
 
-597 demos cuentan. 373 tienen al menos un uso. 224 solo tienen la visita. 45 redirecciones no cargan el contador. La portada tampoco.
+598 demos cuentan. 374 tienen al menos un uso. 224 solo tienen la visita. 45 redirecciones no cargan el contador. La portada tampoco.
 
 En la columna Visita, `{p}` es la etiqueta saneada y solo se añade cuando existe. `|` separa la ruta sin etiqueta y la ruta con etiqueta cuando `p` es un tramo, no una búsqueda.
 
@@ -621,6 +621,7 @@ En la columna Visita, `{p}` es la etiqueta saneada y solo se añade cuando exist
 | /velowerkstatt-ch/de/ | /bolla-demo-velowerkstatt-ch/de/?p={p} | /bolla-demo-velowerkstatt-ch/de/chat/{button}?p={p} · script-option; /bolla-demo-velowerkstatt-ch/de/request/confirm?p={p} · Demo-Anfrage |
 | /velowerkstatt-ch/fr/ | /bolla-demo-velowerkstatt-ch/fr/?p={p} | /bolla-demo-velowerkstatt-ch/fr/chat/{button}?p={p} · script-option; /bolla-demo-velowerkstatt-ch/fr/request/confirm?p={p} · Demo-Anfrage |
 | /vet/en/ | /bolla-demo-vet/en/?p={p} | /bolla-demo-vet/en/chat/{id}?p={p} · example; /bolla-demo-vet/en/request/confirm?p={p} · example |
+| /vet/es/ | /bolla-demo-vet/es/?p={p} | /bolla-demo-vet/es/chat/{id}?p={p} · example; /bolla-demo-vet/es/request/confirm?p={p} · example |
 | /vet/et/ | /bolla-demo-vet/et/?p={p} | /bolla-demo-vet/et/chat/{id}?p={p} · example; /bolla-demo-vet/et/request/confirm?p={p} · example |
 | /vet/ru/ | /bolla-demo-vet/ru/?p={p} | /bolla-demo-vet/ru/chat/{id}?p={p} · example; /bolla-demo-vet/ru/request/confirm?p={p} · example |
 | /veterinaria-dog-s-shop-py/ | /veterinaria-dog-s-shop-py/?p={p} | solo visita |
