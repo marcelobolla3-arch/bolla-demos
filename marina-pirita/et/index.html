@@ -154,7 +154,7 @@ footer a{color:var(--c)}
 <div class="feat"><div><b>Eesti keel sellel lehel</b><br>See leht on ainult eesti keeles. Siin ei ole reaalajas tõlki ega hääleassistenti.</div><div><b>Ainult näidisfaktid</b><br>Vastused on väljamõeldud näidis. Need ei ole päris sadama hinnad, kohad ega reeglid.</div><div><b>Meeskond otsustaks</b><br>Tellitud vestluses antaks andmed meeskonnale. See nupp ei saada neid, ei helista ega broneeri midagi.</div></div>
 </main>
 <footer>Näidise koostas <a href="https://bollastudio.com" target="_blank" rel="noopener">BOLLA STUDIO</a> · Marcelo Bolla · <a href="mailto:marcelo@bollastudio.com">marcelo@bollastudio.com</a><br>«Näidissadam» on väljamõeldud. See ei ole Pirita sadama ametlik leht ega hotell. Ükski koht, hind ega kellaaeg ei ole päris. Midagi ei broneerita, ei salvestata ega saadeta. See leht ei ole ettevõtte veebileht. See on ainult BOLLA STUDIO vestluse näidis.</footer>
-<script type="application/json" id="demo-pack">{"lang":"et","chat":[["in","Tere, kas reedeks saab küsida külaliskohta?"],["out","Tere. Võin selle näitena kirja panna: reede, külaliskoht.\nSee leht ei tea, kas koht on vaba, ega ütle hinda."],["in","Näidiskülaline. Kas sadamas on elekter ja dušš?"],["out","Aitäh. Elektri, duši ja kütuse kohta vastaks meeskond. See näidis ei anna numbreid ega juhendit. See ei ole hotell. Sellelt lehelt ei saadetud midagi."]],"rules":[{"id":"berth","button":"Kas külaliskohta saab küsida?","keys":["külalis","koht","kai"],"text":"Jah. Selles näites saab külaliskohta küsida. Kas see on vaba, ütleks meeskond. Siin ei anta kohta ega hinda."},{"id":"services","button":"Kas on elekter, dušš või kütus?","keys":["elekter","dušš","kütus"],"hand":true,"text":"Elektri, vee, duši ja kütuse kohta vastaks meeskond. See näidis ei ütle, kas need on olemas, ega anna hinda ega juhendit. Midagi ei saadetud."},{"id":"hotel","button":"Kas see on hotell?","keys":["hotell","tuba"],"text":"Ei. See näidis on jahisadama vestlus, mitte hotell ja mitte tuba. Majutuse näidis on eraldi lehel /hotel/."},{"id":"hours","button":"Mis kell kontor on avatud?","keys":["avatud","kell","kontor"],"text":"Lahtiolekuaega see näidis ei tea. Meeskond ütleks oma aja. Siin ei ole näidistundi, mida saaks pidada päris graafikuks."},{"id":"change","button":"Tahan soovi muuta.","keys":["muuta","tühista"],"hand":true,"text":"Muutmise võtaks meeskond. See näidis ei kinnita kohta ega tühista midagi. Midagi ei saadetud."}],"fallback":"See on kirjutatud näidis, mitte reaalajas abiline. Mul on ette valmistatud vastused ainult näidisküsimustele, eesti keeles. Ma ei broneeri, ei saada sõnumeid ega ole ühendatud WhatsAppi, broneerimissüsteemi ega hääleassistendiga. Vajutage üht nuppu või kasutage nende küsimuste sõnu.","empty":"Kirjutage palun küsimus eesti keeles ja vajutage Saada.","ok":"Ainult näidis: {item} · {date} · {slot}. Midagi ei broneeritud ega saadetud. See leht ei kontrolli broneerimissüsteemi ega salvesta seda, mida te kirjutasite.","pick":"Valige palun kõigepealt kuupäev ja üks valik ülal.","lead":2,"slots":["Hommik","Pärastlõuna","Õhtu"],"months":["jaan","veebr","märts","apr","mai","juuni","juuli","aug","sept","okt","nov","dets"],"dateStyle":"dmy-numeric"}</script>
+<script type="application/json" id="demo-pack">{"lang":"et","chat":[["in","Tere, kas reedeks saab küsida külaliskohta?"],["out","Tere. Võin selle näitena kirja panna: reede, külaliskoht.\nSee leht ei tea, kas koht on vaba, ega ütle hinda."],["in","Näidiskülaline. Kas sadamas on elekter ja dušš?"],["out","Aitäh. Elektri, duši ja kütuse kohta vastaks meeskond. See näidis ei anna numbreid ega juhendit. See ei ole hotell. Sellelt lehelt ei saadetud midagi."]],"rules":[{"id":"berth","button":"Kas külaliskohta saab küsida?","keys":["külalis","koht","kai"],"text":"Jah. Selles näites saab külaliskohta küsida. Kas see on vaba, ütleks meeskond. Siin ei anta kohta ega hinda.","roots":["külalis","koht","kai"],"prefixes":["külalis"],"compounds":["koht"]},{"id":"services","button":"Kas on elekter, dušš või kütus?","keys":["elekter","dušš","kütus","elektri"],"hand":true,"text":"Elektri, vee, duši ja kütuse kohta vastaks meeskond. See näidis ei ütle, kas need on olemas, ega anna hinda ega juhendit. Midagi ei saadetud.","roots":["elekter","elektri","dušš","kütus"]},{"id":"hotel","button":"Kas see on hotell?","keys":["hotell","tuba"],"text":"Ei. See näidis on jahisadama vestlus, mitte hotell ja mitte tuba. Majutuse näidis on eraldi lehel /hotel/.","roots":["hotell","tuba"]},{"id":"hours","button":"Mis kell kontor on avatud?","keys":["avatud","kell","kontor"],"text":"Lahtiolekuaega see näidis ei tea. Meeskond ütleks oma aja. Siin ei ole näidistundi, mida saaks pidada päris graafikuks.","roots":["kell","kontor"]},{"id":"change","button":"Tahan soovi muuta.","keys":["muuta","tühista"],"hand":true,"text":"Muutmise võtaks meeskond. See näidis ei kinnita kohta ega tühista midagi. Midagi ei saadetud.","roots":["muuta","tühista"]},{"id":"emergency","priority":true,"hand":true,"keys":["kukkus vette","vette kukkus","uppub","appi","hädaolukord","vigastus","uppu","hädaolukor","vigast"],"roots":["uppub","hädaolukord","vigastus"],"prefixes":["uppu","hädaolukor","vigast"],"text":"Helistage kohe 112. See on Euroopa Liidu hädaabinumber. See kirjutatud näidis ei anna päästejuhiseid ega asenda hädaabikõnet."}],"fallback":"See on kirjutatud näidis, mitte reaalajas abiline. Seda küsimust see näidis ei kata. Sellele vastaks ettevõte ise. Siit ei broneerita ega saadeta midagi.","empty":"Kirjutage palun küsimus eesti keeles ja vajutage Saada.","ok":"Ainult näidis: {item} · {date} · {slot}. Midagi ei broneeritud ega saadetud. See leht ei kontrolli broneerimissüsteemi ega salvesta seda, mida te kirjutasite.","pick":"Valige palun kõigepealt kuupäev ja üks valik ülal.","lead":2,"slots":["Hommik","Pärastlõuna","Õhtu"],"months":["jaan","veebr","märts","apr","mai","juuni","juuli","aug","sept","okt","nov","dets"],"dateStyle":"dmy-numeric"}</script>
 <script id="bolla-lang-links">
 document.querySelectorAll("[data-keep-query]").forEach(function(a){
   try{var u=new URL(a.getAttribute("href"),location.href);a.href=u.pathname+location.search+location.hash;}catch(e){}
@@ -179,22 +179,81 @@ document.querySelectorAll("[data-keep-query]").forEach(function(a){
   function showAnswer(entry){
     add(entry.text, entry.hand ? "hand" : "out");
   }
+  function tokensOf(raw){
+    var n = String(raw || "").toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+    return n.match(/[\p{L}\p{N}]+/gu) || [];
+  }
   function norm(s){
-    return String(s || "").toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/[^a-z0-9\u0400-\u04ff]+/g, " ").replace(/\s+/g, " ").trim();
+    return tokensOf(s).join(" ");
+  }
+  function isInflection(rest){
+    if (rest === "") return true;
+    var lang = PACK.lang;
+    if (lang === "et") return /^(?:[aeiou](?:sse|sid|ga|le|lt|st|ks|ni|na|ta|de|te|id|d|t|s|l|n)?|sse|sid|ga|le|lt|st|ks|ni|na|ta|de|te|id|da|d|t|s|l|n)$/.test(rest);
+    if (lang === "de") return /^(?:e|en|er|em|es|ern|n|s|se|isch)$/.test(rest);
+    return /^(?:ing|ies|es|ed|er|est|s|y|d|e)$/.test(rest);
+  }
+  function listed(list, key){
+    var id = tokensOf(key).join(" ");
+    var i;
+    for (i = 0; i < (list || []).length; i++){
+      if (tokensOf(list[i]).join(" ") === id) return true;
+    }
+    return false;
+  }
+  function modeFor(rule, key){
+    if (listed(rule.prefixes, key)) return "prefix";
+    if (listed(rule.compounds, key)) return "compound";
+    if (listed(rule.roots, key)) return "root";
+    return "exact";
+  }
+  function stemAtStart(token, stem){
+    return token.startsWith(stem) && isInflection(token.slice(stem.length));
+  }
+  function tailHit(token, stem){
+    var at = token.lastIndexOf(stem);
+    return at >= 4 && isInflection(token.slice(at + stem.length));
+  }
+  function tokenOk(token, stem, mode){
+    if (token === stem) return true;
+    if (stem.length < 3 || mode === "exact") return false;
+    if (mode === "phrase" || mode === "root") return stemAtStart(token, stem);
+    if (mode === "compound") return stemAtStart(token, stem) || tailHit(token, stem);
+    if (mode === "prefix") return (stem.length >= 4 && token.startsWith(stem)) || tailHit(token, stem);
+    return false;
+  }
+  function keyHit(tokens, key, mode){
+    var kt = tokensOf(key);
+    var span = kt.length;
+    var i, j, ok;
+    if (!span) return false;
+    for (i = 0; i + span <= tokens.length; i++){
+      ok = true;
+      for (j = 0; j < span; j++){
+        if (!tokenOk(tokens[i + j], kt[j], span === 1 ? mode : "phrase")){ ok = false; break; }
+      }
+      if (ok) return true;
+    }
+    return false;
   }
   function answerFor(raw){
-    var n = norm(raw);
-    if (!n) return { text: PACK.empty, hand: false, id: "empty" };
-    var best = null, bestLen = 0;
-    PACK.rules.forEach(function(r){
-      (r.keys || []).forEach(function(k){
-        var nk = norm(k);
-        if (nk.length < 3) return;
-        if (n.indexOf(nk) >= 0 && nk.length > bestLen){ best = r; bestLen = nk.length; }
+    var tokens = tokensOf(raw);
+    if (!tokens.length) return { text: PACK.empty, hand: false, id: "empty" };
+    function best(priority){
+      var found = null, foundLen = 0;
+      PACK.rules.forEach(function(r){
+        if (!!r.priority !== priority) return;
+        (r.keys || []).forEach(function(k){
+          if (!keyHit(tokens, k, modeFor(r, k))) return;
+          var len = tokensOf(k).join(" ").length;
+          if (len > foundLen){ found = r; foundLen = len; }
+        });
       });
-    });
-    if (!best) return { text: PACK.fallback, hand: false, id: "fallback" };
-    return { text: best.text, hand: !!best.hand, id: best.id || "match" };
+      return found;
+    }
+    var hit = best(true) || best(false);
+    if (!hit) return { text: PACK.fallback, hand: false, id: "fallback" };
+    return { text: hit.text, hand: !!hit.hand, id: hit.id || "match" };
   }
   window.__sectorDemo = { mode: "static-example", lang: PACK.lang, answerFor: answerFor, liveAI: false };
   function play(i){

@@ -154,7 +154,7 @@ footer a{color:var(--c)}
 <div class="feat"><div><b>Static script</b><br>The replies are written in advance. This is not free-form AI, not retrieval, and not memory.</div><div><b>Source and date</b><br>Each prepared reply names the public page and 7 November 2026. If there is no source, the team must check.</div><div><b>A person decides</b><br>The note stays on the screen. No ticket, reservation, or message is created.</div></div>
 </main>
 <footer>Example demo by <a href="https://bollastudio.com" target="_blank" rel="noopener">BOLLA STUDIO</a> · Marcelo Bolla · <a href="mailto:marcelo@bollastudio.com">marcelo@bollastudio.com</a><br>This is not the website of Solarwaterworld and not the website of Reederei Riedel. Not a Lagoon 42 manual. This page is not a business website. It is only a chat example by BOLLA STUDIO.</footer>
-<script type="application/json" id="demo-pack">{"lang":"en","chat":[["in","Hello, how can I ask for a quote?"],["out","Hello. This is a static script, not free-form AI.\nPublished FAQ. On the public charter FAQ of Solarwaterworld, re-read on 7 November 2026, an individual quote uses date, time, number of people, occasion, duration and special wishes. The team prepares the quote. This demo sends no request and names no price. The team must check this. This demo is not Solarwaterworld."],["in","Sample: 8 people, no drinks list."],["out","Example only: no request is sent. On this screen the note would be: charter enquiry, 8 people. No boat, no route and no price are set."]],"rules":[{"id":"n1","button":"FAQ · How can I ask for a quote?","keys":["ask for a quote","a quote"],"text":"Published FAQ. Source: public FAQ https://www.solarwaterworld.de/charter/faqs/, re-read on 7 November 2026. For an individual quote Solarwaterworld asks for date, time, number of people, occasion, duration and special wishes. The team prepares the quote. This demo sends no request and names no price. The team must check this. This reply does not apply to the ticket FAQ of Reederei Riedel."},{"id":"n2","button":"FAQ · May I bring my own drinks?","keys":["own drinks","drinks"],"hand":true,"text":"Published FAQ. Source: public FAQ https://www.solarwaterworld.de/charter/faqs/, re-read on 7 November 2026. Own drinks must be agreed with the team before the event. Options and suitable drinks packages are explained individually. The team must check this. This demo does not allow the exception and names no surcharge. This drinks rule is not applied to Reederei Riedel."},{"id":"n3","button":"FAQ · How can I buy tickets?","keys":["tickets","buy tickets"],"text":"Published FAQ. Source: public FAQ https://reederei-riedel.de/faqs, re-read on 7 November 2026. According to the FAQ, tickets can be bought online on the homepage or on the boat shortly before departure. This demo sells no tickets and confirms no places. The team must check this. This reply does not apply to the charter FAQ of Solarwaterworld."},{"id":"n4","button":"FAQ · In which languages is the commentary?","keys":["languages","commentary"],"text":"Published FAQ. Source: public FAQ https://reederei-riedel.de/faqs, re-read on 7 November 2026. According to the FAQ, the commentary is in German and English. That describes the trip, not the languages of this demo. The team must check this if you need another language. No further language is promised here."},{"id":"edge-price","button":"Edge · What does the trip cost on Saturday?","keys":["cost","price","what does the trip cost"],"hand":true,"text":"Edge case, not a published FAQ question. The team must check this. This demo names no price and no availability. There is no source here for an amount. Nothing is sent."},{"id":"edge-berth","button":"Edge · Is a place still free?","keys":["place still free","a place","still free"],"hand":true,"text":"Edge case, not a published FAQ question. The team must check this. This demo confirms no place. The charter FAQ of Solarwaterworld and the ticket FAQ of Reederei Riedel are not read here as a statement that a place is free. Each operator checks that themselves. Nothing is sent."}],"fallback":"The team must check this. This static script has no prepared source for that question. It does not understand the sentence freely, it does not book, and it sends nothing.","empty":"Please type a question in English, then tap Send.","ok":"Example only: no request is sent. Note on this screen only: {item} · {date} · {slot}. Nothing was checked, stored, or sent.","pick":"Please choose the date and one option above first.","lead":14,"slots":["2 people","8 people","20 people"],"months":["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"],"dateStyle":"dmy-name"}</script>
+<script type="application/json" id="demo-pack">{"lang":"en","chat":[["in","Hello, how can I ask for a quote?"],["out","Hello. This is a static script, not free-form AI.\nPublished FAQ. On the public charter FAQ of Solarwaterworld, re-read on 7 November 2026, an individual quote uses date, time, number of people, occasion, duration and special wishes. The team prepares the quote. This demo sends no request and names no price. The team must check this. This demo is not Solarwaterworld."],["in","Sample: 8 people, no drinks list."],["out","Example only: no request is sent. On this screen the note would be: charter enquiry, 8 people. No boat, no route and no price are set."]],"rules":[{"id":"n1","button":"FAQ · How can I ask for a quote?","keys":["ask for a quote","a quote","quote"],"text":"Published FAQ. Source: public FAQ https://www.solarwaterworld.de/charter/faqs/, re-read on 7 November 2026. For an individual quote Solarwaterworld asks for date, time, number of people, occasion, duration and special wishes. The team prepares the quote. This demo sends no request and names no price. The team must check this. This reply does not apply to the ticket FAQ of Reederei Riedel.","roots":["quote"]},{"id":"n2","button":"FAQ · May I bring my own drinks?","keys":["own drinks","drinks"],"hand":true,"text":"Published FAQ. Source: public FAQ https://www.solarwaterworld.de/charter/faqs/, re-read on 7 November 2026. Own drinks must be agreed with the team before the event. Options and suitable drinks packages are explained individually. The team must check this. This demo does not allow the exception and names no surcharge. This drinks rule is not applied to Reederei Riedel.","roots":["drinks"]},{"id":"n3","button":"FAQ · How can I buy tickets?","keys":["tickets","buy tickets","ticket"],"text":"Published FAQ. Source: public FAQ https://reederei-riedel.de/faqs, re-read on 7 November 2026. According to the FAQ, tickets can be bought online on the homepage or on the boat shortly before departure. This demo sells no tickets and confirms no places. The team must check this. This reply does not apply to the charter FAQ of Solarwaterworld.","roots":["tickets","ticket"]},{"id":"n4","button":"FAQ · In which languages is the commentary?","keys":["languages","commentary","language"],"text":"Published FAQ. Source: public FAQ https://reederei-riedel.de/faqs, re-read on 7 November 2026. According to the FAQ, the commentary is in German and English. That describes the trip, not the languages of this demo. The team must check this if you need another language. No further language is promised here.","roots":["languages","language","commentary"]},{"id":"edge-price","button":"Edge · What does the trip cost on Saturday?","keys":["cost","price","what does the trip cost"],"hand":true,"text":"Edge case, not a published FAQ question. The team must check this. This demo names no price and no availability. There is no source here for an amount. Nothing is sent.","roots":["cost","price"]},{"id":"edge-berth","button":"Edge · Is a place still free?","keys":["place still free","a place","still free"],"hand":true,"text":"Edge case, not a published FAQ question. The team must check this. This demo confirms no place. The charter FAQ of Solarwaterworld and the ticket FAQ of Reederei Riedel are not read here as a statement that a place is free. Each operator checks that themselves. Nothing is sent."},{"id":"emergency","priority":true,"hand":true,"keys":["fell overboard","man overboard","overboard","over board","drowning","emergency","emergencies","injured","injury","drown","injur"],"roots":["overboard","drowning","emergency","injured","drown","injur"],"prefixes":["drown","injur"],"text":"Call 112 now. That is the European Union emergency number. This written example does not give rescue instructions and does not replace an emergency call."}],"fallback":"This is a written example, not a live assistant. This example does not cover that question. The business would answer it. Nothing is booked or sent from here.","empty":"Please type a question in English, then tap Send.","ok":"Example only: no request is sent. Note on this screen only: {item} · {date} · {slot}. Nothing was checked, stored, or sent.","pick":"Please choose the date and one option above first.","lead":14,"slots":["2 people","8 people","20 people"],"months":["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"],"dateStyle":"dmy-name"}</script>
 <script id="bolla-lang-links">
 document.querySelectorAll("[data-keep-query]").forEach(function(a){
   try{var u=new URL(a.getAttribute("href"),location.href);a.href=u.pathname+location.search+location.hash;}catch(e){}
@@ -179,22 +179,81 @@ document.querySelectorAll("[data-keep-query]").forEach(function(a){
   function showAnswer(entry){
     add(entry.text, entry.hand ? "hand" : "out");
   }
+  function tokensOf(raw){
+    var n = String(raw || "").toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+    return n.match(/[\p{L}\p{N}]+/gu) || [];
+  }
   function norm(s){
-    return String(s || "").toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/[^a-z0-9\u0400-\u04ff]+/g, " ").replace(/\s+/g, " ").trim();
+    return tokensOf(s).join(" ");
+  }
+  function isInflection(rest){
+    if (rest === "") return true;
+    var lang = PACK.lang;
+    if (lang === "et") return /^(?:[aeiou](?:sse|sid|ga|le|lt|st|ks|ni|na|ta|de|te|id|d|t|s|l|n)?|sse|sid|ga|le|lt|st|ks|ni|na|ta|de|te|id|da|d|t|s|l|n)$/.test(rest);
+    if (lang === "de") return /^(?:e|en|er|em|es|ern|n|s|se|isch)$/.test(rest);
+    return /^(?:ing|ies|es|ed|er|est|s|y|d|e)$/.test(rest);
+  }
+  function listed(list, key){
+    var id = tokensOf(key).join(" ");
+    var i;
+    for (i = 0; i < (list || []).length; i++){
+      if (tokensOf(list[i]).join(" ") === id) return true;
+    }
+    return false;
+  }
+  function modeFor(rule, key){
+    if (listed(rule.prefixes, key)) return "prefix";
+    if (listed(rule.compounds, key)) return "compound";
+    if (listed(rule.roots, key)) return "root";
+    return "exact";
+  }
+  function stemAtStart(token, stem){
+    return token.startsWith(stem) && isInflection(token.slice(stem.length));
+  }
+  function tailHit(token, stem){
+    var at = token.lastIndexOf(stem);
+    return at >= 4 && isInflection(token.slice(at + stem.length));
+  }
+  function tokenOk(token, stem, mode){
+    if (token === stem) return true;
+    if (stem.length < 3 || mode === "exact") return false;
+    if (mode === "phrase" || mode === "root") return stemAtStart(token, stem);
+    if (mode === "compound") return stemAtStart(token, stem) || tailHit(token, stem);
+    if (mode === "prefix") return (stem.length >= 4 && token.startsWith(stem)) || tailHit(token, stem);
+    return false;
+  }
+  function keyHit(tokens, key, mode){
+    var kt = tokensOf(key);
+    var span = kt.length;
+    var i, j, ok;
+    if (!span) return false;
+    for (i = 0; i + span <= tokens.length; i++){
+      ok = true;
+      for (j = 0; j < span; j++){
+        if (!tokenOk(tokens[i + j], kt[j], span === 1 ? mode : "phrase")){ ok = false; break; }
+      }
+      if (ok) return true;
+    }
+    return false;
   }
   function answerFor(raw){
-    var n = norm(raw);
-    if (!n) return { text: PACK.empty, hand: false, id: "empty" };
-    var best = null, bestLen = 0;
-    PACK.rules.forEach(function(r){
-      (r.keys || []).forEach(function(k){
-        var nk = norm(k);
-        if (nk.length < 3) return;
-        if (n.indexOf(nk) >= 0 && nk.length > bestLen){ best = r; bestLen = nk.length; }
+    var tokens = tokensOf(raw);
+    if (!tokens.length) return { text: PACK.empty, hand: false, id: "empty" };
+    function best(priority){
+      var found = null, foundLen = 0;
+      PACK.rules.forEach(function(r){
+        if (!!r.priority !== priority) return;
+        (r.keys || []).forEach(function(k){
+          if (!keyHit(tokens, k, modeFor(r, k))) return;
+          var len = tokensOf(k).join(" ").length;
+          if (len > foundLen){ found = r; foundLen = len; }
+        });
       });
-    });
-    if (!best) return { text: PACK.fallback, hand: false, id: "fallback" };
-    return { text: best.text, hand: !!best.hand, id: best.id || "match" };
+      return found;
+    }
+    var hit = best(true) || best(false);
+    if (!hit) return { text: PACK.fallback, hand: false, id: "fallback" };
+    return { text: hit.text, hand: !!hit.hand, id: hit.id || "match" };
   }
   window.__sectorDemo = { mode: "static-example", lang: PACK.lang, answerFor: answerFor, liveAI: false };
   function play(i){
