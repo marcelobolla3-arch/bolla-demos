@@ -43,13 +43,19 @@ footer{text-align:center;color:#64748b;font-size:.8rem;padding:0 18px 28px}foote
 <!-- GoatCounter (BOLLA STUDIO) -->
 <script id="bolla-metrics">(function(){
 var m=(location.search+location.hash).match(/[?&#]internal=([01])/);
-try{if(m){if(m[1]==="1")localStorage.setItem("skipgc","t");else localStorage.removeItem("skipgc");}}catch(e){}
+var mo=(location.search+location.hash).match(/[?&#]interno=([01])/);
+var bollaOff=false;
+function bollaCookie(on){try{var secure="";try{if(location.protocol==="https:")secure="; Secure";}catch(e){}document.cookie=on?"bolla_internal=1; Path=/; Max-Age=34560000; SameSite=Lax"+secure:"bolla_internal=; Path=/; Max-Age=0; SameSite=Lax";}catch(e){}}
+function bollaStore(on){try{if(on)localStorage.setItem("skipgc","t");else localStorage.removeItem("skipgc");}catch(e){}bollaCookie(on);}
+try{var qh=location.search+location.hash;var ia=m?qh.lastIndexOf("internal="):-1;var io=mo?qh.lastIndexOf("interno="):-1;if(ia>=0||io>=0){var bollaOn=(io>ia?mo[1]:m[1])==="1";bollaOff=!bollaOn;bollaStore(bollaOn);}}catch(e){}
 var internal=false;try{internal=localStorage.getItem("skipgc")==="t";}catch(e){}
+try{if(!internal&&/(?:^|; )bolla_internal=1(?:;|$)/.test(document.cookie||"")){internal=true;try{localStorage.setItem("skipgc","t");}catch(e){}}else if(internal)bollaCookie(true);}catch(e){}
+var bollaAudit="";try{var bollaPm=location.search.match(/[?&]p=([^&#]*)/)||location.search.match(/[?&]link_id=([^&#]*)/);if(bollaPm)bollaAudit=decodeURIComponent(bollaPm[1]).toLowerCase().replace(/[^a-z0-9-]/g,"").slice(0,60);}catch(e){}if(bollaAudit.indexOf("bmaudit-")===0){internal=true;if(!bollaOff)bollaStore(true);}
 function tag(){var sm=location.search.match(/[?&]p=([^&#]*)/);return sm?decodeURIComponent(sm[1]).toLowerCase().replace(/[^a-z0-9-]/g,"").slice(0,60):"";}
 var PREFIX='/co-los-carros-usados-demo';
 window.bsTrack=function(sub,title){if(internal)return;var path=PREFIX+sub;var campaign=tag();if(campaign&&path.indexOf("?p=")<0)path+="?p="+campaign;try{if(window.goatcounter&&window.goatcounter.count)window.goatcounter.count({path:path,title:title||sub,event:true});}catch(e){}};
 if(internal)return;
-window.goatcounter={path:function(p){return PREFIX+((p.replace(/^\/co\-los\-carros\-usados(?=[\/?#]|$)/,'')||'/').replace(/^\?/,'/?'))}};
+window.goatcounter={path:function(){var campaign=tag();return PREFIX+'/'+(campaign?'?p='+campaign:'');}};
 var s=document.createElement("script");s.async=true;s.src="https://gc.zgo.at/count.js";
 s.setAttribute("data-goatcounter","https://bollastudio.goatcounter.com/count");
 document.head.appendChild(s);
