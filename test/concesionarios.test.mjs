@@ -3,6 +3,7 @@ import { readdirSync, readFileSync, statSync } from "node:fs";
 import { join } from "node:path";
 import { test } from "node:test";
 import vm from "node:vm";
+import { PROSPECT_ROUTES } from "../scripts/prospect-redirect.mjs";
 
 const repo = new URL("..", import.meta.url);
 const dir = new URL("concesionarios/", repo);
@@ -50,9 +51,9 @@ test("concesionarios files do not keep the nautical video or the banned place na
   for (const lang of ["en", "de"]) {
     const html = read(`concesionarios/${lang}/index.html`);
     assert.match(html, /bolla-p-redirect/);
-    assert.match(html, /q\.get\('p'\)/);
-    assert.match(html, /&internal=1/);
-    assert.match(html, /"aktiv-hotel-spa-hannigalp":"\/hotel-ch\/de\/\?p=aktiv-hotel-spa-hannigalp"/);
+    assert.match(html, /q0\.get\("p"\)/);
+    assert.match(html, /internal=1/);
+    assert.doesNotMatch(html, /aktiv-hotel-spa-hannigalp/);
   }
   for (const lang of ["es", "it"]) {
     assert.doesNotMatch(read(`concesionarios/${lang}/index.html`), /bolla-p-redirect/);
@@ -266,4 +267,72 @@ test("the campaign path stays /p/video-lang and chat events omit the typed text"
   const deVisible = pages.de.replace(/<script[\s\S]*?<\/script>/g, " ");
   assert.doesNotMatch(deVisible, /\b(du|dein|deine|dir|dich)\b/i);
   assert.match(deVisible, /\bSie\b/);
+});
+
+function htmlFiles(dir, out = []) {
+  for (const name of readdirSync(dir)) {
+    if (name === ".git" || name === "node_modules") continue;
+    const next = join(dir, name);
+    if (statSync(next).isDirectory()) htmlFiles(next, out);
+    else if (name.endsWith(".html")) out.push(next);
+  }
+  return out;
+}
+
+test("published demo HTML does not contain the 94 prospect slugs", () => {
+  assert.equal(PROSPECT_ROUTES.length, 94);
+  const files = htmlFiles(new URL(".", repo).pathname);
+  assert.ok(files.length > 100);
+  for (const file of files) {
+    const text = readFileSync(file, "utf8");
+    for (const route of PROSPECT_ROUTES) {
+      assert.equal(text.includes(route.slug), false, file + " contains " + route.slug);
+    }
+  }
+});
+
+function redirectScript(html) {
+  const match = html.match(/<script id="bolla-p-redirect">([\s\S]*?)<\/script>/);
+  assert.ok(match, "redirect script missing");
+  return match[1];
+}
+
+async function land(search, useSubtle) {
+  let replaced = "";
+  const sandbox = {
+    location: { search, replace(url) { replaced = url; } },
+    URLSearchParams,
+    TextEncoder,
+    Uint8Array,
+    Promise,
+    crypto: useSubtle ? globalThis.crypto : undefined,
+  };
+  sandbox.window = sandbox;
+  vm.createContext(sandbox);
+  vm.runInContext(redirectScript(pages.en), sandbox, { filename: "bolla-p-redirect.js" });
+  if (sandbox.__bollaRedirect) await sandbox.__bollaRedirect;
+  return replaced;
+}
+
+test("five real prospect slugs still redirect to the same route", async () => {
+  const samples = [
+    "aktiv-hotel-spa-hannigalp",
+    "agentur-wyss",
+    "agence-casalp",
+    "fahrschule-hefti",
+    "zahnarzt-dr-calvano-forte",
+  ];
+  assert.equal(new Set(samples).size, 5);
+  const bySlug = new Map(PROSPECT_ROUTES.map((route) => [route.slug, route.path]));
+  for (const slug of samples) {
+    const expected = bySlug.get(slug) + "?p=" + slug;
+    assert.equal(await land("?p=" + slug, true), expected, "subtle " + slug);
+    assert.equal(await land("?p=" + slug, false), expected, "sync " + slug);
+    assert.equal(await land("?p=" + slug.toUpperCase(), false), expected, "case " + slug);
+    assert.equal(await land("?p=" + slug + "&internal=1", true), expected + "&internal=1");
+    assert.equal(await land("?p=" + slug + "&internal=0", false), expected);
+  }
+  assert.equal(await land("?p=not-a-prospect", false), "");
+  assert.equal(await land("", true), "");
+  assert.equal(redirectScript(pages.de), redirectScript(pages.en));
 });

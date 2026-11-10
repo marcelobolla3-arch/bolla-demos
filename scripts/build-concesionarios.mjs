@@ -2,10 +2,23 @@
  * Writes the four static car-dealership example pages.
  * The visit path stays /<p>/video-<lang>. Chat events use a fixed category name.
  */
-import { readFileSync, writeFileSync } from "node:fs";
+import { createHash } from "node:crypto";
+import { writeFileSync } from "node:fs";
+import { pathToFileURL } from "node:url";
+import { PROSPECT_ROUTES, PROSPECT_SALT, prospectRedirectTag } from "./prospect-redirect.mjs";
 
-const redirect = readFileSync(new URL("../concesionarios/en/index.html", import.meta.url), "utf8")
-  .match(/<script id="bolla-p-redirect">[\s\S]*?<\/script>/)[0];
+export function hashedProspectMap(routes = PROSPECT_ROUTES) {
+  const map = {};
+  for (const route of routes) {
+    const key = createHash("sha256").update(PROSPECT_SALT + route.slug).digest("hex").slice(0, 16);
+    if (Object.prototype.hasOwnProperty.call(map, key)) throw new Error("prospect hash collision");
+    if (route.path.includes(route.slug)) throw new Error("prospect slug is inside the path");
+    map[key] = route.path;
+  }
+  return map;
+}
+
+const redirect = prospectRedirectTag(hashedProspectMap());
 
 function esc(s) {
   return String(s)
@@ -788,6 +801,7 @@ ${CLIENT}
 }
 
 const bannedVisible = /España|Alemania|Suiza|Schweiz|Österreich|Deutschland|Argentina|Switzerland|Germany|Austria|Italy|Spain|France|Francia|Portugal|México|Mexico|Chile|Uruguay|Paraguay/;
+function writePages() {
 for (const lang of order) {
   const html = render(lang, pages[lang]);
   if (banned.test(html)) throw new Error("banned string in " + lang);
@@ -801,6 +815,12 @@ for (const lang of order) {
   if (lang === "de" && /\b(du|dein|deine|dir|dich|schweizer)\b/i.test(visible)) {
     throw new Error("register slip in de");
   }
+  for (const route of PROSPECT_ROUTES) {
+    if (html.includes(route.slug)) throw new Error("prospect slug leaked into " + lang);
+  }
   writeFileSync(new URL(`../concesionarios/${lang}/index.html`, import.meta.url), html);
   console.log(lang, html.length);
 }
+}
+
+if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) writePages();
