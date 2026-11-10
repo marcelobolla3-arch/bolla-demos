@@ -408,6 +408,7 @@ test("Deutsch is added without changing the et, ru or en URLs", () => {
   assert.equal(redirectTarget("", ["en-GB", "en"]), "en/");
   assert.equal(redirectTarget("", ["en", "de"]), "en/");
   assert.equal(redirectTarget("", ["fr-FR"]), "en/");
+  assert.equal(redirectTarget("", ["es-ES", "es"]), "es/");
   assert.equal(redirectTarget("", ["de-DE", "de"]), "de/");
   assert.equal(redirectTarget("?lang=et", ["de-DE"]), "et/");
   assert.equal(redirectTarget("?lang=ru", ["de-DE"]), "ru/");
@@ -420,13 +421,15 @@ test("Deutsch is added without changing the et, ru or en URLs", () => {
   assert.match(index, /href="et\/" lang="et" data-keep-query>Eesti/);
   assert.match(index, /href="ru\/" lang="ru" data-keep-query>Русский/);
   assert.match(index, /href="en\/" lang="en" data-keep-query>English/);
+  assert.match(index, /href="es\/" lang="es" data-keep-query>Español/);
   assert.match(index, /href="de\/" lang="de" data-keep-query>Deutsch/);
-  assert.match(index, /supported=\["et","ru","en","de"\]/);
+  assert.match(index, /supported=\["et","ru","en","es","de"\]/);
   assert.doesNotMatch(index, /gc\.zgo\.at\/count\.js/);
   assert.match(index, /location\.search/);
 
   for (const lang of ["et", "ru", "en"]) {
     const page = read(`dentist/${lang}/index.html`);
+    assert.match(page, /href="\.\.\/es\/" hreflang="es" lang="es" data-keep-query>Español</);
     assert.match(page, /href="\.\.\/de\/" hreflang="de" lang="de" data-keep-query>Deutsch</);
     assert.match(page, /hreflang="et"/);
     assert.match(page, /hreflang="ru"/);
