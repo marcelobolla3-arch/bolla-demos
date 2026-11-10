@@ -218,6 +218,7 @@ test("dentist/es answerFor covers the script and refuses Spanish false friends",
     ["incendiario", "fallback"],
     ["fuegos artificiales", "fallback"],
     ["sangría", "fallback"],
+    ["traumatología", "fallback"],
     ["Voy a golpear la puerta", "fallback"],
     ["accidentalmente", "fallback"],
     ["inflamación leve", "fallback"],
@@ -253,6 +254,8 @@ test("dentist/es answerFor covers the script and refuses Spanish false friends",
     ["tengo un diente roto", "emergency"],
     ["inflamación fuerte", "emergency"],
     ["tengo fiebre", "emergency"],
+    ["traumatismo", "emergency"],
+    ["traumatismo dental", "emergency"],
     ["quiero pedir hora", "cita"],
     ["¿Puedo pedir una cita?", "cita"],
     ["limpieza", "limpieza"],
@@ -298,6 +301,11 @@ test("dentist/es answerFor covers the script and refuses Spanish false friends",
   assert.match(demo.answerFor("financiación").text, /no indica cuotas/);
   assert.match(demo.answerFor("Seguro que sí").text, /no está entre las respuestas preparadas/);
   assert.match(demo.answerFor("sangría").text, /no está entre las respuestas preparadas/);
+  const trauma = demo.answerFor("traumatismo dental");
+  assert.equal(trauma.id, "emergency");
+  assert.match(trauma.text, /112/);
+  assert.doesNotMatch(trauma.text, /enjuague|ibuprofeno|protocolo es/i);
+  assert.match(demo.answerFor("traumatología").text, /no está entre las respuestas preparadas/);
 
   const pain = demo.answerFor("dolor de muelas");
   assert.equal(pain.id, "pain");
