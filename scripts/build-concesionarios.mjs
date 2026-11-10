@@ -414,7 +414,7 @@ const pages = {
     formNote: "Es wird nichts gesendet. Sie sehen nur, wie die Notiz aussehen würde.",
     fields: {
       itemLabel: "Anliegen",
-      items: ["Probefahrt", "Werkstatttermin", "Inspektion", "TÜV-HU", "Finanzierung", "Inzahlungnahme"],
+      items: ["Probefahrt", "Werkstatttermin", "Inspektion", "Fahrzeugprüfung", "Finanzierung", "Inzahlungnahme"],
       dateLabel: "Tag",
       slotLabel: "Tageszeit",
       slots: ["Vormittag", "Mittag", "Nachmittag"],
@@ -430,8 +430,8 @@ const pages = {
       leftItems: [
         "Ob die Beispielart, ein kompakter Hybrid-SUV, im Skript steht",
         "Eine Probefahrt notieren, ohne sie zu reservieren",
-        "Einen Werkstatttermin, eine Inspektion oder die TÜV-HU notieren",
-        "Sagen, dass Finanzierung und Inzahlungnahme eine Beratung bleiben, in Euro und ohne Betrag",
+        "Einen Werkstatttermin, eine Inspektion oder die Fahrzeugprüfung notieren",
+        "Sagen, dass Finanzierung und Inzahlungnahme eine Beratung bleiben, ohne Betrag",
         "Die Beispielöffnungszeiten und den Treffpunkt in unserem Autohaus",
         "Sie an eine Person weitergeben",
       ],
@@ -446,7 +446,7 @@ const pages = {
     },
     feats: [
       { t: "Keine echte KI", d: "Jede Antwort ist vorher geschrieben. Die Seite fragt kein Modell und keinen Bestand ab." },
-      { t: "Ohne Betrag", d: "Finanzierung und Inzahlungnahme laufen in Euro und gehen an eine Beratung. Hier steht kein Betrag." },
+      { t: "Ohne Betrag", d: "Finanzierung und Inzahlungnahme gehen an eine Beratung. Hier steht kein Betrag." },
       { t: "Sie behalten die Entscheidung", d: "Sie können an eine Person im Autohaus übergeben. Diese Seite ruft nicht an." },
     ],
     creditLead: "Beispiel von",
@@ -464,8 +464,8 @@ const pages = {
     rules: [
       rule("stock", "Haben Sie einen kompakten Hybrid-SUV?", ["suv", "hybrid", "verfügbar", "verfugbar", "auf lager", "bestand"], "In diesem Beispiel geht es um einen kompakten Hybrid-SUV, ohne bestimmte Marke. Ich sehe keinen echten Bestand. Eine Person im Autohaus bestätigt Ihnen, ob einer verfügbar ist."),
       rule("testdrive", "Ich möchte eine Probefahrt", ["probefahrt", "probe fahrt"], "Ich notiere eine Probefahrt mit dem kompakten Hybrid-SUV. Sie nennen einen Wunschtermin und eine Person im Autohaus bestätigt ihn. Diese Seite reserviert nicht."),
-      rule("workshop", "Ich brauche einen Werkstatttermin", ["werkstatttermin", "werkstatt", "inspektion", "hauptuntersuchung", "tüv hu", "tuv hu"], "Ich kann einen Werkstatttermin für eine Inspektion oder für die TÜV-HU notieren. Den Tag bestätigt eine Person im Autohaus. Diese Seite reserviert nicht."),
-      rule("finance", "Finanzierung oder Inzahlungnahme", ["finanzierung", "inzahlungnahme", "eintausch", "anzahlung"], "Finanzierung und Inzahlungnahme sind in diesem Beispiel nur eine Orientierung, in Euro. Ich nenne Ihnen keinen Betrag. Ich gebe das an eine Beraterin oder einen Berater weiter.", { hand: true }),
+      rule("workshop", "Ich brauche einen Werkstatttermin", ["werkstatttermin", "werkstatt", "inspektion", "hauptuntersuchung", "fahrzeugpruefung", "tüv hu", "tuv hu", "tüv", "tuv", "hu", "mfk"], "Ich kann einen Werkstatttermin für eine Inspektion oder für die Fahrzeugprüfung notieren. Den Tag bestätigt eine Person im Autohaus. Diese Seite reserviert nicht."),
+      rule("finance", "Finanzierung oder Inzahlungnahme", ["finanzierung", "inzahlungnahme", "eintausch", "anzahlung"], "Finanzierung und Inzahlungnahme sind in diesem Beispiel nur eine Orientierung. Ich nenne Ihnen keinen Betrag. Ich gebe das an eine Beraterin oder einen Berater weiter.", { hand: true }),
       rule("hours", "Wie sind die Öffnungszeiten?", ["öffnungszeiten", "öffnungszeit"], "In diesem Beispiel ist von Montag bis Freitag von 9 bis 19 Uhr und samstags von 10 bis 14 Uhr geöffnet. Sonntag ist geschlossen. Das ist eine Beispielzeit, nicht die eines bestimmten Autohauses."),
       rule("location", "Wo befindet sich das Autohaus?", ["wo befindet", "adresse", "anfahrt", "wie komme"], "In diesem Beispiel ist der Treffpunkt unser Autohaus. Auf dieser Seite steht keine echte Adresse. Eine Person erklärt Ihnen den Weg."),
       rule("human", "Ich möchte mit einer Person sprechen", ["person", "mitarbeiter", "mitarbeiterin", "berater", "beraterin", "mensch"], "Ich gebe Sie an eine Person im Autohaus weiter. Diese Seite ruft nicht an und speichert Ihre Nachricht nicht.", { hand: true }),
