@@ -1,0 +1,353 @@
+<!doctype html>
+<!-- Ejemplo neutro. Idioma es (España). Hotel ficticio. No es la demo suiza /hotel-ch/. -->
+<html lang="es" translate="no">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex">
+<meta name="google" content="notranslate">
+<title>Chat de ejemplo para un hotel · BOLLA STUDIO</title>
+<style>
+:root{--c:#7a1f2b;--ink:#1c1c1c;--bg:#f4f2ee}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Noto Sans","DejaVu Sans","Helvetica Neue",Arial,sans-serif;background:var(--bg);color:var(--ink);line-height:1.5;font-size:17px}
+.top{background:#1d2a33;color:#f2f5f7;padding:12px 16px;text-align:center}
+.top a{color:#fff}
+.langs{display:flex;flex-wrap:wrap;justify-content:center;gap:8px;padding:12px 16px;background:#243640}
+.langs a{display:inline-flex;align-items:center;justify-content:center;min-height:48px;min-width:48px;padding:10px 16px;border-radius:12px;background:#fff;color:#1d2a33;font-weight:700;text-decoration:none;border:2px solid #fff}
+.langs a[aria-current="page"]{background:var(--c);color:#fff;border-color:var(--c)}
+header,main{max-width:1080px;margin:0 auto;padding:8px 16px 0}
+.brand{font-weight:800;letter-spacing:.08em;font-size:.85rem;color:#5c6770}
+.by{margin:4px 0 8px;font-size:16px}
+.by a{color:var(--c)}
+.tag{font-size:14px;letter-spacing:.04em;color:#555;margin:0}
+h1{font-size:1.7rem;line-height:1.25;margin:8px 0 10px;color:var(--c)}
+.intro{margin:0 0 12px;color:#333}
+.badge{display:inline-block;background:#fff4d6;border:1px dashed #8a6a10;color:#5c4300;border-radius:8px;padding:4px 8px;font-size:14px;font-weight:700}
+.notice,.voice{background:#fff;border-radius:12px;padding:12px 14px;margin:12px 0;font-size:16px}
+.notice{border:2px solid #8a6a10}
+.voice{border:2px solid #1d2a33}
+.howto{background:#fff;border-radius:12px;padding:14px 16px;margin:12px 0 16px}
+.howto h2{margin:0 0 8px;font-size:1.25rem;color:var(--c)}
+.steps{margin:0;padding-left:1.3rem}
+.steps li{margin:8px 0}
+.grid{display:grid;gap:16px;margin:0 0 16px}
+.card{background:#fff;border-radius:16px;box-shadow:0 6px 24px rgba(0,0,0,.08);overflow:hidden}
+.wa-h{background:#1d2a33;color:#fff;padding:12px 16px;display:flex;align-items:center;gap:10px}
+.av{width:44px;height:44px;border-radius:50%;background:var(--c);display:flex;align-items:center;justify-content:center;font-weight:800}
+.wa-h small{display:block;opacity:.9;font-size:14px}
+.chat{background:#ece5dd;min-height:280px;max-height:52vh;overflow-y:auto;padding:12px;display:flex;flex-direction:column;gap:8px}
+.m{max-width:92%;padding:10px 12px;border-radius:10px;font-size:16px;white-space:pre-line;box-shadow:0 1px 1px rgba(0,0,0,.08)}
+.in{background:#fff;align-self:flex-start}.out{background:#e7f6e7;align-self:flex-end}
+.m.hand{background:#fff4d6;border:1px dashed #8a6a10}
+.qrl{padding:10px 12px 0;font-size:15px;color:#444}
+.qr{padding:8px 12px 12px;display:flex;flex-direction:column;gap:8px}
+.qr button,.slots button,.cta,.ask-row button{min-height:48px;font-size:17px;border-radius:12px;cursor:pointer}
+.qr button{width:100%;text-align:left;border:2px solid var(--c);background:#fff;color:var(--c);padding:12px 14px}
+.bk{padding:16px}
+.bk h3{margin:0 0 6px;color:var(--c);font-size:1.25rem}
+.bk p{margin:0 0 10px;color:#444}
+label{font-size:16px;color:#333;display:block;margin:12px 0 6px;font-weight:650}
+select,input{width:100%;padding:12px;border:1px solid #bbb;border-radius:10px;font-size:16px;font-family:inherit;min-height:48px}
+.slots{display:flex;flex-wrap:wrap;gap:8px}
+.slots button{border:2px solid #bbb;background:#fff;padding:10px 14px}
+.slots button.on{background:var(--c);color:#fff;border-color:var(--c)}
+.cta{margin-top:16px;width:100%;background:var(--c);color:#fff;border:0;padding:14px;font-weight:700}
+.ok{margin-top:14px;background:#eaf7ea;border:1px solid #8fbf8f;padding:12px;border-radius:10px;font-size:16px}
+.ask{padding:0 12px 14px}
+.ask-row{display:flex;flex-direction:column;gap:8px}
+.ask-row button{background:#1d2a33;color:#fff;border:0;padding:12px 16px;font-weight:700}
+.split,.feat{display:grid;gap:12px;margin:0 0 16px}
+.split div,.feat div{background:#fff;border-radius:12px;padding:14px 16px}
+.split h2,.feat b{color:var(--c)}
+.split ul{margin:8px 0 0;padding-left:1.2rem}
+.split li{margin:6px 0}
+footer{text-align:center;font-size:15px;color:#444;padding:8px 16px 40px}
+footer a{color:var(--c)}
+:focus-visible{outline:3px solid #0b57d0;outline-offset:2px}
+@media(min-width:800px){
+  h1{font-size:2rem}
+  .grid,.split{grid-template-columns:1fr 1fr}
+  .feat{grid-template-columns:1fr 1fr 1fr}
+  .qr{flex-direction:row;flex-wrap:wrap}
+  .qr button{width:auto}
+  .ask-row{flex-direction:row}
+  .ask-row input{flex:1}
+  .chat{max-height:460px}
+}
+</style>
+<!-- GoatCounter (BOLLA STUDIO): ?p= is a visit label for counting only. It does not personalize the page. ?internal=1 sets localStorage skipgc=t and loads nothing. -->
+<script>
+(function(){
+ var BASE="/bolla-demo-hotel/es";
+ var m=(location.search+location.hash).match(/[?&#]internal=([01])/);
+ try{ if(m){ if(m[1]==="1") localStorage.setItem("skipgc","t"); else localStorage.removeItem("skipgc"); } }catch(e){}
+ var internal=false; try{ internal=localStorage.getItem("skipgc")==="t"; }catch(e){}
+ var sm=location.search.match(/[?&]p=([^&#]*)/);
+ var tag=sm?decodeURIComponent(sm[1]).toLowerCase().replace(/[^a-z0-9-]/g,"").slice(0,60):"";
+ var q=[]; window.bsTrack=function(sub,title){ if(internal) return;
+   var ep=BASE+sub+(tag?'?p='+tag:'');if(window.goatcounter&&window.goatcounter.count) window.goatcounter.count({path:ep,title:title||sub,event:true}); else q.push([ep,title||sub]); };
+ if(internal) return;
+ window.goatcounter={no_onload:true};
+ var s=document.createElement("script"); s.async=true; s.src="https://gc.zgo.at/count.js";
+ s.setAttribute("data-goatcounter","https://bollastudio.goatcounter.com/count");
+ s.onload=function(){ try{ window.goatcounter.count({path:BASE+'/'+(tag?'?p='+tag:''),title:"hotel demo es"});
+   q.forEach(function(e){window.goatcounter.count({path:e[0],title:e[1],event:true});}); q=[]; }catch(e){} };
+ document.head.appendChild(s);
+})();
+</script>
+</head>
+<body data-demo="static-example" data-lang="es">
+<div class="top">Chat de ejemplo para hoteles, preparado por <a href="https://bollastudio.com" target="_blank" rel="noopener">BOLLA STUDIO</a> · «Hotel de Ejemplo» es ficticio, no es un hotel real. No hay reservas reales. Este chat es un ejemplo escrito, no un asistente en vivo.</div>
+<nav class="langs" aria-label="Idioma"><a href="../et/" hreflang="et" lang="et" data-keep-query>Eesti</a><a href="../ru/" hreflang="ru" lang="ru" data-keep-query>Русский</a><a href="../en/" hreflang="en" lang="en" data-keep-query>English</a><a href="./" hreflang="es" lang="es" data-keep-query aria-current="page">Español</a></nav>
+<header>
+  <div class="brand">BOLLA STUDIO</div>
+  <p class="by">Marcelo Bolla · <a href="https://bollastudio.com" target="_blank" rel="noopener">bollastudio.com</a></p>
+  <p class="tag"><span class="badge">Ejemplo escrito</span> Hotel de Ejemplo, un hotel ficticio</p>
+  <h1>La recepción, también a las 23:00, en español</h1>
+  <p class="intro">Este chat escrito muestra preguntas habituales de un hotel: habitación, llegada, aparcamiento, perros, desayuno, entrada y cancelación. Anota una solicitud. El hotel confirmaría la disponibilidad y el precio. Esta página no. Es un ejemplo de hotel. No es una oficina de turismo, un catálogo industrial ni un alquiler de barcos.</p>
+  <p class="notice" role="note">Simulación: todas las respuestas están escritas de antemano. No se envía nada y no se reserva nada. Esta página no está conectada a WhatsApp, a un sistema de reservas ni a un asistente de voz. Si la dirección contiene ?p=, es solo una etiqueta de visita para BOLLA STUDIO. No cambia la página y no es personalización. Esta página no es la web de un negocio.</p>
+  <p class="voice" role="note">Esta pantalla es un ejemplo de chat escrito. No reproduce audio. No hay un asistente de voz conectado ni en marcha. La voz, si se encargara aparte, sería otra instalación, no esta página.</p>
+</header>
+<main>
+<section class="howto" aria-labelledby="howto-title">
+  <h2 id="howto-title">Cómo probar este ejemplo</h2>
+  <ol class="steps"><li>Lea la conversación de ejemplo. Ya está en pantalla.</li><li>Pulse un botón grande, o escriba su pregunta en español y pulse Enviar.</li><li>Elija la fecha y una opción, y pulse el botón grande. Solo verá una nota de ejemplo. No se reserva nada y no se envía nada.</li></ol>
+</section>
+<div class="grid">
+  <div class="card">
+    <div class="wa-h"><div class="av" aria-hidden="true">H</div><div><b>Hotel de Ejemplo · recepción de ejemplo</b><small>Ejemplo escrito · respuestas preparadas en español, no un asistente en vivo</small></div></div>
+    <div class="chat" id="chat" role="log" aria-live="polite" aria-relevant="additions" aria-label="Conversación de ejemplo escrita"></div>
+    <div class="qrl" id="qr-label">Pruebe una pregunta</div>
+    <div class="qr" id="qr" role="group" aria-labelledby="qr-label"></div>
+    <form class="ask" id="ask-form" action="#" onsubmit="return false">
+      <label for="ask">Escriba una pregunta en español</label>
+      <div class="ask-row">
+        <input id="ask" name="ask" type="text" autocomplete="off" enterkeyhint="send" placeholder="Por ejemplo: ¿Se admiten perros?">
+        <button type="submit">Enviar</button>
+      </div>
+    </form>
+  </div>
+  <div class="card bk">
+    <h3>Solicitud de habitación, solo como ejemplo</h3>
+    <p>Así puede un chat anotar una solicitud. El hotel la confirmaría. Esta página no. Solo ejemplo: no se ha reservado ni enviado nada.</p>
+    <label for="item">Habitación</label>
+    <select id="item"><option>Doble</option><option>Doble con vista</option><option>Individual</option><option>Familiar</option></select>
+    <label for="arr">Fecha</label>
+    <input id="arr" type="date">
+    <p id="slots-label" style="margin:12px 0 6px;font-weight:650">Noches</p>
+    <div class="slots" id="slots" role="group" aria-labelledby="slots-label"></div>
+    <label for="nm">Nombre (no se guarda)</label>
+    <input id="nm" type="text" autocomplete="off" placeholder="Nombre y apellidos" aria-describedby="local-only">
+    <label for="ph">Correo o móvil (no se guarda)</label>
+    <input id="ph" type="text" autocomplete="off" placeholder="nombre@ejemplo.com" aria-describedby="local-only">
+    <p id="local-only">Estos dos campos se quedan en su navegador. Esta página no los lee, no los guarda y no los envía.</p>
+    <button class="cta" id="cta" type="button">Preguntar disponibilidad</button>
+    <div class="ok" id="ok" role="status" hidden></div>
+  </div>
+</div>
+<div class="split">
+  <div><h2>Qué muestra este chat de ejemplo</h2><ul><li>Una solicitud de habitación con fechas y huéspedes</li><li>Llegada, aparcamiento y equipaje como nota</li><li>La entrada y la salida como horas de ejemplo</li><li>Perros, desayuno y wifi como datos de ejemplo</li><li>Restaurante y spa, solo de forma genérica, sin una respuesta inventada</li></ul></div>
+  <div><h2>Qué queda en manos del hotel</h2><ul><li>Confirmar una habitación y un precio</li><li>Grupos y peticiones especiales</li><li>La política de cancelación</li><li>Quejas</li><li>Cualquier conversación que el equipo quiera atender</li></ul></div>
+</div>
+<div class="feat"><div><b>Español en esta página</b><br>Esta página responde en español. Los ejemplos en estonio, ruso e inglés están en páginas aparte. Aquí no hay intérprete en vivo ni asistente de voz.</div><div><b>Solo datos de ejemplo</b><br>Las respuestas usan datos ficticios de ejemplo. No son precios ni normas de un negocio real, ni un consejo legal o médico.</div><div><b>Decidiría una persona</b><br>En un chat encargado, los datos pasarían al equipo. Este botón no los envía y no reserva.</div></div>
+</main>
+<footer>Ejemplo de <a href="https://bollastudio.com" target="_blank" rel="noopener">BOLLA STUDIO</a> · Marcelo Bolla · <a href="mailto:marcelo@bollastudio.com">marcelo@bollastudio.com</a><br>«Hotel de Ejemplo» es ficticio, no es un hotel real. Ningún precio ni ninguna habitación es real. No se reserva, no se guarda y no se envía nada. Esta página no es la web de un negocio. Es solo un ejemplo de chat de BOLLA STUDIO.</footer>
+<script type="application/json" id="demo-pack">{"lang":"es","chat":[["in","Hola, ¿tienen una habitación doble para 2, del 12 al 15 de febrero? Venimos en tren."],["out","Hola. Puedo anotarlo como ejemplo: del 12 al 15 de febrero, 3 noches, habitación doble para 2, llegada en tren.\n¿Desean vista o les da igual?"],["in","Con vista, por favor. ¿Cómo se llega desde la estación?"],["out","En este ejemplo la estación queda a un paseo corto. El hotel podría recoger el equipaje si indican una hora.\nEl nombre quedaría en recepción. Esta página no lo envía."],["in","Huésped de ejemplo. Gracias."],["out","Gracias. Solo es una nota de ejemplo: habitación doble con vista, del 12 al 15 de febrero, 2 huéspedes, en tren. Recepción lo confirmaría. Desde esta página no se ha enviado nada."]],"rules":[{"id":"emergency","priority":true,"keys":["incendi","emergenci","herid","ambulanci","fuego","no respira","no respiran","no respiro","sin respirar","se ha caido","se ha caida","se cayo","se han caido"],"roots":["incendi","emergenci","herid","ambulanci"],"text":"Llamen ya al 112. Es el número de emergencias de la Unión Europea. Esta página no da instrucciones ni pasos."},{"id":"checkin","button":"¿A qué hora es la entrada?","keys":["check-in","checkin","check in","check-out","checkout","check out","entrada","salida","hora de entrada","hora de salida"],"text":"En este ejemplo, la entrada es a partir de las 15:00 y la salida, hasta las 11:00. Son horas de muestra, no un calendario real."},{"id":"breakfast","button":"¿El desayuno está incluido?","keys":["desayun"],"roots":["desayun"],"text":"En este ejemplo el desayuno está incluido, de 7:30 a 10:00. No se muestra ningún precio. Un hotel real usaría su propia norma."},{"id":"parking","button":"¿Hay aparcamiento?","keys":["parking","parkings","aparcamiento","aparcar"],"roots":["aparcamiento"],"text":"Este hotel de ejemplo tiene aparcamiento para los huéspedes. Diga si viene en coche. Esta página no reserva una plaza."},{"id":"dogs","button":"¿Se admiten perros?","keys":["perr","mascot"],"roots":["perr","mascot"],"text":"Sí. En este hotel de ejemplo se admiten perros tranquilos si se avisa. El chat de un hotel real usaría la norma de ese hotel. Aquí no se reserva nada."},{"id":"wifi","button":"¿Hay wifi?","keys":["wifi","wi-fi","wlan"],"text":"En este ejemplo hay wifi para los huéspedes. La clave la daría recepción. Esta página no muestra ninguna clave."},{"id":"airport","button":"¿Hay traslado al aeropuerto?","keys":["aeropuerto","traslad","transfer"],"roots":["aeropuerto","traslad"],"hand":true,"text":"El traslado al aeropuerto lo confirma el hotel. Este ejemplo no inventa horario ni precio. Esta página no reserva."},{"id":"cancel","button":"¿Se puede cancelar?","keys":["cancel","anul"],"roots":["cancel","anul"],"hand":true,"text":"La cancelación la confirma el hotel. Este ejemplo no inventa una política, un plazo ni un cargo. No se ha cancelado nada y no se ha enviado nada."},{"id":"rooms","button":"¿Hay habitaciones?","keys":["habitacion","precio","disponibilidad","disponible","tarifa"],"roots":["habitacion","precio","disponible","tarifa"],"hand":true,"text":"Puedo anotar el interés por una habitación. No indico ni el precio ni la disponibilidad: no están inventados. El hotel los confirmaría. Esta página no reserva ni cobra."},{"id":"spa","button":"¿Hay restaurante o spa?","keys":["spa","restaurante","cena","cenar"],"roots":["restaurante","cena"],"hand":true,"text":"El restaurante y el spa se mencionan aquí solo de forma genérica. No hay carta, horario, precio ni plazas. Lo diría el hotel. Esta página no reserva."}],"fallback":"Esto es un ejemplo escrito, no un asistente en vivo. Esa pregunta no está cubierta: la respondería el hotel. No reservo, no cobro y no envío nada.","empty":"Escriba una pregunta en español y pulse Enviar.","ok":"Solo ejemplo: no se ha reservado ni enviado nada. {item} · {date} · {slot}. Esta página no consulta un sistema de reservas ni guarda lo que ha escrito.","pick":"Elija primero la fecha y una opción de arriba.","lead":14,"slots":["1 noche","2 noches","3 noches","4 noches","5 noches","6 noches","7 noches"],"months":["ene","feb","mar","abr","may","jun","jul","ago","sep","oct","nov","dic"],"dateStyle":"dmy-numeric"}</script>
+<script id="bolla-lang-links">
+document.querySelectorAll("[data-keep-query]").forEach(function(a){
+  try{var u=new URL(a.getAttribute("href"),location.href);a.href=u.pathname+location.search+location.hash;}catch(e){}
+});
+</script>
+<script id="sector-demo">
+(function(){
+  var PACK = JSON.parse(document.getElementById("demo-pack").textContent);
+  var chat = document.getElementById("chat");
+  var qr = document.getElementById("qr");
+  function reduceMotion(){
+    return !!(window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches);
+  }
+  function add(t, kind){
+    var e = document.createElement("div");
+    e.className = "m " + (kind === "in" ? "in" : "out") + (kind === "hand" ? " hand" : "");
+    e.textContent = t;
+    chat.appendChild(e);
+    chat.scrollTop = chat.scrollHeight;
+    return e;
+  }
+  function showAnswer(entry){
+    add(entry.text, entry.hand ? "hand" : "out");
+  }
+  function tokensOf(raw){
+    var n = String(raw || "").toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+    return n.match(/[\p{L}\p{N}]+/gu) || [];
+  }
+  function norm(s){
+    return tokensOf(s).join(" ");
+  }
+  function isInflection(rest){
+    if (rest === "") return true;
+    var lang = PACK.lang;
+    if (lang === "es") return /^(?:s|es|a|o|as|os|ito|ita|itos|itas|ar|er|ado|ada|ados|adas|acion|aciones|ando)$/.test(rest);
+    if (lang === "et") return /^(?:[aeiou](?:sse|sid|ga|le|lt|st|ks|ni|na|ta|de|te|id|d|t|s|l|n)?|sse|sid|ga|le|lt|st|ks|ni|na|ta|de|te|id|da|d|t|s|l|n)$/.test(rest);
+    if (lang === "de") return /^(?:e|en|er|em|es|ern|n|s|se|isch)$/.test(rest);
+    return /^(?:ing|ies|es|ed|er|est|s|y|d|e)$/.test(rest);
+  }
+  function listed(list, key){
+    var id = tokensOf(key).join(" ");
+    var i;
+    for (i = 0; i < (list || []).length; i++){
+      if (tokensOf(list[i]).join(" ") === id) return true;
+    }
+    return false;
+  }
+  function modeFor(rule, key){
+    if (listed(rule.prefixes, key)) return "prefix";
+    if (listed(rule.compounds, key)) return "compound";
+    if (listed(rule.roots, key)) return "root";
+    return "exact";
+  }
+  function stemAtStart(token, stem){
+    return token.startsWith(stem) && isInflection(token.slice(stem.length));
+  }
+  function tailHit(token, stem){
+    var at = token.lastIndexOf(stem);
+    return at >= 4 && isInflection(token.slice(at + stem.length));
+  }
+  function tokenOk(token, stem, mode){
+    if (token === stem) return true;
+    if (stem.length < 3 || mode === "exact") return false;
+    if (mode === "phrase" || mode === "root") return stemAtStart(token, stem);
+    if (mode === "compound") return stemAtStart(token, stem) || tailHit(token, stem);
+    if (mode === "prefix") return (stem.length >= 4 && token.startsWith(stem)) || tailHit(token, stem);
+    return false;
+  }
+  function keyHit(tokens, key, mode){
+    var kt = tokensOf(key);
+    var span = kt.length;
+    var i, j, ok;
+    if (!span) return false;
+    for (i = 0; i + span <= tokens.length; i++){
+      ok = true;
+      for (j = 0; j < span; j++){
+        if (!tokenOk(tokens[i + j], kt[j], span === 1 ? mode : "phrase")){ ok = false; break; }
+      }
+      if (ok) return true;
+    }
+    return false;
+  }
+  function answerFor(raw){
+    var tokens = tokensOf(raw);
+    if (!tokens.length) return { text: PACK.empty, hand: false, id: "empty" };
+    function best(priority){
+      var found = null, foundLen = 0;
+      PACK.rules.forEach(function(r){
+        if (!!r.priority !== priority) return;
+        (r.keys || []).forEach(function(k){
+          if (!keyHit(tokens, k, modeFor(r, k))) return;
+          var len = tokensOf(k).join(" ").length;
+          if (len > foundLen){ found = r; foundLen = len; }
+        });
+      });
+      return found;
+    }
+    var hit = best(true) || best(false);
+    if (!hit) return { text: PACK.fallback, hand: false, id: "fallback" };
+    return { text: hit.text, hand: !!hit.hand, id: hit.id || "match" };
+  }
+  window.__sectorDemo = { mode: "static-example", lang: PACK.lang, answerFor: answerFor, liveAI: false };
+  function play(i){
+    if (i >= PACK.chat.length) return;
+    var m = PACK.chat[i];
+    var kind = m[0] === "in" ? "in" : (m[0] === "hand" ? "hand" : "out");
+    if (kind === "in"){
+      add(m[1], "in");
+      if (reduceMotion()) play(i + 1); else setTimeout(function(){ play(i + 1); }, 350);
+      return;
+    }
+    if (reduceMotion()){ add(m[1], kind); play(i + 1); return; }
+    var t = add("\u2026", "out");
+    t.setAttribute("aria-hidden", "true");
+    setTimeout(function(){
+      t.remove();
+      add(m[1], kind);
+      setTimeout(function(){ play(i + 1); }, 650);
+    }, 500);
+  }
+  PACK.rules.forEach(function(r){
+    if (!r.button) return;
+    var b = document.createElement("button");
+    b.type = "button";
+    b.className = "qbtn";
+    b.textContent = r.button;
+    b.onclick = function(){
+      add(r.button, "in");
+      if (window.bsTrack && r.id) window.bsTrack("/chat/" + r.id, "example");
+      var entry = { text: r.text, hand: !!r.hand };
+      if (reduceMotion()) showAnswer(entry);
+      else {
+        var t = add("\u2026", "out");
+        t.setAttribute("aria-hidden", "true");
+        setTimeout(function(){ t.remove(); showAnswer(entry); }, 450);
+      }
+    };
+    qr.appendChild(b);
+  });
+  play(0);
+  document.getElementById("ask-form").addEventListener("submit", function(ev){
+    ev.preventDefault();
+    var input = document.getElementById("ask");
+    var q = input.value || "";
+    if (!norm(q)){ showAnswer({ text: PACK.empty, hand: false }); return; }
+    add(q, "in");
+    showAnswer(answerFor(q));
+    input.value = "";
+  });
+  function iso(d){
+    return d.getFullYear() + "-" + String(d.getMonth() + 1).padStart(2, "0") + "-" + String(d.getDate()).padStart(2, "0");
+  }
+  function formatDate(v){
+    var p = v.split("-");
+    var d = Number(p[2]), m = Number(p[1]), y = p[0];
+    if (PACK.dateStyle === "dmy-numeric"){
+      return String(d).padStart(2, "0") + "." + String(m).padStart(2, "0") + "." + y;
+    }
+    return d + " " + PACK.months[m - 1] + " " + y;
+  }
+  var arr = document.getElementById("arr");
+  var today = new Date();
+  arr.min = iso(today);
+  var d0 = new Date();
+  d0.setDate(d0.getDate() + (PACK.lead || 7));
+  arr.value = iso(d0);
+  var slotsEl = document.getElementById("slots");
+  var slot = null;
+  (PACK.slots || []).forEach(function(n){
+    var b = document.createElement("button");
+    b.type = "button";
+    b.textContent = n;
+    b.setAttribute("aria-pressed", "false");
+    b.onclick = function(){
+      [].forEach.call(slotsEl.children, function(x){
+        x.classList.remove("on");
+        x.setAttribute("aria-pressed", "false");
+      });
+      b.classList.add("on");
+      b.setAttribute("aria-pressed", "true");
+      slot = n;
+    };
+    slotsEl.appendChild(b);
+  });
+  document.getElementById("cta").addEventListener("click", function(){
+    var ok = document.getElementById("ok");
+    ok.hidden = false;
+    var v = arr.value;
+    if (!v || !slot){ ok.textContent = PACK.pick; return; }
+    var item = document.getElementById("item").value;
+    ok.textContent = PACK.ok.replace("{item}", item).replace("{date}", formatDate(v)).replace("{slot}", slot);
+    if (window.bsTrack) window.bsTrack("/request/confirm", "example");
+  });
+})();
+</script>
+</body></html>
