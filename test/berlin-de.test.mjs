@@ -121,7 +121,7 @@ test("German pages are the primary static demos and English is only a second vie
   const charter = read("charter-de/de/index.html");
   assert.match(charter, /Nicht das Bordhandbuch einer Lagoon 42/);
   assert.doesNotMatch(charter, /voz\/lagoon42|agent_PENDIENTE|12 V|Gasflaschen/);
-  assert.match(read("nautica/index.html"), /LANGS=\["it","en","es"\]/);
+  assert.match(read("nautica/index.html"), /LANGS=\["it","en","es","fr"\]/);
   assert.match(read("voz/lagoon42/index.html"), /agent_PENDIENTE/);
 });
 
