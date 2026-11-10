@@ -205,12 +205,9 @@ test("dentist/es answerFor covers the script and refuses Spanish false friends",
     ["el camino", "fallback"],
     ["se me ha caído un empaste", "fallback"],
     ["se ha caído el empaste", "fallback"],
-    ["sangra un poco la encía", "fallback"],
     ["al respirar", "fallback"],
     ["Tengo un nervio sensible", "fallback"],
-    ["higiene", "fallback"],
     ["revisión", "fallback"],
-    ["ortodoncia", "fallback"],
     ["¿Puedo pagar con bizum?", "fallback"],
     ["¿Se puede filmar?", "fallback"],
     ["¿Es una buena inversión?", "fallback"],
@@ -220,6 +217,18 @@ test("dentist/es answerFor covers the script and refuses Spanish false friends",
     ["adherida", "fallback"],
     ["incendiario", "fallback"],
     ["fuegos artificiales", "fallback"],
+    ["sangría", "fallback"],
+    ["Voy a golpear la puerta", "fallback"],
+    ["accidentalmente", "fallback"],
+    ["inflamación leve", "fallback"],
+    ["solicita la historia otra vez", "fallback"],
+    ["citación", "fallback"],
+    ["limpio la casa", "fallback"],
+    ["ortografía", "fallback"],
+    ["finanzas", "fallback"],
+    ["Seguro que sí", "fallback"],
+    ["inseguro", "fallback"],
+    ["cambio de domicilio", "fallback"],
     ["no respira", "emergency"],
     ["mi padre no respira", "emergency"],
     ["no respiro", "emergency"],
@@ -237,6 +246,25 @@ test("dentist/es answerFor covers the script and refuses Spanish false friends",
     ["ambulancia", "emergency"],
     ["dolor y no respira", "emergency"],
     ["¿Cuánto cuesta el 112?", "emergency"],
+    ["Tengo un sangrado fuerte", "emergency"],
+    ["me sangra la encía", "emergency"],
+    ["he tenido un accidente", "emergency"],
+    ["me di un golpe", "emergency"],
+    ["tengo un diente roto", "emergency"],
+    ["inflamación fuerte", "emergency"],
+    ["tengo fiebre", "emergency"],
+    ["quiero pedir hora", "cita"],
+    ["¿Puedo pedir una cita?", "cita"],
+    ["limpieza", "limpieza"],
+    ["higiene", "limpieza"],
+    ["quiero cancelar la cita", "cancel"],
+    ["cambiar la cita", "cancel"],
+    ["ortodoncia", "ortodoncia"],
+    ["brackets", "ortodoncia"],
+    ["financiación", "financiacion"],
+    ["pago a plazos", "financiacion"],
+    ["mutua", "mutua"],
+    ["seguro dental", "mutua"],
     ["duele al respirar", "pain"],
     ["   ", "empty"],
     ["¿¿¿", "empty"],
@@ -244,7 +272,7 @@ test("dentist/es answerFor covers the script and refuses Spanish false friends",
   ];
   for (const [question, id] of cases) assert.equal(demo.answerFor(question).id, id, question);
 
-  const off = demo.answerFor("ortodoncia");
+  const off = demo.answerFor("ajedrez");
   assert.match(off.text, /ejemplo escrito/);
   assert.match(off.text, /no un asistente en vivo/);
   assert.match(off.text, /no está entre las respuestas preparadas/);
@@ -252,10 +280,24 @@ test("dentist/es answerFor covers the script and refuses Spanish false friends",
   assert.match(off.text, /WhatsApp/);
   assert.doesNotMatch(off.text, /112|ortodoncia|alineador|euros/i);
 
-  const emergency = demo.answerFor("mi padre no respira");
-  assert.match(emergency.text, /^Llame ya al 112\./);
+  const emergency = demo.answerFor("Tengo un sangrado fuerte");
+  assert.equal(emergency.id, "emergency");
+  assert.match(emergency.text, /^Llame ya al 112/);
+  assert.match(emergency.text, /urgencias/);
   assert.match(emergency.text, /número de emergencias de la Unión Europea/);
   assert.doesNotMatch(emergency.text, /enjuague|ibuprofeno|paracetamol|antibi[oó]tico|compresion|hielo|rcp|primeros auxilios|protocolo es|dosis|torniquete|gasa|empaste/i);
+  assert.match(demo.answerFor("mi padre no respira").text, /^Llame ya al 112/);
+
+  for (const id of ["cita", "limpieza", "cancel", "ortodoncia", "financiacion", "mutua"]) {
+    const reply = pack.rules.find((rule) => rule.id === id);
+    assert.equal(reply.button, undefined, id);
+    assert.doesNotMatch(reply.text, /€|\d|%|sin intereses|gratis/i, id);
+  }
+  assert.match(demo.answerFor("limpieza").text, /no indica un precio|No indico un precio/i);
+  assert.match(demo.answerFor("ortodoncia").text, /no indica un plan/);
+  assert.match(demo.answerFor("financiación").text, /no indica cuotas/);
+  assert.match(demo.answerFor("Seguro que sí").text, /no está entre las respuestas preparadas/);
+  assert.match(demo.answerFor("sangría").text, /no está entre las respuestas preparadas/);
 
   const pain = demo.answerFor("dolor de muelas");
   assert.equal(pain.id, "pain");
