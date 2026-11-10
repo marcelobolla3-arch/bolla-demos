@@ -209,49 +209,14 @@ test("legacy path-segment families keep their route and still skip bmaudit", () 
   assert.equal(generalAudit.created.length, 0);
 
   const dealers = runMetrics(read("concesionarios/es/index.html"), "https://demo.bollastudio.com/concesionarios/es/?p=Dealer-9");
-  const played = [];
-  dealers.document.addEventListener = (type, fn) => { if (type === "play") played.push(fn); };
-  // The listener was registered during boot, before this assignment. Re-run with the hook installed.
-  const source = metricsSource(read("concesionarios/es/index.html"));
-  const url = new URL("https://demo.bollastudio.com/concesionarios/es/?p=Dealer-9");
-  const created = [];
-  const element = { setAttribute() {} };
-  const listeners = [];
-  const document = {
-    documentElement: { setAttribute() {} },
-    createElement() { return element; },
-    head: { appendChild(node) { created.push(node); } },
-    addEventListener(type, fn) { listeners.push({ type, fn }); },
-  };
-  installCookie(document);
-  const store = new Map();
-  const localStorage = {
-    getItem(key) { return store.has(key) ? store.get(key) : null; },
-    setItem(key, value) { store.set(key, String(value)); },
-    removeItem(key) { store.delete(key); },
-  };
-  const context = {
-    window: {},
-    document,
-    location: { search: url.search, hash: "", protocol: url.protocol },
-    localStorage,
-    decodeURIComponent,
-    URLSearchParams,
-  };
-  context.window = context;
-  vm.runInNewContext(source, context);
-  const hits = [];
-  context.goatcounter.count = (row) => hits.push(row);
-  element.onload();
-  assert.deepEqual(hits.map((hit) => hit.path), ["/dealer-9/video-es"]);
-  assert.equal(hits[0].event, undefined);
-  const play = listeners.find((item) => item.type === "play");
-  play.fn({ target: { tagName: "VIDEO" } });
-  play.fn({ target: { tagName: "VIDEO" } });
-  assert.deepEqual(hits.map((hit) => ({ path: hit.path, title: hit.title, event: hit.event })), [
-    { path: "/dealer-9/video-es", title: "concesionarios video-es", event: undefined },
-    { path: "/dealer-9/video-es-play", title: "video-play", event: true },
-  ]);
+  const dealerHits = countsOf(dealers);
+  assert.equal(dealerHits[0].path, "/dealer-9/video-es");
+  assert.equal(dealerHits[0].title, "concesionarios video-es");
+  assert.equal(dealerHits[0].event, undefined);
+  dealers.window.bsTrack("conc-intent-request", "conc-intent-request");
+  assert.equal(dealerHits[1].path, "/dealer-9/conc-intent-request");
+  assert.equal(dealerHits[1].event, true);
+  assert.doesNotMatch(JSON.stringify(dealerHits), /<video|video-play/);
 
   const schloss = runMetrics(read("voz/schloss-wuelflingen/index.html"), "https://demo.bollastudio.com/voz/schloss-wuelflingen/?interno=1");
   assert.equal(schloss.created.length, 0);

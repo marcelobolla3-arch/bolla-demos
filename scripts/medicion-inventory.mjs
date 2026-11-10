@@ -183,11 +183,13 @@ function quoted(html, name) {
 }
 
 export function visitOf(html, rel) {
-  if (rel === "nautica/index.html") return "/{p|lagoon42}/demo";
+  if (rel === "nautica/index.html" || /^nautica\/(?:en|es|fr)\/index\.html$/.test(rel)) return "/{p|lagoon42}/demo";
   if (rel === "nautica-cat/index.html") return "/{p|cat42}/demo";
   if (rel === "es/index.html") return "/demo-es-general | /{p}/demo-es-general";
   const video = html.match(/var page=s\?"\/"\+s\+"\/(video-[a-z]+)"/);
   if (video) return `/${video[1]} | /{p}/${video[1]}`;
+  const conc = html.match(/__concPath\(raw,"(video-[a-z]+)"\)/);
+  if (conc) return `/${conc[1]} | /{p}/${conc[1]}`;
   if (html.includes("'/schloss-wuelflingen/voice'")) return "/schloss-wuelflingen/voice?p={p}";
   if (html.includes('"/PROSPECTO/voice"')) return "/PROSPECTO/voice?p={p}";
   const base = quoted(html, "BASE");

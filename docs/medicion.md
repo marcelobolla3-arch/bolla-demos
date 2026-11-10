@@ -49,7 +49,7 @@ Náutica, náutica-cat, `/es/` y concesionarios siguen metiendo `p` como tramo d
 
 ## Inventario
 
-590 demos cuentan. 366 tienen al menos un uso. 224 solo tienen la visita. 42 redirecciones no cargan el contador. La portada tampoco.
+597 demos cuentan. 373 tienen al menos un uso. 224 solo tienen la visita. 45 redirecciones no cargan el contador. La portada tampoco.
 
 En la columna Visita, `{p}` es la etiqueta saneada y solo se añade cuando existe. `|` separa la ruta sin etiqueta y la ruta con etiqueta cuando `p` es un tramo, no una búsqueda.
 
@@ -137,6 +137,8 @@ En la columna Visita, `{p}` es la etiqueta saneada y solo se añade cuando exist
 | /charly-bar-sant-andreu/ | /bolla-demo-charly-bar-sant-andreu/?p={p} | solo visita |
 | /charter-de/de/ | /bolla-demo-charter-de/de/?p={p} | /bolla-demo-charter-de/de/chat/{id}?p={p} · example; /bolla-demo-charter-de/de/request/confirm?p={p} · example |
 | /charter-de/en/ | /bolla-demo-charter-de/en/?p={p} | /bolla-demo-charter-de/en/chat/{id}?p={p} · example; /bolla-demo-charter-de/en/request/confirm?p={p} · example |
+| /charter-intl/en/ | /bolla-demo-charter-intl/en/?p={p} | /bolla-demo-charter-intl/en/chat/{id}?p={p} · example; /bolla-demo-charter-intl/en/request/confirm?p={p} · example |
+| /charter-intl/fr/ | /bolla-demo-charter-intl/fr/?p={p} | /bolla-demo-charter-intl/fr/chat/{id}?p={p} · example; /bolla-demo-charter-intl/fr/request/confirm?p={p} · example |
 | /charter/en/ | /bolla-demo-charter/en/?p={p} | /bolla-demo-charter/en/chat/{id}?p={p} · example; /bolla-demo-charter/en/request/confirm?p={p} · example |
 | /charter/et/ | /bolla-demo-charter/et/?p={p} | /bolla-demo-charter/et/chat/{id}?p={p} · example; /bolla-demo-charter/et/request/confirm?p={p} · example |
 | /chic-woman-py/ | /chic-woman-py/?p={p} | solo visita |
@@ -157,10 +159,10 @@ En la columna Visita, `{p}` es la etiqueta saneada y solo se añade cuando exist
 | /coiffeur-ch/de/ | /bolla-demo-coiffeur-ch/de/?p={p} | /bolla-demo-coiffeur-ch/de/chat/{button}?p={p} · script-option; /bolla-demo-coiffeur-ch/de/request/confirm?p={p} · Demo-Anfrage |
 | /coiffeur-ch/en/ | /bolla-demo-coiffeur-ch/en/?p={p} | /bolla-demo-coiffeur-ch/en/chat/{id}?p={p} · example; /bolla-demo-coiffeur-ch/en/request/confirm?p={p} · example |
 | /coiffeur-ch/fr/ | /bolla-demo-coiffeur-ch/fr/?p={p} | /bolla-demo-coiffeur-ch/fr/chat/{button}?p={p} · script-option; /bolla-demo-coiffeur-ch/fr/request/confirm?p={p} · Demo-Anfrage |
-| /concesionarios/de/ | /video-de \| /{p}/video-de | /video-de-play \| /{p}/video-de-play · video-play |
-| /concesionarios/en/ | /video-en \| /{p}/video-en | /video-en-play \| /{p}/video-en-play · video-play |
-| /concesionarios/es/ | /video-es \| /{p}/video-es | /video-es-play \| /{p}/video-es-play · video-play |
-| /concesionarios/it/ | /video-it \| /{p}/video-it | /video-it-play \| /{p}/video-it-play · video-play |
+| /concesionarios/de/ | /video-de \| /{p}/video-de | conc-chat-open · conc-chat-open; "conc-intent-" + id · conc-intent-{…}; conc-intent-request · conc-intent-request |
+| /concesionarios/en/ | /video-en \| /{p}/video-en | conc-chat-open · conc-chat-open; "conc-intent-" + id · conc-intent-{…}; conc-intent-request · conc-intent-request |
+| /concesionarios/es/ | /video-es \| /{p}/video-es | conc-chat-open · conc-chat-open; "conc-intent-" + id · conc-intent-{…}; conc-intent-request · conc-intent-request |
+| /concesionarios/it/ | /video-it \| /{p}/video-it | conc-chat-open · conc-chat-open; "conc-intent-" + id · conc-intent-{…}; conc-intent-request · conc-intent-request |
 | /consultorio-medico-y-estetico-py/ | /consultorio-medico-y-estetico-py/?p={p} | solo visita |
 | /consultorio-sonrisa-sana-py/ | /consultorio-sonrisa-sana-py/?p={p} | solo visita |
 | /copia-claus-calcat-sicilia/ | /bolla-demo-copia-claus-calcat-sicilia/?p={p} | solo visita |
@@ -303,6 +305,7 @@ En la columna Visita, `{p}` es la etiqueta saneada y solo se añade cuando exist
 | /hotel-ch/fr/ | /bolla-demo-hotel-ch/fr/?p={p} | /bolla-demo-hotel-ch/fr/chat/{button}?p={p} · script-option; /bolla-demo-hotel-ch/fr/request/confirm?p={p} · Demo-Anfrage |
 | /hotel-chiara-sirmione/ | /bolla-hotel-chiara-sirmione/?p={p} | /bolla-hotel-chiara-sirmione/opt?p={p} · Opzione; /bolla-hotel-chiara-sirmione/slot?p={p} · Orario scelto; /bolla-hotel-chiara-sirmione/confirm?p={p} · Conferma demo; /bolla-hotel-chiara-sirmione/chat?p={p} · Rivedi chat |
 | /hotel-ciudad-nueva-py/ | /hotel-ciudad-nueva-py/?p={p} | solo visita |
+| /hotel-de/de/ | /bolla-demo-hotel-de/de/?p={p} | /bolla-demo-hotel-de/de/chat/{button}?p={p} · script-option; /bolla-demo-hotel-de/de/request/confirm?p={p} · Demo-Anfrage |
 | /hotel-lago-di-garda-malcesine/ | /bolla-hotel-lago-di-garda-malcesine/?p={p} | /bolla-hotel-lago-di-garda-malcesine/opt?p={p} · Opzione; /bolla-hotel-lago-di-garda-malcesine/slot?p={p} · Orario scelto; /bolla-hotel-lago-di-garda-malcesine/confirm?p={p} · Conferma demo; /bolla-hotel-lago-di-garda-malcesine/chat?p={p} · Rivedi chat |
 | /hotel-mabel-py/ | /hotel-mabel-py/?p={p} | solo visita |
 | /hotel-mistral-saas-fee/ | /bolla-demo-hotel-mistral-saas-fee/?p={p} | /bolla-demo-hotel-mistral-saas-fee/chat/{lang}/{button}?p={p} · script-option; /bolla-demo-hotel-mistral-saas-fee/lang/{id}?p={p} · Sprache {…}; /bolla-demo-hotel-mistral-saas-fee/booking/confirm?p={p} · Demo-Anfrage |
@@ -429,6 +432,9 @@ En la columna Visita, `{p}` es la etiqueta saneada y solo se añade cuando exist
 | /mx-pluramotors/ | /mx-pluramotors-demo/?p={p} | /mx-pluramotors-demo/step/{id}?p={p} · {button}; /mx-pluramotors-demo/completada?p={p} · Demo completada; /mx-pluramotors-demo/tab/{id}?p={p} · Tab {…}; /mx-pluramotors-demo/restart?p={p} · Restart |
 | /nassa-dentista-lugano/ | /nassa-dentista-lugano/?p={p} | /nassa-dentista-lugano/tab/{id}?p={p} · Tab {…} |
 | /nautica-cat/ | /{p\|cat42}/demo | /{p}/q-{topic} · q-{…} |
+| /nautica/en/ | /{p\|lagoon42}/demo | /{p}/q-{topic} · q-{…} |
+| /nautica/es/ | /{p\|lagoon42}/demo | /{p}/q-{topic} · q-{…} |
+| /nautica/fr/ | /{p\|lagoon42}/demo | /{p}/q-{topic} · q-{…} |
 | /nautica/ | /{p\|lagoon42}/demo | /{p}/q-{topic} · q-{…} |
 | /nunez-mecanica-automotriz-py/ | /nunez-mecanica-automotriz-py/?p={p} | solo visita |
 | /nutribell-paraguay-py/ | /nutribell-paraguay-py/?p={p} | solo visita |
@@ -538,6 +544,7 @@ En la columna Visita, `{p}` es la etiqueta saneada y solo se añade cuando exist
 | /restaurant-ch/de/ | /bolla-demo-restaurant-ch/de/?p={p} | /bolla-demo-restaurant-ch/de/chat/{button}?p={p} · script-option; /bolla-demo-restaurant-ch/de/request/confirm?p={p} · Demo-Anfrage |
 | /restaurant-ch/en/ | /bolla-demo-restaurant-ch/en/?p={p} | /bolla-demo-restaurant-ch/en/chat/{id}?p={p} · example; /bolla-demo-restaurant-ch/en/request/confirm?p={p} · example |
 | /restaurant-ch/fr/ | /bolla-demo-restaurant-ch/fr/?p={p} | /bolla-demo-restaurant-ch/fr/chat/{button}?p={p} · script-option; /bolla-demo-restaurant-ch/fr/request/confirm?p={p} · Demo-Anfrage |
+| /restaurant-de/de/ | /bolla-demo-restaurant-de/de/?p={p} | /bolla-demo-restaurant-de/de/chat/{button}?p={p} · script-option; /bolla-demo-restaurant-de/de/request/confirm?p={p} · Demo-Anfrage |
 | /restaurant-santander-106/ | /bolla-demo-restaurant-santander-106/?p={p} | solo visita |
 | /restaurant/en/ | /bolla-demo-restaurant/en/?p={p} | /bolla-demo-restaurant/en/chat/{id}?p={p} · example; /bolla-demo-restaurant/en/request/confirm?p={p} · example |
 | /restaurant/et/ | /bolla-demo-restaurant/et/?p={p} | /bolla-demo-restaurant/et/chat/{id}?p={p} · example; /bolla-demo-restaurant/et/request/confirm?p={p} · example |
@@ -650,4 +657,4 @@ En la columna Visita, `{p}` es la etiqueta saneada y solo se añade cuando exist
 
 La portada `/` es el letrero del servidor.
 
-Redirecciones (42), conservan la búsqueda y el hash, y no cargan el contador: `/aesthetik-ch/`, `/ausfluege-ch/`, `/barber/`, `/bergbahn-ch/`, `/canyoning-ch/`, `/charter-de/`, `/charter/`, `/coiffeur-ch/`, `/concesionarios/`, `/dentist/`, `/fahrschule-ch/`, `/ferienwohnung-ch/`, `/fitness-ch/`, `/garage-ch/`, `/garage/`, `/hair-salon/`, `/hotel-ch/`, `/hotel/`, `/immobilien-ch/`, `/industrie-de/`, `/marina-pirita/`, `/movers/`, `/musikschule-ch/`, `/optician/`, `/optiker-ch/`, `/paragliding-ch/`, `/physio-ch/`, `/physio/`, `/real-estate/`, `/restaurant-ch/`, `/restaurant/`, `/schifffahrt-ch/`, `/skischule-ch/`, `/skiverleih-ch/`, `/tierarzt-ch/`, `/tourismus-berlin/`, `/umzug-ch/`, `/velomiete-ch/`, `/velowerkstatt-ch/`, `/vet/`, `/video/comunidad-argentina/`, `/zahnarzt-ch/`.
+Redirecciones (45), conservan la búsqueda y el hash, y no cargan el contador: `/aesthetik-ch/`, `/ausfluege-ch/`, `/barber/`, `/bergbahn-ch/`, `/canyoning-ch/`, `/charter-de/`, `/charter-intl/`, `/charter/`, `/coiffeur-ch/`, `/concesionarios/`, `/dentist/`, `/fahrschule-ch/`, `/ferienwohnung-ch/`, `/fitness-ch/`, `/garage-ch/`, `/garage/`, `/hair-salon/`, `/hotel-ch/`, `/hotel-de/`, `/hotel/`, `/immobilien-ch/`, `/industrie-de/`, `/marina-pirita/`, `/movers/`, `/musikschule-ch/`, `/optician/`, `/optiker-ch/`, `/paragliding-ch/`, `/physio-ch/`, `/physio/`, `/real-estate/`, `/restaurant-ch/`, `/restaurant-de/`, `/restaurant/`, `/schifffahrt-ch/`, `/skischule-ch/`, `/skiverleih-ch/`, `/tierarzt-ch/`, `/tourismus-berlin/`, `/umzug-ch/`, `/velomiete-ch/`, `/velowerkstatt-ch/`, `/vet/`, `/video/comunidad-argentina/`, `/zahnarzt-ch/`.

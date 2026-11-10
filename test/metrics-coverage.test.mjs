@@ -24,11 +24,15 @@ const files = walk(new URL(".", root).pathname).filter((path) => !path.includes(
 const swiss = ["hotel-ch", "restaurant-ch", "zahnarzt-ch", "coiffeur-ch", "immobilien-ch", "physio-ch", "umzug-ch", "garage-ch", "optiker-ch", "tierarzt-ch"];
 const neutral = ["hotel", "restaurant", "dentist", "hair-salon", "real-estate", "physio", "movers", "garage", "optician", "vet"];
 const berlin = ["industrie-de", "tourismus-berlin", "charter-de"];
+const germany = ["hotel-de", "restaurant-de"];
+const charterIntl = ["charter-intl"];
 const auditedContent = new Set([
   ...swiss.flatMap((slug) => [`${slug}/de/index.html`, `${slug}/fr/index.html`, `${slug}/en/index.html`]),
   "tierarzt-ch/it/index.html",
   ...neutral.flatMap((slug) => [`${slug}/et/index.html`, `${slug}/ru/index.html`, `${slug}/en/index.html`]),
   ...berlin.flatMap((slug) => [`${slug}/de/index.html`, `${slug}/en/index.html`]),
+  ...germany.map((slug) => `${slug}/de/index.html`),
+  ...charterIntl.flatMap((slug) => [`${slug}/en/index.html`, `${slug}/fr/index.html`]),
   ...["es", "en", "it", "de", "fr"].map((lang) => `video/comunidad-argentina/${lang}/index.html`),
   ...["en", "de", "es", "it"].map((lang) => `concesionarios/${lang}/index.html`),
   "voz/schloss-wuelflingen/index.html",
@@ -59,7 +63,7 @@ test("every demo page counts one visit and can record use, and redirects do not 
     if (html.includes("window.bsTrack=function") && !html.includes("event:true") && !html.includes("event: true")) missing.push(path + " event");
     if (html.includes("'Chat '+q") || html.includes("function play(k){box.innerHTML='';S[k].forEach(add);bsTrack")) missing.push(path + " open-or-title");
   }
-  assert.equal(auditedContent.size, 83);
+  assert.equal(auditedContent.size, 87);
   assert.deepEqual(missing, []);
   const present = new Set(files.map((path) => path.slice(new URL(".", root).pathname.length)));
   assert.deepEqual([...auditedContent].filter((rel) => !present.has(rel)), []);
@@ -94,14 +98,18 @@ test("campaign usage is attached to the event and the question text is not the t
   assert.doesNotMatch(hicar, /play\('stock',1\)/);
   for (const lang of ["en", "de", "es", "it"]) {
     const page = read(new URL(`concesionarios/${lang}/index.html`, root));
-    assert.match(page, /src="video\.mp4"/);
-    assert.match(page, /video-play/);
+    assert.doesNotMatch(page, /<video\b|src="video\.mp4"|video-play|poster=|\.vtt/);
+    assert.match(page, new RegExp(`__concPath\\(raw,"video-${lang}"\\)`));
+    assert.match(page, new RegExp(`title:"concesionarios video-${lang}"`));
     assert.match(page, /Marcelo Bolla/);
     assert.match(page, /bollastudio\.com/);
+    assert.match(page, /skipgc/);
     assert.doesNotMatch(page, /answers your dealership|atiende la llamada|nimmt die Anrufe|risponde alle chiamate/);
   }
-  assert.match(read(new URL("concesionarios/en/index.html", root)), /aktiv-hotel-spa-hannigalp/);
-  assert.match(read(new URL("concesionarios/en/index.html", root)), /Watch a recorded example/);
+  const dealer = read(new URL("concesionarios/en/index.html", root));
+  assert.match(dealer, /id="bolla-p-redirect"/);
+  assert.equal(JSON.parse(dealer.match(/var DEST=(\{.*?\});/)[1]).fcad07227666865f, "/hotel-ch/de/");
+  assert.match(read(new URL("concesionarios/en/index.html", root)), /An illustrative example of how the assistant replies/);
   const budokan = read(new URL("budokan-zuerich-web/index.html", root));
   assert.match(budokan, /bsTrack\('\/trial\/confirm','trial-confirm'\)/);
   assert.match(budokan, /bsTrack\('\/chat\/'\+i,'script-option'\)/);
