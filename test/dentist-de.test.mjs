@@ -162,6 +162,10 @@ test("dentist/de uses the charter whole-word matcher and the dentist counter", (
   assert.match(html, /var BASE="\/bolla-demo-dentist\/de"/);
   assert.match(html, /title:"dentist demo de"/);
   assert.match(html, /s\.src="https:\/\/gc\.zgo\.at\/count\.js"/);
+  assert.match(html, /function bollaStore/);
+  assert.match(html, /bolla_internal/);
+  assert.match(html, /\[\?&#\]interno=\(\[01\]\)/);
+  assert.match(html, /bmaudit-/);
   assert.match(html, /skipgc/);
   assert.match(html, /\[\?&#\]internal=\(\[01\]\)/);
   assert.match(html, /\[\?&\]p=\(\[\^&#\]\*\)/);
@@ -342,6 +346,12 @@ test("counted paths keep a sanitised p and internal=1 sends nothing", () => {
   assert.equal(long.counts[0].path, "/bolla-demo-dentist/de/?p=" + "a".repeat(60));
 
   const skipped = runCounter("?internal=1&p=de-berlin-01");
+  const interno = runCounter("?interno=1");
+  assert.equal(interno.appended.length, 0);
+  assert.equal(interno.store.skipgc, "t");
+  const audit = runCounter("?p=bmaudit-de");
+  assert.equal(audit.appended.length, 0);
+  assert.equal(audit.counts.length, 0);
   assert.equal(skipped.appended.length, 0);
   assert.equal(skipped.counts.length, 0);
   assert.equal(skipped.store.skipgc, "t");
