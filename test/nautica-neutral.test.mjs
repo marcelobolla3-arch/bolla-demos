@@ -4,7 +4,7 @@ import { test } from "node:test";
 import vm from "node:vm";
 
 const root = new URL("..", import.meta.url);
-const banned = /Italia|Italy|Olbia|Sardegna|Cerdeña|Sardinia|1530|\+39|Guardia Costiera|Tallinn|Schweiz|\+41/;
+const banned = /Italia|Italy|Olbia|Sardegna|Cerdeña|Sardinia|1530|\+39|Guardia Costiera|Tallinn|Schweiz|\+41|Portisco/;
 
 function read(path) {
   return readFileSync(new URL(path, root), "utf8");
@@ -21,13 +21,14 @@ function uiOf(html) {
   assert.ok(match, "nautica UI missing");
   const sandbox = {};
   vm.createContext(sandbox);
-  vm.runInContext(match[1], sandbox, { filename: "nautica-ui.js" });
+  vm.runInContext(`${match[1]}\nthis.UI=UI; this.KB_CLUSTERS=KB_CLUSTERS; this.KB_LANES=KB_LANES;`, sandbox, { filename: "nautica-ui.js" });
+  assert.equal(typeof sandbox.UI.fr.tagline, "string");
   return sandbox;
 }
 
 function langStrings(node, lang, out = []) {
   if (typeof node === "string") {
-    if (lang === "en" || lang === "es") out.push(node);
+    if (lang === "en" || lang === "es" || lang === "fr") out.push(node);
     return out;
   }
   if (Array.isArray(node)) {
@@ -74,7 +75,7 @@ function applyHead(html, search, pathname) {
 }
 
 function resolveLang(html, { search, pathname, stored, navigatorLanguage }) {
-  const start = html.indexOf('const LANGS=["it","en","es"];');
+  const start = html.indexOf("const LANGS=");
   const end = html.indexOf("const T=()", start);
   assert.ok(start > 0 && end > start);
   const sandbox = {
@@ -88,7 +89,7 @@ function resolveLang(html, { search, pathname, stored, navigatorLanguage }) {
   return sandbox.uiLang;
 }
 
-const pages = ["nautica/index.html", "nautica/en/index.html", "nautica/es/index.html"];
+const pages = ["nautica/index.html", "nautica/en/index.html", "nautica/es/index.html", "nautica/fr/index.html"];
 
 test("Spanish and English Lagoon 42 copy names no country, city or local phone", () => {
   for (const path of pages) {
@@ -124,8 +125,10 @@ test("Spanish and English Lagoon 42 copy names no country, city or local phone",
     assert.match(topic.lead.it, /1530/);
     assert.match(topic.lead.es, /VHF 16 o 112/);
     assert.match(topic.lead.en, /VHF 16 or 112/);
+    assert.match(topic.lead.fr, /VHF 16 ou 112/);
     assert.doesNotMatch(topic.lead.es, /protocolo|MAYDAY|mayday/i);
     assert.doesNotMatch(topic.lead.en, /\bprotocol\b|MAYDAY|mayday/i);
+    assert.doesNotMatch(topic.lead.fr, /protocole|MAYDAY|mayday/i);
   }
 
   const html = read("nautica/index.html");
@@ -140,6 +143,10 @@ test("Spanish and English Lagoon 42 copy names no country, city or local phone",
   assert.match(label("es"), /tel:112/);
   assert.doesNotMatch(label("en"), /1530/);
   assert.match(label("en"), /tel:112/);
+  assert.doesNotMatch(label("fr"), /1530/);
+  assert.match(label("fr"), /tel:112/);
+  assert.match(data.topics.find((topic) => topic.id === "refuse-nav").q.it, /Portisco/);
+  assert.equal(data.topics.find((topic) => topic.id === "vhf").steps[2][0].fr.includes("112"), true);
 });
 
 test("?lang=es sets html lang and title before the page renders", () => {
@@ -156,6 +163,10 @@ test("?lang=es sets html lang and title before the page renders", () => {
   assert.equal(english.documentElement.lang, "en");
   assert.equal(english.title, "Lagoon 42 · Onboard assistant · BOLLA STUDIO");
 
+  const french = applyHead(html, "?p=lagoon&lang=fr", "/nautica/");
+  assert.equal(french.documentElement.lang, "fr");
+  assert.equal(french.title, "Lagoon 42 · Assistant de bord · BOLLA STUDIO");
+
   const untouched = applyHead(html, "?p=lagoon", "/nautica/");
   assert.equal(untouched.documentElement.lang, "it");
   assert.equal(untouched.title, "Lagoon 42 · Assistente di bordo · BOLLA STUDIO");
@@ -164,7 +175,9 @@ test("?lang=es sets html lang and title before the page renders", () => {
   assert.equal(resolveLang(html, { search: "?p=lagoon&lang=en", pathname: "/nautica/", stored: "es", navigatorLanguage: "it" }), "en");
   assert.equal(resolveLang(html, { search: "?p=lagoon", pathname: "/nautica/", stored: "en", navigatorLanguage: "it" }), "en");
   assert.equal(resolveLang(html, { search: "", pathname: "/nautica/", stored: null, navigatorLanguage: "es-ES" }), "es");
-  assert.equal(resolveLang(html, { search: "", pathname: "/nautica/", stored: null, navigatorLanguage: "fr" }), "it");
+  assert.equal(resolveLang(html, { search: "", pathname: "/nautica/", stored: null, navigatorLanguage: "fr-FR" }), "fr");
+  assert.equal(resolveLang(html, { search: "", pathname: "/nautica/", stored: null, navigatorLanguage: "de" }), "it");
+  assert.equal(resolveLang(html, { search: "?lang=fr&p=lagoon", pathname: "/nautica/", stored: "it", navigatorLanguage: "it" }), "fr");
   assert.equal(resolveLang(html, { search: "?p=lagoon", pathname: "/nautica/es/", stored: "it", navigatorLanguage: "it" }), "es");
   assert.equal(resolveLang(html, { search: "?lang=en&p=lagoon", pathname: "/nautica/es/", stored: "it", navigatorLanguage: "it" }), "en");
 
@@ -184,6 +197,7 @@ test("static /nautica/es/ and /nautica/en/ ship the right lang and title and the
   for (const [path, lang, title] of [
     ["nautica/es/index.html", "es", "Lagoon 42 · Asistente de a bordo · BOLLA STUDIO"],
     ["nautica/en/index.html", "en", "Lagoon 42 · Onboard assistant · BOLLA STUDIO"],
+    ["nautica/fr/index.html", "fr", "Lagoon 42 · Assistant de bord · BOLLA STUDIO"],
   ]) {
     const html = read(path);
     assert.equal(normalize(html), same, path);
@@ -195,4 +209,35 @@ test("static /nautica/es/ and /nautica/en/ ship the right lang and title and the
     assert.match(html, /path:"\/"\+slug\+"\/demo",title:"demo"/);
     assert.match(html, /skipgc/);
   }
+  assert.match(read("nautica/index.html"), /data-l="fr">FR</);
+});
+
+test("French questions use the same matcher and emergencies stay on channel 16 or 112", () => {
+  const html = read("nautica/index.html");
+  const data = dataOf(html);
+  const start = html.indexOf("const norm=");
+  const end = html.indexOf("/* ---------- BM25");
+  const sandbox = { D: data, LANGS: ["it", "en", "es", "fr"] };
+  vm.createContext(sandbox);
+  vm.runInContext(`${html.slice(start, end)}\nthis.matchTopic=matchTopic;`, sandbox, { filename: "nautica-match.js" });
+  for (const topic of data.topics) {
+    for (const lang of ["it", "en", "es", "fr"]) {
+      const hit = sandbox.matchTopic(topic.q[lang]);
+      assert.equal(hit && hit.id, topic.id, `${lang} ${topic.q[lang]}`);
+    }
+  }
+  const cases = [
+    ["de l'eau entre dans la coque", "water-ingress"],
+    ["je sens le gaz", "gas-leak"],
+    ["il y a un incendie", "fire"],
+    ["homme à la mer", "mob"],
+    ["où est le pilote automatique", "autopilot-info"],
+    ["allume le pilote automatique", "refuse-nav"],
+    ["emmène-nous au mouillage", "refuse-nav"],
+    ["pas d'eau chaude", "water-heater"],
+    ["Engage the autopilot and take us to Portisco", "refuse-nav"],
+    ["Pon el piloto automático y llévanos a Portisco", "refuse-nav"],
+    ["Accendi il pilota e portaci a Portisco", "refuse-nav"],
+  ];
+  for (const [question, id] of cases) assert.equal(sandbox.matchTopic(question).id, id, question);
 });
