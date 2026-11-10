@@ -1,0 +1,352 @@
+<!doctype html>
+<!-- Fictional Germany example for Berlin prospecting. Language de. Not the page /zahnarzt-ch/. No real practice. -->
+<html lang="de" translate="no">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex">
+<meta name="google" content="notranslate">
+<title>Beispielgespräch für eine Zahnarztpraxis · BOLLA STUDIO</title>
+<style>
+:root{--c:#7a1f2b;--ink:#1c1c1c;--bg:#f4f2ee}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Noto Sans","DejaVu Sans","Helvetica Neue",Arial,sans-serif;background:var(--bg);color:var(--ink);line-height:1.5;font-size:17px}
+.top{background:#1d2a33;color:#f2f5f7;padding:12px 16px;text-align:center}
+.top a{color:#fff}
+.langs{display:flex;flex-wrap:wrap;justify-content:center;gap:8px;padding:12px 16px;background:#243640}
+.langs a{display:inline-flex;align-items:center;justify-content:center;min-height:48px;min-width:48px;padding:10px 16px;border-radius:12px;background:#fff;color:#1d2a33;font-weight:700;text-decoration:none;border:2px solid #fff}
+.langs a[aria-current="page"]{background:var(--c);color:#fff;border-color:var(--c)}
+header,main{max-width:1080px;margin:0 auto;padding:8px 16px 0}
+.brand{font-weight:800;letter-spacing:.08em;font-size:.85rem;color:#5c6770}
+.by{margin:4px 0 8px;font-size:16px}
+.by a{color:var(--c)}
+.tag{font-size:14px;letter-spacing:.04em;color:#555;margin:0}
+h1{font-size:1.7rem;line-height:1.25;margin:8px 0 10px;color:var(--c)}
+.intro{margin:0 0 12px;color:#333}
+.badge{display:inline-block;background:#fff4d6;border:1px dashed #8a6a10;color:#5c4300;border-radius:8px;padding:4px 8px;font-size:14px;font-weight:700}
+.notice,.voice{background:#fff;border-radius:12px;padding:12px 14px;margin:12px 0;font-size:16px}
+.notice{border:2px solid #8a6a10}
+.voice{border:2px solid #1d2a33}
+.howto{background:#fff;border-radius:12px;padding:14px 16px;margin:12px 0 16px}
+.howto h2{margin:0 0 8px;font-size:1.25rem;color:var(--c)}
+.steps{margin:0;padding-left:1.3rem}
+.steps li{margin:8px 0}
+.grid{display:grid;gap:16px;margin:0 0 16px}
+.card{background:#fff;border-radius:16px;box-shadow:0 6px 24px rgba(0,0,0,.08);overflow:hidden}
+.wa-h{background:#1d2a33;color:#fff;padding:12px 16px;display:flex;align-items:center;gap:10px}
+.av{width:44px;height:44px;border-radius:50%;background:var(--c);display:flex;align-items:center;justify-content:center;font-weight:800}
+.wa-h small{display:block;opacity:.9;font-size:14px}
+.chat{background:#ece5dd;min-height:280px;max-height:52vh;overflow-y:auto;padding:12px;display:flex;flex-direction:column;gap:8px}
+.m{max-width:92%;padding:10px 12px;border-radius:10px;font-size:16px;white-space:pre-line;box-shadow:0 1px 1px rgba(0,0,0,.08)}
+.in{background:#fff;align-self:flex-start}.out{background:#e7f6e7;align-self:flex-end}
+.m.hand{background:#fff4d6;border:1px dashed #8a6a10}
+.qrl{padding:10px 12px 0;font-size:15px;color:#444}
+.qr{padding:8px 12px 12px;display:flex;flex-direction:column;gap:8px}
+.qr button,.slots button,.cta,.ask-row button{min-height:48px;font-size:17px;border-radius:12px;cursor:pointer}
+.qr button{width:100%;text-align:left;border:2px solid var(--c);background:#fff;color:var(--c);padding:12px 14px}
+.bk{padding:16px}
+.bk h3{margin:0 0 6px;color:var(--c);font-size:1.25rem}
+.bk p{margin:0 0 10px;color:#444}
+label{font-size:16px;color:#333;display:block;margin:12px 0 6px;font-weight:650}
+select,input{width:100%;padding:12px;border:1px solid #bbb;border-radius:10px;font-size:16px;font-family:inherit;min-height:48px}
+.slots{display:flex;flex-wrap:wrap;gap:8px}
+.slots button{border:2px solid #bbb;background:#fff;padding:10px 14px}
+.slots button.on{background:var(--c);color:#fff;border-color:var(--c)}
+.cta{margin-top:16px;width:100%;background:var(--c);color:#fff;border:0;padding:14px;font-weight:700}
+.ok{margin-top:14px;background:#eaf7ea;border:1px solid #8fbf8f;padding:12px;border-radius:10px;font-size:16px}
+.ask{padding:0 12px 14px}
+.ask-row{display:flex;flex-direction:column;gap:8px}
+.ask-row button{background:#1d2a33;color:#fff;border:0;padding:12px 16px;font-weight:700}
+.split,.feat{display:grid;gap:12px;margin:0 0 16px}
+.split div,.feat div{background:#fff;border-radius:12px;padding:14px 16px}
+.split h2,.feat b{color:var(--c)}
+.split ul{margin:8px 0 0;padding-left:1.2rem}
+.split li{margin:6px 0}
+footer{text-align:center;font-size:15px;color:#444;padding:8px 16px 40px}
+footer a{color:var(--c)}
+:focus-visible{outline:3px solid #0b57d0;outline-offset:2px}
+@media(min-width:800px){
+  h1{font-size:2rem}
+  .grid,.split{grid-template-columns:1fr 1fr}
+  .feat{grid-template-columns:1fr 1fr 1fr}
+  .qr{flex-direction:row;flex-wrap:wrap}
+  .qr button{width:auto}
+  .ask-row{flex-direction:row}
+  .ask-row input{flex:1}
+  .chat{max-height:460px}
+}
+</style>
+<!-- GoatCounter (BOLLA STUDIO): ?p= is a visit label for counting only. It does not personalize the page. ?internal=1 sets localStorage skipgc=t and loads nothing. -->
+<script>
+(function(){
+ var BASE="/bolla-demo-dentist/de";
+ var m=(location.search+location.hash).match(/[?&#]internal=([01])/);
+ try{ if(m){ if(m[1]==="1") localStorage.setItem("skipgc","t"); else localStorage.removeItem("skipgc"); } }catch(e){}
+ var internal=false; try{ internal=localStorage.getItem("skipgc")==="t"; }catch(e){}
+ var sm=location.search.match(/[?&]p=([^&#]*)/);
+ var tag=sm?decodeURIComponent(sm[1]).toLowerCase().replace(/[^a-z0-9-]/g,"").slice(0,60):"";
+ var q=[]; window.bsTrack=function(sub,title){ if(internal) return;
+   var ep=BASE+sub+(tag?'?p='+tag:'');if(window.goatcounter&&window.goatcounter.count) window.goatcounter.count({path:ep,title:title||sub,event:true}); else q.push([ep,title||sub]); };
+ if(internal) return;
+ window.goatcounter={no_onload:true};
+ var s=document.createElement("script"); s.async=true; s.src="https://gc.zgo.at/count.js";
+ s.setAttribute("data-goatcounter","https://bollastudio.goatcounter.com/count");
+ s.onload=function(){ try{ window.goatcounter.count({path:BASE+'/'+(tag?'?p='+tag:''),title:"dentist demo de"});
+   q.forEach(function(e){window.goatcounter.count({path:e[0],title:e[1],event:true});}); q=[]; }catch(e){} };
+ document.head.appendChild(s);
+})();
+</script>
+</head>
+<body data-demo="static-example" data-lang="de">
+<div class="top">Neutrales Beispielgespräch für Zahnarztpraxen in Deutschland. Das hat <a href="https://bollastudio.com" target="_blank" rel="noopener">BOLLA STUDIO</a> vorbereitet · «Beispielpraxis Zahn» ist erfunden, keine echte Praxis. Es gibt keine echten Termine. Dieses Gespräch ist ein geschriebenes Beispiel, kein Assistent in Echtzeit. Die Seite ist für alle Besucher gleich und nicht personalisiert.</div>
+<nav class="langs" aria-label="Sprache"><a href="../et/" hreflang="et" lang="et" data-keep-query>Eesti</a><a href="../ru/" hreflang="ru" lang="ru" data-keep-query>Русский</a><a href="../en/" hreflang="en" lang="en" data-keep-query>English</a><a href="./" hreflang="de" lang="de" data-keep-query aria-current="page">Deutsch</a></nav>
+<header>
+  <div class="brand">BOLLA STUDIO</div>
+  <p class="by">Marcelo Bolla · <a href="https://bollastudio.com" target="_blank" rel="noopener">bollastudio.com</a></p>
+  <p class="tag"><span class="badge">Geschriebenes Beispiel</span> Beispielpraxis Zahn, erfundene Praxis in Berlin</p>
+  <h1>Terminanfragen, auch wenn das Telefon besetzt ist</h1>
+  <p class="intro">Dieses geschriebene Gespräch zeigt alltägliche Fragen: neue Patienten, Kontrolle, Prophylaxe, Schmerzen, Sprechzeiten und Kinder. Es notiert einen Wunsch. Diagnose, Behandlung und Honorar bleiben bei der Praxis. Diese Seite gibt keinen medizinischen Rat und bucht nicht. Die Praxis in diesem Beispiel heißt «Beispielpraxis Zahn» und liegt in Berlin. Die Adresse Beispielstraße 12 und die Nummer +49 30 0000 0000 sind erfunden. Außerhalb dieser Seite gibt es keine Praxis unter diesem Namen. Honorare wären in Euro; hier steht kein Betrag.</p>
+  <p class="notice" role="note">Simulation: Alle Antworten sind vorher geschrieben. Es wird nichts gesendet und nichts gebucht. Diese Seite ist nicht mit WhatsApp, einem Terminsystem oder einem Sprachassistenten verbunden. Steht in der Adresse ?p=, ist das nur ein Besuchskennzeichen von BOLLA STUDIO. Es ändert die Seite nicht und ist keine Personalisierung. Diese Seite ist nicht die Website eines Unternehmens.</p>
+  <p class="voice" role="note">Dieser Bildschirm ist ein geschriebenes Gesprächsbeispiel. Es wird kein Ton abgespielt. Ein Sprachassistent ist hier nicht verbunden und läuft hier nicht. Sprache, falls sie getrennt beauftragt würde, wäre ein anderer Aufbau, nicht diese Seite.</p>
+</header>
+<main>
+<section class="howto" aria-labelledby="howto-title">
+  <h2 id="howto-title">So probieren Sie dieses Beispiel</h2>
+  <ol class="steps"><li>Lesen Sie das Beispielgespräch. Es steht schon auf dem Bildschirm.</li><li>Drücken Sie eine große Frage-Schaltfläche oder schreiben Sie Ihre Frage auf Deutsch und drücken Sie Senden.</li><li>Wählen Sie ein Datum und eine Zeit, dann die große Schaltfläche. Sie sehen nur ein Beispiel. Es wird nichts gebucht und nichts gesendet.</li></ol>
+</section>
+<div class="grid">
+  <div class="card">
+    <div class="wa-h"><div class="av" aria-hidden="true">D</div><div><b>Beispielpraxis Zahn · Beispielrezeption</b><small>Geschriebenes Beispiel · die Antworten sind auf Deutsch, das ist kein Assistent in Echtzeit</small></div></div>
+    <div class="chat" id="chat" role="log" aria-live="polite" aria-relevant="additions" aria-label="Beispielgespräch"></div>
+    <div class="qrl" id="qr-label">Probieren Sie eine Frage</div>
+    <div class="qr" id="qr" role="group" aria-labelledby="qr-label"></div>
+    <form class="ask" id="ask-form" action="#" method="post">
+      <label for="ask">Schreiben Sie Ihre Frage auf Deutsch</label>
+      <div class="ask-row">
+        <input id="ask" name="ask" type="text" autocomplete="off" enterkeyhint="send" placeholder="Zum Beispiel: Nehmen Sie Kinder an?">
+        <button type="submit">Senden</button>
+      </div>
+    </form>
+  </div>
+  <div class="card bk">
+    <h3>Terminanfrage als Beispiel</h3>
+    <p>So kann ein Gespräch einen Wunsch notieren. Die Praxis würde Ihnen einen Termin anbieten. Diese Seite tut das nicht.</p>
+    <label for="item">Grund</label>
+    <select id="item"><option>Kontrolle</option><option>Prophylaxe</option><option>Kontrolle und Prophylaxe</option><option>Beratung</option><option>Kind: erster Besuch</option><option>Schmerzen, dringend</option></select>
+    <label for="arr">Datum</label>
+    <input id="arr" type="date">
+    <p id="slots-label" style="margin:12px 0 6px;font-weight:650">Tageszeit</p>
+    <div class="slots" id="slots" role="group" aria-labelledby="slots-label"></div>
+    <label for="nm">Name (wird nicht gespeichert)</label>
+    <input id="nm" type="text" autocomplete="off" placeholder="Vor- und Nachname" aria-describedby="local-only">
+    <label for="ph">E-Mail oder Telefon (wird nicht gespeichert)</label>
+    <input id="ph" type="text" autocomplete="off" placeholder="name@example.com" aria-describedby="local-only">
+    <p id="local-only">Diese beiden Felder bleiben in Ihrem Browser. Diese Seite liest sie nicht, speichert sie nicht und sendet sie nicht.</p>
+    <button class="cta" id="cta" type="button">Termin anfragen</button>
+    <div class="ok" id="ok" role="status" hidden></div>
+  </div>
+</div>
+<div class="split">
+  <div><h2>Was dieses Beispielgespräch zeigt</h2><ul><li>Neue Patienten und eine Wunschzeit</li><li>Kontrolle und Prophylaxe als Themen</li><li>Beispiel-Sprechzeiten</li><li>Kinder und ängstliche Patienten</li><li>Hinweis auf den Notruf 112, ohne Diagnose und ohne Behandlungsanweisung</li></ul></div>
+  <div><h2>Was bei der Praxis bleibt</h2><ul><li>Diagnose und Behandlung</li><li>Honorar und Kostenvoranschlag</li><li>Starke Schmerzen</li><li>Medikamente</li><li>Jedes Gespräch, das das Team selbst führen will</li></ul></div>
+</div>
+<div class="feat"><div><b>Deutsch auf dieser Seite</b><br>Diese Seite antwortet auf Deutsch, in der Sie-Form. Estnisch, Russisch und Englisch sind eigene Seiten. Hier gibt es keinen Live-Dolmetscher und keinen Sprachassistenten.</div><div><b>Nur Beispielfakten</b><br>Die Antworten nutzen erfundene Beispielfakten. Das sind nicht die Preise oder Regeln einer echten Praxis, und es ist keine Rechts- oder Medizinberatung.</div><div><b>Ein Mensch würde entscheiden</b><br>In einem beauftragten Gespräch gingen die Angaben an das Team. Diese Schaltfläche sendet sie nicht und bucht nicht.</div></div>
+</main>
+<footer>Beispiel von <a href="https://bollastudio.com" target="_blank" rel="noopener">BOLLA STUDIO</a> · Marcelo Bolla · <a href="mailto:marcelo@bollastudio.com">marcelo@bollastudio.com</a><br>«Beispielpraxis Zahn» ist erfunden, keine echte Praxis in Berlin oder anderswo. Diese Seite ist kein medizinischer Rat. Es wird nichts gebucht, gespeichert oder gesendet. Diese Seite ist nicht die Website eines Unternehmens. Es ist nur ein Gesprächsbeispiel von BOLLA STUDIO. Die Nummer +49 30 0000 0000 ist erfunden.</footer>
+<script type="application/json" id="demo-pack">{"lang":"de","chat":[["in","Guten Tag, nehmen Sie neue Patienten an? Ich möchte eine Kontrolle und eine Prophylaxe."],["out","Guten Tag. In diesem Beispiel nimmt die Praxis neue Patienten an. Kontrolle und Prophylaxe sind meist zwei Termine.\nWelche Tageszeit passt Ihnen?"],["in","Dienstag- oder Donnerstagvormittag."],["out","Als Beispiel notiert: Kontrolle und Prophylaxe, Dienstag- oder Donnerstagvormittag.\nDie Rezeption würde mit einem Termin zurückrufen. Diese Seite sendet die Notiz nicht."],["in","Gast aus dem Beispiel. Vielen Dank."],["out","Vielen Dank. Nur eine Beispielnotiz. Bringen Sie mit, worum die Praxis bittet. Von dieser Seite wurde nichts gesendet."]],"rules":[{"id":"emergency","priority":true,"hand":true,"keys":["notfall","notarzt","notaufnahme","bewusstlos","bewusstlosigkeit","atmet nicht","keine luft","atemnot","blutung","blut","blutet","unfall","notruf","112","feuer","feuerwehr","brand","brennt","herzinfarkt","herzstillstand","schlaganfall","reanimation","vergiftung"],"roots":["notarzt","notaufnahme","bewusstlos","blutung","blut","notruf","atemnot","herzinfarkt","herzstillstand","schlaganfall","vergiftung","feuer","brand"],"compounds":["notfall","unfall"],"text":"Rufen Sie jetzt 112 an. 112 ist die Notrufnummer in Deutschland und in der Europäischen Union. Diese Seite gibt keine medizinischen Anweisungen und keine Erste-Hilfe-Schritte und ruft niemanden an. Es wurde nichts gesendet."},{"id":"pain","button":"Ich habe starke Zahnschmerzen. Was soll ich tun?","keys":["zahnschmerz","schmerz","zahnweh"],"compounds":["zahnschmerz","schmerz","zahnweh"],"hand":true,"text":"Es tut mir leid, dass Sie Schmerzen haben. Dieses Beispiel kann nicht diagnostizieren. Die Notiz würde als dringend markiert, damit die Praxis anruft. Wenn Sie sofort Hilfe brauchen, rufen Sie 112 an. 112 ist die Notrufnummer in Deutschland. Diese Seite nennt keine Behandlungsschritte. Von dieser Seite wurde nichts gesendet."},{"id":"hours","button":"Wann haben Sie geöffnet?","keys":["geoffnet","geoeffnet","offen","sprechzeit","offnungszeit","oeffnungszeit"],"roots":["sprechzeit","offnungszeit","oeffnungszeit"],"text":"Diese Beispielpraxis ist Montag bis Freitag von 9:00 bis 17:00 Uhr geöffnet. Das sind Beispielzeiten. Eine echte Praxis würde ihre eigenen Zeiten nennen. Die erfundene Beispielnummer lautet +49 30 0000 0000."},{"id":"children","button":"Nehmen Sie Kinder an?","keys":["kind"],"roots":["kind"],"text":"Ja. In diesem Beispiel sind Kinder willkommen, und für den ersten Besuch ist etwas mehr Zeit vorgesehen. Diese Seite bucht den Besuch nicht."},{"id":"afraid","button":"Ich habe Angst vor dem Zahnarzt.","keys":["angst","angstlich","aengstlich","aengste","nervos","nervositat"],"roots":["angst","nervos"],"text":"So geht es vielen Menschen. Schreiben Sie das in die Anfrage. Diese Beispielpraxis würde vor der Behandlung Zeit zum Sprechen lassen. Diese Seite bucht den Besuch nicht."},{"id":"price","button":"Was kostet ein Implantat?","keys":["implantat","preis","kostet","kosten","honorar","gebuhr","gebuehr"],"compounds":["implantat","preis","honorar","gebuhr","gebuehr"],"hand":true,"text":"Das Honorar hängt von der Untersuchung ab, deshalb nennt dieses Beispiel keinen Betrag in Euro. Nach dem Blick würde die Zahnärztin oder der Zahnarzt einen Kostenvoranschlag schreiben. Es wurde nichts gesendet, und es steht kein Preis hier."}],"fallback":"Das ist ein geschriebenes Beispiel, kein Assistent in Echtzeit. Ich habe nur vorbereitete Antworten auf Deutsch für die Beispielfragen. Ich buche nicht, ich sende keine Nachrichten, und ich bin nicht mit WhatsApp, einem Terminsystem oder einem Sprachassistenten verbunden. Bitte drücken Sie eine Schaltfläche oder verwenden Sie Wörter aus diesen Fragen.","empty":"Bitte schreiben Sie eine Frage auf Deutsch und drücken Sie dann Senden.","ok":"Nur ein Beispiel: {item} · {date} · {slot}. Es wurde nichts gebucht und nichts gesendet. Diese Seite prüft kein Terminsystem und speichert nicht, was Sie geschrieben haben.","pick":"Bitte wählen Sie zuerst oben ein Datum und eine Zeit.","lead":14,"slots":["Vormittag","Mittag","Nachmittag","Abend"],"months":["Jan.","Feb.","März","Apr.","Mai","Juni","Juli","Aug.","Sept.","Okt.","Nov.","Dez."],"dateStyle":"dmy-numeric"}</script>
+<script id="bolla-lang-links">
+document.querySelectorAll("[data-keep-query]").forEach(function(a){
+  try{var u=new URL(a.getAttribute("href"),location.href);a.href=u.pathname+location.search+location.hash;}catch(e){}
+});
+</script>
+<script id="sector-demo">
+(function(){
+  var PACK = JSON.parse(document.getElementById("demo-pack").textContent);
+  var chat = document.getElementById("chat");
+  var qr = document.getElementById("qr");
+  function reduceMotion(){
+    return !!(window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches);
+  }
+  function add(t, kind){
+    var e = document.createElement("div");
+    e.className = "m " + (kind === "in" ? "in" : "out") + (kind === "hand" ? " hand" : "");
+    e.textContent = t;
+    chat.appendChild(e);
+    chat.scrollTop = chat.scrollHeight;
+    return e;
+  }
+  function showAnswer(entry){
+    add(entry.text, entry.hand ? "hand" : "out");
+  }
+  function tokensOf(raw){
+    var n = String(raw || "").toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+    return n.match(/[\p{L}\p{N}]+/gu) || [];
+  }
+  function norm(s){
+    return tokensOf(s).join(" ");
+  }
+  function isInflection(rest){
+    if (rest === "") return true;
+    var lang = PACK.lang;
+    if (lang === "et") return /^(?:[aeiou](?:sse|sid|ga|le|lt|st|ks|ni|na|ta|de|te|id|d|t|s|l|n)?|sse|sid|ga|le|lt|st|ks|ni|na|ta|de|te|id|da|d|t|s|l|n)$/.test(rest);
+    if (lang === "de") return /^(?:e|en|er|em|es|ern|n|s|se|isch)$/.test(rest);
+    return /^(?:ing|ies|es|ed|er|est|s|y|d|e)$/.test(rest);
+  }
+  function listed(list, key){
+    var id = tokensOf(key).join(" ");
+    var i;
+    for (i = 0; i < (list || []).length; i++){
+      if (tokensOf(list[i]).join(" ") === id) return true;
+    }
+    return false;
+  }
+  function modeFor(rule, key){
+    if (listed(rule.prefixes, key)) return "prefix";
+    if (listed(rule.compounds, key)) return "compound";
+    if (listed(rule.roots, key)) return "root";
+    return "exact";
+  }
+  function stemAtStart(token, stem){
+    return token.startsWith(stem) && isInflection(token.slice(stem.length));
+  }
+  function tailHit(token, stem){
+    var at = token.lastIndexOf(stem);
+    return at >= 4 && isInflection(token.slice(at + stem.length));
+  }
+  function tokenOk(token, stem, mode){
+    if (token === stem) return true;
+    if (stem.length < 3 || mode === "exact") return false;
+    if (mode === "phrase" || mode === "root") return stemAtStart(token, stem);
+    if (mode === "compound") return stemAtStart(token, stem) || tailHit(token, stem);
+    if (mode === "prefix") return (stem.length >= 4 && token.startsWith(stem)) || tailHit(token, stem);
+    return false;
+  }
+  function keyHit(tokens, key, mode){
+    var kt = tokensOf(key);
+    var span = kt.length;
+    var i, j, ok;
+    if (!span) return false;
+    for (i = 0; i + span <= tokens.length; i++){
+      ok = true;
+      for (j = 0; j < span; j++){
+        if (!tokenOk(tokens[i + j], kt[j], span === 1 ? mode : "phrase")){ ok = false; break; }
+      }
+      if (ok) return true;
+    }
+    return false;
+  }
+  function answerFor(raw){
+    var tokens = tokensOf(raw);
+    if (!tokens.length) return { text: PACK.empty, hand: false, id: "empty" };
+    function best(priority){
+      var found = null, foundLen = 0;
+      PACK.rules.forEach(function(r){
+        if (!!r.priority !== priority) return;
+        (r.keys || []).forEach(function(k){
+          if (!keyHit(tokens, k, modeFor(r, k))) return;
+          var len = tokensOf(k).join(" ").length;
+          if (len > foundLen){ found = r; foundLen = len; }
+        });
+      });
+      return found;
+    }
+    var hit = best(true) || best(false);
+    if (!hit) return { text: PACK.fallback, hand: false, id: "fallback" };
+    return { text: hit.text, hand: !!hit.hand, id: hit.id || "match" };
+  }
+  window.__sectorDemo = { mode: "static-example", lang: PACK.lang, answerFor: answerFor, liveAI: false };
+  function play(i){
+    if (i >= PACK.chat.length) return;
+    var m = PACK.chat[i];
+    var kind = m[0] === "in" ? "in" : (m[0] === "hand" ? "hand" : "out");
+    if (kind === "in"){
+      add(m[1], "in");
+      if (reduceMotion()) play(i + 1); else setTimeout(function(){ play(i + 1); }, 350);
+      return;
+    }
+    if (reduceMotion()){ add(m[1], kind); play(i + 1); return; }
+    var t = add("\u2026", "out");
+    t.setAttribute("aria-hidden", "true");
+    setTimeout(function(){
+      t.remove();
+      add(m[1], kind);
+      setTimeout(function(){ play(i + 1); }, 650);
+    }, 500);
+  }
+  PACK.rules.forEach(function(r){
+    if (!r.button) return;
+    var b = document.createElement("button");
+    b.type = "button";
+    b.className = "qbtn";
+    b.textContent = r.button;
+    b.onclick = function(){
+      add(r.button, "in");
+      if (window.bsTrack && r.id) window.bsTrack("/chat/" + r.id, "example");
+      var entry = { text: r.text, hand: !!r.hand };
+      if (reduceMotion()) showAnswer(entry);
+      else {
+        var t = add("\u2026", "out");
+        t.setAttribute("aria-hidden", "true");
+        setTimeout(function(){ t.remove(); showAnswer(entry); }, 450);
+      }
+    };
+    qr.appendChild(b);
+  });
+  play(0);
+  document.getElementById("ask-form").addEventListener("submit", function(ev){
+    ev.preventDefault();
+    var input = document.getElementById("ask");
+    var q = input.value || "";
+    if (!norm(q)){ showAnswer({ text: PACK.empty, hand: false }); return; }
+    add(q, "in");
+    showAnswer(answerFor(q));
+    input.value = "";
+  });
+  function iso(d){
+    return d.getFullYear() + "-" + String(d.getMonth() + 1).padStart(2, "0") + "-" + String(d.getDate()).padStart(2, "0");
+  }
+  function formatDate(v){
+    var p = v.split("-");
+    var d = Number(p[2]), m = Number(p[1]), y = p[0];
+    if (PACK.dateStyle === "dmy-numeric"){
+      return String(d).padStart(2, "0") + "." + String(m).padStart(2, "0") + "." + y;
+    }
+    return d + " " + PACK.months[m - 1] + " " + y;
+  }
+  var arr = document.getElementById("arr");
+  var today = new Date();
+  arr.min = iso(today);
+  var d0 = new Date();
+  d0.setDate(d0.getDate() + (PACK.lead || 7));
+  arr.value = iso(d0);
+  var slotsEl = document.getElementById("slots");
+  var slot = null;
+  (PACK.slots || []).forEach(function(n){
+    var b = document.createElement("button");
+    b.type = "button";
+    b.textContent = n;
+    b.setAttribute("aria-pressed", "false");
+    b.onclick = function(){
+      [].forEach.call(slotsEl.children, function(x){
+        x.classList.remove("on");
+        x.setAttribute("aria-pressed", "false");
+      });
+      b.classList.add("on");
+      b.setAttribute("aria-pressed", "true");
+      slot = n;
+    };
+    slotsEl.appendChild(b);
+  });
+  document.getElementById("cta").addEventListener("click", function(){
+    var ok = document.getElementById("ok");
+    ok.hidden = false;
+    var v = arr.value;
+    if (!v || !slot){ ok.textContent = PACK.pick; return; }
+    var item = document.getElementById("item").value;
+    ok.textContent = PACK.ok.replace("{item}", item).replace("{date}", formatDate(v)).replace("{slot}", slot);
+    if (window.bsTrack) window.bsTrack("/request/confirm", "example");
+  });
+})();
+</script>
+</body></html>
