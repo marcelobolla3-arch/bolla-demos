@@ -227,8 +227,13 @@ try {
     if (await evaluate("!!document.querySelector('video')")) throw new Error("video still present");
     const before = await hits();
     if (before.length !== 1 || before[0].e !== false || !before[0].p.includes("/" + tag + "/video-en")) throw new Error("visit " + JSON.stringify(before));
+    await evaluate("document.querySelector('#qr button').click()");
+    await delay(200);
+    const after = await hits();
+    if (after.length !== 3 || after[1].e !== true || after[1].t !== "conc-chat-open" || after[2].t !== "conc-intent-stock") throw new Error("use " + JSON.stringify(after));
+    if (after[1].p.includes("SUV") || after[2].p.includes(" ")) throw new Error("text leaked");
     await shot("qa-concesionarios-en-375");
-    return { hits: before.map(({ p, t, e }) => ({ p, t, e })), width: await evaluate("document.documentElement.clientWidth") };
+    return { hits: after.map(({ p, t, e }) => ({ p, t, e })), width: await evaluate("document.documentElement.clientWidth") };
   });
 
   await run("redirect-once", async () => {

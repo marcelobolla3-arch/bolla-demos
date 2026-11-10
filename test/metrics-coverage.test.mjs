@@ -95,7 +95,7 @@ test("campaign usage is attached to the event and the question text is not the t
   for (const lang of ["en", "de", "es", "it"]) {
     const page = read(new URL(`concesionarios/${lang}/index.html`, root));
     assert.doesNotMatch(page, /<video\b|src="video\.mp4"|video-play|poster=|\.vtt/);
-    assert.match(page, new RegExp(`"/"\\+s\\+"/video-${lang}"`));
+    assert.match(page, new RegExp(`__concPath\\(raw,"video-${lang}"\\)`));
     assert.match(page, new RegExp(`title:"concesionarios video-${lang}"`));
     assert.match(page, /Marcelo Bolla/);
     assert.match(page, /bollastudio\.com/);
