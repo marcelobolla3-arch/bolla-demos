@@ -1,0 +1,352 @@
+<!doctype html>
+<!-- Location-neutral sailing charter example. Not /charter/ and not /charter-de/. Not an operator site. Language fr. ?p= is not personalization. -->
+<html lang="fr" translate="no">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex">
+<meta name="google" content="notranslate">
+<title>Exemple de conversation pour une location de voilier · BOLLA STUDIO</title>
+<style>
+:root{--c:#7a1f2b;--ink:#1c1c1c;--bg:#f4f2ee}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Noto Sans","DejaVu Sans","Helvetica Neue",Arial,sans-serif;background:var(--bg);color:var(--ink);line-height:1.5;font-size:17px}
+.top{background:#1d2a33;color:#f2f5f7;padding:12px 16px;text-align:center}
+.top a{color:#fff}
+.langs{display:flex;flex-wrap:wrap;justify-content:center;gap:8px;padding:12px 16px;background:#243640}
+.langs a{display:inline-flex;align-items:center;justify-content:center;min-height:48px;min-width:48px;padding:10px 16px;border-radius:12px;background:#fff;color:#1d2a33;font-weight:700;text-decoration:none;border:2px solid #fff}
+.langs a[aria-current="page"]{background:var(--c);color:#fff;border-color:var(--c)}
+header,main{max-width:1080px;margin:0 auto;padding:8px 16px 0}
+.brand{font-weight:800;letter-spacing:.08em;font-size:.85rem;color:#5c6770}
+.by{margin:4px 0 8px;font-size:16px}
+.by a{color:var(--c)}
+.tag{font-size:14px;letter-spacing:.04em;color:#555;margin:0}
+h1{font-size:1.7rem;line-height:1.25;margin:8px 0 10px;color:var(--c)}
+.intro{margin:0 0 12px;color:#333}
+.badge{display:inline-block;background:#fff4d6;border:1px dashed #8a6a10;color:#5c4300;border-radius:8px;padding:4px 8px;font-size:14px;font-weight:700}
+.notice,.voice{background:#fff;border-radius:12px;padding:12px 14px;margin:12px 0;font-size:16px}
+.notice{border:2px solid #8a6a10}
+.voice{border:2px solid #1d2a33}
+.howto{background:#fff;border-radius:12px;padding:14px 16px;margin:12px 0 16px}
+.howto h2{margin:0 0 8px;font-size:1.25rem;color:var(--c)}
+.steps{margin:0;padding-left:1.3rem}
+.steps li{margin:8px 0}
+.grid{display:grid;gap:16px;margin:0 0 16px}
+.card{background:#fff;border-radius:16px;box-shadow:0 6px 24px rgba(0,0,0,.08);overflow:hidden}
+.wa-h{background:#1d2a33;color:#fff;padding:12px 16px;display:flex;align-items:center;gap:10px}
+.av{width:44px;height:44px;border-radius:50%;background:var(--c);display:flex;align-items:center;justify-content:center;font-weight:800}
+.wa-h small{display:block;opacity:.9;font-size:14px}
+.chat{background:#ece5dd;min-height:280px;max-height:52vh;overflow-y:auto;padding:12px;display:flex;flex-direction:column;gap:8px}
+.m{max-width:92%;padding:10px 12px;border-radius:10px;font-size:16px;white-space:pre-line;box-shadow:0 1px 1px rgba(0,0,0,.08)}
+.in{background:#fff;align-self:flex-start}.out{background:#e7f6e7;align-self:flex-end}
+.m.hand{background:#fff4d6;border:1px dashed #8a6a10}
+.qrl{padding:10px 12px 0;font-size:15px;color:#444}
+.qr{padding:8px 12px 12px;display:flex;flex-direction:column;gap:8px}
+.qr button,.slots button,.cta,.ask-row button{min-height:48px;font-size:17px;border-radius:12px;cursor:pointer}
+.qr button{width:100%;text-align:left;border:2px solid var(--c);background:#fff;color:var(--c);padding:12px 14px}
+.bk{padding:16px}
+.bk h3{margin:0 0 6px;color:var(--c);font-size:1.25rem}
+.bk p{margin:0 0 10px;color:#444}
+label{font-size:16px;color:#333;display:block;margin:12px 0 6px;font-weight:650}
+select,input{width:100%;padding:12px;border:1px solid #bbb;border-radius:10px;font-size:16px;font-family:inherit;min-height:48px}
+.slots{display:flex;flex-wrap:wrap;gap:8px}
+.slots button{border:2px solid #bbb;background:#fff;padding:10px 14px}
+.slots button.on{background:var(--c);color:#fff;border-color:var(--c)}
+.cta{margin-top:16px;width:100%;background:var(--c);color:#fff;border:0;padding:14px;font-weight:700}
+.ok{margin-top:14px;background:#eaf7ea;border:1px solid #8fbf8f;padding:12px;border-radius:10px;font-size:16px}
+.ask{padding:0 12px 14px}
+.ask-row{display:flex;flex-direction:column;gap:8px}
+.ask-row button{background:#1d2a33;color:#fff;border:0;padding:12px 16px;font-weight:700}
+.split,.feat{display:grid;gap:12px;margin:0 0 16px}
+.split div,.feat div{background:#fff;border-radius:12px;padding:14px 16px}
+.split h2,.feat b{color:var(--c)}
+.split ul{margin:8px 0 0;padding-left:1.2rem}
+.split li{margin:6px 0}
+footer{text-align:center;font-size:15px;color:#444;padding:8px 16px 40px}
+footer a{color:var(--c)}
+:focus-visible{outline:3px solid #0b57d0;outline-offset:2px}
+@media(min-width:800px){
+  h1{font-size:2rem}
+  .grid,.split{grid-template-columns:1fr 1fr}
+  .feat{grid-template-columns:1fr 1fr 1fr}
+  .qr{flex-direction:row;flex-wrap:wrap}
+  .qr button{width:auto}
+  .ask-row{flex-direction:row}
+  .ask-row input{flex:1}
+  .chat{max-height:460px}
+}
+</style>
+<!-- GoatCounter (BOLLA STUDIO): ?p= is a visit label for counting only. It does not personalize the page. ?internal=1 sets localStorage skipgc=t and loads nothing. -->
+<script>
+(function(){
+ var BASE="/bolla-demo-charter-intl/fr";
+ var m=(location.search+location.hash).match(/[?&#]internal=([01])/);
+ try{ if(m){ if(m[1]==="1") localStorage.setItem("skipgc","t"); else localStorage.removeItem("skipgc"); } }catch(e){}
+ var internal=false; try{ internal=localStorage.getItem("skipgc")==="t"; }catch(e){}
+ var sm=location.search.match(/[?&]p=([^&#]*)/);
+ var tag=sm?decodeURIComponent(sm[1]).toLowerCase().replace(/[^a-z0-9-]/g,"").slice(0,60):"";
+ var q=[]; window.bsTrack=function(sub,title){ if(internal) return;
+   var ep=BASE+sub+(tag?'?p='+tag:'');if(window.goatcounter&&window.goatcounter.count) window.goatcounter.count({path:ep,title:title||sub,event:true}); else q.push([ep,title||sub]); };
+ if(internal) return;
+ window.goatcounter={no_onload:true};
+ var s=document.createElement("script"); s.async=true; s.src="https://gc.zgo.at/count.js";
+ s.setAttribute("data-goatcounter","https://bollastudio.goatcounter.com/count");
+ s.onload=function(){ try{ window.goatcounter.count({path:BASE+'/'+(tag?'?p='+tag:''),title:"charter-intl demo fr"});
+   q.forEach(function(e){window.goatcounter.count({path:e[0],title:e[1],event:true});}); q=[]; }catch(e){} };
+ document.head.appendChild(s);
+})();
+</script>
+</head>
+<body data-demo="static-example" data-lang="fr">
+<div class="top">Exemple de conversation pour la location d’un yacht ou d’un voilier, préparé par <a href="https://bollastudio.com" target="_blank" rel="noopener">BOLLA STUDIO</a> · « Example Charter » est une entreprise fictive, pas un vrai loueur. Aucun départ n’est confirmé. Cette conversation est un exemple écrit, pas un assistant en direct.</div>
+<nav class="langs" aria-label="Language"><a href="../en/" hreflang="en" lang="en" data-keep-query>English</a><a href="./" hreflang="fr" lang="fr" data-keep-query aria-current="page">Français</a></nav>
+<header>
+  <div class="brand">BOLLA STUDIO</div>
+  <p class="by">Marcelo Bolla · <a href="https://bollastudio.com" target="_blank" rel="noopener">bollastudio.com</a></p>
+  <p class="tag"><span class="badge">Exemple écrit</span> Example Charter, un exemple fictif de location</p>
+  <h1>Exemple : un yacht, un catamaran ou un cours de voile</h1>
+  <p class="intro">Cette conversation écrite est un exemple générique pour une entreprise de location : une sortie à la journée, un cours de voile, une date et le nombre de personnes. Elle n’est liée à aucune ville ni à aucun pays. Le même type d’exemple convient à une entreprise en Méditerranée, dans les Caraïbes, en Australie ou en Amérique du Nord. La météo est seulement ce que l’entreprise dirait elle-même. Cette page ne garantit ni la météo ni une heure de départ. L’équipe dirait si une sortie est possible. Cette page ne le fait pas.</p>
+  <p class="notice" role="note">Simulation : chaque réponse est écrite à l’avance. Rien n’est envoyé et rien n’est réservé. Cette page n’est reliée ni à WhatsApp, ni à un système de réservation, ni à un agent vocal. Si l’adresse contient ?p=, il s’agit seulement d’une étiquette de visite pour BOLLA STUDIO. Cela ne change pas la page et ce n’est pas une personnalisation. Cette page n’est pas le site d’une entreprise.</p>
+  <p class="voice" role="note">Cet écran est un exemple de conversation écrite. Il n’émet aucun son. Aucun assistant vocal n’est connecté et aucun ne fonctionne ici. La voix, si elle est commandée à part, serait une autre installation, pas cette page.</p>
+</header>
+<main>
+<section class="howto" aria-labelledby="howto-title">
+  <h2 id="howto-title">Comment essayer cet exemple</h2>
+  <ol class="steps"><li>Lisez la conversation d’exemple. Elle est déjà à l’écran.</li><li>Touchez un grand bouton de question, ou écrivez votre question en français et touchez Envoyer.</li><li>Choisissez la date et une option, puis touchez le grand bouton. Vous verrez seulement une note d’exemple. Rien n’est réservé et rien n’est envoyé.</li></ol>
+</section>
+<div class="grid">
+  <div class="card">
+    <div class="wa-h"><div class="av" aria-hidden="true">E</div><div><b>Example Charter · demande d’exemple</b><small>Exemple écrit · réponses en français préparées à l’avance, pas un assistant en direct</small></div></div>
+    <div class="chat" id="chat" role="log" aria-live="polite" aria-relevant="additions" aria-label="Conversation d’exemple écrite"></div>
+    <div class="qrl" id="qr-label">Essayez une question</div>
+    <div class="qr" id="qr" role="group" aria-labelledby="qr-label"></div>
+    <form class="ask" id="ask-form" action="#" method="post">
+      <label for="ask">Écrivez une question en français</label>
+      <div class="ask-row">
+        <input id="ask" name="ask" type="text" autocomplete="off" enterkeyhint="send" placeholder="Par exemple : Y a-t-il un cours de voile ?">
+        <button type="submit">Envoyer</button>
+      </div>
+    </form>
+  </div>
+  <div class="card bk">
+    <h3>Demande, montrée comme un exemple</h3>
+    <p>Voici comment une conversation peut noter une date et un groupe. L’équipe dirait si c’est possible. Cette page ne confirme pas un départ.</p>
+    <label for="item">Demande</label>
+    <select id="item"><option>Location à la journée</option><option>Cours de voile</option><option>Demande pour un catamaran</option></select>
+    <label for="arr">Date</label>
+    <input id="arr" type="date">
+    <p id="slots-label" style="margin:12px 0 6px;font-weight:650">Moment de la journée, à titre d’exemple</p>
+    <div class="slots" id="slots" role="group" aria-labelledby="slots-label"></div>
+    <label for="nm">Nom (non enregistré)</label>
+    <input id="nm" type="text" autocomplete="off" placeholder="Prénom et nom" aria-describedby="local-only">
+    <label for="ph">E-mail ou mobile (non enregistré)</label>
+    <input id="ph" type="text" autocomplete="off" placeholder="000 000 0000 / nom@exemple.com" aria-describedby="local-only">
+    <p id="local-only">Ces deux champs restent dans votre navigateur. Cette page ne les lit pas, ne les enregistre pas et ne les envoie pas.</p>
+    <button class="cta" id="cta" type="button">Noter la demande comme un exemple</button>
+    <div class="ok" id="ok" role="status" hidden></div>
+  </div>
+</div>
+<div class="split">
+  <div><h2>Ce que cet exemple de conversation montre</h2><ul><li>Un yacht ou un catamaran, en demande</li><li>Un cours de voile, en demande</li><li>Une date et le nombre de personnes</li><li>La météo comme information de l’entreprise, sans garantie</li></ul></div>
+  <div><h2>Ce qui reste à l’équipe</h2><ul><li>Si une sortie est possible</li><li>Les changements et les annulations</li><li>Le prix et le nombre de places</li><li>Les règles de sécurité, que cet exemple n’invente pas</li></ul></div>
+</div>
+<div class="feat"><div><b>Français sur cette page</b><br>Cette page répond en français. L’exemple en anglais est une page séparée. Il n’y a ici ni interprète en direct ni assistant vocal.</div><div><b>Des faits d’exemple seulement</b><br>Les réponses sont un exemple fictif. Ce ne sont pas les prix, les places ou les règles d’une vraie entreprise.</div><div><b>L’équipe déciderait</b><br>Dans une conversation commandée, les détails seraient transmis à l’équipe. Ce bouton ne les envoie pas, n’appelle personne et ne réserve rien.</div></div>
+</main>
+<footer>Démo d’exemple de <a href="https://bollastudio.com" target="_blank" rel="noopener">BOLLA STUDIO</a> · Marcelo Bolla · <a href="mailto:marcelo@bollastudio.com">marcelo@bollastudio.com</a><br>« Example Charter » est fictif : ce n’est ni une vraie entreprise de location ni une école. Aucun prix, aucune place et aucune heure de départ ne sont réels. Le numéro d’exemple 000 000 0000 est fictif et n’est pas une ligne en service. Rien n’est réservé, enregistré ou envoyé. Ce n’est pas la page /charter/ ni /charter-de/. Cette page n’est pas le site d’une entreprise. C’est seulement un exemple de conversation de BOLLA STUDIO.</footer>
+<script type="application/json" id="demo-pack">{"lang":"fr","chat":[["in","Bonjour, un catamaran est-il libre samedi pour quatre personnes ?"],["out","Bonjour. Je peux noter samedi, quatre personnes, un catamaran, comme exemple.\nCette page ne confirme ni une place libre ni une heure de départ."],["in","Client Exemple. Et si le temps est mauvais ?"],["out","Merci. L’entreprise parlerait de la météo. Cet exemple ne garantit ni la sortie ni une heure de départ. L’équipe dirait si le projet tient ou change. Rien n’a été envoyé depuis cette page."]],"rules":[{"id":"yacht","button":"Peut-on demander un yacht ou un catamaran ?","keys":["yacht","catamaran","voilier"],"text":"Oui. Dans cet exemple, vous pouvez demander la location à la journée d’un yacht ou d’un catamaran. Cette page ne sait pas si une place est libre, ni ce que cela coûte. L’équipe répondrait.","roots":["yacht","catamaran","voilier"]},{"id":"course","button":"Y a-t-il un cours de voile ?","keys":["cours de voile","stage","stages"],"text":"Dans cet exemple, vous pouvez demander un cours de voile. L’équipe confirmerait la date et le niveau. Personne n’est inscrit depuis cette page.","roots":[]},{"id":"party","button":"Nous sommes quatre. La date convient-elle ?","keys":["quatre","date","personne","dix"],"text":"Le nombre de personnes et la date peuvent être notés comme exemple. L’équipe dirait si ce jour convient. Cette page ne le confirme pas.","roots":["personne","date"]},{"id":"weather","button":"Et si le temps est mauvais ?","keys":["meteo","vent","vents","pluie","pluies","tempete","orage","orageux"],"hand":true,"text":"L’entreprise regarderait la météo. Cet exemple ne garantit ni le temps ni une heure de départ. L’équipe déciderait. Rien n’a été envoyé.","roots":[]},{"id":"safety","button":"Et la sécurité et l’équipement ?","keys":["securite","equipement","gilet de sauvetage"],"hand":true,"text":"L’équipe expliquerait la sécurité et l’équipement selon ses propres règles. Cet exemple ne donne pas de manuel technique ni de consignes de sécurité. Rien n’a été envoyé.","roots":["securite","equipement"]},{"id":"emergency","priority":true,"hand":true,"keys":["homme a la mer","tombe a la mer","noyade","se noie","se noyer","urgence","blesse","blessure"],"roots":["noyade","urgence","blesse","blessure"],"text":"Appelez maintenant le numéro d’urgence local. Là où le 112 est le numéro d’urgence, appelez le 112. Cet exemple écrit ne donne aucune consigne de sauvetage et ne remplace pas un appel d’urgence."}],"fallback":"Ceci est un exemple écrit, pas un assistant en direct. Cet exemple ne couvre pas cette question. L’entreprise y répondrait. Rien n’est réservé ni envoyé d’ici.","empty":"Veuillez écrire une question en français, puis touchez Envoyer.","ok":"Exemple seulement : {item} · {date} · {slot}. Rien n’a été réservé et rien n’a été envoyé. Cette page ne consulte pas un système de réservation et n’enregistre pas ce que vous avez écrit.","pick":"Veuillez d’abord choisir la date et une option ci-dessus.","lead":2,"slots":["Matin","Après-midi","Soir"],"months":["janvier","février","mars","avril","mai","juin","juillet","août","septembre","octobre","novembre","décembre"],"dateStyle":"dmy-name"}</script>
+<script id="bolla-lang-links">
+document.querySelectorAll("[data-keep-query]").forEach(function(a){
+  try{var u=new URL(a.getAttribute("href"),location.href);a.href=u.pathname+location.search+location.hash;}catch(e){}
+});
+</script>
+<script id="sector-demo">
+(function(){
+  var PACK = JSON.parse(document.getElementById("demo-pack").textContent);
+  var chat = document.getElementById("chat");
+  var qr = document.getElementById("qr");
+  function reduceMotion(){
+    return !!(window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches);
+  }
+  function add(t, kind){
+    var e = document.createElement("div");
+    e.className = "m " + (kind === "in" ? "in" : "out") + (kind === "hand" ? " hand" : "");
+    e.textContent = t;
+    chat.appendChild(e);
+    chat.scrollTop = chat.scrollHeight;
+    return e;
+  }
+  function showAnswer(entry){
+    add(entry.text, entry.hand ? "hand" : "out");
+  }
+  function tokensOf(raw){
+    var n = String(raw || "").toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+    return n.match(/[\p{L}\p{N}]+/gu) || [];
+  }
+  function norm(s){
+    return tokensOf(s).join(" ");
+  }
+  function isInflection(rest){
+    if (rest === "") return true;
+    var lang = PACK.lang;
+    if (lang === "et") return /^(?:[aeiou](?:sse|sid|ga|le|lt|st|ks|ni|na|ta|de|te|id|d|t|s|l|n)?|sse|sid|ga|le|lt|st|ks|ni|na|ta|de|te|id|da|d|t|s|l|n)$/.test(rest);
+    if (lang === "de") return /^(?:e|en|er|em|es|ern|n|s|se|isch)$/.test(rest);
+    return /^(?:ing|ies|es|ed|er|est|s|y|d|e)$/.test(rest);
+  }
+  function listed(list, key){
+    var id = tokensOf(key).join(" ");
+    var i;
+    for (i = 0; i < (list || []).length; i++){
+      if (tokensOf(list[i]).join(" ") === id) return true;
+    }
+    return false;
+  }
+  function modeFor(rule, key){
+    if (listed(rule.prefixes, key)) return "prefix";
+    if (listed(rule.compounds, key)) return "compound";
+    if (listed(rule.roots, key)) return "root";
+    return "exact";
+  }
+  function stemAtStart(token, stem){
+    return token.startsWith(stem) && isInflection(token.slice(stem.length));
+  }
+  function tailHit(token, stem){
+    var at = token.lastIndexOf(stem);
+    return at >= 4 && isInflection(token.slice(at + stem.length));
+  }
+  function tokenOk(token, stem, mode){
+    if (token === stem) return true;
+    if (stem.length < 3 || mode === "exact") return false;
+    if (mode === "phrase" || mode === "root") return stemAtStart(token, stem);
+    if (mode === "compound") return stemAtStart(token, stem) || tailHit(token, stem);
+    if (mode === "prefix") return (stem.length >= 4 && token.startsWith(stem)) || tailHit(token, stem);
+    return false;
+  }
+  function keyHit(tokens, key, mode){
+    var kt = tokensOf(key);
+    var span = kt.length;
+    var i, j, ok;
+    if (!span) return false;
+    for (i = 0; i + span <= tokens.length; i++){
+      ok = true;
+      for (j = 0; j < span; j++){
+        if (!tokenOk(tokens[i + j], kt[j], span === 1 ? mode : "phrase")){ ok = false; break; }
+      }
+      if (ok) return true;
+    }
+    return false;
+  }
+  function answerFor(raw){
+    var tokens = tokensOf(raw);
+    if (!tokens.length) return { text: PACK.empty, hand: false, id: "empty" };
+    function best(priority){
+      var found = null, foundLen = 0;
+      PACK.rules.forEach(function(r){
+        if (!!r.priority !== priority) return;
+        (r.keys || []).forEach(function(k){
+          if (!keyHit(tokens, k, modeFor(r, k))) return;
+          var len = tokensOf(k).join(" ").length;
+          if (len > foundLen){ found = r; foundLen = len; }
+        });
+      });
+      return found;
+    }
+    var hit = best(true) || best(false);
+    if (!hit) return { text: PACK.fallback, hand: false, id: "fallback" };
+    return { text: hit.text, hand: !!hit.hand, id: hit.id || "match" };
+  }
+  window.__sectorDemo = { mode: "static-example", lang: PACK.lang, answerFor: answerFor, liveAI: false };
+  function play(i){
+    if (i >= PACK.chat.length) return;
+    var m = PACK.chat[i];
+    var kind = m[0] === "in" ? "in" : (m[0] === "hand" ? "hand" : "out");
+    if (kind === "in"){
+      add(m[1], "in");
+      if (reduceMotion()) play(i + 1); else setTimeout(function(){ play(i + 1); }, 350);
+      return;
+    }
+    if (reduceMotion()){ add(m[1], kind); play(i + 1); return; }
+    var t = add("\u2026", "out");
+    t.setAttribute("aria-hidden", "true");
+    setTimeout(function(){
+      t.remove();
+      add(m[1], kind);
+      setTimeout(function(){ play(i + 1); }, 650);
+    }, 500);
+  }
+  PACK.rules.forEach(function(r){
+    if (!r.button) return;
+    var b = document.createElement("button");
+    b.type = "button";
+    b.className = "qbtn";
+    b.textContent = r.button;
+    b.onclick = function(){
+      add(r.button, "in");
+      if (window.bsTrack && r.id) window.bsTrack("/chat/" + r.id, "example");
+      var entry = { text: r.text, hand: !!r.hand };
+      if (reduceMotion()) showAnswer(entry);
+      else {
+        var t = add("\u2026", "out");
+        t.setAttribute("aria-hidden", "true");
+        setTimeout(function(){ t.remove(); showAnswer(entry); }, 450);
+      }
+    };
+    qr.appendChild(b);
+  });
+  play(0);
+  document.getElementById("ask-form").addEventListener("submit", function(ev){
+    ev.preventDefault();
+    var input = document.getElementById("ask");
+    var q = input.value || "";
+    if (!norm(q)){ showAnswer({ text: PACK.empty, hand: false }); return; }
+    add(q, "in");
+    showAnswer(answerFor(q));
+    input.value = "";
+  });
+  function iso(d){
+    return d.getFullYear() + "-" + String(d.getMonth() + 1).padStart(2, "0") + "-" + String(d.getDate()).padStart(2, "0");
+  }
+  function formatDate(v){
+    var p = v.split("-");
+    var d = Number(p[2]), m = Number(p[1]), y = p[0];
+    if (PACK.dateStyle === "dmy-numeric"){
+      return String(d).padStart(2, "0") + "." + String(m).padStart(2, "0") + "." + y;
+    }
+    return d + " " + PACK.months[m - 1] + " " + y;
+  }
+  var arr = document.getElementById("arr");
+  var today = new Date();
+  arr.min = iso(today);
+  var d0 = new Date();
+  d0.setDate(d0.getDate() + (PACK.lead || 7));
+  arr.value = iso(d0);
+  var slotsEl = document.getElementById("slots");
+  var slot = null;
+  (PACK.slots || []).forEach(function(n){
+    var b = document.createElement("button");
+    b.type = "button";
+    b.textContent = n;
+    b.setAttribute("aria-pressed", "false");
+    b.onclick = function(){
+      [].forEach.call(slotsEl.children, function(x){
+        x.classList.remove("on");
+        x.setAttribute("aria-pressed", "false");
+      });
+      b.classList.add("on");
+      b.setAttribute("aria-pressed", "true");
+      slot = n;
+    };
+    slotsEl.appendChild(b);
+  });
+  document.getElementById("cta").addEventListener("click", function(){
+    var ok = document.getElementById("ok");
+    ok.hidden = false;
+    var v = arr.value;
+    if (!v || !slot){ ok.textContent = PACK.pick; return; }
+    var item = document.getElementById("item").value;
+    ok.textContent = PACK.ok.replace("{item}", item).replace("{date}", formatDate(v)).replace("{slot}", slot);
+    if (window.bsTrack) window.bsTrack("/request/confirm", "example");
+  });
+})();
+</script>
+</body></html>
