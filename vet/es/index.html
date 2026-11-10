@@ -1,0 +1,353 @@
+<!doctype html>
+<!-- Neutral example. Language es, Spain, usted. Not the Swiss demo /tierarzt-ch/. Fictional clinic. Use et, not ee. -->
+<html lang="es" translate="no">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex">
+<meta name="google" content="notranslate">
+<title>Chat de ejemplo para una clínica veterinaria · BOLLA STUDIO</title>
+<style>
+:root{--c:#7a1f2b;--ink:#1c1c1c;--bg:#f4f2ee}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Noto Sans","DejaVu Sans","Helvetica Neue",Arial,sans-serif;background:var(--bg);color:var(--ink);line-height:1.5;font-size:17px}
+.top{background:#1d2a33;color:#f2f5f7;padding:12px 16px;text-align:center}
+.top a{color:#fff}
+.langs{display:flex;flex-wrap:wrap;justify-content:center;gap:8px;padding:12px 16px;background:#243640}
+.langs a{display:inline-flex;align-items:center;justify-content:center;min-height:48px;min-width:48px;padding:10px 16px;border-radius:12px;background:#fff;color:#1d2a33;font-weight:700;text-decoration:none;border:2px solid #fff}
+.langs a[aria-current="page"]{background:var(--c);color:#fff;border-color:var(--c)}
+header,main{max-width:1080px;margin:0 auto;padding:8px 16px 0}
+.brand{font-weight:800;letter-spacing:.08em;font-size:.85rem;color:#5c6770}
+.by{margin:4px 0 8px;font-size:16px}
+.by a{color:var(--c)}
+.tag{font-size:14px;letter-spacing:.04em;color:#555;margin:0}
+h1{font-size:1.7rem;line-height:1.25;margin:8px 0 10px;color:var(--c)}
+.intro{margin:0 0 12px;color:#333}
+.badge{display:inline-block;background:#fff4d6;border:1px dashed #8a6a10;color:#5c4300;border-radius:8px;padding:4px 8px;font-size:14px;font-weight:700}
+.notice,.voice{background:#fff;border-radius:12px;padding:12px 14px;margin:12px 0;font-size:16px}
+.notice{border:2px solid #8a6a10}
+.voice{border:2px solid #1d2a33}
+.howto{background:#fff;border-radius:12px;padding:14px 16px;margin:12px 0 16px}
+.howto h2{margin:0 0 8px;font-size:1.25rem;color:var(--c)}
+.steps{margin:0;padding-left:1.3rem}
+.steps li{margin:8px 0}
+.grid{display:grid;gap:16px;margin:0 0 16px}
+.card{background:#fff;border-radius:16px;box-shadow:0 6px 24px rgba(0,0,0,.08);overflow:hidden}
+.wa-h{background:#1d2a33;color:#fff;padding:12px 16px;display:flex;align-items:center;gap:10px}
+.av{width:44px;height:44px;border-radius:50%;background:var(--c);display:flex;align-items:center;justify-content:center;font-weight:800}
+.wa-h small{display:block;opacity:.9;font-size:14px}
+.chat{background:#ece5dd;min-height:280px;max-height:52vh;overflow-y:auto;padding:12px;display:flex;flex-direction:column;gap:8px}
+.m{max-width:92%;padding:10px 12px;border-radius:10px;font-size:16px;white-space:pre-line;box-shadow:0 1px 1px rgba(0,0,0,.08)}
+.in{background:#fff;align-self:flex-start}.out{background:#e7f6e7;align-self:flex-end}
+.m.hand{background:#fff4d6;border:1px dashed #8a6a10}
+.qrl{padding:10px 12px 0;font-size:15px;color:#444}
+.qr{padding:8px 12px 12px;display:flex;flex-direction:column;gap:8px}
+.qr button,.slots button,.cta,.ask-row button{min-height:48px;font-size:17px;border-radius:12px;cursor:pointer}
+.qr button{width:100%;text-align:left;border:2px solid var(--c);background:#fff;color:var(--c);padding:12px 14px}
+.bk{padding:16px}
+.bk h3{margin:0 0 6px;color:var(--c);font-size:1.25rem}
+.bk p{margin:0 0 10px;color:#444}
+label{font-size:16px;color:#333;display:block;margin:12px 0 6px;font-weight:650}
+select,input{width:100%;padding:12px;border:1px solid #bbb;border-radius:10px;font-size:16px;font-family:inherit;min-height:48px}
+.slots{display:flex;flex-wrap:wrap;gap:8px}
+.slots button{border:2px solid #bbb;background:#fff;padding:10px 14px}
+.slots button.on{background:var(--c);color:#fff;border-color:var(--c)}
+.cta{margin-top:16px;width:100%;background:var(--c);color:#fff;border:0;padding:14px;font-weight:700}
+.ok{margin-top:14px;background:#eaf7ea;border:1px solid #8fbf8f;padding:12px;border-radius:10px;font-size:16px}
+.ask{padding:0 12px 14px}
+.ask-row{display:flex;flex-direction:column;gap:8px}
+.ask-row button{background:#1d2a33;color:#fff;border:0;padding:12px 16px;font-weight:700}
+.split,.feat{display:grid;gap:12px;margin:0 0 16px}
+.split div,.feat div{background:#fff;border-radius:12px;padding:14px 16px}
+.split h2,.feat b{color:var(--c)}
+.split ul{margin:8px 0 0;padding-left:1.2rem}
+.split li{margin:6px 0}
+footer{text-align:center;font-size:15px;color:#444;padding:8px 16px 40px}
+footer a{color:var(--c)}
+:focus-visible{outline:3px solid #0b57d0;outline-offset:2px}
+@media(min-width:800px){
+  h1{font-size:2rem}
+  .grid,.split{grid-template-columns:1fr 1fr}
+  .feat{grid-template-columns:1fr 1fr 1fr}
+  .qr{flex-direction:row;flex-wrap:wrap}
+  .qr button{width:auto}
+  .ask-row{flex-direction:row}
+  .ask-row input{flex:1}
+  .chat{max-height:460px}
+}
+</style>
+<!-- GoatCounter (BOLLA STUDIO): ?p= is a visit label for counting only. It does not personalize the page. ?internal=1 sets localStorage skipgc=t and loads nothing. -->
+<script>
+(function(){
+ var BASE="/bolla-demo-vet/es";
+ var m=(location.search+location.hash).match(/[?&#]internal=([01])/);
+ try{ if(m){ if(m[1]==="1") localStorage.setItem("skipgc","t"); else localStorage.removeItem("skipgc"); } }catch(e){}
+ var internal=false; try{ internal=localStorage.getItem("skipgc")==="t"; }catch(e){}
+ var sm=location.search.match(/[?&]p=([^&#]*)/);
+ var tag=sm?decodeURIComponent(sm[1]).toLowerCase().replace(/[^a-z0-9-]/g,"").slice(0,60):"";
+ var q=[]; window.bsTrack=function(sub,title){ if(internal) return;
+   var ep=BASE+sub+(tag?'?p='+tag:'');if(window.goatcounter&&window.goatcounter.count) window.goatcounter.count({path:ep,title:title||sub,event:true}); else q.push([ep,title||sub]); };
+ if(internal) return;
+ window.goatcounter={no_onload:true};
+ var s=document.createElement("script"); s.async=true; s.src="https://gc.zgo.at/count.js";
+ s.setAttribute("data-goatcounter","https://bollastudio.goatcounter.com/count");
+ s.onload=function(){ try{ window.goatcounter.count({path:BASE+'/'+(tag?'?p='+tag:''),title:"vet demo es"});
+   q.forEach(function(e){window.goatcounter.count({path:e[0],title:e[1],event:true});}); q=[]; }catch(e){} };
+ document.head.appendChild(s);
+})();
+</script>
+</head>
+<body data-demo="static-example" data-lang="es">
+<div class="top">Chat de ejemplo para clínicas veterinarias, preparado por <a href="https://bollastudio.com" target="_blank" rel="noopener">BOLLA STUDIO</a> · «Veterinario de Ejemplo» es ficticio, no es una clínica real. No hay citas reales. Este chat es un ejemplo escrito, no un asistente en vivo.</div>
+<nav class="langs" aria-label="Idioma"><a href="../et/" hreflang="et" lang="et" data-keep-query>Eesti</a><a href="../ru/" hreflang="ru" lang="ru" data-keep-query>Русский</a><a href="../en/" hreflang="en" lang="en" data-keep-query>English</a><a href="./" hreflang="es" lang="es" data-keep-query aria-current="page">Español</a></nav>
+<header>
+  <div class="brand">BOLLA STUDIO</div>
+  <p class="by">Marcelo Bolla · <a href="https://bollastudio.com" target="_blank" rel="noopener">bollastudio.com</a></p>
+  <p class="tag"><span class="badge">Ejemplo escrito</span> Veterinario de Ejemplo, una clínica ficticia</p>
+  <h1>Solicitudes de quien tiene un animal, en horario de clínica</h1>
+  <p class="intro">Este chat escrito muestra preguntas habituales: una vacuna, el horario, recoger comida y qué animales se atienden. Anota la especie y el motivo. No diagnostica y no indica una dosis. Los casos urgentes se marcan para una persona, y esta página no llama a nadie. Si hubiera un importe, iría en euros. No se promete ninguna cita ni ningún precio. El teléfono de muestra es +34 910 000 200: es un número inventado y esta página no llama.</p>
+  <p class="notice" role="note">Simulación: todas las respuestas están escritas de antemano. No se envía nada y no se reserva nada. Esta página no está conectada a WhatsApp, a un sistema de citas ni a un asistente de voz. El recuadro de mensajes es una ilustración estática de ejemplo, no un chat real. Si la dirección contiene ?p=, es solo una etiqueta de visita para BOLLA STUDIO. No cambia la página y no es personalización. Esta página no es la web de un negocio.</p>
+  <p class="voice" role="note">Esta pantalla es un ejemplo de chat escrito. No reproduce audio. No hay un asistente de voz conectado ni en marcha. La voz, si se encargara aparte, sería otra instalación, no esta página.</p>
+</header>
+<main>
+<section class="howto" aria-labelledby="howto-title">
+  <h2 id="howto-title">Cómo probar este ejemplo</h2>
+  <ol class="steps"><li>Lea la conversación de ejemplo. Ya está en pantalla.</li><li>Pulse un botón grande, o escriba su pregunta en español y pulse Enviar.</li><li>Elija la fecha y una opción, y pulse el botón grande. Solo verá una nota de ejemplo. No se reserva nada y no se envía nada.</li></ol>
+</section>
+<div class="grid">
+  <div class="card">
+    <div class="wa-h"><div class="av" aria-hidden="true">V</div><div><b>Veterinario de Ejemplo · recepción de ejemplo</b><small>Ejemplo escrito · respuestas preparadas en español, no un asistente en vivo</small></div></div>
+    <div class="chat" id="chat" role="log" aria-live="polite" aria-relevant="additions" aria-label="Conversación de ejemplo escrita"></div>
+    <div class="qrl" id="qr-label">Pruebe una pregunta</div>
+    <div class="qr" id="qr" role="group" aria-labelledby="qr-label"></div>
+    <form class="ask" id="ask-form" action="#" onsubmit="return false">
+      <label for="ask">Escriba una pregunta en español</label>
+      <div class="ask-row">
+        <input id="ask" name="ask" type="text" autocomplete="off" enterkeyhint="send" placeholder="Por ejemplo: ¿Tratan conejos?">
+        <button type="submit">Enviar</button>
+      </div>
+    </form>
+  </div>
+  <div class="card bk">
+    <h3>Cita para un animal, solo como ejemplo</h3>
+    <p>Así puede un chat anotar un deseo. Recepción ofrecería una hora. Esta página no. Solo ejemplo: no se ha reservado ni enviado nada.</p>
+    <label for="item">Motivo</label>
+    <select id="item"><option>Vacuna</option><option>Revisión anual</option><option>Consejo de castración</option><option>Recogida de comida</option></select>
+    <label for="arr">Fecha</label>
+    <input id="arr" type="date">
+    <p id="slots-label" style="margin:12px 0 6px;font-weight:650">Momento del día</p>
+    <div class="slots" id="slots" role="group" aria-labelledby="slots-label"></div>
+    <label for="nm">Nombre (no se guarda)</label>
+    <input id="nm" type="text" autocomplete="off" placeholder="Nombre y apellidos" aria-describedby="local-only">
+    <label for="ph">Correo o teléfono (no se guarda)</label>
+    <input id="ph" type="text" autocomplete="off" placeholder="nombre@ejemplo.com" aria-describedby="local-only">
+    <p id="local-only">Estos dos campos se quedan en su navegador. Esta página no los lee, no los guarda y no los envía.</p>
+    <button class="cta" id="cta" type="button">Solicitar una cita</button>
+    <div class="ok" id="ok" role="status" hidden></div>
+  </div>
+</div>
+<div class="split">
+  <div><h2>Qué muestra este chat de ejemplo</h2><ul><li>Especie, edad y motivo</li><li>Vacuna y revisión como temas</li><li>Horario de muestra</li><li>Una indicación de llamar al 112 o al veterinario de urgencias, sin diagnóstico</li></ul></div>
+  <div><h2>Qué queda en la clínica</h2><ul><li>Diagnóstico y tratamiento</li><li>Casos urgentes, que debe atender una persona</li><li>Importe y dosis</li><li>Cualquier conversación que el equipo quiera atender</li></ul></div>
+</div>
+<div class="feat"><div><b>Español en esta página</b><br>Esta página responde en español, de usted. Los ejemplos en estonio, ruso e inglés están en páginas aparte. Aquí no hay intérprete en vivo ni asistente de voz.</div><div><b>Solo datos de ejemplo</b><br>Las respuestas usan datos ficticios de ejemplo. No son precios ni normas de una clínica real, ni un consejo legal o veterinario.</div><div><b>Decidiría una persona</b><br>En un chat encargado, los datos pasarían al equipo. Este botón no los envía y no reserva.</div></div>
+</main>
+<footer>Ejemplo de <a href="https://bollastudio.com" target="_blank" rel="noopener">BOLLA STUDIO</a> · Marcelo Bolla · <a href="mailto:marcelo@bollastudio.com">marcelo@bollastudio.com</a><br>«Veterinario de Ejemplo» es ficticio, no es una clínica real. Esta página no es consejo veterinario. No se reserva, no se guarda y no se envía nada. Esta página no es la web de un negocio. Es solo un ejemplo de chat de BOLLA STUDIO. Teléfono de muestra: +34 910 000 200, inventado; esta página no llama.</footer>
+<script type="application/json" id="demo-pack">{"lang":"es","chat":[["in","Hola, mi gato necesita una vacuna. ¿Hay hora la semana que viene?"],["out","Hola. Puedo anotar el deseo. En este ejemplo traería la cartilla de vacunación y el gato en un transportín.\nEsta página no reserva la visita."],["in","El martes por la tarde. Propietario de ejemplo."],["out","Gracias. Solo es una nota de ejemplo: gato, vacuna, martes por la tarde. Recepción confirmaría la hora. No se ha enviado nada."]],"rules":[{"id":"emergency","priority":true,"hand":true,"keys":["no respira","no respiran","no respiro","sin respirar","incendio","incendios","fuego","emergencia","emergencias","herido","herida","heridos","heridas","ambulancia","ambulancias","inconsciente","inconscientes","se ha desmayado","hemorragia","hemorragias","infarto","infartos","no responde","no responden","112","urgente","urgencia","urgencias"],"text":"Llame ya al 112 y al veterinario de urgencias. Es el número de emergencias de la Unión Europea. Este ejemplo escrito no da instrucciones ni pasos."},{"id":"poison","button":"¡Mi perro ha comido algo venenoso!","keys":["veneno","venenos","venenoso","venenosa","toxico","toxica","intoxicacion","intoxicaciones","intoxicado","intoxicada","envenenamiento","envenenado","envenenada"],"hand":true,"text":"Esto es urgente. Llame ahora al 112 o al veterinario de urgencias. Este ejemplo no diagnostica, no indica una dosis y esta página no llama."},{"id":"hours","button":"¿A qué hora están abiertos?","keys":["horario","horarios","abierto","abierta","abiertos","abiertas","abren","hora","horas","abiert"],"roots":["abiert"],"text":"Esta clínica de ejemplo abre de lunes a viernes, de 10:00 a 14:00 y de 16:30 a 20:00. Son horarios de muestra. Una clínica real usaría los suyos. El teléfono de muestra es +34 910 000 200: es un número inventado y esta página no llama."},{"id":"rabbit","button":"¿Tratan conejos?","keys":["conejo","conejos","coneja","conejas","conejito","conejita","conejillo","conejillos"],"text":"Sí. Esta clínica de ejemplo atiende perros, gatos y animales pequeños, como los conejos. Una clínica real usaría su propia lista. Esta página no reserva la visita."},{"id":"food","button":"¿Puedo recoger la comida?","keys":["comida","alimento","alimentos","recoger la comida","recoger el pienso","pienso para"],"text":"En este ejemplo la comida se recoge en el horario de muestra si nombra el producto. Esta página no hace un pedido y no indica un precio en euros."}],"fallback":"Esto es un ejemplo escrito, no un asistente en vivo. Esa pregunta no está entre las respuestas preparadas: solo cubro las preguntas de ejemplo, en español. No reservo, no envío mensajes y no estoy conectado a WhatsApp, a un sistema de citas ni a un asistente de voz. Pulse uno de los botones o use palabras de esas preguntas.","empty":"Escriba una pregunta en español y pulse Enviar.","ok":"Solo ejemplo: {item} · {date} · {slot}. No se ha reservado ni enviado nada. Esta página no consulta un sistema de citas ni guarda lo que ha escrito.","pick":"Elija primero la fecha y una opción de arriba.","lead":14,"slots":["Por la mañana","Por la tarde"],"months":["ene","feb","mar","abr","may","jun","jul","ago","sep","oct","nov","dic"],"dateStyle":"dmy-numeric"}</script>
+<script id="bolla-lang-links">
+document.querySelectorAll("[data-keep-query]").forEach(function(a){
+  try{var u=new URL(a.getAttribute("href"),location.href);a.href=u.pathname+location.search+location.hash;}catch(e){}
+});
+</script>
+<script id="sector-demo">
+(function(){
+  var PACK = JSON.parse(document.getElementById("demo-pack").textContent);
+  var chat = document.getElementById("chat");
+  var qr = document.getElementById("qr");
+  function reduceMotion(){
+    return !!(window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches);
+  }
+  function add(t, kind){
+    var e = document.createElement("div");
+    e.className = "m " + (kind === "in" ? "in" : "out") + (kind === "hand" ? " hand" : "");
+    e.textContent = t;
+    chat.appendChild(e);
+    chat.scrollTop = chat.scrollHeight;
+    return e;
+  }
+  function showAnswer(entry){
+    add(entry.text, entry.hand ? "hand" : "out");
+  }
+  function tokensOf(raw){
+    var n = String(raw || "").toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+    return n.match(/[\p{L}\p{N}]+/gu) || [];
+  }
+  function norm(s){
+    return tokensOf(s).join(" ");
+  }
+  function isInflection(rest){
+    if (rest === "") return true;
+    var lang = PACK.lang;
+    if (lang === "es") return /^(?:s|es|a|o|as|os|ito|ita|itos|itas|ar|er|ado|ada|ados|adas|acion|aciones|ando)$/.test(rest);
+    if (lang === "et") return /^(?:[aeiou](?:sse|sid|ga|le|lt|st|ks|ni|na|ta|de|te|id|d|t|s|l|n)?|sse|sid|ga|le|lt|st|ks|ni|na|ta|de|te|id|da|d|t|s|l|n)$/.test(rest);
+    if (lang === "de") return /^(?:e|en|er|em|es|ern|n|s|se|isch)$/.test(rest);
+    return /^(?:ing|ies|es|ed|er|est|s|y|d|e)$/.test(rest);
+  }
+  function listed(list, key){
+    var id = tokensOf(key).join(" ");
+    var i;
+    for (i = 0; i < (list || []).length; i++){
+      if (tokensOf(list[i]).join(" ") === id) return true;
+    }
+    return false;
+  }
+  function modeFor(rule, key){
+    if (listed(rule.prefixes, key)) return "prefix";
+    if (listed(rule.compounds, key)) return "compound";
+    if (listed(rule.roots, key)) return "root";
+    return "exact";
+  }
+  function stemAtStart(token, stem){
+    return token.startsWith(stem) && isInflection(token.slice(stem.length));
+  }
+  function tailHit(token, stem){
+    var at = token.lastIndexOf(stem);
+    return at >= 4 && isInflection(token.slice(at + stem.length));
+  }
+  function tokenOk(token, stem, mode){
+    if (token === stem) return true;
+    if (stem.length < 3 || mode === "exact") return false;
+    if (mode === "phrase" || mode === "root") return stemAtStart(token, stem);
+    if (mode === "compound") return stemAtStart(token, stem) || tailHit(token, stem);
+    if (mode === "prefix") return (stem.length >= 4 && token.startsWith(stem)) || tailHit(token, stem);
+    return false;
+  }
+  function keyHit(tokens, key, mode){
+    var kt = tokensOf(key);
+    var span = kt.length;
+    var i, j, ok;
+    if (!span) return false;
+    for (i = 0; i + span <= tokens.length; i++){
+      ok = true;
+      for (j = 0; j < span; j++){
+        if (!tokenOk(tokens[i + j], kt[j], span === 1 ? mode : "phrase")){ ok = false; break; }
+      }
+      if (ok) return true;
+    }
+    return false;
+  }
+  function answerFor(raw){
+    var tokens = tokensOf(raw);
+    if (!tokens.length) return { text: PACK.empty, hand: false, id: "empty" };
+    function best(priority){
+      var found = null, foundLen = 0;
+      PACK.rules.forEach(function(r){
+        if (!!r.priority !== priority) return;
+        (r.keys || []).forEach(function(k){
+          if (!keyHit(tokens, k, modeFor(r, k))) return;
+          var len = tokensOf(k).join(" ").length;
+          if (len > foundLen){ found = r; foundLen = len; }
+        });
+      });
+      return found;
+    }
+    var hit = best(true) || best(false);
+    if (!hit) return { text: PACK.fallback, hand: false, id: "fallback" };
+    return { text: hit.text, hand: !!hit.hand, id: hit.id || "match" };
+  }
+  window.__sectorDemo = { mode: "static-example", lang: PACK.lang, answerFor: answerFor, liveAI: false };
+  function play(i){
+    if (i >= PACK.chat.length) return;
+    var m = PACK.chat[i];
+    var kind = m[0] === "in" ? "in" : (m[0] === "hand" ? "hand" : "out");
+    if (kind === "in"){
+      add(m[1], "in");
+      if (reduceMotion()) play(i + 1); else setTimeout(function(){ play(i + 1); }, 350);
+      return;
+    }
+    if (reduceMotion()){ add(m[1], kind); play(i + 1); return; }
+    var t = add("\u2026", "out");
+    t.setAttribute("aria-hidden", "true");
+    setTimeout(function(){
+      t.remove();
+      add(m[1], kind);
+      setTimeout(function(){ play(i + 1); }, 650);
+    }, 500);
+  }
+  PACK.rules.forEach(function(r){
+    if (!r.button) return;
+    var b = document.createElement("button");
+    b.type = "button";
+    b.className = "qbtn";
+    b.textContent = r.button;
+    b.onclick = function(){
+      add(r.button, "in");
+      if (window.bsTrack && r.id) window.bsTrack("/chat/" + r.id, "example");
+      var entry = { text: r.text, hand: !!r.hand };
+      if (reduceMotion()) showAnswer(entry);
+      else {
+        var t = add("\u2026", "out");
+        t.setAttribute("aria-hidden", "true");
+        setTimeout(function(){ t.remove(); showAnswer(entry); }, 450);
+      }
+    };
+    qr.appendChild(b);
+  });
+  play(0);
+  document.getElementById("ask-form").addEventListener("submit", function(ev){
+    ev.preventDefault();
+    var input = document.getElementById("ask");
+    var q = input.value || "";
+    if (!norm(q)){ showAnswer({ text: PACK.empty, hand: false }); return; }
+    add(q, "in");
+    showAnswer(answerFor(q));
+    input.value = "";
+  });
+  function iso(d){
+    return d.getFullYear() + "-" + String(d.getMonth() + 1).padStart(2, "0") + "-" + String(d.getDate()).padStart(2, "0");
+  }
+  function formatDate(v){
+    var p = v.split("-");
+    var d = Number(p[2]), m = Number(p[1]), y = p[0];
+    if (PACK.dateStyle === "dmy-numeric"){
+      return String(d).padStart(2, "0") + "." + String(m).padStart(2, "0") + "." + y;
+    }
+    return d + " " + PACK.months[m - 1] + " " + y;
+  }
+  var arr = document.getElementById("arr");
+  var today = new Date();
+  arr.min = iso(today);
+  var d0 = new Date();
+  d0.setDate(d0.getDate() + (PACK.lead || 7));
+  arr.value = iso(d0);
+  var slotsEl = document.getElementById("slots");
+  var slot = null;
+  (PACK.slots || []).forEach(function(n){
+    var b = document.createElement("button");
+    b.type = "button";
+    b.textContent = n;
+    b.setAttribute("aria-pressed", "false");
+    b.onclick = function(){
+      [].forEach.call(slotsEl.children, function(x){
+        x.classList.remove("on");
+        x.setAttribute("aria-pressed", "false");
+      });
+      b.classList.add("on");
+      b.setAttribute("aria-pressed", "true");
+      slot = n;
+    };
+    slotsEl.appendChild(b);
+  });
+  document.getElementById("cta").addEventListener("click", function(){
+    var ok = document.getElementById("ok");
+    ok.hidden = false;
+    var v = arr.value;
+    if (!v || !slot){ ok.textContent = PACK.pick; return; }
+    var item = document.getElementById("item").value;
+    ok.textContent = PACK.ok.replace("{item}", item).replace("{date}", formatDate(v)).replace("{slot}", slot);
+    if (window.bsTrack) window.bsTrack("/request/confirm", "example");
+  });
+})();
+</script>
+</body></html>
