@@ -425,7 +425,7 @@ test("Spanish redirect preserves the query and the sent dentist URLs stay in pla
   assert.equal(redirectTarget("?lang=es", ["en-GB"]), "es/");
   assert.equal(redirectTarget("?lang=et&p=sakala", ["es-ES"]), "et/?p=sakala");
   assert.equal(redirectTarget("?p=es-clinicadentalomega&internal=1", ["es-ES"]), "es/?p=es-clinicadentalomega&internal=1");
-  assert.match(read("dentist/index.html"), /supported=\["et","ru","en","es"\]/);
+  assert.match(read("dentist/index.html"), /supported=\["et","ru","en","es","de"\]/);
   assert.match(read("dentist/index.html"), /location\.search/);
   assert.doesNotMatch(read("dentist/index.html"), /gc\.zgo\.at\/count\.js/);
 

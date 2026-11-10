@@ -49,7 +49,7 @@ Náutica, náutica-cat, `/es/` y concesionarios siguen metiendo `p` como tramo d
 
 ## Inventario
 
-598 demos cuentan. 374 tienen al menos un uso. 224 solo tienen la visita. 45 redirecciones no cargan el contador. La portada tampoco.
+599 demos cuentan. 375 tienen al menos un uso. 224 solo tienen la visita. 45 redirecciones no cargan el contador. La portada tampoco.
 
 En la columna Visita, `{p}` es la etiqueta saneada y solo se añade cuando existe. `|` separa la ruta sin etiqueta y la ruta con etiqueta cuando `p` es un tramo, no una búsqueda.
 
@@ -183,6 +183,7 @@ En la columna Visita, `{p}` es la etiqueta saneada y solo se añade cuando exist
 | /dental-dubai/ | /bolla-demo-dental-dubai/?p={p} | /bolla-demo-dental-dubai/tab/{id}?p={p} · Tab {…} |
 | /dentaldom-py/ | /dentaldom-py/?p={p} | solo visita |
 | /dentcare/ | /bolla-demo-dentcare/?p={p} | /bolla-demo-dentcare/tab/{id}?p={p} · Tab {…} |
+| /dentist/de/ | /bolla-demo-dentist/de/?p={p} | /bolla-demo-dentist/de/chat/{id}?p={p} · example; /bolla-demo-dentist/de/request/confirm?p={p} · example |
 | /dentist/en/ | /bolla-demo-dentist/en/?p={p} | /bolla-demo-dentist/en/chat/{id}?p={p} · example; /bolla-demo-dentist/en/request/confirm?p={p} · example |
 | /dentist/es/ | /bolla-demo-dentist/es/?p={p} | /bolla-demo-dentist/es/chat/{id}?p={p} · example; /bolla-demo-dentist/es/request/confirm?p={p} · example |
 | /dentist/et/ | /bolla-demo-dentist/et/?p={p} | /bolla-demo-dentist/et/chat/{id}?p={p} · example; /bolla-demo-dentist/et/request/confirm?p={p} · example |
