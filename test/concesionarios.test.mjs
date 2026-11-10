@@ -181,6 +181,35 @@ test("the dealership matcher answers eight questions in each language", () => {
   }
 });
 
+function shownGerman(html) {
+  const pack = packOf(html);
+  const fixed = html.replace(/<script[\s\S]*?<\/script>/gi, " ").replace(/<style[\s\S]*?<\/style>/gi, " ");
+  const spoken = [
+    ...pack.chat.map((row) => row[1]),
+    ...pack.rules.flatMap((rule) => [rule.button, rule.text]),
+    pack.fallback,
+    pack.empty,
+    pack.ok,
+    pack.pick,
+  ];
+  return fixed + " " + spoken.join(" ");
+}
+
+test("German dealership copy stays usable in Switzerland", () => {
+  const html = pages.de;
+  const shown = shownGerman(html);
+  assert.doesNotMatch(shown, /TÜV-HU/);
+  assert.doesNotMatch(shown, /ß/);
+  assert.doesNotMatch(shown, /€/);
+  assert.match(shown, /Fahrzeugprüfung/);
+  for (const question of ["TÜV", "HU", "MFK", "TÜV-HU", "Hauptuntersuchung"]) {
+    const answer = demos.de.answerFor(question);
+    assert.equal(answer.id, "workshop", question);
+    assert.match(answer.text, /Fahrzeugprüfung/);
+    assert.doesNotMatch(answer.text, /TÜV|MFK/);
+  }
+});
+
 test("whole words do not match inside longer words, and an emergency wins", () => {
   const traps = {
     es: [
@@ -227,7 +256,8 @@ test("whole words do not match inside longer words, and an emergency wins", () =
     assert.doesNotMatch(demos[lang].answerFor(questions[lang][0][0]).text, /112/);
   }
   assert.match(demos.es.answerFor(questions.es[3][0]).text, /euros/);
-  assert.match(demos.de.answerFor(questions.de[3][0]).text, /Euro/);
+  assert.match(demos.de.answerFor(questions.de[3][0]).text, /Orientierung/);
+  assert.doesNotMatch(demos.de.answerFor(questions.de[3][0]).text, /Euro|€|CHF/);
   assert.doesNotMatch(demos.en.answerFor(questions.en[3][0]).text, /€|\$|CHF/);
   assert.match(demos.es.answerFor(questions.es[5][0]).text, /nuestro concesionario/);
   assert.match(demos.de.answerFor(questions.de[5][0]).text, /unser Autohaus/);
