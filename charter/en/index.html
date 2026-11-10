@@ -154,7 +154,7 @@ footer a{color:var(--c)}
 <div class="feat"><div><b>English on this page</b><br>This page answers in English. The Estonian example is a separate page. There is no live interpreter and no voice assistant here.</div><div><b>Sample facts only</b><br>Answers are a fictional example. They are not a real business’s prices, places or rules.</div><div><b>The team would decide</b><br>In a commissioned chat, the details would be handed to the team. This button does not send them, does not call, and does not book.</div></div>
 </main>
 <footer>Example demo by <a href="https://bollastudio.com" target="_blank" rel="noopener">BOLLA STUDIO</a> · Marcelo Bolla · <a href="mailto:marcelo@bollastudio.com">marcelo@bollastudio.com</a><br>“Example Sailing” is fictional, not a real charter company or school. No price, place or departure time is real. Nothing is booked, stored, or sent. This is not the page /charter-de/. This page is not a business website. It is only a chat example by BOLLA STUDIO.</footer>
-<script type="application/json" id="demo-pack">{"lang":"en","chat":[["in","Hello, is a catamaran free on Saturday for four people?"],["out","Hello. I can note Saturday, four people, a catamaran, as an example.\nThis page does not confirm a free place or a departure time."],["in","Sample Guest. What if the weather is bad?"],["out","Thank you. The company would speak about the weather. This example does not guarantee the trip or a departure time. The team would say whether the plan stays or changes. Nothing was sent from this page."]],"rules":[{"id":"yacht","button":"Can we ask about a yacht or a catamaran?","keys":["yacht","catamaran"],"text":"Yes. In this example you can ask about a day hire of a yacht or a catamaran. This page does not know if a place is free or what it costs. The team would answer."},{"id":"course","button":"Is there a sailing course?","keys":["course","sailing"],"text":"In this example you can ask about a sailing course. The team would confirm the date and the level. Nobody is enrolled from this page."},{"id":"party","button":"There are four of us. Does the date work?","keys":["four","date","people"],"text":"The number of people and the date can be noted as an example. The team would say whether that day works. This page does not confirm it."},{"id":"weather","button":"What if the weather is bad?","keys":["weather","wind","rain"],"hand":true,"text":"The company would look at the weather. This example does not guarantee the weather or a departure time. The team would decide. Nothing was sent."},{"id":"safety","button":"What about safety and equipment?","keys":["safety","lifejacket","equipment"],"hand":true,"text":"The team would explain safety and equipment under their own rules. This example does not give a technical or safety manual. Nothing was sent."}],"fallback":"This is a scripted example, not a live assistant. I only have prepared English answers for the sample questions. I do not book, I do not send messages, and I am not connected to WhatsApp, a booking system, or a voice agent. Please tap one of the buttons or use words from those questions.","empty":"Please type a question in English, then tap Send.","ok":"Example only: {item} · {date} · {slot}. Nothing was booked and nothing was sent. This page does not check a booking system and does not store what you typed.","pick":"Please choose the date and one option above first.","lead":2,"slots":["Morning","Afternoon","Evening"],"months":["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"],"dateStyle":"dmy-name"}</script>
+<script type="application/json" id="demo-pack">{"lang":"en","chat":[["in","Hello, is a catamaran free on Saturday for four people?"],["out","Hello. I can note Saturday, four people, a catamaran, as an example.\nThis page does not confirm a free place or a departure time."],["in","Sample Guest. What if the weather is bad?"],["out","Thank you. The company would speak about the weather. This example does not guarantee the trip or a departure time. The team would say whether the plan stays or changes. Nothing was sent from this page."]],"rules":[{"id":"yacht","button":"Can we ask about a yacht or a catamaran?","keys":["yacht","catamaran"],"text":"Yes. In this example you can ask about a day hire of a yacht or a catamaran. This page does not know if a place is free or what it costs. The team would answer.","roots":["yacht","catamaran"]},{"id":"course","button":"Is there a sailing course?","keys":["course","sailing"],"text":"In this example you can ask about a sailing course. The team would confirm the date and the level. Nobody is enrolled from this page.","roots":["course","sailing"]},{"id":"party","button":"There are four of us. Does the date work?","keys":["four","date","people","ten"],"text":"The number of people and the date can be noted as an example. The team would say whether that day works. This page does not confirm it.","roots":["four","date","people"]},{"id":"weather","button":"What if the weather is bad?","keys":["weather","wind","rain","storm"],"hand":true,"text":"The company would look at the weather. This example does not guarantee the weather or a departure time. The team would decide. Nothing was sent.","roots":["weather","wind","rain","storm"]},{"id":"safety","button":"What about safety and equipment?","keys":["safety","lifejacket","equipment","life jacket"],"hand":true,"text":"The team would explain safety and equipment under their own rules. This example does not give a technical or safety manual. Nothing was sent.","roots":["safety","lifejacket","equipment"]},{"id":"emergency","priority":true,"hand":true,"keys":["fell overboard","man overboard","overboard","over board","drowning","emergency","emergencies","injured","injury","drown","injur"],"roots":["overboard","drowning","emergency","injured","drown","injur"],"prefixes":["drown","injur"],"text":"Call 112 now. That is the European Union emergency number. This written example does not give rescue instructions and does not replace an emergency call."}],"fallback":"This is a written example, not a live assistant. This example does not cover that question. The business would answer it. Nothing is booked or sent from here.","empty":"Please type a question in English, then tap Send.","ok":"Example only: {item} · {date} · {slot}. Nothing was booked and nothing was sent. This page does not check a booking system and does not store what you typed.","pick":"Please choose the date and one option above first.","lead":2,"slots":["Morning","Afternoon","Evening"],"months":["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"],"dateStyle":"dmy-name"}</script>
 <script id="bolla-lang-links">
 document.querySelectorAll("[data-keep-query]").forEach(function(a){
   try{var u=new URL(a.getAttribute("href"),location.href);a.href=u.pathname+location.search+location.hash;}catch(e){}
@@ -179,22 +179,81 @@ document.querySelectorAll("[data-keep-query]").forEach(function(a){
   function showAnswer(entry){
     add(entry.text, entry.hand ? "hand" : "out");
   }
+  function tokensOf(raw){
+    var n = String(raw || "").toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+    return n.match(/[\p{L}\p{N}]+/gu) || [];
+  }
   function norm(s){
-    return String(s || "").toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/[^a-z0-9\u0400-\u04ff]+/g, " ").replace(/\s+/g, " ").trim();
+    return tokensOf(s).join(" ");
+  }
+  function isInflection(rest){
+    if (rest === "") return true;
+    var lang = PACK.lang;
+    if (lang === "et") return /^(?:[aeiou](?:sse|sid|ga|le|lt|st|ks|ni|na|ta|de|te|id|d|t|s|l|n)?|sse|sid|ga|le|lt|st|ks|ni|na|ta|de|te|id|da|d|t|s|l|n)$/.test(rest);
+    if (lang === "de") return /^(?:e|en|er|em|es|ern|n|s|se|isch)$/.test(rest);
+    return /^(?:ing|ies|es|ed|er|est|s|y|d|e)$/.test(rest);
+  }
+  function listed(list, key){
+    var id = tokensOf(key).join(" ");
+    var i;
+    for (i = 0; i < (list || []).length; i++){
+      if (tokensOf(list[i]).join(" ") === id) return true;
+    }
+    return false;
+  }
+  function modeFor(rule, key){
+    if (listed(rule.prefixes, key)) return "prefix";
+    if (listed(rule.compounds, key)) return "compound";
+    if (listed(rule.roots, key)) return "root";
+    return "exact";
+  }
+  function stemAtStart(token, stem){
+    return token.startsWith(stem) && isInflection(token.slice(stem.length));
+  }
+  function tailHit(token, stem){
+    var at = token.lastIndexOf(stem);
+    return at >= 4 && isInflection(token.slice(at + stem.length));
+  }
+  function tokenOk(token, stem, mode){
+    if (token === stem) return true;
+    if (stem.length < 3 || mode === "exact") return false;
+    if (mode === "phrase" || mode === "root") return stemAtStart(token, stem);
+    if (mode === "compound") return stemAtStart(token, stem) || tailHit(token, stem);
+    if (mode === "prefix") return (stem.length >= 4 && token.startsWith(stem)) || tailHit(token, stem);
+    return false;
+  }
+  function keyHit(tokens, key, mode){
+    var kt = tokensOf(key);
+    var span = kt.length;
+    var i, j, ok;
+    if (!span) return false;
+    for (i = 0; i + span <= tokens.length; i++){
+      ok = true;
+      for (j = 0; j < span; j++){
+        if (!tokenOk(tokens[i + j], kt[j], span === 1 ? mode : "phrase")){ ok = false; break; }
+      }
+      if (ok) return true;
+    }
+    return false;
   }
   function answerFor(raw){
-    var n = norm(raw);
-    if (!n) return { text: PACK.empty, hand: false, id: "empty" };
-    var best = null, bestLen = 0;
-    PACK.rules.forEach(function(r){
-      (r.keys || []).forEach(function(k){
-        var nk = norm(k);
-        if (nk.length < 3) return;
-        if (n.indexOf(nk) >= 0 && nk.length > bestLen){ best = r; bestLen = nk.length; }
+    var tokens = tokensOf(raw);
+    if (!tokens.length) return { text: PACK.empty, hand: false, id: "empty" };
+    function best(priority){
+      var found = null, foundLen = 0;
+      PACK.rules.forEach(function(r){
+        if (!!r.priority !== priority) return;
+        (r.keys || []).forEach(function(k){
+          if (!keyHit(tokens, k, modeFor(r, k))) return;
+          var len = tokensOf(k).join(" ").length;
+          if (len > foundLen){ found = r; foundLen = len; }
+        });
       });
-    });
-    if (!best) return { text: PACK.fallback, hand: false, id: "fallback" };
-    return { text: best.text, hand: !!best.hand, id: best.id || "match" };
+      return found;
+    }
+    var hit = best(true) || best(false);
+    if (!hit) return { text: PACK.fallback, hand: false, id: "fallback" };
+    return { text: hit.text, hand: !!hit.hand, id: hit.id || "match" };
   }
   window.__sectorDemo = { mode: "static-example", lang: PACK.lang, answerFor: answerFor, liveAI: false };
   function play(i){
