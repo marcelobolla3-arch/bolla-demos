@@ -47,7 +47,7 @@ Hay 621 `index.html`. 581 tienen el endpoint y `skipgc`. 39 son redireccionamien
 | Redirecciones | 39 | Sin contador, conservan la búsqueda | Igual. El destino cuenta la visita. |
 | Suiza, neutras y Berlín, páginas de idioma | 95 | Visita y eventos, con `skipgc` | El evento lleva `?p=`. El título del botón deja de ser la frase. |
 | Video comunidad-argentina | 5 | Sin contador | Una visita y la primera reproducción. |
-| Concesionarios en, de, es, it | 4 | Visita automática, sin filtro | Una visita y la primera reproducción. `p` es el tramo `/etiqueta/video-<idioma>`. El texto dice que es un video grabado. |
+| Concesionarios en, de, es, it | 4 | Visita automática, sin filtro | Visita en `/etiqueta/video-<idioma>`. El chat cuenta `conc-chat-open` y `conc-intent-<id>`, sin el texto escrito. |
 | Voz Schloss, Ambàra, Lagoon | 3 | Visita; Lagoon sin filtro; la campaña no iba en todos los eventos | Filtro y `?p=` en el evento. El widget no cambia. |
 | Náutica y náutica-cat | 2 | Visita y preguntas, `p` como tramo | Igual. |
 | Ambàra y Coral, chat | 2 | Visita y eventos | El evento lleva `?p=`. |
@@ -78,4 +78,6 @@ El script público también manda `location.search` en el campo `q`. La ruta usa
 
 ## Concesionarios
 
-`/concesionarios/en/`, `/de/`, `/es/` e `/it/` reproducen `video.mp4`. El título anterior decía que un agente atendía la llamada del concesionario. Ahora el título y el párrafo dicen que es un ejemplo grabado, que la página no inicia una llamada y que es la misma para quien entra. Siguen el video, el idioma de cada URL, Marcelo Bolla, BOLLA STUDIO y el mapa de redirección de prospectos. Los correos ya enviados no se reescriben.
+`/concesionarios/en/`, `/de/`, `/es/` e `/it/` ya no reproducen `video.mp4`. Esos archivos salieron del repositorio. La visita sigue en `/${p}/video-<idioma>` (o `/video-<idioma>` si no hay campaña) y el título del contador sigue siendo `concesionarios video-<idioma>`, para no partir la serie. El evento viejo `/${p}/video-<idioma>-play` con título `video-play` ya no existe.
+
+El uso del chat es otro evento, con `event: true`, y no lleva el texto escrito. El primer gesto del chat cuenta `/${p}/conc-chat-open` (título `conc-chat-open`). Cada respuesta de una categoría cuenta `/${p}/conc-intent-<id>` con el mismo título (`conc-intent-stock`, `conc-intent-testdrive`, `conc-intent-workshop`, `conc-intent-finance`, `conc-intent-hours`, `conc-intent-location`, `conc-intent-human`, `conc-intent-emergency`, `conc-intent-fallback`). La nota del formulario, si se completa, cuenta `/${p}/conc-intent-request`. El guion que se reproduce solo al abrir no cuenta. `?internal=1` sigue sin cargar el contador. En `/en/` y `/de/` la redirección de prospectos sigue, pero el HTML guarda un hash de 16 hex y la ruta del rubro: el nombre se toma del `p` de la URL. Los enlaces ya enviados no cambian de ruta.
