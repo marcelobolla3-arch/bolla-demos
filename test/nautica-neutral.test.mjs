@@ -185,7 +185,8 @@ test("?lang=es sets html lang and title before the page renders", () => {
   assert.match(html, /\[\?&\]p=\(\[\^&#\]\*\)/);
   assert.match(html, /\[\?&#\]internal=\(\[01\]\)/);
   assert.match(html, /localStorage\.setItem\("skipgc","t"\)/);
-  assert.doesNotMatch(html, /bolla_internal|interno/);
+  assert.match(html, /bolla_internal/);
+  assert.match(html, /\[\?&#\]interno=\(\[01\]\)/);
 });
 
 test("static /nautica/es/ and /nautica/en/ ship the right lang and title and the same ?p= counter", () => {
