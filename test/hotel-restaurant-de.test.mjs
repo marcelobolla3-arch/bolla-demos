@@ -105,6 +105,9 @@ test("germany pages drop Swiss markers and keep the fictional disclaimer", () =>
   for (const [path] of pages) {
     const html = text(path);
     assert.doesNotMatch(html, /Schweiz/i, path);
+    assert.doesNotMatch(html, /Reservation/, path);
+    assert.doesNotMatch(html, /Take-away/i, path);
+    assert.doesNotMatch(html, /Zürich|Zuerich|Basel|Luzern|Genf|Lausanne|Lugano|Davos|Zermatt|Interlaken|Locarno/, path);
     assert.doesNotMatch(html, /\+41/, path);
     assert.doesNotMatch(html, /CHF/i, path);
     assert.doesNotMatch(html, /\.ch\b/, path);
@@ -128,6 +131,23 @@ test("germany pages drop Swiss markers and keep the fictional disclaimer", () =>
   assert.match(text("restaurant-de/de/index.html"), /gemäß Ihren Angaben/);
   assert.match(text("restaurant-de/de/index.html"), /Aperitif/);
   assert.doesNotMatch(text("restaurant-de/de/index.html"), /Apéro/);
+  assert.match(text("hotel-de/de/index.html"), /Reservierungsanfrage/);
+  assert.match(text("hotel-de/de/index.html"), /Reservierungen/);
+  assert.match(text("restaurant-de/de/index.html"), /Tischreservierung/);
+  assert.match(text("restaurant-de/de/index.html"), /Reservierungssystem/);
+  assert.match(text("restaurant-de/de/index.html"), /Essen zum Mitnehmen/);
+  for (const path of ["hotel-de/index.html", "restaurant-de/index.html"]) {
+    const entry = text(path);
+    assert.match(entry, /location\.replace\("de\/"\+location\.search\)/);
+    assert.doesNotMatch(entry, /gc\.zgo\.at\/count\.js/);
+    let landed = "";
+    const sandbox = {
+      location: { search: "?p=berlin-1&internal=1", replace(url) { landed = url; } },
+    };
+    vm.createContext(sandbox);
+    vm.runInContext(entry.match(/<script>([\s\S]*?)<\/script>/)[1], sandbox);
+    assert.equal(landed, "de/?p=berlin-1&internal=1", path);
+  }
 });
 
 test("counted path keeps a sanitised p, and internal=1 sends nothing", () => {
