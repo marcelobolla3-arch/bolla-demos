@@ -196,6 +196,12 @@ test("French whole words refuse false friends and emergencies stay at 112", () =
     ["Nous sommes quatre", "party"],
     ["Le personnel du port", "fallback"],
     ["Et si le vent est fort ?", "weather"],
+    ["Et si le temps est mauvais ?", "weather"],
+    ["En cas de mauvais temps", "weather"],
+    ["Quel temps fait-il ?", "weather"],
+    ["Nous partons en même temps", "fallback"],
+    ["J’ai du temps libre", "fallback"],
+    ["Depuis quelque temps", "fallback"],
     ["La vente est ouverte", "fallback"],
     ["J’ai mal au ventre", "fallback"],
     ["Une grande aventure", "fallback"],
@@ -210,7 +216,11 @@ test("French whole words refuse false friends and emergencies stay at 112", () =
     ["Une blessure à la main", "emergency"],
     ["Peut-on filmer à bord ?", "fallback"],
     ["Est-ce un bon investissement ?", "fallback"],
-    ["Quel est le prix ?", "fallback"],
+    ["Quel est le prix ?", "price"],
+    ["Un skipper est-il inclus ?", "skipper"],
+    ["Y a-t-il une caution ?", "deposit"],
+    ["Que se passe-t-il en cas d’annulation ?", "cancel"],
+    ["Quel est le prix d’une urgence ?", "emergency"],
     ["Y a-t-il le wifi ?", "fallback"],
     ["Peut-on jouer aux échecs ?", "fallback"],
     ["Naviguez-vous jusqu’au Japon ?", "fallback"],
@@ -225,6 +235,15 @@ test("French whole words refuse false friends and emergencies stay at 112", () =
   assert.match(emergency.text, /112/);
   assert.match(emergency.text, /numéro d’urgence local/);
   assert.doesNotMatch(emergency.text, /bouée|sautez|lancez|corde|protocole|gilet/i);
+  for (const id of ["price", "skipper", "deposit", "cancel"]) {
+    const answer = demo.answerFor(packOf(html).rules.find((rule) => rule.id === id).button);
+    assert.equal(answer.id, id);
+    assert.match(answer.text, /L’entreprise dirait/);
+    assert.doesNotMatch(answer.text, /\d/);
+  }
+  const weather = packOf(html).rules.find((rule) => rule.id === "weather");
+  assert.ok(weather.keys.includes("temps est mauvais"));
+  assert.ok(!weather.keys.includes("temps"));
   assert.equal(packOf(html).rules.find((rule) => rule.id === "emergency").button, undefined);
   assert.equal(demo.liveAI, false);
 });
@@ -241,9 +260,16 @@ test("English intl page keeps the charter boundaries and names no city", () => {
     ["What if the weather is bad?", "weather"],
     ["Do you have a lifejacket?", "safety"],
     ["Is there a window?", "fallback"],
-    ["Do you offer training?", "fallback"],
+    ["Do you offer training?", "course"],
+    ["Can I learn to sail?", "course"],
+    ["Are there lessons?", "course"],
+    ["Of course I like boats", "fallback"],
     ["Is a costume allowed?", "fallback"],
-    ["What is the price?", "fallback"],
+    ["What is the price?", "price"],
+    ["Is a skipper included?", "skipper"],
+    ["Is there a deposit?", "deposit"],
+    ["What if we cancel?", "cancel"],
+    ["What is the price of an emergency?", "emergency"],
     ["There are ten of us", "party"],
     ["Is there a sailing course?", "course"],
     ["Can we play chess?", "fallback"],
@@ -257,6 +283,16 @@ test("English intl page keeps the charter boundaries and names no city", () => {
   const off = demo.answerFor("Can we play chess?");
   assert.match(off.text, /does not cover that question/);
   assert.match(off.text, /business would answer/);
+  const page = text("charter-intl/en/index.html");
+  const course = packOf(page).rules.find((rule) => rule.id === "course");
+  assert.deepEqual(course.keys, ["sailing course", "lesson", "lessons", "learn to sail", "training"]);
+  assert.ok(!(course.roots || []).includes("course"));
+  for (const id of ["price", "skipper", "deposit", "cancel"]) {
+    const answer = demo.answerFor(packOf(page).rules.find((rule) => rule.id === id).button);
+    assert.equal(answer.id, id);
+    assert.match(answer.text, /The company would say/);
+    assert.doesNotMatch(answer.text, /\d/);
+  }
 });
 
 test("counted paths keep au-uwin style tags, skip internal, and language links keep the query", () => {
