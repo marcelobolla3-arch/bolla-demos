@@ -234,6 +234,9 @@ test("vet/es answerFor covers the script and refuses Spanish false friends", () 
     ["un reptil", "exotico"],
     ["pasaporte", "viaje"],
     ["quiero viajar", "viaje"],
+    ["viajamos", "viaje"],
+    ["viajar con el perro", "viaje"],
+    ["viajar con el gato", "viaje"],
     ["   ", "empty"],
     ["¿¿¿", "empty"],
   ];
@@ -266,6 +269,11 @@ test("vet/es answerFor covers the script and refuses Spanish false friends", () 
     assert.doesNotMatch(reply.text, /€|\d|%|gratis/i, id);
   }
   assert.match(demo.answerFor("vacuna").text, /no indica un precio/);
+  assert.equal(demo.answerFor("viajamos").id, "viaje");
+  assert.equal(demo.answerFor("viajar con el perro").id, "viaje");
+  assert.equal(demo.answerFor("viajar con el gato").id, "viaje");
+  assert.match(demo.answerFor("viajar con el perro").text, /no indica un precio/);
+  assert.match(demo.answerFor("viajero").text, /no está entre las respuestas preparadas/);
   assert.match(demo.answerFor("sangría").text, /no está entre las respuestas preparadas/);
   assert.match(demo.answerFor("no comer").text, /no está entre las respuestas preparadas/);
 
