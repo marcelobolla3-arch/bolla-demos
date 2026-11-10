@@ -182,7 +182,6 @@ test("vet/es answerFor covers the script and refuses Spanish false friends", () 
     ["comido", "fallback"],
     ["comidilla", "fallback"],
     ["aconsejo", "fallback"],
-    ["vacuna", "fallback"],
     ["toxicomanía", "fallback"],
     ["abiertamente", "fallback"],
     ["urgentemente", "fallback"],
@@ -193,6 +192,19 @@ test("vet/es answerFor covers the script and refuses Spanish false friends", () 
     ["ajedrez", "fallback"],
     ["Japón", "fallback"],
     ["¿Se puede filmar?", "fallback"],
+    ["sangría", "fallback"],
+    ["no comer", "fallback"],
+    ["no como carne", "fallback"],
+    ["no comezón", "fallback"],
+    ["vacuno", "fallback"],
+    ["evacuación", "fallback"],
+    ["estéril", "fallback"],
+    ["castrense", "fallback"],
+    ["parasol", "fallback"],
+    ["solo el pelo", "fallback"],
+    ["exotismo", "fallback"],
+    ["viajo en tren", "fallback"],
+    ["viajero", "fallback"],
     ["no respira", "emergency"],
     ["el gato no respira", "emergency"],
     ["incendio", "emergency"],
@@ -202,17 +214,60 @@ test("vet/es answerFor covers the script and refuses Spanish false friends", () 
     ["urgencias", "emergency"],
     ["llame al 112", "emergency"],
     ["veneno y no respira", "emergency"],
+    ["Mi perro ha sido atropellado", "emergency"],
+    ["ha sido atropellada", "emergency"],
+    ["un atropello", "emergency"],
+    ["el perro sangra", "emergency"],
+    ["tiene una convulsión", "emergency"],
+    ["no come y no respira", "emergency"],
+    ["mi gato no come", "apetito"],
+    ["no comen", "apetito"],
+    ["vacuna", "vacuna"],
+    ["vacunación", "vacuna"],
+    ["castración", "castracion"],
+    ["esterilización", "castracion"],
+    ["desparasitación", "desparasitacion"],
+    ["parásitos", "desparasitacion"],
+    ["peluquería", "peluqueria"],
+    ["corte de pelo", "peluqueria"],
+    ["animales exóticos", "exotico"],
+    ["un reptil", "exotico"],
+    ["pasaporte", "viaje"],
+    ["quiero viajar", "viaje"],
     ["   ", "empty"],
     ["¿¿¿", "empty"],
   ];
   for (const [question, id] of cases) assert.equal(demo.answerFor(question).id, id, question);
 
-  const off = demo.answerFor("vacuna");
+  const off = demo.answerFor("ajedrez");
   assert.match(off.text, /ejemplo escrito/);
   assert.match(off.text, /no un asistente en vivo/);
   assert.match(off.text, /no está entre las respuestas preparadas/);
   assert.match(off.text, /No reservo/);
   assert.doesNotMatch(off.text, /112|dosis|euros/);
+
+  const hit = demo.answerFor("Mi perro ha sido atropellado");
+  assert.equal(hit.id, "emergency");
+  assert.match(hit.text, /^Llame ya al 112/);
+  assert.match(hit.text, /veterinario de urgencias/);
+  assert.doesNotMatch(hit.text, protocol);
+
+  const appetite = demo.answerFor("mi gato no come");
+  assert.equal(appetite.id, "apetito");
+  assert.match(appetite.text, /no puede valorar la causa/);
+  assert.match(appetite.text, /Avise a la clínica/);
+  assert.doesNotMatch(appetite.text, /^Llame ya al 112/);
+  assert.doesNotMatch(appetite.text, protocol);
+  assert.equal(demo.answerFor("no come y no respira").id, "emergency");
+
+  for (const id of ["vacuna", "castracion", "desparasitacion", "peluqueria", "exotico", "viaje"]) {
+    const reply = pack.rules.find((rule) => rule.id === id);
+    assert.equal(reply.button, undefined, id);
+    assert.doesNotMatch(reply.text, /€|\d|%|gratis/i, id);
+  }
+  assert.match(demo.answerFor("vacuna").text, /no indica un precio/);
+  assert.match(demo.answerFor("sangría").text, /no está entre las respuestas preparadas/);
+  assert.match(demo.answerFor("no comer").text, /no está entre las respuestas preparadas/);
 
   const emergency = demo.answerFor("el gato no respira");
   assert.match(emergency.text, /^Llame ya al 112/);
