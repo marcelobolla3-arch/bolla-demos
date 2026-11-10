@@ -3,7 +3,6 @@ import { readdirSync, readFileSync, statSync } from "node:fs";
 import { join } from "node:path";
 import { test } from "node:test";
 import vm from "node:vm";
-import { PROSPECT_ROUTES } from "../scripts/prospect-redirect.mjs";
 
 const repo = new URL("..", import.meta.url);
 const dir = new URL("concesionarios/", repo);
@@ -279,15 +278,29 @@ function htmlFiles(dir, out = []) {
   return out;
 }
 
-test("published demo HTML does not contain the 94 prospect slugs", () => {
-  assert.equal(PROSPECT_ROUTES.length, 94);
-  const files = htmlFiles(new URL(".", repo).pathname);
-  assert.ok(files.length > 100);
-  for (const file of files) {
+test("the prospect redirect publishes 94 hashes and no plaintext slug keys", () => {
+  const script = redirectScript(pages.en);
+  const dest = script.match(/var DEST=(\{.*?\});/);
+  assert.ok(dest, "hashed map missing");
+  const map = JSON.parse(dest[1]);
+  const keys = Object.keys(map);
+  assert.equal(keys.length, 94);
+  for (const key of keys) assert.match(key, /^[0-9a-f]{16}$/, key);
+  for (const path of Object.values(map)) {
+    assert.match(path, /^\/[a-z0-9-]+\/[a-z]{2}\/$/);
+    assert.doesNotMatch(path, /\?/);
+  }
+  assert.equal(redirectScript(pages.de), script);
+  const named = [
+    "aktiv-hotel-spa-hannigalp",
+    "agentur-wyss",
+    "agence-casalp",
+    "fahrschule-hefti",
+    "zahnarzt-dr-calvano-forte",
+  ];
+  for (const file of htmlFiles(new URL(".", repo).pathname)) {
     const text = readFileSync(file, "utf8");
-    for (const route of PROSPECT_ROUTES) {
-      assert.equal(text.includes(route.slug), false, file + " contains " + route.slug);
-    }
+    for (const slug of named) assert.equal(text.includes(slug), false, file + " contains " + slug);
   }
 });
 
@@ -323,7 +336,13 @@ test("five real prospect slugs still redirect to the same route", async () => {
     "zahnarzt-dr-calvano-forte",
   ];
   assert.equal(new Set(samples).size, 5);
-  const bySlug = new Map(PROSPECT_ROUTES.map((route) => [route.slug, route.path]));
+  const bySlug = new Map([
+    ["aktiv-hotel-spa-hannigalp", "/hotel-ch/de/"],
+    ["agentur-wyss", "/immobilien-ch/de/"],
+    ["agence-casalp", "/ferienwohnung-ch/fr/"],
+    ["fahrschule-hefti", "/fahrschule-ch/de/"],
+    ["zahnarzt-dr-calvano-forte", "/zahnarzt-ch/de/"],
+  ]);
   for (const slug of samples) {
     const expected = bySlug.get(slug) + "?p=" + slug;
     assert.equal(await land("?p=" + slug, true), expected, "subtle " + slug);

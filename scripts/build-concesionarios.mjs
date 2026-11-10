@@ -1,24 +1,55 @@
 /**
  * Writes the four static car-dealership example pages.
  * The visit path stays /<p>/video-<lang>. Chat events use a fixed category name.
+ * The prospect redirect is a hash-to-path map. The plaintext slugs are not stored here.
  */
-import { createHash } from "node:crypto";
 import { writeFileSync } from "node:fs";
 import { pathToFileURL } from "node:url";
-import { PROSPECT_ROUTES, PROSPECT_SALT, prospectRedirectTag } from "./prospect-redirect.mjs";
 
-export function hashedProspectMap(routes = PROSPECT_ROUTES) {
-  const map = {};
-  for (const route of routes) {
-    const key = createHash("sha256").update(PROSPECT_SALT + route.slug).digest("hex").slice(0, 16);
-    if (Object.prototype.hasOwnProperty.call(map, key)) throw new Error("prospect hash collision");
-    if (route.path.includes(route.slug)) throw new Error("prospect slug is inside the path");
-    map[key] = route.path;
+const PROSPECT_DEST = {"1a4116d708f47e62":"/ferienwohnung-ch/fr/","d26d1440d5da6449":"/immobilien-ch/de/","887545aa99f01ce6":"/paragliding-ch/de/","fcad07227666865f":"/hotel-ch/de/","2cf3a89023bfc2b5":"/ferienwohnung-ch/de/","0610b747f7a6aae4":"/ferienwohnung-ch/fr/","16edf1d82a37bd29":"/hotel-ch/de/","10f2233647466f84":"/ferienwohnung-ch/de/","b916410e7820c480":"/skiverleih-ch/de/","21e73994f5def343":"/immobilien-ch/de/","2a535c62261e24c7":"/immobilien-ch/fr/","c5910d9f8c10d011":"/schifffahrt-ch/de/","3152e617c2429d9c":"/velomiete-ch/de/","b383241df7bd20f1":"/ferienwohnung-ch/de/","988a78e70052333d":"/physio-ch/de/","08427c8c4fe24cf4":"/optiker-ch/de/","0e05b26f964feb37":"/hotel-ch/de/","37125f5b84753354":"/ferienwohnung-ch/de/","2f8695f662b678e5":"/skiverleih-ch/de/","c08d66cc4b849d78":"/coiffeur-ch/de/","2e0ec12fdb1b0577":"/physio-ch/de/","0536e47e929df1b2":"/fitness-ch/de/","ea4a9e7e51b70c6e":"/bergbahn-ch/de/","5545d17a893e80a8":"/fahrschule-ch/de/","644b5b8ea51b2e72":"/fahrschule-ch/de/","f5a6af06f5ce865b":"/fahrschule-ch/de/","e41745cd8d31408d":"/ferienwohnung-ch/de/","9223f0e881c05e81":"/skiverleih-ch/fr/","25bd2bae288f66a9":"/skiverleih-ch/de/","b4d5ea049e3f4b7c":"/hotel-ch/de/","5f2600d37729f7e2":"/ferienwohnung-ch/de/","fa28e3e60759e29c":"/ausfluege-ch/fr/","4ca385f3a45ec5ad":"/paragliding-ch/fr/","19184d5c8765adb9":"/velomiete-ch/de/","b443379c9d167e8f":"/umzug-ch/de/","61c9256fcdca75c1":"/hotel-ch/de/","6e42b6389fc5138a":"/hotel-ch/de/","5787e027dd94cd80":"/hotel-ch/de/","29c89092dbad00f0":"/hotel-ch/de/","d0f92b49f07c2a93":"/hotel-ch/de/","ec6bb44b8e3006fa":"/hotel-ch/fr/","68576aa3546524d9":"/hotel-ch/de/","b9cb343966234036":"/hotel-ch/de/","85c01d02e481f7d5":"/hotel-ch/fr/","63196b7c77cc3452":"/hotel-ch/de/","4e815cf04dd6b6f5":"/hotel-ch/fr/","ec3017616f2ac3f4":"/hotel-ch/de/","7b5c0b0865b0d2a8":"/hotel-ch/de/","507867147000695b":"/hotel-ch/de/","3706abae274769b9":"/hotel-ch/de/","faae2bba5108bf54":"/hotel-ch/de/","c972445bb5366a12":"/hotel-ch/de/","2c3dca7750859214":"/skiverleih-ch/fr/","0ffbc3653d34e773":"/tierarzt-ch/de/","b0b9e2bf925bc4e9":"/tierarzt-ch/de/","4b9d9b9863318f36":"/aesthetik-ch/de/","53cfa4ef117b5655":"/bergbahn-ch/de/","8a9af6c52d4e706e":"/immobilien-ch/de/","1c0c4c85041a54e8":"/hotel-ch/fr/","c7f398784bab1c43":"/coiffeur-ch/fr/","3135e301d084d3e2":"/velomiete-ch/fr/","7103b4d23157e603":"/coiffeur-ch/de/","4445fbb4c938c2a5":"/immobilien-ch/de/","3fd63b226fb973bc":"/skiverleih-ch/fr/","80430ee27587caa4":"/skiverleih-ch/de/","84f05a2f67e6332c":"/fitness-ch/de/","2ecc1c27effa9c6e":"/musikschule-ch/de/","e15bd02cf0db0397":"/coiffeur-ch/de/","292c86b16a632790":"/canyoning-ch/de/","eb0dc2bff9f10df8":"/hotel-ch/de/","0b73316865caef13":"/paragliding-ch/de/","cb3da5fccad6e1e8":"/hotel-ch/de/","30dfb5f2fe2a38af":"/physio-ch/de/","cfb63bb2fc89fa87":"/skiverleih-ch/de/","0ed9defceb9d8347":"/skischule-ch/de/","3f2a2188c0ab59ec":"/velomiete-ch/fr/","956af4b6de58132b":"/bergbahn-ch/de/","1ac561b5f7e70edc":"/velomiete-ch/de/","16e48e83c8c7ff24":"/skiverleih-ch/de/","ce989eca6753bcda":"/ferienwohnung-ch/de/","58cb663235a9c406":"/bergbahn-ch/de/","89b57ed9f4d4d44d":"/ferienwohnung-ch/fr/","6f029266fdde4cfb":"/ferienwohnung-ch/de/","b5c6ba6cda9af18e":"/paragliding-ch/de/","fa8d639d2729d225":"/ferienwohnung-ch/de/","4ab23e9bb029674e":"/skiverleih-ch/de/","be5f6443abb74bee":"/ferienwohnung-ch/fr/","bd841ec3a50d3529":"/velowerkstatt-ch/de/","cfe9b4b07954b0fe":"/skiverleih-ch/fr/","d08c86156e56ec84":"/skiverleih-ch/de/","ecae45dad3a7108a":"/zahnarzt-ch/de/","7ad9970a9580ffc8":"/zahnarzt-ch/de/","cb14ddda86b75553":"/umzug-ch/de/","a88e7e4438d2c528":"/ferienwohnung-ch/de/"};
+
+const SHA16_SOURCE = "function sha16(str) {\n  function rotr(x, n) { return (x >>> n) | (x << (32 - n)); }\n  var K = [0x428a2f98,0x71374491,0xb5c0fbcf,0xe9b5dba5,0x3956c25b,0x59f111f1,0x923f82a4,0xab1c5ed5,0xd807aa98,0x12835b01,0x243185be,0x550c7dc3,0x72be5d74,0x80deb1fe,0x9bdc06a7,0xc19bf174,0xe49b69c1,0xefbe4786,0x0fc19dc6,0x240ca1cc,0x2de92c6f,0x4a7484aa,0x5cb0a9dc,0x76f988da,0x983e5152,0xa831c66d,0xb00327c8,0xbf597fc7,0xc6e00bf3,0xd5a79147,0x06ca6351,0x14292967,0x27b70a85,0x2e1b2138,0x4d2c6dfc,0x53380d13,0x650a7354,0x766a0abb,0x81c2c92e,0x92722c85,0xa2bfe8a1,0xa81a664b,0xc24b8b70,0xc76c51a3,0xd192e819,0xd6990624,0xf40e3585,0x106aa070,0x19a4c116,0x1e376c08,0x2748774c,0x34b0bcb5,0x391c0cb3,0x4ed8aa4a,0x5b9cca4f,0x682e6ff3,0x748f82ee,0x78a5636f,0x84c87814,0x8cc70208,0x90befffa,0xa4506ceb,0xbef9a3f7,0xc67178f2];\n  var H = [0x6a09e667,0xbb67ae85,0x3c6ef372,0xa54ff53a,0x510e527f,0x9b05688c,0x1f83d9ab,0x5be0cd19];\n  var bytes = [];\n  for (var i = 0; i < str.length; i++) {\n    var c = str.charCodeAt(i);\n    if (c < 128) bytes.push(c);\n    else if (c < 2048) bytes.push(192 | (c >> 6), 128 | (c & 63));\n    else bytes.push(224 | (c >> 12), 128 | ((c >> 6) & 63), 128 | (c & 63));\n  }\n  var bitLen = bytes.length * 8;\n  bytes.push(128);\n  while ((bytes.length % 64) !== 56) bytes.push(0);\n  for (var sh = 56; sh >= 0; sh -= 8) bytes.push(Math.floor(bitLen / Math.pow(2, sh)) & 255);\n  var w = new Array(64);\n  for (var off = 0; off < bytes.length; off += 64) {\n    for (var t = 0; t < 16; t++) w[t] = ((bytes[off + t * 4] << 24) | (bytes[off + t * 4 + 1] << 16) | (bytes[off + t * 4 + 2] << 8) | bytes[off + t * 4 + 3]) | 0;\n    for (var t2 = 16; t2 < 64; t2++) {\n      var x15 = w[t2 - 15], x2 = w[t2 - 2];\n      var s0 = rotr(x15, 7) ^ rotr(x15, 18) ^ (x15 >>> 3);\n      var s1 = rotr(x2, 17) ^ rotr(x2, 19) ^ (x2 >>> 10);\n      w[t2] = (w[t2 - 16] + s0 + w[t2 - 7] + s1) | 0;\n    }\n    var a = H[0], b = H[1], c2 = H[2], d = H[3], e = H[4], f = H[5], g = H[6], h = H[7];\n    for (var t3 = 0; t3 < 64; t3++) {\n      var S1 = rotr(e, 6) ^ rotr(e, 11) ^ rotr(e, 25);\n      var ch = (e & f) ^ ((~e) & g);\n      var temp1 = (h + S1 + ch + K[t3] + w[t3]) | 0;\n      var S0 = rotr(a, 2) ^ rotr(a, 13) ^ rotr(a, 22);\n      var maj = (a & b) ^ (a & c2) ^ (b & c2);\n      var temp2 = (S0 + maj) | 0;\n      h = g; g = f; f = e; e = (d + temp1) | 0; d = c2; c2 = b; b = a; a = (temp1 + temp2) | 0;\n    }\n    H[0] = (H[0] + a) | 0; H[1] = (H[1] + b) | 0; H[2] = (H[2] + c2) | 0; H[3] = (H[3] + d) | 0;\n    H[4] = (H[4] + e) | 0; H[5] = (H[5] + f) | 0; H[6] = (H[6] + g) | 0; H[7] = (H[7] + h) | 0;\n  }\n  var hex = \"\";\n  for (var n = 0; n < 2; n++) hex += (\"00000000\" + (H[n] >>> 0).toString(16)).slice(-8);\n  return hex;\n}";
+
+function prospectRedirectTag(map) {
+  const dest = JSON.stringify(map);
+  return `<script id="bolla-p-redirect">(function(){
+var DEST=${dest};
+${SHA16_SOURCE}
+function go(hex){
+  try{
+    var q=new URLSearchParams(location.search);
+    var p=(q.get("p")||"").toLowerCase().replace(/[^a-z0-9_-]/g,"");
+    if(!p||!Object.prototype.hasOwnProperty.call(DEST,hex)) return;
+    var u=DEST[hex].split("{p}").join(p);
+    if(u.indexOf("?")<0) u+="?p="+p;
+    else if(!/[?&]p=/.test(u)) u+="&p="+p;
+    if(q.get("internal")==="1"&&u.indexOf("internal=")<0) u+="&internal=1";
+    location.replace(u);
+  }catch(e){}
+}
+try{
+  var q0=new URLSearchParams(location.search);
+  var p0=(q0.get("p")||"").toLowerCase().replace(/[^a-z0-9_-]/g,"");
+  if(!p0) return;
+  var msg="bolla-p-v1:"+p0;
+  var done;
+  if(typeof crypto!=="undefined"&&crypto.subtle&&crypto.subtle.digest&&typeof TextEncoder==="function"){
+    try{
+      done=crypto.subtle.digest("SHA-256", new TextEncoder().encode(msg)).then(function(buf){
+        var bytes=new Uint8Array(buf), s="", i;
+        for(i=0;i<8;i++) s+=(bytes[i]<16?"0":"")+bytes[i].toString(16);
+        go(s);
+      }).catch(function(){ go(sha16(msg)); });
+    }catch(e){ go(sha16(msg)); }
+  } else {
+    go(sha16(msg));
   }
-  return map;
+  try{ window.__bollaRedirect=done||Promise.resolve(); }catch(e){}
+}catch(e){}
+})();</script>`;
 }
 
-const redirect = prospectRedirectTag(hashedProspectMap());
+const redirect = prospectRedirectTag(PROSPECT_DEST);
 
 function esc(s) {
   return String(s)
@@ -814,9 +845,6 @@ for (const lang of order) {
   }
   if (lang === "de" && /\b(du|dein|deine|dir|dich|schweizer)\b/i.test(visible)) {
     throw new Error("register slip in de");
-  }
-  for (const route of PROSPECT_ROUTES) {
-    if (html.includes(route.slug)) throw new Error("prospect slug leaked into " + lang);
   }
   writeFileSync(new URL(`../concesionarios/${lang}/index.html`, import.meta.url), html);
   console.log(lang, html.length);
