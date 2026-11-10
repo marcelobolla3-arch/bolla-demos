@@ -17,7 +17,7 @@ nav a{display:flex;align-items:center;justify-content:center;min-height:48px;bor
 </style>
 <script>
 (function(){
-  var supported=["et","ru","en"];
+  var supported=["et","ru","en","es"];
   var q=new URLSearchParams(location.search);
   var requested=(q.get("lang")||"").toLowerCase();
   function browserLang(){
@@ -43,6 +43,7 @@ nav a{display:flex;align-items:center;justify-content:center;min-height:48px;bor
     <a href="et/" lang="et" data-keep-query>Eesti</a>
     <a href="ru/" lang="ru" data-keep-query>Русский</a>
     <a href="en/" lang="en" data-keep-query>English</a>
+    <a href="es/" lang="es" data-keep-query>Español</a>
   </nav>
 </main>
 <script>
