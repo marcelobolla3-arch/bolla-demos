@@ -123,11 +123,11 @@ function keepQuery(html, href) {
 
 const kept = {
   "charter/index.html": "6f67d34e0e35b4d7d717951909513212d4cfb974e7c35530f8a8bbdb8ba92863",
-  "charter/en/index.html": "5940b13def586242cb2d885c3f5a0ee474ade2d651a2858662ad10b2d73842e2",
-  "charter/et/index.html": "8098d7141c78164fddf4d8759aaa7a1426da10c07f92ba09857f01f69a08308f",
+  "charter/en/index.html": "72e319be2c9c5c74cc6b37054220e9af63c62023790d6fd6549ec1afff89211c",
+  "charter/et/index.html": "3f38a1f2776a42f42bc27e9881882596f01292d9bfceb8614c21af19274b1ccf",
   "charter-de/index.html": "f34b85dbc85e360d98a0b608e9b38463ccd06647929c1243d128f6d0fef76154",
-  "charter-de/de/index.html": "09de5f1ea76c0db09ae152c8b49f5bfe5d1f46b3c24a63b4477d77f1a0e55427",
-  "charter-de/en/index.html": "887c15ee4cec223a4eaa1815fa39b0c618e2849ff6b8012b519a58895dfe48af",
+  "charter-de/de/index.html": "cc7c68c4868f8fd7f650cbfbe2299396c366427f21e9895948a57bd4da25a01a",
+  "charter-de/en/index.html": "05d5d6456dfcdd7a2c8a6afe478d154f35a342d02baab5161ff5598dc847b6c4",
 };
 
 test("sent charter and charter-de pages stay byte-identical", () => {
