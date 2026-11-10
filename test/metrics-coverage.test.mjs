@@ -94,14 +94,16 @@ test("campaign usage is attached to the event and the question text is not the t
   assert.doesNotMatch(hicar, /play\('stock',1\)/);
   for (const lang of ["en", "de", "es", "it"]) {
     const page = read(new URL(`concesionarios/${lang}/index.html`, root));
-    assert.match(page, /src="video\.mp4"/);
-    assert.match(page, /video-play/);
+    assert.doesNotMatch(page, /<video\b|src="video\.mp4"|video-play|poster=|\.vtt/);
+    assert.match(page, new RegExp(`"/"\\+s\\+"/video-${lang}"`));
+    assert.match(page, new RegExp(`title:"concesionarios video-${lang}"`));
     assert.match(page, /Marcelo Bolla/);
     assert.match(page, /bollastudio\.com/);
+    assert.match(page, /skipgc/);
     assert.doesNotMatch(page, /answers your dealership|atiende la llamada|nimmt die Anrufe|risponde alle chiamate/);
   }
   assert.match(read(new URL("concesionarios/en/index.html", root)), /aktiv-hotel-spa-hannigalp/);
-  assert.match(read(new URL("concesionarios/en/index.html", root)), /Watch a recorded example/);
+  assert.match(read(new URL("concesionarios/en/index.html", root)), /An illustrative example of how the assistant replies/);
   const budokan = read(new URL("budokan-zuerich-web/index.html", root));
   assert.match(budokan, /bsTrack\('\/trial\/confirm','trial-confirm'\)/);
   assert.match(budokan, /bsTrack\('\/chat\/'\+i,'script-option'\)/);

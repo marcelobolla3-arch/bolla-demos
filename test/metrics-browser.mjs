@@ -223,16 +223,12 @@ try {
   await run("dealer-video", async () => {
     await open("/concesionarios/en/?p=" + tag + "&internal=0");
     const text = await evaluate("document.body.innerText");
-    if (!/recorded example/i.test(text) || /answers your dealership/i.test(text)) throw new Error("copy");
-    if (!(await evaluate("!!document.querySelector('video[src=\"video.mp4\"]')"))) throw new Error("video missing");
+    if (!/illustrative example of how the assistant replies/i.test(text) || /answers your dealership/i.test(text)) throw new Error("copy");
+    if (await evaluate("!!document.querySelector('video')")) throw new Error("video still present");
     const before = await hits();
-    if (before.length !== 1 || before[0].e !== false) throw new Error("visit " + JSON.stringify(before));
-    await clickPlay("video");
-    await delay(400);
-    const after = await hits();
-    if (after.length !== 2 || after[1].t !== "video-play" || after[1].e !== true) throw new Error("play " + JSON.stringify(after));
+    if (before.length !== 1 || before[0].e !== false || !before[0].p.includes("/" + tag + "/video-en")) throw new Error("visit " + JSON.stringify(before));
     await shot("qa-concesionarios-en-375");
-    return { hits: after.map(({ p, t, e }) => ({ p, t, e })), width: await evaluate("document.documentElement.clientWidth") };
+    return { hits: before.map(({ p, t, e }) => ({ p, t, e })), width: await evaluate("document.documentElement.clientWidth") };
   });
 
   await run("redirect-once", async () => {

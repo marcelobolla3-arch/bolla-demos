@@ -47,7 +47,7 @@ Hay 621 `index.html`. 581 tienen el endpoint y `skipgc`. 39 son redireccionamien
 | Redirecciones | 39 | Sin contador, conservan la búsqueda | Igual. El destino cuenta la visita. |
 | Suiza, neutras y Berlín, páginas de idioma | 95 | Visita y eventos, con `skipgc` | El evento lleva `?p=`. El título del botón deja de ser la frase. |
 | Video comunidad-argentina | 5 | Sin contador | Una visita y la primera reproducción. |
-| Concesionarios en, de, es, it | 4 | Visita automática, sin filtro | Una visita y la primera reproducción. `p` es el tramo `/etiqueta/video-<idioma>`. El texto dice que es un video grabado. |
+| Concesionarios en, de, es, it | 4 | Visita automática, sin filtro | Una visita en el tramo `/etiqueta/video-<idioma>`. Sin archivo de video. El texto dice que es un ejemplo ilustrativo. |
 | Voz Schloss, Ambàra, Lagoon | 3 | Visita; Lagoon sin filtro; la campaña no iba en todos los eventos | Filtro y `?p=` en el evento. El widget no cambia. |
 | Náutica y náutica-cat | 2 | Visita y preguntas, `p` como tramo | Igual. |
 | Ambàra y Coral, chat | 2 | Visita y eventos | El evento lleva `?p=`. |
@@ -78,4 +78,4 @@ El script público también manda `location.search` en el campo `q`. La ruta usa
 
 ## Concesionarios
 
-`/concesionarios/en/`, `/de/`, `/es/` e `/it/` reproducen `video.mp4`. El título anterior decía que un agente atendía la llamada del concesionario. Ahora el título y el párrafo dicen que es un ejemplo grabado, que la página no inicia una llamada y que es la misma para quien entra. Siguen el video, el idioma de cada URL, Marcelo Bolla, BOLLA STUDIO y el mapa de redirección de prospectos. Los correos ya enviados no se reescriben.
+`/concesionarios/en/`, `/de/`, `/es/` e `/it/` ya no reproducen `video.mp4`. Esos archivos salieron del repositorio. La visita sigue en `/${p}/video-<idioma>` (o `/video-<idioma>` si no hay campaña) y el título del contador sigue siendo `concesionarios video-<idioma>`, para no partir la serie. No hay evento de reproducción. La página muestra el rubro y un aviso de que es un ejemplo ilustrativo de cómo responde el asistente. Siguen el idioma de cada URL, Marcelo Bolla, BOLLA STUDIO, `?internal=1` y, en `/en/` y `/de/`, el mapa de redirección de prospectos. Los enlaces ya enviados no cambian de ruta.
