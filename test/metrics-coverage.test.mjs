@@ -32,7 +32,7 @@ const auditedContent = new Set([
   ...neutral.flatMap((slug) => [`${slug}/et/index.html`, `${slug}/ru/index.html`, `${slug}/en/index.html`]),
   ...berlin.flatMap((slug) => [`${slug}/de/index.html`, `${slug}/en/index.html`]),
   ...germany.map((slug) => `${slug}/de/index.html`),
-  ...charterIntl.flatMap((slug) => [`${slug}/en/index.html`, `${slug}/fr/index.html`]),
+  ...charterIntl.flatMap((slug) => [`${slug}/en/index.html`, `${slug}/fr/index.html`, `${slug}/es/index.html`]),
   ...["es", "en", "it", "de", "fr"].map((lang) => `video/comunidad-argentina/${lang}/index.html`),
   ...["en", "de", "es", "it"].map((lang) => `concesionarios/${lang}/index.html`),
   "voz/schloss-wuelflingen/index.html",
@@ -63,7 +63,7 @@ test("every demo page counts one visit and can record use, and redirects do not 
     if (html.includes("window.bsTrack=function") && !html.includes("event:true") && !html.includes("event: true")) missing.push(path + " event");
     if (html.includes("'Chat '+q") || html.includes("function play(k){box.innerHTML='';S[k].forEach(add);bsTrack")) missing.push(path + " open-or-title");
   }
-  assert.equal(auditedContent.size, 87);
+  assert.equal(auditedContent.size, 88);
   assert.deepEqual(missing, []);
   const present = new Set(files.map((path) => path.slice(new URL(".", root).pathname.length)));
   assert.deepEqual([...auditedContent].filter((rel) => !present.has(rel)), []);

@@ -142,19 +142,19 @@ test("charter-intl pages are generic, fictional, and keep the Unicode matcher", 
   const source = matcherBlock(text("charter/en/index.html"));
   assert.match(source, /\\p\{L\}/);
   assert.doesNotMatch(source, /indexOf\(nk\)/);
-  for (const path of ["charter-intl/en/index.html", "charter-intl/fr/index.html"]) {
+  for (const path of ["charter-intl/en/index.html", "charter-intl/fr/index.html", "charter-intl/es/index.html"]) {
     const html = text(path);
     assert.equal(matcherBlock(html), source, path);
-    assert.doesNotMatch(html, /Tallinn|Eston|\+372|Pirita|Baltic|Eesti/i, path);
+    assert.doesNotMatch(html, /Tallinn|Eston|\+372|Pirita|Baltic|Eesti|Italia|italiano|Roma|Milán/i, path);
     assert.doesNotMatch(html, /\+\d{1,3}\s+\d/, path);
     assert.match(html, /000 000 0000/);
-    assert.match(html, /Mediterranean|Méditerranée/);
-    assert.match(html, /Caribbean|Caraïbes/);
-    assert.match(html, /Australia|Australie/);
-    assert.match(html, /North America|Amérique du Nord/);
-    assert.match(html, /fictional|fictif/i);
+    assert.match(html, /Mediterranean|Méditerranée|Mediterráneo/);
+    assert.match(html, /Caribbean|Caraïbes|Caribe/);
+    assert.match(html, /Australia|Australie|Oceanía/);
+    assert.match(html, /North America|Amérique du Nord|América del Norte/);
+    assert.match(html, /fictional|fictif|ficticio/i);
     assert.match(html, /112/);
-    assert.match(html, /local emergency number|numéro d’urgence local/);
+    assert.match(html, /local emergency number|numéro d’urgence local|número de emergencia local/);
     assert.doesNotMatch(html, /€|\$\d|\bUSD\b|\bAUD\b|\bEUR\b/);
     assert.match(html, /data-keep-query/);
     assert.match(html, /liveAI:\s*false/);
@@ -176,6 +176,20 @@ test("charter-intl pages are generic, fictional, and keep the Unicode matcher", 
   assert.doesNotMatch(frProse, /\b(tu|toi|ton|ta|tes)\b/);
   assert.match(fr, /href="\.\.\/en\/"/);
   assert.match(text("charter-intl/en/index.html"), /href="\.\.\/fr\/"/);
+  const es = text("charter-intl/es/index.html");
+  const esProse = es
+    .replace(/<style[\s\S]*?<\/style>/g, " ")
+    .replace(/<script id="sector-demo">[\s\S]*?<\/script>/g, " ")
+    .replace(/<script id="bolla-lang-links">[\s\S]*?<\/script>/g, " ")
+    .replace(/<script>\s*\(function\(\)\{\s*var BASE=[\s\S]*?<\/script>/g, " ");
+  assert.match(es, /lang="es"/);
+  assert.match(esProse, /de usted/);
+  assert.match(esProse, /Escriba/);
+  assert.doesNotMatch(esProse, /\b(puedes|tienes|quieres|vosotros|tú|pulsa|vos)\b/i);
+  assert.match(es, /href="\.\.\/en\/"/);
+  assert.match(es, /href="\.\.\/fr\/"/);
+  assert.match(text("charter-intl/en/index.html"), /href="\.\.\/es\/"/);
+  assert.match(fr, /href="\.\.\/es\/"/);
 });
 
 test("French whole words refuse false friends and emergencies stay at 112", () => {
@@ -248,6 +262,66 @@ test("French whole words refuse false friends and emergencies stay at 112", () =
   assert.equal(demo.liveAI, false);
 });
 
+test("Spanish whole words refuse false friends and name no country or phone", () => {
+  const html = text("charter-intl/es/index.html");
+  const demo = loadDemo(html, "charter-intl/es/index.html");
+  const cases = [
+    ["¿Hay un curso de vela?", "course"],
+    ["Quiero aprender a navegar", "course"],
+    ["En el curso del día", "fallback"],
+    ["Quiero hacer las compras", "fallback"],
+    ["¿Se puede consultar por un catamarán?", "yacht"],
+    ["Un velero", "yacht"],
+    ["Somos cuatro", "party"],
+    ["El personal del puerto", "fallback"],
+    ["¿Y si el viento es fuerte?", "weather"],
+    ["¿Y si el tiempo está malo?", "weather"],
+    ["Tengo tiempo libre", "fallback"],
+    ["Al mismo tiempo", "fallback"],
+    ["Me duele el vientre", "fallback"],
+    ["¿Tienen chalecos salvavidas?", "safety"],
+    ["Un chaleco de traje", "fallback"],
+    ["Hombre al agua", "emergency"],
+    ["Alguien se ahoga", "emergency"],
+    ["Es una emergencia", "emergency"],
+    ["Un cliente está herido", "emergency"],
+    ["Una palabra adherida", "fallback"],
+    ["¿Se puede filmar a bordo?", "fallback"],
+    ["¿Es una buena inversión?", "fallback"],
+    ["¿Cuál es el precio?", "price"],
+    ["Es un regalo precioso", "fallback"],
+    ["Aprecio su trabajo", "fallback"],
+    ["¿El patrón está incluido?", "skipper"],
+    ["¿Hay una fianza?", "deposit"],
+    ["¿Qué pasa si cancelamos?", "cancel"],
+    ["¿Cuál es el precio de una emergencia?", "emergency"],
+    ["¿Hay wifi?", "fallback"],
+    ["¿Se puede jugar al ajedrez?", "fallback"],
+    ["¿Navegan hasta Japón?", "fallback"],
+    ["   ", "empty"],
+  ];
+  for (const [question, id] of cases) assert.equal(demo.answerFor(question).id, id, question);
+  const off = demo.answerFor("¿Se puede jugar al ajedrez?");
+  assert.match(off.text, /ejemplo escrito/);
+  assert.match(off.text, /no cubre/);
+  assert.match(off.text, /respondería/);
+  const emergency = demo.answerFor("Hombre al agua");
+  assert.match(emergency.text, /112/);
+  assert.match(emergency.text, /número de emergencia local/);
+  assert.doesNotMatch(emergency.text, /boya|salte|cuerda|protocolo|chaleco/i);
+  for (const id of ["price", "skipper", "deposit", "cancel"]) {
+    const answer = demo.answerFor(packOf(html).rules.find((rule) => rule.id === id).button);
+    assert.equal(answer.id, id);
+    assert.match(answer.text, /La empresa diría/);
+    assert.doesNotMatch(answer.text, /\d/);
+  }
+  assert.equal(packOf(html).rules.find((rule) => rule.id === "emergency").button, undefined);
+  assert.equal(demo.liveAI, false);
+  assert.doesNotMatch(html, /Italia|Tallinn|\+39|\+372/);
+  assert.match(html, /nombre@ejemplo\.com/);
+  assert.match(html, /marcelo@bollastudio\.com/);
+});
+
 test("English intl page keeps the charter boundaries and names no city", () => {
   const demo = loadDemo(text("charter-intl/en/index.html"), "charter-intl/en/index.html");
   const cases = [
@@ -300,6 +374,7 @@ test("counted paths keep au-uwin style tags, skip internal, and language links k
   const pages = [
     ["charter-intl/en/index.html", "/bolla-demo-charter-intl/en", "charter-intl demo en"],
     ["charter-intl/fr/index.html", "/bolla-demo-charter-intl/fr", "charter-intl demo fr"],
+    ["charter-intl/es/index.html", "/bolla-demo-charter-intl/es", "charter-intl demo es"],
   ];
   for (const [path, base, title] of pages) {
     const html = text(path);
@@ -336,6 +411,7 @@ test("counted paths keep au-uwin style tags, skip internal, and language links k
     assert.ok(links.some((href) => href.includes("p=us-balzekas") && href.includes("internal=1")));
     assert.ok(links.some((href) => href.includes("/charter-intl/en/") || href.endsWith("/en/") || href.includes("/en/?")));
     assert.ok(links.some((href) => href.includes("/fr/") || href.includes("/fr?")));
+    assert.ok(links.some((href) => href.includes("/es/") || href.includes("/es?")));
   }
 });
 
@@ -357,7 +433,10 @@ test("the charter-intl entry keeps the campaign query and does not count", () =>
   }
   assert.equal(go("", ["en-US"]), "en/");
   assert.equal(go("", ["fr-FR"]), "fr/");
+  assert.equal(go("", ["es-MX", "es"]), "es/");
+  assert.equal(go("", ["en", "es"]), "en/");
   assert.equal(go("?p=au-uwin&internal=1", ["en"]), "en/?p=au-uwin&internal=1");
   assert.equal(go("?lang=fr&p=ca-highwaymotors", ["en-US"]), "fr/?p=ca-highwaymotors");
+  assert.equal(go("?lang=es&p=au-uwin", ["fr-FR"]), "es/?p=au-uwin");
   assert.equal(go("?lang=et&p=us-balzekas", ["en"]), "en/?p=us-balzekas");
 });
