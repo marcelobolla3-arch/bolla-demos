@@ -218,6 +218,8 @@ test("charter-intl pages are generic, fictional, and keep the Unicode matcher", 
     .replace(/<script id="bolla-lang-links">[\s\S]*?<\/script>/g, " ")
     .replace(/<script>\s*\(function\(\)\{\s*var BASE=[\s\S]*?<\/script>/g, " ");
   assert.match(it, /lang="it"/);
+  assert.match(it, /<title>Conversazione di esempio per un charter a vela · BOLLA STUDIO<\/title>/);
+  assert.doesNotMatch(it, /<title>Example chat/);
   assert.match(itProse, /con il Lei/);
   assert.match(itProse, /Scriva/);
   assert.doesNotMatch(itProse, /\b(tu|tuo|tua|tuoi|tue)\b/i);
