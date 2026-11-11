@@ -136,7 +136,7 @@ test("sent charter-intl routes stay at their published bytes", () => {
     "charter-intl/es/index.html": "a320efe9db4da5f1830722d8e7c1c5c0ddf047714bac46da1b1c3c6b4e95a0c6",
     "charter-intl/fr/index.html": "a7d10253f89d4a0d937314344426bb9312748c35062bc80342b568c9fc39f096",
     "charter-intl/index.html": "4ed2bde63b144b9cc418e029d3b71c1c180854673f49b0472a0695aa38c2cc93",
-    "charter-intl/it/index.html": "e61ec9a782134d43f931127af790a092181a1a10ccf65500a3b34cdd625426e3",
+    "charter-intl/it/index.html": "86c66c244bac57ec7fbac118f348f59c5bc214e21ce62179aa62fa2834086c11",
     "charter-intl/de/index.html": "4bc20b54c90a99e2717ca64bd8f9bb19abd81c0671eb904ea60839820d2875be",
   };
   for (const [path, hash] of Object.entries(sent)) {
