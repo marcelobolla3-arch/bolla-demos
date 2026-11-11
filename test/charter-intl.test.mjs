@@ -130,6 +130,18 @@ const kept = {
   "charter-de/en/index.html": "05d5d6456dfcdd7a2c8a6afe478d154f35a342d02baab5161ff5598dc847b6c4",
 };
 
+test("sent charter-intl routes stay byte-identical to main", () => {
+  const sent = {
+    "charter-intl/en/index.html": "60a42d5aedaa741885a974a2d505031221085d19fbf9d209e50b04fb27bd9f02",
+    "charter-intl/es/index.html": "a320efe9db4da5f1830722d8e7c1c5c0ddf047714bac46da1b1c3c6b4e95a0c6",
+    "charter-intl/fr/index.html": "a7d10253f89d4a0d937314344426bb9312748c35062bc80342b568c9fc39f096",
+    "charter-intl/index.html": "4ed2bde63b144b9cc418e029d3b71c1c180854673f49b0472a0695aa38c2cc93",
+  };
+  for (const [path, hash] of Object.entries(sent)) {
+    assert.equal(createHash("sha256").update(read(path)).digest("hex"), hash, path);
+  }
+});
+
 test("sent charter and charter-de pages stay byte-identical", () => {
   for (const [path, hash] of Object.entries(kept)) {
     assert.equal(createHash("sha256").update(read(path)).digest("hex"), hash, path);
@@ -367,9 +379,13 @@ test("German whole words use Sie and name no country or sea", () => {
   assert.doesNotMatch(html, /Mittelmeer|Karibik|Europa|Deutschland|\bBerlin\b|Tallinn|Mediterraneo|France|Italia|\+49|€/);
   assert.match(html, /keiner Stadt und keinem Land/);
   assert.match(html, /\bSie\b/);
+  assert.doesNotMatch(html, /mit Sie/);
+  assert.match(html, /<title>Beispielgespräch für einen Segelcharter · BOLLA STUDIO<\/title>/);
+  assert.match(html, /weiß|große/);
+  assert.doesNotMatch(html, /weiss|grosse/);
   assert.doesNotMatch(html.replace(/<script[\s\S]*?<\/script>/g, " "), /\b(du|dein|deine|dir|dich)\b/i);
   assert.match(html, /href="\.\.\/en\/"/);
-  assert.match(text("charter-intl/en/index.html"), /href="\.\.\/de\/"/);
+  assert.doesNotMatch(text("charter-intl/en/index.html") + text("charter-intl/fr/index.html") + text("charter-intl/es/index.html"), /href="\.\.\/de\/"/);
 });
 
 test("English intl page keeps the charter boundaries and names no city", () => {
@@ -463,7 +479,6 @@ test("counted paths keep au-uwin style tags, skip internal, and language links k
     assert.ok(links.some((href) => href.includes("/charter-intl/en/") || href.endsWith("/en/") || href.includes("/en/?")));
     assert.ok(links.some((href) => href.includes("/fr/") || href.includes("/fr?")));
     assert.ok(links.some((href) => href.includes("/es/") || href.includes("/es?")));
-    assert.ok(links.some((href) => href.includes("/de/") || href.includes("/de?")));
   }
 });
 
@@ -486,8 +501,8 @@ test("the charter-intl entry keeps the campaign query and does not count", () =>
   assert.equal(go("", ["en-US"]), "en/");
   assert.equal(go("", ["fr-FR"]), "fr/");
   assert.equal(go("", ["es-MX", "es"]), "es/");
-  assert.equal(go("", ["de-DE"]), "de/");
-  assert.equal(go("?lang=de&p=au-uwin", ["en-US"]), "de/?p=au-uwin");
+  assert.equal(go("", ["de-DE"]), "en/");
+  assert.equal(go("?lang=de&p=au-uwin", ["en-US"]), "en/?p=au-uwin");
   assert.equal(go("", ["en", "es"]), "en/");
   assert.equal(go("?p=au-uwin&internal=1", ["en"]), "en/?p=au-uwin&internal=1");
   assert.equal(go("?lang=fr&p=ca-highwaymotors", ["en-US"]), "fr/?p=ca-highwaymotors");
