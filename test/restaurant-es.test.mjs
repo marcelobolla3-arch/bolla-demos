@@ -1,4 +1,5 @@
 import assert from "node:assert/strict";
+import { createHash } from "node:crypto";
 import { readFileSync } from "node:fs";
 import { test } from "node:test";
 import vm from "node:vm";
@@ -63,4 +64,17 @@ test("the Spanish restaurant example is neutral and has no prices", () => {
   ];
   for (const [question, id] of cases) assert.equal(demo.answerFor(question).id, id, question);
   assert.doesNotMatch(demo.answerFor("¿Hay menú del mediodía?").text, /\d|€/);
+});
+
+test("sent restaurant routes stay byte-identical to main", () => {
+  const sent = {
+    "restaurant/index.html": "c4200135abcdc70e5a5d44849c5a93271c7f84d295fc05be8f1819fb4aad9366",
+    "restaurant/en/index.html": "241c47a1a09fa653c933d90e12f8c847b17558c9acaa7ee196627fbffffc6b6d",
+    "restaurant/et/index.html": "8bdeedfc4918159d8dda362be061038031f3d860e826770f22550ba8f7e50e31",
+    "restaurant/ru/index.html": "03f49847ecfa929d12d4eeeff0f65223636f124af374e13ac1981f16ca7adf2e",
+  };
+  for (const [path, hash] of Object.entries(sent)) {
+    const file = readFileSync(new URL(`../${path}`, import.meta.url));
+    assert.equal(createHash("sha256").update(file).digest("hex"), hash, path);
+  }
 });

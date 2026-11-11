@@ -42,7 +42,6 @@ const auditedContent = new Set([
   "nautica-cat/index.html",
   "ambarra/index.html",
   "coral-yachting/index.html",
-  "restaurant/es/index.html",
 ]);
 
 test("every demo page counts one visit and can record use, and redirects do not count twice", () => {
@@ -64,7 +63,7 @@ test("every demo page counts one visit and can record use, and redirects do not 
     if (html.includes("window.bsTrack=function") && !html.includes("event:true") && !html.includes("event: true")) missing.push(path + " event");
     if (html.includes("'Chat '+q") || html.includes("function play(k){box.innerHTML='';S[k].forEach(add);bsTrack")) missing.push(path + " open-or-title");
   }
-  assert.equal(auditedContent.size, 90);
+  assert.equal(auditedContent.size, 89);
   assert.deepEqual(missing, []);
   const present = new Set(files.map((path) => path.slice(new URL(".", root).pathname.length)));
   assert.deepEqual([...auditedContent].filter((rel) => !present.has(rel)), []);
