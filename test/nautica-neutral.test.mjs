@@ -1,4 +1,5 @@
 import assert from "node:assert/strict";
+import { createHash } from "node:crypto";
 import { readFileSync } from "node:fs";
 import { test } from "node:test";
 import vm from "node:vm";
@@ -213,17 +214,22 @@ test("?lang=es sets html lang and title before the page renders", () => {
   assert.match(html, /\[\?&#\]interno=\(\[01\]\)/);
 });
 
-test("static /nautica/es/ and /nautica/fr/ match the Italian page except lang and title", () => {
-  const canonical = read("nautica/index.html");
+test("static /nautica/es/ and /nautica/fr/ stay sealed and match each other except lang and title", () => {
   const normalize = (html) => html
     .replace(/<html lang="[a-z]{2}">/, '<html lang="*">')
     .replace(/<title>[^<]*<\/title>/, "<title>*</title>");
-  const same = normalize(canonical);
-  for (const [path, lang, title] of [
+  const sealed = {
+    "nautica/es/index.html": "84000acb22f213d57f091c090100b75d61b0da917c8cb89fd861009fe088755e",
+    "nautica/fr/index.html": "2acdc34ed5f3cf856ab27fbb2093b5906bc3b54fb55013279356f42d876cd7a0",
+  };
+  const pages = [
     ["nautica/es/index.html", "es", "Lagoon 42 · Asistente de a bordo · BOLLA STUDIO"],
     ["nautica/fr/index.html", "fr", "Lagoon 42 · Assistant de bord · BOLLA STUDIO"],
-  ]) {
+  ];
+  const same = normalize(read(pages[0][0]));
+  for (const [path, lang, title] of pages) {
     const html = read(path);
+    assert.equal(createHash("sha256").update(html).digest("hex"), sealed[path], path);
     assert.equal(normalize(html), same, path);
     assert.match(html, new RegExp(`<html lang="${lang}"><head>`));
     assert.match(html, new RegExp(`<title>${title}</title>`));
@@ -710,6 +716,9 @@ function bootNautica(html, pathname) {
 this.answerCurated=answerCurated;
 this.answerSearch=answerSearch;
 this.bindCites=bindCites;
+this.citeLabel=citeLabel;
+this.citeTitle=citeTitle;
+this.foreignProse=typeof foreignProse==="function"?foreignProse:null;
 this.D=D;`, sandbox, { filename: "nautica-cite.js" });
   return sandbox;
 }
@@ -798,6 +807,75 @@ test("non-English nautica routes hide the English manual and keep route-language
   assert.equal(newExcerpt, oldExcerpt);
   const question = "¿Cómo se usa el gennaker?";
   assert.equal(newBoat.answerSearch(question, "en", true).card.innerHTML, oldBoat.answerSearch(question, "en", true).card.innerHTML);
+});
+
+function visibleText(html) {
+  const titles = [...String(html).matchAll(/\btitle="([^"]*)"/g)].map((match) => match[1]);
+  return [...titles, String(html).replace(/<[^>]+>/g, " ")].join(" ")
+    .replace(/&quot;/g, '"').replace(/&amp;/g, "&").replace(/&lt;/g, "<").replace(/&gt;/g, ">");
+}
+
+function excerptFor(boat, page) {
+  const list = citeNode();
+  const chip = citeNode();
+  chip.className = "cite";
+  chip.dataset.c = `${page.d}:${page.p}`;
+  chip.parent = list;
+  list.children.push(chip);
+  boat.bindCites(list);
+  chip.click();
+  const excerpt = list.querySelector(`.excerpt[data-c='${page.d}:${page.p}']`);
+  return excerpt ? excerpt.innerHTML : "";
+}
+
+test("nautica citations stay in the route language and hide internal labels", () => {
+  const internal = /§|\bUG\b|\bOM\b|\(PDF\b/;
+  const frenchPassage = /Vous venez|Saviez-vous|propriétaires|d'acquérir|d’acquérir|noeuds/i;
+  const club = {
+    en: "How can I join the Lagoon owners club?",
+    it: "Come posso iscrivermi al club dei proprietari Lagoon?",
+    es: "¿Cómo puedo unirme al club de propietarios Lagoon?",
+    fr: "Comment puis-je rejoindre le club des propriétaires Lagoon?",
+  };
+  const files = {
+    it: ["nautica/index.html", "/nautica/"],
+    en: ["nautica/en/index.html", "/nautica/en/"],
+    es: ["nautica/es/index.html", "/nautica/es/"],
+    fr: ["nautica/fr/index.html", "/nautica/fr/"],
+  };
+  assert.equal(createHash("sha256").update(read("nautica/es/index.html")).digest("hex"), "84000acb22f213d57f091c090100b75d61b0da917c8cb89fd861009fe088755e");
+  assert.equal(createHash("sha256").update(read("nautica/fr/index.html")).digest("hex"), "2acdc34ed5f3cf856ab27fbb2093b5906bc3b54fb55013279356f42d876cd7a0");
+  for (const [lang, [path, pathname]] of Object.entries(files)) {
+    const boat = bootNautica(read(path), pathname);
+    const found = boat.answerSearch(club[lang], lang, false);
+    const shown = visibleText(found.card.innerHTML);
+    assert.doesNotMatch(shown, frenchPassage, lang);
+    if (lang === "en") {
+      assert.match(shown, /The user guide covers this on p\. 2\./);
+      assert.doesNotMatch(shown, /Original text/);
+    }
+    if (lang !== "en" && lang !== "it") continue;
+    for (const page of boat.D.pages) {
+      const label = boat.citeLabel([page.d, page.p, page.pdf, page.sec]);
+      const title = boat.citeTitle([page.d, page.p, page.pdf, page.sec]);
+      const excerpt = visibleText(excerptFor(boat, page));
+      const visible = `${label}\n${title}\n${excerpt}`;
+      assert.doesNotMatch(visible, internal, `${lang} ${page.d} p.${page.p}`);
+      if (lang === "en" && boat.foreignProse(page.t)) {
+        assert.doesNotMatch(excerpt, frenchPassage, `${page.d} p.${page.p}`);
+        assert.match(excerpt, /The (?:owner's manual|user guide) covers this on p\. \d+\./);
+        assert.doesNotMatch(excerpt, /<mark>/);
+      }
+      if (lang === "en" && page.d === "OM" && page.p === 10) {
+        assert.match(excerpt, /circuit|Construction|Van|Peteghem|manual/i);
+      }
+    }
+    for (const topic of boat.D.topics) {
+      const card = boat.answerCurated(topic, lang, false);
+      assert.doesNotMatch(visibleText(card.innerHTML), internal, `${lang} ${topic.id}`);
+      for (const excerpt of openCites(card)) assert.doesNotMatch(visibleText(excerpt), internal, `${lang} ${topic.id}`);
+    }
+  }
 });
 
 test("nautica names no country and no foreign model or version", () => {
