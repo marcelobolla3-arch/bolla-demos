@@ -305,10 +305,10 @@ function prospectMap(html) {
   return JSON.parse(dest[1]);
 }
 
-test("the prospect redirect publishes 94 hashes and no plaintext slug keys", () => {
+test("the prospect redirect publishes 133 hashes and no plaintext slug keys", () => {
   const map = prospectMap(pages.en);
   const keys = Object.keys(map);
-  assert.equal(keys.length, 94);
+  assert.equal(keys.length, 133);
   for (const key of keys) assert.match(key, /^[0-9a-f]{16}$/, key);
   for (const path of Object.values(map)) {
     assert.match(path, /^\/[a-z0-9-]+\/[a-z]{2}\/$/);
@@ -322,9 +322,9 @@ test("the prospect redirect publishes 94 hashes and no plaintext slug keys", () 
   assert.equal(map.ecae45dad3a7108a, "/zahnarzt-ch/de/");
 });
 
-test("no file served by Pages contains one of the 94 prospect slugs", () => {
+test("no file served by Pages contains one of the 133 prospect slugs", () => {
   const banned = new Set(Object.keys(prospectMap(pages.en)));
-  assert.equal(banned.size, 94);
+  assert.equal(banned.size, 133);
   const rootDir = new URL(".", repo).pathname;
   const files = execFileSync("git", ["ls-files", "-z"], { cwd: rootDir, encoding: "utf8" }).split("\0").filter(Boolean);
   assert.ok(files.length > 500);

@@ -1,0 +1,823 @@
+<!doctype html>
+<html lang="de" translate="no">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex">
+<meta name="google" content="notranslate">
+<title>Individuelle Demo für Péclard · BOLLA STUDIO</title>
+<style>
+:root{--c:#0c4a57;--ink:#1c1c1c;--bg:#f3f1ea}
+*{box-sizing:border-box}
+body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Noto Sans","DejaVu Sans",Arial,sans-serif;background:var(--bg);color:var(--ink);line-height:1.5;font-size:17px}
+.top{background:#102027;color:#f4f7f8;padding:14px 16px;text-align:center;font-weight:700}
+a{color:var(--c)}
+.top a{color:#fff}
+header,main{max-width:1080px;margin:0 auto;padding:8px 16px 0}
+.brand{font-weight:800;letter-spacing:.08em;font-size:.85rem;color:#5c6770}
+h1{font-size:1.7rem;line-height:1.25;margin:8px 0 10px;color:var(--c)}
+h2{font-size:1.25rem;margin:0 0 8px;color:var(--c)}
+.intro{margin:0 0 12px}
+.notice{background:#fff;border:2px solid #8a6a10;border-radius:12px;padding:12px 14px;margin:12px 0}
+.caveats{margin:0 0 16px;padding-left:1.2rem}
+.caveats li{margin:8px 0}
+.grid{display:grid;gap:16px;margin:0 0 16px}
+.card{background:#fff;border-radius:16px;box-shadow:0 6px 24px rgba(0,0,0,.08);overflow:hidden}
+.wa-h{background:#102027;color:#fff;padding:12px 16px}
+.wa-h small{display:block;opacity:.9;font-size:14px}
+.chat{background:#e7eef0;min-height:280px;max-height:52vh;overflow-y:auto;padding:12px;display:flex;flex-direction:column;gap:8px}
+.m{max-width:92%;padding:10px 12px;border-radius:10px;font-size:16px;white-space:pre-line;overflow-wrap:anywhere}
+.in{background:#fff;align-self:flex-start}.out{background:#e5f4ea;align-self:flex-end}
+.m a{display:inline-block;margin-right:8px}
+.qrl{padding:10px 12px 0;font-size:15px}
+.qr{padding:8px 12px 12px;display:flex;flex-direction:column;gap:8px}
+button,select,input{font:inherit}
+.qr button,.cta,.ghost,.ask-row button{min-height:48px;font-size:17px;border-radius:12px;cursor:pointer}
+.qr button,.ghost{width:100%;text-align:left;border:2px solid var(--c);background:#fff;color:var(--c);padding:12px 14px}
+.bk{padding:16px}
+label{font-size:16px;display:block;margin:12px 0 6px;font-weight:650}
+select,input{width:100%;padding:12px;border:1px solid #bbb;border-radius:10px;font-size:16px;min-height:48px}
+.cta{margin-top:16px;width:100%;background:var(--c);color:#fff;border:0;padding:14px;font-weight:700}
+.ghost{margin-top:8px}
+.ask{padding:0 12px 14px}
+.ask-row{display:flex;flex-direction:column;gap:8px}
+.ask-row button{background:#102027;color:#fff;border:0;padding:12px 16px;font-weight:700}
+.ok{margin-top:14px;background:#eaf7ea;border:1px solid #8fbf8f;padding:12px;border-radius:10px;font-size:16px;white-space:pre-line}
+.venues{display:grid;gap:12px}
+.venue{background:#fff;border-radius:12px;padding:14px 16px}
+.venue h3{margin:0 0 6px;font-size:1.1rem}
+.venue p{margin:0 0 8px}
+.badge{display:inline-block;background:#fff4d6;border:1px dashed #8a6a10;color:#5c4300;border-radius:8px;padding:4px 8px;font-weight:700}
+.venue a{display:inline-flex;align-items:center;min-height:48px;margin:4px 8px 0 0}
+footer{text-align:center;font-size:15px;padding:8px 16px 40px}
+:focus-visible{outline:3px solid #0b57d0;outline-offset:2px}
+@media(min-width:800px){
+  h1{font-size:2rem}
+  .grid{grid-template-columns:1fr 1fr}
+  .venues{grid-template-columns:1fr 1fr}
+  .qr{flex-direction:row;flex-wrap:wrap}
+  .qr button{width:auto}
+  .ask-row{flex-direction:row}
+  .ask-row input{flex:1}
+  .chat{max-height:460px}
+}
+</style>
+<!-- GoatCounter (BOLLA STUDIO): ?p= is a visit label for counting only. It does not personalize the page. ?internal=1 or ?interno=1 remembers this browser in localStorage skipgc and a first-party cookie, and loads nothing. ?internal=0 or ?interno=0 clears that memory. A p value starting with bmaudit- is internal. -->
+<script>
+(function(){
+ var BASE='/bolla-demo-gastro-gruppe/de';
+ var m=(location.search+location.hash).match(/[?&#]internal=([01])/);
+ var mo=(location.search+location.hash).match(/[?&#]interno=([01])/);
+ var bollaOff=false;
+ function bollaCookie(on){try{var secure="";try{if(location.protocol==="https:")secure="; Secure";}catch(e){}document.cookie=on?"bolla_internal=1; Path=/; Max-Age=34560000; SameSite=Lax"+secure:"bolla_internal=; Path=/; Max-Age=0; SameSite=Lax";}catch(e){}}
+ function bollaStore(on){try{if(on)localStorage.setItem("skipgc","t");else localStorage.removeItem("skipgc");}catch(e){}bollaCookie(on);}
+ try{var qh=location.search+location.hash;var ia=m?qh.lastIndexOf("internal="):-1;var io=mo?qh.lastIndexOf("interno="):-1;if(ia>=0||io>=0){var bollaOn=(io>ia?mo[1]:m[1])==="1";bollaOff=!bollaOn;bollaStore(bollaOn);}}catch(e){}
+ var internal=false;try{internal=localStorage.getItem("skipgc")==="t";}catch(e){}
+ try{if(!internal&&/(?:^|; )bolla_internal=1(?:;|$)/.test(document.cookie||"")){internal=true;try{localStorage.setItem("skipgc","t");}catch(e){}}else if(internal)bollaCookie(true);}catch(e){}
+ var bollaAudit="";try{var bollaPm=location.search.match(/[?&]p=([^&#]*)/)||location.search.match(/[?&]link_id=([^&#]*)/);if(bollaPm)bollaAudit=decodeURIComponent(bollaPm[1]).toLowerCase().replace(/[^a-z0-9-]/g,"").slice(0,60);}catch(e){}if(bollaAudit.indexOf("bmaudit-")===0){internal=true;if(!bollaOff)bollaStore(true);}
+ var sm=location.search.match(/[?&]p=([^&#]*)/);
+ var tag=sm?decodeURIComponent(sm[1]).toLowerCase().replace(/[^a-z0-9-]/g,"").slice(0,60):"";
+ var q=[]; window.bsTrack=function(sub,title){ if(internal) return;
+   var ep=BASE+sub+(tag?'?p='+tag:'');if(window.goatcounter&&window.goatcounter.count) window.goatcounter.count({path:ep,title:title||sub,event:true}); else q.push([ep,title||sub]); };
+ if(internal) return;
+ window.goatcounter={no_onload:true};
+ var s=document.createElement("script"); s.async=true; s.src="https://gc.zgo.at/count.js";
+ s.setAttribute("data-goatcounter","https://bollastudio.goatcounter.com/count");
+ s.onload=function(){ try{ window.goatcounter.count({path:BASE+'/'+(tag?'?p='+tag:''),title:'gastro-gruppe demo de'});
+   q.forEach(function(e){window.goatcounter.count({path:e[0],title:e[1],event:true});}); q=[]; }catch(e){} };
+ document.head.appendChild(s);
+})();
+</script>
+</head>
+<body>
+<p class="top" id="demo-banner">Individuelle Demo für Péclard — Beispiel von BOLLA STUDIO. Keine offizielle Website. Keine Live-Reservation.</p>
+<header>
+  <div class="brand">BOLLA STUDIO</div>
+  <p>Marcelo Bolla · <a href="https://bollastudio.com" target="_blank" rel="noopener">bollastudio.com</a></p>
+  <h1>Péclard / Pumpstation Gastro</h1>
+  <p class="intro">Zentrale Adresse laut publizierter Angabe: Hornhaldenstrasse 9, 8802 Kilchberg. Unten stehen die Betriebe mit ihren Quellen. Eine echte Reservation entsteht nur beim Betrieb, nicht auf dieser Seite.</p>
+  <p class="notice" id="privacy">Bitte keine persönlichen Daten eingeben</p>
+  <h2>Was diese Demo nicht zusagt</h2>
+  <ul class="caveats">
+    <li>Kreuz Zug ist über den Winter geschlossen. Die eigene Website nennt die Wiedereröffnung im Frühling 2027. <a href="https://www.kreuz-zug.ch/" target="_blank" rel="noopener">Quelle: Website des Betriebs</a></li>
+    <li>Das Fonduezelt von Lulu nennt auf Deutsch kein Jahr und auf Englisch 2025. Eine spätere Saison wird hier nicht angekündigt. <a href="https://www.fonduezelt-lulu.ch/de/" target="_blank" rel="noopener">Quelle: Fonduezelt, Deutsch</a> <a href="https://www.fonduezelt-lulu.ch/en/" target="_blank" rel="noopener">Quelle: Fonduezelt, Englisch</a></li>
+    <li>Beim Rooftop ist der Samstag widersprüchlich. Keine verbindliche Samstagszeit. <a href="https://www.ooo-zh.ch/de/kontakt/" target="_blank" rel="noopener">Quelle: Website des Betriebs</a></li>
+    <li>Seebadi Zollikon wird nicht als aktuell verfügbarer Standort empfohlen. <a href="https://www.peclard.net/de/kontakt/adressen/" target="_blank" rel="noopener">Quelle: Adressverzeichnis</a></li>
+    <li>Sommerbeiz Brüggli ist ein assoziierter Betrieb. Keine Winteröffnung. <a href="https://www.brueggli-zug.ch/" target="_blank" rel="noopener">Quelle: Website des Betriebs</a></li>
+    <li>Catering ist nur bei Lulu für Gäste des Bernhard-Theaters und als Pausenverpflegung am Opernhaus geprüft. <a href="https://www.peclard.net/de/unsere-betriebe/lulu/" target="_blank" rel="noopener">Quelle: Gruppenprofil</a></li>
+    <li>Camping ist nur bei Fischer’s Fritz beschrieben und wird hier nicht reserviert. <a href="https://www.fischers-fritz.ch/de/kontakt/" target="_blank" rel="noopener">Quelle: Website des Betriebs</a></li>
+    <li>Die Bankett-Abteilung ist ab 15 Personen publiziert. Keine Verfügbarkeit, kein Preis, kein Raum. <a href="https://www.peclard.net/de/ihr-anlass/ihr-anlass/" target="_blank" rel="noopener">Quelle: Bankett-Abteilung</a></li>
+  </ul>
+</header>
+<main>
+  <div class="grid">
+    <section class="card" aria-labelledby="chat-title">
+      <div class="wa-h"><b id="chat-title">Beispiel-Chat</b><small>Lokal in diesem Browser. Nichts wird gesendet.</small></div>
+      <div class="chat" id="chat" role="log" aria-live="polite" aria-relevant="additions"></div>
+      <div class="qrl" id="qr-label">Thema wählen</div>
+      <div class="qr" id="qr" role="group" aria-labelledby="qr-label"></div>
+      <form class="ask" id="ask-form" action="#" method="post" onsubmit="return false" autocomplete="off">
+        <label for="ask">Eigene Frage, ohne persönliche Daten</label>
+        <div class="ask-row">
+          <input id="ask" name="ask" type="text" autocomplete="off" enterkeyhint="send" placeholder="Betrieb oder Thema, ohne Name, E-Mail oder Telefon">
+          <button type="submit">Frage senden</button>
+        </div>
+      </form>
+    </section>
+    <section class="card bk" aria-labelledby="note-title">
+      <h2 id="note-title">Beispielnotiz, keine Reservation</h2>
+      <p>Nur Betrieb, Datum, Beispielzeit und Personenzahl. Name, E-Mail und Telefon haben hier kein Feld.</p>
+      <label for="venue">Betrieb</label>
+      <select id="venue"><option value="">Betrieb wählen</option></select>
+      <button class="ghost" id="show-venue" type="button">Publizierte Angaben</button>
+      <label for="date">Datum, nur als Beispiel</label>
+      <input id="date" type="date" autocomplete="off">
+      <label for="time">Beispielzeit, keine freie Uhrzeit</label>
+      <select id="time">
+        <option value="">Beispielzeit wählen</option>
+        <option value="11.30">11.30</option>
+        <option value="12.00">12.00</option>
+        <option value="18.00">18.00</option>
+        <option value="19.00">19.00</option>
+        <option value="19.30">19.30</option>
+      </select>
+      <label for="people">Personen, nur eine Zahl</label>
+      <input id="people" type="text" inputmode="numeric" autocomplete="off" placeholder="Zahl, zum Beispiel 4">
+      <button class="cta" id="cta" type="button">Beispielnotiz zeigen</button>
+      <button class="ghost" id="reset" type="button">Zurücksetzen</button>
+      <div class="ok" id="ok" role="status" hidden></div>
+    </section>
+  </div>
+  <h2>Betriebe</h2>
+  <div class="venues" id="venues"></div>
+</main>
+<footer>Beispiel von <a href="https://bollastudio.com" target="_blank" rel="noopener">BOLLA STUDIO</a> · Marcelo Bolla · <a href="mailto:marcelo@bollastudio.com">marcelo@bollastudio.com</a><br>Individuelle Demo für Péclard. Keine offizielle Website. Keine Live-Reservation. Keine Zusammenarbeit.</footer>
+<script type="application/json" id="gastro-pack">{
+  "intents": [
+    {"id": "tisch", "label": "Tisch"},
+    {"id": "anlass", "label": "Anlass"},
+    {"id": "oeffnungszeiten", "label": "Öffnungszeiten"},
+    {"id": "camping", "label": "Camping"},
+    {"id": "catering", "label": "Catering"}
+  ],
+  "priceWords": ["preis", "preise", "kostet", "kosten", "chf", "franken", "tarif"],
+  "allergenWords": ["allergie", "allergen", "allergene", "nuss", "nusse", "gluten", "laktose", "unvertraglich", "unvertraglichkeit", "vegan", "vegetarisch"],
+  "integrationWords": ["opentable", "resmio", "whatsapp", "schnittstelle", "reservierungssystem"],
+  "anlassLinks": [{"href": "https://www.peclard.net/de/ihr-anlass/ihr-anlass/", "label": "Quelle: Bankett-Abteilung"}],
+  "fondueLinks": [
+    {"href": "https://www.fonduezelt-lulu.ch/de/", "label": "Quelle: Fonduezelt, Deutsch"},
+    {"href": "https://www.fonduezelt-lulu.ch/en/", "label": "Quelle: Fonduezelt, Englisch"}
+  ],
+  "copy": {
+    "hello": "Guten Tag. Dies ist eine individuelle Demo für Péclard, ein Beispiel von BOLLA STUDIO. Keine offizielle Website. Keine Live-Reservation. Bitte keine persönlichen Daten eingeben. Wählen Sie Tisch, Anlass, Öffnungszeiten, Camping oder Catering.",
+    "tisch": "Eine Tisch-Anfrage bleibt hier ein Beispiel. Wählen Sie Betrieb, Datum, Beispielzeit und Personenzahl. Es wird nichts gesendet und nichts reserviert. Ob ein Tisch frei ist, sagt diese Demo nicht.",
+    "anlass": "Die Bankett-Abteilung ist bereits ab 15 Personen publiziert: Hochzeiten, Firmenjubiläen, Geburtstage, Vereinsfeiern, Generalversammlungen, Weihnachtsessen, Neujahrs-Events und Produkt-Präsentationen. Diese Demo bestätigt keine Verfügbarkeit, nennt keinen Preis und sagt keinen Raum zu.",
+    "askVenue": "Wählen Sie einen Betrieb und dann Publizierte Angaben. Die Zeiten sind Quellenangaben mit Vorbehalt. Ein Livestatus für einen bestimmten Tag ist nicht Teil dieser Demo. Bei einem Widerspruch gilt die verlinkte Quelle.",
+    "camping": "Camping ist nur bei Fischer’s Fritz belegt, neben Beiz, Beachsport, Laden und Fischerei. Beiz und Rezeption haben unterschiedliche Zeiten. Für Januar und Februar sind keine Beiz-Zeiten verifiziert. Rezeption und Laden sind von November bis Februar geschlossen. Diese Demo nimmt keine Camping-Reservation an und nennt keine Verfügbarkeit.",
+    "campingOther": "Für den anderen Betrieb ist kein Camping in den geprüften Angaben. Diese Demo erfindet keines.",
+    "catering": "Verifiziert ist nur Lulu: Catering für Gäste des Bernhard-Theaters und Pausenverpflegung für Opernhausgäste. Ein allgemeines externes Gruppen-Catering ist nicht belegt. Andere Anfragen müsste das Team ausserhalb dieser Demo prüfen. Hier wird nichts gesendet.",
+    "cateringOther": "Für diesen Betrieb ist kein Catering in den geprüften Angaben. Bitte nichts als externes Gruppen-Catering verstehen.",
+    "cateringShort": "Bei Lulu ist Catering für Gäste des Bernhard-Theaters und Pausenverpflegung für Opernhausgäste publiziert. Das ist kein Auftrag.",
+    "fondue": "Das Fonduezelt ist von Lulu offiziell verlinkt. Die deutsche Seite nennt den 12. November bis den 23. Dezember und kein Jahr. Die englische Seite nennt ausdrücklich 2025. Eine spätere Saison wird hier nicht angekündigt.",
+    "price": "Preise sind in dieser Demo nicht verifiziert. Es wird kein Betrag genannt. Bitte die Quelle des Betriebs prüfen.",
+    "allergen": "Allergene und Unverträglichkeiten sind in dieser Demo nicht verifiziert. Eine Küche müsste das ausserhalb dieser Demo klären. Hier wird nichts bestätigt.",
+    "availability": "Eine Verfügbarkeit ist in dieser Demo nicht verifiziert. Ein Livestatus und ein freier Tisch werden hier nicht zugesagt.",
+    "personal": "Bitte keine persönlichen Daten eingeben. Name, E-Mail und Telefon werden nicht angezeigt, nicht gespeichert und nicht gesendet.",
+    "unknown": "Diese Angabe ist in dieser Demo nicht verifiziert. Bitte die Quelle des Betriebs verwenden. Erfunden wird hier nichts: kein Preis, kein Allergen und keine Anbindung an ein Reservierungssystem.",
+    "pumpAmbiguous": "Pumpstation Gastro ist der Gruppenname. Restaurant Pumpstation ist ein einzelner Outdoor-Grill-Betrieb an der Seeanlage Utoquai. Für den Grillbetrieb wählen Sie ihn in der Liste.",
+    "group": "Péclard / Pumpstation Gastro. Die zentrale Adresse lautet Hornhaldenstrasse 9, 8802 Kilchberg. Die Betriebe stehen auf dieser Seite mit ihren Quellen. Seebadi Zollikon ist nur im Adressverzeichnis geprüft und wird nicht als aktuell verfügbar empfohlen. Sommerbeiz Brüggli ist ein assoziierter Betrieb.",
+    "several": "Bitte nur einen Betrieb wählen. In der Frage stehen mehrere:",
+    "noEventPage": "Für diesen Betrieb ist keine eigene Anlass-Seite in den geprüften Angaben.",
+    "empty": "Bitte eine Frage zu einem Betrieb stellen, ohne persönliche Daten.",
+    "pick": "Bitte Betrieb, Datum, Beispielzeit und Personenzahl für die Beispielnotiz wählen. Bitte keine persönlichen Daten eingeben.",
+    "anlassFew": "Die publizierte Bankett-Abteilung beginnt ab 15 Personen. Diese Notiz ist keine Ausnahme und keine Zusage.",
+    "anlassMany": "Die Bankett-Abteilung ist ab 15 Personen publiziert. Das ist keine Bestätigung, kein Preis und keine Raumzusage."
+  },
+  "venues": [
+    {
+      "id": "coco-grill-bar",
+      "name": "Coco Grill & Bar",
+      "optionLabel": "Coco Grill & Bar",
+      "rubro": "Restaurant, Grill, Bar und private Anlässe",
+      "address": "Bleicherweg 1A, 8001 Zürich",
+      "facts": "Bei Ihnen stehen Holzkohlegrill, Kräutergarten und ein Weinkeller für private Anlässe im Mittelpunkt.",
+      "badge": "",
+      "hasEvent": true,
+      "aliases": ["Coco", "Coco Grill"],
+      "hours": "Laut Gruppenprofil: Montag bis Freitag 11.30–14.30 und 17.00–24.00, Samstag 17.00–24.00, Sonntag geschlossen. Auf der eigenen Startseite sind keine Zeiten publiziert. Kein Livestatus.",
+      "links": [
+        {"href": "https://www.peclard.net/de/unsere-betriebe/coco-grill-bar/", "label": "Quelle: Gruppenprofil"},
+        {"href": "https://www.restaurant-coco.ch/", "label": "Quelle: Website des Betriebs"},
+        {"href": "https://www.peclard.net/de/ihr-anlass/coco-grill-bar/", "label": "Quelle: Anlass-Seite"}
+      ]
+    },
+    {
+      "id": "fischers-fritz",
+      "name": "Fischer’s Fritz",
+      "optionLabel": "Fischer’s Fritz",
+      "rubro": "Beiz, Camping, Beachsport, Laden und Fischerei",
+      "address": "Seestrasse 559, 8038 Zürich",
+      "facts": "Bei Fischer’s Fritz treffen Beiz, Camping und Gruppenanlässe direkt am Zürichsee zusammen.",
+      "badge": "Camping und Beiz sind zu unterscheiden",
+      "hasEvent": true,
+      "aliases": ["Fischer’s Fritz", "Fischers Fritz", "Fischers", "Fischer Fritz"],
+      "hours": "Beiz: April bis September täglich 11.30–24.00, Küche bis 22.00. März und Oktober: Montag bis Freitag 11.30–14.00 und 18.00–24.00, Samstag und Sonntag 11.30–24.00. November und Dezember: Dienstag bis Samstag 18.00–23.00, Sonntag und Montag geschlossen. Für Januar und Februar sind keine Beiz-Zeiten verifiziert. Rezeption und Laden: Mai bis August 08.00–23.00; März, April und Oktober Sonntag bis Donnerstag 08.00–17.00, Freitag und Samstag 08.00–20.00; November bis Februar geschlossen. Camping wird hier nicht reserviert. Keine Verfügbarkeit. Kein Livestatus.",
+      "links": [
+        {"href": "https://www.peclard.net/de/unsere-betriebe/fischers-fritz/", "label": "Quelle: Gruppenprofil"},
+        {"href": "https://www.fischers-fritz.ch/de/kontakt/", "label": "Quelle: Website des Betriebs"},
+        {"href": "https://www.peclard.net/de/ihr-anlass/fischers-fritz/", "label": "Quelle: Anlass-Seite"}
+      ]
+    },
+    {
+      "id": "gasthof-luegeten",
+      "name": "Gasthof Luegeten",
+      "optionLabel": "Gasthof Luegeten",
+      "rubro": "Gasthof-Restaurant, Terrasse, Biergarten, Bankette",
+      "address": "Etzelstrasse 224, 8808 Pfäffikon",
+      "facts": "Ihr Gasthof bietet neben Restaurant und Terrasse auch einen Biergarten und Raum für Hochzeiten und andere Feste.",
+      "badge": "",
+      "hasEvent": true,
+      "aliases": ["Luegeten", "Gasthof Luegeten"],
+      "hours": "Restaurant: März bis Oktober täglich 11.30–24.00. November bis Februar täglich 11.30–14.00 und 17.30–24.00, am Wochenende bei Schönwetter durchgehend. Biergarten: April bis September bei Schönwetter 11.30–24.00. Biergarten-Reservationen ab 10 Personen laufen laut Quelle über den Betrieb. Diese Demo nimmt keine E-Mail entgegen. Kein Livestatus.",
+      "links": [
+        {"href": "https://www.peclard.net/de/unsere-betriebe/gasthof-luegeten/", "label": "Quelle: Gruppenprofil"},
+        {"href": "https://www.gasthof-luegeten.ch/de/kontakt/", "label": "Quelle: Website des Betriebs"},
+        {"href": "https://www.peclard.net/de/ihr-anlass/gasthof-luegeten/", "label": "Quelle: Anlass-Seite"}
+      ]
+    },
+    {
+      "id": "hafenbeiz",
+      "name": "Hafenbeiz",
+      "optionLabel": "Hafenbeiz",
+      "rubro": "Restaurant, Bar, Wintergarten, Bankette",
+      "address": "Seestrasse 30, 8802 Kilchberg",
+      "facts": "Bei Ihnen lassen sich Beiz, Bar und Wintergarten mit privaten Anlässen verbinden; im Sommer spielt auch der Mönchhof eine Rolle.",
+      "badge": "Eigener Betrieb, nicht der Mönchhof",
+      "hasEvent": true,
+      "aliases": ["Hafenbeiz", "Twents"],
+      "hours": "Oktober bis Februar: Beiz Dienstag bis Sonntag 17.30–24.00, Twents Bar Dienstag bis Samstag 17.00–24.00. März bis September bei Schönwetter ist der Mönchhof mit 11.30–24.00 ein anderer Betrieb an derselben Adresse. Kein Livestatus.",
+      "links": [
+        {"href": "https://www.peclard.net/de/unsere-betriebe/hafenbeiz/", "label": "Quelle: Gruppenprofil"},
+        {"href": "https://www.hafenbeiz.ch/de/kontakt/", "label": "Quelle: Website des Betriebs"},
+        {"href": "https://www.peclard.net/de/ihr-anlass/hafenbeiz/", "label": "Quelle: Anlass-Seite"}
+      ]
+    },
+    {
+      "id": "inselwirtschaft-ufnau",
+      "name": "Inselwirtschaft Ufnau",
+      "optionLabel": "Inselwirtschaft Ufnau",
+      "rubro": "Inselrestaurant, Garten, Terrasse und Bankette",
+      "address": "Insel Ufnau, 8807 Freienbach",
+      "facts": "Die Inselwirtschaft Ufnau verbindet Garten, Terrasse und Bankette mit frischem Fisch aus dem Zürichsee.",
+      "badge": "Keine Winteröffnung",
+      "hasEvent": true,
+      "aliases": ["Ufnau", "Inselwirtschaft"],
+      "hours": "April und Oktober täglich 11.00–18.00 und wenn die Flagge gehisst ist. Mai bis September täglich 11.00–23.00. Im Zweifel die offizielle Kontaktseite. Keine Winteröffnung. Kein Livestatus.",
+      "links": [
+        {"href": "https://www.peclard.net/de/unsere-betriebe/inselwirtschaft-ufnau/", "label": "Quelle: Gruppenprofil"},
+        {"href": "https://www.inselufnau.ch/de/kontakt/", "label": "Quelle: Website des Betriebs"},
+        {"href": "https://www.peclard.net/de/ihr-anlass/inselwirtschaft-ufnau/", "label": "Quelle: Anlass-Seite"}
+      ]
+    },
+    {
+      "id": "kreuz-zug",
+      "name": "Kreuz Zug",
+      "optionLabel": "Kreuz Zug (Winter geschlossen, Frühling 2027)",
+      "rubro": "Restaurant am Zugersee",
+      "address": "Artherstrasse 108, 6317 Oberwil bei Zug",
+      "facts": "Ihre Website kündigt die Wiedereröffnung des Kreuz Zug im Frühling 2027 an.",
+      "badge": "Über den Winter geschlossen, Wiedereröffnung Frühling 2027",
+      "hasEvent": true,
+      "aliases": ["Kreuz Zug", "Kreuz"],
+      "hours": "Aktuell über den Winter geschlossen. Die eigene Website nennt die Wiedereröffnung im Frühling 2027. Allgemeine Zeiten 11.30–24.00 stehen daneben und sind keine aktuelle Winteröffnung. Kein Livestatus.",
+      "links": [
+        {"href": "https://www.peclard.net/de/unsere-betriebe/kreuz-zug/", "label": "Quelle: Gruppenprofil"},
+        {"href": "https://www.kreuz-zug.ch/", "label": "Quelle: Website des Betriebs"},
+        {"href": "https://www.peclard.net/de/ihr-anlass/kreuz-zug/", "label": "Quelle: Anlass-Seite"}
+      ]
+    },
+    {
+      "id": "lo",
+      "name": "Seerestaurant L’O",
+      "optionLabel": "Seerestaurant L’O",
+      "rubro": "Seerestaurant, Terrasse, Bar, Cheminée-Lounge und Biergarten",
+      "address": "Bahnhofstrasse 29, 8810 Horgen",
+      "facts": "Bei L’O gehören Restaurant, Terrasse, Bar und Cheminée-Lounge direkt am Wasser zum Angebot.",
+      "badge": "",
+      "hasEvent": true,
+      "aliases": ["L’O", "Lo Horgen", "Seerestaurant"],
+      "hours": "März bis Oktober: Montag bis Freitag 11.30–14.30 und 17.30–24.00, bei Schönwetter durchgehend, Samstag und Sonntag 11.30–24.00. November bis Februar: täglich 11.30–14.00 und 18.00–23.00, am Wochenende bei Schönwetter durchgehend. Biergarten März bis Oktober bei Schönwetter 11.30–24.00, Reservation ab 10 Personen. Keine Verfügbarkeit. Kein Livestatus.",
+      "links": [
+        {"href": "https://www.peclard.net/de/unsere-betriebe/lo/", "label": "Quelle: Gruppenprofil"},
+        {"href": "https://www.lo-horgen.ch/de/kontakt/", "label": "Quelle: Website des Betriebs"},
+        {"href": "https://www.peclard.net/de/ihr-anlass/lo/", "label": "Quelle: Anlass-Seite"}
+      ]
+    },
+    {
+      "id": "lulu",
+      "name": "Lulu Restaurant & Bar / Café",
+      "optionLabel": "Lulu Restaurant & Bar / Café",
+      "rubro": "Restaurant, Bar, Café, Opernhaus-Pausengastronomie, Catering Bernhard-Theater",
+      "address": "Sechseläutenplatz 1, 8001 Zürich",
+      "facts": "Lulu verbindet Restaurant, Bar und Café am Opernhaus; auch das Catering für Gäste des Bernhard-Theaters gehört laut Gruppenwebsite dazu.",
+      "badge": "Catering nur Bernhard-Theater und Opernhaus-Pause",
+      "hasEvent": true,
+      "aliases": ["Lulu"],
+      "hours": "Restaurant und Bar: Montag bis Mittwoch 12.00–24.00, Donnerstag bis Samstag 12.00 bis open end, so publiziert, Sonntag 10.00–24.00. Café: Montag geschlossen, Dienstag bis Freitag 16.00–23.30, Samstag und Sonntag 11.30–23.30. Catering ist für Gäste des Bernhard-Theaters und als Pausenverpflegung für Opernhausgäste publiziert, nicht als allgemeines externes Catering. Kein Livestatus.",
+      "links": [
+        {"href": "https://www.peclard.net/de/unsere-betriebe/lulu/", "label": "Quelle: Gruppenprofil"},
+        {"href": "https://www.lulu-zh.ch/de/kontakt/", "label": "Quelle: Website des Betriebs"},
+        {"href": "https://www.peclard.net/de/ihr-anlass/lulu/", "label": "Quelle: Anlass-Seite"}
+      ]
+    },
+    {
+      "id": "milchbar",
+      "name": "Milchbar",
+      "optionLabel": "Milchbar",
+      "rubro": "Café-Bar, Restaurant, Delikatessen, Vinothek, Ein-Zimmer-Hotel",
+      "address": "Kappelergasse 16, 8001 Zürich",
+      "facts": "Die Milchbar verbindet Café-Bar, Restaurant, Delikatessen und ein einzelnes Hotelzimmer.",
+      "badge": "",
+      "hasEvent": true,
+      "aliases": ["Milchbar"],
+      "hours": "Laut eigener Startseite: Montag bis Freitag 06.30–22.00, Samstag 08.00–22.00, Sonntag 10.00–20.00. Kein Livestatus.",
+      "links": [
+        {"href": "https://www.peclard.net/de/unsere-betriebe/milchbar/", "label": "Quelle: Gruppenprofil"},
+        {"href": "https://www.milchbar.ch/", "label": "Quelle: Website des Betriebs"},
+        {"href": "https://www.peclard.net/de/ihr-anlass/milchbar/", "label": "Quelle: Anlass-Seite"}
+      ]
+    },
+    {
+      "id": "moenchhof-am-see",
+      "name": "Mönchhof am See",
+      "optionLabel": "Mönchhof am See",
+      "rubro": "Gartenrestaurant, Biergarten und Anlässe",
+      "address": "Seestrasse 30, 8802 Kilchberg",
+      "facts": "Ihr Gartenrestaurant am alten Hafen in Kilchberg nimmt online Reservationen für Gruppen ab zehn Personen an.",
+      "badge": "Eigener Betrieb, nicht die Hafenbeiz",
+      "hasEvent": true,
+      "aliases": ["Mönchhof", "Moenchhof"],
+      "hours": "März bis September bei Schönwetter 11.30–24.00. Oktober bis Februar ist hauptsächlich die Hafenbeiz geöffnet, der Mönchhof nur spontan bei gutem Wetter. Online-Reservationen für Gruppen ab 10 Personen gehören zum Betrieb, nicht zu dieser Demo. Keine Verfügbarkeit. Kein Livestatus.",
+      "links": [
+        {"href": "https://www.peclard.net/de/unsere-betriebe/moenchhof-am-see/", "label": "Quelle: Gruppenprofil"},
+        {"href": "https://www.moenchhof-am-see.ch/de/kontakt/", "label": "Quelle: Website des Betriebs"},
+        {"href": "https://www.peclard.net/de/ihr-anlass/moenchhof-am-see/", "label": "Quelle: Anlass-Seite"}
+      ]
+    },
+    {
+      "id": "muensterhoefli",
+      "name": "Wirtsstube Münsterhöfli",
+      "optionLabel": "Wirtsstube Münsterhöfli",
+      "rubro": "Zürcher Restaurant auf zwei Etagen, Terrasse, private Anlässe",
+      "address": "Münsterhof 6, 8001 Zürich",
+      "facts": "Im Münsterhöfli gehören zwei Etagen und eine Terrasse am Münsterhof zum Gästeerlebnis.",
+      "badge": "",
+      "hasEvent": true,
+      "aliases": ["Münsterhöfli", "Muensterhoefli", "Münsterhof"],
+      "hours": "März bis September: Montag bis Freitag 11.30–14.00 und 18.00–24.00, bei Schönwetter durchgehend, Samstag und Sonntag 11.30–24.00. Oktober bis Februar: Montag bis Freitag 11.30–14.00 und 18.00–22.00, Samstag und Sonntag 11.30–22.00. Kein Livestatus.",
+      "links": [
+        {"href": "https://www.peclard.net/de/unsere-betriebe/muensterhoefli/", "label": "Quelle: Gruppenprofil"},
+        {"href": "https://www.muensterhoefli.ch/de/kontakt/", "label": "Quelle: Website des Betriebs"},
+        {"href": "https://www.peclard.net/de/ihr-anlass/muensterhoefli/", "label": "Quelle: Anlass-Seite"}
+      ]
+    },
+    {
+      "id": "portofino",
+      "name": "Portofino am See",
+      "optionLabel": "Portofino am See",
+      "rubro": "Italienisches Restaurant, Glaspavillon, Terrasse, Pizza und Bankette",
+      "address": "Seestrasse 100, 8800 Thalwil",
+      "facts": "Bei Portofino verbinden sich italienische Küche, Glaspavillon und eine grosse Terrasse direkt am See.",
+      "badge": "Website und Gruppenprofil widersprechen sich",
+      "hasEvent": true,
+      "aliases": ["Portofino"],
+      "hours": "Laut eigener Website: März bis September Montag bis Freitag 11.30–14.30 und 17.30–24.00, bei Schönwetter durchgehend, Samstag und Sonntag 11.30–24.00. Oktober bis Februar Montag bis Freitag 11.30–14.30 und 17.30–23.00, Samstag und Sonntag 11.30–23.00. Das Gruppenprofil nennt abweichende Saison- und Anfangszeiten. Das bleibt widersprüchlich. Keine Verfügbarkeit. Kein Livestatus.",
+      "links": [
+        {"href": "https://www.peclard.net/de/unsere-betriebe/portofino/", "label": "Quelle: Gruppenprofil"},
+        {"href": "https://www.portofino-am-see.ch/de/kontakt/", "label": "Quelle: Website des Betriebs"},
+        {"href": "https://www.peclard.net/de/ihr-anlass/portofino/", "label": "Quelle: Anlass-Seite"}
+      ]
+    },
+    {
+      "id": "restaurant-kiosk",
+      "name": "Restaurant Kiosk",
+      "optionLabel": "Restaurant Kiosk",
+      "rubro": "Restaurant am Hafen Riesbach, Pizza, Pasta, Grill, Terrasse",
+      "address": "Seefeldquai 51, 8008 Zürich",
+      "facts": "Ihr Restaurant am Hafen Riesbach bietet Pizza, hausgemachte Pasta und eine grosse Terrasse.",
+      "badge": "Keine wetterunabhängige Öffnung",
+      "hasEvent": true,
+      "aliases": ["Restaurant Kiosk", "Kiosk", "Riesbach"],
+      "hours": "Laut eigener Kontaktseite: bei Schönwetter täglich 10.00–24.00, bei Schlechtwetter 10.00–17.00. Das Gruppenprofil beschreibt eine andere saisonale Regel. Eine wetterunabhängige Öffnung wird nicht zugesagt. Kein Livestatus.",
+      "links": [
+        {"href": "https://www.peclard.net/de/unsere-betriebe/restaurant-kiosk/", "label": "Quelle: Gruppenprofil"},
+        {"href": "https://www.restaurant-kiosk.ch/de/kontakt/", "label": "Quelle: Website des Betriebs"},
+        {"href": "https://www.peclard.net/de/ihr-anlass/restaurant-kiosk/", "label": "Quelle: Anlass-Seite"}
+      ]
+    },
+    {
+      "id": "restaurant-pumpstation",
+      "name": "Restaurant Pumpstation",
+      "optionLabel": "Restaurant Pumpstation",
+      "rubro": "Outdoor-Grill-Restaurant",
+      "address": "Seeanlage Utoquai, 8008 Zürich",
+      "facts": "Die Pumpstation ist ein Outdoor-Grill-Restaurant am Utoquai und öffnet laut Gruppenwebsite von Frühling bis Herbst, ausser bei Regen.",
+      "badge": "Keine konkreten Uhrzeiten publiziert",
+      "hasEvent": false,
+      "aliases": ["Restaurant Pumpstation", "Utoquai"],
+      "hours": "Outdoor-Grill-Restaurant an der Seeanlage Utoquai. Laut Gruppenwebsite von Frühling bis Herbst, bei Regen geschlossen. Konkrete Uhrzeiten sind nicht publiziert. Die eigene Website war beim Prüfen nicht erreichbar. Keine Verfügbarkeit. Kein Livestatus.",
+      "links": [
+        {"href": "https://www.peclard.net/de/unsere-betriebe/restaurant-pumpstation/", "label": "Quelle: Gruppenprofil, eigene Website war nicht erreichbar"}
+      ]
+    },
+    {
+      "id": "rooftop-restaurant",
+      "name": "• • • Rooftop Restaurant",
+      "optionLabel": "Rooftop Restaurant (Samstag widersprüchlich)",
+      "rubro": "Rooftop-Restaurant, asiatische Fusionküche, Bar, Terrasse und Events",
+      "address": "Bahnhofstrasse 74, 8001 Zürich",
+      "facts": "Bei Ihrem Rooftop-Restaurant an der Bahnhofstrasse treffen asiatische Fusionküche, Bar und Dachterrasse zusammen.",
+      "badge": "Samstag widersprüchlich",
+      "hasEvent": true,
+      "aliases": ["Rooftop", "ooo"],
+      "hours": "Laut eigener Kontaktseite: Montag bis Donnerstag 11.00–23.00, Freitag 11.00–24.00, Sonntag 10.00–22.00. Für Samstag nennt dieselbe Kontaktseite zwei Angaben, 11.00–24.00 und 10.00–24.00. Das Gruppenprofil weicht ebenfalls ab. Keine verbindliche Samstagszeit. Bitte die offizielle Seite oder das Team. Kein Livestatus.",
+      "links": [
+        {"href": "https://www.peclard.net/de/unsere-betriebe/rooftop-restaurant/", "label": "Quelle: Gruppenprofil"},
+        {"href": "https://www.ooo-zh.ch/de/kontakt/", "label": "Quelle: Website des Betriebs"},
+        {"href": "https://www.peclard.net/de/ihr-anlass/rooftop-restaurant/", "label": "Quelle: Anlass-Seite"}
+      ]
+    },
+    {
+      "id": "schiffstation",
+      "name": "Restaurant Schiffstation",
+      "optionLabel": "Restaurant Schiffstation",
+      "rubro": "Outdoor-Restaurant, Grill und Fisch am See",
+      "address": "Seestrasse 206, 8708 Männedorf",
+      "facts": "Die Schiffstation in Männedorf ist ein Restaurant unter freiem Himmel, direkt am Wasser und nahe der Schiffsanlegestelle.",
+      "badge": "Keine Winteröffnung",
+      "hasEvent": false,
+      "aliases": ["Schiffstation", "Männedorf"],
+      "hours": "Laut eigener Kontaktseite März bis Oktober bei Schönwetter 10.00–24.00. Keine Winteröffnung. Kein Livestatus.",
+      "links": [
+        {"href": "https://www.peclard.net/de/unsere-betriebe/schiffstation/", "label": "Quelle: Gruppenprofil"},
+        {"href": "https://www.schiffstation.ch/de/kontakt/", "label": "Quelle: Website des Betriebs"}
+      ]
+    },
+    {
+      "id": "seebadi-richterswil",
+      "name": "Seebadi Richterswil",
+      "optionLabel": "Seebadi Richterswil",
+      "rubro": "À-la-carte-Restaurant und Selbstbedienung im Seebad",
+      "address": "Strandweg, 8805 Richterswil",
+      "facts": "Bei der Seebadi Richterswil gibt es sowohl ein À-la-carte-Restaurant als auch Selbstbedienung für Badegäste.",
+      "badge": "Schlusszeiten auf der Kontaktseite nicht genannt",
+      "hasEvent": true,
+      "aliases": ["Richterswil"],
+      "hours": "Laut eigener Kontaktseite: Restaurant Juni bis August täglich ab 09.00. Selbstbedienung bei Badewetter ab 11.30. Mai und September Restaurant ab 10.00, solange die Badi offen ist. Schlusszeiten stehen auf der lokalen Kontaktseite nicht. Das Gruppenprofil nennt andere Zeiten. Kein Livestatus.",
+      "links": [
+        {"href": "https://www.peclard.net/de/unsere-betriebe/seebadi-richterswil/", "label": "Quelle: Gruppenprofil"},
+        {"href": "https://www.seebadi-richterswil.ch/de/kontakt/", "label": "Quelle: Website des Betriebs"},
+        {"href": "https://www.peclard.net/de/ihr-anlass/seebadi-richterswil/", "label": "Quelle: Anlass-Seite"}
+      ]
+    },
+    {
+      "id": "straeme-kuesnacht",
+      "name": "Sträme Küsnacht",
+      "optionLabel": "Sträme Küsnacht",
+      "rubro": "Strandbad-Restaurant mit bedientem Teil und Selfservice",
+      "address": "Seestrasse 246, 8700 Küsnacht",
+      "facts": "Im Sträme Küsnacht gehören bedienter Restaurantbereich und Selfservice direkt am Strandbad zusammen.",
+      "badge": "Hunde sind nicht erlaubt",
+      "hasEvent": true,
+      "aliases": ["Sträme", "Küsnacht", "Straeme"],
+      "hours": "Laut eigener Kontaktseite: offizielle Badesaison, Restaurant 10.00–24.00. Selbstbedienung bei Badewetter 11.00–21.00. Ausserhalb der Badesaison (Mai bis September) bei Schönwetter 11.00–24.00. Das Gruppenprofil nennt andere Zeiten. Hunde sind auf der ganzen Anlage und im Restaurant nicht erlaubt. Kein Livestatus.",
+      "links": [
+        {"href": "https://www.peclard.net/de/unsere-betriebe/straeme-kuesnacht/", "label": "Quelle: Gruppenprofil"},
+        {"href": "https://www.straeme-kuesnacht.ch/de/kontakt/", "label": "Quelle: Website des Betriebs"},
+        {"href": "https://www.peclard.net/de/ihr-anlass/straeme-kuesnacht/", "label": "Quelle: Anlass-Seite"}
+      ]
+    },
+    {
+      "id": "seebadi-zollikon",
+      "name": "Seebadi Zollikon",
+      "optionLabel": "Seebadi Zollikon (nicht als aktuell verfügbar empfohlen)",
+      "rubro": "Seebad-Gastronomie, nur im zentralen Adressverzeichnis geprüft",
+      "address": "",
+      "facts": "",
+      "badge": "Nicht als aktuell verfügbarer Standort empfohlen",
+      "hasEvent": false,
+      "aliases": ["Zollikon"],
+      "hours": "Nicht verifiziert. Die lokale Website zeigte beim Prüfen einen Zertifikatsfehler oder den Fehler 500. Der Betrieb steht nicht in der aktuellen Betriebsnavigation, nur im zentralen Adressverzeichnis. Seebadi Zollikon wird nicht als aktuell verfügbarer Standort empfohlen.",
+      "links": [
+        {"href": "https://www.peclard.net/de/kontakt/adressen/", "label": "Quelle: Adressverzeichnis"},
+        {"href": "https://www.seebadi-zollikon.ch/", "label": "Quelle: lokale Website, beim Prüfen nicht nutzbar"}
+      ]
+    },
+    {
+      "id": "brueggli-zug",
+      "name": "Sommerbeiz Brüggli",
+      "optionLabel": "Sommerbeiz Brüggli (assoziierter Betrieb)",
+      "rubro": "Sommerbeiz, bedienter Restaurantbereich, Take-away und Gruppen",
+      "address": "Brüggli 1, 6300 Zug",
+      "facts": "Sommerbeiz am Zugersee mit bedientem Genuss und Take-away.",
+      "badge": "Assoziierter Betrieb, keine Winteröffnung",
+      "hasEvent": false,
+      "aliases": ["Brüggli", "Bruggli"],
+      "hours": "Assoziierter Betrieb: ein Presseartikel von 2024 beschreibt eine finanzielle Beteiligung von Pumpstation Gastro. Das ist kein vollständig übernommener Standort. Das Impressum nennt die Brüggli Zugersee Paradies AG. Laut Website ab Sommer 2026 täglich 09.00–22.00, ausser bei Regen. Keine Winteröffnung. Regulär ist keine Reservation nötig. Grössere Gruppen dürfen sich vorab anmelden. Diese Demo nimmt keine Anmeldung entgegen. Kein Livestatus.",
+      "links": [
+        {"href": "https://www.brueggli-zug.ch/", "label": "Quelle: Website des Betriebs"},
+        {"href": "https://www.brueggli-zug.ch/about-us", "label": "Quelle: Website, Über uns"},
+        {"href": "https://www.peclard.net/de/presse-artikel/brueggli-zug/", "label": "Quelle: Presseartikel"}
+      ]
+    }
+  ]
+}</script>
+<script id="gastro-demo">
+(function () {
+  var PACK = JSON.parse(document.getElementById("gastro-pack").textContent);
+  var chat = document.getElementById("chat");
+  var qr = document.getElementById("qr");
+  var form = document.getElementById("ask-form");
+  var ask = document.getElementById("ask");
+  var venue = document.getElementById("venue");
+  var date = document.getElementById("date");
+  var time = document.getElementById("time");
+  var people = document.getElementById("people");
+  var ok = document.getElementById("ok");
+  var byId = {};
+  var intent = "tisch";
+  var TIMES = { "11.30": 1, "12.00": 1, "18.00": 1, "19.00": 1, "19.30": 1 };
+
+  function trackIntent(r) {
+    if (window.bsTrack && r.id) window.bsTrack("/chat/" + r.id, "example");
+  }
+
+  function say(kind, text, links) {
+    var el = document.createElement("div");
+    el.className = "m " + (kind === "in" ? "in" : "out");
+    el.appendChild(document.createTextNode(text));
+    (links || []).forEach(function (link) {
+      el.appendChild(document.createTextNode(" "));
+      var a = document.createElement("a");
+      a.href = link.href;
+      a.target = "_blank";
+      a.rel = "noopener";
+      a.textContent = link.label;
+      el.appendChild(a);
+    });
+    chat.appendChild(el);
+    chat.scrollTop = chat.scrollHeight;
+    return el;
+  }
+
+  function norm(s) {
+    return String(s || "")
+      .toLowerCase()
+      .normalize("NFD")
+      .replace(/[\u0300-\u036f]/g, "")
+      .replace(/\u00df/g, "ss")
+      .replace(/['’`´]/g, "")
+      .replace(/[^a-z0-9]+/g, " ")
+      .replace(/\s+/g, " ")
+      .trim();
+  }
+
+  function hasPhrase(hay, phrase) {
+    var p = norm(phrase);
+    if (!p) return false;
+    return (" " + hay + " ").indexOf(" " + p + " ") !== -1;
+  }
+
+  function hasAny(hay, list) {
+    for (var i = 0; i < list.length; i++) if (hasPhrase(hay, list[i])) return true;
+    return false;
+  }
+
+  function personal(text) {
+    var raw = String(text || "");
+    if (/[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}/i.test(raw)) return true;
+    if (/(?:\+|00)[\d\s().-]{6,}\d/.test(raw)) return true;
+    if (/\b0\d[\d\s().-]{6,}\d/.test(raw)) return true;
+    if (/\b(mein name|ich heisse|ich hei\u00dfe|nachname)\b/i.test(raw)) return true;
+    return false;
+  }
+
+  function matchVenues(n) {
+    var hits = [];
+    for (var i = 0; i < PACK.venues.length; i++) {
+      var v = PACK.venues[i];
+      var len = 0;
+      var aliases = v.aliases || [];
+      for (var j = 0; j < aliases.length; j++) {
+        var p = norm(aliases[j]);
+        if (p && (" " + n + " ").indexOf(" " + p + " ") !== -1 && p.length > len) len = p.length;
+      }
+      if (len) hits.push(v);
+    }
+    return hits;
+  }
+
+  function detectIntent(n) {
+    if (hasAny(n, ["camping", "zeltplatz", "stellplatz", "wohnwagen"])) return "camping";
+    if (hasAny(n, ["catering", "bernhard theater", "opernhaus", "pausenverpflegung"])) return "catering";
+    if (hasAny(n, ["anlass", "anlasse", "bankett", "hochzeit", "hochzeiten", "firmenjubilaum", "firmenjubilaen", "geburtstag", "vereinsfeier", "vereinsfeiern", "generalversammlung", "weihnachtsessen", "neujahr", "neujahrs", "produktprasentation", "prasentation"])) return "anlass";
+    if (hasAny(n, ["offnungszeiten", "offnungszeit", "geoffnet", "offen", "winter", "winteroffnung"])) return "oeffnungszeiten";
+    if (hasAny(n, ["tisch", "reservation", "reservierung"])) return "tisch";
+    return "";
+  }
+
+  function replyTo(raw) {
+    var n = norm(raw);
+    if (!n) { say("out", PACK.copy.empty); return; }
+    var hits = matchVenues(n);
+    var one = hits.length === 1 ? hits[0] : null;
+    if (hasAny(n, PACK.priceWords)) { say("out", PACK.copy.price, one ? one.links : []); return; }
+    if (hasAny(n, PACK.allergenWords)) { say("out", PACK.copy.allergen, one ? one.links : []); return; }
+    if (hasAny(n, PACK.integrationWords)) { say("out", PACK.copy.unknown); return; }
+    if (hasAny(n, ["fonduezelt", "fondue"])) { say("out", PACK.copy.fondue, PACK.fondueLinks); return; }
+    if (hasAny(n, ["verfugbarkeit", "verfugbar", "ausgebucht", "frei"])) { say("out", PACK.copy.availability, one ? one.links : []); return; }
+    if (hasPhrase(n, "pumpstation") && !hasPhrase(n, "restaurant pumpstation") && !hasPhrase(n, "utoquai")) {
+      say("out", (hasPhrase(n, "peclard") || hasPhrase(n, "gastro")) ? PACK.copy.group : PACK.copy.pumpAmbiguous, PACK.anlassLinks);
+      return;
+    }
+    if (hits.length > 1) {
+      say("out", PACK.copy.several + " " + hits.map(function (v) { return v.name; }).join(", ") + ".");
+      return;
+    }
+    var venueHit = one;
+    var intentHit = detectIntent(n);
+    if (venueHit && venueHit.id === "seebadi-zollikon") {
+      say("out", venueHit.hours, venueHit.links);
+      if (intentHit === "camping") say("out", PACK.copy.campingOther);
+      else if (intentHit === "catering") say("out", PACK.copy.cateringOther);
+      else if (intentHit === "anlass") say("out", PACK.copy.anlass + " " + PACK.copy.noEventPage, PACK.anlassLinks);
+      return;
+    }
+    if (intentHit === "camping") {
+      say("out", PACK.copy.camping, byId["fischers-fritz"].links);
+      if (venueHit && venueHit.id !== "fischers-fritz") say("out", PACK.copy.campingOther);
+      return;
+    }
+    if (intentHit === "catering") {
+      say("out", PACK.copy.catering, byId["lulu"].links);
+      if (venueHit && venueHit.id !== "lulu") say("out", PACK.copy.cateringOther);
+      return;
+    }
+    if (intentHit === "anlass") {
+      var links = PACK.anlassLinks.slice();
+      var extra = "";
+      if (venueHit) {
+        links = links.concat(venueHit.links);
+        extra = " " + venueHit.name + ".";
+        if (!venueHit.hasEvent) extra += " " + PACK.copy.noEventPage;
+      }
+      say("out", PACK.copy.anlass + extra, links);
+      return;
+    }
+    if (venueHit) { say("out", venueHit.hours, venueHit.links); return; }
+    if (intentHit === "oeffnungszeiten") { say("out", PACK.copy.askVenue); return; }
+    if (intentHit === "tisch") { say("out", PACK.copy.tisch); return; }
+    if (hasPhrase(n, "peclard") || hasPhrase(n, "pumpstation gastro")) { say("out", PACK.copy.group, PACK.anlassLinks); return; }
+    say("out", PACK.copy.unknown);
+  }
+
+  function showOk(text) {
+    ok.hidden = false;
+    ok.textContent = text;
+  }
+
+  function hideOk() {
+    ok.hidden = true;
+    ok.textContent = "";
+  }
+
+  function confirmExample() {
+    var v = byId[venue.value];
+    var d = date.value;
+    var t = time.value;
+    var p = String(people.value || "").trim();
+    if (!v || !/^\d{4}-\d{2}-\d{2}$/.test(d) || !TIMES[t] || !/^\d{1,2}$/.test(p) || Number(p) < 1 || Number(p) > 99) {
+      showOk(PACK.copy.pick);
+      return;
+    }
+    if (window.bsTrack) window.bsTrack("/request/confirm", "example");
+    var parts = d.split("-");
+    var shown = parts[2] + "." + parts[1] + "." + parts[0];
+    if (v.id === "seebadi-zollikon") {
+      showOk("BEISPIEL, keine Reservation. Nichts wurde gesendet.\nSeebadi Zollikon wird in dieser Demo nicht als aktuell verfügbarer Standort empfohlen. Eine Beispielnotiz dafür wird nicht ausgestellt.");
+      return;
+    }
+    var lines = [
+      "BEISPIEL, keine Reservation. Nichts wurde gesendet und nichts wurde reserviert.",
+      "Betrieb: " + v.name,
+      "Datum: " + shown,
+      "Beispielzeit: " + t,
+      "Personen: " + p
+    ];
+    if (v.id === "kreuz-zug") lines.push("Kreuz Zug ist über den Winter geschlossen. Die eigene Website nennt die Wiedereröffnung im Frühling 2027. Allgemeine Zeiten sind keine aktuelle Winteröffnung. Das ist keine Reservation.");
+    if (v.id === "brueggli-zug") {
+      lines.push("Sommerbeiz Brüggli ist ein assoziierter Betrieb, kein vollständig übernommener Standort. Die Website nennt ab Sommer 2026 täglich 09.00–22.00, ausser bei Regen. Keine Winteröffnung. Diese Notiz ist keine Anmeldung.");
+      var month = Number(parts[1]);
+      if (month === 11 || month === 12 || month === 1 || month === 2) lines.push("Das Datum liegt in einem Wintermonat. Eine Winteröffnung wird nicht behauptet.");
+    }
+    if (intent === "camping") lines.push("Camping wird hier nicht reserviert. Bei Fischer’s Fritz sind Beiz und Camping zu unterscheiden. Eine Verfügbarkeit liegt nicht vor.");
+    if (intent === "catering") lines.push(v.id === "lulu" ? PACK.copy.cateringShort : PACK.copy.cateringOther);
+    if (intent === "anlass") lines.push(Number(p) >= 15 ? PACK.copy.anlassMany : PACK.copy.anlassFew);
+    if (intent === "tisch") lines.push("Das Team erhält diese Notiz nicht.");
+    showOk(lines.join("\n"));
+  }
+
+  function resetAll() {
+    if (window.bsTrack) window.bsTrack("/reset", "example");
+    intent = "tisch";
+    while (chat.firstChild) chat.removeChild(chat.firstChild);
+    ask.value = "";
+    venue.value = "";
+    date.value = "";
+    time.value = "";
+    people.value = "";
+    hideOk();
+    say("out", PACK.copy.hello);
+  }
+
+  PACK.venues.forEach(function (v) {
+    byId[v.id] = v;
+    var opt = document.createElement("option");
+    opt.value = v.id;
+    opt.textContent = v.optionLabel;
+    venue.appendChild(opt);
+    var card = document.createElement("article");
+    card.className = "venue";
+    var h = document.createElement("h3");
+    h.textContent = v.name;
+    card.appendChild(h);
+    var rubro = document.createElement("p");
+    rubro.textContent = v.rubro + (v.address ? " · " + v.address : "");
+    card.appendChild(rubro);
+    if (v.facts) {
+      var fact = document.createElement("p");
+      fact.textContent = v.facts;
+      card.appendChild(fact);
+    }
+    if (v.badge) {
+      var badge = document.createElement("p");
+      badge.className = "badge";
+      badge.textContent = v.badge;
+      card.appendChild(badge);
+    }
+    v.links.forEach(function (link) {
+      var a = document.createElement("a");
+      a.href = link.href;
+      a.target = "_blank";
+      a.rel = "noopener";
+      a.textContent = link.label;
+      card.appendChild(a);
+    });
+    document.getElementById("venues").appendChild(card);
+  });
+
+  PACK.intents.forEach(function (r) {
+    var b = document.createElement("button");
+    b.type = "button";
+    b.textContent = r.label;
+    b.addEventListener("click", function () {
+      intent = r.id;
+      trackIntent(r);
+      say("in", r.label);
+      if (r.id === "tisch") say("out", PACK.copy.tisch);
+      else if (r.id === "anlass") say("out", PACK.copy.anlass, PACK.anlassLinks);
+      else if (r.id === "oeffnungszeiten") say("out", PACK.copy.askVenue);
+      else if (r.id === "camping") say("out", PACK.copy.camping, byId["fischers-fritz"].links);
+      else if (r.id === "catering") say("out", PACK.copy.catering, byId["lulu"].links);
+    });
+    qr.appendChild(b);
+  });
+
+  document.getElementById("show-venue").addEventListener("click", function () {
+    if (window.bsTrack) window.bsTrack("/chat/betrieb", "example");
+    var v = byId[venue.value];
+    say("in", v ? v.name : "Betrieb");
+    if (!v) { say("out", PACK.copy.askVenue); return; }
+    say("out", v.hours, v.links);
+  });
+  document.getElementById("cta").addEventListener("click", confirmExample);
+  document.getElementById("reset").addEventListener("click", resetAll);
+  form.addEventListener("submit", function (ev) {
+    if (ev && ev.preventDefault) ev.preventDefault();
+    var text = ask.value;
+    ask.value = "";
+    if (personal(text)) {
+      say("in", "Persönliche Angaben wurden nicht angezeigt.");
+      say("out", PACK.copy.personal);
+      return;
+    }
+    if (!norm(text)) { say("out", PACK.copy.empty); return; }
+    say("in", text);
+    replyTo(text);
+  });
+  say("out", PACK.copy.hello);
+})();
+</script>
+<noscript>Bitte JavaScript erlauben. Auch dann wird keine Reservation gesendet. Bitte keine persönlichen Daten eingeben.</noscript>
+</body>
+</html>

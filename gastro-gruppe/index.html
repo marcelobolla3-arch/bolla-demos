@@ -1,0 +1,19 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Individuelle Demo für Péclard · BOLLA STUDIO</title>
+<script>location.replace("de/"+location.search+location.hash)</script>
+</head>
+<body>
+<p>Individuelle Demo für Péclard — Beispiel von BOLLA STUDIO. Keine offizielle Website. Keine Live-Reservation.</p>
+<p><a href="de/">Deutsch</a></p>
+<script>
+document.querySelectorAll("a").forEach(function(a){
+  try{var u=new URL(a.getAttribute("href"),location.href);a.href=u.pathname+location.search+location.hash;}catch(e){}
+});
+</script>
+</body>
+</html>

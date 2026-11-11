@@ -49,7 +49,7 @@ Náutica, náutica-cat, `/es/` y concesionarios siguen metiendo `p` como tramo d
 
 ## Inventario
 
-600 demos cuentan. 376 tienen al menos un uso. 224 solo tienen la visita. 45 redirecciones no cargan el contador. La portada tampoco.
+601 demos cuentan. 377 tienen al menos un uso. 224 solo tienen la visita. 46 redirecciones no cargan el contador. La portada tampoco.
 
 En la columna Visita, `{p}` es la etiqueta saneada y solo se añade cuando existe. `|` separa la ruta sin etiqueta y la ruta con etiqueta cuando `p` es un tramo, no una búsqueda.
 
@@ -282,6 +282,7 @@ En la columna Visita, `{p}` es la etiqueta saneada y solo se añade cuando exist
 | /garage/ru/ | /bolla-demo-garage/ru/?p={p} | /bolla-demo-garage/ru/chat/{id}?p={p} · example; /bolla-demo-garage/ru/request/confirm?p={p} · example |
 | /garni-golf-ascona/ | /bolla-garni-golf-ascona/?p={p} | /bolla-garni-golf-ascona/opt?p={p} · Opzione; /bolla-garni-golf-ascona/slot?p={p} · Orario scelto; /bolla-garni-golf-ascona/confirm?p={p} · Conferma demo; /bolla-garni-golf-ascona/chat?p={p} · Rivedi chat |
 | /garni-molinazzo-agno/ | /bolla-garni-molinazzo-agno/?p={p} | /bolla-garni-molinazzo-agno/opt?p={p} · Opzione; /bolla-garni-molinazzo-agno/slot?p={p} · Orario scelto; /bolla-garni-molinazzo-agno/confirm?p={p} · Conferma demo; /bolla-garni-molinazzo-agno/chat?p={p} · Rivedi chat |
+| /gastro-gruppe/de/ | /bolla-demo-gastro-gruppe/de/?p={p} | /bolla-demo-gastro-gruppe/de/chat/{id}?p={p} · example; /bolla-demo-gastro-gruppe/de/request/confirm?p={p} · example; /bolla-demo-gastro-gruppe/de/reset?p={p} · example; /bolla-demo-gastro-gruppe/de/chat/betrieb?p={p} · example |
 | /gelateria-di-michele/ | /bolla-demo-gelateria-di-michele/?p={p} | solo visita |
 | /german-yanez-quiromasaje/ | /bolla-demo-german-yanez-quiromasaje/?p={p} | solo visita |
 | /gimnasio-apf-pfi-py/ | /gimnasio-apf-pfi-py/?p={p} | solo visita |
@@ -660,4 +661,4 @@ En la columna Visita, `{p}` es la etiqueta saneada y solo se añade cuando exist
 
 La portada `/` es el letrero del servidor.
 
-Redirecciones (45), conservan la búsqueda y el hash, y no cargan el contador: `/aesthetik-ch/`, `/ausfluege-ch/`, `/barber/`, `/bergbahn-ch/`, `/canyoning-ch/`, `/charter-de/`, `/charter-intl/`, `/charter/`, `/coiffeur-ch/`, `/concesionarios/`, `/dentist/`, `/fahrschule-ch/`, `/ferienwohnung-ch/`, `/fitness-ch/`, `/garage-ch/`, `/garage/`, `/hair-salon/`, `/hotel-ch/`, `/hotel-de/`, `/hotel/`, `/immobilien-ch/`, `/industrie-de/`, `/marina-pirita/`, `/movers/`, `/musikschule-ch/`, `/optician/`, `/optiker-ch/`, `/paragliding-ch/`, `/physio-ch/`, `/physio/`, `/real-estate/`, `/restaurant-ch/`, `/restaurant-de/`, `/restaurant/`, `/schifffahrt-ch/`, `/skischule-ch/`, `/skiverleih-ch/`, `/tierarzt-ch/`, `/tourismus-berlin/`, `/umzug-ch/`, `/velomiete-ch/`, `/velowerkstatt-ch/`, `/vet/`, `/video/comunidad-argentina/`, `/zahnarzt-ch/`.
+Redirecciones (46), conservan la búsqueda y el hash, y no cargan el contador: `/aesthetik-ch/`, `/ausfluege-ch/`, `/barber/`, `/bergbahn-ch/`, `/canyoning-ch/`, `/charter-de/`, `/charter-intl/`, `/charter/`, `/coiffeur-ch/`, `/concesionarios/`, `/dentist/`, `/fahrschule-ch/`, `/ferienwohnung-ch/`, `/fitness-ch/`, `/garage-ch/`, `/garage/`, `/gastro-gruppe/`, `/hair-salon/`, `/hotel-ch/`, `/hotel-de/`, `/hotel/`, `/immobilien-ch/`, `/industrie-de/`, `/marina-pirita/`, `/movers/`, `/musikschule-ch/`, `/optician/`, `/optiker-ch/`, `/paragliding-ch/`, `/physio-ch/`, `/physio/`, `/real-estate/`, `/restaurant-ch/`, `/restaurant-de/`, `/restaurant/`, `/schifffahrt-ch/`, `/skischule-ch/`, `/skiverleih-ch/`, `/tierarzt-ch/`, `/tourismus-berlin/`, `/umzug-ch/`, `/velomiete-ch/`, `/velowerkstatt-ch/`, `/vet/`, `/video/comunidad-argentina/`, `/zahnarzt-ch/`.
