@@ -213,7 +213,7 @@ test("?lang=es sets html lang and title before the page renders", () => {
   assert.match(html, /\[\?&#\]interno=\(\[01\]\)/);
 });
 
-test("static /nautica/es/ and /nautica/en/ ship the right lang and title and the same ?p= counter", () => {
+test("static /nautica/es/ and /nautica/fr/ match the Italian page except lang and title", () => {
   const canonical = read("nautica/index.html");
   const normalize = (html) => html
     .replace(/<html lang="[a-z]{2}">/, '<html lang="*">')
@@ -221,7 +221,6 @@ test("static /nautica/es/ and /nautica/en/ ship the right lang and title and the
   const same = normalize(canonical);
   for (const [path, lang, title] of [
     ["nautica/es/index.html", "es", "Lagoon 42 · Asistente de a bordo · BOLLA STUDIO"],
-    ["nautica/en/index.html", "en", "Lagoon 42 · Onboard assistant · BOLLA STUDIO"],
     ["nautica/fr/index.html", "fr", "Lagoon 42 · Assistant de bord · BOLLA STUDIO"],
   ]) {
     const html = read(path);
@@ -234,6 +233,14 @@ test("static /nautica/es/ and /nautica/en/ ship the right lang and title and the
     assert.match(html, /path:"\/"\+slug\+"\/demo",title:"demo"/);
     assert.match(html, /skipgc/);
   }
+  const en = read("nautica/en/index.html");
+  assert.match(en, /<html lang="en"><head>/);
+  assert.match(en, /<title>Lagoon 42 · Onboard assistant · BOLLA STUDIO<\/title>/);
+  const served = applyHead(en, "?p=prospecto", "/nautica/en/");
+  assert.equal(served.documentElement.lang, "en");
+  assert.equal(served.title, "Lagoon 42 · Onboard assistant · BOLLA STUDIO");
+  assert.match(en, /path:"\/"\+slug\+"\/demo",title:"demo"/);
+  assert.match(en, /skipgc/);
   assert.match(read("nautica/index.html"), /data-l="fr">FR</);
 });
 
@@ -608,4 +615,192 @@ test("each nautica route shows its own language and keeps 1530 on the Italian ro
   const onItalianRoute = boat.askCard(vhf);
   assert.match(onItalianRoute.html, /In Italia/);
   assert.match(onItalianRoute.html, /1530/);
+});
+
+const commonEnglish = new Set("the and of to for with from this that is are was were be been not when where what how can do does you your we our they their have has had will would should could there here into over under about only than then which who but because while during before after without between through each every also just its must may might these those them she he his if or by it at operate washing machine dishwasher forbidden dangerous sail reset press button black manually circuit breaker risk gennaker demasting sea".split(" "));
+
+function englishRuns(text) {
+  const words = String(text).toLowerCase().replace(/[^a-z']+/g, " ").split(" ").filter(Boolean);
+  const runs = [];
+  let cur = [];
+  for (const word of words) {
+    if (commonEnglish.has(word)) cur.push(word);
+    else {
+      if (cur.length >= 3) runs.push(cur.join(" "));
+      cur = [];
+    }
+  }
+  if (cur.length >= 3) runs.push(cur.join(" "));
+  return runs;
+}
+
+function citeNode() {
+  const node = {
+    className: "",
+    dataset: {},
+    children: [],
+    parent: null,
+    listeners: {},
+    classList: { add() {}, remove() {}, contains() { return false; } },
+    setAttribute() {},
+    appendChild(child) { child.parent = node; node.children.push(child); return child; },
+    insertBefore(child) { return node.appendChild(child); },
+    remove() {},
+    addEventListener(type, fn) { (node.listeners[type] ||= []).push(fn); },
+    click() { for (const fn of node.listeners.click || []) fn({ stopPropagation() {} }); },
+    get parentElement() { return node.parent; },
+    closest() { return null; },
+    querySelector(sel) { return node.querySelectorAll(sel)[0] || null; },
+    querySelectorAll(sel) {
+      const found = [];
+      const visit = (item) => {
+        if (sel === ".cite" && String(item.className).includes("cite")) found.push(item);
+        const attr = sel.match(/^\.excerpt\[data-c='([^']+)'\]$/);
+        if (attr && item.className === "excerpt" && item.dataset.c === attr[1]) found.push(item);
+        for (const child of item.children || []) visit(child);
+      };
+      for (const child of node.children) visit(child);
+      return found;
+    },
+    get innerHTML() { return node._html || ""; },
+    set innerHTML(value) {
+      node._html = value;
+      node.children = [];
+      const re = /<span class="cite"[^>]*data-c="([^"]+)"[^>]*>/g;
+      let match;
+      while ((match = re.exec(value))) {
+        const cite = citeNode();
+        cite.className = "cite";
+        cite.dataset.c = match[1];
+        cite.parent = node;
+        node.children.push(cite);
+      }
+    },
+  };
+  return node;
+}
+
+function bootNautica(html, pathname) {
+  const data = dataOf(html);
+  const uiScript = html.match(/<script>\s*(const UI=\{[\s\S]*?)<\/script>/)[1];
+  const start = html.indexOf("const D=window.DATA");
+  const end = html.indexOf("window.__ask=ask;", start);
+  const document = {
+    querySelector() { return citeNode(); },
+    querySelectorAll() { return []; },
+    createElement() { return citeNode(); },
+    getElementById() { return citeNode(); },
+  };
+  const sandbox = {
+    document,
+    localStorage: { getItem() { return null; } },
+    navigator: { language: "en" },
+    location: { search: "", pathname, hash: "" },
+    URLSearchParams,
+    requestAnimationFrame() {},
+    matchMedia() { return { matches: true }; },
+    console,
+  };
+  sandbox.window = sandbox;
+  sandbox.window.DATA = data;
+  sandbox.window.bsTrack = () => {};
+  sandbox.window.BS = { slug: "lagoon42" };
+  vm.createContext(sandbox);
+  vm.runInContext(`${uiScript}\n${html.slice(start, end + "window.__ask=ask;".length)}
+this.answerCurated=answerCurated;
+this.answerSearch=answerSearch;
+this.bindCites=bindCites;
+this.D=D;`, sandbox, { filename: "nautica-cite.js" });
+  return sandbox;
+}
+
+function openCites(card) {
+  const excerpts = [];
+  for (const cite of [...card.querySelectorAll(".cite")]) {
+    const before = card.querySelector(`.excerpt[data-c='${cite.dataset.c}']`);
+    cite.click();
+    const excerpt = card.querySelector(`.excerpt[data-c='${cite.dataset.c}']`);
+    if (!before && excerpt) excerpts.push(excerpt.innerHTML);
+  }
+  return excerpts;
+}
+
+test("non-English nautica routes hide the English manual and keep route-language copy", () => {
+  const fresh = read("nautica/index.html");
+  const englishFile = read("nautica/en/index.html");
+  assert.doesNotMatch(englishFile, /US model|UK model|European regulations|English or German|French is the authentic/i);
+  const routes = {
+    es: "/nautica/es/",
+    fr: "/nautica/fr/",
+    it: "/nautica/",
+  };
+  const searches = {
+    es: ["¿Cómo se usa el gennaker?", "¿Cómo funciona la lavadora?", "¿Cómo limpio la tapicería de alcantara?"],
+    fr: ["Comment utiliser le gennaker ?", "Comment fonctionne le lave-linge ?", "Comment nettoyer l'alcantara ?"],
+    it: ["Come si usa il gennaker?", "Come funziona la lavatrice?", "Come pulisco la tappezzeria in alcantara?"],
+  };
+  const phrase = {
+    es: /El manual del propietario trata este tema en la p\. \d+\.|La guía del usuario trata este tema en la p\. \d+\./,
+    fr: /Le manuel du propriétaire traite ce sujet à la p\. \d+\.|Le guide de l'utilisateur traite ce sujet à la p\. \d+\./,
+    it: /Il manuale del proprietario tratta questo argomento a p\. \d+\.|La guida dell'utente tratta questo argomento a p\. \d+\./,
+  };
+  const bannedPassage = /circuit-breaker can be reset|forbidden and dangerous to sail with only the gennaker|Do not operate the washing machine|Texto original|Texte original|Testo originale|FR\/EN/;
+  for (const [lang, pathname] of Object.entries(routes)) {
+    const boat = bootNautica(fresh, pathname);
+    const shown = [];
+    for (const topic of boat.D.topics) {
+      const card = boat.answerCurated(topic, lang, false);
+      shown.push(card.innerHTML);
+      for (const excerpt of openCites(card)) {
+        shown.push(excerpt);
+        assert.match(excerpt, phrase[lang], `${lang} ${topic.id}`);
+        assert.doesNotMatch(excerpt, bannedPassage, `${lang} ${topic.id}`);
+      }
+    }
+    const list = citeNode();
+    for (const checklist of boat.D.checklists) {
+      for (const item of checklist.items) {
+        for (const cite of item[1] || []) {
+          const chip = citeNode();
+          chip.className = "cite";
+          chip.dataset.c = `${cite[0]}:${cite[1]}`;
+          chip.parent = list;
+          list.children.push(chip);
+        }
+      }
+    }
+    boat.bindCites(list);
+    for (const excerpt of openCites(list)) {
+      shown.push(excerpt);
+      assert.match(excerpt, phrase[lang]);
+      assert.doesNotMatch(excerpt, bannedPassage);
+    }
+    for (const question of searches[lang]) {
+      const found = boat.answerSearch(question, lang, false);
+      assert.equal(found.topic, "manual", question);
+      shown.push(found.card.innerHTML);
+      assert.match(found.card.innerHTML, phrase[lang], question);
+      assert.doesNotMatch(found.card.innerHTML, bannedPassage, question);
+      assert.doesNotMatch(found.card.innerHTML, /searchLead|Original text|Texto original/, question);
+    }
+    const runs = englishRuns(shown.join("\n"));
+    assert.deepEqual(runs, [], `${lang} ${runs.join(" || ")}`);
+  }
+  const oldBoat = bootNautica(englishFile, "/nautica/en/");
+  const newBoat = bootNautica(fresh, "/nautica/en/");
+  const sample = oldBoat.D.topics.find((topic) => topic.id === "breakers-12v");
+  const oldCard = oldBoat.answerCurated(sample, "en", false);
+  const newCard = newBoat.answerCurated(sample, "en", false);
+  assert.equal(newCard.innerHTML, oldCard.innerHTML);
+  const oldExcerpt = openCites(oldCard)[0];
+  const newExcerpt = openCites(newCard)[0];
+  assert.match(oldExcerpt, /circuit-breaker can be reset|passage|<\/small>/);
+  assert.equal(newExcerpt, oldExcerpt);
+  const question = "¿Cómo se usa el gennaker?";
+  assert.equal(newBoat.answerSearch(question, "en", true).card.innerHTML, oldBoat.answerSearch(question, "en", true).card.innerHTML);
+});
+
+test("nautica names no country and no foreign model or version", () => {
+  const banned = /US model|UK model|U\.S\.|United States|United Kingdom|\bAmerica(?:n)?\b|Britain|British|European regulations|English or German|versión americana|version américaine|versione americana|modelo US|\bUS version\b|\bUK version\b|French is the authentic/i;
+  for (const path of pages) assert.doesNotMatch(read(path), banned, path);
 });
