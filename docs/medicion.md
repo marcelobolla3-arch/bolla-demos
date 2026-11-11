@@ -49,7 +49,7 @@ Náutica, náutica-cat, `/es/` y concesionarios siguen metiendo `p` como tramo d
 
 ## Inventario
 
-604 demos cuentan. 380 tienen al menos un uso. 224 solo tienen la visita. 46 redirecciones no cargan el contador. La portada tampoco.
+603 demos cuentan. 379 tienen al menos un uso. 224 solo tienen la visita. 46 redirecciones no cargan el contador. La portada tampoco.
 
 En la columna Visita, `{p}` es la etiqueta saneada y solo se añade cuando existe. `|` separa la ruta sin etiqueta y la ruta con etiqueta cuando `p` es un tramo, no una búsqueda.
 
@@ -140,7 +140,6 @@ En la columna Visita, `{p}` es la etiqueta saneada y solo se añade cuando exist
 | /charter-intl/en/ | /bolla-demo-charter-intl/en/?p={p} | /bolla-demo-charter-intl/en/chat/{id}?p={p} · example; /bolla-demo-charter-intl/en/request/confirm?p={p} · example |
 | /charter-intl/es/ | /bolla-demo-charter-intl/es/?p={p} | /bolla-demo-charter-intl/es/chat/{id}?p={p} · example; /bolla-demo-charter-intl/es/request/confirm?p={p} · example |
 | /charter-intl/fr/ | /bolla-demo-charter-intl/fr/?p={p} | /bolla-demo-charter-intl/fr/chat/{id}?p={p} · example; /bolla-demo-charter-intl/fr/request/confirm?p={p} · example |
-| /charter-intl/it/ | /bolla-demo-charter-intl/it/?p={p} | /bolla-demo-charter-intl/it/chat/{id}?p={p} · example; /bolla-demo-charter-intl/it/request/confirm?p={p} · example |
 | /charter/en/ | /bolla-demo-charter/en/?p={p} | /bolla-demo-charter/en/chat/{id}?p={p} · example; /bolla-demo-charter/en/request/confirm?p={p} · example |
 | /charter/et/ | /bolla-demo-charter/et/?p={p} | /bolla-demo-charter/et/chat/{id}?p={p} · example; /bolla-demo-charter/et/request/confirm?p={p} · example |
 | /chic-woman-py/ | /chic-woman-py/?p={p} | solo visita |

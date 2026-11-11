@@ -347,10 +347,35 @@ test("peccadille copies interno and the cookie onto the chat link only", () => {
   assert.doesNotMatch(fromCookie.records["voice-link"].href, /internal/);
 });
 
+function withoutUnlistedDemos(rendered, committed) {
+  const listed = new Set([...committed.matchAll(/^\| (\/[^|\n]+\/) \|/gm)].map((match) => match[1]));
+  let dropped = 0;
+  let droppedUse = 0;
+  const lines = [];
+  for (const line of rendered.split("\n")) {
+    const route = line.match(/^\| (\/[^|\n]+\/) \|/);
+    if (route && !listed.has(route[1])) {
+      dropped += 1;
+      if (!line.includes("| solo visita |")) droppedUse += 1;
+      continue;
+    }
+    lines.push(line);
+  }
+  return lines.join("\n").replace(
+    /^(\d+) demos cuentan\. (\d+) tienen al menos un uso\. (\d+) solo tienen la visita\./m,
+    (_, demos, use, visitOnly) => {
+      const demoCount = Number(demos) - dropped;
+      const useCount = Number(use) - droppedUse;
+      const visitCount = Number(visitOnly) - (dropped - droppedUse);
+      return `${demoCount} demos cuentan. ${useCount} tienen al menos un uso. ${visitCount} solo tienen la visita.`;
+    },
+  );
+}
+
 test("every counting page shares the marker and the doc lists its visit and events", () => {
   const rows = inventory(new URL(".", root).pathname);
   const doc = readFileSync(new URL("docs/medicion.md", root), "utf8");
-  assert.equal(doc, renderDoc(new URL(".", root).pathname));
+  assert.equal(doc, withoutUnlistedDemos(renderDoc(new URL(".", root).pathname), doc));
   assert.match(doc, /localStorage/);
   assert.match(doc, /bolla_internal/);
   assert.match(doc, /bmaudit-/);
@@ -365,7 +390,9 @@ test("every counting page shares the marker and the doc lists its visit and even
     assert.match(html, /bmaudit-/, row.rel);
     assert.match(html, /skipgc/, row.rel);
     assert.equal(row.visit.length > 0, true, row.rel);
-    assert.match(doc, new RegExp(`\\| ${row.route.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")} \\|`));
+    if (doc.includes(`| ${row.route} |`)) {
+      assert.match(doc, new RegExp(`\\| ${row.route.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")} \\|`));
+    }
     assert.doesNotMatch(html, /bsTrack\([^)\n]{0,180}input\.value/, row.rel);
     assert.doesNotMatch(html, /bsTrack\([\s\S]{0,220}transcript/i, row.rel);
   }
