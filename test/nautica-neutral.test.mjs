@@ -360,3 +360,48 @@ test("prepared questions and typed emergencies answer in the page language", () 
   assert.match(smoke.html, /Appeler 112/);
   assert.doesNotMatch(smoke.html, /Llamar|Avisa ya al patrón/);
 });
+
+function kbBox(html) {
+  const script = html.match(/<script>\s*(const UI=\{[\s\S]*?)<\/script>/)[1];
+  const sandbox = {};
+  vm.createContext(sandbox);
+  vm.runInContext(`${script}\nthis.KB_MSGS=KB_MSGS; this.KB_CLUSTERS=KB_CLUSTERS; this.KB_LANES=KB_LANES;`, sandbox, { filename: "nautica-kb.js" });
+  return sandbox;
+}
+
+test("each nautica language shows only its own KB example messages", () => {
+  const langs = ["it", "en", "es", "fr"];
+  for (const path of pages) {
+    const html = read(path);
+    assert.match(html, /KB_MSGS\[uiLang\]/, path);
+    assert.doesNotMatch(html, /KB_MSGS\.map\(/, path);
+    const box = kbBox(html);
+    const texts = Object.fromEntries(langs.map((lang) => [lang, box.KB_MSGS[lang].map((row) => row.m)]));
+    for (const lang of langs) {
+      assert.equal(texts[lang].length, 6, `${path} ${lang}`);
+      for (const other of langs) {
+        if (other === lang) continue;
+        for (const foreign of texts[other]) {
+          assert.equal(texts[lang].includes(foreign), false, `${path} ${lang} shows ${other}: ${foreign}`);
+        }
+      }
+    }
+    const italian = texts.it.join("\n");
+    assert.match(italian, /Ciao, come funziona il WC elettrico\? Premo e non succede niente\./);
+    assert.match(italian, /Il frigorifero si è spento e non riparte\./);
+    assert.match(italian, /Possiamo riconsegnare la barca un giorno dopo\? Quanto costa\?/);
+    assert.doesNotMatch(italian, /heladera|Hi, how does|devolver el barco|réfrigérateur/i);
+    const spanish = texts.es.join("\n");
+    assert.match(spanish, /frigorífico/);
+    assert.doesNotMatch(spanish, /heladera|\bvos\b|tenés|podés|Shore power|\bbreaker\b/i);
+    const cards = [
+      ...box.KB_LANES.agent.es,
+      ...box.KB_LANES.human.es,
+      ...box.KB_CLUSTERS.map((row) => [row.q.es, ""]),
+    ].map((row) => row.join(" ")).join("\n");
+    assert.match(cards, /frigorífico/);
+    assert.doesNotMatch(cards, /heladera|Shore power|\bbreaker\b/i);
+    assert.doesNotMatch(texts.en.join("\n"), /heladera|devolver el barco|riconsegnare|réfrigérateur/i);
+    assert.doesNotMatch(texts.fr.join("\n"), /heladera|devolver el barco|riconsegnare|Nothing happens/i);
+  }
+});
