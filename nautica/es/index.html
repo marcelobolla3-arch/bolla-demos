@@ -381,11 +381,10 @@ const KB_LANES={
 "use strict";
 const D=window.DATA, $=s=>document.querySelector(s), $$=s=>Array.from(document.querySelectorAll(s));
 const LANGS=["it","en","es","fr"];
-let uiLang=(()=>{const s=localStorage.getItem("bs_lang");if(LANGS.includes(s))return s;const n=(navigator.language||"it").slice(0,2);return LANGS.includes(n)?n:"it";})();
 const qs=new URLSearchParams(location.search);
 const pathLang=(location.pathname.match(/\/(it|en|es|fr)\/?$/)||[])[1];
 let routeLang=LANGS.includes(pathLang)?pathLang:"it";
-if(LANGS.includes(pathLang))uiLang=pathLang;
+let uiLang=routeLang;
 if(LANGS.includes(qs.get("lang")))uiLang=qs.get("lang");
 if(!pathLang&&["en","es","fr"].includes(qs.get("lang")))routeLang=qs.get("lang");
 const T=()=>UI[uiLang];
