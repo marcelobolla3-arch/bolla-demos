@@ -148,10 +148,8 @@ test("charter-intl pages are generic, fictional, and keep the Unicode matcher", 
     assert.doesNotMatch(html, /Tallinn|Eston|\+372|Pirita|Baltic|Eesti|Italia|italiano|Roma|Milán/i, path);
     assert.doesNotMatch(html, /\+\d{1,3}\s+\d/, path);
     assert.match(html, /000 000 0000/);
-    assert.match(html, /Mediterranean|Méditerranée|Mediterráneo/);
-    assert.match(html, /Caribbean|Caraïbes|Caribe/);
-    assert.match(html, /Australia|Australie|Oceanía/);
-    assert.match(html, /North America|Amérique du Nord|América del Norte/);
+    assert.doesNotMatch(html, /Mediterranean|Méditerranée|Mediterráneo|Caribbean|Caraïbes|Caribe|Australia|Australie|Oceanía|North America|Amérique du Nord|América del Norte/);
+    assert.match(html, /not set in one city or country|aucune ville ni à aucun pays|una ciudad ni en un país/);
     assert.match(html, /fictional|fictif|ficticio/i);
     assert.match(html, /112/);
     assert.match(html, /local emergency number|numéro d’urgence local|número de emergencia local/);
