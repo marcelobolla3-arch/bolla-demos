@@ -405,3 +405,17 @@ test("each nautica language shows only its own KB example messages", () => {
     assert.doesNotMatch(texts.fr.join("\n"), /heladera|devolver el barco|riconsegnare|Nothing happens/i);
   }
 });
+
+test("nautica names no manufacturer city, country version or foreign phone", () => {
+  const banned = /Bordeaux|Francia|\bFrance\b|\bUS version\b|\bU\.S\. version\b|versione US|versión US|\bversion US\b|33\s*\(\s*0\s*\)|\+\d{1,3}[\s-]\d/i;
+  for (const path of pages) {
+    const html = read(path);
+    assert.doesNotMatch(html, banned, path);
+    assert.match(html, /contact the manufacturer's service network/, path);
+    assert.match(html, /rete di assistenza del costruttore/, path);
+    assert.match(html, /red de servicio del fabricante/, path);
+    assert.match(html, /réseau d'assistance du constructeur/, path);
+    assert.match(html, /1530/, path);
+    assert.match(html, /tel:112/, path);
+  }
+});
