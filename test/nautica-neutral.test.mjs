@@ -267,7 +267,7 @@ function makeEl() {
   };
 }
 
-function loadBoat(html) {
+function loadBoat(html, where = {}) {
   const data = dataOf(html);
   const uiScript = html.match(/<script>\s*(const UI=\{[\s\S]*?)<\/script>/)[1];
   const start = html.indexOf("const D=window.DATA");
@@ -283,7 +283,7 @@ function loadBoat(html) {
     document,
     localStorage: { getItem() { return null; } },
     navigator: { language: "it" },
-    location: { search: "", pathname: "/nautica/", hash: "" },
+    location: { search: where.search || "", pathname: where.pathname || "/nautica/", hash: "" },
     URLSearchParams,
     requestAnimationFrame() {},
     matchMedia() { return { matches: true }; },
@@ -296,6 +296,7 @@ function loadBoat(html) {
   vm.createContext(sandbox);
   vm.runInContext(`${uiScript}\n${html.slice(start, end + "window.__ask=ask;".length)}
 this.setPageLang=function(l){uiLang=l; routeLang=l;};
+this.visit=function(){return {uiLang, routeLang, sample: KB_MSGS[uiLang][0].m};};
 this.askCard=function(q){
   const det=detect(q);
   const L=det||uiLang;
@@ -330,6 +331,61 @@ function assertPageLanguage(card, lang, ui, label) {
     assert.doesNotMatch(card.html, new RegExp(`${ui.UI[other].calls} 112`), `${label} ${other}`);
   }
 }
+
+test("a ?lang= link on /nautica/ follows that language's country, and a bare visit stays on 1530", () => {
+  const html = read("nautica/index.html");
+  assert.match(html, /if\(!pathLang&&\["en","es","fr"\]\.includes\(qs\.get\("lang"\)\)\)routeLang=qs\.get\("lang"\)/);
+  assert.match(html, /path:"\/"\+slug\+"\/demo",title:"demo"/);
+  assert.match(html, /\[\?&\]p=\(\[\^&#\]\*\)/);
+
+  const bare = loadBoat(html).boat;
+  assert.deepEqual(
+    { uiLang: bare.visit().uiLang, routeLang: bare.visit().routeLang },
+    { uiLang: "it", routeLang: "it" },
+  );
+  assert.match(bare.visit().sample, /^Ciao!/);
+  const bareFire = bare.askCard("c'è un incendio");
+  assert.equal(bareFire.id, "fire");
+  assert.match(bareFire.html, /tel:1530/);
+  assert.match(bareFire.html, /tel:112/);
+  const bareVhf = bare.askCard("VHF e canale 16");
+  assert.equal(bareVhf.id, "vhf");
+  assert.match(bareVhf.html, /In Italia la Guardia Costiera risponde anche al 1530/);
+
+  const italian = loadBoat(html, { search: "?lang=it&p=lagoon", pathname: "/nautica/" }).boat;
+  assert.equal(italian.visit().routeLang, "it");
+  assert.match(italian.visit().sample, /^Ciao!/);
+  assert.match(italian.askCard("VHF e canale 16").html, /In Italia/);
+  assert.match(italian.askCard("c'è un incendio").html, /tel:1530/);
+
+  const visits = {
+    es: { emergency: "hay fuego", sample: "Hola, el agua caliente no sale de la ducha. ¿Qué hacemos?", calls: "Llamar" },
+    en: { emergency: "there is a fire", sample: "Hi, no hot water is coming out of the shower. What should we do?", calls: "Call" },
+    fr: { emergency: "il y a un incendie", sample: "Bonjour, l'eau chaude ne sort pas de la douche. Que fait-on ?", calls: "Appeler" },
+  };
+  for (const [lang, expect] of Object.entries(visits)) {
+    const boat = loadBoat(html, { search: `?lang=${lang}&p=lagoon`, pathname: "/nautica/" }).boat;
+    const visit = boat.visit();
+    assert.equal(visit.uiLang, lang);
+    assert.equal(visit.routeLang, lang);
+    assert.equal(visit.sample, expect.sample);
+    assert.doesNotMatch(visit.sample, /Ciao|frigorifero|doccia/);
+    const card = boat.askCard(expect.emergency);
+    assert.equal(card.L, lang, lang);
+    assert.match(card.html, new RegExp(`tel:112`), lang);
+    assert.match(card.html, new RegExp(`${expect.calls} 112`), lang);
+    assert.doesNotMatch(card.html, /1530|In Italia/, lang);
+    const vhf = boat.askCard("VHF e canale 16");
+    assert.equal(vhf.id, "vhf", lang);
+    assert.doesNotMatch(vhf.html, /1530|In Italia/, `${lang} vhf`);
+    assert.match(vhf.html, /112/, `${lang} vhf`);
+  }
+
+  const pathWins = loadBoat(html, { search: "?lang=it&p=lagoon", pathname: "/nautica/es/" }).boat;
+  assert.equal(pathWins.visit().uiLang, "it");
+  assert.equal(pathWins.visit().routeLang, "es");
+  assert.doesNotMatch(pathWins.askCard("VHF e canale 16").html, /1530|In Italia/);
+});
 
 test("prepared questions and typed emergencies answer in the page language", () => {
   const html = read("nautica/index.html");

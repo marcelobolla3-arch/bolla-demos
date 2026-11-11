@@ -387,6 +387,7 @@ const pathLang=(location.pathname.match(/\/(it|en|es|fr)\/?$/)||[])[1];
 let routeLang=LANGS.includes(pathLang)?pathLang:"it";
 if(LANGS.includes(pathLang))uiLang=pathLang;
 if(LANGS.includes(qs.get("lang")))uiLang=qs.get("lang");
+if(!pathLang&&["en","es","fr"].includes(qs.get("lang")))routeLang=qs.get("lang");
 const T=()=>UI[uiLang];
 const esc=s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
 const norm=s=>s.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g,"").replace(/[^a-z0-9\s'-]/g," ").replace(/['-]/g," ").replace(/\s+/g," ").trim();
