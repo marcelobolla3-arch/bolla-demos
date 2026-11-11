@@ -219,8 +219,8 @@ test("static /nautica/es/ and /nautica/fr/ stay sealed and match each other exce
     .replace(/<html lang="[a-z]{2}">/, '<html lang="*">')
     .replace(/<title>[^<]*<\/title>/, "<title>*</title>");
   const sealed = {
-    "nautica/es/index.html": "84000acb22f213d57f091c090100b75d61b0da917c8cb89fd861009fe088755e",
-    "nautica/fr/index.html": "2acdc34ed5f3cf856ab27fbb2093b5906bc3b54fb55013279356f42d876cd7a0",
+    "nautica/es/index.html": "5d1e1c39c08985f48341efa332fe97fcd9d144694c0e24dd807dc2753a0398f5",
+    "nautica/fr/index.html": "c5316c135e8bdd8910fabab77db45f95bf44839cc01cd647db1fd85f923973e4",
   };
   const pages = [
     ["nautica/es/index.html", "es", "Lagoon 42 · Asistente de a bordo · BOLLA STUDIO"],
@@ -843,8 +843,6 @@ test("nautica citations stay in the route language and hide internal labels", ()
     es: ["nautica/es/index.html", "/nautica/es/"],
     fr: ["nautica/fr/index.html", "/nautica/fr/"],
   };
-  assert.equal(createHash("sha256").update(read("nautica/es/index.html")).digest("hex"), "84000acb22f213d57f091c090100b75d61b0da917c8cb89fd861009fe088755e");
-  assert.equal(createHash("sha256").update(read("nautica/fr/index.html")).digest("hex"), "2acdc34ed5f3cf856ab27fbb2093b5906bc3b54fb55013279356f42d876cd7a0");
   for (const [lang, [path, pathname]] of Object.entries(files)) {
     const boat = bootNautica(read(path), pathname);
     const found = boat.answerSearch(club[lang], lang, false);
@@ -854,13 +852,20 @@ test("nautica citations stay in the route language and hide internal labels", ()
       assert.match(shown, /The user guide covers this on p\. 2\./);
       assert.doesNotMatch(shown, /Original text/);
     }
-    if (lang !== "en" && lang !== "it") continue;
+    const chip = {
+      es: /^(?:Manual del propietario|Guía del usuario), p\. \d+\.$/,
+      fr: /^(?:Manuel du propriétaire|Guide de l'utilisateur), p\. \d+\.$/,
+      it: /^(?:Manuale del proprietario|Guida dell'utente), p\. \d+\.$/,
+      en: /^The (?:owner's manual|user guide) covers this on p\. \d+\.$/,
+    };
     for (const page of boat.D.pages) {
       const label = boat.citeLabel([page.d, page.p, page.pdf, page.sec]);
       const title = boat.citeTitle([page.d, page.p, page.pdf, page.sec]);
       const excerpt = visibleText(excerptFor(boat, page));
       const visible = `${label}\n${title}\n${excerpt}`;
       assert.doesNotMatch(visible, internal, `${lang} ${page.d} p.${page.p}`);
+      assert.match(label, chip[lang], `${lang} ${page.d} p.${page.p}`);
+      if (lang !== "it") assert.equal(title, label, `${lang} ${page.d} p.${page.p}`);
       if (lang === "en" && boat.foreignProse(page.t)) {
         assert.doesNotMatch(excerpt, frenchPassage, `${page.d} p.${page.p}`);
         assert.match(excerpt, /The (?:owner's manual|user guide) covers this on p\. \d+\./);
