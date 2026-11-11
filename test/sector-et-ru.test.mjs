@@ -98,6 +98,7 @@ test("neutral et/ru/en pages stay off the Swiss demos and answer in one language
       const index = read(`${slug}/index.html`);
       if (slug === "hotel" || slug === "vet") assert.match(index, /supported=\["et","ru","en","es"\]/);
       else if (slug === "dentist") assert.match(index, /supported=\["et","ru","en","es","de"\]/);
+      else if (slug === "restaurant") assert.match(index, /supported=\["et","ru","en","es"\]/);
       else assert.match(index, /supported=\["et","ru","en"\]/);
       assert.match(index, new RegExp(`Not the Swiss demo at /${swiss}/`));
       assert.doesNotMatch(index, /\/ee\//);

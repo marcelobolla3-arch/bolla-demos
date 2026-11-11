@@ -49,7 +49,7 @@ Náutica, náutica-cat, `/es/` y concesionarios siguen metiendo `p` como tramo d
 
 ## Inventario
 
-603 demos cuentan. 379 tienen al menos un uso. 224 solo tienen la visita. 46 redirecciones no cargan el contador. La portada tampoco.
+604 demos cuentan. 380 tienen al menos un uso. 224 solo tienen la visita. 46 redirecciones no cargan el contador. La portada tampoco.
 
 En la columna Visita, `{p}` es la etiqueta saneada y solo se añade cuando existe. `|` separa la ruta sin etiqueta y la ruta con etiqueta cuando `p` es un tramo, no una búsqueda.
 
@@ -552,6 +552,7 @@ En la columna Visita, `{p}` es la etiqueta saneada y solo se añade cuando exist
 | /restaurant-de/de/ | /bolla-demo-restaurant-de/de/?p={p} | /bolla-demo-restaurant-de/de/chat/{button}?p={p} · script-option; /bolla-demo-restaurant-de/de/request/confirm?p={p} · Demo-Anfrage |
 | /restaurant-santander-106/ | /bolla-demo-restaurant-santander-106/?p={p} | solo visita |
 | /restaurant/en/ | /bolla-demo-restaurant/en/?p={p} | /bolla-demo-restaurant/en/chat/{id}?p={p} · example; /bolla-demo-restaurant/en/request/confirm?p={p} · example |
+| /restaurant/es/ | /bolla-demo-restaurant/es/?p={p} | /bolla-demo-restaurant/es/chat/{id}?p={p} · example; /bolla-demo-restaurant/es/request/confirm?p={p} · example |
 | /restaurant/et/ | /bolla-demo-restaurant/et/?p={p} | /bolla-demo-restaurant/et/chat/{id}?p={p} · example; /bolla-demo-restaurant/et/request/confirm?p={p} · example |
 | /restaurant/ru/ | /bolla-demo-restaurant/ru/?p={p} | /bolla-demo-restaurant/ru/chat/{id}?p={p} · example; /bolla-demo-restaurant/ru/request/confirm?p={p} · example |
 | /riviera-melide/ | /riviera-melide/?p={p} | /riviera-melide/tab/{id}?p={p} · Tab {…} |
