@@ -146,7 +146,8 @@ test("Spanish and English Lagoon 42 copy names no country, city or local phone",
   assert.match(label("en"), /tel:112/);
   assert.doesNotMatch(label("fr"), /1530/);
   assert.match(label("fr"), /tel:112/);
-  assert.match(data.topics.find((topic) => topic.id === "refuse-nav").q.it, /Portisco/);
+  assert.match(data.topics.find((topic) => topic.id === "refuse-nav").q.it, /fondeggio/);
+  assert.doesNotMatch(data.topics.find((topic) => topic.id === "refuse-nav").q.it, /Portisco/);
   assert.equal(data.topics.find((topic) => topic.id === "vhf").steps[2][0].fr.includes("112"), true);
 });
 
@@ -408,10 +409,25 @@ test("each nautica language shows only its own KB example messages", () => {
 });
 
 test("nautica names no manufacturer city, country version or foreign phone", () => {
-  const banned = /Bordeaux|Francia|\bFrance\b|\bUS version\b|\bU\.S\. version\b|versione US|versión US|\bversion US\b|33\s*\(\s*0\s*\)|\+\d{1,3}[\s-]\d/i;
+  const banned = /Bordeaux|Francia|\bFrance\b|US Version|Europe Version|Brazil Version|Portisco|33\s*\(\s*0\s*\)|\+\d{1,3}[\s-]\d/i;
   for (const path of pages) {
     const html = read(path);
+    const data = dataOf(html);
     assert.doesNotMatch(html, banned, path);
+    assert.doesNotMatch(JSON.stringify(data), banned, `${path} DATA`);
+    for (const page of data.pages) {
+      assert.doesNotMatch(page.t || "", banned, `${path} ${page.d} p.${page.p}`);
+    }
+    for (const topic of data.topics) {
+      for (const field of ["q", "title", "lead", "nocover"]) {
+        const value = topic[field];
+        if (value && typeof value === "object") {
+          for (const text of Object.values(value)) {
+            if (typeof text === "string") assert.doesNotMatch(text, banned, `${path} ${topic.id} ${field}`);
+          }
+        }
+      }
+    }
     assert.match(html, /contact the manufacturer's service network/, path);
     assert.match(html, /rete di assistenza del costruttore/, path);
     assert.match(html, /red de servicio del fabricante/, path);
@@ -419,6 +435,30 @@ test("nautica names no manufacturer city, country version or foreign phone", () 
     assert.match(html, /1530/, path);
     assert.match(html, /tel:112/, path);
     assert.doesNotMatch(html, /heladera|lavarropas/i, path);
+  }
+  const spanish = dataOf(read("nautica/es/index.html"));
+  const fridge = spanish.topics.find((topic) => topic.id === "fridge");
+  assert.match(fridge.lead.es, /Nevera de serie de 137 l/);
+  assert.doesNotMatch(JSON.stringify(spanish), /heladera|lavarropas/i);
+  function shownSpanish(node, path, out = []) {
+    if (typeof node === "string") {
+      if (path.endsWith(".es") && !path.includes(".kw")) out.push(node);
+      return out;
+    }
+    if (Array.isArray(node)) {
+      node.forEach((item, index) => shownSpanish(item, `${path}[${index}]`, out));
+      return out;
+    }
+    if (node && typeof node === "object") {
+      for (const [key, value] of Object.entries(node)) {
+        if (key === "pages" || key === "svg" || key === "kw") continue;
+        shownSpanish(value, path ? `${path}.${key}` : key, out);
+      }
+    }
+    return out;
+  }
+  for (const text of shownSpanish(spanish, "")) {
+    assert.doesNotMatch(text, /\bshore power\b|\bbreakers?\b/i, text);
   }
 });
 
@@ -479,4 +519,15 @@ test("each nautica route shows its own language and keeps 1530 on the Italian ro
   assert.match(italian.html, /1530/);
   assert.match(italian.html, /tel:1530/);
   assert.match(italian.html, /112/);
+  const vhf = "VHF e canale 16";
+  for (const route of ["es", "en", "fr"]) {
+    boat.setPageLang(route);
+    const card = boat.askCard(vhf);
+    assert.doesNotMatch(card.html, /In Italia|1530/, route);
+    assert.match(card.html, /112/, route);
+  }
+  boat.setPageLang("it");
+  const onItalianRoute = boat.askCard(vhf);
+  assert.match(onItalianRoute.html, /In Italia/);
+  assert.match(onItalianRoute.html, /1530/);
 });
