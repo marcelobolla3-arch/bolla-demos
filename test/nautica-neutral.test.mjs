@@ -132,11 +132,12 @@ test("Spanish and English Lagoon 42 copy names no country, city or local phone",
   }
 
   const html = read("nautica/index.html");
-  const callStart = html.indexOf(`(L==="it"?'<a href="tel:1530">'+esc(t.calls)+' 1530</a>':'')`);
+  const callStart = html.indexOf(`(routeLang==="it"?'<a href="tel:1530">'+esc(t.calls)+' 1530</a>':'')`);
   const callEnd = html.indexOf(`+'<a href="tel:112">'+esc(t.calls)+' 112</a>`, callStart);
-  assert.ok(callStart > 0 && callEnd > callStart, "emergency calls must keep 1530 behind the Italian branch");
-  const build = new Function("L", "esc", "t", `return ${html.slice(callStart, callEnd)}+'<a href="tel:112">'+esc(t.calls)+' 112</a>'`);
-  const label = (L) => build(L, (value) => value, { calls: "Call", vhf: "VHF" });
+  assert.ok(callStart > 0 && callEnd > callStart, "emergency calls must keep 1530 behind the Italian route");
+  assert.doesNotMatch(html, /L==="it"\?'<a href="tel:1530">/);
+  const build = new Function("routeLang", "esc", "t", `return ${html.slice(callStart, callEnd)}+'<a href="tel:112">'+esc(t.calls)+' 112</a>'`);
+  const label = (routeLang) => build(routeLang, (value) => value, { calls: "Call", vhf: "VHF" });
   assert.match(label("it"), /tel:1530/);
   assert.match(label("it"), /tel:112/);
   assert.doesNotMatch(label("es"), /1530/);
@@ -293,7 +294,7 @@ function loadBoat(html) {
   sandbox.window.BS = { slug: "lagoon42" };
   vm.createContext(sandbox);
   vm.runInContext(`${uiScript}\n${html.slice(start, end + "window.__ask=ask;".length)}
-this.setPageLang=function(l){uiLang=l;};
+this.setPageLang=function(l){uiLang=l; routeLang=l;};
 this.askCard=function(q){
   const det=detect(q);
   const L=det||uiLang;
@@ -392,14 +393,14 @@ test("each nautica language shows only its own KB example messages", () => {
     assert.match(italian, /Possiamo riconsegnare la barca un giorno dopo\? Quanto costa\?/);
     assert.doesNotMatch(italian, /heladera|Hi, how does|devolver el barco|réfrigérateur/i);
     const spanish = texts.es.join("\n");
-    assert.match(spanish, /frigorífico/);
+    assert.match(spanish, /nevera/);
     assert.doesNotMatch(spanish, /heladera|\bvos\b|tenés|podés|Shore power|\bbreaker\b/i);
     const cards = [
       ...box.KB_LANES.agent.es,
       ...box.KB_LANES.human.es,
       ...box.KB_CLUSTERS.map((row) => [row.q.es, ""]),
     ].map((row) => row.join(" ")).join("\n");
-    assert.match(cards, /frigorífico/);
+    assert.match(cards, /nevera/);
     assert.doesNotMatch(cards, /heladera|Shore power|\bbreaker\b/i);
     assert.doesNotMatch(texts.en.join("\n"), /heladera|devolver el barco|riconsegnare|réfrigérateur/i);
     assert.doesNotMatch(texts.fr.join("\n"), /heladera|devolver el barco|riconsegnare|Nothing happens/i);
@@ -417,5 +418,65 @@ test("nautica names no manufacturer city, country version or foreign phone", () 
     assert.match(html, /réseau d'assistance du constructeur/, path);
     assert.match(html, /1530/, path);
     assert.match(html, /tel:112/, path);
+    assert.doesNotMatch(html, /heladera|lavarropas/i, path);
   }
+});
+
+test("each nautica route shows its own language and keeps 1530 on the Italian route only", () => {
+  const routes = {
+    it: "/nautica/",
+    en: "/nautica/en/",
+    es: "/nautica/es/",
+    fr: "/nautica/fr/",
+  };
+  const pagesByRoute = {
+    it: "nautica/index.html",
+    en: "nautica/en/index.html",
+    es: "nautica/es/index.html",
+    fr: "nautica/fr/index.html",
+  };
+  for (const [route, path] of Object.entries(pagesByRoute)) {
+    const html = read(path);
+    assert.equal(resolveLang(html, {
+      search: "",
+      pathname: routes[route],
+      stored: route === "it" ? null : "en",
+      navigatorLanguage: route === "it" ? "it" : "en",
+    }), route);
+    const box = kbBox(html);
+    const own = box.KB_MSGS[route].map((row) => row.m);
+    for (const other of ["it", "en", "es", "fr"]) {
+      if (other === route) continue;
+      for (const foreign of box.KB_MSGS[other].map((row) => row.m)) {
+        assert.equal(own.includes(foreign), false, `${route} KB shows ${other}`);
+      }
+      for (const cluster of box.KB_CLUSTERS) {
+        assert.notEqual(cluster.q[route], cluster.q[other], `${route} cluster ${cluster.n}`);
+      }
+    }
+    const data = dataOf(html);
+    for (const id of data.chips) {
+      const topic = data.topics.find((item) => item.id === id);
+      for (const other of ["it", "en", "es", "fr"]) {
+        if (other === route) continue;
+        assert.notEqual(topic.q[route], topic.q[other], `${route} chip ${id}`);
+      }
+    }
+    if (route === "es") assert.doesNotMatch(html, /heladera|lavarropas/i);
+  }
+  const { boat } = loadBoat(read("nautica/es/index.html"));
+  const question = "Cosa devo fare quando il motore non funziona e il fuoco entra nella barca?";
+  for (const route of ["es", "en", "fr"]) {
+    boat.setPageLang(route);
+    const card = boat.askCard(question);
+    assert.equal(card.L, "it", route);
+    assert.doesNotMatch(card.html, /1530/, route);
+    assert.doesNotMatch(card.html, /tel:1530/, route);
+    assert.match(card.html, /112/, route);
+  }
+  boat.setPageLang("it");
+  const italian = boat.askCard(question);
+  assert.match(italian.html, /1530/);
+  assert.match(italian.html, /tel:1530/);
+  assert.match(italian.html, /112/);
 });
