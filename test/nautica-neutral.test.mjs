@@ -75,6 +75,10 @@ function applyHead(html, search, pathname) {
 }
 
 function resolveLang(html, { search, pathname, stored, navigatorLanguage }) {
+  return resolveVisit(html, { search, pathname, stored, navigatorLanguage }).uiLang;
+}
+
+function resolveVisit(html, { search, pathname, stored, navigatorLanguage }) {
   const start = html.indexOf("const LANGS=");
   const end = html.indexOf("const T=()", start);
   assert.ok(start > 0 && end > start);
@@ -85,9 +89,27 @@ function resolveLang(html, { search, pathname, stored, navigatorLanguage }) {
     URLSearchParams,
   };
   vm.createContext(sandbox);
-  vm.runInContext(`${html.slice(start, end)}\nthis.uiLang=uiLang;`, sandbox, { filename: "nautica-lang-init.js" });
-  return sandbox.uiLang;
+  vm.runInContext(`${html.slice(start, end)}\nthis.uiLang=uiLang; this.routeLang=routeLang;`, sandbox, { filename: "nautica-lang-init.js" });
+  return { uiLang: sandbox.uiLang, routeLang: sandbox.routeLang };
 }
+
+test("without ?lang= the route chooses the language, and a query still overrides it", () => {
+  const html = read("nautica/index.html");
+  const root = resolveVisit(html, { search: "", pathname: "/nautica/", stored: "es", navigatorLanguage: "en" });
+  assert.equal(root.uiLang, "it");
+  assert.equal(root.routeLang, "it");
+  const spanish = resolveVisit(html, { search: "", pathname: "/nautica/es/", stored: "en", navigatorLanguage: "it" });
+  assert.equal(spanish.uiLang, "es");
+  assert.equal(spanish.routeLang, "es");
+  const french = resolveVisit(html, { search: "?lang=fr", pathname: "/nautica/", stored: "es", navigatorLanguage: "en" });
+  assert.equal(french.uiLang, "fr");
+  assert.equal(french.routeLang, "fr");
+  const mixed = resolveVisit(html, { search: "?lang=es", pathname: "/nautica/en/", stored: "fr", navigatorLanguage: "it" });
+  assert.equal(mixed.uiLang, "es");
+  assert.equal(mixed.routeLang, "en");
+  assert.match(html, /localStorage\.setItem\("bs_lang",uiLang\)/);
+  assert.doesNotMatch(html, /localStorage\.getItem\("bs_lang"\)/);
+});
 
 const pages = ["nautica/index.html", "nautica/en/index.html", "nautica/es/index.html", "nautica/fr/index.html"];
 
@@ -175,9 +197,9 @@ test("?lang=es sets html lang and title before the page renders", () => {
 
   assert.equal(resolveLang(html, { search: "?lang=es", pathname: "/nautica/", stored: "it", navigatorLanguage: "it" }), "es");
   assert.equal(resolveLang(html, { search: "?p=lagoon&lang=en", pathname: "/nautica/", stored: "es", navigatorLanguage: "it" }), "en");
-  assert.equal(resolveLang(html, { search: "?p=lagoon", pathname: "/nautica/", stored: "en", navigatorLanguage: "it" }), "en");
-  assert.equal(resolveLang(html, { search: "", pathname: "/nautica/", stored: null, navigatorLanguage: "es-ES" }), "es");
-  assert.equal(resolveLang(html, { search: "", pathname: "/nautica/", stored: null, navigatorLanguage: "fr-FR" }), "fr");
+  assert.equal(resolveLang(html, { search: "?p=lagoon", pathname: "/nautica/", stored: "en", navigatorLanguage: "it" }), "it");
+  assert.equal(resolveLang(html, { search: "", pathname: "/nautica/", stored: null, navigatorLanguage: "es-ES" }), "it");
+  assert.equal(resolveLang(html, { search: "", pathname: "/nautica/", stored: null, navigatorLanguage: "fr-FR" }), "it");
   assert.equal(resolveLang(html, { search: "", pathname: "/nautica/", stored: null, navigatorLanguage: "de" }), "it");
   assert.equal(resolveLang(html, { search: "?lang=fr&p=lagoon", pathname: "/nautica/", stored: "it", navigatorLanguage: "it" }), "fr");
   assert.equal(resolveLang(html, { search: "?p=lagoon", pathname: "/nautica/es/", stored: "it", navigatorLanguage: "it" }), "es");
