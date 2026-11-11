@@ -34,7 +34,7 @@ const auditedContent = new Set([
   ...germany.map((slug) => `${slug}/de/index.html`),
   ...charterIntl.flatMap((slug) => [`${slug}/en/index.html`, `${slug}/fr/index.html`, `${slug}/es/index.html`]),
   ...["es", "en", "it", "de", "fr"].map((lang) => `video/comunidad-argentina/${lang}/index.html`),
-  ...["en", "de", "es", "it"].map((lang) => `concesionarios/${lang}/index.html`),
+  ...["en", "de", "es", "it", "fr"].map((lang) => `concesionarios/${lang}/index.html`),
   "voz/schloss-wuelflingen/index.html",
   "voz/ambarra/index.html",
   "voz/lagoon42/index.html",
@@ -63,7 +63,7 @@ test("every demo page counts one visit and can record use, and redirects do not 
     if (html.includes("window.bsTrack=function") && !html.includes("event:true") && !html.includes("event: true")) missing.push(path + " event");
     if (html.includes("'Chat '+q") || html.includes("function play(k){box.innerHTML='';S[k].forEach(add);bsTrack")) missing.push(path + " open-or-title");
   }
-  assert.equal(auditedContent.size, 88);
+  assert.equal(auditedContent.size, 89);
   assert.deepEqual(missing, []);
   const present = new Set(files.map((path) => path.slice(new URL(".", root).pathname.length)));
   assert.deepEqual([...auditedContent].filter((rel) => !present.has(rel)), []);
@@ -96,7 +96,7 @@ test("campaign usage is attached to the event and the question text is not the t
   assert.match(hicar, /if\(track\)bsTrack\('\/scene\/'\+k,'scene'\)/);
   assert.match(hicar, /play\('stock'\)/);
   assert.doesNotMatch(hicar, /play\('stock',1\)/);
-  for (const lang of ["en", "de", "es", "it"]) {
+  for (const lang of ["en", "de", "es", "it", "fr"]) {
     const page = read(new URL(`concesionarios/${lang}/index.html`, root));
     assert.doesNotMatch(page, /<video\b|src="video\.mp4"|video-play|poster=|\.vtt/);
     assert.match(page, new RegExp(`__concPath\\(raw,"video-${lang}"\\)`));

@@ -31,12 +31,12 @@ test("concesionarios files do not keep the nautical video or the banned place na
   for (const path of files) {
     assert.doesNotMatch(readFileSync(path, "utf8"), banned, path);
   }
-  for (const lang of ["es", "de", "en", "it"]) {
+  for (const lang of ["es", "de", "en", "it", "fr"]) {
     const html = read(`concesionarios/${lang}/index.html`);
     assert.doesNotMatch(html, /<video\b|poster=|\.vtt|subtitle|webvtt/i);
     const visible = html.replace(/<script[\s\S]*?<\/script>/g, " ").replace(/<style[\s\S]*?<\/style>/g, " ");
     assert.doesNotMatch(visible, /\$/);
-    assert.match(html, /Ejemplo ilustrativo|anschauliches Beispiel|illustrative example|Esempio illustrativo/);
+    assert.match(html, /Ejemplo ilustrativo|anschauliches Beispiel|illustrative example|Esempio illustrativo|Exemple illustratif/);
     assert.match(html, /skipgc/);
     assert.match(html, /internal=\(\[01\]\)/);
     assert.match(html, /m\[1\]==="1"/);
@@ -49,7 +49,7 @@ test("concesionarios files do not keep the nautical video or the banned place na
   const entry = read("concesionarios/index.html");
   assert.match(entry, /location\.search/);
   assert.doesNotMatch(entry, /gc\.zgo\.at\/count\.js/);
-  for (const lang of ["en", "de"]) {
+  for (const lang of ["en", "de", "fr"]) {
     const html = read(`concesionarios/${lang}/index.html`);
     assert.match(html, /bolla-p-redirect/);
     assert.match(html, /q0\.get\("p"\)/);
@@ -116,7 +116,7 @@ function concPath(html) {
   return new Function("raw", "leaf", match[1]);
 }
 
-const langs = ["es", "de", "en", "it"];
+const langs = ["es", "de", "en", "it", "fr"];
 const pages = Object.fromEntries(langs.map((lang) => [lang, read(`concesionarios/${lang}/index.html`)]));
 const demos = Object.fromEntries(langs.map((lang) => [lang, loadDemo(pages[lang], `concesionarios/${lang}/index.html`)]));
 
@@ -161,6 +161,16 @@ const questions = {
     ["Vorrei parlare con una persona", "human"],
     ["Ho avuto un incidente", "emergency"],
   ],
+  fr: [
+    ["Avez-vous un SUV compact hybride disponible ?", "stock"],
+    ["Je voudrais un essai routier", "testdrive"],
+    ["J'ai besoin d'un rendez-vous à l'atelier", "workshop"],
+    ["Pouvez-vous m'orienter sur le financement et la reprise ?", "finance"],
+    ["Quels sont les horaires ?", "hours"],
+    ["Où se trouve la concession ?", "location"],
+    ["Je voudrais parler à une personne", "human"],
+    ["J'ai eu un accident", "emergency"],
+  ],
 };
 
 test("the dealership matcher answers eight questions in each language", () => {
@@ -195,18 +205,24 @@ function shownGerman(html) {
   return fixed + " " + spoken.join(" ");
 }
 
-test("German dealership copy stays usable in Switzerland", () => {
+test("German dealership copy stays usable in Switzerland and does not name TÜV", () => {
   const html = pages.de;
   const shown = shownGerman(html);
+  assert.doesNotMatch(html, /TÜV|tüv|tuev/i);
   assert.doesNotMatch(shown, /TÜV-HU/);
   assert.doesNotMatch(shown, /ß/);
   assert.doesNotMatch(shown, /€/);
   assert.match(shown, /Fahrzeugprüfung/);
-  for (const question of ["TÜV", "HU", "MFK", "TÜV-HU", "Hauptuntersuchung"]) {
+  const keys = packOf(html).rules.flatMap((rule) => rule.keys || []);
+  assert.deepEqual(keys.filter((key) => /^(?:tüv(?: hu)?|tuv(?: hu)?|hu)$/i.test(key)), []);
+  for (const question of ["MFK", "Hauptuntersuchung", "Inspektion"]) {
     const answer = demos.de.answerFor(question);
     assert.equal(answer.id, "workshop", question);
     assert.match(answer.text, /Fahrzeugprüfung/);
     assert.doesNotMatch(answer.text, /TÜV|MFK/);
+  }
+  for (const question of ["TÜV", "HU", "TÜV-HU", "tuev"]) {
+    assert.equal(demos.de.answerFor(question).id, "fallback", question);
   }
 });
 
@@ -237,6 +253,17 @@ test("whole words do not match inside longer words, and an emergency wins", () =
       ["disponibilmente", "fallback"],
       ["Ho avuto un incidente e voglio lo stock", "emergency"],
     ],
+    fr: [
+      ["accidentellement", "fallback"],
+      ["le personnel de la concession", "fallback"],
+      ["stockage", "fallback"],
+      ["au cours de la journée", "fallback"],
+      ["contrôle technique", "fallback"],
+      ["MFK", "fallback"],
+      ["TÜV", "fallback"],
+      ["J'ai eu un accident et je veux un essai routier", "emergency"],
+      ["   ", "empty"],
+    ],
   };
   for (const lang of langs) {
     for (const [question, id] of traps[lang]) {
@@ -247,6 +274,7 @@ test("whole words do not match inside longer words, and an emergency wins", () =
   assert.equal(demos.de.answerFor("Ich hatte einen Unfall").text, "Rufen Sie 112 an.");
   assert.equal(demos.en.answerFor("I have had an accident").text, "Call 112.");
   assert.equal(demos.it.answerFor("Ho avuto un incidente").text, "Chiami il 112.");
+  assert.equal(demos.fr.answerFor("J'ai eu un accident").text, "Appelez le 112.");
   for (const lang of langs) {
     const emergency = demos[lang].answerFor(questions[lang][7][0]).text;
     assert.match(emergency, /112/);
@@ -263,6 +291,9 @@ test("whole words do not match inside longer words, and an emergency wins", () =
   assert.match(demos.de.answerFor(questions.de[5][0]).text, /unser Autohaus/);
   assert.match(demos.en.answerFor(questions.en[5][0]).text, /our dealership/);
   assert.match(demos.it.answerFor(questions.it[5][0]).text, /nostra concessionaria/);
+  assert.match(demos.fr.answerFor(questions.fr[5][0]).text, /notre concession/);
+  assert.match(demos.fr.answerFor(questions.fr[3][0]).text, /orientation/);
+  assert.doesNotMatch(demos.fr.answerFor(questions.fr[3][0]).text, /\d|€|CHF|EUR/);
 });
 
 test("the campaign path stays /p/video-lang and chat events omit the typed text", () => {
@@ -297,6 +328,60 @@ test("the campaign path stays /p/video-lang and chat events omit the typed text"
   const deVisible = pages.de.replace(/<script[\s\S]*?<\/script>/g, " ");
   assert.doesNotMatch(deVisible, /\b(du|dein|deine|dir|dich)\b/i);
   assert.match(deVisible, /\bSie\b/);
+  const frShown = shownGerman(pages.fr);
+  assert.match(frShown, /\bvous\b/i);
+  assert.doesNotMatch(frShown, /\b(tu|ton|ta|tes|toi)\b/i);
+});
+
+test("French dealership copy names no country, city, currency or foreign phone", () => {
+  const html = pages.fr;
+  const shown = shownGerman(html);
+  assert.equal(packOf(html).lang, "fr");
+  assert.equal(demos.fr.liveAI, false);
+  assert.match(shown, /Exemple statique/);
+  assert.match(shown, /pas une intelligence artificielle réelle/);
+  assert.match(shown, /pas une page personnalisée/);
+  assert.match(shown, /000 000 000/);
+  assert.doesNotMatch(html, /TÜV|tüv|tuev|MFK|contrôle technique/i);
+  assert.doesNotMatch(shown, /France|Suisse|Schweiz|Paris|Lyon|Marseille|Genève|Geneve|Lausanne|Zurich|Zürich|Berne|\bBern\b|Bâle|Bale|Romandie|€|CHF|\bEUR\b|\bUSD\b|\$/i);
+  assert.doesNotMatch(shown, /\+\d/);
+  assert.match(html, /\[\?&#\]interno=\(\[01\]\)/);
+  assert.match(html, /bolla_internal/);
+  assert.match(html, /bmaudit-/);
+  assert.match(html, /function bollaStore/);
+  assert.equal(redirectScript(html), redirectScript(pages.en));
+});
+
+test("the concesionarios entry keeps Italian by default and can open French", () => {
+  const html = read("concesionarios/index.html");
+  assert.match(html, /href="it\/"/);
+  assert.match(html, /href="en\/"/);
+  assert.match(html, /href="de\/"/);
+  assert.match(html, /href="es\/"/);
+  assert.match(html, /href="fr\/"/);
+  assert.match(html, /location\.search/);
+  assert.doesNotMatch(html, /gc\.zgo\.at\/count\.js/);
+  const script = html.match(/<script>([\s\S]*?)<\/script>/)[1];
+  function go(search, languages) {
+    let replaced = "";
+    const sandbox = {
+      location: { search, hash: "#note", replace(url) { replaced = url; } },
+      URLSearchParams,
+      navigator: { languages, language: languages[0] || "" },
+    };
+    vm.createContext(sandbox);
+    vm.runInContext(script, sandbox);
+    return replaced;
+  }
+  assert.equal(go("", ["it-IT"]), "it/#note");
+  assert.equal(go("", ["en-US"]), "it/#note");
+  assert.equal(go("", ["de-CH"]), "it/#note");
+  assert.equal(go("", ["es-ES"]), "it/#note");
+  assert.equal(go("?p=camp-1&internal=1", ["en"]), "it/?p=camp-1&internal=1#note");
+  assert.equal(go("", ["fr-CH", "fr"]), "fr/#note");
+  assert.equal(go("?p=camp-1&internal=1", ["fr-FR"]), "fr/?p=camp-1&internal=1#note");
+  assert.equal(go("?lang=fr&p=camp-1", ["en-US"]), "fr/?lang=fr&p=camp-1#note");
+  assert.equal(go("?lang=en&p=camp-1", ["fr-FR"]), "it/?lang=en&p=camp-1#note");
 });
 
 function prospectMap(html) {
@@ -315,6 +400,7 @@ test("the prospect redirect publishes 133 hashes and no plaintext slug keys", ()
     assert.doesNotMatch(path, /\?/);
   }
   assert.equal(redirectScript(pages.de), redirectScript(pages.en));
+  assert.equal(redirectScript(pages.fr), redirectScript(pages.en));
   assert.equal(map.fcad07227666865f, "/hotel-ch/de/");
   assert.equal(map.d26d1440d5da6449, "/immobilien-ch/de/");
   assert.equal(map["1a4116d708f47e62"], "/ferienwohnung-ch/fr/");

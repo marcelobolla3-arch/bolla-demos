@@ -49,7 +49,7 @@ Náutica, náutica-cat, `/es/` y concesionarios siguen metiendo `p` como tramo d
 
 ## Inventario
 
-602 demos cuentan. 378 tienen al menos un uso. 224 solo tienen la visita. 46 redirecciones no cargan el contador. La portada tampoco.
+603 demos cuentan. 379 tienen al menos un uso. 224 solo tienen la visita. 46 redirecciones no cargan el contador. La portada tampoco.
 
 En la columna Visita, `{p}` es la etiqueta saneada y solo se añade cuando existe. `|` separa la ruta sin etiqueta y la ruta con etiqueta cuando `p` es un tramo, no una búsqueda.
 
@@ -163,6 +163,7 @@ En la columna Visita, `{p}` es la etiqueta saneada y solo se añade cuando exist
 | /concesionarios/de/ | /video-de \| /{p}/video-de | conc-chat-open · conc-chat-open; "conc-intent-" + id · conc-intent-{…}; conc-intent-request · conc-intent-request |
 | /concesionarios/en/ | /video-en \| /{p}/video-en | conc-chat-open · conc-chat-open; "conc-intent-" + id · conc-intent-{…}; conc-intent-request · conc-intent-request |
 | /concesionarios/es/ | /video-es \| /{p}/video-es | conc-chat-open · conc-chat-open; "conc-intent-" + id · conc-intent-{…}; conc-intent-request · conc-intent-request |
+| /concesionarios/fr/ | /video-fr \| /{p}/video-fr | conc-chat-open · conc-chat-open; "conc-intent-" + id · conc-intent-{…}; conc-intent-request · conc-intent-request |
 | /concesionarios/it/ | /video-it \| /{p}/video-it | conc-chat-open · conc-chat-open; "conc-intent-" + id · conc-intent-{…}; conc-intent-request · conc-intent-request |
 | /consultorio-medico-y-estetico-py/ | /consultorio-medico-y-estetico-py/?p={p} | solo visita |
 | /consultorio-sonrisa-sana-py/ | /consultorio-sonrisa-sana-py/?p={p} | solo visita |
