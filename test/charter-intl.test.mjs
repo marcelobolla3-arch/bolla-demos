@@ -320,6 +320,58 @@ test("Spanish whole words refuse false friends and name no country or phone", ()
   assert.match(html, /marcelo@bollastudio\.com/);
 });
 
+test("German whole words use Sie and name no country or sea", () => {
+  const html = text("charter-intl/de/index.html");
+  const demo = loadDemo(html, "charter-intl/de/index.html");
+  assert.equal(matcherBlock(html), matcherBlock(text("charter/en/index.html")));
+  const cases = [
+    ["Gibt es einen Segelkurs?", "course"],
+    ["Ich möchte segeln lernen", "course"],
+    ["Im Laufe des Tages", "fallback"],
+    ["Kann man einen Katamaran anfragen?", "yacht"],
+    ["Ein Segelboot", "yacht"],
+    ["Wir sind zu viert", "party"],
+    ["Das Personal im Hafen", "fallback"],
+    ["Und wenn der Wind stark ist?", "weather"],
+    ["Und wenn das Wetter schlecht ist?", "weather"],
+    ["Ich habe Zeit", "fallback"],
+    ["Zur gleichen Zeit", "fallback"],
+    ["Mir tut der Bauch weh", "fallback"],
+    ["Haben Sie Rettungswesten?", "safety"],
+    ["Eine Weste zum Anzug", "fallback"],
+    ["Mann über Bord", "emergency"],
+    ["Jemand ertrinkt", "emergency"],
+    ["Das ist ein Notfall", "emergency"],
+    ["Ein Gast ist verletzt", "emergency"],
+    ["Wie hoch ist der Preis?", "price"],
+    ["Das ist preiswert", "fallback"],
+    ["Ist ein Skipper dabei?", "skipper"],
+    ["Gibt es eine Kaution?", "deposit"],
+    ["Was passiert, wenn wir stornieren?", "cancel"],
+    ["Was kostet ein Notfall?", "emergency"],
+    ["Gibt es WLAN?", "fallback"],
+    ["   ", "empty"],
+  ];
+  for (const [question, id] of cases) assert.equal(demo.answerFor(question).id, id, question);
+  const emergency = demo.answerFor("Mann über Bord");
+  assert.match(emergency.text, /112/);
+  assert.match(emergency.text, /örtliche Notrufnummer/);
+  assert.doesNotMatch(emergency.text, /Rettungsring|springen|Seil|Protokoll/i);
+  for (const id of ["price", "skipper", "deposit", "cancel"]) {
+    const answer = demo.answerFor(packOf(html).rules.find((rule) => rule.id === id).button);
+    assert.equal(answer.id, id);
+    assert.match(answer.text, /Das Unternehmen würde/);
+    assert.doesNotMatch(answer.text, /\d/);
+  }
+  assert.equal(demo.liveAI, false);
+  assert.doesNotMatch(html, /Mittelmeer|Karibik|Europa|Deutschland|\bBerlin\b|Tallinn|Mediterraneo|France|Italia|\+49|€/);
+  assert.match(html, /keiner Stadt und keinem Land/);
+  assert.match(html, /\bSie\b/);
+  assert.doesNotMatch(html.replace(/<script[\s\S]*?<\/script>/g, " "), /\b(du|dein|deine|dir|dich)\b/i);
+  assert.match(html, /href="\.\.\/en\/"/);
+  assert.match(text("charter-intl/en/index.html"), /href="\.\.\/de\/"/);
+});
+
 test("English intl page keeps the charter boundaries and names no city", () => {
   const demo = loadDemo(text("charter-intl/en/index.html"), "charter-intl/en/index.html");
   const cases = [
@@ -373,6 +425,7 @@ test("counted paths keep au-uwin style tags, skip internal, and language links k
     ["charter-intl/en/index.html", "/bolla-demo-charter-intl/en", "charter-intl demo en"],
     ["charter-intl/fr/index.html", "/bolla-demo-charter-intl/fr", "charter-intl demo fr"],
     ["charter-intl/es/index.html", "/bolla-demo-charter-intl/es", "charter-intl demo es"],
+    ["charter-intl/de/index.html", "/bolla-demo-charter-intl/de", "charter-intl demo de"],
   ];
   for (const [path, base, title] of pages) {
     const html = text(path);
@@ -410,6 +463,7 @@ test("counted paths keep au-uwin style tags, skip internal, and language links k
     assert.ok(links.some((href) => href.includes("/charter-intl/en/") || href.endsWith("/en/") || href.includes("/en/?")));
     assert.ok(links.some((href) => href.includes("/fr/") || href.includes("/fr?")));
     assert.ok(links.some((href) => href.includes("/es/") || href.includes("/es?")));
+    assert.ok(links.some((href) => href.includes("/de/") || href.includes("/de?")));
   }
 });
 
@@ -432,6 +486,8 @@ test("the charter-intl entry keeps the campaign query and does not count", () =>
   assert.equal(go("", ["en-US"]), "en/");
   assert.equal(go("", ["fr-FR"]), "fr/");
   assert.equal(go("", ["es-MX", "es"]), "es/");
+  assert.equal(go("", ["de-DE"]), "de/");
+  assert.equal(go("?lang=de&p=au-uwin", ["en-US"]), "de/?p=au-uwin");
   assert.equal(go("", ["en", "es"]), "en/");
   assert.equal(go("?p=au-uwin&internal=1", ["en"]), "en/?p=au-uwin&internal=1");
   assert.equal(go("?lang=fr&p=ca-highwaymotors", ["en-US"]), "fr/?p=ca-highwaymotors");
