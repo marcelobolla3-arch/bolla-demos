@@ -98,10 +98,10 @@ test("the Italian charter can note a dinghy rental without naming a place", () =
   assert.doesNotMatch(html, /Palau|Tallinn|Estonia|\bItalia\b|\+39|€/);
   assert.doesNotMatch(html, /\b(tu|tuo|tua|tuoi|tue)\b/i);
   const sent = {
-    "charter-intl/en/index.html": "60a42d5aedaa741885a974a2d505031221085d19fbf9d209e50b04fb27bd9f02",
-    "charter-intl/es/index.html": "a320efe9db4da5f1830722d8e7c1c5c0ddf047714bac46da1b1c3c6b4e95a0c6",
-    "charter-intl/fr/index.html": "a7d10253f89d4a0d937314344426bb9312748c35062bc80342b568c9fc39f096",
-    "charter-intl/de/index.html": "4bc20b54c90a99e2717ca64bd8f9bb19abd81c0671eb904ea60839820d2875be",
+    "charter-intl/en/index.html": "32ff8cba1c1aed38ef729b857455e21207b3593790afc69d95e87eb9cd4a806d",
+    "charter-intl/es/index.html": "d27ea7023885565a6acfab7ed133dae2900e99a2c70ffbb779152c5aec38d81e",
+    "charter-intl/fr/index.html": "00f587f28dc421c464d6f9c155f2ea47a7799c04535b0dfd12cd94ba17a76b54",
+    "charter-intl/de/index.html": "0296a442c92a3d53b8afa47a0ec3af58992be2e9e52c7fcbf3f8d614bd890461",
   };
   for (const [path, hash] of Object.entries(sent)) {
     assert.equal(createHash("sha256").update(read(path)).digest("hex"), hash, path);

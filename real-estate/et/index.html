@@ -106,7 +106,6 @@ footer a{color:var(--c)}
 </head>
 <body data-demo="static-example" data-lang="et">
 <div class="top">Neutraalne näidisvestlus kinnisvarale. Selle koostas <a href="https://bollastudio.com" target="_blank" rel="noopener">BOLLA STUDIO</a> · «Näidiskinnisvara» on väljamõeldud, mitte päris büroo. Päris vaatamisi ei toimu. See vestlus on kirjutatud näidis, mitte reaalajas abiline.</div>
-<nav class="langs" aria-label="Keel"><a href="./" hreflang="et" lang="et" data-keep-query aria-current="page">Eesti</a><a href="../ru/" hreflang="ru" lang="ru" data-keep-query>Русский</a><a href="../en/" hreflang="en" lang="en" data-keep-query>English</a></nav>
 <header>
   <div class="brand">BOLLA STUDIO</div>
   <p class="by">Marcelo Bolla · <a href="https://bollastudio.com" target="_blank" rel="noopener">bollastudio.com</a></p>
@@ -161,11 +160,6 @@ footer a{color:var(--c)}
 </main>
 <footer>Näidise koostas <a href="https://bollastudio.com" target="_blank" rel="noopener">BOLLA STUDIO</a> · Marcelo Bolla · <a href="mailto:marcelo@bollastudio.com">marcelo@bollastudio.com</a><br>«Näidiskinnisvara» on väljamõeldud. 3-toaline korter ei ole päris kodu. Midagi ei lepita kokku, ei salvestata ega saadeta. See leht ei ole ettevõtte veebileht. See on ainult BOLLA STUDIO vestluse näidis.</footer>
 <script type="application/json" id="demo-pack">{"lang":"et","chat":[["in","Tere, kas 3-toaline korter on veel vaba? Meil on kass."],["out","Tere. Selles näites on 3-toaline korter väljamõeldud kuulutus. Kass tuleks bürooga läbi rääkida. See ei ole lubadus.\nKas soovite vaatamist?"],["in","Jah. Näidiskülaline."],["out","Aitäh. Ainult näidis. Büroo saadaks aja ja enda ankeedi. Sellelt lehelt ei saadetud midagi."]],"rules":[{"id":"documents","button":"Milliseid dokumente on vaja?","keys":["dokumen"],"text":"See näidisbüroo küsib enda ankeeti ja isikutunnistust. Ta võib küsida veel. See ei ole õigusnõuanne ja sellelt lehelt ei laeta midagi üles."},{"id":"parking","button":"Kas parkla on olemas?","keys":["parkl"],"text":"Selle näidiskorteriga võib parkla olla olemas. Päris kuulutus kasutaks selle kuulutuse fakte. Siin ei reserveerita midagi."},{"id":"repair","button":"Mul tilgub kraan. Olen üürnik.","keys":["kraan","tilgub"],"text":"Aitäh teatamast. Tellitud vestluses läheks aadress haldurile. See leht ei saada teadet ega fotot."},{"id":"rent","button":"Kas üüri saab läbi rääkida?","keys":["üüri","labi","läbi"],"hand":true,"text":"Selle otsustaks büroo või omanik, seepärast näidis ei nimeta summat. Midagi ei saadetud."}],"fallback":"See on kirjutatud näidis, mitte reaalajas abiline. Mul on ette valmistatud vastused ainult näidisküsimustele, eesti keeles. Ma ei broneeri, ei saada sõnumeid ega ole ühendatud WhatsAppi, broneerimissüsteemi ega hääleassistendiga. Vajutage üht nuppu või kasutage nende küsimuste sõnu.","empty":"Kirjutage palun küsimus eesti keeles ja vajutage Saada.","ok":"Ainult näidis: {item} · {date} · {slot}. Midagi ei broneeritud ega saadetud. See leht ei kontrolli broneerimissüsteemi ega salvesta seda, mida te kirjutasite.","pick":"Valige palun kõigepealt kuupäev ja üks valik ülal.","lead":14,"slots":["Hommik","Pärastlõuna","Õhtu"],"months":["jaan","veebr","märts","apr","mai","juuni","juuli","aug","sept","okt","nov","dets"],"dateStyle":"dmy-numeric"}</script>
-<script id="bolla-lang-links">
-document.querySelectorAll("[data-keep-query]").forEach(function(a){
-  try{var u=new URL(a.getAttribute("href"),location.href);a.href=u.pathname+location.search+location.hash;}catch(e){}
-});
-</script>
 <script id="sector-demo">
 (function(){
   var PACK = JSON.parse(document.getElementById("demo-pack").textContent);

@@ -394,15 +394,13 @@ test("Spanish redirect preserves the query and the sent vet URLs stay in place",
 
   for (const lang of ["et", "en", "ru"]) {
     const page = read(`vet/${lang}/index.html`);
-    assert.match(page, /href="\.\.\/es\/" hreflang="es" lang="es" data-keep-query>Español</);
+    assert.doesNotMatch(page, /data-keep-query/);
     assert.match(page, /n\.indexOf\(nk\)/);
     assert.doesNotMatch(page, /function tokensOf/);
     assert.match(page, new RegExp(`var BASE="/bolla-demo-vet/${lang}"`));
   }
   assert.match(read("vet/et/index.html"), /Näidisloomaarst/);
-  assert.match(read("vet/et/index.html"), /href="\.\/" hreflang="et"/);
   assert.match(read("vet/en/index.html"), /Example Vet/);
-  assert.match(read("vet/en/index.html"), /href="\.\/" hreflang="en"/);
 
   const shown = visible(html);
   assert.match(shown, /Veterinario de Ejemplo/);

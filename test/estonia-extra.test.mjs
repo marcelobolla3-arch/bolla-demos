@@ -110,7 +110,7 @@ test("prepared replies stay in one language and the note is not sent", () => {
 });
 
 test("visits and use follow the campaign label, and entries do not count twice", () => {
-  for (const path of ["barber/et/index.html", "barber/en/index.html", "charter/et/index.html", "charter/en/index.html", "marina-pirita/et/index.html"]) {
+  for (const path of ["barber/et/index.html", "barber/en/index.html", "charter/et/index.html", "charter/en/index.html"]) {
     const html = read(path);
     assert.match(html, /skipgc/);
     assert.match(html, /no_onload:true/);
@@ -118,6 +118,11 @@ test("visits and use follow the campaign label, and entries do not count twice",
     assert.match(html, /var ep=BASE\+sub\+\(tag\?'\?p='\+tag:''\)/);
     assert.match(html, /title:title\|\|sub,event:true/);
     assert.match(html, /bsTrack\("\/chat\/" \+ r\.id, "example"\)/);
+    assert.doesNotMatch(html, /data-keep-query/);
+  }
+  {
+    const html = read("marina-pirita/et/index.html");
+    assert.match(html, /skipgc/);
     assert.match(html, /data-keep-query/);
   }
   for (const path of ["barber/index.html", "charter/index.html", "marina-pirita/index.html"]) {

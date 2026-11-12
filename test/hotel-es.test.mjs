@@ -207,7 +207,7 @@ test("Spanish redirect is added without changing et, ru or en, and the other hot
 
   for (const lang of ["en", "et", "ru"]) {
     const page = read(`hotel/${lang}/index.html`);
-    assert.match(page, /href="\.\.\/es\/" hreflang="es" lang="es" data-keep-query>Español</);
+    assert.doesNotMatch(page, /data-keep-query/);
     assert.match(page, /n\.indexOf\(nk\)/);
     assert.doesNotMatch(page, /function tokensOf/);
     assert.match(page, new RegExp(`var BASE="/bolla-demo-hotel/${lang}"`));

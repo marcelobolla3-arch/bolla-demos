@@ -41,7 +41,8 @@ test("the neutral German dental page stays off the Berlin route", () => {
   assert.match(html, /skipgc/);
   assert.match(html, /bolla_internal/);
   assert.match(html, /bmaudit-/);
-  assert.match(html, /data-keep-query/);
+  assert.doesNotMatch(html, /data-keep-query/);
+  assert.doesNotMatch(html, /<nav class="langs"/);
   assert.match(html, /\/bolla-demo-dentist-intl\/de/);
   assert.doesNotMatch(html, /\/bolla-demo-dentist\/de/);
   assert.doesNotMatch(html, /href="\.\.\/en\/"|href="\.\.\/de\/"|\/dentist\/de\//);

@@ -106,7 +106,6 @@ footer a{color:var(--c)}
 </head>
 <body data-demo="static-example" data-lang="en">
 <div class="top">Neutral example chat for physiotherapy, prepared by <a href="https://bollastudio.com" target="_blank" rel="noopener">BOLLA STUDIO</a> · “Example Physio” is fictional, not a real practice. No real appointments. This chat is a scripted example, not a live assistant.</div>
-<nav class="langs" aria-label="Language"><a href="../et/" hreflang="et" lang="et" data-keep-query>Eesti</a><a href="../ru/" hreflang="ru" lang="ru" data-keep-query>Русский</a><a href="./" hreflang="en" lang="en" data-keep-query aria-current="page">English</a></nav>
 <header>
   <div class="brand">BOLLA STUDIO</div>
   <p class="by">Marcelo Bolla · <a href="https://bollastudio.com" target="_blank" rel="noopener">bollastudio.com</a></p>
@@ -161,11 +160,6 @@ footer a{color:var(--c)}
 </main>
 <footer>Example demo by <a href="https://bollastudio.com" target="_blank" rel="noopener">BOLLA STUDIO</a> · Marcelo Bolla · <a href="mailto:marcelo@bollastudio.com">marcelo@bollastudio.com</a><br>“Example Physio” is fictional, not a real practice. This page is not medical advice. Nothing is booked, stored, or sent. This page is not a business website. It is only a chat example by BOLLA STUDIO.</footer>
 <script type="application/json" id="demo-pack">{"lang":"en","chat":[["in","Hello, I have a referral for back pain. Do you have space?"],["out","Hello. I can note that as an example. If the practice asks for a referral, you would bring it.\nWhich time of day suits you?"],["in","Evenings. Sample Guest."],["out","Thank you. Example note only: back pain, evenings. The practice would reply with a time. Nothing was sent."]],"rules":[{"id":"referral","button":"Do you ask for a referral?","keys":["referral"],"text":"In this example the practice says whether it needs a referral. This page does not say what any insurer pays. A real practice would use its own rule."},{"id":"duration","button":"How long is a session?","keys":["how long","session"],"text":"In this example a session is about 30 minutes. The first one is a little longer. These are sample times."},{"id":"home","button":"Do you visit people at home?","keys":["home visit","at home"],"text":"In this example a home visit can be requested. The address would be noted for the practice. This page does not book it."},{"id":"heat","button":"Should I use heat or cold?","keys":["heat","cold"],"hand":true,"text":"That is a medical question, so this example gives no advice. It would be passed to the therapist. For strong or sudden pain, contact a doctor. Nothing was sent."}],"fallback":"This is a scripted example, not a live assistant. I only have prepared English answers for the sample questions. I do not book, I do not send messages, and I am not connected to WhatsApp, a booking system, or a voice agent. Please tap one of the buttons or use words from those questions.","empty":"Please type a question in English, then tap Send.","ok":"Example only: {item} · {date} · {slot}. Nothing was booked and nothing was sent. This page does not check a booking system and does not store what you typed.","pick":"Please choose the date and one option above first.","lead":14,"slots":["Morning","Afternoon","Evening"],"months":["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"],"dateStyle":"dmy-name"}</script>
-<script id="bolla-lang-links">
-document.querySelectorAll("[data-keep-query]").forEach(function(a){
-  try{var u=new URL(a.getAttribute("href"),location.href);a.href=u.pathname+location.search+location.hash;}catch(e){}
-});
-</script>
 <script id="sector-demo">
 (function(){
   var PACK = JSON.parse(document.getElementById("demo-pack").textContent);

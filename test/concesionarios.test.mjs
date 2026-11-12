@@ -42,8 +42,9 @@ test("concesionarios files do not keep the nautical video or the banned place na
     assert.match(html, /m\[1\]==="1"/);
     assert.match(html, new RegExp(`__concPath\\(raw,"video-${lang}"\\)`));
     assert.match(html, new RegExp(`title:"concesionarios video-${lang}"`));
-    assert.match(html, /data-keep-query/);
-    assert.match(html, /a\.href=u\.pathname\+location\.search\+location\.hash/);
+    assert.doesNotMatch(html, /data-keep-query/);
+    assert.doesNotMatch(html, /a\.href=u\.pathname\+location\.search\+location\.hash/);
+    assert.doesNotMatch(html, /<nav class="langs"/);
     assert.match(html, /https:\/\/bollastudio\.goatcounter\.com\/count/);
   }
   const entry = read("concesionarios/index.html");

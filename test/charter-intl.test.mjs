@@ -123,21 +123,21 @@ function keepQuery(html, href) {
 
 const kept = {
   "charter/index.html": "6f67d34e0e35b4d7d717951909513212d4cfb974e7c35530f8a8bbdb8ba92863",
-  "charter/en/index.html": "72e319be2c9c5c74cc6b37054220e9af63c62023790d6fd6549ec1afff89211c",
-  "charter/et/index.html": "3f38a1f2776a42f42bc27e9881882596f01292d9bfceb8614c21af19274b1ccf",
+  "charter/en/index.html": "68d903348e10cc1deac5d22038e738a0e8de9b448be4b3974702c39676a538d9",
+  "charter/et/index.html": "ab7c13b99a3ea9a02137d7052039989ea5f93cc914b4df3fcb17f66a68c1f7fe",
   "charter-de/index.html": "f34b85dbc85e360d98a0b608e9b38463ccd06647929c1243d128f6d0fef76154",
   "charter-de/de/index.html": "cc7c68c4868f8fd7f650cbfbe2299396c366427f21e9895948a57bd4da25a01a",
-  "charter-de/en/index.html": "05d5d6456dfcdd7a2c8a6afe478d154f35a342d02baab5161ff5598dc847b6c4",
+  "charter-de/en/index.html": "963f8c62bd429af671d81269785bbfc8df9d6811aaf6132ffd1e00842f302365",
 };
 
 test("sent charter-intl routes stay at their published bytes", () => {
   const sent = {
-    "charter-intl/en/index.html": "60a42d5aedaa741885a974a2d505031221085d19fbf9d209e50b04fb27bd9f02",
-    "charter-intl/es/index.html": "a320efe9db4da5f1830722d8e7c1c5c0ddf047714bac46da1b1c3c6b4e95a0c6",
-    "charter-intl/fr/index.html": "a7d10253f89d4a0d937314344426bb9312748c35062bc80342b568c9fc39f096",
+    "charter-intl/en/index.html": "32ff8cba1c1aed38ef729b857455e21207b3593790afc69d95e87eb9cd4a806d",
+    "charter-intl/es/index.html": "d27ea7023885565a6acfab7ed133dae2900e99a2c70ffbb779152c5aec38d81e",
+    "charter-intl/fr/index.html": "00f587f28dc421c464d6f9c155f2ea47a7799c04535b0dfd12cd94ba17a76b54",
     "charter-intl/index.html": "4ed2bde63b144b9cc418e029d3b71c1c180854673f49b0472a0695aa38c2cc93",
-    "charter-intl/it/index.html": "86c66c244bac57ec7fbac118f348f59c5bc214e21ce62179aa62fa2834086c11",
-    "charter-intl/de/index.html": "4bc20b54c90a99e2717ca64bd8f9bb19abd81c0671eb904ea60839820d2875be",
+    "charter-intl/it/index.html": "7234d8e9eac77d2a21cad4390cc85f609ef8d3c5be4be7d00264578bbbd938d5",
+    "charter-intl/de/index.html": "0296a442c92a3d53b8afa47a0ec3af58992be2e9e52c7fcbf3f8d614bd890461",
   };
   for (const [path, hash] of Object.entries(sent)) {
     assert.equal(createHash("sha256").update(read(path)).digest("hex"), hash, path);
@@ -168,7 +168,7 @@ test("charter-intl pages are generic, fictional, and keep the Unicode matcher", 
     assert.match(html, /112/);
     assert.match(html, /local emergency number|numéro d’urgence local|número de emergencia local/);
     assert.doesNotMatch(html, /€|\$\d|\bUSD\b|\bAUD\b|\bEUR\b/);
-    assert.match(html, /data-keep-query/);
+    assert.doesNotMatch(html, /data-keep-query/);
     assert.match(html, /liveAI:\s*false/);
     assert.doesNotMatch(sectorScript(html), /bsTrack\([^)]*input\.value/);
     const submit = sectorScript(html).match(/getElementById\("ask-form"\)\.addEventListener\("submit", function\(ev\)\{[\s\S]*?\n  \}\);/);
@@ -186,8 +186,8 @@ test("charter-intl pages are generic, fictional, and keep the Unicode matcher", 
   assert.match(frProse, /\bvous\b/i);
   assert.match(frProse, /Veuillez/);
   assert.doesNotMatch(frProse, /\b(tu|toi|ton|ta|tes)\b/);
-  assert.match(fr, /href="\.\.\/en\/"/);
-  assert.match(text("charter-intl/en/index.html"), /href="\.\.\/fr\/"/);
+  assert.doesNotMatch(fr, /href="\.\.\/en\/"/);
+  assert.doesNotMatch(text("charter-intl/en/index.html"), /href="\.\.\/fr\/"/);
   const es = text("charter-intl/es/index.html");
   const esProse = es
     .replace(/<style[\s\S]*?<\/style>/g, " ")
@@ -198,10 +198,10 @@ test("charter-intl pages are generic, fictional, and keep the Unicode matcher", 
   assert.match(esProse, /de usted/);
   assert.match(esProse, /Escriba/);
   assert.doesNotMatch(esProse, /\b(puedes|tienes|quieres|vosotros|tú|pulsa|vos)\b/i);
-  assert.match(es, /href="\.\.\/en\/"/);
-  assert.match(es, /href="\.\.\/fr\/"/);
-  assert.match(text("charter-intl/en/index.html"), /href="\.\.\/es\/"/);
-  assert.match(fr, /href="\.\.\/es\/"/);
+  assert.doesNotMatch(es, /href="\.\.\/en\/"/);
+  assert.doesNotMatch(es, /href="\.\.\/fr\/"/);
+  assert.doesNotMatch(text("charter-intl/en/index.html"), /href="\.\.\/es\/"/);
+  assert.doesNotMatch(fr, /href="\.\.\/es\/"/);
   assert.doesNotMatch(text("charter-intl/en/index.html") + fr + es, /href="\.\.\/it\/"/);
   const it = text("charter-intl/it/index.html");
   assert.equal(matcherBlock(it), source);
@@ -225,9 +225,7 @@ test("charter-intl pages are generic, fictional, and keep the Unicode matcher", 
   assert.match(itProse, /con il Lei/);
   assert.match(itProse, /Scriva/);
   assert.doesNotMatch(itProse, /\b(tu|tuo|tua|tuoi|tue)\b/i);
-  assert.match(it, /href="\.\.\/en\/"/);
-  assert.match(it, /href="\.\.\/fr\/"/);
-  assert.match(it, /href="\.\.\/es\/"/);
+  assert.doesNotMatch(it, /href="\.\.\/(?:en|fr|es|de)\//);
 });
 
 test("French whole words refuse false friends and emergencies stay at 112", () => {
@@ -412,7 +410,7 @@ test("German whole words use Sie and name no country or sea", () => {
   assert.match(html, /weiß|große/);
   assert.doesNotMatch(html, /weiss|grosse/);
   assert.doesNotMatch(html.replace(/<script[\s\S]*?<\/script>/g, " "), /\b(du|dein|deine|dir|dich)\b/i);
-  assert.match(html, /href="\.\.\/en\/"/);
+  assert.doesNotMatch(html, /href="\.\.\/(?:en|fr|es|it)\//);
   assert.doesNotMatch(text("charter-intl/en/index.html") + text("charter-intl/fr/index.html") + text("charter-intl/es/index.html"), /href="\.\.\/de\/"/);
 });
 
@@ -516,7 +514,7 @@ test("English intl page keeps the charter boundaries and names no city", () => {
   }
 });
 
-test("counted paths keep au-uwin style tags, skip internal, and language links keep the query", () => {
+test("counted paths keep au-uwin style tags and skip internal", () => {
   const tags = ["au-uwin", "ca-highwaymotors", "us-balzekas"];
   const pages = [
     ["charter-intl/en/index.html", "/bolla-demo-charter-intl/en", "charter-intl demo en"],
@@ -556,11 +554,8 @@ test("counted paths keep au-uwin style tags, skip internal, and language links k
     blocked.window.goatcounter = { count() { throw new Error("counted while internal"); } };
     blocked.window.bsTrack("/chat/course", "example");
     blocked.window.bsTrack("/request/confirm", "example");
-    const links = keepQuery(html, `http://127.0.0.1/${path.replace("index.html", "")}?p=us-balzekas&internal=1`);
-    assert.ok(links.some((href) => href.includes("p=us-balzekas") && href.includes("internal=1")));
-    assert.ok(links.some((href) => href.includes("/charter-intl/en/") || href.endsWith("/en/") || href.includes("/en/?")));
-    assert.ok(links.some((href) => href.includes("/fr/") || href.includes("/fr?")));
-    assert.ok(links.some((href) => href.includes("/es/") || href.includes("/es?")));
+    assert.doesNotMatch(html, /data-keep-query/);
+    assert.doesNotMatch(html, /id="bolla-lang-links"/);
   }
 });
 
