@@ -439,6 +439,15 @@ test("usage is counted only for a real button or the example note", () => {
   assert.doesNotMatch(sectorScript(html), /getElementById\("nm"\)|getElementById\("ph"\)/);
 });
 
+test("the Berlin dentist page does not link to another language", () => {
+  const page = read("dentist/de/index.html");
+  assert.doesNotMatch(page, /<nav class="langs"/);
+  assert.doesNotMatch(page, /href="\.\.\/(?:et|ru|en|es|de)\//);
+  assert.match(page, /\/bolla-demo-dentist\/de/);
+  assert.match(page, /skipgc/);
+  assert.match(page, /\[\?&\]p=/);
+});
+
 test("Deutsch is added without changing the et, ru or en URLs", () => {
   assert.equal(redirectTarget("", ["et-EE", "et"]), "et/");
   assert.equal(redirectTarget("", ["ru-RU"]), "ru/");
