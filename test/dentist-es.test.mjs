@@ -431,7 +431,7 @@ test("Spanish redirect preserves the query and the sent dentist URLs stay in pla
 
   for (const lang of ["et", "en", "ru"]) {
     const page = read(`dentist/${lang}/index.html`);
-    assert.match(page, /href="\.\.\/es\/" hreflang="es" lang="es" data-keep-query>Español</);
+    assert.doesNotMatch(page, /data-keep-query/);
     assert.match(page, /n\.indexOf\(nk\)/);
     assert.doesNotMatch(page, /function tokensOf/);
     assert.match(page, new RegExp(`var BASE="/bolla-demo-dentist/${lang}"`));
@@ -439,13 +439,7 @@ test("Spanish redirect preserves the query and the sent dentist URLs stay in pla
   }
   const et = read("dentist/et/index.html");
   const en = read("dentist/en/index.html");
-  assert.match(et, /href="\.\/" hreflang="et"/);
-  assert.match(et, /href="\.\.\/ru\/" hreflang="ru"/);
-  assert.match(et, /href="\.\.\/en\/" hreflang="en"/);
   assert.match(et, /Näidishambaravi/);
-  assert.match(en, /href="\.\.\/et\/" hreflang="et"/);
-  assert.match(en, /href="\.\.\/ru\/" hreflang="ru"/);
-  assert.match(en, /href="\.\/" hreflang="en"/);
   assert.match(en, /Example Dental/);
 
   const shown = visible(html);

@@ -106,7 +106,6 @@ footer a{color:var(--c)}
 </head>
 <body data-demo="static-example" data-lang="ru">
 <div class="top">Нейтральный пример чата для перевозок. Его подготовила <a href="https://bollastudio.com" target="_blank" rel="noopener">BOLLA STUDIO</a> · «Переезд Пример» вымышленный, это не настоящая компания. Настоящих смет нет. Этот чат — записанный пример, не живой помощник.</div>
-<nav class="langs" aria-label="Язык"><a href="../et/" hreflang="et" lang="et" data-keep-query>Eesti</a><a href="./" hreflang="ru" lang="ru" data-keep-query aria-current="page">Русский</a><a href="../en/" hreflang="en" lang="en" data-keep-query>English</a></nav>
 <header>
   <div class="brand">BOLLA STUDIO</div>
   <p class="by">Marcelo Bolla · <a href="https://bollastudio.com" target="_blank" rel="noopener">bollastudio.com</a></p>
@@ -161,11 +160,6 @@ footer a{color:var(--c)}
 </main>
 <footer>Пример подготовила студия <a href="https://bollastudio.com" target="_blank" rel="noopener">BOLLA STUDIO</a> · Marcelo Bolla · <a href="mailto:marcelo@bollastudio.com">marcelo@bollastudio.com</a><br>«Переезд Пример» вымышленный, это не настоящая компания. Ни цена, ни дата не подтверждены. Ничего не бронируется, не сохраняется и не отправляется. Это не сайт предприятия. Это только пример чата BOLLA STUDIO.</footer>
 <script type="application/json" id="demo-pack">{"lang":"ru","chat":[["in","Здравствуйте, в конце месяца мы переезжаем в другой конец города. Можете сделать смету?"],["out","Здравствуйте. Для сметы команде нужны число комнат, этаж, есть ли лифт, и дата.\nМогу записать то, что вы скажете. Эта страница не считает цену переезда."],["in","3 комнаты. В старой квартире лифта нет. Гость из примера."],["out","Спасибо. Только пример: 3 комнаты, в старой квартире лифта нет. Команда отправила бы смету. С этой страницы ничего не отправлено."]],"rules":[{"id":"lift","button":"Есть подъёмник для мебели?","keys":["подъёмник","подъемник"],"text":"Да. Эта примерная компания может использовать подъёмник, если лестница узкая. Нужен ли он, решит смета. Здесь ничего не резервируется."},{"id":"boxes","button":"Можно коробки для переезда?","keys":["коробк"],"text":"Да. Эта примерная компания может записать, сколько коробок нужно. Страница их не заказывает."},{"id":"viewing","button":"Вы сначала приедете посмотреть?","keys":["посмотреть","осмотр"],"text":"Для большого переезда эта примерная компания может записать время осмотра. Страница не бронирует визит."},{"id":"price","button":"Сколько это примерно стоит?","keys":["стоит","цена","сколько"],"hand":true,"text":"Цену считает команда, поэтому пример не называет сумму. Вы получили бы смету от компании. Ничего не отправлено."}],"fallback":"Это записанный пример, а не живой помощник. У меня есть готовые ответы только на примеры вопросов, по-русски. Я не бронирую, не отправляю сообщения и не подключен к WhatsApp, к системе бронирования и к голосовому помощнику. Нажмите одну из кнопок или используйте слова из этих вопросов.","empty":"Напишите вопрос по-русски и нажмите «Отправить».","ok":"Только пример: {item} · {date} · {slot}. Ничего не забронировано и ничего не отправлено. Страница не проверяет систему бронирования и не сохраняет то, что вы написали.","pick":"Сначала выберите дату и один вариант выше.","lead":14,"slots":["1–2 комнаты","3 комнаты","4–5 комнат","Офис"],"months":["янв","февр","мар","апр","мая","июн","июл","авг","сен","окт","ноя","дек"],"dateStyle":"dmy-numeric"}</script>
-<script id="bolla-lang-links">
-document.querySelectorAll("[data-keep-query]").forEach(function(a){
-  try{var u=new URL(a.getAttribute("href"),location.href);a.href=u.pathname+location.search+location.hash;}catch(e){}
-});
-</script>
 <script id="sector-demo">
 (function(){
   var PACK = JSON.parse(document.getElementById("demo-pack").textContent);

@@ -106,7 +106,6 @@ footer a{color:var(--c)}
 </head>
 <body data-demo="static-example" data-lang="et">
 <div class="top">Näidisvestlus meestejuuksurile. Selle koostas <a href="https://bollastudio.com" target="_blank" rel="noopener">BOLLA STUDIO</a> · «Näidisbarber» on väljamõeldud, mitte päris pood. Päris aegu ei anta. See vestlus on kirjutatud näidis, mitte reaalajas abiline.</div>
-<nav class="langs" aria-label="Keel"><a href="./" hreflang="et" lang="et" data-keep-query aria-current="page">Eesti</a><a href="../en/" hreflang="en" lang="en" data-keep-query>English</a></nav>
 <header>
   <div class="brand">BOLLA STUDIO</div>
   <p class="by">Marcelo Bolla · <a href="https://bollastudio.com" target="_blank" rel="noopener">bollastudio.com</a></p>
@@ -161,11 +160,6 @@ footer a{color:var(--c)}
 </main>
 <footer>Näidise koostas <a href="https://bollastudio.com" target="_blank" rel="noopener">BOLLA STUDIO</a> · Marcelo Bolla · <a href="mailto:marcelo@bollastudio.com">marcelo@bollastudio.com</a><br>«Näidisbarber» on väljamõeldud, mitte päris meestejuuksur. Ükski hind ega aeg ei ole päris. Midagi ei broneerita, ei salvestata ega saadeta. See leht ei ole ettevõtte veebileht. See on ainult BOLLA STUDIO vestluse näidis.</footer>
 <script type="application/json" id="demo-pack">{"lang":"et","chat":[["in","Tere, kas homme pärast tööd on aega lõikuseks ja habeme ajamiseks?"],["out","Tere. Võin selle näitena kirja panna: homme, lõikus ja habe.\nSee leht ei helista ega ava WhatsAppi."],["in","Näidiskülaline. Kui ma ei saa tulla, kas saan aega muuta?"],["out","Aitäh. Ainult näidis: homme, lõikus ja habe. Muutmise või tühistamise kinnitaks meeskond. Sellelt lehelt ei saadetud midagi."]],"rules":[{"id":"cut","button":"Kas teete juukselõikust?","keys":["lõikus","juukse"],"text":"Jah. Selles näites on meeste juukselõikus üks teenus. Päris pood kasutaks enda nimekirja. Siin ei anta aega."},{"id":"beard","button":"Kas teete habet?","keys":["habe","habeme"],"text":"Jah. Selles näites saab habet kujundada koos lõikusega või eraldi. Täpse aja kinnitaks meeskond. Siin ei broneerita midagi."},{"id":"shave","button":"Kas teete raseerimist?","keys":["raseeri"],"text":"Jah. Selles näites on raseerimine eraldi teenus. See leht ei kirjelda, kuidas seda tehakse, ega anna aega."},{"id":"hours","button":"Mis kell olete avatud?","keys":["avatud","lahti","kell"],"text":"See näidis on avatud teisipäevast reedeni kell 10.00–19.00 ja laupäeval kell 10.00–15.00. Need on näidistunnid, mitte päris kalender."},{"id":"change","button":"Tahan aega muuta või tühistada.","keys":["muuta","tühista","tühistada"],"hand":true,"text":"Muutmise või tühistamise võtaks meeskond. See näidis ei kinnita vaba aega ega tühista midagi. Midagi ei saadetud."}],"fallback":"See on kirjutatud näidis, mitte reaalajas abiline. Mul on ette valmistatud vastused ainult näidisküsimustele, eesti keeles. Ma ei broneeri, ei saada sõnumeid ega ole ühendatud WhatsAppi, broneerimissüsteemi ega hääleassistendiga. Vajutage üht nuppu või kasutage nende küsimuste sõnu.","empty":"Kirjutage palun küsimus eesti keeles ja vajutage Saada.","ok":"Ainult näidis: {item} · {date} · {slot}. Midagi ei broneeritud ega saadetud. See leht ei kontrolli broneerimissüsteemi ega salvesta seda, mida te kirjutasite.","pick":"Valige palun kõigepealt kuupäev ja üks valik ülal.","lead":2,"slots":["Hommik","Pärastlõuna","Õhtu"],"months":["jaan","veebr","märts","apr","mai","juuni","juuli","aug","sept","okt","nov","dets"],"dateStyle":"dmy-numeric"}</script>
-<script id="bolla-lang-links">
-document.querySelectorAll("[data-keep-query]").forEach(function(a){
-  try{var u=new URL(a.getAttribute("href"),location.href);a.href=u.pathname+location.search+location.hash;}catch(e){}
-});
-</script>
 <script id="sector-demo">
 (function(){
   var PACK = JSON.parse(document.getElementById("demo-pack").textContent);

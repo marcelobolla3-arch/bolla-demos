@@ -106,7 +106,6 @@ footer a{color:var(--c)}
 </head>
 <body data-demo="static-example" data-lang="en">
 <div class="top">Neutral example chat for opticians, prepared by <a href="https://bollastudio.com" target="_blank" rel="noopener">BOLLA STUDIO</a> · “Example Optician” is fictional, not a real shop. No real appointments. This chat is a scripted example, not a live assistant.</div>
-<nav class="langs" aria-label="Language"><a href="../et/" hreflang="et" lang="et" data-keep-query>Eesti</a><a href="../ru/" hreflang="ru" lang="ru" data-keep-query>Русский</a><a href="./" hreflang="en" lang="en" data-keep-query aria-current="page">English</a></nav>
 <header>
   <div class="brand">BOLLA STUDIO</div>
   <p class="by">Marcelo Bolla · <a href="https://bollastudio.com" target="_blank" rel="noopener">bollastudio.com</a></p>
@@ -161,11 +160,6 @@ footer a{color:var(--c)}
 </main>
 <footer>Example demo by <a href="https://bollastudio.com" target="_blank" rel="noopener">BOLLA STUDIO</a> · Marcelo Bolla · <a href="mailto:marcelo@bollastudio.com">marcelo@bollastudio.com</a><br>“Example Optician” is fictional, not a real shop. This page is not eye-care advice. Nothing is booked, stored, or sent. This page is not a business website. It is only a chat example by BOLLA STUDIO.</footer>
 <script type="application/json" id="demo-pack">{"lang":"en","chat":[["in","Hello, I would like an eye test. Do you have time this week?"],["out","Hello. In this example the shop allows about 45 minutes.\nPlease bring your current glasses. This page does not book the visit."],["in","Friday afternoon. Sample Guest."],["out","Thank you. Example note only: eye test, Friday afternoon. The shop would confirm the time. Nothing was sent."]],"rules":[{"id":"ready","button":"Are my glasses ready?","keys":["glasses ready","are they ready"],"text":"This example cannot see the order system. The shop would say when the glasses are ready. Nothing was sent from this page."},{"id":"lenses","button":"Can I reorder contact lenses?","keys":["contact lens","reorder"],"text":"Yes. The brand would be noted for the shop. This page does not take an order."},{"id":"hours","button":"When are you open?","keys":["open","hours"],"text":"This example shop is open Tuesday to Friday, 9:00 a.m. to 6:00 p.m., and Saturday morning. These are sample hours."},{"id":"flashes","button":"I suddenly see flashes in one eye.","keys":["flash","flashes"],"hand":true,"text":"That needs a medical check. Please contact an eye doctor or urgent care now. This example cannot advise you. Nothing was sent from this page."}],"fallback":"This is a scripted example, not a live assistant. I only have prepared English answers for the sample questions. I do not book, I do not send messages, and I am not connected to WhatsApp, a booking system, or a voice agent. Please tap one of the buttons or use words from those questions.","empty":"Please type a question in English, then tap Send.","ok":"Example only: {item} · {date} · {slot}. Nothing was booked and nothing was sent. This page does not check a booking system and does not store what you typed.","pick":"Please choose the date and one option above first.","lead":14,"slots":["Morning","Afternoon"],"months":["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"],"dateStyle":"dmy-name"}</script>
-<script id="bolla-lang-links">
-document.querySelectorAll("[data-keep-query]").forEach(function(a){
-  try{var u=new URL(a.getAttribute("href"),location.href);a.href=u.pathname+location.search+location.hash;}catch(e){}
-});
-</script>
 <script id="sector-demo">
 (function(){
   var PACK = JSON.parse(document.getElementById("demo-pack").textContent);

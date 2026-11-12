@@ -106,7 +106,6 @@ footer a{color:var(--c)}
 </head>
 <body data-demo="static-example" data-lang="ru">
 <div class="top">Нейтральный пример чата для агентств недвижимости. Его подготовила <a href="https://bollastudio.com" target="_blank" rel="noopener">BOLLA STUDIO</a> · «Агентство Пример» вымышленное, это не настоящее агентство. Настоящих просмотров нет. Этот чат — записанный пример, не живой помощник.</div>
-<nav class="langs" aria-label="Язык"><a href="../et/" hreflang="et" lang="et" data-keep-query>Eesti</a><a href="./" hreflang="ru" lang="ru" data-keep-query aria-current="page">Русский</a><a href="../en/" hreflang="en" lang="en" data-keep-query>English</a></nav>
 <header>
   <div class="brand">BOLLA STUDIO</div>
   <p class="by">Marcelo Bolla · <a href="https://bollastudio.com" target="_blank" rel="noopener">bollastudio.com</a></p>
@@ -161,11 +160,6 @@ footer a{color:var(--c)}
 </main>
 <footer>Пример подготовила студия <a href="https://bollastudio.com" target="_blank" rel="noopener">BOLLA STUDIO</a> · Marcelo Bolla · <a href="mailto:marcelo@bollastudio.com">marcelo@bollastudio.com</a><br>«Агентство Пример» вымышленное. 3-комнатная квартира не настоящий дом. Ничего не согласовано, не сохранено и не отправлено. Это не сайт предприятия. Это только пример чата BOLLA STUDIO.</footer>
 <script type="application/json" id="demo-pack">{"lang":"ru","chat":[["in","Здравствуйте, 3-комнатная квартира ещё свободна? У нас кошка."],["out","Здравствуйте. В этом примере 3-комнатная квартира — вымышленное объявление. Кошку обсудили бы с агентством. Это не обещание.\nХотите просмотр?"],["in","Да. Гость из примера."],["out","Спасибо. Только пример. Агентство отправило бы время и свою анкету. С этой страницы ничего не отправлено."]],"rules":[{"id":"documents","button":"Какие документы нужны?","keys":["документ"],"text":"Это примерное агентство просит свою анкету и удостоверение. Оно может попросить ещё. Это не юридическая консультация, и со страницы ничего не загружается."},{"id":"parking","button":"Есть ли парковка?","keys":["парковк"],"text":"С этой примерной квартирой парковка может быть. Настоящее объявление использовало бы свои факты. Здесь ничего не резервируется."},{"id":"repair","button":"Капает кран. Я жилец.","keys":["кран","капает"],"text":"Спасибо, что сообщили. В заказанном чате адрес ушёл бы управляющему. Эта страница не отправляет заявку и не принимает фото."},{"id":"rent","button":"Можно обсудить аренду?","keys":["аренд","торг"],"hand":true,"text":"Это решило бы агентство или собственник, поэтому пример не называет сумму. Ничего не отправлено."}],"fallback":"Это записанный пример, а не живой помощник. У меня есть готовые ответы только на примеры вопросов, по-русски. Я не бронирую, не отправляю сообщения и не подключен к WhatsApp, к системе бронирования и к голосовому помощнику. Нажмите одну из кнопок или используйте слова из этих вопросов.","empty":"Напишите вопрос по-русски и нажмите «Отправить».","ok":"Только пример: {item} · {date} · {slot}. Ничего не забронировано и ничего не отправлено. Страница не проверяет систему бронирования и не сохраняет то, что вы написали.","pick":"Сначала выберите дату и один вариант выше.","lead":14,"slots":["Утро","После полудня","Вечер"],"months":["янв","февр","мар","апр","мая","июн","июл","авг","сен","окт","ноя","дек"],"dateStyle":"dmy-numeric"}</script>
-<script id="bolla-lang-links">
-document.querySelectorAll("[data-keep-query]").forEach(function(a){
-  try{var u=new URL(a.getAttribute("href"),location.href);a.href=u.pathname+location.search+location.hash;}catch(e){}
-});
-</script>
 <script id="sector-demo">
 (function(){
   var PACK = JSON.parse(document.getElementById("demo-pack").textContent);

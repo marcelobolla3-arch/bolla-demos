@@ -110,17 +110,16 @@ test("ten English pages are static examples and ten German pages stay German", (
     assert.match(en, /is not personalization/);
     assert.match(en, /<ol class="steps">/);
     assert.match(en, /min-height:48px/);
-    assert.match(en, /aria-label="Language"/);
-    assert.match(en, /href="\.\.\/de\/"/);
-    assert.match(en, /href="\.\.\/fr\/"/);
+    assert.doesNotMatch(en, /data-keep-query/);
+    assert.doesNotMatch(en, /<nav class="langs?"/);
     assert.doesNotMatch(en, /personalized for|personalised for|personalisiert/i);
     assert.doesNotMatch(en, /elevenlabs|agent_|openai|wa\.me/i);
     assert.doesNotMatch(en, /Estonia|Eesti|Таллин/i);
     assert.match(de, new RegExp(deMarker[slug].replace(/[.*+?^${}()|[\]\\]/g, "\\$&")));
-    assert.match(de, /href="\.\.\/en\/"/);
+    assert.doesNotMatch(de, /data-keep-query/);
     assert.match(de, /Beispiel-Demo/);
     assert.match(fr, /Démo d'exemple/);
-    assert.match(fr, /href="\.\.\/en\/"/);
+    assert.doesNotMatch(fr, /data-keep-query/);
     assert.match(rootIndex, /location\.replace\("de\/"\+location\.search\)/);
     assert.match(rootIndex, /href="en\/">English/);
     const client = en.split('id="sector-demo">')[1].split("</script>")[0];
@@ -148,7 +147,7 @@ test("ten English pages are static examples and ten German pages stay German", (
 test("veterinary English keeps Italian, and prospect redirects still point at German", () => {
   const en = read("tierarzt-ch/en/index.html");
   const it = read("tierarzt-ch/it/index.html");
-  assert.match(en, /href="\.\.\/it\/"/);
+  assert.doesNotMatch(en, /href="\.\.\/it\/"/);
   assert.match(it, /href="\.\.\/en\/"/);
   assert.match(it, /Demo di esempio/);
   const map = read("concesionarios/en/index.html");

@@ -16,13 +16,13 @@ function text(path) {
 
 const swissBytes = {
   "hotel-ch/index.html": "7df4ef6dc262a0ecaf85139b73e9e7b4cec4f9c66d348a36029e1967970e1a87",
-  "hotel-ch/de/index.html": "5975981c7ff4dac5247cd665239e7b89d0b80c6e609ca83472583e83c11c14f7",
-  "hotel-ch/en/index.html": "72a3ff9fac04c6221d182ba066b33831346b5c89a05d77de81cc20535346f3b4",
-  "hotel-ch/fr/index.html": "1fa12fe8648c71f2b140a7c9d93f6c1313345184ae1fda2d430c75547dbf51eb",
+  "hotel-ch/de/index.html": "b96cd7851e2fcae0d18cfe5c959780afb3bf4a7a0cb5d1de3a72129dfed76816",
+  "hotel-ch/en/index.html": "9436083da358279942f2aebc09be96beb6c65b97f936d82c0f001ba630118bfc",
+  "hotel-ch/fr/index.html": "ae1fb6d4c95f3d8e2d3f38aa670152f5f9be5dc51497c0f963e5c7f48ae44048",
   "restaurant-ch/index.html": "7df4ef6dc262a0ecaf85139b73e9e7b4cec4f9c66d348a36029e1967970e1a87",
-  "restaurant-ch/de/index.html": "ef28ad80eaa4263d58948a3574557cdaab428b13767e3c822da8dcfc2e32e790",
-  "restaurant-ch/en/index.html": "c7a7de9226670c11031d416afbe9be16b82d9bf027330b4b49670945757b7a94",
-  "restaurant-ch/fr/index.html": "7ba66176f1fd67a4df80fcbc0a6bb16cf2cf5392e4c6f7e975a186b32204ae24",
+  "restaurant-ch/de/index.html": "00b545bb185adfe3a85ebaf388f031ea8be735caec9bae82f24b224876734aca",
+  "restaurant-ch/en/index.html": "98956eecb1211e86582ed17050784dc295b9503ca63c5d1bcea742c74336c3b9",
+  "restaurant-ch/fr/index.html": "d1aa4c6444807207a408cb80d582c5628c79a625b41dc3fc8175c64022b6494b",
 };
 
 const pages = [

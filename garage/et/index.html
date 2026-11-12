@@ -106,7 +106,6 @@ footer a{color:var(--c)}
 </head>
 <body data-demo="static-example" data-lang="et">
 <div class="top">Neutraalne näidisvestlus autoteenindusele. Selle koostas <a href="https://bollastudio.com" target="_blank" rel="noopener">BOLLA STUDIO</a> · «Näidisautoteenindus» on väljamõeldud, mitte päris töökoda. Päris aegu ei anta. See vestlus on kirjutatud näidis, mitte reaalajas abiline.</div>
-<nav class="langs" aria-label="Keel"><a href="./" hreflang="et" lang="et" data-keep-query aria-current="page">Eesti</a><a href="../ru/" hreflang="ru" lang="ru" data-keep-query>Русский</a><a href="../en/" hreflang="en" lang="en" data-keep-query>English</a></nav>
 <header>
   <div class="brand">BOLLA STUDIO</div>
   <p class="by">Marcelo Bolla · <a href="https://bollastudio.com" target="_blank" rel="noopener">bollastudio.com</a></p>
@@ -161,11 +160,6 @@ footer a{color:var(--c)}
 </main>
 <footer>Näidise koostas <a href="https://bollastudio.com" target="_blank" rel="noopener">BOLLA STUDIO</a> · Marcelo Bolla · <a href="mailto:marcelo@bollastudio.com">marcelo@bollastudio.com</a><br>«Näidisautoteenindus» on väljamõeldud, mitte päris töökoda. Ükski diagnoos ega aeg ei ole päris. Midagi ei broneerita, ei salvestata ega saadeta. See leht ei ole ettevõtte veebileht. See on ainult BOLLA STUDIO vestluse näidis.</footer>
 <script type="application/json" id="demo-pack">{"lang":"et","chat":[["in","Tere, soovin talverehvid alla. Kas järgmisel nädalal on aega?"],["out","Tere. Töökoda vajaks marki ja mudelit ning seda, kas rehvid on neil hoiul.\nSee leht ei näe töökoja süsteemi."],["in","Väike luukpära. Rehvid on teil. Näidiskülaline."],["out","Aitäh. Ainult näidis: luukpära, talverehvid hoiust. Töökoda kinnitaks aja. Midagi ei saadetud."]],"rules":[{"id":"warning","button":"Mootori hoiatustuli põleb.","keys":["hoiatustuli","tuli põleb"],"hand":true,"text":"Töökoda peaks vaatama, seepärast näidis ei diagnoosi. Soov märgistataks kiireks. Kui auto sõidab imelikult, ärge sõitke edasi. Midagi ei saadetud."},{"id":"inspection","button":"Kas valmistate auto tehnoülevaatuseks ette?","keys":["tehnoülevaatus","tehno","ülevaatus"],"text":"Jah. See näidistöökoda saab tehnoülevaatuse ettevalmistuse kirja panna. See ei ole ühendatud ühegi ametiga. Midagi ei saadetud."},{"id":"courtesy","button":"Kas asendusauto on olemas?","keys":["asendusauto"],"text":"Selles näites on asendusauto võimalik, kui üks on vaba. Töökoda kinnitaks selle. See leht ei reserveeri autot."},{"id":"ready","button":"Kas mu auto on valmis?","keys":["valmis"],"text":"See näidis ei näe töökoja süsteemi. Töökoda kontrolliks ja vastaks. Sellelt lehelt ei saadetud midagi."}],"fallback":"See on kirjutatud näidis, mitte reaalajas abiline. Mul on ette valmistatud vastused ainult näidisküsimustele, eesti keeles. Ma ei broneeri, ei saada sõnumeid ega ole ühendatud WhatsAppi, broneerimissüsteemi ega hääleassistendiga. Vajutage üht nuppu või kasutage nende küsimuste sõnu.","empty":"Kirjutage palun küsimus eesti keeles ja vajutage Saada.","ok":"Ainult näidis: {item} · {date} · {slot}. Midagi ei broneeritud ega saadetud. See leht ei kontrolli broneerimissüsteemi ega salvesta seda, mida te kirjutasite.","pick":"Valige palun kõigepealt kuupäev ja üks valik ülal.","lead":14,"slots":["Varajane üleandmine","Hommik","Pärastlõuna","Ootan kohapeal"],"months":["jaan","veebr","märts","apr","mai","juuni","juuli","aug","sept","okt","nov","dets"],"dateStyle":"dmy-numeric"}</script>
-<script id="bolla-lang-links">
-document.querySelectorAll("[data-keep-query]").forEach(function(a){
-  try{var u=new URL(a.getAttribute("href"),location.href);a.href=u.pathname+location.search+location.hash;}catch(e){}
-});
-</script>
 <script id="sector-demo">
 (function(){
   var PACK = JSON.parse(document.getElementById("demo-pack").textContent);

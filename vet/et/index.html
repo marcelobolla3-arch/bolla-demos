@@ -106,7 +106,6 @@ footer a{color:var(--c)}
 </head>
 <body data-demo="static-example" data-lang="et">
 <div class="top">Neutraalne näidisvestlus loomaarstile. Selle koostas <a href="https://bollastudio.com" target="_blank" rel="noopener">BOLLA STUDIO</a> · «Näidisloomaarst» on väljamõeldud, mitte päris kliinik. Päris aegu ei anta. See vestlus on kirjutatud näidis, mitte reaalajas abiline.</div>
-<nav class="langs" aria-label="Keel"><a href="./" hreflang="et" lang="et" data-keep-query aria-current="page">Eesti</a><a href="../ru/" hreflang="ru" lang="ru" data-keep-query>Русский</a><a href="../en/" hreflang="en" lang="en" data-keep-query>English</a><a href="../es/" hreflang="es" lang="es" data-keep-query>Español</a></nav>
 <header>
   <div class="brand">BOLLA STUDIO</div>
   <p class="by">Marcelo Bolla · <a href="https://bollastudio.com" target="_blank" rel="noopener">bollastudio.com</a></p>
@@ -161,11 +160,6 @@ footer a{color:var(--c)}
 </main>
 <footer>Näidise koostas <a href="https://bollastudio.com" target="_blank" rel="noopener">BOLLA STUDIO</a> · Marcelo Bolla · <a href="mailto:marcelo@bollastudio.com">marcelo@bollastudio.com</a><br>«Näidisloomaarst» on väljamõeldud, mitte päris kliinik. See leht ei ole loomaarsti nõuanne. Midagi ei broneerita, ei salvestata ega saadeta. See leht ei ole ettevõtte veebileht. See on ainult BOLLA STUDIO vestluse näidis.</footer>
 <script type="application/json" id="demo-pack">{"lang":"et","chat":[["in","Tere, mu kass vajab vaktsiini. Kas järgmisel nädalal on aega?"],["out","Tere. Võin soovi kirja panna. Selles näites võtaksite kaasa vaktsiinikaardi ja kassi puuris.\nSee leht ei broneeri visiiti."],["in","Teisipäeva pärastlõuna. Näidiskülaline."],["out","Aitäh. Ainult näidis: kass, vaktsiin, teisipäeva pärastlõuna. Vastuvõtt kinnitaks aja. Midagi ei saadetud."]],"rules":[{"id":"poison","button":"Mu koer sõi midagi mürgist!","keys":["mürgist","murgist","mürk"],"hand":true,"text":"See on kiire juhtum. Helistage kliinikusse kohe või väljaspool aegu kiirabisse. See näidis ei diagnoosi ja see leht ei helista. Palun kasutage telefoni."},{"id":"hours","button":"Mis kell olete avatud?","keys":["avatud","lahti"],"text":"See näidiskliinik on avatud esmaspäevast reedeni kell 9.00–17.00. Need on näidistunnid. Päris kliinik kasutaks enda aegu."},{"id":"rabbit","button":"Kas ravite küülikuid?","keys":["küülik","kuulik"],"text":"Jah. See näidiskliinik võtab vastu koeri, kasse ja väikeloomi, näiteks küülikuid. Päris kliinik kasutaks enda nimekirja."},{"id":"food","button":"Kas saan toidu kätte?","keys":["toidu","toitu"],"text":"Selles näites saab toidu lahtiolekuaegadel kätte, kui nimetate toote. See leht ei esita tellimust."}],"fallback":"See on kirjutatud näidis, mitte reaalajas abiline. Mul on ette valmistatud vastused ainult näidisküsimustele, eesti keeles. Ma ei broneeri, ei saada sõnumeid ega ole ühendatud WhatsAppi, broneerimissüsteemi ega hääleassistendiga. Vajutage üht nuppu või kasutage nende küsimuste sõnu.","empty":"Kirjutage palun küsimus eesti keeles ja vajutage Saada.","ok":"Ainult näidis: {item} · {date} · {slot}. Midagi ei broneeritud ega saadetud. See leht ei kontrolli broneerimissüsteemi ega salvesta seda, mida te kirjutasite.","pick":"Valige palun kõigepealt kuupäev ja üks valik ülal.","lead":14,"slots":["Hommik","Pärastlõuna"],"months":["jaan","veebr","märts","apr","mai","juuni","juuli","aug","sept","okt","nov","dets"],"dateStyle":"dmy-numeric"}</script>
-<script id="bolla-lang-links">
-document.querySelectorAll("[data-keep-query]").forEach(function(a){
-  try{var u=new URL(a.getAttribute("href"),location.href);a.href=u.pathname+location.search+location.hash;}catch(e){}
-});
-</script>
 <script id="sector-demo">
 (function(){
   var PACK = JSON.parse(document.getElementById("demo-pack").textContent);

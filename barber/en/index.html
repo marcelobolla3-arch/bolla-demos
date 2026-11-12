@@ -106,7 +106,6 @@ footer a{color:var(--c)}
 </head>
 <body data-demo="static-example" data-lang="en">
 <div class="top">Example chat for a men’s barber, prepared by <a href="https://bollastudio.com" target="_blank" rel="noopener">BOLLA STUDIO</a> · “Example Barber” is fictional, not a real shop. No real appointments. This chat is a scripted example, not a live assistant.</div>
-<nav class="langs" aria-label="Language"><a href="../et/" hreflang="et" lang="et" data-keep-query>Eesti</a><a href="./" hreflang="en" lang="en" data-keep-query aria-current="page">English</a></nav>
 <header>
   <div class="brand">BOLLA STUDIO</div>
   <p class="by">Marcelo Bolla · <a href="https://bollastudio.com" target="_blank" rel="noopener">bollastudio.com</a></p>
@@ -161,11 +160,6 @@ footer a{color:var(--c)}
 </main>
 <footer>Example demo by <a href="https://bollastudio.com" target="_blank" rel="noopener">BOLLA STUDIO</a> · Marcelo Bolla · <a href="mailto:marcelo@bollastudio.com">marcelo@bollastudio.com</a><br>“Example Barber” is fictional, not a real men’s barber. No price or time is real. Nothing is booked, stored, or sent. This page is not a business website. It is only a chat example by BOLLA STUDIO.</footer>
 <script type="application/json" id="demo-pack">{"lang":"en","chat":[["in","Hello, do you have time tomorrow after work for a cut and a beard?"],["out","Hello. I can note tomorrow, a cut and a beard, as an example.\nThis page does not place a call and does not open WhatsApp."],["in","Sample Guest. If I cannot come, can I change the time?"],["out","Thank you. Example note only: tomorrow, cut and beard. The team would confirm a change or a cancellation. Nothing was sent from this page."]],"rules":[{"id":"cut","button":"Do you cut hair?","keys":["cut","haircut"],"text":"Yes. In this example a men’s haircut is one service. A real shop would use its own list. Nothing here is booked."},{"id":"beard","button":"Do you do beards?","keys":["beard"],"text":"Yes. In this example a beard can be shaped with a cut or on its own. The team would confirm the time. Nothing here is booked."},{"id":"shave","button":"Do you shave?","keys":["shave"],"text":"Yes. In this example a shave is a separate service. This page does not describe the method and does not give a time."},{"id":"hours","button":"When are you open?","keys":["open","hours"],"text":"This example is open Tuesday to Friday, 10:00 a.m. to 7:00 p.m., and Saturday, 10:00 a.m. to 3:00 p.m. These are sample hours, not a live calendar."},{"id":"change","button":"I want to change or cancel.","keys":["change","cancel"],"hand":true,"text":"The team would handle a change or a cancellation. This example does not confirm a free time and does not cancel anything. Nothing was sent."}],"fallback":"This is a scripted example, not a live assistant. I only have prepared English answers for the sample questions. I do not book, I do not send messages, and I am not connected to WhatsApp, a booking system, or a voice agent. Please tap one of the buttons or use words from those questions.","empty":"Please type a question in English, then tap Send.","ok":"Example only: {item} · {date} · {slot}. Nothing was booked and nothing was sent. This page does not check a booking system and does not store what you typed.","pick":"Please choose the date and one option above first.","lead":2,"slots":["Morning","Afternoon","Evening"],"months":["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"],"dateStyle":"dmy-name"}</script>
-<script id="bolla-lang-links">
-document.querySelectorAll("[data-keep-query]").forEach(function(a){
-  try{var u=new URL(a.getAttribute("href"),location.href);a.href=u.pathname+location.search+location.hash;}catch(e){}
-});
-</script>
 <script id="sector-demo">
 (function(){
   var PACK = JSON.parse(document.getElementById("demo-pack").textContent);

@@ -70,7 +70,7 @@ footer{text-align:center;font-size:13px;color:#777;padding:10px 20px 40px}footer
 </script>
 </head><body>
 <div class="top">Beispiel-Demo für Restaurants in Deutschland, vorbereitet von <a href="https://bollastudio.com" target="_blank">BOLLA STUDIO</a> · «Restaurant Lindenhof» ist ein fiktiver Beispielbetrieb, keine echten Buchungen
-<nav class="lang" aria-label="Sprache"><a href="./" hreflang="de" lang="de" data-keep-query aria-current="page">Deutsch</a></nav></div>
+</div>
 <header><div class="brand">BOLLA STUDIO</div><div class="tag">Beispiel · Restaurant Lindenhof, fiktives Restaurant in Deutschland</div>
 <h1>Ihre Tischreservierungen, auch mitten im Service und nach Feierabend</h1>
 <p class="intro">Ein KI-Agent für WhatsApp und Ihre Website beantwortet die Fragen, die Ihre Gäste jeden Tag stellen: freie Tische, Öffnungszeiten und Ruhetag, Mittagsmenü, Terrasse, Parkplatz, Gutscheine. Er nimmt Reservierungs- und Gruppenanfragen mit allen Angaben auf und gibt Ihrem Team nur weiter, was eine Entscheidung braucht, zum Beispiel Fragen zu Allergien.</p></header>
@@ -120,10 +120,5 @@ document.getElementById('cta').onclick=function(){var ok=document.getElementById
  if(!v||!slot){ok.textContent=D.pick;return}
  var p=v.split('-');ok.textContent=D.ok.replace('{item}',document.getElementById('item').value).replace('{date}',p[2]+'.'+p[1]+'.'+p[0]).replace('{slot}',slot);
  window.bsTrack&&bsTrack('/request/confirm','Demo-Anfrage')};
-</script>
-<script id="bolla-lang-links">
-document.querySelectorAll("[data-keep-query]").forEach(function(a){
-  try{var u=new URL(a.getAttribute("href"),location.href);a.href=u.pathname+location.search+location.hash;}catch(e){}
-});
 </script>
 </body></html>

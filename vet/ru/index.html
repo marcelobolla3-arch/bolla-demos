@@ -106,7 +106,6 @@ footer a{color:var(--c)}
 </head>
 <body data-demo="static-example" data-lang="ru">
 <div class="top">Нейтральный пример чата для ветклиник. Его подготовила <a href="https://bollastudio.com" target="_blank" rel="noopener">BOLLA STUDIO</a> · «Ветклиника Пример» вымышленная, это не настоящая клиника. Настоящих записей нет. Этот чат — записанный пример, не живой помощник.</div>
-<nav class="langs" aria-label="Язык"><a href="../et/" hreflang="et" lang="et" data-keep-query>Eesti</a><a href="./" hreflang="ru" lang="ru" data-keep-query aria-current="page">Русский</a><a href="../en/" hreflang="en" lang="en" data-keep-query>English</a><a href="../es/" hreflang="es" lang="es" data-keep-query>Español</a></nav>
 <header>
   <div class="brand">BOLLA STUDIO</div>
   <p class="by">Marcelo Bolla · <a href="https://bollastudio.com" target="_blank" rel="noopener">bollastudio.com</a></p>
@@ -161,11 +160,6 @@ footer a{color:var(--c)}
 </main>
 <footer>Пример подготовила студия <a href="https://bollastudio.com" target="_blank" rel="noopener">BOLLA STUDIO</a> · Marcelo Bolla · <a href="mailto:marcelo@bollastudio.com">marcelo@bollastudio.com</a><br>«Ветклиника Пример» вымышленная, это не настоящая клиника. Эта страница не ветеринарный совет. Ничего не бронируется, не сохраняется и не отправляется. Это не сайт предприятия. Это только пример чата BOLLA STUDIO.</footer>
 <script type="application/json" id="demo-pack">{"lang":"ru","chat":[["in","Здравствуйте, моей кошке нужна прививка. Есть время на следующей неделе?"],["out","Здравствуйте. Могу записать просьбу. В этом примере вы бы взяли карту прививок и кошку в переноске.\nСтраница не записывает визит."],["in","Вторник после полудня. Гость из примера."],["out","Спасибо. Только пример: кошка, прививка, вторник после полудня. Регистратура подтвердила бы время. Ничего не отправлено."]],"rules":[{"id":"poison","button":"Моя собака съела что-то ядовитое!","keys":["ядовит","яд "],"hand":true,"text":"Это срочный случай. Позвоните в клинику сейчас или в неотложную помощь вне часов. Этот пример не ставит диагноз, и страница не звонит. Пожалуйста, используйте телефон."},{"id":"hours","button":"Когда вы открыты?","keys":["открыт","часы"],"text":"Эта примерная клиника открыта с понедельника по пятницу с 9:00 до 17:00. Это примерные часы. Настоящая клиника использовала бы свои часы."},{"id":"rabbit","button":"Вы лечите кроликов?","keys":["кролик"],"text":"Да. Эта примерная клиника принимает собак, кошек и мелких животных, например кроликов. Настоящая клиника использовала бы свой список."},{"id":"food","button":"Можно забрать корм?","keys":["корм"],"text":"В этом примере корм можно забрать в часы работы, если назвать продукт. Страница не делает заказ."}],"fallback":"Это записанный пример, а не живой помощник. У меня есть готовые ответы только на примеры вопросов, по-русски. Я не бронирую, не отправляю сообщения и не подключен к WhatsApp, к системе бронирования и к голосовому помощнику. Нажмите одну из кнопок или используйте слова из этих вопросов.","empty":"Напишите вопрос по-русски и нажмите «Отправить».","ok":"Только пример: {item} · {date} · {slot}. Ничего не забронировано и ничего не отправлено. Страница не проверяет систему бронирования и не сохраняет то, что вы написали.","pick":"Сначала выберите дату и один вариант выше.","lead":14,"slots":["Утро","После полудня"],"months":["янв","февр","мар","апр","мая","июн","июл","авг","сен","окт","ноя","дек"],"dateStyle":"dmy-numeric"}</script>
-<script id="bolla-lang-links">
-document.querySelectorAll("[data-keep-query]").forEach(function(a){
-  try{var u=new URL(a.getAttribute("href"),location.href);a.href=u.pathname+location.search+location.hash;}catch(e){}
-});
-</script>
 <script id="sector-demo">
 (function(){
   var PACK = JSON.parse(document.getElementById("demo-pack").textContent);

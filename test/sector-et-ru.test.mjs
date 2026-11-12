@@ -74,9 +74,8 @@ test("neutral et/ru/en pages stay off the Swiss demos and answer in one language
       assert.match(html, /is not personalization|isikupärastamine|не персонализация/);
       assert.doesNotMatch(html, /personalized for|personalised for|isikupärastatud teile|персонализирован/i);
       assert.match(html, /<ol class="steps">/);
-      assert.match(html, /hreflang="et"/);
-      assert.match(html, /hreflang="ru"/);
-      assert.match(html, /hreflang="en"/);
+      assert.doesNotMatch(html, /data-keep-query/);
+      assert.doesNotMatch(html, /<nav class="langs"/);
       assert.doesNotMatch(text, /Switzerland|Swiss|Schweiz|Šveits|Швейцар|CHF|MFK|Krankenkasse|Betreibung|\+41|3\.5-room|3\.5-Zimmer/);
       assert.doesNotMatch(html, /elevenlabs|wa\.me|openai/i);
       assert.doesNotMatch(html, /href="[^"]*\/ee\//);

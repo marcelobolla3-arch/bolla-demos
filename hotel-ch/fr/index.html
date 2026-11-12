@@ -70,7 +70,7 @@ footer{text-align:center;font-size:13px;color:#777;padding:10px 20px 40px}footer
 </script>
 </head><body>
 <div class="top">Démo d'exemple pour hôtels et B&amp;B en Suisse, préparée par <a href="https://bollastudio.com" target="_blank">BOLLA STUDIO</a> · «&nbsp;Hôtel Bergsonne&nbsp;» est un établissement fictif donné en exemple, aucune vraie réservation
-<nav class="lang" aria-label="Langue"><a href="../de/" hreflang="de" lang="de" data-keep-query>Deutsch</a><a href="../en/" hreflang="en" lang="en" data-keep-query>English</a><a href="./" hreflang="fr" lang="fr" data-keep-query aria-current="page">Français</a></nav></div>
+</div>
 <header><div class="brand">BOLLA STUDIO</div><div class="tag">Exemple · Hôtel Bergsonne, hôtel fictif dans les Alpes</div>
 <h1>Votre réception, même à 23 h et en allemand</h1>
 <p class="intro">Un agent IA sur WhatsApp et sur votre site répond aux questions que vos clients posent tous les jours : chambres libres, accès, parking, chiens, petit-déjeuner, check-in, annulation. Il enregistre les demandes de réservation avec toutes les informations, oriente vers la réservation directe et ne transmet à la réception que ce qui demande une décision.</p></header>
@@ -120,10 +120,5 @@ document.getElementById('cta').onclick=function(){var ok=document.getElementById
  if(!v||!slot){ok.textContent=D.pick;return}
  var p=v.split('-');ok.textContent=D.ok.replace('{item}',document.getElementById('item').value).replace('{date}',p[2]+'.'+p[1]+'.'+p[0]).replace('{slot}',slot);
  window.bsTrack&&bsTrack('/request/confirm','Demo-Anfrage')};
-</script>
-<script id="bolla-lang-links">
-document.querySelectorAll("[data-keep-query]").forEach(function(a){
-  try{var u=new URL(a.getAttribute("href"),location.href);a.href=u.pathname+location.search+location.hash;}catch(e){}
-});
 </script>
 </body></html>

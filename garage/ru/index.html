@@ -106,7 +106,6 @@ footer a{color:var(--c)}
 </head>
 <body data-demo="static-example" data-lang="ru">
 <div class="top">Нейтральный пример чата для автосервисов. Его подготовила <a href="https://bollastudio.com" target="_blank" rel="noopener">BOLLA STUDIO</a> · «Автосервис Пример» вымышленный, это не настоящая мастерская. Настоящих записей нет. Этот чат — записанный пример, не живой помощник.</div>
-<nav class="langs" aria-label="Язык"><a href="../et/" hreflang="et" lang="et" data-keep-query>Eesti</a><a href="./" hreflang="ru" lang="ru" data-keep-query aria-current="page">Русский</a><a href="../en/" hreflang="en" lang="en" data-keep-query>English</a></nav>
 <header>
   <div class="brand">BOLLA STUDIO</div>
   <p class="by">Marcelo Bolla · <a href="https://bollastudio.com" target="_blank" rel="noopener">bollastudio.com</a></p>
@@ -161,11 +160,6 @@ footer a{color:var(--c)}
 </main>
 <footer>Пример подготовила студия <a href="https://bollastudio.com" target="_blank" rel="noopener">BOLLA STUDIO</a> · Marcelo Bolla · <a href="mailto:marcelo@bollastudio.com">marcelo@bollastudio.com</a><br>«Автосервис Пример» вымышленный, это не настоящая мастерская. Ни диагноз, ни запись не настоящие. Ничего не бронируется, не сохраняется и не отправляется. Это не сайт предприятия. Это только пример чата BOLLA STUDIO.</footer>
 <script type="application/json" id="demo-pack">{"lang":"ru","chat":[["in","Здравствуйте, хочу поставить зимние шины. Есть время на следующей неделе?"],["out","Здравствуйте. Мастерской нужны марка и модель и то, хранятся ли шины у них.\nЭта страница не видит систему мастерской."],["in","Небольшой хэтчбек. Шины у вас. Гость из примера."],["out","Спасибо. Только пример: хэтчбек, зимние шины со склада. Мастерская подтвердила бы время. Ничего не отправлено."]],"rules":[{"id":"warning","button":"Горит лампочка двигателя.","keys":["лампочк","check engine"],"hand":true,"text":"Мастерская должна посмотреть, поэтому пример не ставит диагноз. Заявку пометили бы срочной. Если машина едет странно, не продолжайте поездку. Ничего не отправлено."},{"id":"inspection","button":"Готовите машину к техосмотру?","keys":["техосмотр","осмотр"],"text":"Да. Эта примерная мастерская может записать подготовку к периодическому техосмотру. Она не подключена ни к какой дорожной службе. Ничего не отправлено."},{"id":"courtesy","button":"Есть подменная машина?","keys":["подменн"],"text":"В этом примере подменная машина возможна, если одна свободна. Мастерская подтвердила бы её. Страница не резервирует машину."},{"id":"ready","button":"Моя машина готова?","keys":["готова"],"text":"Этот пример не видит систему мастерской. Мастерская проверила бы и ответила. С этой страницы ничего не отправлено."}],"fallback":"Это записанный пример, а не живой помощник. У меня есть готовые ответы только на примеры вопросов, по-русски. Я не бронирую, не отправляю сообщения и не подключен к WhatsApp, к системе бронирования и к голосовому помощнику. Нажмите одну из кнопок или используйте слова из этих вопросов.","empty":"Напишите вопрос по-русски и нажмите «Отправить».","ok":"Только пример: {item} · {date} · {slot}. Ничего не забронировано и ничего не отправлено. Страница не проверяет систему бронирования и не сохраняет то, что вы написали.","pick":"Сначала выберите дату и один вариант выше.","lead":14,"slots":["Ранняя сдача","Утро","После полудня","Я подожду"],"months":["янв","февр","мар","апр","мая","июн","июл","авг","сен","окт","ноя","дек"],"dateStyle":"dmy-numeric"}</script>
-<script id="bolla-lang-links">
-document.querySelectorAll("[data-keep-query]").forEach(function(a){
-  try{var u=new URL(a.getAttribute("href"),location.href);a.href=u.pathname+location.search+location.hash;}catch(e){}
-});
-</script>
 <script id="sector-demo">
 (function(){
   var PACK = JSON.parse(document.getElementById("demo-pack").textContent);

@@ -106,7 +106,6 @@ footer a{color:var(--c)}
 </head>
 <body data-demo="static-example" data-lang="en">
 <div class="top">Neutral example chat for workshops, prepared by <a href="https://bollastudio.com" target="_blank" rel="noopener">BOLLA STUDIO</a> · “Example Garage” is fictional, not a real garage. No real appointments. This chat is a scripted example, not a live assistant.</div>
-<nav class="langs" aria-label="Language"><a href="../et/" hreflang="et" lang="et" data-keep-query>Eesti</a><a href="../ru/" hreflang="ru" lang="ru" data-keep-query>Русский</a><a href="./" hreflang="en" lang="en" data-keep-query aria-current="page">English</a></nav>
 <header>
   <div class="brand">BOLLA STUDIO</div>
   <p class="by">Marcelo Bolla · <a href="https://bollastudio.com" target="_blank" rel="noopener">bollastudio.com</a></p>
@@ -161,11 +160,6 @@ footer a{color:var(--c)}
 </main>
 <footer>Example demo by <a href="https://bollastudio.com" target="_blank" rel="noopener">BOLLA STUDIO</a> · Marcelo Bolla · <a href="mailto:marcelo@bollastudio.com">marcelo@bollastudio.com</a><br>“Example Garage” is fictional, not a real garage. No diagnosis or appointment is real. Nothing is booked, stored, or sent. This page is not a business website. It is only a chat example by BOLLA STUDIO.</footer>
 <script type="application/json" id="demo-pack">{"lang":"en","chat":[["in","Hello, I would like the winter tyres fitted. Do you have time next week?"],["out","Hello. The workshop would need the make and model, and whether the tyres are stored there.\nThis page cannot see a workshop system."],["in","A small hatchback. Tyres are with you. Sample Guest."],["out","Thank you. Example note only: hatchback, winter tyres from storage. The workshop would confirm a time. Nothing was sent."]],"rules":[{"id":"warning","button":"My engine warning light is on.","keys":["warning light","engine light"],"hand":true,"text":"The workshop would have to look, so this example gives no diagnosis. The request would be marked urgent. If the car drives strangely, do not keep driving. Nothing was sent."},{"id":"inspection","button":"Do you prepare cars for inspection?","keys":["inspection","tehno"],"text":"Yes. This example garage can note preparation for a periodic technical inspection. It is not connected to any vehicle office. Nothing was sent."},{"id":"courtesy","button":"Is there a courtesy car?","keys":["courtesy"],"text":"In this example, a courtesy car is possible when one is free. The garage would confirm it. This page cannot reserve a car."},{"id":"ready","button":"Is my car ready?","keys":["car ready","is it ready"],"text":"This example cannot see the workshop system. The garage would check and reply. Nothing was sent from this page."}],"fallback":"This is a scripted example, not a live assistant. I only have prepared English answers for the sample questions. I do not book, I do not send messages, and I am not connected to WhatsApp, a booking system, or a voice agent. Please tap one of the buttons or use words from those questions.","empty":"Please type a question in English, then tap Send.","ok":"Example only: {item} · {date} · {slot}. Nothing was booked and nothing was sent. This page does not check a booking system and does not store what you typed.","pick":"Please choose the date and one option above first.","lead":14,"slots":["Early drop-off","Morning","Afternoon","I will wait"],"months":["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"],"dateStyle":"dmy-name"}</script>
-<script id="bolla-lang-links">
-document.querySelectorAll("[data-keep-query]").forEach(function(a){
-  try{var u=new URL(a.getAttribute("href"),location.href);a.href=u.pathname+location.search+location.hash;}catch(e){}
-});
-</script>
 <script id="sector-demo">
 (function(){
   var PACK = JSON.parse(document.getElementById("demo-pack").textContent);

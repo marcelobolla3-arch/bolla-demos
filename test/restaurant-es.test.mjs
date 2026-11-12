@@ -51,7 +51,7 @@ test("the Spanish restaurant example is neutral and has no prices", () => {
   assert.match(html, /skipgc/);
   assert.match(html, /bolla_internal/);
   assert.match(html, /bmaudit-/);
-  assert.match(html, /data-keep-query/);
+  assert.doesNotMatch(html, /data-keep-query/);
   assert.match(html, /\/bolla-demo-restaurant\/es/);
   const cases = [
     ["¿Qué día están cerrados?", "closed"],
@@ -69,9 +69,9 @@ test("the Spanish restaurant example is neutral and has no prices", () => {
 test("sent restaurant routes stay byte-identical to main", () => {
   const sent = {
     "restaurant/index.html": "c4200135abcdc70e5a5d44849c5a93271c7f84d295fc05be8f1819fb4aad9366",
-    "restaurant/en/index.html": "241c47a1a09fa653c933d90e12f8c847b17558c9acaa7ee196627fbffffc6b6d",
-    "restaurant/et/index.html": "8bdeedfc4918159d8dda362be061038031f3d860e826770f22550ba8f7e50e31",
-    "restaurant/ru/index.html": "03f49847ecfa929d12d4eeeff0f65223636f124af374e13ac1981f16ca7adf2e",
+    "restaurant/en/index.html": "c9a541868fc1784a11647149d01431ffa4216aa9fb2e1e718752aab191db546d",
+    "restaurant/et/index.html": "e1786344146cfa27951d663ed645f994516d92afdb2f193b07afe01b3d70a6ba",
+    "restaurant/ru/index.html": "47f8ae36c7733e19de805e257aa32925b8381a06056508e77be78fe087f79183",
   };
   for (const [path, hash] of Object.entries(sent)) {
     const file = readFileSync(new URL(`../${path}`, import.meta.url));

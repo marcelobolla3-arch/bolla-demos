@@ -123,11 +123,11 @@ function keepQuery(html, href) {
 
 const kept = {
   "charter/index.html": "6f67d34e0e35b4d7d717951909513212d4cfb974e7c35530f8a8bbdb8ba92863",
-  "charter/en/index.html": "72e319be2c9c5c74cc6b37054220e9af63c62023790d6fd6549ec1afff89211c",
-  "charter/et/index.html": "3f38a1f2776a42f42bc27e9881882596f01292d9bfceb8614c21af19274b1ccf",
+  "charter/en/index.html": "68d903348e10cc1deac5d22038e738a0e8de9b448be4b3974702c39676a538d9",
+  "charter/et/index.html": "ab7c13b99a3ea9a02137d7052039989ea5f93cc914b4df3fcb17f66a68c1f7fe",
   "charter-de/index.html": "f34b85dbc85e360d98a0b608e9b38463ccd06647929c1243d128f6d0fef76154",
   "charter-de/de/index.html": "cc7c68c4868f8fd7f650cbfbe2299396c366427f21e9895948a57bd4da25a01a",
-  "charter-de/en/index.html": "05d5d6456dfcdd7a2c8a6afe478d154f35a342d02baab5161ff5598dc847b6c4",
+  "charter-de/en/index.html": "963f8c62bd429af671d81269785bbfc8df9d6811aaf6132ffd1e00842f302365",
 };
 
 test("sent charter-intl routes stay at their published bytes", () => {

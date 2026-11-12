@@ -106,7 +106,6 @@ footer a{color:var(--c)}
 </head>
 <body data-demo="static-example" data-lang="en">
 <div class="top">Neutral example chat for movers, prepared by <a href="https://bollastudio.com" target="_blank" rel="noopener">BOLLA STUDIO</a> · “Example Movers” is fictional, not a real company. No real quotes. This chat is a scripted example, not a live assistant.</div>
-<nav class="langs" aria-label="Language"><a href="../et/" hreflang="et" lang="et" data-keep-query>Eesti</a><a href="../ru/" hreflang="ru" lang="ru" data-keep-query>Русский</a><a href="./" hreflang="en" lang="en" data-keep-query aria-current="page">English</a></nav>
 <header>
   <div class="brand">BOLLA STUDIO</div>
   <p class="by">Marcelo Bolla · <a href="https://bollastudio.com" target="_blank" rel="noopener">bollastudio.com</a></p>
@@ -161,11 +160,6 @@ footer a{color:var(--c)}
 </main>
 <footer>Example demo by <a href="https://bollastudio.com" target="_blank" rel="noopener">BOLLA STUDIO</a> · Marcelo Bolla · <a href="mailto:marcelo@bollastudio.com">marcelo@bollastudio.com</a><br>“Example Movers” is fictional, not a real company. No price or date is confirmed. Nothing is booked, stored, or sent. This page is not a business website. It is only a chat example by BOLLA STUDIO.</footer>
 <script type="application/json" id="demo-pack">{"lang":"en","chat":[["in","Hello, we are moving across the city at the end of the month. Can you quote?"],["out","Hello. For a quote the team would need the number of rooms, the floor, whether there is a lift, and the date.\nI can note what you tell me. This page does not price the move."],["in","3 rooms. Old place has no lift. Sample Guest."],["out","Thank you. Example note only: 3 rooms, no lift at the old place. The team would send a quote. Nothing was sent from this page."]],"rules":[{"id":"lift","button":"Do you have a furniture lift?","keys":["furniture lift","hoist"],"text":"Yes. This example company can use a furniture lift when the stairs are tight. Whether it is needed is part of the quote. Nothing is reserved here."},{"id":"boxes","button":"Can I get moving boxes?","keys":["boxes","packing"],"text":"Yes. This example company can note how many boxes you need. This page does not order them."},{"id":"viewing","button":"Will you come and look first?","keys":["come and look","viewing"],"text":"For a larger move this example company can note a time to look. This page does not book the visit."},{"id":"price","button":"What does it cost, roughly?","keys":["cost","price","how much"],"hand":true,"text":"The team calculates the price, so this example gives no figure. You would get a quote from the company. Nothing was sent."}],"fallback":"This is a scripted example, not a live assistant. I only have prepared English answers for the sample questions. I do not book, I do not send messages, and I am not connected to WhatsApp, a booking system, or a voice agent. Please tap one of the buttons or use words from those questions.","empty":"Please type a question in English, then tap Send.","ok":"Example only: {item} · {date} · {slot}. Nothing was booked and nothing was sent. This page does not check a booking system and does not store what you typed.","pick":"Please choose the date and one option above first.","lead":14,"slots":["1–2 rooms","3 rooms","4–5 rooms","Office"],"months":["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"],"dateStyle":"dmy-name"}</script>
-<script id="bolla-lang-links">
-document.querySelectorAll("[data-keep-query]").forEach(function(a){
-  try{var u=new URL(a.getAttribute("href"),location.href);a.href=u.pathname+location.search+location.hash;}catch(e){}
-});
-</script>
 <script id="sector-demo">
 (function(){
   var PACK = JSON.parse(document.getElementById("demo-pack").textContent);

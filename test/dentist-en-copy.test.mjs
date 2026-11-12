@@ -17,14 +17,12 @@ test("the English dentist page names no country and keeps the language names", (
   assert.doesNotMatch(shown, /Estonian and Russian examples are separate pages/);
   assert.doesNotMatch(shown, /Estonia|Estonian|Tallinn|Berlin|Deutschland|Germany|Swiss|Schweiz|France|Italia|Spain|España/i);
   assert.doesNotMatch(html, /zahnarzt-ch/);
-  assert.match(html, />Eesti</);
-  assert.match(html, /Русский/);
-  assert.match(html, />English</);
   assert.match(html, /This page answers in English/);
   assert.match(html, /skipgc/);
   assert.match(html, /bolla_internal/);
   assert.match(html, /bmaudit-/);
-  assert.match(html, /data-keep-query/);
+  assert.doesNotMatch(html, /data-keep-query/);
+  assert.doesNotMatch(html, /<nav class="langs"/);
   assert.match(html, /\/bolla-demo-dentist\/en/);
   assert.doesNotMatch(shown, /\+\d{1,3}\s+\d|€|CHF|\bEUR\b/);
 });

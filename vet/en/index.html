@@ -106,7 +106,6 @@ footer a{color:var(--c)}
 </head>
 <body data-demo="static-example" data-lang="en">
 <div class="top">Neutral example chat for veterinary clinics, prepared by <a href="https://bollastudio.com" target="_blank" rel="noopener">BOLLA STUDIO</a> · “Example Vet” is fictional, not a real clinic. No real appointments. This chat is a scripted example, not a live assistant.</div>
-<nav class="langs" aria-label="Language"><a href="../et/" hreflang="et" lang="et" data-keep-query>Eesti</a><a href="../ru/" hreflang="ru" lang="ru" data-keep-query>Русский</a><a href="./" hreflang="en" lang="en" data-keep-query aria-current="page">English</a><a href="../es/" hreflang="es" lang="es" data-keep-query>Español</a></nav>
 <header>
   <div class="brand">BOLLA STUDIO</div>
   <p class="by">Marcelo Bolla · <a href="https://bollastudio.com" target="_blank" rel="noopener">bollastudio.com</a></p>
@@ -161,11 +160,6 @@ footer a{color:var(--c)}
 </main>
 <footer>Example demo by <a href="https://bollastudio.com" target="_blank" rel="noopener">BOLLA STUDIO</a> · Marcelo Bolla · <a href="mailto:marcelo@bollastudio.com">marcelo@bollastudio.com</a><br>“Example Vet” is fictional, not a real clinic. This page is not veterinary advice. Nothing is booked, stored, or sent. This page is not a business website. It is only a chat example by BOLLA STUDIO.</footer>
 <script type="application/json" id="demo-pack">{"lang":"en","chat":[["in","Hello, my cat needs a vaccination. Do you have a time next week?"],["out","Hello. I can note the request. In this example you would bring the vaccination record and the cat in a carrier.\nThis page does not book the visit."],["in","Tuesday afternoon. Sample Guest."],["out","Thank you. Example note only: cat, vaccination, Tuesday afternoon. Reception would confirm the time. Nothing was sent."]],"rules":[{"id":"poison","button":"My dog ate something poisonous!","keys":["poison","poisonous","toxic"],"hand":true,"text":"This is an emergency. Call a clinic now, or an emergency service outside opening hours. This example cannot diagnose and this page does not place the call. Please use the phone."},{"id":"hours","button":"When are you open?","keys":["open","hours"],"text":"This example clinic is open Monday to Friday, 9:00 a.m. to 5:00 p.m. These are sample hours. A real clinic would use its own hours."},{"id":"rabbit","button":"Do you treat rabbits?","keys":["rabbit"],"text":"Yes. This example clinic sees dogs, cats and small animals such as rabbits. A real clinic would use its own list."},{"id":"food","button":"Can I collect food?","keys":["pet food","collect food"],"text":"In this example, food can be collected during opening hours if you name the product. This page does not place an order."}],"fallback":"This is a scripted example, not a live assistant. I only have prepared English answers for the sample questions. I do not book, I do not send messages, and I am not connected to WhatsApp, a booking system, or a voice agent. Please tap one of the buttons or use words from those questions.","empty":"Please type a question in English, then tap Send.","ok":"Example only: {item} · {date} · {slot}. Nothing was booked and nothing was sent. This page does not check a booking system and does not store what you typed.","pick":"Please choose the date and one option above first.","lead":14,"slots":["Morning","Afternoon"],"months":["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"],"dateStyle":"dmy-name"}</script>
-<script id="bolla-lang-links">
-document.querySelectorAll("[data-keep-query]").forEach(function(a){
-  try{var u=new URL(a.getAttribute("href"),location.href);a.href=u.pathname+location.search+location.hash;}catch(e){}
-});
-</script>
 <script id="sector-demo">
 (function(){
   var PACK = JSON.parse(document.getElementById("demo-pack").textContent);

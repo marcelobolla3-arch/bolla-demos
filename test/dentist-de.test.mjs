@@ -475,32 +475,12 @@ test("Deutsch is added without changing the et, ru or en URLs", () => {
 
   for (const lang of ["et", "ru", "en"]) {
     const page = read(`dentist/${lang}/index.html`);
-    assert.match(page, /href="\.\.\/es\/" hreflang="es" lang="es" data-keep-query>Español</);
-    assert.match(page, /href="\.\.\/de\/" hreflang="de" lang="de" data-keep-query>Deutsch</);
-    assert.match(page, /hreflang="et"/);
-    assert.match(page, /hreflang="ru"/);
-    assert.match(page, /hreflang="en"/);
+    assert.doesNotMatch(page, /data-keep-query/);
+    assert.doesNotMatch(page, /<nav class="langs"/);
+    assert.match(page, new RegExp(`var BASE="/bolla-demo-dentist/${lang}"`));
   }
   assert.match(read("dentist/et/index.html"), /Näidishambaravi/);
   assert.match(read("dentist/en/index.html"), /Example Dental/);
   assert.match(read("dentist/ru/index.html"), /Стоматология Пример/);
-
-  let kept = "";
-  const anchor = {
-    getAttribute() { return "../et/"; },
-    set href(value) { kept = value; },
-  };
-  const sandbox = {
-    location: {
-      href: "https://demo.bollastudio.com/dentist/de/?p=de-berlin-01&internal=1#oben",
-      search: "?p=de-berlin-01&internal=1",
-      hash: "#oben",
-    },
-    document: { querySelectorAll() { return [anchor]; } },
-    URL,
-  };
-  vm.createContext(sandbox);
-  const links = html.match(/<script id="bolla-lang-links">([\s\S]*?)<\/script>/)[1];
-  vm.runInContext(links, sandbox);
-  assert.equal(kept, "/dentist/et/?p=de-berlin-01&internal=1#oben");
+  assert.doesNotMatch(html, /id="bolla-lang-links"/);
 });
