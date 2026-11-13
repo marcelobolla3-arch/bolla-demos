@@ -338,7 +338,7 @@ COPY.es={...COPY.it,
 (function(){
  var langs=document.getElementById('langs');var button=document.createElement('button');button.type='button';button.dataset.l='es';button.textContent='Español';langs.appendChild(button);
  function setVoiceLanguage(lang){var widget=document.querySelector('elevenlabs-convai');if(widget)widget.setAttribute('override-language',lang);}
- button.addEventListener('click',function(){apply('es');setVoiceLanguage('es');if(window.bsTrack)window.bsTrack('/ambarra/voice-lang-es','Voice lang es');});
+ button.addEventListener('click',function(){apply('es');setVoiceLanguage('es');if(window.bsTrack)window.bsTrack('/ambarra/voice-lang-'+button.dataset.l,'Voice lang '+button.dataset.l);});
  langs.querySelectorAll('button[data-l="it"],button[data-l="en"]').forEach(function(b){b.addEventListener('click',function(){setVoiceLanguage(b.dataset.l);});});
  var requested=new URLSearchParams(location.search).get('lang');
  if(requested==='es'||(!requested&&(/^es\b/i.test(navigator.language||'')||/\/es\//.test(document.referrer)))){apply('es');setVoiceLanguage('es');}
