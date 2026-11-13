@@ -18,6 +18,7 @@ const routes = [
   "/hotel/en/", "/hotel/es/", "/hotel/et/", "/hotel/ru/",
   "/immobilien-ch/de/", "/immobilien-ch/en/", "/immobilien-ch/fr/",
   "/industrie-de/de/", "/industrie-de/en/",
+  "/medical-ch/de/",
   "/movers/en/", "/movers/et/", "/movers/ru/",
   "/musikschule-ch/de/", "/musikschule-ch/fr/",
   "/nautica/", "/nautica/en/", "/nautica/es/", "/nautica/fr/",

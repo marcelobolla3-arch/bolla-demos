@@ -1,0 +1,389 @@
+<!doctype html>
+<!-- Fictional medical-centre example. Language de. Standard German spelling with ss. Static example, not a live assistant. No real practice. -->
+<html lang="de" translate="no">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex">
+<meta name="google" content="notranslate">
+<title>Beispielgespräch für ein medizinisches Zentrum · BOLLA STUDIO</title>
+<style>
+:root{--c:#0f5f6b;--ink:#1c1c1c;--bg:#f3f6f6}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Noto Sans","DejaVu Sans","Helvetica Neue",Arial,sans-serif;background:var(--bg);color:var(--ink);line-height:1.5;font-size:17px}
+.top{background:#1d2a33;color:#f2f5f7;padding:12px 16px;text-align:center}
+.top a{color:#fff}
+header,main{max-width:1080px;margin:0 auto;padding:8px 16px 0}
+.brand{font-weight:800;letter-spacing:.08em;font-size:.85rem;color:#5c6770}
+.by{margin:4px 0 8px;font-size:16px}
+.by a{color:var(--c)}
+.tag{font-size:14px;letter-spacing:.04em;color:#555;margin:0}
+h1{font-size:1.7rem;line-height:1.25;margin:8px 0 10px;color:var(--c)}
+h2{font-size:1.25rem;margin:0 0 8px;color:var(--c)}
+h3{font-size:1.05rem;margin:0 0 6px;color:var(--c)}
+.intro{margin:0 0 12px;color:#333}
+.badge{display:inline-block;background:#fff4d6;border:1px dashed #8a6a10;color:#5c4300;border-radius:8px;padding:4px 8px;font-size:14px;font-weight:700}
+.notice,.voice{background:#fff;border-radius:12px;padding:12px 14px;margin:12px 0;font-size:16px}
+.notice{border:2px solid #8a6a10}
+.voice{border:2px solid #1d2a33}
+.howto,.faq,.hours{background:#fff;border-radius:12px;padding:14px 16px;margin:12px 0 16px}
+.steps{margin:0;padding-left:1.3rem}
+.steps li{margin:8px 0}
+.grid{display:grid;gap:16px;margin:0 0 16px}
+.card{background:#fff;border-radius:16px;box-shadow:0 6px 24px rgba(0,0,0,.08);overflow:hidden}
+.wa-h{background:#1d2a33;color:#fff;padding:12px 16px;display:flex;align-items:center;gap:10px}
+.av{width:44px;height:44px;border-radius:50%;background:var(--c);display:flex;align-items:center;justify-content:center;font-weight:800}
+.wa-h small{display:block;opacity:.9;font-size:14px}
+.chat{background:#ece5dd;min-height:280px;max-height:52vh;overflow-y:auto;padding:12px;display:flex;flex-direction:column;gap:8px}
+.m{max-width:92%;padding:10px 12px;border-radius:10px;font-size:16px;white-space:pre-line;box-shadow:0 1px 1px rgba(0,0,0,.08)}
+.in{background:#fff;align-self:flex-start}.out{background:#e7f6e7;align-self:flex-end}
+.m.hand{background:#fff4d6;border:1px dashed #8a6a10}
+.qrl{padding:10px 12px 0;font-size:15px;color:#444}
+.qr{padding:8px 12px 12px;display:flex;flex-direction:column;gap:8px}
+.qr button,.slots button,.cta,.call,.ask-row button{min-height:48px;font-size:17px;border-radius:12px;cursor:pointer}
+.qr button{width:100%;text-align:left;border:2px solid var(--c);background:#fff;color:var(--c);padding:12px 14px}
+.bk{padding:16px}
+.bk h3{margin:0 0 6px;color:var(--c);font-size:1.25rem}
+.bk p{margin:0 0 10px;color:#444}
+label{font-size:16px;color:#333;display:block;margin:12px 0 6px;font-weight:650}
+select,input{width:100%;padding:12px;border:1px solid #bbb;border-radius:10px;font-size:16px;font-family:inherit;min-height:48px}
+.slots{display:flex;flex-wrap:wrap;gap:8px}
+.slots button{border:2px solid #bbb;background:#fff;padding:10px 14px}
+.slots button.on{background:var(--c);color:#fff;border-color:var(--c)}
+.cta{margin-top:16px;width:100%;background:var(--c);color:#fff;border:0;padding:14px;font-weight:700}
+.call{margin-top:8px;width:100%;background:#fff;color:var(--c);border:2px solid var(--c);padding:14px;font-weight:700}
+.ok{margin-top:14px;background:#eaf7ea;border:1px solid #8fbf8f;padding:12px;border-radius:10px;font-size:16px}
+.ask{padding:0 12px 14px}
+.ask-row{display:flex;flex-direction:column;gap:8px}
+.ask-row button{background:#1d2a33;color:#fff;border:0;padding:12px 16px;font-weight:700}
+.split,.feat,.faq-grid{display:grid;gap:12px;margin:0 0 16px}
+.split div,.feat div,.faq-grid article{background:#fff;border-radius:12px;padding:14px 16px}
+.split h2,.feat b{color:var(--c)}
+.split ul{margin:8px 0 0;padding-left:1.2rem}
+.split li,.hours li{margin:6px 0}
+.hours table{width:100%;border-collapse:collapse;font-size:16px}
+.hours th,.hours td{text-align:left;padding:8px 10px;border-bottom:1px solid #e2e6e6;vertical-align:top}
+.hours th{color:var(--c);font-weight:700}
+footer{text-align:center;font-size:15px;color:#444;padding:8px 16px 40px}
+footer a{color:var(--c)}
+:focus-visible{outline:3px solid #0b57d0;outline-offset:2px}
+@media(min-width:800px){
+  h1{font-size:2rem}
+  .grid,.split{grid-template-columns:1fr 1fr}
+  .feat,.faq-grid{grid-template-columns:1fr 1fr}
+  .qr{flex-direction:row;flex-wrap:wrap}
+  .qr button{width:auto}
+  .ask-row{flex-direction:row}
+  .ask-row input{flex:1}
+  .chat{max-height:460px}
+}
+</style>
+<!-- GoatCounter (BOLLA STUDIO): ?p= is a visit label for counting only. It does not personalize the page. ?internal=1 sets localStorage skipgc=t and loads nothing. -->
+<script>
+(function(){
+ var BASE="/bolla-demo-medical-ch/de";
+ var m=(location.search+location.hash).match(/[?&#]internal=([01])/);
+ var mo=(location.search+location.hash).match(/[?&#]interno=([01])/);
+ var bollaOff=false;
+ function bollaCookie(on){try{var secure="";try{if(location.protocol==="https:")secure="; Secure";}catch(e){}document.cookie=on?"bolla_internal=1; Path=/; Max-Age=34560000; SameSite=Lax"+secure:"bolla_internal=; Path=/; Max-Age=0; SameSite=Lax";}catch(e){}}
+ function bollaStore(on){try{if(on)localStorage.setItem("skipgc","t");else localStorage.removeItem("skipgc");}catch(e){}bollaCookie(on);}
+ try{var qh=location.search+location.hash;var ia=m?qh.lastIndexOf("internal="):-1;var io=mo?qh.lastIndexOf("interno="):-1;if(ia>=0||io>=0){var bollaOn=(io>ia?mo[1]:m[1])==="1";bollaOff=!bollaOn;bollaStore(bollaOn);}}catch(e){}
+ var internal=false;try{internal=localStorage.getItem("skipgc")==="t";}catch(e){}
+ try{if(!internal&&/(?:^|; )bolla_internal=1(?:;|$)/.test(document.cookie||"")){internal=true;try{localStorage.setItem("skipgc","t");}catch(e){}}else if(internal)bollaCookie(true);}catch(e){}
+ var bollaAudit="";try{var bollaPm=location.search.match(/[?&]p=([^&#]*)/)||location.search.match(/[?&]link_id=([^&#]*)/);if(bollaPm)bollaAudit=decodeURIComponent(bollaPm[1]).toLowerCase().replace(/[^a-z0-9-]/g,"").slice(0,60);}catch(e){}if(bollaAudit.indexOf("bmaudit-")===0){internal=true;if(!bollaOff)bollaStore(true);}
+ var sm=location.search.match(/[?&]p=([^&#]*)/);
+ var tag=sm?decodeURIComponent(sm[1]).toLowerCase().replace(/[^a-z0-9-]/g,"").slice(0,60):"";
+ var q=[]; window.bsTrack=function(sub,title){ if(internal) return;
+   var ep=BASE+sub+(tag?'?p='+tag:'');if(window.goatcounter&&window.goatcounter.count) window.goatcounter.count({path:ep,title:title||sub,event:true}); else q.push([ep,title||sub]); };
+ if(internal) return;
+ window.goatcounter={no_onload:true};
+ var s=document.createElement("script"); s.async=true; s.src="https://gc.zgo.at/count.js";
+ s.setAttribute("data-goatcounter","https://bollastudio.goatcounter.com/count");
+ s.onload=function(){ try{ window.goatcounter.count({path:BASE+'/'+(tag?'?p='+tag:''),title:"medical-ch demo de"});
+   q.forEach(function(e){window.goatcounter.count({path:e[0],title:e[1],event:true});}); q=[]; }catch(e){} };
+ document.head.appendChild(s);
+})();
+</script>
+</head>
+<body data-demo="static-example" data-lang="de">
+<div class="top">Neutrales Beispielgespräch für ein medizinisches Zentrum. Das hat <a href="https://bollastudio.com" target="_blank" rel="noopener">BOLLA STUDIO</a> vorbereitet · «Musterpraxis» ist erfunden, keine echte Praxis. Es gibt keine echten Termine. Dieses Gespräch ist ein geschriebenes Beispiel, kein Assistent in Echtzeit. Die Seite ist für alle Besucher gleich und nicht personalisiert.</div>
+<header>
+  <div class="brand">BOLLA STUDIO</div>
+  <p class="by">Marcelo Bolla · <a href="https://bollastudio.com" target="_blank" rel="noopener">bollastudio.com</a></p>
+  <p class="tag"><span class="badge">Geschriebenes Beispiel</span> Musterpraxis, erfundene Praxis</p>
+  <h1>Terminanfragen, auch wenn die Anmeldung besetzt ist</h1>
+  <p class="intro">Dieses geschriebene Gespräch zeigt alltägliche Fragen eines medizinischen Zentrums: Hausarztmedizin, Permanence und Walk-in, Physiotherapie, Impfungen, die Terminreservation, die Öffnungszeiten und die Grundversicherung. Es notiert einen Wunsch. Diagnose, Behandlung und Honorar bleiben beim Team. Diese Seite gibt keinen medizinischen Rat und reserviert nicht. Die Praxis in diesem Beispiel heisst «Musterpraxis». Die Adresse Musterstrasse 12 und die Nummer 000 000 00 00 sind erfunden. Ausserhalb dieser Seite gibt es keine Praxis unter diesem Namen. Die Seite ist keiner Stadt und keinem Land zugeordnet. Hier steht kein Betrag.</p>
+  <p class="notice" role="note">Simulation: Alle Antworten sind vorher geschrieben. Es wird nichts gesendet und nichts reserviert. Diese Seite ist nicht mit WhatsApp, einem Terminsystem oder einem Sprachassistenten verbunden. Steht in der Adresse ?p=, ist das nur ein Besuchskennzeichen von BOLLA STUDIO. Es ändert die Seite nicht und ist keine Personalisierung. Diese Seite ist nicht die Website eines Unternehmens.</p>
+  <p class="voice" role="note">Dieser Bildschirm ist ein geschriebenes Gesprächsbeispiel. Es wird kein Ton abgespielt. Ein Sprachassistent ist hier nicht verbunden und läuft hier nicht. Sprache, falls sie getrennt beauftragt würde, wäre ein anderer Aufbau, nicht diese Seite.</p>
+</header>
+<main>
+<section class="howto" aria-labelledby="howto-title">
+  <h2 id="howto-title">So probieren Sie dieses Beispiel</h2>
+  <ol class="steps"><li>Lesen Sie das Beispielgespräch. Es steht schon auf dem Bildschirm.</li><li>Wählen Sie eine grosse Frage-Schaltfläche oder schreiben Sie Ihre Frage auf Deutsch und wählen Sie Senden.</li><li>Wählen Sie ein Datum und eine Zeit, dann die grosse Schaltfläche für die Terminreservation. Sie sehen nur ein Beispiel. Es wird nichts reserviert und nichts gesendet.</li><li>Die Schaltfläche für den Anruf zeigt nur die erfundene Nummer. Es wird niemand angerufen.</li></ol>
+</section>
+<div class="grid">
+  <div class="card">
+    <div class="wa-h"><div class="av" aria-hidden="true">M</div><div><b>Musterpraxis · Beispielanmeldung</b><small>Geschriebenes Beispiel · die Antworten sind auf Deutsch, das ist kein Assistent in Echtzeit</small></div></div>
+    <div class="chat" id="chat" role="log" aria-live="polite" aria-relevant="additions" aria-label="Beispielgespräch"></div>
+    <div class="qrl" id="qr-label">Probieren Sie eine Frage</div>
+    <div class="qr" id="qr" role="group" aria-labelledby="qr-label"></div>
+    <form class="ask" id="ask-form" action="#" method="post">
+      <label for="ask">Schreiben Sie Ihre Frage auf Deutsch</label>
+      <div class="ask-row">
+        <input id="ask" name="ask" type="text" autocomplete="off" enterkeyhint="send" placeholder="Zum Beispiel: Kann ich ohne Termin kommen?">
+        <button type="submit">Senden</button>
+      </div>
+    </form>
+  </div>
+  <div class="card bk">
+    <h3>Terminreservation als Beispiel</h3>
+    <p>So kann ein Gespräch einen Wunsch notieren. Die Anmeldung würde Ihnen einen Termin anbieten. Diese Seite tut das nicht.</p>
+    <label for="item">Grund</label>
+    <select id="item"><option>Hausarzt: Kontrolle</option><option>Hausarzt: Beratung</option><option>Permanence / Walk-in</option><option>Physiotherapie</option><option>Impfung</option><option>Neuer Patient, erster Besuch</option></select>
+    <label for="arr">Datum</label>
+    <input id="arr" type="date">
+    <p id="slots-label" style="margin:12px 0 6px;font-weight:650">Tageszeit</p>
+    <div class="slots" id="slots" role="group" aria-labelledby="slots-label"></div>
+    <label for="nm">Name (wird nicht gespeichert)</label>
+    <input id="nm" type="text" autocomplete="off" placeholder="Vor- und Nachname" aria-describedby="local-only">
+    <label for="ph">E-Mail oder Telefon (wird nicht gespeichert)</label>
+    <input id="ph" type="text" autocomplete="off" placeholder="name@example.com" aria-describedby="local-only">
+    <p id="local-only">Diese beiden Felder bleiben in Ihrem Browser. Diese Seite liest sie nicht, speichert sie nicht und sendet sie nicht.</p>
+    <button class="cta" id="cta" type="button">Termin anfragen</button>
+    <button class="call" id="call" type="button">Anruf als Beispiel</button>
+    <div class="ok" id="ok" role="status" hidden></div>
+    <div class="ok" id="call-note" role="status" hidden></div>
+  </div>
+</div>
+<section class="hours" aria-labelledby="hours-title">
+  <h2 id="hours-title">Beispielzeiten der Musterpraxis</h2>
+  <p>Diese Zeiten sind erfunden. Am Sonntag schliesst die Beispielpraxis. Eine echte Praxis nennt ihre eigenen Zeiten. Die Beispielnummer 000 000 00 00 ist erfunden, und diese Seite wählt sie nicht.</p>
+  <table>
+    <caption>Öffnungszeiten nur für dieses Beispiel</caption>
+    <thead><tr><th scope="col">Bereich</th><th scope="col">Beispielzeiten</th></tr></thead>
+    <tbody>
+      <tr><th scope="row">Hausarztmedizin</th><td>Montag bis Freitag, 08:00 bis 18:00 Uhr</td></tr>
+      <tr><th scope="row">Permanence und Walk-in</th><td>Montag bis Freitag, 08:00 bis 20:00 Uhr; Samstag, 09:00 bis 16:00 Uhr</td></tr>
+      <tr><th scope="row">Physiotherapie</th><td>Montag bis Freitag, 07:30 bis 19:00 Uhr</td></tr>
+      <tr><th scope="row">Impfungen</th><td>Nach Vereinbarung, innerhalb dieser Beispielzeiten</td></tr>
+    </tbody>
+  </table>
+</section>
+<section class="faq" aria-labelledby="faq-title">
+  <h2 id="faq-title">Häufige Fragen in diesem Beispiel</h2>
+  <div class="faq-grid">
+    <article><h3>Hausarztmedizin</h3><p>In diesem Beispiel nimmt die Musterpraxis neue Patientinnen und Patienten für die Hausarztmedizin auf. Die Anmeldung würde einen Termin vorschlagen. Diese Seite reserviert nicht.</p></article>
+    <article><h3>Permanence und Walk-in</h3><p>Während der Permanence können Sie in diesem Beispiel ohne Termin kommen. Das ist ein Walk-in. Es gibt keine garantierte Wartezeit, und es wird kein Platz freigehalten.</p></article>
+    <article><h3>Physiotherapie</h3><p>Für die Physiotherapie braucht es in diesem Beispiel in der Regel eine Verordnung der Hausärztin oder des Hausarztes. Ob das in einem echten Fall gilt, entscheidet die Praxis.</p></article>
+    <article><h3>Impfungen</h3><p>Eine Impfung lässt sich als Grund notieren. Welche Impfung sinnvoll ist, sagt die Ärztin oder der Arzt nach der Untersuchung. Dieses Beispiel empfiehlt keine Impfung und nennt keinen Impfabstand.</p></article>
+    <article><h3>Terminreservation</h3><p>Das Formular zeigt nur, wie eine Notiz aussehen kann. Es prüft keinen Kalender, speichert nichts und sendet nichts. Eine echte Anmeldung würde den Termin bestätigen.</p></article>
+    <article><h3>Grundversicherung und Krankenkasse</h3><p>In diesem Beispiel bringen Sie die Karte der Krankenkasse mit. Die Grundversicherung deckt medizinisch notwendige Leistungen nach dem geltenden Tarif. Franchise und Selbstbehalt stehen im eigenen Vertrag. Diese Seite nennt keinen Betrag und keine bestimmte Krankenkasse. Eine Zusatzversicherung ist ein anderer Vertrag. Diese Seite berät nicht dazu.</p></article>
+  </div>
+</section>
+<div class="split">
+  <div><h2>Was dieses Beispielgespräch zeigt</h2><ul><li>Neue Patientinnen und Patienten in der Hausarztmedizin</li><li>Permanence und Walk-in ohne Termin</li><li>Physiotherapie und die Verordnung</li><li>Impfungen als Grund einer Anfrage, ohne Empfehlung</li><li>Beispielzeiten und die Terminreservation</li><li>Grundversicherung und Krankenkasse, ohne Betrag und ohne eine bestimmte Kasse</li><li>Hinweis auf den örtlichen Notdienst, ohne Diagnose und ohne Behandlungsanweisung</li></ul></div>
+  <div><h2>Was beim Team bleibt</h2><ul><li>Diagnose und Behandlung</li><li>Honorar und Kostenvoranschlag</li><li>Der Entscheid über eine Impfung</li><li>Die Verordnung für die Physiotherapie</li><li>Jedes Gespräch, das das Team selbst führen will</li></ul></div>
+</div>
+<div class="feat"><div><b>Deutsch auf dieser Seite</b><br>Diese Seite antwortet auf Deutsch, in der Sie-Form. Hier gibt es keinen Live-Dolmetscher und keinen Sprachassistenten.</div><div><b>Nur Beispielfakten</b><br>Die Antworten nutzen erfundene Beispielfakten. Das sind nicht die Preise oder Regeln einer echten Praxis, und es ist keine Rechts- oder Medizinberatung.</div><div><b>Ein Mensch würde entscheiden</b><br>In einem beauftragten Gespräch gingen die Angaben an das Team. Diese Schaltflächen senden sie nicht und reservieren nicht.</div></div>
+</main>
+<footer>Beispiel von <a href="https://bollastudio.com" target="_blank" rel="noopener">BOLLA STUDIO</a> · Marcelo Bolla · <a href="mailto:marcelo@bollastudio.com">marcelo@bollastudio.com</a><br>«Musterpraxis» ist erfunden, keine echte Praxis. Die Adresse Musterstrasse 12 und die Nummer 000 000 00 00 sind erfunden. Diese Seite ist kein medizinischer Rat. Es wird nichts reserviert, gespeichert oder gesendet. Diese Seite ist nicht die Website eines Unternehmens. Es ist nur ein Gesprächsbeispiel von BOLLA STUDIO.</footer>
+<script type="application/json" id="demo-pack">
+{"lang":"de","chat":[["in","Guten Tag, nehmen Sie neue Patientinnen und Patienten auf? Ich brauche einen Termin bei der Hausärztin."],["out","Guten Tag. In diesem Beispiel nimmt die Musterpraxis neue Patientinnen und Patienten auf. Ein erster Termin bei der Hausärztin oder beim Hausarzt ist eine Beratung, keine Diagnose auf dieser Seite.\nWelche Tageszeit passt Ihnen?"],["in","Dienstag- oder Donnerstagvormittag."],["out","Als Beispiel notiert: Hausarzt, Dienstag- oder Donnerstagvormittag.\nDie Anmeldung würde mit einem Termin zurückrufen. Diese Seite sendet die Notiz nicht."],["in","A. Muster. Vielen Dank."],["out","Vielen Dank. Nur eine Beispielnotiz. Bringen Sie mit, worum die Anmeldung bittet, zum Beispiel die Karte der Krankenkasse. Von dieser Seite wurde nichts gesendet."]],"rules":[{"id":"emergency","priority":true,"hand":true,"keys":["notfall","notarzt","notaufnahme","bewusstlos","bewusstlosigkeit","atmet nicht","keine luft","atemnot","blutung","blut","blutet","unfall","notruf","feuer","feuerwehr","brand","brennt","herzinfarkt","herzstillstand","schlaganfall","reanimation","vergiftung","brustschmerz","brustschmerzen"],"roots":["notarzt","notaufnahme","bewusstlos","blutung","blut","notruf","atemnot","herzinfarkt","herzstillstand","schlaganfall","vergiftung"],"compounds":["notfall","unfall","feuer","brand","brustschmerz"],"text":"Wenden Sie sich jetzt an den örtlichen Notdienst. Diese Seite gibt keine medizinischen Anweisungen, keine Erste-Hilfe-Schritte und ruft niemanden an. Es wurde nichts gesendet."},{"id":"illness","button":"Ich fühle mich krank. Was soll ich tun?","hand":true,"keys":["krank","krankheit","erkrankt","fieber","husten","schnupfen","schmerzen","schmerz","unwohl","grippe","übelkeit","uebelkeit","durchfall","schwindel"],"roots":["krank","fieber","husten","schnupfen"],"compounds":["schmerz","grippe"],"text":"Es tut mir leid, dass es Ihnen nicht gut geht. Dieses Beispiel kann nicht diagnostizieren und nennt keine Behandlung. Die Notiz würde als dringend markiert, damit die Praxis anruft. Wenn Sie sofort Hilfe brauchen, wenden Sie sich an den örtlichen Notdienst. Von dieser Seite wurde nichts gesendet."},{"id":"hausarzt","button":"Nehmen Sie neue Patientinnen und Patienten auf?","keys":["hausarzt","hausärztin","hausarztes","hausarztmedizin","allgemeinmedizin","neue patienten","neuer patient","neue patientin","patientinnen","patienten"],"compounds":["hausarzt","allgemeinmedizin"],"text":"Ja. In diesem Beispiel nimmt die Musterpraxis neue Patientinnen und Patienten für die Hausarztmedizin auf. Die Anmeldung würde einen Termin vorschlagen. Diese Seite reserviert nicht und sendet nichts."},{"id":"walkin","button":"Kann ich ohne Termin in die Permanence?","keys":["permanence","walk-in","walkin","ohne termin","ohne voranmeldung","laufkundschaft"],"text":"Ja. In diesem Beispiel können Sie während der Permanence ohne Termin kommen. Das ist ein Walk-in, keine garantierte Wartezeit. Akute Gefahr gehört zum örtlichen Notdienst, nicht in dieses Gespräch. Diese Seite hält keinen Platz frei."},{"id":"physio","button":"Brauche ich für die Physiotherapie eine Verordnung?","keys":["physiotherapie","physiotherapeut","physiotherapeutin","physiotherapeuten","physio","verordnung","verordnungen","überweisung","ueberweisung"],"text":"Für die Physiotherapie in diesem Beispiel braucht es in der Regel eine Verordnung der Hausärztin oder des Hausarztes. Ob das in einem echten Fall gilt, entscheidet die Praxis, nicht diese Seite. Es wird nichts reserviert und nichts gesendet."},{"id":"vaccine","button":"Kann ich eine Impfung reservieren?","hand":true,"keys":["impfung","impfungen","impfen","impftermin","vakzin","vakzine","auffrischung","auffrischimpfung"],"compounds":["impfung"],"text":"Eine Impfung lässt sich in diesem Beispiel als Grund notieren. Welche Impfung sinnvoll ist, sagt die Ärztin oder der Arzt nach der Untersuchung. Dieses Beispiel empfiehlt keine Impfung, nennt keinen Impfabstand und reserviert nicht."},{"id":"hours","button":"Wie sind die Öffnungszeiten?","keys":["öffnungszeit","öffnungszeiten","oeffnungszeit","oeffnungszeiten","sprechzeit","sprechzeiten","geöffnet","geoeffnet","geoffnet","offen","geschlossen","schliesst","schliessen","sprechstunde"],"roots":["offnungszeit","oeffnungszeit","sprechzeit","geschlossen"],"text":"Diese Beispielzeiten gelten nur hier. Hausarztmedizin: Montag bis Freitag, 08:00 bis 18:00 Uhr. Permanence und Walk-in: Montag bis Freitag, 08:00 bis 20:00 Uhr, Samstag 09:00 bis 16:00 Uhr. Physiotherapie: Montag bis Freitag, 07:30 bis 19:00 Uhr. Impfungen: nach Vereinbarung in diesen Zeiten. Am Sonntag schliesst die Beispielpraxis. Eine echte Praxis würde ihre eigenen Zeiten nennen. Die erfundene Beispielnummer lautet 000 000 00 00."},{"id":"insurance","button":"Was deckt die Grundversicherung?","hand":true,"keys":["grundversicherung","krankenkasse","krankenkassen","zusatzversicherung","franchise","selbstbehalt","versicherungskarte","versicherung","kassenkarte"],"compounds":["versicherung","krankenkasse","franchise"],"text":"Die Grundversicherung deckt in diesem Beispiel medizinisch notwendige Leistungen nach dem geltenden Tarif. Franchise und Selbstbehalt hängen vom Vertrag ab. Dieses Beispiel nennt keinen Betrag und keine Krankenkasse. Eine Zusatzversicherung ist ein anderer Vertrag. Diese Seite berät nicht dazu und sendet nichts."},{"id":"appointment","hand":true,"keys":["termin","termine","termin vereinbaren","termin reservieren","termin buchen","online termin","terminreservation"],"text":"Ich kann den Wunsch nach einem Termin nur als Beispiel notieren. Diese Seite reserviert nicht, bestätigt keine Uhrzeit und nennt keinen Preis. Die Anmeldung würde das bestätigen."},{"id":"cancel","hand":true,"keys":["absagen","absage","abgesagt","termin absagen","verschieben","verschoben","stornieren","storniert","annullieren","annulliert"],"text":"Einen Termin abzusagen oder zu verschieben bestätigt die Praxis. Dieses Beispiel sagt nichts ab, ändert keine Uhrzeit und nennt keine Gebühr. Es wurde nichts gesendet."},{"id":"call","hand":true,"keys":["anrufen","anruf","telefon","telefonnummer","telefonieren"],"text":"Ein Anruf lässt sich hier nur als Beispiel zeigen. Die Nummer 000 000 00 00 ist erfunden. Diese Seite wählt nicht und verbindet Sie mit niemandem."}],"fallback":"Das ist ein geschriebenes Beispiel, kein Assistent in Echtzeit. Ich habe nur vorbereitete Antworten auf Deutsch für die Beispielfragen. Ich reserviere nicht, ich sende keine Nachrichten, und ich bin nicht mit WhatsApp, einem Terminsystem oder einem Sprachassistenten verbunden. Bitte wählen Sie eine Schaltfläche oder verwenden Sie Wörter aus diesen Fragen.","empty":"Bitte schreiben Sie eine Frage auf Deutsch und wählen Sie dann Senden.","ok":"Nur ein Beispiel: {item} · {date} · {slot}. Es wurde nichts reserviert und nichts gesendet. Diese Seite prüft kein Terminsystem und speichert nicht, was Sie geschrieben haben.","pick":"Bitte wählen Sie zuerst oben ein Datum und eine Zeit.","callNote":"Nur ein Beispiel. Es wird niemand angerufen. Die Nummer 000 000 00 00 ist erfunden und gehört zu keiner Praxis. Diese Seite wählt nicht.","lead":14,"slots":["Vormittag","Mittag","Nachmittag","Abend"],"months":["Jan.","Feb.","März","Apr.","Mai","Juni","Juli","Aug.","Sept.","Okt.","Nov.","Dez."],"dateStyle":"dmy-numeric"}
+</script>
+<script id="sector-demo">
+(function(){
+  var PACK = JSON.parse(document.getElementById("demo-pack").textContent);
+  var chat = document.getElementById("chat");
+  var qr = document.getElementById("qr");
+  function reduceMotion(){
+    return !!(window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches);
+  }
+  function add(t, kind){
+    var e = document.createElement("div");
+    e.className = "m " + (kind === "in" ? "in" : "out") + (kind === "hand" ? " hand" : "");
+    e.textContent = t;
+    chat.appendChild(e);
+    chat.scrollTop = chat.scrollHeight;
+    return e;
+  }
+  function showAnswer(entry){
+    add(entry.text, entry.hand ? "hand" : "out");
+  }
+  function tokensOf(raw){
+    var n = String(raw || "").toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+    return n.match(/[\p{L}\p{N}]+/gu) || [];
+  }
+  function norm(s){
+    return tokensOf(s).join(" ");
+  }
+  function isInflection(rest){
+    if (rest === "") return true;
+    var lang = PACK.lang;
+    if (lang === "et") return /^(?:[aeiou](?:sse|sid|ga|le|lt|st|ks|ni|na|ta|de|te|id|d|t|s|l|n)?|sse|sid|ga|le|lt|st|ks|ni|na|ta|de|te|id|da|d|t|s|l|n)$/.test(rest);
+    if (lang === "de") return /^(?:e|en|er|em|es|ern|n|s|se|isch)$/.test(rest);
+    return /^(?:ing|ies|es|ed|er|est|s|y|d|e)$/.test(rest);
+  }
+  function listed(list, key){
+    var id = tokensOf(key).join(" ");
+    var i;
+    for (i = 0; i < (list || []).length; i++){
+      if (tokensOf(list[i]).join(" ") === id) return true;
+    }
+    return false;
+  }
+  function modeFor(rule, key){
+    if (listed(rule.prefixes, key)) return "prefix";
+    if (listed(rule.compounds, key)) return "compound";
+    if (listed(rule.roots, key)) return "root";
+    return "exact";
+  }
+  function stemAtStart(token, stem){
+    return token.startsWith(stem) && isInflection(token.slice(stem.length));
+  }
+  function tailHit(token, stem){
+    var at = token.lastIndexOf(stem);
+    return at >= 4 && isInflection(token.slice(at + stem.length));
+  }
+  function tokenOk(token, stem, mode){
+    if (token === stem) return true;
+    if (stem.length < 3 || mode === "exact") return false;
+    if (mode === "phrase" || mode === "root") return stemAtStart(token, stem);
+    if (mode === "compound") return stemAtStart(token, stem) || tailHit(token, stem);
+    if (mode === "prefix") return (stem.length >= 4 && token.startsWith(stem)) || tailHit(token, stem);
+    return false;
+  }
+  function keyHit(tokens, key, mode){
+    var kt = tokensOf(key);
+    var span = kt.length;
+    var i, j, ok;
+    if (!span) return false;
+    for (i = 0; i + span <= tokens.length; i++){
+      ok = true;
+      for (j = 0; j < span; j++){
+        if (!tokenOk(tokens[i + j], kt[j], span === 1 ? mode : "phrase")){ ok = false; break; }
+      }
+      if (ok) return true;
+    }
+    return false;
+  }
+  function answerFor(raw){
+    var tokens = tokensOf(raw);
+    if (!tokens.length) return { text: PACK.empty, hand: false, id: "empty" };
+    function best(priority){
+      var found = null, foundLen = 0;
+      PACK.rules.forEach(function(r){
+        if (!!r.priority !== priority) return;
+        (r.keys || []).forEach(function(k){
+          if (!keyHit(tokens, k, modeFor(r, k))) return;
+          var len = tokensOf(k).join(" ").length;
+          if (len > foundLen){ found = r; foundLen = len; }
+        });
+      });
+      return found;
+    }
+    var hit = best(true) || best(false);
+    if (!hit) return { text: PACK.fallback, hand: false, id: "fallback" };
+    return { text: hit.text, hand: !!hit.hand, id: hit.id || "match" };
+  }
+  window.__sectorDemo = { mode: "static-example", lang: PACK.lang, answerFor: answerFor, liveAI: false };
+  function play(i){
+    if (i >= PACK.chat.length) return;
+    var m = PACK.chat[i];
+    var kind = m[0] === "in" ? "in" : (m[0] === "hand" ? "hand" : "out");
+    if (kind === "in"){
+      add(m[1], "in");
+      if (reduceMotion()) play(i + 1); else setTimeout(function(){ play(i + 1); }, 350);
+      return;
+    }
+    if (reduceMotion()){ add(m[1], kind); play(i + 1); return; }
+    var t = add("\u2026", "out");
+    t.setAttribute("aria-hidden", "true");
+    setTimeout(function(){
+      t.remove();
+      add(m[1], kind);
+      setTimeout(function(){ play(i + 1); }, 650);
+    }, 500);
+  }
+  PACK.rules.forEach(function(r){
+    if (!r.button) return;
+    var b = document.createElement("button");
+    b.type = "button";
+    b.className = "qbtn";
+    b.textContent = r.button;
+    b.onclick = function(){
+      add(r.button, "in");
+      if (window.bsTrack && r.id) window.bsTrack("/chat/" + r.id, "example");
+      var entry = { text: r.text, hand: !!r.hand };
+      if (reduceMotion()) showAnswer(entry);
+      else {
+        var t = add("\u2026", "out");
+        t.setAttribute("aria-hidden", "true");
+        setTimeout(function(){ t.remove(); showAnswer(entry); }, 450);
+      }
+    };
+    qr.appendChild(b);
+  });
+  play(0);
+  document.getElementById("ask-form").addEventListener("submit", function(ev){
+    ev.preventDefault();
+    var input = document.getElementById("ask");
+    var q = input.value || "";
+    if (!norm(q)){ showAnswer({ text: PACK.empty, hand: false }); return; }
+    add(q, "in");
+    showAnswer(answerFor(q));
+    input.value = "";
+  });
+  function iso(d){
+    return d.getFullYear() + "-" + String(d.getMonth() + 1).padStart(2, "0") + "-" + String(d.getDate()).padStart(2, "0");
+  }
+  function formatDate(v){
+    var p = v.split("-");
+    var d = Number(p[2]), m = Number(p[1]), y = p[0];
+    if (PACK.dateStyle === "dmy-numeric"){
+      return String(d).padStart(2, "0") + "." + String(m).padStart(2, "0") + "." + y;
+    }
+    return d + " " + PACK.months[m - 1] + " " + y;
+  }
+  var arr = document.getElementById("arr");
+  var today = new Date();
+  arr.min = iso(today);
+  var d0 = new Date();
+  d0.setDate(d0.getDate() + (PACK.lead || 7));
+  arr.value = iso(d0);
+  var slotsEl = document.getElementById("slots");
+  var slot = null;
+  (PACK.slots || []).forEach(function(n){
+    var b = document.createElement("button");
+    b.type = "button";
+    b.textContent = n;
+    b.setAttribute("aria-pressed", "false");
+    b.onclick = function(){
+      [].forEach.call(slotsEl.children, function(x){
+        x.classList.remove("on");
+        x.setAttribute("aria-pressed", "false");
+      });
+      b.classList.add("on");
+      b.setAttribute("aria-pressed", "true");
+      slot = n;
+    };
+    slotsEl.appendChild(b);
+  });
+  document.getElementById("cta").addEventListener("click", function(){
+    var ok = document.getElementById("ok");
+    ok.hidden = false;
+    var v = arr.value;
+    if (!v || !slot){ ok.textContent = PACK.pick; return; }
+    var item = document.getElementById("item").value;
+    ok.textContent = PACK.ok.replace("{item}", item).replace("{date}", formatDate(v)).replace("{slot}", slot);
+    if (window.bsTrack) window.bsTrack("/request/confirm", "example");
+  });
+  var callBtn = document.getElementById("call");
+  if (callBtn) callBtn.addEventListener("click", function(){
+    var note = document.getElementById("call-note");
+    if (note){ note.hidden = false; note.textContent = PACK.callNote || ""; }
+    if (window.bsTrack) window.bsTrack("/call/example", "example");
+  });
+})();
+</script>
+</body></html>
