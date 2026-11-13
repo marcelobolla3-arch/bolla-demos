@@ -325,5 +325,24 @@ if(validAgent(AGENT_ID)){
   if(hint) hint.hidden=true;
 }
 </script>
+<script>
+/* Spanish entry point for the Ambàra voice demo. The agent has an es language preset. */
+COPY.es={...COPY.it,
+ studioKicker:'creada por BOLLA STUDIO',studioPlain:'No es el sitio oficial de Ambàra ni lo gestiona el restaurante.',studioRest:'El teléfono del restaurante, publicado en su web, es +39 340 199 1233. No es el número de BOLLA STUDIO.',
+ eyebrow:'Prueba para hacer en el teléfono',h1:'Hablá con el asistente de Ambàra',lead:'Usá el micrófono del teléfono. El asistente responde con información publicada por Ambàra en su web. Podés pedir una mesa, pero no queda confirmada.',back:'Volver a la demo de WhatsApp, Instagram y Google',
+ howTitle:'Cómo se usa',how1:'Buscá el botón de voz abajo a la derecha.',how2:'Tocá ese botón.',how3:'Tocá «Iniciar conversación».',how4:'Si el teléfono lo pide, permití el micrófono.',how5:'Hablá en español.',how6:'Para terminar, tocá «Finalizar».',mic:'Si no escuchás nada, subí el volumen y revisá el permiso del micrófono.',point:'Tocá el botón de voz',
+ tryTitle:'Cosas que podés preguntar',try1:'Una mesa para el sábado, sin esperar una confirmación',try2:'Horarios, dirección o cómo llegar a las playas mencionadas en la web',try3:'Una alergia o un grupo: debe atenderlo una persona',try4:'La misma pregunta en italiano o en otro idioma',
+ note:'Esta es una prueba. No se realiza ninguna llamada ni se crea una reserva. El enlace Plateform publicado por el restaurante no está conectado aquí. El asistente utiliza la información publicada en la web de Ambàra.',holdTitle:'Voz no disponible',hold:'El asistente de voz no está disponible. No se usa el asistente de otro local ni un audio de reemplazo.',foot:'Demo creada por Marcelo Bolla · BOLLA STUDIO. No es el sitio oficial de Ambàra ni lo gestiona el restaurante.',
+ widget:{...COPY.it.widget,main_label:'Asistente de voz',start_call:'Iniciar conversación',new_call:'Nueva conversación',end_call:'Finalizar',listening_status:'Escuchando',speaking_status:'Hablá para interrumpir',connecting_status:'Conectando',accept_terms:'Aceptar',dismiss_terms:'Cancelar',end_call_confirm:'Finalizar conversación',cancel_end_confirmation:'Cancelar',end_call_confirmation_title:'¿Finalizar la conversación?',end_call_confirmation_description:'El asistente dejará de escuchar. Podés iniciar otra conversación cuando quieras.',mute_microphone:'Silenciar micrófono',user_ended_conversation:'Terminaste la conversación',agent_ended_conversation:'El asistente terminó la conversación'}
+};
+(function(){
+ var langs=document.getElementById('langs');var button=document.createElement('button');button.type='button';button.dataset.l='es';button.textContent='Español';langs.appendChild(button);
+ function setVoiceLanguage(lang){var widget=document.querySelector('elevenlabs-convai');if(widget)widget.setAttribute('override-language',lang);}
+ button.addEventListener('click',function(){apply('es');setVoiceLanguage('es');if(window.bsTrack)window.bsTrack('/ambarra/voice-lang-es','Voice lang es');});
+ langs.querySelectorAll('button[data-l="it"],button[data-l="en"]').forEach(function(b){b.addEventListener('click',function(){setVoiceLanguage(b.dataset.l);});});
+ var requested=new URLSearchParams(location.search).get('lang');
+ if(requested==='es'||(!requested&&(/^es\b/i.test(navigator.language||'')||/\/es\//.test(document.referrer)))){apply('es');setVoiceLanguage('es');}
+})();
+</script>
 </body>
 </html>
