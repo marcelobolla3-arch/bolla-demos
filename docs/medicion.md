@@ -49,7 +49,7 @@ Náutica, náutica-cat, `/es/` y concesionarios siguen metiendo `p` como tramo d
 
 ## Inventario
 
-607 demos cuentan. 383 tienen al menos un uso. 224 solo tienen la visita. 47 redirecciones no cargan el contador. La portada tampoco.
+608 demos cuentan. 384 tienen al menos un uso. 224 solo tienen la visita. 47 redirecciones no cargan el contador. La portada tampoco.
 
 En la columna Visita, `{p}` es la etiqueta saneada y solo se añade cuando existe. `|` separa la ruta sin etiqueta y la ruta con etiqueta cuando `p` es un tramo, no una búsqueda.
 
@@ -107,6 +107,7 @@ En la columna Visita, `{p}` es la etiqueta saneada y solo se añade cuando exist
 | /barber/et/ | /bolla-demo-barber/et/?p={p} | /bolla-demo-barber/et/chat/{id}?p={p} · example; /bolla-demo-barber/et/request/confirm?p={p} · example |
 | /barceloneta-tattoo-studio/ | /bolla-demo-barceloneta-tattoo-studio/?p={p} | solo visita |
 | /bb-il-bolentino-varenna/ | /bolla-bb-il-bolentino-varenna/?p={p} | /bolla-bb-il-bolentino-varenna/opt?p={p} · Opzione; /bolla-bb-il-bolentino-varenna/slot?p={p} · Orario scelto; /bolla-bb-il-bolentino-varenna/confirm?p={p} · Conferma demo; /bolla-bb-il-bolentino-varenna/chat?p={p} · Rivedi chat |
+| /beauty-clinic-cagliari/ | /beauty-clinic-cagliari/?p={p} | "/beauty-clinic-cagliari/chat/"+i?p={p} · example; "/beauty-clinic-cagliari/lang-"+b.dataset.l?p={p} · Lang {…}; /beauty-clinic-cagliari/chat-response?p={p} · chat-response; /beauty-clinic-cagliari/request?p={p} · Richiesta registrata; /beauty-clinic-cagliari/chat-start?p={p} · Chat avviata; /beauty-clinic-cagliari/bolla-tel?p={p} · bolla-tel; /beauty-clinic-cagliari/bolla-web?p={p} · bolla-web; /beauty-clinic-cagliari/cta-whatsapp?p={p} · cta-whatsapp; /beauty-clinic-cagliari/cta-voice?p={p} · cta-voice; /beauty-clinic-cagliari/voice-click?p={p} · voice-click; /beauty-clinic-cagliari/map-open?p={p} · map-open; /beauty-clinic-cagliari/voice-start?p={p} · Chiamata vocale avviata ("+lang+") |
 | /beauty-spa-body-line-py/ | /beauty-spa-body-line-py/?p={p} | solo visita |
 | /belvedere-locarno/ | /belvedere-locarno/?p={p} | /belvedere-locarno/tab/{id}?p={p} · Tab {…} |
 | /bergbahn-ch/de/ | /bolla-demo-bergbahn-ch/de/?p={p} | /bolla-demo-bergbahn-ch/de/chat/{button}?p={p} · script-option; /bolla-demo-bergbahn-ch/de/request/confirm?p={p} · Demo-Anfrage |
