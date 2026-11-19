@@ -135,8 +135,8 @@ footer{max-width:1040px;margin:0 auto;padding:18px 20px calc(120px + env(safe-ar
 <div class="studio"><div class="studio-in">
   <p><span class="pill">DEMO</span><span data-k="studio"></span></p>
   <div class="studio-actions">
-    <a class="btn btn-w" href="tel:+393445240254">Marcelo · +39 344 524 0254</a>
-    <a class="btn btn-o" href="https://bollastudio.com" target="_blank" rel="noopener">bollastudio.com</a>
+    <a class="btn btn-w" href="tel:+393445240254" data-track="/beauty-clinic-cagliari/bolla-tel" data-title="bolla-tel">Marcelo · +39 344 524 0254</a>
+    <a class="btn btn-o" href="https://bollastudio.com" target="_blank" rel="noopener" data-track="/beauty-clinic-cagliari/bolla-web" data-title="bolla-web">bollastudio.com</a>
     <div class="langs" id="langs"><button type="button" data-l="it" class="on">IT</button><button type="button" data-l="en">EN</button><button type="button" data-l="es">ES</button></div>
   </div>
 </div></div>
@@ -150,8 +150,8 @@ footer{max-width:1040px;margin:0 auto;padding:18px 20px calc(120px + env(safe-ar
     <h1 data-h="h1"></h1>
     <p class="lead" data-k="lead"></p>
     <div class="cta">
-      <a class="btn b-wa" href="#chat" data-k="ctaWa"></a>
-      <a class="btn b-ph" href="#voce" data-k="ctaPh"></a>
+      <a class="btn b-wa" href="#chat" data-k="ctaWa" data-track="/beauty-clinic-cagliari/cta-whatsapp" data-title="cta-whatsapp"></a>
+      <a class="btn b-ph" href="#voce" data-k="ctaPh" data-track="/beauty-clinic-cagliari/cta-voice" data-title="cta-voice"></a>
     </div>
   </div>
 </section>
@@ -176,7 +176,7 @@ footer{max-width:1040px;margin:0 auto;padding:18px 20px calc(120px + env(safe-ar
       <div class="card voice" id="voce">
         <h3 data-k="voiceTitle"></h3>
         <p data-k="voiceText"></p>
-        <button class="btn" type="button" id="voiceBtn" data-k="voiceBtn"></button>
+        <button class="btn" type="button" id="voiceBtn" data-k="voiceBtn" data-track="/beauty-clinic-cagliari/voice-click" data-title="voice-click"></button>
         <p class="note" style="margin-top:12px" data-k="voiceNote"></p>
       </div>
       <div class="card staff">
@@ -206,7 +206,7 @@ footer{max-width:1040px;margin:0 auto;padding:18px 20px calc(120px + env(safe-ar
   <p class="note" data-k="svcNote" style="margin-top:12px"></p>
 
   <div class="info">
-    <div class="card"><h3 data-k="iAddr"></h3><p>Viale Regina Margherita 77<br>09124 Cagliari</p><p><a href="https://www.google.com/maps/search/?api=1&query=Beauty+Clinic+Estetica+Sartoriale+Viale+Regina+Margherita+77+Cagliari" target="_blank" rel="noopener" data-k="iMap"></a></p></div>
+    <div class="card"><h3 data-k="iAddr"></h3><p>Viale Regina Margherita 77<br>09124 Cagliari</p><p><a data-track="/beauty-clinic-cagliari/map-open" data-title="map-open" href="https://www.google.com/maps/search/?api=1&query=Beauty+Clinic+Estetica+Sartoriale+Viale+Regina+Margherita+77+Cagliari" target="_blank" rel="noopener" data-k="iMap"></a></p></div>
     <div class="card"><h3 data-k="iHours"></h3><p data-k="iHoursTx"></p><p class="note" data-k="iHoursNote"></p></div>
     <div class="card"><h3 data-k="iCont"></h3><p data-k="iContTx"></p><p class="note" data-k="iContNote"></p></div>
   </div>
@@ -215,7 +215,7 @@ footer{max-width:1040px;margin:0 auto;padding:18px 20px calc(120px + env(safe-ar
 </main>
 <footer>
   <p data-k="foot"></p>
-  <p><a href="tel:+393445240254">+39 344 524 0254</a> · <a href="https://bollastudio.com" target="_blank" rel="noopener">bollastudio.com</a></p>
+  <p><a href="tel:+393445240254" data-track="/beauty-clinic-cagliari/bolla-tel" data-title="bolla-tel">+39 344 524 0254</a> · <a href="https://bollastudio.com" target="_blank" rel="noopener" data-track="/beauty-clinic-cagliari/bolla-web" data-title="bolla-web">bollastudio.com</a></p>
 </footer>
 
 <script>
@@ -305,7 +305,7 @@ function apply(l){lang=COPY[l]?l:"it";var t=COPY[lang];document.documentElement.
  document.querySelectorAll("[data-h]").forEach(function(el){el.innerHTML=t[el.getAttribute("data-h")];});
  document.querySelectorAll("[data-ph]").forEach(function(el){el.placeholder=t[el.getAttribute("data-ph")];});
  document.querySelectorAll("#langs button").forEach(function(b){b.classList.toggle("on",b.dataset.l===lang);});
- var c=document.getElementById("chips");c.innerHTML="";t.chips.forEach(function(x){var b=document.createElement("button");b.type="button";b.textContent=x;b.onclick=function(){send(x);};c.appendChild(b);});
+ var c=document.getElementById("chips");c.innerHTML="";t.chips.forEach(function(x,i){var b=document.createElement("button");b.type="button";b.textContent=x;b.onclick=function(){if(window.bsTrack)window.bsTrack("/beauty-clinic-cagliari/chat/"+i,"example");send(x);};c.appendChild(b);});
  var th=document.querySelector("#staffList table");if(th){th.rows[0].cells[0].textContent=t.thT;th.rows[0].cells[1].textContent=t.thR;}
  var w=document.querySelector("elevenlabs-convai");if(w){w.setAttribute("override-language",lang);w.setAttribute("text-contents",JSON.stringify(t.w));}
 }
@@ -329,7 +329,7 @@ function connect(){
   if(m.type==="ping"){ws.send(JSON.stringify({type:"pong",event_id:m.ping_event.event_id}));return;}
   if(m.type==="conversation_initiation_metadata"){ready=true;setTimeout(function(){pending.forEach(function(p){ws.send(JSON.stringify({type:"user_message",text:p}));});pending=[];},300);return;}
   if(m.type==="agent_response"){var txt=m.agent_response_event.agent_response;
-   typing(false);bubble("bot",txt);capture(txt);
+   typing(false);bubble("bot",txt);capture(txt);if(window.bsTrack&&!body.dataset.resp){body.dataset.resp=1;window.bsTrack("/beauty-clinic-cagliari/chat-response","chat-response");}
    if(!started){started=true;if(waiting>0)typing(true);}else{waiting=Math.max(0,waiting-1);if(waiting>0)typing(true);}}
  };
  ws.onerror=function(){typing(false);sys(COPY[lang].err);};
@@ -350,6 +350,8 @@ function send(text){text=String(text||"").trim();if(!text)return;bubble("me",tex
  if(ws&&ready){ws.send(JSON.stringify({type:"user_message",text:text}));}else{pending.push(text);if(!ws)connect();}}
 document.getElementById("waForm").addEventListener("submit",function(e){e.preventDefault();var i=document.getElementById("waInput");send(i.value);i.value="";});
 resetChat();
+
+document.addEventListener("click",function(e){var a=e.target&&e.target.closest?e.target.closest("[data-track]"):null;if(a&&window.bsTrack)window.bsTrack(a.getAttribute("data-track"),a.getAttribute("data-title"));},true);
 
 /* ---- Voice: ElevenLabs widget with the same agent ---- */
 if(validAgent(AGENT_ID)){
