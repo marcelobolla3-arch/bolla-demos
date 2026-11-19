@@ -50,7 +50,7 @@ main{max-width:1040px;margin:0 auto;padding:30px 20px 40px}
 h2{font-family:"Cormorant Garamond",Georgia,serif;font-weight:500;font-size:36px;line-height:1.1;margin:0 0 8px}
 .sub{color:var(--muted);margin:0 0 20px}
 .grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:24px;align-items:start}
-@media (max-width:860px){.grid{grid-template-columns:1fr}}
+@media (max-width:860px){.grid{grid-template-columns:minmax(0,1fr)}}.grid>*{min-width:0}
 .phone{background:#1d1f1e;border-radius:36px;padding:10px;max-width:400px;width:100%;margin:0 auto;box-shadow:0 22px 48px rgba(47,52,50,.22)}
 .wa{border-radius:27px;overflow:hidden;background:var(--wabg);display:flex;flex-direction:column;height:620px;max-height:80vh}
 .wa-top{background:var(--wa);color:#fff;display:flex;align-items:center;gap:10px;padding:12px 14px}
@@ -247,7 +247,7 @@ var COPY={
   iCont:"Contatti del centro",iContTx:"Appuntamenti 388 736 1832 · Amministrazione 345 710 1370",iContNote:"Numeri pubblicati sul sito. In questa demo nessun messaggio arriva al centro.",
   disclaimer:"Questa è una prova. Non parte nessun messaggio WhatsApp reale, non si effettua nessuna chiamata al centro e non si crea nessun appuntamento. Prezzi, orari e disponibilità vanno sempre confermati dallo staff. Foto e logo dal sito ufficiale beautyclinicstore.com.",
   foot:"Demo creata da Marcelo Bolla · BOLLA STUDIO, Olbia. Non è il sito ufficiale di Beauty Clinic – Estetica Sartoriale e non è gestita dal centro.",
-  w:{main_label:"Giulia · Beauty Clinic",start_call:"Avvia la chiamata",end_call:"Termina",new_call:"Nuova chiamata",listening_status:"In ascolto",speaking_status:"Parla per interrompere",connecting_status:"Connessione"}},
+  w:{main_label:"Giulia · Beauty Clinic",start_call:"Avvia la chiamata",end_call:"Termina",new_call:"Nuova chiamata",listening_status:"In ascolto",speaking_status:"Parla per interrompere",connecting_status:"Connessione",accept_terms:"Accetta",dismiss_terms:"Annulla",send_message:"Invia",mute_microphone:"Disattiva microfono",input_label:"Messaggio di testo",input_placeholder:"Scrivi un messaggio...",reconnecting_status:"Riconnessione...",user_ended_conversation:"Hai terminato la conversazione",copied:"Copiato!",collapse:"Riduci",expand:"Espandi"}},
  en:{studio:"Demo built by BOLLA STUDIO for Beauty Clinic – Estetica Sartoriale. This is not the clinic's official website.",
   h1:"Every message answered <em>in seconds</em>",
   lead:"Giulia, Beauty Clinic's digital assistant, answers on WhatsApp and on the phone in Italian, English and Spanish, gives price-list information and collects appointment requests for the team.",
@@ -272,7 +272,7 @@ var COPY={
   iCont:"Clinic contacts",iContTx:"Appointments 388 736 1832 · Administration 345 710 1370",iContNote:"Numbers published on the website. In this demo no message reaches the clinic.",
   disclaimer:"This is a demo. No real WhatsApp message is sent, no call reaches the clinic and no appointment is created. Prices, hours and availability must always be confirmed by the team. Photos and logo from the official site beautyclinicstore.com.",
   foot:"Demo built by Marcelo Bolla · BOLLA STUDIO, Olbia. This is not Beauty Clinic – Estetica Sartoriale's official website and the clinic does not run it.",
-  w:{main_label:"Giulia · Beauty Clinic",start_call:"Start the call",end_call:"End",new_call:"New call",listening_status:"Listening",speaking_status:"Speak to interrupt",connecting_status:"Connecting"}},
+  w:{main_label:"Giulia · Beauty Clinic",start_call:"Start the call",end_call:"End",new_call:"New call",listening_status:"Listening",speaking_status:"Speak to interrupt",connecting_status:"Connecting",accept_terms:"Accept",dismiss_terms:"Cancel",send_message:"Send",mute_microphone:"Mute microphone",input_label:"Text message",input_placeholder:"Type a message...",reconnecting_status:"Reconnecting...",user_ended_conversation:"You ended the conversation",copied:"Copied!",collapse:"Collapse",expand:"Expand"}},
  es:{studio:"Demo creada por BOLLA STUDIO para Beauty Clinic – Estetica Sartoriale. No es el sitio oficial del centro.",
   h1:"Cada mensaje recibe respuesta <em>en segundos</em>",
   lead:"Giulia, la asistente digital de Beauty Clinic, responde por WhatsApp y por teléfono en italiano, inglés y español, da la información de la lista de precios y recoge las solicitudes de cita para el equipo.",
@@ -297,7 +297,7 @@ var COPY={
   iCont:"Contactos del centro",iContTx:"Citas 388 736 1832 · Administración 345 710 1370",iContNote:"Números publicados en el sitio. En esta demo ningún mensaje llega al centro.",
   disclaimer:"Esto es una prueba. No se envía ningún mensaje real de WhatsApp, no se hace ninguna llamada al centro y no se crea ninguna cita. Precios, horarios y disponibilidad siempre los confirma el equipo. Fotos y logo del sitio oficial beautyclinicstore.com.",
   foot:"Demo creada por Marcelo Bolla · BOLLA STUDIO, Olbia. No es el sitio oficial de Beauty Clinic – Estetica Sartoriale y el centro no la gestiona.",
-  w:{main_label:"Giulia · Beauty Clinic",start_call:"Iniciar la llamada",end_call:"Terminar",new_call:"Nueva llamada",listening_status:"Escuchando",speaking_status:"Habla para interrumpir",connecting_status:"Conectando"}}
+  w:{main_label:"Giulia · Beauty Clinic",start_call:"Iniciar la llamada",end_call:"Terminar",new_call:"Nueva llamada",listening_status:"Escuchando",speaking_status:"Habla para interrumpir",connecting_status:"Conectando",accept_terms:"Aceptar",dismiss_terms:"Cancelar",send_message:"Enviar",mute_microphone:"Silenciar micrófono",input_label:"Mensaje de texto",input_placeholder:"Escribe un mensaje...",reconnecting_status:"Reconectando...",user_ended_conversation:"Has terminado la conversación",copied:"¡Copiado!",collapse:"Contraer",expand:"Ampliar"}}
 };
 var lang="it";
 function apply(l){lang=COPY[l]?l:"it";var t=COPY[lang];document.documentElement.lang=lang;
