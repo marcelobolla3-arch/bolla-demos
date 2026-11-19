@@ -1,0 +1,370 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#5fae92">
+<meta name="robots" content="noindex, nofollow">
+<title>Assistente per Beauty Clinic – Estetica Sartoriale · Cagliari · Demo BOLLA STUDIO</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%2383ceaf'/%3E%3Ctext x='16' y='21' text-anchor='middle' font-size='13' fill='white' font-family='Georgia'%3EBC%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&family=Jost:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#2f3432;--muted:#6f7a74;--line:#e3ebe7;--bg:#f7faf8;--mint:#83ceaf;--mint2:#5fae92;--mintbg:#eaf6f0;--taupe:#8d998a;--wa:#075e54;--wa2:#25d366;--wabg:#ece5dd}
+*{box-sizing:border-box}html,body{margin:0}html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--ink);font:17px/1.55 "Jost",-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;-webkit-font-smoothing:antialiased}
+a{color:var(--mint2)}
+.serif{font-family:"Cormorant Garamond",Georgia,"Times New Roman",serif}
+.studio{background:#2f3432;color:#f2f5f4;padding:10px 16px}
+.studio-in{max-width:1040px;margin:0 auto;display:flex;flex-wrap:wrap;gap:8px 14px;align-items:center;justify-content:space-between}
+.studio p{margin:0;font-size:14.5px;line-height:1.4}
+.pill{display:inline-block;background:var(--mint);color:#1f2a25;font-size:11.5px;letter-spacing:.1em;font-weight:600;padding:4px 9px;border-radius:999px;margin-right:6px}
+.studio-actions{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:42px;padding:0 18px;border-radius:999px;font-weight:500;text-decoration:none;font-size:15px;border:0;cursor:pointer;font-family:inherit;letter-spacing:.01em}
+.btn-w{background:#fff;color:#2f3432}.btn-o{border:1px solid rgba(255,255,255,.45);color:#fff;background:transparent}
+.langs{display:flex;gap:4px}.langs button{border:1px solid rgba(255,255,255,.4);background:transparent;color:#fff;border-radius:999px;padding:5px 11px;font-size:13.5px;cursor:pointer;min-height:36px;font-family:inherit}
+.langs button.on{background:#fff;color:#2f3432}
+.hero{position:relative;height:min(78vh,640px);min-height:440px;overflow:hidden;color:#fff;background:#cfe7dc}
+.hero .slide{position:absolute;inset:0;background-size:cover;background-position:center;opacity:0;animation:kb 24s infinite}
+.hero .slide:nth-child(1){background-image:url(img/rose.jpg);animation-delay:0s}
+.hero .slide:nth-child(2){background-image:url(img/viso.jpg);animation-delay:8s}
+.hero .slide:nth-child(3){background-image:url(img/tulipani.jpg);animation-delay:16s}
+@keyframes kb{0%{opacity:0;transform:scale(1.03)}5%{opacity:1}33%{opacity:1}39%{opacity:0;transform:scale(1.13)}100%{opacity:0}}
+.hero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(40,52,47,.05) 0%,rgba(40,52,47,.2) 40%,rgba(32,44,39,.82) 100%)}
+.stitch{position:absolute;z-index:1;inset:14px;border:1.5px dashed rgba(255,255,255,.55);border-radius:22px;pointer-events:none}
+.hero-in{position:absolute;z-index:2;left:0;right:0;bottom:0;max-width:1040px;margin:0 auto;padding:0 26px 36px}
+.logo{width:74px;height:74px;border-radius:50%;background:#fff url(img/logo.jpg) center/76% no-repeat;box-shadow:0 6px 18px rgba(0,0,0,.18);margin-bottom:14px;animation:up 1s ease-out both}
+.eyebrow{font-size:12.5px;letter-spacing:.22em;text-transform:uppercase;opacity:.92;margin:0 0 8px}
+.hero h1{font-family:"Cormorant Garamond",Georgia,serif;font-weight:500;font-size:clamp(36px,6.4vw,62px);line-height:1.02;margin:0 0 12px;animation:up 1.2s ease-out both}
+.hero h1 em{font-style:italic;color:#d4f1e4}
+.hero p.lead{font-size:clamp(16.5px,2.3vw,19px);max-width:640px;margin:0 0 20px;animation:up 1.2s .25s ease-out both}
+.cta{display:flex;gap:10px;flex-wrap:wrap;animation:up 1.2s .5s ease-out both}
+.cta .btn{min-height:50px;font-size:16px}.b-wa{background:var(--wa2);color:#073b2f}.b-ph{background:#fff;color:#2f3432}
+@keyframes up{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){.hero .slide{animation:none}.hero .slide:nth-child(1){opacity:1}.hero h1,.hero p.lead,.cta,.logo{animation:none}}
+.pain{background:var(--mintbg);border-bottom:1px solid var(--line)}
+.pain-in{max-width:1040px;margin:0 auto;padding:18px 22px;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.pain-in div{font-size:15.5px}.pain-in b{display:block;font-family:"Cormorant Garamond",Georgia,serif;font-size:28px;font-weight:500;color:var(--mint2);line-height:1.1}
+@media (max-width:700px){.pain-in{grid-template-columns:1fr;gap:8px}}
+main{max-width:1040px;margin:0 auto;padding:30px 20px 40px}
+h2{font-family:"Cormorant Garamond",Georgia,serif;font-weight:500;font-size:36px;line-height:1.1;margin:0 0 8px}
+.sub{color:var(--muted);margin:0 0 20px}
+.grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:24px;align-items:start}
+@media (max-width:860px){.grid{grid-template-columns:1fr}}
+.phone{background:#1d1f1e;border-radius:36px;padding:10px;max-width:400px;width:100%;margin:0 auto;box-shadow:0 22px 48px rgba(47,52,50,.22)}
+.wa{border-radius:27px;overflow:hidden;background:var(--wabg);display:flex;flex-direction:column;height:620px;max-height:80vh}
+.wa-top{background:var(--wa);color:#fff;display:flex;align-items:center;gap:10px;padding:12px 14px}
+.wa-av{width:38px;height:38px;border-radius:50%;background:#fff url(img/logo.jpg) center/86% no-repeat;flex:0 0 38px}
+.wa-top b{display:block;font-size:15.5px;font-weight:500}.wa-top small{font-size:12.5px;opacity:.85}
+.wa-body{flex:1;overflow-y:auto;padding:12px 10px;display:flex;flex-direction:column;gap:6px}
+.msg{max-width:84%;padding:7px 10px 6px;border-radius:9px;font-size:15.5px;line-height:1.38;white-space:pre-wrap;word-wrap:break-word;box-shadow:0 1px .5px rgba(0,0,0,.13);position:relative;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif}
+.msg .t{display:block;text-align:right;font-size:11px;color:#667781;margin-top:2px}
+.me{align-self:flex-end;background:#d9fdd3}.bot{align-self:flex-start;background:#fff}
+.sys{align-self:center;background:#fff7d6;color:#54480b;font-size:13px;border-radius:8px;padding:5px 10px;text-align:center;max-width:92%}
+.typing{align-self:flex-start;background:#fff;border-radius:9px;padding:9px 12px}
+.typing i{display:inline-block;width:7px;height:7px;margin:0 2px;border-radius:50%;background:#9aa;animation:bl 1s infinite}.typing i:nth-child(2){animation-delay:.2s}.typing i:nth-child(3){animation-delay:.4s}
+@keyframes bl{0%,100%{opacity:.25}50%{opacity:1}}
+.chips{display:flex;gap:6px;overflow-x:auto;padding:6px 8px;background:#f0f2f5}
+.chips button{flex:0 0 auto;border:1px solid #c9d6d0;background:#fff;border-radius:999px;padding:6px 11px;font-size:13.5px;cursor:pointer;color:#2f3432;font-family:inherit}
+.wa-in{display:flex;gap:8px;padding:8px;background:#f0f2f5}
+.wa-in input{flex:1;border:0;border-radius:22px;padding:11px 14px;font-size:16px;min-width:0;font-family:inherit}
+.wa-in button{width:46px;height:46px;border-radius:50%;border:0;background:var(--wa);color:#fff;font-size:20px;cursor:pointer;flex:0 0 46px}
+.card{background:#fff;border:1px solid var(--line);border-radius:20px;padding:18px 20px;margin-bottom:16px}
+.card h3{margin:0 0 8px;font-size:19px;font-weight:500}
+.card ol,.card ul{margin:0;padding-left:20px}.card li{margin:0 0 6px}
+.voice{background:linear-gradient(135deg,#5fae92,#83ceaf);color:#fff;border:0;position:relative;overflow:hidden}
+.voice::before{content:"";position:absolute;inset:8px;border:1.5px dashed rgba(255,255,255,.55);border-radius:14px;pointer-events:none}
+.voice p{margin:0 0 12px;position:relative}.voice h3{position:relative;font-family:"Cormorant Garamond",Georgia,serif;font-size:27px}
+.voice .btn{background:#fff;color:#2f3432;min-height:50px;position:relative}
+.voice .note{color:#f2fbf7!important;position:relative}
+.staff h3{display:flex;align-items:center;gap:8px}.dot{width:9px;height:9px;border-radius:50%;background:var(--mint);box-shadow:0 0 0 4px var(--mintbg)}
+.staff table{width:100%;border-collapse:collapse;font-size:14.5px}.staff td,.staff th{border-bottom:1px solid var(--line);padding:7px 4px;text-align:left;vertical-align:top}
+.staff th{font-weight:500;color:var(--muted);font-size:13px;text-transform:uppercase;letter-spacing:.06em}
+.staff .tag{display:inline-block;background:var(--mintbg);color:#2d6b55;border-radius:999px;padding:1px 8px;font-size:12px;margin-bottom:3px}
+.staff .empty{color:var(--muted);font-size:15px}
+.flash{animation:fl 1.6s ease-out}@keyframes fl{from{background:#d4f1e4}to{background:transparent}}
+.svc{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;margin-top:6px}
+@media (max-width:860px){.svc{grid-template-columns:1fr}}
+.sv{background:#fff;border:1px solid var(--line);border-radius:20px;overflow:hidden}
+.sv .ph{height:170px;background-size:cover;background-position:center}
+.sv .tx{padding:14px 16px 16px}.sv h3{margin:0 0 6px;font-family:"Cormorant Garamond",Georgia,serif;font-size:25px;font-weight:500}
+.sv ul{list-style:none;margin:0;padding:0;font-size:15px}.sv li{display:flex;justify-content:space-between;gap:10px;border-bottom:1px dashed var(--line);padding:5px 0}.sv li span:last-child{white-space:nowrap;color:#2d6b55;font-weight:500}
+.info{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;margin:26px 0 8px}
+@media (max-width:860px){.info{grid-template-columns:1fr}}
+.info .card{margin:0}.info p{margin:0 0 4px;font-size:15.5px}
+.strip{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin:26px 0}
+.strip div{height:140px;border-radius:16px;background-size:cover;background-position:center}
+@media (max-width:640px){.strip{grid-template-columns:repeat(2,1fr)}.strip div{height:110px}}
+.note{font-size:14.5px;color:var(--muted);line-height:1.5}
+footer{max-width:1040px;margin:0 auto;padding:18px 20px calc(120px + env(safe-area-inset-bottom));border-top:1px solid var(--line);font-size:15px;color:#4c5551}
+</style>
+<!--
+  Demo for Beauty Clinic – Estetica Sartoriale (Cagliari) prospect only. Built by BOLLA STUDIO.
+  AGENT_ID is this prospect's own ElevenLabs agent. Do not paste another client's id.
+  Chat: same agent in text-only mode over the public ElevenLabs conversation websocket (no real WhatsApp message is sent).
+  GoatCounter: page /beauty-clinic-cagliari (optional ?p=). ?internal=1 sets skipgc and loads no counter.
+-->
+<script>
+(function(){
+ var BASE='/beauty-clinic-cagliari';
+ var m=(location.search+location.hash).match(/[?&#]internal=([01])/);
+ var mo=(location.search+location.hash).match(/[?&#]interno=([01])/);
+ var bollaOff=false;
+ function bollaCookie(on){try{var secure="";try{if(location.protocol==="https:")secure="; Secure";}catch(e){}document.cookie=on?"bolla_internal=1; Path=/; Max-Age=34560000; SameSite=Lax"+secure:"bolla_internal=; Path=/; Max-Age=0; SameSite=Lax";}catch(e){}}
+ function bollaStore(on){try{if(on)localStorage.setItem("skipgc","t");else localStorage.removeItem("skipgc");}catch(e){}bollaCookie(on);}
+ try{var qh=location.search+location.hash;var ia=m?qh.lastIndexOf("internal="):-1;var io=mo?qh.lastIndexOf("interno="):-1;if(ia>=0||io>=0){var bollaOn=(io>ia?mo[1]:m[1])==="1";bollaOff=!bollaOn;bollaStore(bollaOn);}}catch(e){}
+ var internal=false;try{internal=localStorage.getItem("skipgc")==="t";}catch(e){}
+ try{if(!internal&&/(?:^|; )bolla_internal=1(?:;|$)/.test(document.cookie||"")){internal=true;try{localStorage.setItem("skipgc","t");}catch(e){}}else if(internal)bollaCookie(true);}catch(e){}
+ var bollaAudit="";try{var bollaPm=location.search.match(/[?&]p=([^&#]*)/)||location.search.match(/[?&]link_id=([^&#]*)/);if(bollaPm)bollaAudit=decodeURIComponent(bollaPm[1]).toLowerCase().replace(/[^a-z0-9-]/g,"").slice(0,60);}catch(e){}if(bollaAudit.indexOf("bmaudit-")===0){internal=true;if(!bollaOff)bollaStore(true);}
+ var sm=location.search.match(/[?&]p=([^&#]*)/);
+ var tag=sm?decodeURIComponent(sm[1]).toLowerCase().replace(/[^a-z0-9-]/g,"").slice(0,60):"";
+ var q=[]; window.bsTrack=function(sub,title){ if(internal) return;
+   var ep=sub+(tag && sub.indexOf("?p=")<0 ? "?p="+tag : "");
+   if(window.goatcounter&&window.goatcounter.count) window.goatcounter.count({path:ep,title:title||sub,event:true}); else q.push([ep,title||sub]); };
+ if(internal) return;
+ window.goatcounter={no_onload:true};
+ var s=document.createElement("script"); s.async=true; s.src="https://gc.zgo.at/count.js";
+ s.setAttribute("data-goatcounter","https://bollastudio.goatcounter.com/count");
+ s.onload=function(){ try{ window.goatcounter.count({path:BASE+'/'+(tag?'?p='+tag:''),title:'Beauty Clinic Cagliari demo'});
+   q.forEach(function(e){window.goatcounter.count({path:e[0],title:e[1],event:true});}); q=[]; }catch(e){} };
+ document.head.appendChild(s);
+})();
+</script>
+</head>
+<body>
+<div class="studio"><div class="studio-in">
+  <p><span class="pill">DEMO</span><span data-k="studio"></span></p>
+  <div class="studio-actions">
+    <a class="btn btn-w" href="tel:+393445240254">Marcelo · +39 344 524 0254</a>
+    <a class="btn btn-o" href="https://bollastudio.com" target="_blank" rel="noopener">bollastudio.com</a>
+    <div class="langs" id="langs"><button type="button" data-l="it" class="on">IT</button><button type="button" data-l="en">EN</button><button type="button" data-l="es">ES</button></div>
+  </div>
+</div></div>
+
+<section class="hero" aria-label="Beauty Clinic – Estetica Sartoriale">
+  <div class="slide"></div><div class="slide"></div><div class="slide"></div>
+  <div class="stitch" aria-hidden="true"></div>
+  <div class="hero-in">
+    <div class="logo" role="img" aria-label="Beauty Clinic logo"></div>
+    <p class="eyebrow">Beauty Clinic · Estetica Sartoriale · Cagliari</p>
+    <h1 data-h="h1"></h1>
+    <p class="lead" data-k="lead"></p>
+    <div class="cta">
+      <a class="btn b-wa" href="#chat" data-k="ctaWa"></a>
+      <a class="btn b-ph" href="#voce" data-k="ctaPh"></a>
+    </div>
+  </div>
+</section>
+
+<div class="pain"><div class="pain-in">
+  <div><b data-k="p1b"></b><span data-k="p1"></span></div>
+  <div><b>IT · EN · ES</b><span data-k="p2"></span></div>
+  <div><b>24/7</b><span data-k="p3"></span></div>
+</div></div>
+
+<main>
+  <h2 id="chat" data-k="chatTitle"></h2>
+  <p class="sub" data-k="chatSub"></p>
+  <div class="grid">
+    <div class="phone"><div class="wa">
+      <div class="wa-top"><div class="wa-av" aria-hidden="true"></div><div><b>Beauty Clinic · Estetica Sartoriale</b><small id="waStatus" data-k="online"></small></div></div>
+      <div class="wa-body" id="waBody" aria-live="polite"></div>
+      <div class="chips" id="chips"></div>
+      <form class="wa-in" id="waForm" autocomplete="off"><input id="waInput" type="text" maxlength="400" data-ph="inputPh"><button type="submit" aria-label="Send">➤</button></form>
+    </div></div>
+    <div>
+      <div class="card voice" id="voce">
+        <h3 data-k="voiceTitle"></h3>
+        <p data-k="voiceText"></p>
+        <button class="btn" type="button" id="voiceBtn" data-k="voiceBtn"></button>
+        <p class="note" style="margin-top:12px" data-k="voiceNote"></p>
+      </div>
+      <div class="card staff">
+        <h3><span class="dot"></span><span data-k="staffTitle"></span></h3>
+        <p class="note" data-k="staffNote"></p>
+        <div id="staffList"><p class="empty" data-k="staffEmpty"></p></div>
+      </div>
+      <div class="card">
+        <h3 data-k="howTitle"></h3>
+        <ol><li data-k="how1"></li><li data-k="how2"></li><li data-k="how3"></li><li data-k="how4"></li></ol>
+      </div>
+    </div>
+  </div>
+
+  <div class="strip" aria-hidden="true"><div style="background-image:url(img/viso.jpg)"></div><div style="background-image:url(img/rose.jpg)"></div><div style="background-image:url(img/dermo.jpg)"></div><div style="background-image:url(img/tulipani.jpg)"></div></div>
+
+  <h2 data-k="svcTitle"></h2>
+  <p class="sub" data-k="svcSub"></p>
+  <div class="svc">
+    <div class="sv"><div class="ph" style="background-image:url(img/trattamento.jpg)"></div><div class="tx"><h3 data-k="s1"></h3>
+      <ul><li><span data-k="s1a"></span><span>70 €</span></li><li><span data-k="s1b"></span><span>180 €</span></li><li><span data-k="s1c"></span><span>250 €</span></li><li><span data-k="s1d"></span><span>80 €</span></li><li><span data-k="s1e"></span><span>160 €</span></li><li><span data-k="s1f"></span><span>350 €</span></li></ul></div></div>
+    <div class="sv"><div class="ph" style="background-image:url(img/tulipani.jpg)"></div><div class="tx"><h3 data-k="s2"></h3>
+      <ul><li><span data-k="s2a"></span><span>9 €</span></li><li><span data-k="s2b"></span><span>12 €</span></li><li><span data-k="s2c"></span><span>15 €</span></li><li><span data-k="s2d"></span><span>45 €</span></li><li><span data-k="s2e"></span><span>60 €</span></li></ul></div></div>
+    <div class="sv"><div class="ph" style="background-image:url(img/prodotti.jpg)"></div><div class="tx"><h3 data-k="s3"></h3>
+      <ul><li><span>Oxygeneo</span><span>180 €</span></li><li><span data-k="s3a"></span><span>57 €</span></li><li><span data-k="s3b"></span><span>70 €</span></li><li><span data-k="s3c"></span><span>80 €</span></li><li><span data-k="s3d"></span><span>700 €</span></li></ul></div></div>
+  </div>
+  <p class="note" data-k="svcNote" style="margin-top:12px"></p>
+
+  <div class="info">
+    <div class="card"><h3 data-k="iAddr"></h3><p>Viale Regina Margherita 77<br>09124 Cagliari</p><p><a href="https://www.google.com/maps/search/?api=1&query=Beauty+Clinic+Estetica+Sartoriale+Viale+Regina+Margherita+77+Cagliari" target="_blank" rel="noopener" data-k="iMap"></a></p></div>
+    <div class="card"><h3 data-k="iHours"></h3><p data-k="iHoursTx"></p><p class="note" data-k="iHoursNote"></p></div>
+    <div class="card"><h3 data-k="iCont"></h3><p data-k="iContTx"></p><p class="note" data-k="iContNote"></p></div>
+  </div>
+
+  <p class="note" data-k="disclaimer" style="margin-top:22px"></p>
+</main>
+<footer>
+  <p data-k="foot"></p>
+  <p><a href="tel:+393445240254">+39 344 524 0254</a> · <a href="https://bollastudio.com" target="_blank" rel="noopener">bollastudio.com</a></p>
+</footer>
+
+<script>
+var AGENT_ID="agent_3801m7saffa4emnvnkkckjzn8nf3";
+var FORBIDDEN_AGENT={"agent_3101m5z30nvbf06rvwp6def0k85b":1,"agent_6201m6q47bszfaz93zk0zaxrvbdb":1};
+function validAgent(id){id=String(id||"");return /^agent_[a-z0-9]+$/i.test(id)&&!FORBIDDEN_AGENT[id.toLowerCase()];}
+var COPY={
+ it:{studio:"Demo creata da BOLLA STUDIO per Beauty Clinic – Estetica Sartoriale. Non è il sito ufficiale del centro.",
+  h1:"Ogni messaggio riceve risposta <em>in pochi secondi</em>",
+  lead:"Giulia, l'assistente digitale di Beauty Clinic, risponde su WhatsApp e al telefono in italiano, inglese e spagnolo, dà le informazioni del listino e raccoglie le richieste di appuntamento per lo staff.",
+  ctaWa:"Prova su WhatsApp",ctaPh:"Prova una chiamata",
+  p1b:"Secondi, non giorni",p1:"Chi vuole prenotare un'epilazione riceve subito una risposta, invece di aspettare.",
+  p2:"Riconosce la lingua di chi scrive e risponde nella stessa lingua.",
+  p3:"La sera, nel weekend e mentre siete in cabina con una cliente.",
+  chatTitle:"Scrivi come farebbe una cliente",chatSub:"È l'assistente vero, in modalità testo. Prova a prenotare un'epilazione laser o con la cera, a chiedere un prezzo o gli orari. Puoi scrivere anche in inglese o in spagnolo.",
+  online:"online",inputPh:"Scrivi un messaggio",
+  chips:["Vorrei prenotare l'epilazione laser alle gambe","Quanto costa la ceretta completa?","Siete aperti il sabato?","Hola, ¿puedo reservar una depilación de axilas?","Hi! How much is laser hair removal?"],
+  sys:"Prova dimostrativa: nessun messaggio WhatsApp reale viene inviato e nessun appuntamento viene creato.",
+  connecting:"sta scrivendo…",err:"Connessione non riuscita. Riprova tra poco.",
+  voiceTitle:"Chiama il centro",voiceText:"Tocca il pulsante, consenti il microfono e parla come una cliente che telefona per prenotare. Giulia risponde con una voce naturale, anche in inglese e in spagnolo.",voiceBtn:"Avvia la chiamata di prova",voiceNote:"In basso a destra compare il riquadro della chiamata. Per chiudere tocca «Termina».",
+  staffTitle:"Pannello staff · richieste di appuntamento",staffNote:"Quando l'assistente registra una richiesta, qui compare il riepilogo, come lo riceverebbe lo staff.",staffEmpty:"Ancora nessuna richiesta. Prova a prenotare nella chat.",thT:"Ora",thR:"Richiesta",
+  howTitle:"Come funziona nella realtà",how1:"La cliente scrive su WhatsApp o chiama il numero del centro.",how2:"Giulia risponde subito, nella sua lingua, con le informazioni del centro e del listino.",how3:"Raccoglie trattamento, giorno, orario, nome e telefono e li passa allo staff.",how4:"Lo staff conferma l'appuntamento quando ha un momento libero. Nessuna richiesta persa.",
+  svcTitle:"Cosa sa già Giulia",svcSub:"Alcuni prezzi del listino pubblicato nello shop online del sito. Giulia conosce il listino completo.",
+  s1:"Epilazione laser",s1a:"Ascelle · donna",s1b:"Gambe · donna",s1c:"Total body · donna",s1d:"Ascelle · uomo",s1e:"Schiena alta · uomo",s1f:"Total body · uomo",
+  s2:"Epilazione con cera",s2a:"Gambe",s2b:"Inguine integrale",s2c:"Sopracciglia (forma)",s2d:"Cera completa · donna",s2e:"Cera completa · uomo",
+  s3:"Viso, corpo e dermopigmentazione",s3a:"Giornata viso",s3b:"Peeling enzimatico",s3c:"Massaggio relax",s3d:"Sopracciglia dermopigmentate (1ª + 2ª seduta)",
+  svcNote:"Prezzi per seduta o zona, presi dal listino pubblicato sul sito beautyclinicstore.com: il prezzo finale lo conferma sempre lo staff. Durata e numero di sedute si definiscono in consulenza.",
+  iAddr:"Dove siamo",iMap:"Apri in Google Maps",iHours:"Orari",iHoursTx:"Lunedì–venerdì 9:00–19:00 · Sabato e domenica chiuso",iHoursNote:"Dalla scheda Google, da confermare.",
+  iCont:"Contatti del centro",iContTx:"Appuntamenti 388 736 1832 · Amministrazione 345 710 1370",iContNote:"Numeri pubblicati sul sito. In questa demo nessun messaggio arriva al centro.",
+  disclaimer:"Questa è una prova. Non parte nessun messaggio WhatsApp reale, non si effettua nessuna chiamata al centro e non si crea nessun appuntamento. Prezzi, orari e disponibilità vanno sempre confermati dallo staff. Foto e logo dal sito ufficiale beautyclinicstore.com.",
+  foot:"Demo creata da Marcelo Bolla · BOLLA STUDIO, Olbia. Non è il sito ufficiale di Beauty Clinic – Estetica Sartoriale e non è gestita dal centro.",
+  w:{main_label:"Giulia · Beauty Clinic",start_call:"Avvia la chiamata",end_call:"Termina",new_call:"Nuova chiamata",listening_status:"In ascolto",speaking_status:"Parla per interrompere",connecting_status:"Connessione"}},
+ en:{studio:"Demo built by BOLLA STUDIO for Beauty Clinic – Estetica Sartoriale. This is not the clinic's official website.",
+  h1:"Every message answered <em>in seconds</em>",
+  lead:"Giulia, Beauty Clinic's digital assistant, answers on WhatsApp and on the phone in Italian, English and Spanish, gives price-list information and collects appointment requests for the team.",
+  ctaWa:"Try on WhatsApp",ctaPh:"Try a phone call",
+  p1b:"Seconds, not days",p1:"Anyone who wants to book hair removal gets an answer right away instead of waiting.",
+  p2:"It recognises the client's language and replies in the same language.",
+  p3:"In the evening, at weekends and while you are with a client.",
+  chatTitle:"Write like a client would",chatSub:"This is the real assistant in text mode. Try booking laser or wax hair removal, or ask for a price or opening hours. Italian and Spanish work too.",
+  online:"online",inputPh:"Type a message",
+  chips:["Hi! I'd like to book laser hair removal for my legs","How much is a full body wax?","Are you open on Saturday?","Vorrei prenotare una ceretta","Hola, ¿cuánto cuesta el láser de axilas?"],
+  sys:"Demo: no real WhatsApp message is sent and no appointment is created.",
+  connecting:"typing…",err:"Connection failed. Please try again shortly.",
+  voiceTitle:"Call the clinic",voiceText:"Tap the button, allow the microphone and speak like a client calling to book. Giulia answers with a natural voice, in Italian and Spanish too.",voiceBtn:"Start the test call",voiceNote:"A call box appears at the bottom right. Tap «End» to finish.",
+  staffTitle:"Staff panel · appointment requests",staffNote:"When the assistant registers a request, the summary appears here, as the team would receive it.",staffEmpty:"No requests yet. Try booking in the chat.",thT:"Time",thR:"Request",
+  howTitle:"How it works for real",how1:"The client writes on WhatsApp or calls the clinic's number.",how2:"Giulia answers instantly, in the client's language, with the clinic's information and prices.",how3:"She collects treatment, day, time, name and phone and passes them to the team.",how4:"The team confirms the appointment when they have a free moment. No request is lost.",
+  svcTitle:"What Giulia already knows",svcSub:"Some prices from the list published in the website's online shop. Giulia knows the full list.",
+  s1:"Laser hair removal",s1a:"Underarms · women",s1b:"Legs · women",s1c:"Total body · women",s1d:"Underarms · men",s1e:"Upper back · men",s1f:"Total body · men",
+  s2:"Wax hair removal",s2a:"Legs",s2b:"Full bikini",s2c:"Eyebrows (shaping)",s2d:"Full wax · women",s2e:"Full wax · men",
+  s3:"Face, body and permanent make-up",s3a:"Facial day",s3b:"Enzyme peel",s3c:"Relax massage",s3d:"Eyebrow micropigmentation (1st + 2nd session)",
+  svcNote:"Prices per session or area, taken from the list published on beautyclinicstore.com: the final price is always confirmed by the team. Duration and number of sessions are set during the consultation.",
+  iAddr:"Where we are",iMap:"Open in Google Maps",iHours:"Opening hours",iHoursTx:"Monday–Friday 9:00–19:00 · Saturday and Sunday closed",iHoursNote:"From the Google listing, to be confirmed.",
+  iCont:"Clinic contacts",iContTx:"Appointments 388 736 1832 · Administration 345 710 1370",iContNote:"Numbers published on the website. In this demo no message reaches the clinic.",
+  disclaimer:"This is a demo. No real WhatsApp message is sent, no call reaches the clinic and no appointment is created. Prices, hours and availability must always be confirmed by the team. Photos and logo from the official site beautyclinicstore.com.",
+  foot:"Demo built by Marcelo Bolla · BOLLA STUDIO, Olbia. This is not Beauty Clinic – Estetica Sartoriale's official website and the clinic does not run it.",
+  w:{main_label:"Giulia · Beauty Clinic",start_call:"Start the call",end_call:"End",new_call:"New call",listening_status:"Listening",speaking_status:"Speak to interrupt",connecting_status:"Connecting"}},
+ es:{studio:"Demo creada por BOLLA STUDIO para Beauty Clinic – Estetica Sartoriale. No es el sitio oficial del centro.",
+  h1:"Cada mensaje recibe respuesta <em>en segundos</em>",
+  lead:"Giulia, la asistente digital de Beauty Clinic, responde por WhatsApp y por teléfono en italiano, inglés y español, da la información de la lista de precios y recoge las solicitudes de cita para el equipo.",
+  ctaWa:"Probar en WhatsApp",ctaPh:"Probar una llamada",
+  p1b:"Segundos, no días",p1:"Quien quiere reservar una depilación recibe respuesta al instante, sin esperar.",
+  p2:"Reconoce el idioma de quien escribe y responde en ese mismo idioma.",
+  p3:"Por la noche, el fin de semana y mientras atienden a una clienta.",
+  chatTitle:"Escribe como lo haría una clienta",chatSub:"Es la asistente real, en modo texto. Prueba a reservar una depilación láser o con cera, o pregunta un precio o el horario. También puedes escribir en italiano o en inglés.",
+  online:"en línea",inputPh:"Escribe un mensaje",
+  chips:["Hola, quiero reservar una depilación láser de piernas","¿Cuánto cuesta la cera completa?","¿Abren los sábados?","Vorrei prenotare l'epilazione laser","Hi! How much is a leg wax?"],
+  sys:"Prueba demostrativa: no se envía ningún mensaje real de WhatsApp y no se crea ninguna cita.",
+  connecting:"escribiendo…",err:"No se pudo conectar. Vuelve a intentarlo en un momento.",
+  voiceTitle:"Llama al centro",voiceText:"Toca el botón, permite el micrófono y habla como una clienta que llama para reservar. Giulia responde con una voz natural, también en italiano y en inglés.",voiceBtn:"Iniciar la llamada de prueba",voiceNote:"Abajo a la derecha aparece el recuadro de la llamada. Para colgar toca «Terminar».",
+  staffTitle:"Panel del equipo · solicitudes de cita",staffNote:"Cuando la asistente registra una solicitud, aquí aparece el resumen, tal como lo recibiría el equipo.",staffEmpty:"Todavía no hay solicitudes. Prueba a reservar en el chat.",thT:"Hora",thR:"Solicitud",
+  howTitle:"Cómo funciona en la realidad",how1:"La clienta escribe por WhatsApp o llama al número del centro.",how2:"Giulia responde al instante, en su idioma, con la información del centro y los precios.",how3:"Recoge tratamiento, día, hora, nombre y teléfono y se los pasa al equipo.",how4:"El equipo confirma la cita cuando tiene un momento libre. No se pierde ninguna solicitud.",
+  svcTitle:"Lo que Giulia ya sabe",svcSub:"Algunos precios de la lista publicada en la tienda online del sitio. Giulia conoce la lista completa.",
+  s1:"Depilación láser",s1a:"Axilas · mujer",s1b:"Piernas · mujer",s1c:"Cuerpo completo · mujer",s1d:"Axilas · hombre",s1e:"Espalda alta · hombre",s1f:"Cuerpo completo · hombre",
+  s2:"Depilación con cera",s2a:"Piernas",s2b:"Ingle integral",s2c:"Cejas (diseño)",s2d:"Cera completa · mujer",s2e:"Cera completa · hombre",
+  s3:"Rostro, cuerpo y micropigmentación",s3a:"Día de rostro",s3b:"Peeling enzimático",s3c:"Masaje relajante",s3d:"Micropigmentación de cejas (1.ª + 2.ª sesión)",
+  svcNote:"Precios por sesión o zona, tomados de la lista publicada en beautyclinicstore.com: el precio final siempre lo confirma el equipo. La duración y el número de sesiones se definen en la consulta.",
+  iAddr:"Dónde estamos",iMap:"Abrir en Google Maps",iHours:"Horario",iHoursTx:"Lunes a viernes 9:00–19:00 · Sábado y domingo cerrado",iHoursNote:"Según la ficha de Google, por confirmar.",
+  iCont:"Contactos del centro",iContTx:"Citas 388 736 1832 · Administración 345 710 1370",iContNote:"Números publicados en el sitio. En esta demo ningún mensaje llega al centro.",
+  disclaimer:"Esto es una prueba. No se envía ningún mensaje real de WhatsApp, no se hace ninguna llamada al centro y no se crea ninguna cita. Precios, horarios y disponibilidad siempre los confirma el equipo. Fotos y logo del sitio oficial beautyclinicstore.com.",
+  foot:"Demo creada por Marcelo Bolla · BOLLA STUDIO, Olbia. No es el sitio oficial de Beauty Clinic – Estetica Sartoriale y el centro no la gestiona.",
+  w:{main_label:"Giulia · Beauty Clinic",start_call:"Iniciar la llamada",end_call:"Terminar",new_call:"Nueva llamada",listening_status:"Escuchando",speaking_status:"Habla para interrumpir",connecting_status:"Conectando"}}
+};
+var lang="it";
+function apply(l){lang=COPY[l]?l:"it";var t=COPY[lang];document.documentElement.lang=lang;
+ document.querySelectorAll("[data-k]").forEach(function(el){var k=el.getAttribute("data-k");if(typeof t[k]==="string")el.textContent=t[k];});
+ document.querySelectorAll("[data-h]").forEach(function(el){el.innerHTML=t[el.getAttribute("data-h")];});
+ document.querySelectorAll("[data-ph]").forEach(function(el){el.placeholder=t[el.getAttribute("data-ph")];});
+ document.querySelectorAll("#langs button").forEach(function(b){b.classList.toggle("on",b.dataset.l===lang);});
+ var c=document.getElementById("chips");c.innerHTML="";t.chips.forEach(function(x){var b=document.createElement("button");b.type="button";b.textContent=x;b.onclick=function(){send(x);};c.appendChild(b);});
+ var th=document.querySelector("#staffList table");if(th){th.rows[0].cells[0].textContent=t.thT;th.rows[0].cells[1].textContent=t.thR;}
+ var w=document.querySelector("elevenlabs-convai");if(w){w.setAttribute("override-language",lang);w.setAttribute("text-contents",JSON.stringify(t.w));}
+}
+document.querySelectorAll("#langs button").forEach(function(b){b.addEventListener("click",function(){if(b.dataset.l===lang)return;apply(b.dataset.l);resetChat();if(window.bsTrack)window.bsTrack("/beauty-clinic-cagliari/lang-"+b.dataset.l,"Lang "+b.dataset.l);});});
+var req=new URLSearchParams(location.search).get("lang");
+apply(req==="en"||req==="es"?req:"it");
+
+/* ---- WhatsApp-style chat on the real agent (text-only) ---- */
+var body=document.getElementById("waBody"),ws=null,ready=false,pending=[],typingEl=null,started=false,waiting=0;
+function hhmm(){var d=new Date();return ("0"+d.getHours()).slice(-2)+":"+("0"+d.getMinutes()).slice(-2);}
+function bubble(cls,text){var d=document.createElement("div");d.className="msg "+cls;d.textContent=text;var s=document.createElement("span");s.className="t";s.textContent=hhmm()+(cls==="me"?" ✓✓":"");d.appendChild(s);body.appendChild(d);body.scrollTop=body.scrollHeight;return d;}
+function sys(text){var d=document.createElement("div");d.className="sys";d.textContent=text;body.appendChild(d);}
+function typing(on){if(on&&!typingEl){typingEl=document.createElement("div");typingEl.className="typing";typingEl.innerHTML="<i></i><i></i><i></i>";body.appendChild(typingEl);body.scrollTop=body.scrollHeight;document.getElementById("waStatus").textContent=COPY[lang].connecting;}
+ if(!on&&typingEl){typingEl.remove();typingEl=null;document.getElementById("waStatus").textContent=COPY[lang].online;}}
+function resetChat(){try{if(ws)ws.close();}catch(e){}ws=null;ready=false;pending=[];started=false;waiting=0;body.innerHTML="";sys(COPY[lang].sys);}
+function connect(){
+ if(!validAgent(AGENT_ID)){sys(COPY[lang].err);return;}
+ ws=new WebSocket("wss://api.elevenlabs.io/v1/convai/conversation?agent_id="+AGENT_ID);
+ ws.onopen=function(){ws.send(JSON.stringify({type:"conversation_initiation_client_data",conversation_config_override:{conversation:{text_only:true},agent:{language:lang}}}));};
+ ws.onmessage=function(ev){var m;try{m=JSON.parse(ev.data);}catch(e){return;}
+  if(m.type==="ping"){ws.send(JSON.stringify({type:"pong",event_id:m.ping_event.event_id}));return;}
+  if(m.type==="conversation_initiation_metadata"){ready=true;setTimeout(function(){pending.forEach(function(p){ws.send(JSON.stringify({type:"user_message",text:p}));});pending=[];},300);return;}
+  if(m.type==="agent_response"){var txt=m.agent_response_event.agent_response;
+   typing(false);bubble("bot",txt);capture(txt);
+   if(!started){started=true;if(waiting>0)typing(true);}else{waiting=Math.max(0,waiting-1);if(waiting>0)typing(true);}}
+ };
+ ws.onerror=function(){typing(false);sys(COPY[lang].err);};
+ ws.onclose=function(){ready=false;ws=null;typing(false);};
+}
+var lastBot=[],added={};
+var DONE=/ti conferma a breve|will confirm it shortly|te la confirma en breve|ho registrato la tua richiesta|I've registered your|he registrado tu solicitud/i;
+var SUMM=/riepilog|riassum|resumen|summary|confermi|va bene cos|correct|correcto|\d{1,2}[:.]\d{2}/i;
+function capture(txt){lastBot.push(txt);if(lastBot.length>5)lastBot.shift();
+ if(DONE.test(txt)){
+  var summary="";for(var i=lastBot.length-2;i>=0;i--){if(SUMM.test(lastBot[i])&&!DONE.test(lastBot[i])){summary=lastBot[i];break;}}
+  var it=summary||txt;if(added[it])return;added[it]=1;addStaff(it);if(window.bsTrack)window.bsTrack("/beauty-clinic-cagliari/request","Richiesta registrata");}}
+function addStaff(s){var t0=COPY[lang];var box=document.getElementById("staffList");var e=box.querySelector(".empty");if(e)e.remove();
+ var t=box.querySelector("table");if(!t){t=document.createElement("table");var h=t.insertRow();["thT","thR"].forEach(function(k){var c=document.createElement("th");c.textContent=t0[k];h.appendChild(c);});box.appendChild(t);}
+ var tr=t.insertRow();tr.className="flash";var a=tr.insertCell();a.textContent=hhmm();var b=tr.insertCell();var g=document.createElement("span");g.className="tag";g.textContent=lang.toUpperCase()+" · WhatsApp";b.appendChild(g);b.appendChild(document.createElement("br"));b.appendChild(document.createTextNode(s.replace(/\s*(Va bene così\?|Confermi[^?]*\?|¿[^?]*\?|Is that correct\?|Does that[^?]*\?|Can you[^?]*\?)\s*$/i,"")));}
+function send(text){text=String(text||"").trim();if(!text)return;bubble("me",text);typing(true);waiting++;
+ if(window.bsTrack&&!body.dataset.tracked){body.dataset.tracked=1;window.bsTrack("/beauty-clinic-cagliari/chat-start","Chat avviata");}
+ if(ws&&ready){ws.send(JSON.stringify({type:"user_message",text:text}));}else{pending.push(text);if(!ws)connect();}}
+document.getElementById("waForm").addEventListener("submit",function(e){e.preventDefault();var i=document.getElementById("waInput");send(i.value);i.value="";});
+resetChat();
+
+/* ---- Voice: ElevenLabs widget with the same agent ---- */
+if(validAgent(AGENT_ID)){
+ var el=document.createElement("elevenlabs-convai");el.setAttribute("agent-id",AGENT_ID);el.setAttribute("placement","bottom-right");el.setAttribute("override-language",lang);el.style.display="none";
+ el.setAttribute("text-contents",JSON.stringify(COPY[lang].w));
+ document.body.appendChild(el);
+ var sc=document.createElement("script");sc.src="https://unpkg.com/@elevenlabs/convai-widget-embed";sc.async=true;document.body.appendChild(sc);
+ document.addEventListener("elevenlabs-convai:call",function(){if(window.bsTrack)window.bsTrack("/beauty-clinic-cagliari/voice-start","Chiamata vocale avviata ("+lang+")");},true);
+}
+document.getElementById("voiceBtn").addEventListener("click",function(){
+ var w=document.querySelector("elevenlabs-convai");if(!w)return;w.style.display="";
+ setTimeout(function(){var root=w.shadowRoot;var b=null,lbl=COPY[lang].w.start_call.toLowerCase();
+  if(root){root.querySelectorAll("button").forEach(function(x){var s=((x.getAttribute("aria-label")||"")+" "+x.textContent).toLowerCase();if(!b&&s.indexOf(lbl)>=0)b=x;});}
+  if(b){b.click();}},500);
+});
+</script>
+</body>
+</html>
