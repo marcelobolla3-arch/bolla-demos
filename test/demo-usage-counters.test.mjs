@@ -1,4 +1,4 @@
-// Contatori di uso (GoatCounter event:true via bsTrack) delle demo nuove: Serafino, Agliuledda, Tavernetta.
+// Contatori di uso (GoatCounter event:true via bsTrack) delle demo nuove: Serafino, Agliuledda, Tavernetta, Beauty Clinic.
 import test from "node:test";
 import assert from "node:assert/strict";
 import { readFileSync } from "node:fs";
@@ -16,6 +16,10 @@ const DEMOS = {
   "la-tavernetta-porto-taverna": {
     files: ["index.html"],
     events: ["/la-tavernetta-porto-taverna/chat/", "/la-tavernetta-porto-taverna/chat-start", "/la-tavernetta-porto-taverna/chat-response", "/la-tavernetta-porto-taverna/request", "/la-tavernetta-porto-taverna/voice-start", "/la-tavernetta-porto-taverna/voice-click", "/la-tavernetta-porto-taverna/cta-whatsapp", "/la-tavernetta-porto-taverna/cta-voice", "/la-tavernetta-porto-taverna/tel-restaurant", "/la-tavernetta-porto-taverna/bolla-tel"],
+  },
+  "beauty-clinic-cagliari": {
+    files: ["index.html"],
+    events: ["/beauty-clinic-cagliari/chat/", "/beauty-clinic-cagliari/chat-start", "/beauty-clinic-cagliari/chat-response", "/beauty-clinic-cagliari/request", "/beauty-clinic-cagliari/voice-start", "/beauty-clinic-cagliari/voice-click", "/beauty-clinic-cagliari/cta-whatsapp", "/beauty-clinic-cagliari/cta-voice", "/beauty-clinic-cagliari/map-open", "/beauty-clinic-cagliari/bolla-tel"],
   },
 };
 

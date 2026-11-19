@@ -96,3 +96,5 @@ Las tres ya tenían la visita. Esta rama agrega el uso con `event: true` y `?p=`
 - API de lectura: `GET /api/v0/paths` y `GET /api/v0/stats/hits?start=…&end=…` con la credencial guardada fuera del repositorio.
 - Clasificación, la misma del lector de visitas: `prospecto` = `?p=` real del enlace enviado (es un enlace, no una persona); `interno` = `p` que empieza por `bmaudit-` o contiene `test`, `internal` o `qa`, y rutas de auditoría; `desconocido` = sin `p` o no clasificable. Los bots aparte.
 - `?internal=1` o un `p=bmaudit-<fecha>` no cargan el contador: esas aperturas no llegan nunca. Una visita no es una persona; un clic no prueba que la llamada de voz conectara.
+
+`/beauty-clinic-cagliari/`: además de `lang-`, `request`, `chat-start` y `voice-start`: `chat/<n>` (índice del ejemplo, título `example`), `chat-response` (primera respuesta), `cta-whatsapp`, `cta-voice`, `voice-click`, `map-open`, `bolla-web`, `bolla-tel`.
