@@ -49,7 +49,7 @@ Náutica, náutica-cat, `/es/` y concesionarios siguen metiendo `p` como tramo d
 
 ## Inventario
 
-604 demos cuentan. 380 tienen al menos un uso. 224 solo tienen la visita. 47 redirecciones no cargan el contador. La portada tampoco.
+605 demos cuentan. 381 tienen al menos un uso. 224 solo tienen la visita. 48 redirecciones no cargan el contador. La portada tampoco.
 
 En la columna Visita, `{p}` es la etiqueta saneada y solo se añade cuando existe. `|` separa la ruta sin etiqueta y la ruta con etiqueta cuando `p` es un tramo, no una búsqueda.
 
@@ -415,6 +415,7 @@ En la columna Visita, `{p}` es la etiqueta saneada y solo se añade cuando exist
 | /max-moto-ranica/ | /bolla-max-moto-ranica/?p={p} | /bolla-max-moto-ranica/step/{id}?p={p} · {button}; /bolla-max-moto-ranica/completata?p={p} · Demo completata; /bolla-max-moto-ranica/tab/{id}?p={p} · Tab {…}; /bolla-max-moto-ranica/restart?p={p} · Restart |
 | /mazzivet-locarno/ | /bolla-mazzivet-locarno/?p={p} | /bolla-mazzivet-locarno/opt?p={p} · Opzione; /bolla-mazzivet-locarno/slot?p={p} · Orario scelto; /bolla-mazzivet-locarno/confirm?p={p} · Conferma demo; /bolla-mazzivet-locarno/chat?p={p} · Rivedi chat |
 | /mb-dentista-trevano-lugano/ | /mb-dentista-trevano-lugano/?p={p} | /mb-dentista-trevano-lugano/tab/{id}?p={p} · Tab {…} |
+| /medical-ch/de/ | /bolla-demo-medical-ch/de/?p={p} | /bolla-demo-medical-ch/de/chat/{id}?p={p} · example; /bolla-demo-medical-ch/de/request/confirm?p={p} · example; /bolla-demo-medical-ch/de/call/example?p={p} · example |
 | /mega-pizza-py/ | /mega-pizza-py/?p={p} | solo visita |
 | /michela-pizzo-estetica/ | /bolla-demo-michela-pizzo-estetica/?p={p} | solo visita |
 | /michelangelo-bnb-varenna/ | /bolla-michelangelo-bnb-varenna/?p={p} | /bolla-michelangelo-bnb-varenna/opt?p={p} · Opzione; /bolla-michelangelo-bnb-varenna/slot?p={p} · Orario scelto; /bolla-michelangelo-bnb-varenna/confirm?p={p} · Conferma demo; /bolla-michelangelo-bnb-varenna/chat?p={p} · Rivedi chat |
@@ -664,4 +665,4 @@ En la columna Visita, `{p}` es la etiqueta saneada y solo se añade cuando exist
 
 La portada `/` es el letrero del servidor.
 
-Redirecciones (47), conservan la búsqueda y el hash, y no cargan el contador: `/aesthetik-ch/`, `/ausfluege-ch/`, `/barber/`, `/bergbahn-ch/`, `/canyoning-ch/`, `/charter-de/`, `/charter-intl/`, `/charter/`, `/coiffeur-ch/`, `/concesionarios/`, `/dentist-intl/`, `/dentist/`, `/fahrschule-ch/`, `/ferienwohnung-ch/`, `/fitness-ch/`, `/garage-ch/`, `/garage/`, `/gastro-gruppe/`, `/hair-salon/`, `/hotel-ch/`, `/hotel-de/`, `/hotel/`, `/immobilien-ch/`, `/industrie-de/`, `/marina-pirita/`, `/movers/`, `/musikschule-ch/`, `/optician/`, `/optiker-ch/`, `/paragliding-ch/`, `/physio-ch/`, `/physio/`, `/real-estate/`, `/restaurant-ch/`, `/restaurant-de/`, `/restaurant/`, `/schifffahrt-ch/`, `/skischule-ch/`, `/skiverleih-ch/`, `/tierarzt-ch/`, `/tourismus-berlin/`, `/umzug-ch/`, `/velomiete-ch/`, `/velowerkstatt-ch/`, `/vet/`, `/video/comunidad-argentina/`, `/zahnarzt-ch/`.
+Redirecciones (48), conservan la búsqueda y el hash, y no cargan el contador: `/aesthetik-ch/`, `/ausfluege-ch/`, `/barber/`, `/bergbahn-ch/`, `/canyoning-ch/`, `/charter-de/`, `/charter-intl/`, `/charter/`, `/coiffeur-ch/`, `/concesionarios/`, `/dentist-intl/`, `/dentist/`, `/fahrschule-ch/`, `/ferienwohnung-ch/`, `/fitness-ch/`, `/garage-ch/`, `/garage/`, `/gastro-gruppe/`, `/hair-salon/`, `/hotel-ch/`, `/hotel-de/`, `/hotel/`, `/immobilien-ch/`, `/industrie-de/`, `/marina-pirita/`, `/medical-ch/`, `/movers/`, `/musikschule-ch/`, `/optician/`, `/optiker-ch/`, `/paragliding-ch/`, `/physio-ch/`, `/physio/`, `/real-estate/`, `/restaurant-ch/`, `/restaurant-de/`, `/restaurant/`, `/schifffahrt-ch/`, `/skischule-ch/`, `/skiverleih-ch/`, `/tierarzt-ch/`, `/tourismus-berlin/`, `/umzug-ch/`, `/velomiete-ch/`, `/velowerkstatt-ch/`, `/vet/`, `/video/comunidad-argentina/`, `/zahnarzt-ch/`.
