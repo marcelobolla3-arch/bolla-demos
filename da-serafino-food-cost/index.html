@@ -199,7 +199,7 @@ nav.tabs a.on{color:var(--red)}nav.tabs a.on i{filter:none;opacity:1}
 <body>
 <div class="studio"><div class="studio-in">
   <p><span class="pill">DEMO</span><span class="long" data-t="studio"></span><span class="short">BOLLA STUDIO</span></p>
-  <a class="sb" href="tel:+393445240254">Marcelo</a>
+  <a class="sb" href="tel:+393445240254" data-track="/da-serafino-food-cost/bolla-tel" data-title="bolla-tel">Marcelo</a>
   <div class="langs" id="langs"><button type="button" data-l="it" class="on">IT</button><button type="button" data-l="es">ES</button></div>
 </div></div>
 <header class="top" id="top"><div class="top-in">
@@ -221,5 +221,9 @@ nav.tabs a.on{color:var(--red)}nav.tabs a.on i{filter:none;opacity:1}
 <script src="data.js"></script>
 <script src="calc.js"></script>
 <script src="app.js"></script>
+<script>
+/* Uso: link con data-track (telefono/sito BOLLA, fonti prezzi). Nessun testo digitato. */
+document.addEventListener("click",function(e){var a=e.target&&e.target.closest?e.target.closest("[data-track]"):null;if(a&&window.bsTrack)window.bsTrack(a.getAttribute("data-track"),a.getAttribute("data-title"));},true);
+</script>
 </body>
 </html>

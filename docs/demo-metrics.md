@@ -81,3 +81,18 @@ El script público también manda `location.search` en el campo `q`. La ruta usa
 `/concesionarios/en/`, `/de/`, `/es/` e `/it/` ya no reproducen `video.mp4`. Esos archivos salieron del repositorio. La visita sigue en `/${p}/video-<idioma>` (o `/video-<idioma>` si no hay campaña) y el título del contador sigue siendo `concesionarios video-<idioma>`, para no partir la serie. El evento viejo `/${p}/video-<idioma>-play` con título `video-play` ya no existe.
 
 El uso del chat es otro evento, con `event: true`, y no lleva el texto escrito. El primer gesto del chat cuenta `/${p}/conc-chat-open` (título `conc-chat-open`). Cada respuesta de una categoría cuenta `/${p}/conc-intent-<id>` con el mismo título (`conc-intent-stock`, `conc-intent-testdrive`, `conc-intent-workshop`, `conc-intent-finance`, `conc-intent-hours`, `conc-intent-location`, `conc-intent-human`, `conc-intent-emergency`, `conc-intent-fallback`). La nota del formulario, si se completa, cuenta `/${p}/conc-intent-request`. El guion que se reproduce solo al abrir no cuenta. `?internal=1` sigue sin cargar el contador. En `/en/` y `/de/` la redirección de prospectos sigue, pero el HTML guarda un hash de 16 hex y la ruta del rubro: el nombre se toma del `p` de la URL. Los enlaces ya enviados no cambian de ruta.
+
+## Demos de noviembre: Serafino, Agliuledda, Tavernetta
+
+Las tres ya tenían la visita. Esta rama agrega el uso con `event: true` y `?p=`, cada uno como mucho una vez por carga salvo donde se indica. No se envía texto escrito, ni datos del formulario, ni la frase de los ejemplos.
+
+- `/da-serafino-food-cost/`: `piatto/<slug>`, `cerca` (2 letras o más, sin el texto), `ricetta/modifica`, `ricetta/impasto`, `ricetta/reset`, `scrocchiarella/gusti`, `magazzino/prezzo`, `magazzino/ripristina`, `magazzino/cerca`, `magazzino/nuovo`, `magazzino/fonte`, `impasto/modifica`, `impasto/reset`, `impasto/<tipo>`, `tab/magazzino`, `tab/impasti`, `tab/altro`, `impostazioni`, `reset-tutto`, `bolla-web`, `bolla-tel`. `csv/<archivo>` y `lang-<idioma>` cuentan cada vez.
+- `/agliuledda-ovilo/`: además de `lang-`, `book-request` y `hero-3d`/`hero-video`: `cta-book`, `cta-book-fab`, `cta-gallery`, `gallery-open`, `calendar-pick`, `room-type`, `room-camera`, `room-suite`, `book-attempt` (al enviar, sin datos), `panel-approve`, `panel-decline`, `panel-reset`, `map-open`, `hero-3d-look`, `hero-chapter`, `hero-pause`, `video-play` (solo después de elegir el video), `bolla-web`, `bolla-tel`.
+- `/la-tavernetta-porto-taverna/`: además de `lang-`, `request`, `chat-start` y `voice-start`: `chat/<n>` (índice del ejemplo, título `example`), `chat-response` (primera respuesta), `cta-whatsapp`, `cta-voice`, `voice-click`, `tel-restaurant`, `bolla-web`, `bolla-tel`.
+
+## Cómo leer los números
+
+- Panel: `https://bollastudio.goatcounter.com`. Visitas en la ruta de la demo; uso en las rutas de evento (`/<demo>/<evento>?p=<etiqueta>`).
+- API de lectura: `GET /api/v0/paths` y `GET /api/v0/stats/hits?start=…&end=…` con la credencial guardada fuera del repositorio.
+- Clasificación, la misma del lector de visitas: `prospecto` = `?p=` real del enlace enviado (es un enlace, no una persona); `interno` = `p` que empieza por `bmaudit-` o contiene `test`, `internal` o `qa`, y rutas de auditoría; `desconocido` = sin `p` o no clasificable. Los bots aparte.
+- `?internal=1` o un `p=bmaudit-<fecha>` no cargan el contador: esas aperturas no llegan nunca. Una visita no es una persona; un clic no prueba que la llamada de voz conectara.

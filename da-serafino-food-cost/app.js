@@ -115,7 +115,9 @@
   function $$(s, r) { return Array.prototype.slice.call((r || document).querySelectorAll(s)); }
   var toastT;
   function toast(msg) { var el = $('#toast'); el.textContent = msg; el.classList.add('on'); clearTimeout(toastT); toastT = setTimeout(function () { el.classList.remove('on'); }, 1900); }
-  function track(ev) { try { window.bsTrack && window.bsTrack('/da-serafino-food-cost/' + ev, ev); } catch (e) {} }
+  var tracked = {};
+  // Uso reale (GoatCounter, event:true via bsTrack): mai testo digitato. once = una sola volta per caricamento pagina.
+  function track(ev, once) { if (once) { if (tracked[ev]) return; tracked[ev] = 1; } try { window.bsTrack && window.bsTrack('/da-serafino-food-cost/' + ev, ev); } catch (e) {} }
   function usedCount(id) {
     var n = 0;
     Object.keys(ST.items).forEach(function (s) { var it = ST.items[s]; if ((it.r || []).some(function (x) { return x[0] === id; })) n++; });
@@ -166,7 +168,7 @@
       '<div class="search"><input id="q" type="search" inputmode="search" autocomplete="off" placeholder="' + esc(t('search')) + '" value="' + esc(ui.q) + '"></div>' +
       '<div class="chips" id="cats">' + cats.map(function (c) { return '<button class="chip' + (ui.cat === c ? ' on' : '') + '" data-c="' + c + '">' + t(c) + '</button>'; }).join('') + '</div>' +
       '<div id="mlist"></div><p class="foot">' + D.items.length + ' ' + t('covered') + ' · ' + t('notCovered') + '<br>' + t('menuFrom') + '</p>';
-    $('#q').addEventListener('input', function (e) { ui.q = e.target.value; menuList(); });
+    $('#q').addEventListener('input', function (e) { ui.q = e.target.value; menuList(); if (ui.q.trim().length >= 2) track('cerca', true); });
     $$('#cats .chip').forEach(function (b) { b.addEventListener('click', function () { ui.cat = b.getAttribute('data-c'); $$('#cats .chip').forEach(function (x) { x.classList.toggle('on', x === b); }); menuList(); }); });
     menuList();
   }
@@ -189,7 +191,7 @@
 
   // ---------- DETTAGLIO PIATTO ----------
   function curRecipe(slug) { return clone(ST.items[slug].r || []); }
-  function setRecipe(slug, r) { LS.r[slug] = r; save(); refresh(); }
+  function setRecipe(slug, r) { LS.r[slug] = r; save(); refresh(); track('ricetta/modifica', true); }
   function stepFor(ing, v) { if (ing.u === 'pz') return v < 1 ? 0.1 : 0.5; return v >= 100 ? 10 : v >= 20 ? 5 : v >= 5 ? 1 : 0.5; }
   function viewItem(slug) {
     var it = ST.items[slug], c = C.item(it, ST), base = ITEMS[slug];
@@ -254,15 +256,15 @@
   }
   function bindOpts(after) {
     $$('[data-o]').forEach(function (el) {
-      el.addEventListener('change', function () { var k = el.getAttribute('data-o'); LS.s[k] = el.type === 'checkbox' ? el.checked : Math.max(0, pnum(el.value)); save(); refresh(); after(); });
+      el.addEventListener('change', function () { track('impostazioni', true); var k = el.getAttribute('data-o'); LS.s[k] = el.type === 'checkbox' ? el.checked : Math.max(0, pnum(el.value)); save(); refresh(); after(); });
     });
-    $$('[data-on]').forEach(function (b) { b.addEventListener('click', function () { var k = b.getAttribute('data-on'); LS.s[k] = Math.max(0, (+ST.s[k] || 0) + (+b.getAttribute('data-v'))); save(); refresh(); after(); }); });
+    $$('[data-on]').forEach(function (b) { b.addEventListener('click', function () { track('impostazioni', true); var k = b.getAttribute('data-on'); LS.s[k] = Math.max(0, (+ST.s[k] || 0) + (+b.getAttribute('data-v'))); save(); refresh(); after(); }); });
   }
   function pnum(v) { var n = parseFloat(String(v).replace(/\s/g, '').replace(',', '.')); return isNaN(n) ? 0 : n; }
   function bindItem(slug) {
     var it = ST.items[slug], rr = function () { var y = window.scrollY; render(); window.scrollTo(0, y); };
-    $$('#dseg button').forEach(function (b) { b.addEventListener('click', function () { var d = b.getAttribute('data-d'); if (d === ITEMS[slug].dough) delete LS.ds[slug]; else LS.ds[slug] = d; save(); refresh(); rr(); }); });
-    $$('.combo select').forEach(function (s) { s.addEventListener('change', function () { var cb = (LS.combo[slug] = LS.combo[slug] || {}); cb.combo = (cb.combo || it.combo.slice()); cb.combo[+s.getAttribute('data-h')] = s.value; save(); refresh(); rr(); }); });
+    $$('#dseg button').forEach(function (b) { b.addEventListener('click', function () { var d = b.getAttribute('data-d'); track('ricetta/impasto', true); if (d === ITEMS[slug].dough) delete LS.ds[slug]; else LS.ds[slug] = d; save(); refresh(); rr(); }); });
+    $$('.combo select').forEach(function (s) { s.addEventListener('change', function () { track('scrocchiarella/gusti', true); var cb = (LS.combo[slug] = LS.combo[slug] || {}); cb.combo = (cb.combo || it.combo.slice()); cb.combo[+s.getAttribute('data-h')] = s.value; save(); refresh(); rr(); }); });
     var cf = $('#cf');
     if (cf) {
       var setF = function (v) { var cb = (LS.combo[slug] = LS.combo[slug] || {}); cb.f = Math.max(0.1, Math.round(v * 100) / 100); save(); refresh(); rr(); };
@@ -284,9 +286,9 @@
       $('.nm', row).addEventListener('click', function () { ingSheet(row.querySelector('.nm').getAttribute('data-ing'), slug, i); });
     });
     $('#addIng').addEventListener('click', function () { pickSheet(function (id) { var r = curRecipe(slug), ing = ST.ings[id]; r.push([id, ing.u === 'pz' ? 1 : 20]); setRecipe(slug, r); closeSheet(); rr(); }); });
-    var rs = $('#resetR'); if (rs) rs.addEventListener('click', function () { delete LS.r[slug]; delete LS.ds[slug]; delete LS.ball[slug]; delete LS.combo[slug]; save(); refresh(); rr(); toast('✓ ' + t('reset')); });
+    var rs = $('#resetR'); if (rs) rs.addEventListener('click', function () { track('ricetta/reset', true); delete LS.r[slug]; delete LS.ds[slug]; delete LS.ball[slug]; delete LS.combo[slug]; save(); refresh(); rr(); toast('✓ ' + t('reset')); });
     bindOpts(rr);
-    track('piatto/' + slug);
+    track('piatto/' + slug, true);
   }
 
   // ---------- SHEETS ----------
@@ -299,18 +301,19 @@
     return '<div class="ing' + (edited ? ' edited' : '') + '" data-id="' + ing.id + '"><div class="h"><div class="t"><div class="nm">' + esc(ing.n) + '</div><div class="q">' + esc(ing.q) + '</div></div>' + srcBadge(ing) + '</div>' +
       '<div class="pp"><input inputmode="decimal" value="' + nf(ing.p, 2) + '" aria-label="' + esc(t('priceFmt')) + '"><span class="fmt">€ · ' + esc(ing.f) + '</span></div>' +
       '<div class="unit"><span><b>' + upLabel(ing).split(' · ')[0] + '</b></span>' + (upLabel(ing).split(' · ')[1] ? '<span>' + upLabel(ing).split(' · ')[1] + '</span>' : '') + '<span>' + t('usedIn') + ' ' + usedCount(ing.id) + ' ' + t('dishes') + '</span></div>' +
-      '<div class="meta">' + (ing.url ? t('source') + ': <a href="' + esc(ing.url) + '" target="_blank" rel="noopener">' + esc(ing.src || 'link') + ' ↗</a>' : esc(ing.src || '')) + (ing.d ? ' · ' + t('checked') + ' ' + esc(ing.d) : '') + (ing.iva ? ' · IVA ' + ing.iva + '%' : '') + (ing.nota ? '<br>' + esc(ing.nota) : '') +
+      '<div class="meta">' + (ing.url ? t('source') + ': <a href="' + esc(ing.url) + '" target="_blank" rel="noopener" data-track="/da-serafino-food-cost/magazzino/fonte" data-title="magazzino/fonte">' + esc(ing.src || 'link') + ' ↗</a>' : esc(ing.src || '')) + (ing.d ? ' · ' + t('checked') + ' ' + esc(ing.d) : '') + (ing.iva ? ' · IVA ' + ing.iva + '%' : '') + (ing.nota ? '<br>' + esc(ing.nota) : '') +
       (edited ? '<br><button class="toggle-d" data-restore="' + ing.id + '">↺ ' + t('restore') + ' (' + eur(BASE[ing.id] ? BASE[ing.id].p : ing.p) + ')</button>' : '') + '</div></div>';
   }
   function bindIngCard(card, after) {
     var id = card.getAttribute('data-id'), inp = $('.pp input', card);
     inp.addEventListener('change', function () {
       var v = pnum(inp.value); if (!(v > 0)) { inp.value = nf(ST.ings[id].p, 2); return; }
+      if (Math.abs(v - ST.ings[id].p) < 1e-9) return; // nessun cambio (es. blur dopo un change già applicato)
       var cu = LS.custom.filter(function (x) { return x.id === id; })[0];
       if (cu) cu.p = v; else if (BASE[id] && Math.abs(BASE[id].p - v) < 1e-9) delete LS.p[id]; else LS.p[id] = v;
-      save(); refresh(); toast(t('updated') + ' ' + usedCount(id) + ' ' + t('dishes')); track('magazzino/prezzo'); after();
+      save(); refresh(); toast(t('updated') + ' ' + usedCount(id) + ' ' + t('dishes')); track('magazzino/prezzo', true); after();
     });
-    var rb = $('[data-restore]', card); if (rb) rb.addEventListener('click', function () { delete LS.p[id]; save(); refresh(); toast('↺ ' + t('restore')); after(); });
+    var rb = $('[data-restore]', card); if (rb) rb.addEventListener('click', function () { track('magazzino/ripristina', true); delete LS.p[id]; save(); refresh(); toast('↺ ' + t('restore')); after(); });
   }
   function ingSheet(id, slug, idx) {
     var ing = ST.ings[id];
@@ -337,12 +340,13 @@
 
   // ---------- MAGAZZINO ----------
   function viewStock() {
+    track('tab/magazzino', true);
     setHeader(t('tStock'), lang === 'es' ? 'Materias primas · precios' : 'Materie prime · prezzi', false);
     var chips = ['all', 'edited'].concat(CATS);
     view.innerHTML = '<div class="search"><input id="sq" type="search" autocomplete="off" placeholder="' + esc(t('stockS')) + '" value="' + esc(ui.sq) + '"></div>' +
       '<div class="chips" id="scats">' + chips.map(function (c) { return '<button class="chip' + (ui.sc === c ? ' on' : '') + '" data-c="' + esc(c) + '">' + (c === 'all' ? t('all') : c === 'edited' ? '✎ ' + t('edited') : esc(catL(c))) + '</button>'; }).join('') + '</div>' +
       '<div class="note">' + t('aboutTxt') + '</div><div id="slist" class="list"></div><div class="btns"><button class="btn" id="newIng">' + t('newIng') + '</button></div>';
-    $('#sq').addEventListener('input', function (e) { ui.sq = e.target.value; stockList(); });
+    $('#sq').addEventListener('input', function (e) { ui.sq = e.target.value; stockList(); if (ui.sq.trim().length >= 2) track('magazzino/cerca', true); });
     $$('#scats .chip').forEach(function (b) { b.addEventListener('click', function () { ui.sc = b.getAttribute('data-c'); $$('#scats .chip').forEach(function (x) { x.classList.toggle('on', x === b); }); stockList(); }); });
     $('#newIng').addEventListener('click', newIngSheet);
     stockList();
@@ -368,12 +372,13 @@
       var n = $('#nn').value.trim(), fq = pnum($('#nq').value), p = pnum($('#np').value), u = $('#nu').value;
       if (!n || !(fq > 0) || !(p > 0)) { toast('⚠ ' + t('name') + ' / ' + t('priceFmt')); return; }
       LS.custom.push({ id: 'c_' + Date.now().toString(36), n: n, c: $('#nc').value, q: t('srcU'), f: nf(fq, fq % 1 ? 2 : 0) + ' ' + (u === 'l' ? 'L' : u), fq: fq, u: u, p: p, iva: 0, t: 'U', url: '', src: t('srcU'), d: new Date().toLocaleDateString('it-IT'), nota: '', dens: 1 });
-      save(); refresh(); closeSheet(); ui.sc = 'edited'; render(); toast('✓ ' + n);
+      track('magazzino/nuovo', true); save(); refresh(); closeSheet(); ui.sc = 'edited'; render(); toast('✓ ' + n);
     });
   }
 
   // ---------- IMPASTI ----------
   function viewDoughs() {
+    track('tab/impasti', true);
     setHeader(t('tDough'), t('doughLab'), false);
     var h = '<div class="note">' + t('doughLabS') + ' <b>' + t('example') + '</b></div><div class="list">';
     Object.keys(ST.doughs).forEach(function (k) {
@@ -385,7 +390,7 @@
     $$('#view .card').forEach(function (b) { b.addEventListener('click', function () { location.hash = '#/impasto/' + b.getAttribute('data-k'); }); });
   }
   function curDough(k) { var d = ST.doughs[k]; return { flours: clone(d.flours), parts: clone(d.parts), ball: d.ball }; }
-  function setDough(k, d) { LS.d[k] = d; save(); refresh(); }
+  function setDough(k, d) { LS.d[k] = d; save(); refresh(); track('impasto/modifica', true); }
   function viewLab(k) {
     var d = ST.doughs[k], dc = C.dough(d, ST.ings);
     setHeader(t('dough') + ' ' + d.n, t('doughLab'), true);
@@ -429,12 +434,13 @@
     bw.addEventListener('change', function () { setBW(pnum(bw.value)); });
     $$('[data-b]').forEach(function (b) { b.addEventListener('click', function () { setBW(ST.doughs[k].ball + (+b.getAttribute('data-b'))); }); });
     $('#addF').addEventListener('click', function () { pickSheet(function (id) { var dd = curDough(k); dd.flours.push([id, 5]); setDough(k, dd); closeSheet(); rr(); }, 'Farine e impasto'); });
-    var rs = $('#rsD'); if (rs) rs.addEventListener('click', function () { delete LS.d[k]; save(); refresh(); rr(); });
-    track('impasto/' + k);
+    var rs = $('#rsD'); if (rs) rs.addEventListener('click', function () { track('impasto/reset', true); delete LS.d[k]; save(); refresh(); rr(); });
+    track('impasto/' + k, true);
   }
 
   // ---------- ALTRO ----------
   function viewMore() {
+    track('tab/altro', true);
     setHeader(t('tMore'), t('settings'), false);
     var cnt = { L: 0, S: 0, E: 0 }; D.ings.forEach(function (i) { cnt[i.t]++; });
     var h = '<h3 class="sec">' + t('settings') + '</h3><div class="opts">' + optRow('net', t('netT'), t('netS'), 'sw') + optRow('vat', t('vat'), '', 'num') + optRow('waste', t('optWaste'), t('optWasteS'), 'num') + optRow('spolvero', t('spolveroG'), t('spolvero'), 'num') + optRow('energy', t('optEnergy'), t('optEnergyS'), 'sw') + optRow('takeaway', t('optTake'), t('optTakeS'), 'sw') + '</div>';
@@ -442,11 +448,11 @@
     h += '<h3 class="sec">' + t('about') + '</h3><div class="note about">' + t('aboutTxt') + '<br><br>' + t('srcTxt') + '<br>' + t('srcL') + ': ' + cnt.L + ' · ' + t('srcS') + ': ' + cnt.S + ' · ' + t('srcE') + ': ' + cnt.E + '<br><br>' + t('menuFrom') + ' ' + D.items.length + ' ' + t('covered') + '. ' + t('notCovered') + '</div>';
     h += '<div class="note about"><b>' + t('forMaestro') + '</b><img src="img/grid-lapolla.webp" alt="Giuseppe Lapolla" loading="lazy" width="600" height="400">' + t('lapolla') + '</div>';
     h += '<div class="btns"><button class="btn red" id="rsAll">↺ ' + t('resetAll') + '</button></div>';
-    h += '<p class="foot">Demo · <a href="https://bollastudio.com" target="_blank" rel="noopener">BOLLA STUDIO</a> · Marcelo Bolla · <a href="tel:+393445240254">+39 344 524 0254</a><br>' + (lang === 'es' ? 'No es una app oficial de Da Serafino.' : 'Non è un\'app ufficiale di Da Serafino.') + '</p>';
+    h += '<p class="foot">Demo · <a href="https://bollastudio.com" target="_blank" rel="noopener" data-track="/da-serafino-food-cost/bolla-web" data-title="bolla-web">BOLLA STUDIO</a> · Marcelo Bolla · <a href="tel:+393445240254" data-track="/da-serafino-food-cost/bolla-tel" data-title="bolla-tel">+39 344 524 0254</a><br>' + (lang === 'es' ? 'No es una app oficial de Da Serafino.' : 'Non è un\'app ufficiale di Da Serafino.') + '</p>';
     view.innerHTML = h;
     bindOpts(function () { var y = window.scrollY; render(); window.scrollTo(0, y); toast('✓ ' + t('saved')); });
     $$('[data-csv]').forEach(function (b) { b.addEventListener('click', function () { exportCSV(b.getAttribute('data-csv')); }); });
-    $('#rsAll').addEventListener('click', function () { if (!confirm(t('resetQ'))) return; LS = { lang: lang, p: {}, r: {}, d: {}, ds: {}, ball: {}, combo: {}, s: {}, custom: [] }; save(); refresh(); render(); toast('↺ OK'); });
+    $('#rsAll').addEventListener('click', function () { if (!confirm(t('resetQ'))) return; track('reset-tutto', true); LS = { lang: lang, p: {}, r: {}, d: {}, ds: {}, ball: {}, combo: {}, s: {}, custom: [] }; save(); refresh(); render(); toast('↺ OK'); });
   }
   function csvCell(v) { if (typeof v === 'number') v = String(Math.round(v * 10000) / 10000).replace('.', ','); v = String(v == null ? '' : v); return /[";\n]/.test(v) ? '"' + v.replace(/"/g, '""') + '"' : v; }
   function download(name, rows) {
