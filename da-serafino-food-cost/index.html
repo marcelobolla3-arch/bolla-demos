@@ -1,0 +1,229 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#11100f">
+<meta name="robots" content="noindex, nofollow">
+<title>Food Cost · Da Serafino · Demo BOLLA STUDIO</title>
+<link rel="icon" href="img/logo.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+<!--
+  Demo "Food cost" per Pizzeria Da Serafino e Giovanni (Cannigione). Built by BOLLA STUDIO.
+  Menu: dal menu digitale pubblico (daserafino.it -> menu.listico.it), scaricato il 19/11/2026.
+  Prezzi ingredienti: listini HoReCa / shop online pubblici con link (IVA esclusa) oppure STIME dichiarate.
+  NON sono i costi reali della pizzeria. Ricette e impasti = esempi da personalizzare.
+  Dati: data.js (generato), calcoli: calc.js (testato), UI: app.js. Modifiche salvate solo nel localStorage del browser.
+  GoatCounter: /da-serafino-food-cost (opzionale ?p=). ?internal=1 non carica il contatore.
+-->
+<script>
+(function(){
+ var BASE='/da-serafino-food-cost';
+ var m=(location.search+location.hash).match(/[?&#]internal=([01])/);
+ var mo=(location.search+location.hash).match(/[?&#]interno=([01])/);
+ var bollaOff=false;
+ function bollaCookie(on){try{var secure="";try{if(location.protocol==="https:")secure="; Secure";}catch(e){}document.cookie=on?"bolla_internal=1; Path=/; Max-Age=34560000; SameSite=Lax"+secure:"bolla_internal=; Path=/; Max-Age=0; SameSite=Lax";}catch(e){}}
+ function bollaStore(on){try{if(on)localStorage.setItem("skipgc","t");else localStorage.removeItem("skipgc");}catch(e){}bollaCookie(on);}
+ try{var qh=location.search+location.hash;var ia=m?qh.lastIndexOf("internal="):-1;var io=mo?qh.lastIndexOf("interno="):-1;if(ia>=0||io>=0){var bollaOn=(io>ia?mo[1]:m[1])==="1";bollaOff=!bollaOn;bollaStore(bollaOn);}}catch(e){}
+ var internal=false;try{internal=localStorage.getItem("skipgc")==="t";}catch(e){}
+ try{if(!internal&&/(?:^|; )bolla_internal=1(?:;|$)/.test(document.cookie||"")){internal=true;try{localStorage.setItem("skipgc","t");}catch(e){}}else if(internal)bollaCookie(true);}catch(e){}
+ var bollaAudit="";try{var bollaPm=location.search.match(/[?&]p=([^&#]*)/)||location.search.match(/[?&]link_id=([^&#]*)/);if(bollaPm)bollaAudit=decodeURIComponent(bollaPm[1]).toLowerCase().replace(/[^a-z0-9-]/g,"").slice(0,60);}catch(e){}if(bollaAudit.indexOf("bmaudit-")===0){internal=true;if(!bollaOff)bollaStore(true);}
+ var sm=location.search.match(/[?&]p=([^&#]*)/);
+ var tag=sm?decodeURIComponent(sm[1]).toLowerCase().replace(/[^a-z0-9-]/g,"").slice(0,60):"";
+ var q=[]; window.bsTrack=function(sub,title){ if(internal) return;
+   var ep=sub+(tag && sub.indexOf("?p=")<0 ? "?p="+tag : "");
+   if(window.goatcounter&&window.goatcounter.count) window.goatcounter.count({path:ep,title:title||sub,event:true}); else q.push([ep,title||sub]); };
+ if(internal) return;
+ window.goatcounter={no_onload:true};
+ var s=document.createElement("script"); s.async=true; s.src="https://gc.zgo.at/count.js";
+ s.setAttribute("data-goatcounter","https://bollastudio.goatcounter.com/count");
+ s.onload=function(){ try{ window.goatcounter.count({path:BASE+'/'+(tag?'?p='+tag:''),title:'Da Serafino food cost demo'});
+   q.forEach(function(e){window.goatcounter.count({path:e[0],title:e[1],event:true});}); q=[]; }catch(e){} };
+ document.head.appendChild(s);
+})();
+</script>
+<style>
+:root{--orange:#ff9800;--red:#eb3300;--ink:#11100f;--coal:#1a1a1a;--cream:#fff7e8;--paper:#fffaf0;--green:#00af87;--line:#eadfca;--muted:#6f675c;
+ --display:"Oswald",Impact,sans-serif;--ui:"Poppins",system-ui,sans-serif;--r:14px;--tab:72px}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0;background:var(--cream);color:var(--ink);font-family:var(--ui);font-size:16px;line-height:1.4}
+button,input,select{font:inherit;color:inherit}
+button{cursor:pointer}
+a{color:var(--red)}
+.studio{background:var(--ink);color:#fff;font-size:12.5px}
+.studio-in{max-width:980px;margin:0 auto;display:flex;align-items:center;gap:8px;padding:7px 12px}
+.studio p{margin:0;flex:1;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;opacity:.9}
+.pill{display:inline-block;background:var(--orange);color:var(--ink);font-weight:700;border-radius:99px;padding:1px 8px;margin-right:7px;font-size:11px}
+.studio a.sb{color:#fff;text-decoration:none;border:1px solid #ffffff55;border-radius:99px;padding:0 12px;white-space:nowrap;min-height:36px;display:inline-flex;align-items:center}
+.langs{display:flex;border:1px solid #ffffff55;border-radius:99px;overflow:hidden}
+.langs button{background:none;border:0;color:#fff;padding:0 10px;min-width:40px;min-height:36px;font-weight:600;font-size:13px}
+.langs button.on{background:#fff;color:var(--ink)}
+.studio .long{display:none}
+@media(min-width:700px){.studio .long{display:inline}.studio .short{display:none}}
+header.top{position:sticky;top:0;z-index:20;background:var(--ink);color:#fff;box-shadow:0 6px 18px #0003}
+.top-in{max-width:980px;margin:0 auto;display:flex;align-items:center;gap:10px;padding:8px 12px;min-height:60px}
+.logo{width:46px;height:46px;border-radius:50%;background:#fff url(img/logo.svg) center/112% no-repeat;flex:none}
+.top h1{font-family:var(--display);font-weight:600;letter-spacing:.02em;font-size:21px;margin:0;line-height:1.05;text-transform:uppercase}
+.top h1 small{display:block;font-family:var(--ui);font-weight:500;font-size:11.5px;letter-spacing:0;text-transform:none;color:var(--orange)}
+.back{background:#ffffff1a;border:0;color:#fff;width:46px;height:46px;border-radius:12px;font-size:24px;display:none;flex:none}
+.has-back .back{display:block}.has-back .logo{display:none}
+.notice{background:#fff1d6;border-bottom:1px solid #f3d9a5;font-size:12.5px;color:#6a4a00}
+.notice div{max-width:980px;margin:0 auto;padding:7px 12px}
+main{max-width:980px;margin:0 auto;padding:12px 12px calc(var(--tab) + 28px)}
+.hero{position:relative;border-radius:var(--r);overflow:hidden;color:#fff;min-height:150px;background:#2b1a10 url(img/grid-pizza.webp) center/cover;display:flex;align-items:flex-end;margin-bottom:12px}
+.hero:before{content:"";position:absolute;inset:0;background:linear-gradient(180deg,#0000 15%,#000c 100%)}
+.hero div{position:relative;padding:14px}
+.hero b{font-family:var(--display);font-size:26px;text-transform:uppercase;line-height:1.05;display:block}
+.hero span{font-size:13px;opacity:.92}
+.search{position:relative;margin:4px 0 10px}
+.search input{width:100%;height:56px;border-radius:16px;border:2px solid var(--line);background:#fff;padding:0 16px 0 48px;font-size:18px;outline:none}
+.search input:focus{border-color:var(--orange)}
+.search:before{content:"";position:absolute;left:16px;top:17px;width:16px;height:16px;border:3px solid var(--muted);border-radius:50%}
+.search:after{content:"";position:absolute;left:33px;top:34px;width:9px;height:3px;background:var(--muted);transform:rotate(45deg);border-radius:2px}
+.chips{display:flex;gap:8px;overflow-x:auto;padding:2px 0 10px;scrollbar-width:none}
+.chips::-webkit-scrollbar{display:none}
+.chip{flex:none;border:2px solid var(--line);background:#fff;border-radius:99px;padding:0 16px;height:44px;font-weight:600;font-size:15px;white-space:nowrap}
+.chip.on{background:var(--ink);border-color:var(--ink);color:#fff}
+.list{display:grid;gap:10px;grid-template-columns:minmax(0,1fr)}
+@media(min-width:760px){.list{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}}
+.card{min-width:0;display:flex;align-items:center;gap:12px;background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:12px 12px 12px 14px;text-align:left;width:100%;min-height:78px}
+.card:active{transform:scale(.99)}
+.card .tx{flex:1;min-width:0}
+.card .nm{font-family:var(--display);font-size:19px;font-weight:600;text-transform:uppercase;letter-spacing:.01em;line-height:1.1}
+.card .ds{font-size:12.5px;color:var(--muted);margin-top:2px;line-height:1.3;overflow-wrap:anywhere}
+.card .pr{font-size:13px;color:var(--muted);margin-top:3px}
+.card .pr b{color:var(--ink)}
+.badge{flex:none;text-align:center;min-width:76px;border-radius:12px;padding:7px 6px;color:#fff;font-weight:700;line-height:1.1}
+.badge small{display:block;font-weight:500;font-size:11px;opacity:.95}
+.ok{background:var(--green)}.mid{background:var(--orange)}.hi{background:var(--red)}
+.sec{font-family:var(--display);text-transform:uppercase;font-size:15px;letter-spacing:.06em;color:var(--muted);margin:18px 2px 8px}
+.kpis{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin:4px 0 12px}
+.kpi{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:10px 8px;text-align:center}
+.kpi b{display:block;font-family:var(--display);font-size:25px;line-height:1.1}
+.kpi span{font-size:11.5px;color:var(--muted)}
+.kpi.main{background:var(--ink);color:#fff;border-color:var(--ink)}.kpi.main span{color:#ffd9a0}
+.kpi.fc b{color:var(--red)}.kpi.fc.okk b{color:var(--green)}.kpi.fc.midd b{color:#d07a00}
+.dhead{display:flex;gap:12px;align-items:flex-start;margin:2px 0 10px}
+.dhead h2{font-family:var(--display);font-size:30px;text-transform:uppercase;line-height:1;margin:0}
+.dhead p{margin:4px 0 0;color:var(--muted);font-size:13.5px}
+.price-tag{flex:none;background:var(--orange);color:var(--ink);border-radius:12px;padding:6px 10px;font-weight:700;text-align:center;line-height:1.1}
+.price-tag small{display:block;font-size:10.5px;font-weight:500}
+.seg{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin:0 0 12px}
+@media(min-width:600px){.seg{grid-template-columns:repeat(4,1fr)}}
+.seg button{height:48px;border-radius:12px;border:2px solid var(--line);background:#fff;font-weight:600;padding:0 12px;font-size:14.5px}
+.seg button.on{border-color:var(--red);background:#fff0e8;color:var(--red)}
+.tbl{min-width:0;background:#fff;border:1px solid var(--line);border-radius:var(--r);overflow:hidden}
+.row{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:4px 10px;padding:11px 12px;border-top:1px solid var(--line);align-items:center;position:relative}
+.row:first-child{border-top:0}
+.row .nm{font-weight:600;font-size:15px;line-height:1.2;background:none;border:0;padding:0;text-align:left;min-height:40px}
+button.nm{cursor:pointer;color:inherit;font-family:inherit}
+.row .nm small{display:block;font-weight:400;color:var(--muted);font-size:11.5px;margin-top:1px}
+.row .cost{font-weight:700;font-size:16px;text-align:right;white-space:nowrap}
+.row .cost small{display:block;font-weight:500;font-size:11px;color:var(--muted)}
+.row .qty{display:flex;align-items:center;gap:6px;grid-column:1/-1}
+.step{width:44px;height:40px;border-radius:10px;border:2px solid var(--line);background:var(--paper);font-size:22px;font-weight:600;line-height:1;flex:none}
+.qty input{width:84px;height:40px;border-radius:10px;border:2px solid var(--line);text-align:center;font-weight:600;font-size:16px;background:#fff}
+.qty .u{font-size:13px;color:var(--muted);min-width:22px}
+.qty .up{margin-left:auto;font-size:11.5px;color:var(--muted);text-align:right;line-height:1.25}
+.bar{position:absolute;left:0;bottom:0;height:3px;background:var(--orange);opacity:.75}
+.row.dough{background:#fff8ee}
+.row.sub{background:#fffdf8;padding-left:24px}
+.row.sub .nm{font-weight:500;font-size:14px}
+.row.tot{background:var(--ink);color:#fff}
+.row.tot .nm,.row.tot .cost{font-family:var(--display);font-size:20px;letter-spacing:.02em}
+.row.tot .cost small{color:#ffd9a0}
+.row.extra .nm{font-weight:500}
+.toggle-d{display:inline-flex;align-items:center;gap:6px;margin-top:6px;border:0;background:var(--ink);color:#fff;border-radius:99px;padding:0 14px;min-height:40px;min-width:40px;justify-content:center;font-size:13px;font-weight:600}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;height:52px;border-radius:14px;border:2px solid var(--ink);background:var(--ink);color:#fff;font-weight:600;padding:0 18px;font-size:15.5px;text-decoration:none}
+.btn.ghost{background:#fff;color:var(--ink)}
+.btn.red{background:var(--red);border-color:var(--red)}
+.btns{display:flex;gap:8px;flex-wrap:wrap;margin:12px 0}
+.btns .btn{flex:1 1 160px}
+.note{font-size:12.5px;color:var(--muted);background:var(--paper);border:1px dashed #e0cfae;border-radius:12px;padding:9px 11px;margin:10px 0}
+.note b{color:var(--ink)}
+.opts{display:grid;gap:8px;margin:10px 0}
+.opt{display:flex;align-items:center;gap:10px;background:#fff;border:1px solid var(--line);border-radius:12px;padding:8px 12px;min-height:56px}
+.opt label{flex:1;font-weight:500;font-size:14.5px}
+.opt label small{display:block;color:var(--muted);font-weight:400;font-size:11.5px}
+.sw{position:relative;width:54px;height:32px;flex:none}
+.sw input{opacity:0;width:0;height:0;position:absolute}
+.sw span{position:absolute;inset:0;background:#d8cdb8;border-radius:99px;transition:.2s}
+.sw span:before{content:"";position:absolute;width:26px;height:26px;left:3px;top:3px;background:#fff;border-radius:50%;transition:.2s;box-shadow:0 1px 3px #0003}
+.sw input:checked+span{background:var(--green)}.sw input:checked+span:before{transform:translateX(22px)}
+.ing{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:12px;display:grid;gap:6px}
+.ing .h{display:flex;gap:8px;align-items:flex-start}
+.ing .h .t{flex:1;min-width:0}
+.ing .nm{font-weight:700;font-size:16px;line-height:1.2}
+.ing .q{font-size:12px;color:var(--muted)}
+.src{flex:none;font-size:10.5px;font-weight:700;border-radius:99px;padding:3px 8px;text-transform:uppercase;letter-spacing:.03em}
+.src.L{background:#dff5ee;color:#00785d}.src.S{background:#e6efff;color:#2753a8}.src.E{background:#ffe9d6;color:#b04a00}
+.ing .pp{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.ing .pp input{width:110px;height:46px;border-radius:12px;border:2px solid var(--line);font-weight:700;font-size:18px;text-align:right;padding:0 10px}
+.ing .pp .fmt{font-size:13px;color:var(--muted)}
+.ing .unit{display:flex;gap:6px;flex-wrap:wrap}
+.ing .unit span{background:var(--paper);border:1px solid var(--line);border-radius:8px;padding:4px 8px;font-size:12.5px}
+.ing .unit span b{font-size:14px}
+.ing .meta{font-size:11.5px;color:var(--muted)}
+.ing.edited{border-color:var(--orange);box-shadow:0 0 0 2px #ff98003a}
+.lab-res{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:10px 0}
+.lab-res .kpi b{font-size:22px}
+.pct-ok{color:var(--green);font-weight:700}.pct-bad{color:var(--red);font-weight:700}
+nav.tabs{position:fixed;left:0;right:0;bottom:0;z-index:30;background:#fff;border-top:1px solid var(--line);display:flex;justify-content:center;padding-bottom:env(safe-area-inset-bottom);box-shadow:0 -6px 18px #0000000f}
+nav.tabs div{display:flex;width:100%;max-width:640px}
+nav.tabs a{flex:1;height:var(--tab);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;text-decoration:none;color:var(--muted);font-size:12px;font-weight:600}
+nav.tabs a i{font-style:normal;font-size:24px;line-height:1;filter:grayscale(1);opacity:.7}
+nav.tabs a.on{color:var(--red)}nav.tabs a.on i{filter:none;opacity:1}
+.sheet-bg{position:fixed;inset:0;background:#0007;z-index:50;display:none}
+.sheet{position:fixed;left:0;right:0;bottom:0;z-index:51;background:var(--cream);border-radius:20px 20px 0 0;max-height:88vh;overflow:auto;padding:14px 14px calc(18px + env(safe-area-inset-bottom));transform:translateY(105%);transition:transform .25s,visibility .25s;visibility:hidden;max-width:680px;margin:0 auto}
+.sheet.open{transform:none;visibility:visible}.sheet-bg.open{display:block}
+.sheet h3{font-family:var(--display);text-transform:uppercase;font-size:22px;margin:4px 0 10px}
+.sheet .grab{width:44px;height:5px;border-radius:9px;background:#d8cdb8;margin:0 auto 8px}
+.sheet-top{position:sticky;top:-14px;margin:-14px -14px 0;padding:10px 12px 0;background:var(--cream);z-index:2;display:flex;justify-content:center;align-items:flex-start;min-height:46px}
+.sheet-x{position:absolute;right:10px;top:6px;width:44px;height:44px;border-radius:99px;border:0;background:var(--ink);color:#fff;font-size:18px;font-weight:700;cursor:pointer}
+.pick{display:grid;gap:6px;margin-top:8px}
+.pick button{text-align:left;background:#fff;border:1px solid var(--line);border-radius:12px;padding:10px 12px;min-height:50px}
+.pick button small{display:block;color:var(--muted);font-size:11.5px}
+.toast{position:fixed;left:50%;bottom:calc(var(--tab) + 16px);transform:translateX(-50%) translateY(30px);opacity:0;background:var(--ink);color:#fff;padding:10px 16px;border-radius:99px;font-size:14px;z-index:60;transition:.25s;pointer-events:none;white-space:nowrap}
+.toast.on{opacity:1;transform:translateX(-50%)}
+.foot{font-size:12px;color:var(--muted);text-align:center;margin:26px 0 6px}
+.foot a{color:var(--muted)}
+.empty{padding:30px 10px;text-align:center;color:var(--muted)}
+.combo{display:grid;gap:8px;margin:0 0 12px}
+.combo select{width:100%;height:52px;border-radius:12px;border:2px solid var(--line);background:#fff;padding:0 12px;font-weight:600;font-size:16px}
+.combo label{font-size:12.5px;color:var(--muted);font-weight:600}
+.about img{width:100%;border-radius:var(--r);display:block;margin:6px 0}
+@media(min-width:760px){.kpi b{font-size:30px}.dhead h2{font-size:36px}}
+</style>
+</head>
+<body>
+<div class="studio"><div class="studio-in">
+  <p><span class="pill">DEMO</span><span class="long" data-t="studio"></span><span class="short">BOLLA STUDIO</span></p>
+  <a class="sb" href="tel:+393445240254" data-track="/da-serafino-food-cost/bolla-tel" data-title="bolla-tel">Marcelo</a>
+  <div class="langs" id="langs"><button type="button" data-l="it" class="on">IT</button><button type="button" data-l="es">ES</button></div>
+</div></div>
+<header class="top" id="top"><div class="top-in">
+  <button class="back" id="back" type="button" aria-label="Indietro">‹</button>
+  <div class="logo" role="img" aria-label="Da Serafino"></div>
+  <h1 id="title">Food Cost<small>Da Serafino · Cannigione</small></h1>
+</div></header>
+<div class="notice"><div data-t="notice"></div></div>
+<main id="view"></main>
+<nav class="tabs"><div>
+  <a href="#/menu" data-tab="menu"><i>🍕</i><span data-t="tMenu"></span></a>
+  <a href="#/magazzino" data-tab="magazzino"><i>📦</i><span data-t="tStock"></span></a>
+  <a href="#/impasti" data-tab="impasti"><i>🌾</i><span data-t="tDough"></span></a>
+  <a href="#/altro" data-tab="altro"><i>⚙️</i><span data-t="tMore"></span></a>
+</div></nav>
+<div class="sheet-bg" id="sheetBg"></div>
+<div class="sheet" id="sheet" role="dialog" aria-modal="true"><div class="sheet-top"><div class="grab"></div><button type="button" class="sheet-x" id="sheetX" aria-label="Chiudi">✕</button></div><div id="sheetBody"></div></div>
+<div class="toast" id="toast"></div>
+<script src="data.js"></script>
+<script src="calc.js"></script>
+<script src="app.js"></script>
+<script>
+/* Uso: link con data-track (telefono/sito BOLLA, fonti prezzi). Nessun testo digitato. */
+document.addEventListener("click",function(e){var a=e.target&&e.target.closest?e.target.closest("[data-track]"):null;if(a&&window.bsTrack)window.bsTrack(a.getAttribute("data-track"),a.getAttribute("data-title"));},true);
+</script>
+</body>
+</html>

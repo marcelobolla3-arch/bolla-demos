@@ -1,0 +1,646 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#2e2a25">
+<meta name="robots" content="noindex, nofollow">
+<title>Agliuledda Rooms &amp; Suites (nome provvisorio) · Ovilò, Olbia · Demo BOLLA STUDIO</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%23b5603c'/%3E%3Ctext x='16' y='22' text-anchor='middle' font-size='17' fill='%23f4ede3' font-family='Georgia'%3EA%3C/text%3E%3C/svg%3E">
+<link rel="preload" as="image" href="img/tour-poster.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#2e2a25;--muted:#7a6f62;--stucco:#f6f0e7;--sand:#ece1d1;--jute:#c8a77a;--terra:#b5603c;--terra2:#9a4c2d;--olive:#6b6a45;--line:#e4d8c6;--card:#fffdf9}
+*{box-sizing:border-box}html,body{margin:0}html{scroll-behavior:smooth}
+body{background:var(--stucco);color:var(--ink);font:300 17px/1.6 "Jost",-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;-webkit-font-smoothing:antialiased}
+a{color:var(--terra2)}
+h1,h2,h3,.serif{font-family:"Cormorant Garamond",Georgia,"Times New Roman",serif;font-weight:500}
+.studio{background:#1f1c19;color:#f3ede4;padding:9px 16px;font-size:14px}
+.studio-in{max-width:1120px;margin:0 auto;display:flex;flex-wrap:wrap;gap:8px 14px;align-items:center;justify-content:space-between}
+.studio p{margin:0;line-height:1.4}
+.pill{display:inline-block;background:var(--jute);color:#2e2a25;font-size:11px;letter-spacing:.12em;font-weight:500;padding:3px 9px;border-radius:999px;margin-right:6px}
+.studio-actions{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:44px;padding:0 20px;border-radius:999px;font:500 15px/1 "Jost",sans-serif;letter-spacing:.02em;text-decoration:none;border:0;cursor:pointer}
+.btn-w{background:#f6f0e7;color:#2e2a25}.btn-o{border:1px solid rgba(246,240,231,.4);color:#f6f0e7;background:transparent}
+.langs{display:flex;gap:4px}.langs button{border:1px solid rgba(246,240,231,.35);background:transparent;color:#f6f0e7;border-radius:999px;padding:5px 11px;font:400 13px "Jost",sans-serif;cursor:pointer;min-height:36px}
+.langs button.on{background:#f6f0e7;color:#2e2a25}
+/* HERO */
+.hero{position:relative;height:calc(100vh - 64px);height:calc(100svh - 64px);min-height:560px;max-height:980px;overflow:hidden;background:#1f1c19 url(img/tour-poster.jpg) center/cover;color:#fff;touch-action:pan-y;user-select:none;-webkit-user-select:none}
+.hero canvas,.hero video{position:absolute;inset:0;width:100%;height:100%;display:block}
+.hero video{object-fit:cover;opacity:0;transition:opacity .8s}
+.hero.mode-video video{opacity:1}.hero.mode-video canvas{opacity:0}
+.hero canvas{transition:opacity .8s;cursor:grab}.hero canvas:active{cursor:grabbing}
+.hero::after{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(180deg,rgba(20,16,12,.38) 0%,rgba(20,16,12,0) 22%,rgba(20,16,12,0) 50%,rgba(20,16,12,.78) 100%)}
+.brand{position:absolute;z-index:3;top:18px;left:0;right:0;max-width:1120px;margin:0 auto;padding:0 22px;display:flex;justify-content:space-between;align-items:center;pointer-events:none}
+.brand .nm{font-family:"Cormorant Garamond",Georgia,serif;font-size:22px;letter-spacing:.04em;text-shadow:0 1px 12px rgba(0,0,0,.35)}
+.prov{display:inline-block;font:400 11px "Jost",sans-serif;letter-spacing:.12em;text-transform:uppercase;border:1px dashed rgba(255,255,255,.7);border-radius:999px;padding:2px 8px;margin-left:8px;vertical-align:middle}
+.brand .rnd{font-size:12px;letter-spacing:.14em;text-transform:uppercase;background:rgba(20,16,12,.42);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);padding:6px 11px;border-radius:999px}
+.hero-in{position:absolute;z-index:3;left:0;right:0;bottom:0;max-width:1120px;margin:0 auto;padding:0 22px 26px;pointer-events:none}
+.hero-in>*{pointer-events:auto}
+.chapter{font-size:12.5px;letter-spacing:.22em;text-transform:uppercase;margin:0 0 10px;opacity:.92;min-height:20px;transition:opacity .5s}
+.hero h1{font-size:clamp(40px,7vw,78px);line-height:.98;margin:0 0 12px;font-weight:500;text-shadow:0 2px 24px rgba(0,0,0,.25)}
+.hero h1 em{font-style:italic;color:#f1d9bd}
+.hero .lead{max-width:620px;font-size:clamp(16px,2.2vw,19px);margin:0 0 18px}
+.cta{display:flex;gap:10px;flex-wrap:wrap}
+.b-terra{background:var(--terra);color:#fff}.b-terra:hover{background:var(--terra2)}
+.b-glass{background:rgba(246,240,231,.16);color:#fff;border:1px solid rgba(246,240,231,.5);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)}
+.tourbar{display:flex;align-items:center;gap:10px;margin-top:18px;flex-wrap:wrap}
+.dots{display:flex;gap:6px}.dots button{width:34px;height:4px;border-radius:4px;border:0;background:rgba(255,255,255,.35);padding:0;cursor:pointer;position:relative;overflow:hidden}
+.dots button i{position:absolute;inset:0;background:#fff;transform-origin:left;transform:scaleX(0)}
+.dots button{min-height:4px}
+.seg{display:flex;background:rgba(20,16,12,.4);border:1px solid rgba(255,255,255,.3);border-radius:999px;padding:3px;backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)}
+.seg button{border:0;background:transparent;color:#fff;font:400 13px "Jost",sans-serif;padding:7px 12px;border-radius:999px;cursor:pointer;min-height:34px}
+.seg button.on{background:#f6f0e7;color:#2e2a25}
+.hint{font-size:12.5px;opacity:.85;display:flex;align-items:center;gap:6px}
+.hint svg{width:18px;height:18px}
+.ico{width:38px;height:38px;border-radius:50%;border:1px solid rgba(255,255,255,.45);background:rgba(20,16,12,.35);color:#fff;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;font-size:14px}
+.studio .short{display:none;letter-spacing:.12em;font-size:12.5px}
+@media (max-width:640px){.brand .rnd{display:none}.hero h1{font-size:40px}.hint{display:none}
+ .studio{padding:7px 12px}.studio-in{flex-wrap:nowrap}.studio .long{display:none}.studio .short{display:inline}
+ .studio .btn-o{display:none}.studio .num{display:none}.studio .btn-w{min-height:34px;padding:0 12px;font-size:13px}.langs button{min-height:32px;padding:4px 9px}
+ .hero{height:calc(100vh - 48px);height:calc(100svh - 48px);min-height:520px}.hero-in{padding-bottom:18px}
+ .cta{flex-wrap:nowrap}.cta .btn{min-height:44px;padding:0 15px;font-size:14px}.tourbar{margin-top:14px}.dots button{width:26px}}
+/* sections */
+main{max-width:1120px;margin:0 auto;padding:0 20px}
+section{padding:56px 0 8px}
+.kicker{font-size:12.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--terra2);margin:0 0 8px}
+h2{font-size:clamp(32px,4.6vw,48px);line-height:1.05;margin:0 0 12px}
+.sub{color:var(--muted);max-width:720px;margin:0 0 24px}
+.facts{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1px;background:var(--line);border:1px solid var(--line);border-radius:20px;overflow:hidden;margin-top:-1px}
+.facts div{background:var(--card);padding:18px 16px}.facts b{display:block;font-family:"Cormorant Garamond",Georgia,serif;font-size:30px;font-weight:500;line-height:1}.facts span{font-size:14.5px;color:var(--muted)}
+@media (max-width:760px){.facts{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.rooms{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+@media (max-width:820px){.rooms{grid-template-columns:1fr}}
+.room{background:var(--card);border:1px solid var(--line);border-radius:22px;overflow:hidden;display:flex;flex-direction:column}
+.room .ph{height:260px;background-size:cover;background-position:center;position:relative}
+.room .ph small{position:absolute;left:12px;bottom:10px;background:rgba(20,16,12,.55);color:#fff;font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;padding:3px 9px;border-radius:999px}
+.room .tx{padding:18px 20px 20px;display:flex;flex-direction:column;gap:8px;flex:1}
+.room h3{font-size:30px;margin:0;line-height:1.05}
+.room .meta{font-size:14.5px;color:var(--muted)}
+.room ul{margin:4px 0 0;padding:0;list-style:none;display:flex;flex-wrap:wrap;gap:6px}
+.room li{font-size:13.5px;background:var(--sand);border-radius:999px;padding:4px 10px}
+.price{margin-top:auto;padding-top:10px;display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;border-top:1px dashed var(--line)}
+.price b{font-family:"Cormorant Garamond",Georgia,serif;font-size:22px;font-weight:500}
+.tagx{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--terra2);border:1px dashed var(--terra);border-radius:999px;padding:2px 8px}
+.btn-t{background:var(--ink);color:#f6f0e7}
+.amen{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+@media (max-width:820px){.amen{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.amen div{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:14px;display:flex;gap:10px;align-items:flex-start;font-size:15.5px}
+.amen svg{flex:0 0 26px;width:26px;height:26px;stroke:var(--terra);fill:none;stroke-width:1.5}
+.gal{display:grid;grid-template-columns:repeat(6,1fr);grid-auto-rows:150px;gap:10px}
+.gal button{border:0;padding:0;border-radius:16px;overflow:hidden;cursor:zoom-in;background:#ddd center/cover;position:relative}
+.gal button span{position:absolute;left:10px;bottom:8px;color:#fff;font-size:12px;letter-spacing:.06em;text-shadow:0 1px 6px rgba(0,0,0,.6)}
+.g1{grid-column:span 4;grid-row:span 2}.g2{grid-column:span 2;grid-row:span 2}.g3{grid-column:span 3;grid-row:span 2}.g4{grid-column:span 3}.g5{grid-column:span 3}.g6{grid-column:span 2}.g7{grid-column:span 2}.g8{grid-column:span 2}
+@media (max-width:760px){.gal{grid-template-columns:repeat(2,1fr);grid-auto-rows:130px}.gal button{grid-column:span 1!important;grid-row:span 1!important}.gal .g1,.gal .g3{grid-column:span 2!important;grid-row:span 2!important}}
+.lb{position:fixed;inset:0;z-index:50;background:rgba(18,15,12,.94);display:none;align-items:center;justify-content:center;padding:16px}
+.lb.on{display:flex}.lb img{max-width:100%;max-height:86vh;border-radius:10px}
+.lb p{position:absolute;bottom:14px;left:0;right:0;text-align:center;color:#eee;font-size:14px;margin:0}
+.lb .x{position:absolute;top:12px;right:12px}
+.lb .pv,.lb .nx{position:absolute;top:50%;transform:translateY(-50%)}.lb .pv{left:10px}.lb .nx{right:10px}
+/* booking */
+.book{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);gap:22px;align-items:start}
+@media (max-width:900px){.book{grid-template-columns:1fr}}
+.panel{background:var(--card);border:1px solid var(--line);border-radius:22px;padding:18px}
+.rt{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:14px}
+.rt label{border:1px solid var(--line);border-radius:14px;padding:10px 12px;cursor:pointer;display:block;font-size:14.5px;background:#fff}
+.rt input{position:absolute;opacity:0;pointer-events:none}
+.rt label.on{border-color:var(--terra);box-shadow:0 0 0 2px rgba(181,96,60,.18);background:#fff8f2}
+.rt b{display:block;font-family:"Cormorant Garamond",Georgia,serif;font-size:21px;font-weight:500}
+.calhead{display:flex;justify-content:space-between;align-items:center;margin:4px 0 8px}
+.calhead b{font-family:"Cormorant Garamond",Georgia,serif;font-size:22px;font-weight:500;text-transform:capitalize}
+.nav{width:40px;height:40px;border-radius:50%;border:1px solid var(--line);background:#fff;cursor:pointer;font-size:16px;color:var(--ink)}
+.months{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+@media (max-width:640px){.months{grid-template-columns:1fr}.months .m2{display:none}}
+.mname{text-align:center;font-family:"Cormorant Garamond",Georgia,serif;font-size:20px;text-transform:capitalize;margin-bottom:6px}
+.grid7{display:grid;grid-template-columns:repeat(7,1fr);gap:3px}
+.grid7 .wd{font-size:11.5px;text-align:center;color:var(--muted);text-transform:uppercase;letter-spacing:.04em;padding:3px 0}
+.day{aspect-ratio:1/1;border:0;border-radius:10px;background:#fff;font:400 14.5px "Jost",sans-serif;color:var(--ink);cursor:pointer;position:relative;min-height:36px}
+.day.empty{background:transparent;cursor:default}
+.day.past{color:#c9bfb2;cursor:not-allowed;background:transparent}
+.day.full{color:#b9aea2;text-decoration:line-through;background:repeating-linear-gradient(135deg,#f1e9dd 0 4px,#f8f3ec 4px 8px);cursor:not-allowed}
+.day.few::after{content:"";position:absolute;bottom:5px;left:50%;width:5px;height:5px;margin-left:-2.5px;border-radius:50%;background:#d9a441}
+.day.pend{box-shadow:inset 0 0 0 1.5px #d9a441}
+.day.inr{background:#f3dccb;border-radius:0}
+.day.st,.day.en{background:var(--terra);color:#fff}
+.day:not(.past):not(.full):not(.empty):hover{outline:1.5px solid var(--terra)}
+.legend{display:flex;flex-wrap:wrap;gap:12px;font-size:12.5px;color:var(--muted);margin-top:10px}
+.legend i{display:inline-block;width:12px;height:12px;border-radius:3px;vertical-align:-1px;margin-right:4px}
+.form{display:grid;gap:10px}
+.row2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.form label{font-size:13px;color:var(--muted);display:block}
+.form input,.form select,.form textarea{width:100%;margin-top:4px;border:1px solid var(--line);border-radius:12px;padding:11px 12px;font:400 16px "Jost",sans-serif;background:#fff;color:var(--ink)}
+.form textarea{min-height:70px;resize:vertical}
+.sum{background:var(--sand);border-radius:14px;padding:12px 14px;font-size:15px}
+.sum b{font-weight:500}
+.err{color:#a3342a;font-size:14px;min-height:18px;margin:0}
+.ok{background:#eef3e6;border:1px solid #cfdcb9;color:#3d4a26;border-radius:14px;padding:12px 14px;font-size:15px;display:none}
+.chk{display:flex!important;gap:8px;align-items:flex-start;font-size:13.5px!important}
+.chk input{width:auto;margin-top:3px}
+.owner{margin-top:26px;background:#2e2a25;color:#f3ede4;border-radius:22px;padding:20px}
+.owner h3{font-size:28px;margin:0 0 4px;display:flex;align-items:center;gap:10px}
+.owner .live{width:9px;height:9px;border-radius:50%;background:#8fc27a;box-shadow:0 0 0 4px rgba(143,194,122,.2)}
+.owner p.n{color:#cbbfae;font-size:14.5px;margin:0 0 14px}
+.kpis{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin-bottom:14px}
+.kpis div{background:#3a352f;border-radius:14px;padding:10px 12px}.kpis b{display:block;font-family:"Cormorant Garamond",Georgia,serif;font-size:28px;font-weight:500;line-height:1.1}.kpis span{font-size:12.5px;color:#cbbfae}
+@media (max-width:640px){.kpis{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.req{background:#3a352f;border-radius:14px;padding:12px 14px;margin-bottom:8px;display:grid;grid-template-columns:1fr auto;gap:8px;align-items:center}
+.req .t{font-size:15px}.req .t b{font-weight:500}.req .s{font-size:13px;color:#cbbfae}
+.st-b{font-size:11px;letter-spacing:.1em;text-transform:uppercase;border-radius:999px;padding:3px 9px;display:inline-block;margin-left:6px}
+.st-pend{background:#d9a441;color:#2e2a25}.st-ok{background:#8fc27a;color:#1d2a16}.st-no{background:#a35a4a;color:#fff}
+.req .acts{display:flex;gap:6px}.req .acts button{min-height:36px;padding:0 12px;border-radius:999px;border:0;cursor:pointer;font:500 13px "Jost",sans-serif}
+.a-ok{background:#8fc27a;color:#1d2a16}.a-no{background:transparent;color:#f3ede4;border:1px solid #6d645a!important}
+.owner .empty{color:#cbbfae;font-size:15px}
+.loc{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.2fr);gap:22px;align-items:stretch}
+@media (max-width:860px){.loc{grid-template-columns:1fr}}
+.dist{list-style:none;margin:0;padding:0}
+.dist li{display:flex;justify-content:space-between;gap:10px;border-bottom:1px dashed var(--line);padding:12px 0;font-size:16.5px}
+.dist li b{font-family:"Cormorant Garamond",Georgia,serif;font-size:24px;font-weight:500;color:var(--terra2);white-space:nowrap}
+.map{border-radius:22px;overflow:hidden;border:1px solid var(--line);min-height:320px;background:var(--sand) url(img/det-patio.jpg) center/cover;position:relative}
+.map iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.map button{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%)}
+.note{font-size:14px;color:var(--muted);line-height:1.55}
+.demo{margin:46px 0 0;background:var(--sand);border-radius:18px;padding:16px 18px;font-size:14.5px;color:#5b5146}
+footer{max-width:1120px;margin:0 auto;padding:22px 20px calc(40px + env(safe-area-inset-bottom));font-size:14.5px;color:#5b5146}
+.fab{position:fixed;right:14px;bottom:calc(14px + env(safe-area-inset-bottom));z-index:20;box-shadow:0 10px 26px rgba(46,42,37,.3);opacity:0;transform:translateY(20px);transition:.3s;pointer-events:none}
+.fab.on{opacity:1;transform:none;pointer-events:auto}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+<!--
+  Demo for a new holiday structure in Loc. Agliuledda, Ovilò (Olbia). Built by BOLLA STUDIO.
+  The name "Agliuledda Rooms & Suites" is PROVISIONAL (edit NAME below and in <title>). Prices are placeholders.
+  Hero: WebGL depth-parallax walkthrough of the three project renders (img/*.jpg + img/*-depth.jpg, depth estimated with
+  Depth-Anything-V2) plus an AI-generated video tour (tour-480.mp4 / tour-720.mp4) made from the same renders.
+  Booking: demo only, stored in localStorage of the visitor's browser; nothing is sent to anyone.
+  GoatCounter: page /agliuledda-ovilo (optional ?p=). ?internal=1 sets skipgc and loads no counter.
+-->
+<script>
+(function(){
+ var BASE='/agliuledda-ovilo';
+ var m=(location.search+location.hash).match(/[?&#]internal=([01])/);
+ var mo=(location.search+location.hash).match(/[?&#]interno=([01])/);
+ var bollaOff=false;
+ function bollaCookie(on){try{var secure="";try{if(location.protocol==="https:")secure="; Secure";}catch(e){}document.cookie=on?"bolla_internal=1; Path=/; Max-Age=34560000; SameSite=Lax"+secure:"bolla_internal=; Path=/; Max-Age=0; SameSite=Lax";}catch(e){}}
+ function bollaStore(on){try{if(on)localStorage.setItem("skipgc","t");else localStorage.removeItem("skipgc");}catch(e){}bollaCookie(on);}
+ try{var qh=location.search+location.hash;var ia=m?qh.lastIndexOf("internal="):-1;var io=mo?qh.lastIndexOf("interno="):-1;if(ia>=0||io>=0){var bollaOn=(io>ia?mo[1]:m[1])==="1";bollaOff=!bollaOn;bollaStore(bollaOn);}}catch(e){}
+ var internal=false;try{internal=localStorage.getItem("skipgc")==="t";}catch(e){}
+ try{if(!internal&&/(?:^|; )bolla_internal=1(?:;|$)/.test(document.cookie||"")){internal=true;try{localStorage.setItem("skipgc","t");}catch(e){}}else if(internal)bollaCookie(true);}catch(e){}
+ var bollaAudit="";try{var bollaPm=location.search.match(/[?&]p=([^&#]*)/)||location.search.match(/[?&]link_id=([^&#]*)/);if(bollaPm)bollaAudit=decodeURIComponent(bollaPm[1]).toLowerCase().replace(/[^a-z0-9-]/g,"").slice(0,60);}catch(e){}if(bollaAudit.indexOf("bmaudit-")===0){internal=true;if(!bollaOff)bollaStore(true);}
+ var sm=location.search.match(/[?&]p=([^&#]*)/);
+ var tag=sm?decodeURIComponent(sm[1]).toLowerCase().replace(/[^a-z0-9-]/g,"").slice(0,60):"";
+ var q=[]; window.bsTrack=function(sub,title){ if(internal) return;
+   var ep=sub+(tag && sub.indexOf("?p=")<0 ? "?p="+tag : "");
+   if(window.goatcounter&&window.goatcounter.count) window.goatcounter.count({path:ep,title:title||sub,event:true}); else q.push([ep,title||sub]); };
+ if(internal) return;
+ window.goatcounter={no_onload:true};
+ var s=document.createElement("script"); s.async=true; s.src="https://gc.zgo.at/count.js";
+ s.setAttribute("data-goatcounter","https://bollastudio.goatcounter.com/count");
+ s.onload=function(){ try{ window.goatcounter.count({path:BASE+'/'+(tag?'?p='+tag:''),title:'Agliuledda Ovilo demo'});
+   q.forEach(function(e){window.goatcounter.count({path:e[0],title:e[1],event:true});}); q=[]; }catch(e){} };
+ document.head.appendChild(s);
+})();
+</script>
+</head>
+<body>
+<div class="studio"><div class="studio-in">
+  <p><span class="pill">DEMO</span><span class="long" data-k="studio"></span><span class="short">BOLLA STUDIO</span></p>
+  <div class="studio-actions">
+    <a class="btn btn-w" href="tel:+393445240254" data-track="/agliuledda-ovilo/bolla-tel" data-title="bolla-tel">Marcelo<span class="num">&nbsp;· +39 344 524 0254</span></a>
+    <a class="btn btn-o" href="https://bollastudio.com" target="_blank" rel="noopener" data-track="/agliuledda-ovilo/bolla-web" data-title="bolla-web">bollastudio.com</a>
+    <div class="langs" id="langs"><button type="button" data-l="it" class="on">IT</button><button type="button" data-l="en">EN</button><button type="button" data-l="es">ES</button></div>
+  </div>
+</div></div>
+
+<section class="hero" id="hero" aria-label="Tour">
+  <canvas id="gl" aria-hidden="true"></canvas>
+  <video id="vid" muted playsinline loop preload="none" poster="img/tour-poster.jpg" aria-hidden="true"></video>
+  <div class="brand"><div class="nm"><span class="js-name">Agliuledda Rooms &amp; Suites</span><span class="prov" data-k="prov"></span></div><div class="rnd" data-k="render"></div></div>
+  <div class="hero-in">
+    <p class="chapter" id="chapter"></p>
+    <h1 data-h="h1"></h1>
+    <p class="lead" data-k="lead"></p>
+    <div class="cta"><a class="btn b-terra" href="#prenota" data-k="ctaBook" data-track="/agliuledda-ovilo/cta-book" data-title="cta-book"></a><a class="btn b-glass" href="#galleria" data-k="ctaGal" data-track="/agliuledda-ovilo/cta-gallery" data-title="cta-gallery"></a></div>
+    <div class="tourbar">
+      <div class="seg" role="tablist"><button type="button" id="m3d" class="on" data-k="m3d"></button><button type="button" id="mvid" data-k="mvid"></button></div>
+      <div class="dots" id="dots"><button type="button" aria-label="1"><i></i></button><button type="button" aria-label="2"><i></i></button><button type="button" aria-label="3"><i></i></button></div>
+      <button class="ico" type="button" id="pp" aria-label="Pausa">❚❚</button>
+      <span class="hint" id="hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M8 13V5.5a1.5 1.5 0 0 1 3 0V12m0-1.5a1.5 1.5 0 0 1 3 0V12m0-.5a1.5 1.5 0 0 1 3 0V13a6 6 0 0 1-6 6h-.5a6 6 0 0 1-4.9-2.5L4 14a1.5 1.5 0 0 1 2.4-1.8L8 14"/></svg><span data-k="hint"></span></span>
+    </div>
+  </div>
+</section>
+
+<main>
+  <div class="facts">
+    <div><b>6</b><span data-k="f1"></span></div>
+    <div><b>28 m²</b><span data-k="f2"></span></div>
+    <div><b>2</b><span data-k="f3"></span></div>
+    <div><b>10′</b><span data-k="f4"></span></div>
+  </div>
+
+  <section id="camere">
+    <p class="kicker" data-k="kRooms"></p>
+    <h2 data-k="hRooms"></h2>
+    <p class="sub" data-k="sRooms"></p>
+    <div class="rooms">
+      <article class="room"><div class="ph" style="background-image:url(img/camera.jpg)"><small data-k="renderTag"></small></div><div class="tx">
+        <h3 data-k="r1"></h3><div class="meta" data-k="r1m"></div>
+        <ul id="r1f"></ul>
+        <div class="price"><span><b data-k="priceTbd"></b> <span class="tagx" data-k="example"></span></span><a class="btn btn-t" href="#prenota" data-room="camera" data-k="choose" data-track="/agliuledda-ovilo/room-camera" data-title="room-camera"></a></div></div></article>
+      <article class="room"><div class="ph" style="background-image:url(img/esterno-2.jpg);background-position:center 35%"><small data-k="renderTag"></small></div><div class="tx">
+        <h3 data-k="r2"></h3><div class="meta" data-k="r2m"></div>
+        <ul id="r2f"></ul>
+        <div class="price"><span><b data-k="priceTbd"></b> <span class="tagx" data-k="example"></span></span><a class="btn btn-t" href="#prenota" data-room="suite" data-k="choose" data-track="/agliuledda-ovilo/room-suite" data-title="room-suite"></a></div></div></article>
+    </div>
+  </section>
+
+  <section id="servizi">
+    <p class="kicker" data-k="kAm"></p>
+    <h2 data-k="hAm"></h2>
+    <div class="amen" id="amen"></div>
+  </section>
+
+  <section id="galleria">
+    <p class="kicker" data-k="kGal"></p>
+    <h2 data-k="hGal"></h2>
+    <p class="sub" data-k="sGal"></p>
+    <div class="gal" id="gal"></div>
+  </section>
+
+  <section id="prenota">
+    <p class="kicker" data-k="kBook"></p>
+    <h2 data-k="hBook"></h2>
+    <p class="sub" data-k="sBook"></p>
+    <div class="book">
+      <div class="panel">
+        <div class="rt" id="rt">
+          <label data-v="camera" class="on"><input type="radio" name="rt" value="camera" checked><b data-k="r1"></b><span data-k="rtA"></span></label>
+          <label data-v="suite"><input type="radio" name="rt" value="suite"><b data-k="r2s"></b><span data-k="rtB"></span></label>
+        </div>
+        <div class="calhead"><button class="nav" type="button" id="prev" aria-label="prev">‹</button><b id="calTitle"></b><button class="nav" type="button" id="next" aria-label="next">›</button></div>
+        <div class="months"><div class="m1" id="m1"></div><div class="m2" id="m2"></div></div>
+        <div class="legend"><span><i style="background:#fff;border:1px solid #e4d8c6"></i><span data-k="lgFree"></span></span><span><i style="background:#fff;box-shadow:inset 0 -4px 0 #d9a441"></i><span data-k="lgFew"></span></span><span><i style="background:repeating-linear-gradient(135deg,#e6dccf 0 3px,#f8f3ec 3px 6px)"></i><span data-k="lgFull"></span></span><span><i style="background:var(--terra)"></i><span data-k="lgSel"></span></span></div>
+        <p class="note" data-k="calNote" style="margin:10px 0 0"></p>
+      </div>
+      <form class="panel form" id="bf" novalidate>
+        <div class="sum" id="sum"></div>
+        <div class="row2"><label><span data-k="adults"></span><select id="ad"><option>1</option><option selected>2</option><option>3</option><option>4</option></select></label>
+        <label><span data-k="kids"></span><select id="ch"><option selected>0</option><option>1</option><option>2</option></select></label></div>
+        <label><span data-k="name"></span><input id="nm" autocomplete="name" maxlength="80"></label>
+        <div class="row2"><label><span data-k="phone"></span><input id="ph" type="tel" autocomplete="tel" maxlength="30"></label>
+        <label><span data-k="email"></span><input id="em" type="email" autocomplete="email" maxlength="80"></label></div>
+        <label><span data-k="notes"></span><textarea id="nt" maxlength="400"></textarea></label>
+        <label class="chk"><input type="checkbox" id="pv"><span data-k="privacy"></span></label>
+        <p class="err" id="err" role="alert"></p>
+        <button class="btn b-terra" type="submit" data-k="send"></button>
+        <div class="ok" id="ok"></div>
+      </form>
+    </div>
+    <div class="owner" id="owner">
+      <h3><span class="live"></span><span data-k="oTitle"></span></h3>
+      <p class="n" data-k="oNote"></p>
+      <div class="kpis"><div><b id="kR">0</b><span data-k="kR"></span></div><div><b id="kP">0</b><span data-k="kP"></span></div><div><b id="kN">0</b><span data-k="kN"></span></div><div><b id="kO">–</b><span data-k="kO"></span></div></div>
+      <div id="reqs"><p class="empty" data-k="oEmpty"></p></div>
+      <p style="margin:10px 0 0"><button type="button" class="btn btn-o" id="reset" data-k="reset" data-track="/agliuledda-ovilo/panel-reset" data-title="panel-reset" style="min-height:38px"></button></p>
+    </div>
+  </section>
+
+  <section id="dove">
+    <p class="kicker" data-k="kLoc"></p>
+    <h2 data-k="hLoc"></h2>
+    <div class="loc">
+      <div>
+        <p class="sub" data-k="sLoc" style="margin-bottom:8px"></p>
+        <ul class="dist">
+          <li><span data-k="d1"></span><b>~10 min</b></li>
+          <li><span data-k="d2"></span><b>~10 min</b></li>
+          <li><span data-k="d3"></span><b>~15 min</b></li>
+          <li><span data-k="d4"></span><b>~15 min</b></li>
+        </ul>
+        <p class="note" data-k="locNote" style="margin-top:12px"></p>
+      </div>
+      <div class="map" id="map"><button type="button" class="btn btn-t" id="mapBtn" data-k="mapBtn" data-track="/agliuledda-ovilo/map-open" data-title="map-open"></button></div>
+    </div>
+  </section>
+
+  <p class="demo" data-k="disclaimer"></p>
+</main>
+<footer>
+  <p data-k="foot"></p>
+  <p><a href="tel:+393445240254" data-track="/agliuledda-ovilo/bolla-tel" data-title="bolla-tel">+39 344 524 0254</a> · <a href="https://bollastudio.com" target="_blank" rel="noopener" data-track="/agliuledda-ovilo/bolla-web" data-title="bolla-web">bollastudio.com</a></p>
+</footer>
+<a class="btn b-terra fab" id="fab" href="#prenota" data-k="ctaBook" data-track="/agliuledda-ovilo/cta-book-fab" data-title="cta-book-fab"></a>
+<div class="lb" id="lb" role="dialog" aria-modal="true"><button class="ico x" type="button" id="lbx" aria-label="Chiudi">✕</button><button class="ico pv" type="button" id="lbp" aria-label="prev">‹</button><img id="lbi" alt=""><button class="ico nx" type="button" id="lbn" aria-label="next">›</button><p id="lbc"></p></div>
+<script>
+var NAME="Agliuledda Rooms & Suites"; /* NOME PROVVISORIO: cambiare qui */
+var COPY={
+ it:{studio:"Demo creata da BOLLA STUDIO per la nuova struttura di Gianluca. Nome, prezzi e disponibilità sono provvisori.",
+  prov:"nome provvisorio",render:"Render di progetto",renderTag:"Render di progetto",
+  h1:"Sei camere tra le rocce,<br><em>in mezzo alla natura</em>",
+  lead:"Località Agliuledda, Ovilò: a circa 10 minuti dall'aeroporto di Olbia e dalla Cinta, a circa 15 da Cala Brandinchi e Porto Taverna.",
+  ctaBook:"Verifica disponibilità",ctaGal:"Guarda la galleria",m3d:"Tour 3D",mvid:"Video tour",hint:"Trascina per guardarti intorno",
+  ch:["L'arrivo · il giardino di rocce","Le camere · patio e lanterne","Dentro la camera · 28 m²"],
+  f1:"camere con bagno",f2:"ogni camera",f3:"suite con giardino privato e idromassaggio",f4:"dall'aeroporto di Olbia",
+  kRooms:"Le camere",hRooms:"Due modi di stare",sRooms:"Tutte le camere hanno bagno privato e 28 m². Le immagini sono render di progetto: la struttura è quasi ultimata e risulterà circa così.",
+  r1:"Camera",r1m:"28 m² · bagno privato · 4 camere",r2:"Suite con giardino privato",r2s:"Suite",r2m:"28 m² · bagno privato · 2 suite",
+  feat1:["Minifrigo con freezer","Wi-Fi","Aria condizionata","Macchina del caffè","Bollitore","TV"],
+  feat2:["Parcheggio esclusivo","Giardino privato","Cucina privata","Vasca idromassaggio","Doccia esterna","+ tutti i servizi della camera"],
+  priceTbd:"Prezzo da definire",example:"demo",choose:"Scegli",
+  kAm:"Spazi e servizi",hAm:"Fatto per vivere fuori",
+  am:["Cucina esterna condivisa per le colazioni","Zona comune con tavolini","Zona chill nel bosco, tra le rocce, con tavolini","Aria condizionata e Wi-Fi in ogni camera","Minifrigo con freezer, macchina del caffè e bollitore","Nelle suite: giardino, cucina privata, idromassaggio e doccia esterna"],
+  kGal:"Galleria",hGal:"Com'è, quasi finita",sGal:"Render di progetto forniti dalla proprietà e alcuni dettagli ritagliati dagli stessi render.",
+  gal:["Le due costruzioni al tramonto","La facciata e il giardino","La camera","Angolo caffè","Lampade in rattan","Il patio","Luci tra le rocce","La roccia scultura"],
+  kBook:"Prenota",hBook:"Scegli le date",sBook:"Seleziona il tipo di camera, l'arrivo e la partenza. La richiesta arriva al pannello del gestore, che la conferma.",
+  rtA:"4 camere",rtB:"giardino e idromassaggio · 2",
+  lgFree:"libero",lgFew:"ultime disponibili",lgFull:"completo",lgSel:"le tue date",
+  calNote:"Disponibilità di esempio per la demo: apertura e calendario reale da definire.",
+  pick:"Scegli la data di arrivo sul calendario.",pick2:"Ora scegli la data di partenza.",
+  nights:function(n){return n+(n===1?" notte":" notti");},
+  adults:"Adulti",kids:"Bambini",name:"Nome e cognome",phone:"Telefono / WhatsApp",email:"Email",notes:"Note (facoltative)",
+  privacy:"Acconsento al trattamento dei dati per ricevere una risposta (demo: nessun dato viene inviato).",
+  send:"Invia richiesta di prenotazione",
+  eDates:"Scegli arrivo e partenza.",eName:"Scrivi nome e cognome.",ePhone:"Scrivi un numero di telefono valido.",eEmail:"Controlla l'email.",ePriv:"Serve il consenso per inviare la richiesta.",eFull:"Nelle date scelte non c'è disponibilità per questo tipo di camera.",
+  okMsg:function(r){return "Richiesta inviata. Il gestore ti risponderà per confermare "+r+". (Demo: nessun messaggio è stato inviato.)";},
+  oTitle:"Pannello del gestore",oNote:"Così Gianluca vedrebbe le richieste: può confermarle o rifiutarle, e il calendario si aggiorna. In questa demo i dati restano solo in questo browser.",
+  kR:"richieste",kP:"in attesa",kN:"notti confermate",kO:"occupazione 30 gg",oEmpty:"Nessuna richiesta ancora. Prova a prenotare qui sopra.",
+  stP:"in attesa",stO:"confermata",stN:"rifiutata",aOk:"Conferma",aNo:"Rifiuta",reset:"Svuota la demo",
+  guests:function(a,c){return a+(a===1?" adulto":" adulti")+(c?", "+c+(c===1?" bambino":" bambini"):"");},
+  kLoc:"Dove",hLoc:"Ovilò, in mezzo alla natura",sLoc:"Località Agliuledda, Ovilò (Olbia), accanto all'agriturismo L'Agliuledda.",
+  d1:"Aeroporto di Olbia",d2:"Spiaggia La Cinta",d3:"Cala Brandinchi",d4:"Porto Taverna",
+  locNote:"Tempi indicativi in auto, comunicati dalla proprietà. Posizione esatta da definire.",mapBtn:"Mostra la mappa",
+  disclaimer:"Questa è una demo. Il nome è provvisorio, i prezzi non sono definiti e la disponibilità è di esempio. Le immagini sono render di progetto e il video tour è generato a partire da quei render: è indicativo. Nessuna richiesta viene inviata a nessuno.",
+  foot:"Demo creata da Marcelo Bolla · BOLLA STUDIO, Olbia. Non è il sito ufficiale della struttura."},
+ en:{studio:"Demo built by BOLLA STUDIO for Gianluca's new guesthouse. Name, prices and availability are provisional.",
+  prov:"provisional name",render:"Project renders",renderTag:"Project render",
+  h1:"Six rooms among the rocks,<br><em>surrounded by nature</em>",
+  lead:"Località Agliuledda, Ovilò: about 10 minutes from Olbia airport and La Cinta beach, about 15 from Cala Brandinchi and Porto Taverna.",
+  ctaBook:"Check availability",ctaGal:"See the gallery",m3d:"3D tour",mvid:"Video tour",hint:"Drag to look around",
+  ch:["Arrival · the rock garden","The rooms · patio and lanterns","Inside the room · 28 m²"],
+  f1:"rooms with bathroom",f2:"each room",f3:"suites with private garden and hot tub",f4:"from Olbia airport",
+  kRooms:"Rooms",hRooms:"Two ways to stay",sRooms:"Every room has a private bathroom and 28 m². Images are project renders: the property is almost finished and will look about like this.",
+  r1:"Room",r1m:"28 m² · private bathroom · 4 rooms",r2:"Suite with private garden",r2s:"Suite",r2m:"28 m² · private bathroom · 2 suites",
+  feat1:["Mini-fridge with freezer","Wi-Fi","Air conditioning","Coffee machine","Kettle","TV"],
+  feat2:["Private parking","Private garden","Private kitchen","Hot tub","Outdoor shower","+ all room amenities"],
+  priceTbd:"Price to be defined",example:"demo",choose:"Choose",
+  kAm:"Spaces & amenities",hAm:"Made for outdoor living",
+  am:["Shared outdoor kitchen for breakfast","Common area with tables","Chill-out area in the woods, among the rocks, with tables","Air conditioning and Wi-Fi in every room","Mini-fridge with freezer, coffee machine and kettle","In the suites: garden, private kitchen, hot tub and outdoor shower"],
+  kGal:"Gallery",hGal:"Almost finished",sGal:"Project renders supplied by the owner, plus a few details cropped from the same renders.",
+  gal:["The two buildings at dusk","Façade and garden","The room","Coffee corner","Rattan lamps","The patio","Lights among the rocks","The sculpted rock"],
+  kBook:"Book",hBook:"Choose your dates",sBook:"Pick the room type, arrival and departure. The request reaches the owner's panel, and the owner confirms it.",
+  rtA:"4 rooms",rtB:"garden and hot tub · 2",
+  lgFree:"available",lgFew:"last ones",lgFull:"full",lgSel:"your dates",
+  calNote:"Sample availability for the demo: opening date and real calendar to be defined.",
+  pick:"Choose your arrival date on the calendar.",pick2:"Now choose your departure date.",
+  nights:function(n){return n+(n===1?" night":" nights");},
+  adults:"Adults",kids:"Children",name:"Full name",phone:"Phone / WhatsApp",email:"Email",notes:"Notes (optional)",
+  privacy:"I agree to the processing of my data to receive a reply (demo: no data is sent).",
+  send:"Send booking request",
+  eDates:"Choose arrival and departure.",eName:"Please enter your full name.",ePhone:"Please enter a valid phone number.",eEmail:"Please check your email.",ePriv:"Consent is needed to send the request.",eFull:"There is no availability for this room type on the chosen dates.",
+  okMsg:function(r){return "Request sent. The owner will reply to confirm "+r+". (Demo: no message has been sent.)";},
+  oTitle:"Owner's panel",oNote:"This is how Gianluca would see requests: he can confirm or decline them, and the calendar updates. In this demo the data stays in this browser only.",
+  kR:"requests",kP:"pending",kN:"confirmed nights",kO:"30-day occupancy",oEmpty:"No requests yet. Try booking above.",
+  stP:"pending",stO:"confirmed",stN:"declined",aOk:"Confirm",aNo:"Decline",reset:"Clear the demo",
+  guests:function(a,c){return a+(a===1?" adult":" adults")+(c?", "+c+(c===1?" child":" children"):"");},
+  kLoc:"Where",hLoc:"Ovilò, surrounded by nature",sLoc:"Località Agliuledda, Ovilò (Olbia), next to the L'Agliuledda agriturismo.",
+  d1:"Olbia airport",d2:"La Cinta beach",d3:"Cala Brandinchi",d4:"Porto Taverna",
+  locNote:"Approximate driving times, as given by the owner. Exact location to be defined.",mapBtn:"Show the map",
+  disclaimer:"This is a demo. The name is provisional, prices are not defined and availability is a sample. Images are project renders and the video tour is generated from those renders: it is indicative. No request is sent to anyone.",
+  foot:"Demo built by Marcelo Bolla · BOLLA STUDIO, Olbia. This is not the property's official website."},
+ es:{studio:"Demo creada por BOLLA STUDIO para la nueva estructura de Gianluca. Nombre, precios y disponibilidad son provisionales.",
+  prov:"nombre provisional",render:"Renders del proyecto",renderTag:"Render del proyecto",
+  h1:"Seis habitaciones entre las rocas,<br><em>en plena naturaleza</em>",
+  lead:"Località Agliuledda, Ovilò: a unos 10 minutos del aeropuerto de Olbia y de La Cinta, a unos 15 de Cala Brandinchi y Porto Taverna.",
+  ctaBook:"Ver disponibilidad",ctaGal:"Ver la galería",m3d:"Tour 3D",mvid:"Video tour",hint:"Arrastra para mirar alrededor",
+  ch:["La llegada · el jardín de rocas","Las habitaciones · porche y faroles","Dentro de la habitación · 28 m²"],
+  f1:"habitaciones con baño",f2:"cada habitación",f3:"suites con jardín privado e hidromasaje",f4:"del aeropuerto de Olbia",
+  kRooms:"Habitaciones",hRooms:"Dos formas de alojarse",sRooms:"Todas las habitaciones tienen baño privado y 28 m². Las imágenes son renders del proyecto: la estructura está casi terminada y quedará más o menos así.",
+  r1:"Habitación",r1m:"28 m² · baño privado · 4 habitaciones",r2:"Suite con jardín privado",r2s:"Suite",r2m:"28 m² · baño privado · 2 suites",
+  feat1:["Mininevera con congelador","Wi-Fi","Aire acondicionado","Cafetera","Hervidor","TV"],
+  feat2:["Aparcamiento exclusivo","Jardín privado","Cocina privada","Bañera de hidromasaje","Ducha exterior","+ todos los servicios de la habitación"],
+  priceTbd:"Precio por definir",example:"demo",choose:"Elegir",
+  kAm:"Espacios y servicios",hAm:"Pensado para vivir al aire libre",
+  am:["Cocina exterior compartida para los desayunos","Zona común con mesas","Zona chill en el bosque, entre las rocas, con mesas","Aire acondicionado y Wi-Fi en cada habitación","Mininevera con congelador, cafetera y hervidor","En las suites: jardín, cocina privada, hidromasaje y ducha exterior"],
+  kGal:"Galería",hGal:"Así será, casi terminada",sGal:"Renders del proyecto facilitados por la propiedad y algunos detalles recortados de esos mismos renders.",
+  gal:["Los dos edificios al atardecer","La fachada y el jardín","La habitación","Rincón del café","Lámparas de ratán","El porche","Luces entre las rocas","La roca escultura"],
+  kBook:"Reservar",hBook:"Elige las fechas",sBook:"Elige el tipo de habitación, la llegada y la salida. La solicitud llega al panel del dueño, que la confirma.",
+  rtA:"4 habitaciones",rtB:"jardín e hidromasaje · 2",
+  lgFree:"libre",lgFew:"últimas disponibles",lgFull:"completo",lgSel:"tus fechas",
+  calNote:"Disponibilidad de ejemplo para la demo: apertura y calendario real por definir.",
+  pick:"Elige la fecha de llegada en el calendario.",pick2:"Ahora elige la fecha de salida.",
+  nights:function(n){return n+(n===1?" noche":" noches");},
+  adults:"Adultos",kids:"Niños",name:"Nombre y apellido",phone:"Teléfono / WhatsApp",email:"Email",notes:"Notas (opcional)",
+  privacy:"Acepto el tratamiento de mis datos para recibir una respuesta (demo: no se envía ningún dato).",
+  send:"Enviar solicitud de reserva",
+  eDates:"Elige llegada y salida.",eName:"Escribe tu nombre y apellido.",ePhone:"Escribe un teléfono válido.",eEmail:"Revisa el email.",ePriv:"Hace falta el consentimiento para enviar la solicitud.",eFull:"No hay disponibilidad para este tipo de habitación en esas fechas.",
+  okMsg:function(r){return "Solicitud enviada. El dueño te responderá para confirmar "+r+". (Demo: no se ha enviado ningún mensaje.)";},
+  oTitle:"Panel del dueño",oNote:"Así vería Gianluca las solicitudes: puede confirmarlas o rechazarlas, y el calendario se actualiza. En esta demo los datos quedan solo en este navegador.",
+  kR:"solicitudes",kP:"pendientes",kN:"noches confirmadas",kO:"ocupación 30 días",oEmpty:"Todavía no hay solicitudes. Prueba a reservar arriba.",
+  stP:"pendiente",stO:"confirmada",stN:"rechazada",aOk:"Confirmar",aNo:"Rechazar",reset:"Vaciar la demo",
+  guests:function(a,c){return a+(a===1?" adulto":" adultos")+(c?", "+c+(c===1?" niño":" niños"):"");},
+  kLoc:"Dónde",hLoc:"Ovilò, en plena naturaleza",sLoc:"Località Agliuledda, Ovilò (Olbia), junto al agriturismo L'Agliuledda.",
+  d1:"Aeropuerto de Olbia",d2:"Playa La Cinta",d3:"Cala Brandinchi",d4:"Porto Taverna",
+  locNote:"Tiempos aproximados en coche, indicados por la propiedad. Ubicación exacta por definir.",mapBtn:"Mostrar el mapa",
+  disclaimer:"Esto es una demo. El nombre es provisional, los precios no están definidos y la disponibilidad es de ejemplo. Las imágenes son renders del proyecto y el video tour está generado a partir de esos renders: es orientativo. No se envía ninguna solicitud a nadie.",
+  foot:"Demo creada por Marcelo Bolla · BOLLA STUDIO, Olbia. No es el sitio oficial de la estructura."}
+};
+var ICONS=['<path d="M4 20h16M6 20V10h12v10M9 10V6h6v4M10 14h4"/>','<path d="M5 12h14M7 12v7M17 12v7M4 9h16"/>','<path d="M12 3l3 6H9l3-6zM8 9l-3 7h14l-3-7M12 16v5"/>','<path d="M3 12a12 12 0 0 1 18 0M6.5 15.5a7 7 0 0 1 11 0M10 19a2.5 2.5 0 0 1 4 0"/>','<path d="M6 8h10v6a5 5 0 0 1-10 0V8zM16 10h2a2 2 0 0 1 0 4h-2M8 4v2M11 4v2M14 4v2"/>','<path d="M4 14h16v2a4 4 0 0 1-4 4H8a4 4 0 0 1-4-4v-2zM7 14V6a2 2 0 0 1 4 0M14 9c1 1 1 2 0 3"/>'];
+var GAL=[["esterno-1.jpg","g1"],["esterno-2.jpg","g2"],["camera.jpg","g3"],["det-caffe.jpg","g4"],["det-lampade.jpg","g5"],["det-patio.jpg","g6"],["det-luci.jpg","g7"],["det-roccia.jpg","g8"]];
+var lang="it";
+function T(){return COPY[lang];}
+function apply(l){lang=COPY[l]?l:"it";var t=T();document.documentElement.lang=lang;
+ document.querySelectorAll("[data-k]").forEach(function(el){var v=t[el.getAttribute("data-k")];if(typeof v==="string")el.textContent=v;});
+ document.querySelectorAll("[data-h]").forEach(function(el){el.innerHTML=t[el.getAttribute("data-h")];});
+ document.querySelectorAll(".js-name").forEach(function(el){el.textContent=NAME;});
+ ["r1f","r2f"].forEach(function(id,i){var u=document.getElementById(id);u.innerHTML="";t[i?"feat2":"feat1"].forEach(function(x){var li=document.createElement("li");li.textContent=x;u.appendChild(li);});});
+ var a=document.getElementById("amen");a.innerHTML="";t.am.forEach(function(x,i){var d=document.createElement("div");d.innerHTML='<svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">'+ICONS[i]+'</svg>';var s=document.createElement("span");s.textContent=x;d.appendChild(s);a.appendChild(d);});
+ var g=document.getElementById("gal");g.innerHTML="";GAL.forEach(function(x,i){var b=document.createElement("button");b.type="button";b.className=x[1];b.style.backgroundImage="url(img/"+(i<3?"g-"+x[0].replace(".jpg","-sm.jpg"):x[0])+")";if(i===0)b.style.backgroundImage="url(img/esterno-1.jpg)";var s=document.createElement("span");s.textContent=t.gal[i];b.appendChild(s);b.onclick=function(){openLb(i);if(bsOnce("gal"))window.bsTrack("/agliuledda-ovilo/gallery-open","gallery-open");};g.appendChild(b);});
+ document.querySelectorAll("#langs button").forEach(function(b){b.classList.toggle("on",b.dataset.l===lang);});
+ if(window.tour)tour.chapter();renderCal();renderSum();renderOwner();
+}
+document.querySelectorAll("#langs button").forEach(function(b){b.addEventListener("click",function(){if(b.dataset.l===lang)return;apply(b.dataset.l);if(window.bsTrack)window.bsTrack("/agliuledda-ovilo/lang-"+b.dataset.l,"Lang "+b.dataset.l);});});
+
+/* ---------- Uso (GoatCounter event:true via bsTrack). bsOnce: una volta per pagina. Nessun dato del modulo. ---------- */
+var bsDone={};window.bsOnce=function(k){if(bsDone[k]||!window.bsTrack)return false;bsDone[k]=1;return true;};var bsOnce=window.bsOnce;
+document.addEventListener("click",function(e){var a=e.target&&e.target.closest?e.target.closest("[data-track]"):null;if(a&&window.bsTrack)window.bsTrack(a.getAttribute("data-track"),a.getAttribute("data-title"));},true);
+/* ---------- Lightbox ---------- */
+var lbI=0;function openLb(i){lbI=(i+GAL.length)%GAL.length;document.getElementById("lbi").src="img/"+GAL[lbI][0];document.getElementById("lbi").alt=T().gal[lbI];document.getElementById("lbc").textContent=T().gal[lbI]+" · "+T().renderTag;document.getElementById("lb").classList.add("on");}
+document.getElementById("lbx").onclick=function(){document.getElementById("lb").classList.remove("on");};
+document.getElementById("lbp").onclick=function(){openLb(lbI-1);};document.getElementById("lbn").onclick=function(){openLb(lbI+1);};
+document.getElementById("lb").addEventListener("click",function(e){if(e.target.id==="lb")this.classList.remove("on");});
+document.addEventListener("keydown",function(e){var on=document.getElementById("lb").classList.contains("on");if(!on)return;if(e.key==="Escape")document.getElementById("lb").classList.remove("on");if(e.key==="ArrowRight")openLb(lbI+1);if(e.key==="ArrowLeft")openLb(lbI-1);});
+
+/* ---------- Booking (demo, localStorage) ---------- */
+var UNITS={camera:4,suite:2},KEY="agl_demo_reqs_v1";
+var today=new Date();today.setHours(0,0,0,0);
+var view=new Date(today.getFullYear(),today.getMonth(),1);
+var sel={type:"camera",a:null,b:null};
+function ds(d){return d.getFullYear()+"-"+("0"+(d.getMonth()+1)).slice(-2)+"-"+("0"+d.getDate()).slice(-2);}
+function parse(s){var p=s.split("-");return new Date(+p[0],+p[1]-1,+p[2]);}
+function addD(d,n){var x=new Date(d);x.setDate(x.getDate()+n);return x;}
+function load(){try{return JSON.parse(localStorage.getItem(KEY)||"[]");}catch(e){return [];}}
+function save(r){try{localStorage.setItem(KEY,JSON.stringify(r));}catch(e){}}
+var REQS=load();
+function seedBooked(type,d){var k=d.getFullYear()*372+d.getMonth()*31+d.getDate()+(type==="suite"?977:0);var x=Math.sin(k*12.9898)*43758.5453;x=x-Math.floor(x);
+ var wk=(d.getDay()===5||d.getDay()===6)?1:0;var n=UNITS[type];var b=Math.floor(x*(n+1)*0.62+wk*0.8);return Math.min(n,b);}
+function booked(type,d,withPend){var b=seedBooked(type,d),k=ds(d),p=0;REQS.forEach(function(r){if(r.type!==type||r.st==="no")return;if(k>=r.a&&k<r.b){if(r.st==="ok")b++;else p++;}});return {b:Math.min(UNITS[type],b),p:p};}
+function freeOn(type,d){var x=booked(type,d);return UNITS[type]-x.b;}
+function rangeOk(type,a,b){for(var d=new Date(a);d<b;d=addD(d,1)){if(freeOn(type,d)<=0)return false;}return true;}
+function monthEl(el,m){var t=T();el.innerHTML="";var h=document.createElement("div");h.className="mname";h.textContent=new Intl.DateTimeFormat(lang,{month:"long",year:"numeric"}).format(m);el.appendChild(h);
+ var g=document.createElement("div");g.className="grid7";var base=new Date(2024,0,1);/* monday */
+ for(var i=0;i<7;i++){var w=document.createElement("div");w.className="wd";w.textContent=new Intl.DateTimeFormat(lang,{weekday:"short"}).format(addD(base,i)).slice(0,3);g.appendChild(w);}
+ var first=(m.getDay()+6)%7;for(i=0;i<first;i++){var e=document.createElement("span");e.className="day empty";g.appendChild(e);}
+ var days=new Date(m.getFullYear(),m.getMonth()+1,0).getDate();
+ for(var dd=1;dd<=days;dd++){(function(d){var b=document.createElement("button");b.type="button";b.className="day";b.textContent=d.getDate();
+  if(d<today){b.classList.add("past");b.disabled=true;}
+  else{var x=booked(sel.type,d),f=UNITS[sel.type]-x.b;if(f<=0){b.classList.add("full");}else if(f===1)b.classList.add("few");if(x.p)b.classList.add("pend");
+   b.onclick=function(){pickDay(d);};}
+  if(sel.a&&ds(d)===ds(sel.a))b.classList.add("st");if(sel.b&&ds(d)===ds(sel.b))b.classList.add("en");
+  if(sel.a&&sel.b&&d>sel.a&&d<sel.b)b.classList.add("inr");
+  g.appendChild(b);})(new Date(m.getFullYear(),m.getMonth(),dd));}
+ el.appendChild(g);}
+function renderCal(){var m2=new Date(view.getFullYear(),view.getMonth()+1,1);monthEl(document.getElementById("m1"),view);monthEl(document.getElementById("m2"),m2);
+ var f=new Intl.DateTimeFormat(lang,{month:"long"});document.getElementById("calTitle").textContent=window.innerWidth<=640?new Intl.DateTimeFormat(lang,{month:"long",year:"numeric"}).format(view):f.format(view)+" – "+f.format(m2)+" "+m2.getFullYear();
+ document.getElementById("prev").disabled=view<=new Date(today.getFullYear(),today.getMonth(),1);}
+function pickDay(d){var t=T();document.getElementById("err").textContent="";if(bsOnce("cal"))window.bsTrack("/agliuledda-ovilo/calendar-pick","calendar-pick");
+ if(!sel.a||sel.b||d<=sel.a){sel.a=d;sel.b=null;}
+ else{if(!rangeOk(sel.type,sel.a,d)){document.getElementById("err").textContent=t.eFull;sel.a=d;sel.b=null;}else sel.b=d;}
+ renderCal();renderSum();}
+function fmt(d){return new Intl.DateTimeFormat(lang,{weekday:"short",day:"numeric",month:"short"}).format(d);}
+function nightsOf(a,b){return Math.round((b-a)/864e5);}
+function roomName(tp){return tp==="suite"?T().r2:T().r1;}
+function renderSum(){var t=T(),s=document.getElementById("sum");
+ if(!sel.a){s.textContent=t.pick;return;}if(!sel.b){s.innerHTML="";s.appendChild(document.createTextNode(roomName(sel.type)+" · "+fmt(sel.a)+" → … "));var i=document.createElement("i");i.textContent=t.pick2;s.appendChild(i);return;}
+ var n=nightsOf(sel.a,sel.b);s.innerHTML="<b></b><br><span></span>";s.firstChild.textContent=roomName(sel.type)+" · "+t.nights(n);s.lastChild.textContent=fmt(sel.a)+" → "+fmt(sel.b)+" · "+t.priceTbd;}
+document.getElementById("prev").onclick=function(){view=new Date(view.getFullYear(),view.getMonth()-1,1);renderCal();};
+document.getElementById("next").onclick=function(){view=new Date(view.getFullYear(),view.getMonth()+1,1);renderCal();};
+function setType(v){sel.type=v;document.querySelectorAll("#rt label").forEach(function(l){l.classList.toggle("on",l.dataset.v===v);l.querySelector("input").checked=l.dataset.v===v;});
+ if(sel.a&&sel.b&&!rangeOk(v,sel.a,sel.b)){sel.b=null;document.getElementById("err").textContent=T().eFull;}renderCal();renderSum();}
+document.querySelectorAll("#rt label").forEach(function(l){l.addEventListener("click",function(e){e.preventDefault();setType(l.dataset.v);if(bsOnce("rt"))window.bsTrack("/agliuledda-ovilo/room-type","room-type");});});
+document.querySelectorAll("[data-room]").forEach(function(a){a.addEventListener("click",function(){setType(a.dataset.room);});});
+document.getElementById("bf").addEventListener("submit",function(e){e.preventDefault();var t=T(),er=document.getElementById("err");er.textContent="";if(bsOnce("try"))window.bsTrack("/agliuledda-ovilo/book-attempt","book-attempt");
+ var nm=document.getElementById("nm").value.trim(),ph=document.getElementById("ph").value.trim(),em=document.getElementById("em").value.trim();
+ if(!sel.a||!sel.b){er.textContent=t.eDates;return;}
+ if(!rangeOk(sel.type,sel.a,sel.b)){er.textContent=t.eFull;return;}
+ if(nm.length<3){er.textContent=t.eName;return;}
+ if(ph.replace(/[^0-9]/g,"").length<6){er.textContent=t.ePhone;return;}
+ if(em&&!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(em)){er.textContent=t.eEmail;return;}
+ if(!document.getElementById("pv").checked){er.textContent=t.ePriv;return;}
+ var r={id:Date.now(),type:sel.type,a:ds(sel.a),b:ds(sel.b),ad:+document.getElementById("ad").value,ch:+document.getElementById("ch").value,nm:nm,ph:ph,em:em,nt:document.getElementById("nt").value.trim(),lang:lang,st:"pend",at:new Date().toISOString()};
+ REQS.unshift(r);save(REQS);
+ var ok=document.getElementById("ok");ok.style.display="block";ok.textContent=t.okMsg(roomName(r.type)+", "+fmt(sel.a)+" → "+fmt(sel.b));
+ if(window.bsTrack)window.bsTrack("/agliuledda-ovilo/book-request","Richiesta prenotazione ("+r.type+")");
+ sel.a=sel.b=null;["nm","ph","em","nt"].forEach(function(id){document.getElementById(id).value="";});document.getElementById("pv").checked=false;
+ renderCal();renderSum();renderOwner(true);});
+function renderOwner(flash){var t=T(),box=document.getElementById("reqs");box.innerHTML="";
+ var pend=0,nights=0;REQS.forEach(function(r){if(r.st==="pend")pend++;if(r.st==="ok")nights+=nightsOf(parse(r.a),parse(r.b));});
+ document.getElementById("kR").textContent=REQS.length;document.getElementById("kP").textContent=pend;document.getElementById("kN").textContent=nights;
+ var tot=0,occ=0;for(var i=0;i<30;i++){var d=addD(today,i);["camera","suite"].forEach(function(tp){tot+=UNITS[tp];occ+=booked(tp,d).b;});}
+ document.getElementById("kO").textContent=Math.round(occ/tot*100)+"%";
+ if(!REQS.length){var p=document.createElement("p");p.className="empty";p.textContent=t.oEmpty;box.appendChild(p);return;}
+ REQS.forEach(function(r,idx){var d=document.createElement("div");d.className="req";
+  var a=parse(r.a),b=parse(r.b),n=nightsOf(a,b);
+  var tx=document.createElement("div");tx.className="t";var bb=document.createElement("b");bb.textContent=r.nm;tx.appendChild(bb);tx.appendChild(document.createTextNode(" "));
+  var st=document.createElement("span");st.className="st-b "+(r.st==="ok"?"st-ok":r.st==="no"?"st-no":"st-pend");st.textContent=r.st==="ok"?t.stO:r.st==="no"?t.stN:t.stP;tx.appendChild(st);
+  var s1=document.createElement("div");s1.textContent=roomName(r.type)+" · "+fmt(a)+" → "+fmt(b)+" · "+t.nights(n);tx.appendChild(s1);
+  var s2=document.createElement("div");s2.className="s";s2.textContent=t.guests(r.ad,r.ch)+" · "+r.ph+(r.em?" · "+r.em:"")+" · "+r.lang.toUpperCase()+(r.nt?" · “"+r.nt+"”":"");tx.appendChild(s2);
+  d.appendChild(tx);
+  var ac=document.createElement("div");ac.className="acts";
+  if(r.st==="pend"){var o=document.createElement("button");o.type="button";o.className="a-ok";o.textContent=t.aOk;o.onclick=function(){if(!rangeOk(r.type,a,b)){alert(t.eFull);return;}if(bsOnce("pok"))window.bsTrack("/agliuledda-ovilo/panel-approve","panel-approve");r.st="ok";save(REQS);renderCal();renderOwner();};
+   var x=document.createElement("button");x.type="button";x.className="a-no";x.textContent=t.aNo;x.onclick=function(){if(bsOnce("pno"))window.bsTrack("/agliuledda-ovilo/panel-decline","panel-decline");r.st="no";save(REQS);renderCal();renderOwner();};ac.appendChild(o);ac.appendChild(x);}
+  d.appendChild(ac);if(flash&&idx===0)d.style.outline="2px solid #d9a441";box.appendChild(d);});}
+document.getElementById("reset").onclick=function(){REQS=[];save(REQS);renderCal();renderOwner();};
+
+/* ---------- Map (loaded on demand) ---------- */
+document.getElementById("mapBtn").onclick=function(){var f=document.createElement("iframe");f.loading="lazy";f.referrerPolicy="no-referrer-when-downgrade";f.title="Mappa";
+ f.src="https://www.google.com/maps?q="+encodeURIComponent("Agriturismo L'Agliuledda, Ovilò, Olbia")+"&z=12&output=embed";var m=document.getElementById("map");m.innerHTML="";m.appendChild(f);};
+
+/* ---------- Floating CTA ---------- */
+var fab=document.getElementById("fab");
+window.addEventListener("scroll",function(){var y=window.scrollY,bk=document.getElementById("prenota").getBoundingClientRect();fab.classList.toggle("on",y>window.innerHeight*0.8&&!(bk.top<window.innerHeight&&bk.bottom>0));},{passive:true});
+</script>
+<script>
+/* ---------- Hero: WebGL depth walkthrough + video tour ---------- */
+(function(){
+var hero=document.getElementById("hero"),cv=document.getElementById("gl"),vid=document.getElementById("vid"),chEl=document.getElementById("chapter");
+var dots=[].slice.call(document.querySelectorAll("#dots button"));
+var SC=[
+ {n:"esterno-1",ar:1400/1050,f0:[.50,.60],f1:[.47,.50],z0:0.00,z1:0.34,k0:1.06,k1:1.16},
+ {n:"esterno-2",ar:1086/1448,f0:[.50,.50],f1:[.50,.43],z0:0.02,z1:0.40,k0:1.06,k1:1.20},
+ {n:"camera",ar:1400/787,f0:[.40,.58],f1:[.60,.50],z0:0.06,z1:0.22,k0:1.07,k1:1.13}];
+var DUR=7.2,X=1.7,mode="3d",playing=true,visible=true,cur=0,t0=performance.now(),pausedAt=0;
+var small=window.matchMedia("(max-width:760px)").matches;
+var look={x:0,y:0,tx:0,ty:0},drag=null;
+function ease(t){return t<.5?2*t*t:1-Math.pow(-2*t+2,2)/2;}
+function setChapter(i){var t=COPY[lang].ch[i];if(chEl.textContent!==t){chEl.style.opacity=0;setTimeout(function(){chEl.textContent=t;chEl.style.opacity=.92;},250);}}
+function setDots(i,p){dots.forEach(function(d,j){d.firstChild.style.transform="scaleX("+(j<i?1:j===i?p:0)+")";});}
+window.tour={chapter:function(){chEl.textContent=COPY[lang].ch[mode==="video"?vChap():cur];}};
+/* WebGL */
+var gl=null;try{gl=cv.getContext("webgl",{antialias:false,alpha:false,premultipliedAlpha:false})||cv.getContext("experimental-webgl");}catch(e){}
+var prog,loc={},tex=[],ready=0;
+if(gl){
+ var vs="attribute vec2 p;varying vec2 v;void main(){v=vec2(p.x*.5+.5,.5-p.y*.5);gl_Position=vec4(p,0.,1.);}";
+ var fs="precision mediump float;varying vec2 v;uniform sampler2D c,d;uniform vec2 cov,foc,off;uniform float z,k,al,br;"+
+  "void main(){vec2 s=foc+(v-.5)*cov/k;vec2 q=s;for(int i=0;i<5;i++){float h=texture2D(d,q).r;q=foc+(s-foc+off*(h-.35))/(1.+z*h);}"+
+  "q=clamp(q,.001,.999);vec3 col=texture2D(c,q).rgb;vec2 w=v-.5;col*=1.-dot(w,w)*.55;col=mix(col,col*vec3(1.04,1.,.94),.5)*br;gl_FragColor=vec4(col,al);}";
+ function sh(t,s){var o=gl.createShader(t);gl.shaderSource(o,s);gl.compileShader(o);if(!gl.getShaderParameter(o,gl.COMPILE_STATUS))throw gl.getShaderInfoLog(o);return o;}
+ try{prog=gl.createProgram();gl.attachShader(prog,sh(gl.VERTEX_SHADER,vs));gl.attachShader(prog,sh(gl.FRAGMENT_SHADER,fs));gl.linkProgram(prog);gl.useProgram(prog);
+  var b=gl.createBuffer();gl.bindBuffer(gl.ARRAY_BUFFER,b);gl.bufferData(gl.ARRAY_BUFFER,new Float32Array([-1,-1,1,-1,-1,1,1,1]),gl.STATIC_DRAW);
+  var ap=gl.getAttribLocation(prog,"p");gl.enableVertexAttribArray(ap);gl.vertexAttribPointer(ap,2,gl.FLOAT,false,0,0);
+  ["c","d","cov","foc","off","z","k","al","br"].forEach(function(n){loc[n]=gl.getUniformLocation(prog,n);});
+  gl.uniform1i(loc.c,0);gl.uniform1i(loc.d,1);gl.enable(gl.BLEND);gl.blendFunc(gl.SRC_ALPHA,gl.ONE_MINUS_SRC_ALPHA);
+ }catch(e){gl=null;}
+}
+function mkTex(src,cb){var im=new Image();im.onload=function(){var t=gl.createTexture();gl.bindTexture(gl.TEXTURE_2D,t);
+ gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_WRAP_S,gl.CLAMP_TO_EDGE);gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_WRAP_T,gl.CLAMP_TO_EDGE);
+ gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_MIN_FILTER,gl.LINEAR);gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_MAG_FILTER,gl.LINEAR);
+ gl.texImage2D(gl.TEXTURE_2D,0,gl.RGB,gl.RGB,gl.UNSIGNED_BYTE,im);cb(t);};im.src=src;}
+if(gl){SC.forEach(function(s,i){tex[i]={};mkTex("img/"+s.n+".jpg",function(t){tex[i].c=t;if(tex[i].d)ready++;});mkTex("img/"+s.n+"-depth.jpg",function(t){tex[i].d=t;if(tex[i].c)ready++;});});}
+function resize(){var dpr=Math.min(window.devicePixelRatio||1,small?1.5:1.75);var w=Math.round(cv.clientWidth*dpr),h=Math.round(cv.clientHeight*dpr);if(cv.width!==w||cv.height!==h){cv.width=w;cv.height=h;}if(gl)gl.viewport(0,0,w,h);}
+function drawScene(i,p,alpha,push){var s=SC[i],T=tex[i];if(!T||!T.c||!T.d)return;
+ var A=cv.width/cv.height,I=s.ar,cov=A>I?[1,I/A]:[A/I,1];var e=ease(Math.min(1,p));
+ var k=s.k0+(s.k1-s.k0)*e+push*.35,z=s.z0+(s.z1-s.z0)*e+push*.5;
+ var fx=s.f0[0]+(s.f1[0]-s.f0[0])*e,fy=s.f0[1]+(s.f1[1]-s.f0[1])*e;
+ var hx=cov[0]/(2*k),hy=cov[1]/(2*k);fx=Math.min(1-hx,Math.max(hx,fx));fy=Math.min(1-hy,Math.max(hy,fy));
+ var sway=Math.sin((p*DUR+i*2)*0.7)*.008;
+ gl.activeTexture(gl.TEXTURE0);gl.bindTexture(gl.TEXTURE_2D,T.c);gl.activeTexture(gl.TEXTURE1);gl.bindTexture(gl.TEXTURE_2D,T.d);
+ gl.uniform2f(loc.cov,cov[0],cov[1]);gl.uniform2f(loc.foc,fx,fy);gl.uniform2f(loc.off,(look.x+sway)*.9,look.y*.6+Math.cos(p*3)*.002);
+ gl.uniform1f(loc.z,z);gl.uniform1f(loc.k,k);gl.uniform1f(loc.al,alpha);gl.uniform1f(loc.br,1.+push*.25);
+ gl.drawArrays(gl.TRIANGLE_STRIP,0,4);}
+function frame(now){requestAnimationFrame(frame);
+ if(mode==="video"){vTick();return;}
+ if(!gl||!visible||ready<SC.length)return;
+ if(!playing){now=pausedAt;}
+ var el=(now-t0)/1000;if(el>=DUR){cur=(cur+1)%SC.length;t0=now;el=0;}
+ look.x+=(look.tx-look.x)*.08;look.y+=(look.ty-look.y)*.08;if(!drag){look.tx*=.97;look.ty*=.97;}
+ resize();gl.clearColor(.12,.1,.08,1);gl.clear(gl.COLOR_BUFFER_BIT);
+ var p=el/DUR,tr=Math.max(0,(el-(DUR-X))/X);
+ drawScene(cur,p,1,ease(tr));
+ if(tr>0)drawScene((cur+1)%SC.length,0,ease(tr),0);
+ setChapter(tr>.5?(cur+1)%SC.length:cur);setDots(cur,p);}
+requestAnimationFrame(frame);
+/* drag / hover to look around */
+cv.addEventListener("pointerdown",function(e){drag={x:e.clientX,y:e.clientY,lx:look.tx,ly:look.ty};if(window.bsOnce&&bsOnce("drag"))window.bsTrack("/agliuledda-ovilo/hero-3d-look","hero-3d-look");});
+window.addEventListener("pointermove",function(e){if(drag){look.tx=Math.max(-.06,Math.min(.06,drag.lx-(e.clientX-drag.x)/cv.clientWidth*.18));look.ty=Math.max(-.04,Math.min(.04,drag.ly-(e.clientY-drag.y)/cv.clientHeight*.12));}
+ else if(e.pointerType==="mouse"&&mode==="3d"){var r=hero.getBoundingClientRect();if(e.clientY<r.bottom){look.tx=-(e.clientX/r.width-.5)*.03;look.ty=-((e.clientY-r.top)/r.height-.5)*.02;}}},{passive:true});
+window.addEventListener("pointerup",function(){drag=null;});window.addEventListener("pointercancel",function(){drag=null;});
+dots.forEach(function(d,i){d.addEventListener("click",function(){if(window.bsOnce&&bsOnce("dot"))window.bsTrack("/agliuledda-ovilo/hero-chapter","hero-chapter");if(mode==="video"){vid.currentTime=[0,4.6,8.4][i];return;}cur=i;t0=performance.now();pausedAt=t0;});});
+var pp=document.getElementById("pp");
+pp.addEventListener("click",function(){if(window.bsOnce&&bsOnce("pp"))window.bsTrack("/agliuledda-ovilo/hero-pause","hero-pause");playing=!playing;pp.textContent=playing?"❚❚":"▶";if(mode==="video"){if(playing)vid.play();else vid.pause();}
+ if(playing){t0+=performance.now()-pausedAt;}else pausedAt=performance.now();});
+if("IntersectionObserver" in window)new IntersectionObserver(function(en){visible=en[0].isIntersecting;if(mode==="video"){if(visible&&playing)vid.play().catch(function(){});else vid.pause();}},{threshold:.05}).observe(hero);
+/* video tour */
+function vChap(){var t=vid.currentTime||0;return t<4.6?0:t<8.4?1:2;}
+function vTick(){var t=vid.currentTime||0,d=vid.duration||12,i=vChap(),st=[0,4.6,8.4,d];setChapter(i);setDots(i,Math.min(1,(t-st[i])/(st[i+1]-st[i])));}
+function setMode(m,user){mode=m;hero.classList.toggle("mode-video",m==="video");document.getElementById("m3d").classList.toggle("on",m==="3d");document.getElementById("mvid").classList.toggle("on",m==="video");
+ document.getElementById("hint").style.visibility=m==="3d"?"visible":"hidden";
+ if(m==="video"){if(!vid.src)vid.src=small?"tour-480.mp4":"tour-720.mp4";playing=true;pp.textContent="❚❚";var pr=vid.play();if(pr&&pr.catch)pr.catch(function(){if(gl)setMode("3d");});}
+ else{vid.pause();t0=performance.now();}
+ if(user&&window.bsTrack)window.bsTrack("/agliuledda-ovilo/hero-"+m,"Hero "+m);
+ if(user&&m==="video"){var vp=function(){if(window.bsOnce&&bsOnce("vplay"))window.bsTrack("/agliuledda-ovilo/video-play","video-play");};if(!vid.paused&&vid.currentTime>0)vp();else vid.addEventListener("playing",vp,{once:true});}}
+document.getElementById("m3d").onclick=function(){setMode("3d",1);};document.getElementById("mvid").onclick=function(){setMode("video",1);};
+var rq=new URLSearchParams(location.search).get("tour");
+setMode(rq==="3d"&&gl?"3d":rq==="video"||!gl||small?"video":"3d");
+})();
+var lq=new URLSearchParams(location.search).get("lang");apply(lq==="en"||lq==="es"?lq:"it");
+</script>
+</body>
+</html>

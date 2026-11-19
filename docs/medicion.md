@@ -49,7 +49,7 @@ Náutica, náutica-cat, `/es/` y concesionarios siguen metiendo `p` como tramo d
 
 ## Inventario
 
-604 demos cuentan. 380 tienen al menos un uso. 224 solo tienen la visita. 47 redirecciones no cargan el contador. La portada tampoco.
+607 demos cuentan. 383 tienen al menos un uso. 224 solo tienen la visita. 47 redirecciones no cargan el contador. La portada tampoco.
 
 En la columna Visita, `{p}` es la etiqueta saneada y solo se añade cuando existe. `|` separa la ruta sin etiqueta y la ruta con etiqueta cuando `p` es un tramo, no una búsqueda.
 
@@ -61,6 +61,7 @@ En la columna Visita, `{p}` es la etiqueta saneada y solo se añade cuando exist
 | /advance-service-py/ | /advance-service-py/?p={p} | solo visita |
 | /aesthetik-ch/de/ | /bolla-demo-aesthetik-ch/de/?p={p} | /bolla-demo-aesthetik-ch/de/chat/{button}?p={p} · script-option; /bolla-demo-aesthetik-ch/de/request/confirm?p={p} · Demo-Anfrage |
 | /aesthetik-ch/fr/ | /bolla-demo-aesthetik-ch/fr/?p={p} | /bolla-demo-aesthetik-ch/fr/chat/{button}?p={p} · script-option; /bolla-demo-aesthetik-ch/fr/request/confirm?p={p} · Demo-Anfrage |
+| /agliuledda-ovilo/ | /agliuledda-ovilo/?p={p} | /agliuledda-ovilo/gallery-open?p={p} · gallery-open; "/agliuledda-ovilo/lang-"+b.dataset.l?p={p} · Lang {…}; /agliuledda-ovilo/bolla-tel?p={p} · bolla-tel; /agliuledda-ovilo/bolla-web?p={p} · bolla-web; /agliuledda-ovilo/cta-book?p={p} · cta-book; /agliuledda-ovilo/cta-gallery?p={p} · cta-gallery; /agliuledda-ovilo/room-camera?p={p} · room-camera; /agliuledda-ovilo/room-suite?p={p} · room-suite; /agliuledda-ovilo/panel-reset?p={p} · panel-reset; /agliuledda-ovilo/map-open?p={p} · map-open; /agliuledda-ovilo/cta-book-fab?p={p} · cta-book-fab; /agliuledda-ovilo/calendar-pick?p={p} · calendar-pick; /agliuledda-ovilo/room-type?p={p} · room-type; /agliuledda-ovilo/book-attempt?p={p} · book-attempt; /agliuledda-ovilo/book-request?p={p} · Richiesta prenotazione ("+r.type+"); /agliuledda-ovilo/panel-approve?p={p} · panel-approve; /agliuledda-ovilo/panel-decline?p={p} · panel-decline; /agliuledda-ovilo/hero-3d-look?p={p} · hero-3d-look; /agliuledda-ovilo/hero-chapter?p={p} · hero-chapter; /agliuledda-ovilo/hero-pause?p={p} · hero-pause; "/agliuledda-ovilo/hero-"+m?p={p} · Hero {…}; /agliuledda-ovilo/video-play?p={p} · video-play |
 | /ajisai-restaurant-py/ | /ajisai-restaurant-py/?p={p} | solo visita |
 | /al-lido-lugano/ | /al-lido-lugano/?p={p} | /al-lido-lugano/tab/{id}?p={p} · Tab {…} |
 | /al-maha-regency/ | /bolla-demo-al-maha-regency/?p={p} | /bolla-demo-al-maha-regency/tab/{id}?p={p} · Tab {…} |
@@ -174,6 +175,7 @@ En la columna Visita, `{p}` es la etiqueta saneada y solo se añade cuando exist
 | /cucina-del-cuore-py/ | /cucina-del-cuore-py/?p={p} | solo visita |
 | /cv-auto/ | /bolla-demo-cv-auto/?p={p} | /bolla-demo-cv-auto/scene/{id}?p={p} · scene; /bolla-demo-cv-auto/tab/{id}?p={p} · Tab {…} |
 | /da-larissa-locarno/ | /da-larissa-locarno/?p={p} | /da-larissa-locarno/tab/{id}?p={p} · Tab {…} |
+| /da-serafino-food-cost/ | /da-serafino-food-cost/?p={p} | /da-serafino-food-cost/bolla-tel?p={p} · bolla-tel; /da-serafino-food-cost/lang-{lang}?p={p} · lang-{lang}; /da-serafino-food-cost/cerca?p={p} · cerca; /da-serafino-food-cost/ricetta/modifica?p={p} · ricetta/modifica; /da-serafino-food-cost/impostazioni?p={p} · impostazioni; /da-serafino-food-cost/ricetta/impasto?p={p} · ricetta/impasto; /da-serafino-food-cost/scrocchiarella/gusti?p={p} · scrocchiarella/gusti; /da-serafino-food-cost/ricetta/reset?p={p} · ricetta/reset; /da-serafino-food-cost/piatto/{slug}?p={p} · piatto/{slug}; /da-serafino-food-cost/magazzino/prezzo?p={p} · magazzino/prezzo; /da-serafino-food-cost/magazzino/ripristina?p={p} · magazzino/ripristina; /da-serafino-food-cost/tab/magazzino?p={p} · tab/magazzino; /da-serafino-food-cost/magazzino/cerca?p={p} · magazzino/cerca; /da-serafino-food-cost/magazzino/nuovo?p={p} · magazzino/nuovo; /da-serafino-food-cost/tab/impasti?p={p} · tab/impasti; /da-serafino-food-cost/impasto/modifica?p={p} · impasto/modifica; /da-serafino-food-cost/impasto/reset?p={p} · impasto/reset; /da-serafino-food-cost/impasto/{k}?p={p} · impasto/{k}; /da-serafino-food-cost/tab/altro?p={p} · tab/altro; /da-serafino-food-cost/reset-tutto?p={p} · reset-tutto; /da-serafino-food-cost/csv/{name}?p={p} · csv/{name}; /da-serafino-food-cost/magazzino/fonte?p={p} · magazzino/fonte; /da-serafino-food-cost/bolla-web?p={p} · bolla-web |
 | /dclot-vermuteria/ | /bolla-demo-dclot-vermuteria/?p={p} | solo visita |
 | /de-tano-el-italiano-py/ | /de-tano-el-italiano-py/?p={p} | solo visita |
 | /delicias-japonesas-py/ | /delicias-japonesas-py/?p={p} | solo visita |
@@ -357,6 +359,7 @@ En la columna Visita, `{p}` es la etiqueta saneada y solo se añade cuando exist
 | /la-cala-barceloneta/ | /bolla-demo-la-cala-barceloneta/?p={p} | solo visita |
 | /la-patrona-py/ | /la-patrona-py/?p={p} | solo visita |
 | /la-tassa-granja/ | /bolla-demo-la-tassa-granja/?p={p} | solo visita |
+| /la-tavernetta-porto-taverna/ | /la-tavernetta-porto-taverna/?p={p} | "/la-tavernetta-porto-taverna/chat/"+i?p={p} · example; "/la-tavernetta-porto-taverna/lang-"+b.dataset.l?p={p} · Lang {…}; /la-tavernetta-porto-taverna/chat-response?p={p} · chat-response; /la-tavernetta-porto-taverna/request?p={p} · Richiesta annotata; /la-tavernetta-porto-taverna/chat-start?p={p} · Chat avviata; /la-tavernetta-porto-taverna/bolla-tel?p={p} · bolla-tel; /la-tavernetta-porto-taverna/bolla-web?p={p} · bolla-web; /la-tavernetta-porto-taverna/cta-whatsapp?p={p} · cta-whatsapp; /la-tavernetta-porto-taverna/cta-voice?p={p} · cta-voice; /la-tavernetta-porto-taverna/voice-click?p={p} · voice-click; /la-tavernetta-porto-taverna/tel-restaurant?p={p} · tel-restaurant; /la-tavernetta-porto-taverna/voice-start?p={p} · Chiamata vocale avviata |
 | /latam-acrecer/ | /latam-acrecer-demo/?p={p} | /latam-acrecer-demo/chat?p={p} · Chat replay; /latam-acrecer-demo/book?p={p} · Demo reserva |
 | /latam-bon-amour/ | /latam-bon-amour-demo/?p={p} | /latam-bon-amour-demo/chat?p={p} · Chat replay; /latam-bon-amour-demo/book?p={p} · Demo reserva |
 | /latam-byc-dental/ | /latam-byc-dental-demo/?p={p} | /latam-byc-dental-demo/chat?p={p} · Chat replay; /latam-byc-dental-demo/book?p={p} · Demo reserva |

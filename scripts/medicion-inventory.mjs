@@ -3,7 +3,8 @@
  * `node scripts/medicion-inventory.mjs` rewrites docs/medicion.md.
  */
 import { readdirSync, readFileSync, statSync, writeFileSync } from "node:fs";
-import { join } from "node:path";
+import { dirname, join } from "node:path";
+import { existsSync } from "node:fs";
 
 export function walkIndex(root) {
   const out = [];
@@ -203,6 +204,31 @@ export function isRedirect(html) {
   return /location\.replace\(/.test(html) && !html.includes("bollastudio.goatcounter.com/count");
 }
 
+/**
+ * Demos whose usage lives in a sibling app.js (`<script src="app.js">`) with a local
+ * `track('<id>')` helper that calls `window.bsTrack(BASE + '/' + id, id)`.
+ * `track('piatto/' + slug)` is listed as `piatto/{slug}`.
+ */
+export function appJsEvents(file, html, visit) {
+  if (!/<script src="app\.js"><\/script>/.test(html)) return [];
+  const app = join(dirname(file), "app.js");
+  if (!existsSync(app)) return [];
+  const js = readFileSync(app, "utf8");
+  const base = js.match(/window\.bsTrack\('(\/[a-z0-9-]+\/)'\s*\+\s*ev/);
+  if (!base) return [];
+  const out = [];
+  for (const m of js.matchAll(/\btrack\('([a-z0-9/_-]+)'(?:\s*\+\s*([A-Za-z_.]+))?/g)) {
+    const id = m[1] + (m[2] ? `{${m[2].split(".").pop()}}` : "");
+    const row = `${base[1]}${id}${visit.includes("?p=") ? "?p={p}" : ""} · ${id}`;
+    if (!out.includes(row)) out.push(row);
+  }
+  for (const m of js.matchAll(/data-track=\\?"([^"\\]+)\\?" data-title=\\?"([^"\\]+)\\?"/g)) {
+    const row = `${m[1]}${visit.includes("?p=") ? "?p={p}" : ""} · ${m[2]}`;
+    if (!out.includes(row)) out.push(row);
+  }
+  return out;
+}
+
 export function inventory(root) {
   return walkIndex(root).map((file) => {
     const rel = relative(root, file);
@@ -215,7 +241,9 @@ export function inventory(root) {
       return { route, rel, kind: "redireccion", visit: "", events: [] };
     }
     const visit = visitOf(html, rel);
-    return { route, rel, kind: "demo", visit, events: eventsOf(html, visit) };
+    const events = eventsOf(html, visit);
+    for (const row of appJsEvents(file, html, visit)) if (!events.includes(row)) events.push(row);
+    return { route, rel, kind: "demo", visit, events };
   });
 }
 
