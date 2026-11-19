@@ -41,3 +41,24 @@ test('tutti i piatti hanno costo > 0 e ogni prezzo ha fonte o è stima', () => {
   for (const it of D.items) { const r = C.item(it, S); assert.ok(r.total > 0 && r.fc > 0 && r.fc < 100, it.slug); }
   for (const i of D.ings) { assert.ok(i.t === 'E' || /^https:\/\//.test(i.url), i.id); assert.ok(i.p > 0 && i.fq > 0, i.id); }
 });
+
+test('tutti i 96 piatti: costo > 0, somma righe = totale, food cost coerente', () => {
+  const S = st(D.defaults);
+  assert.equal(D.items.length, 96);
+  for (const it of D.items) {
+    const c = C.item(it, S);
+    assert.ok(Number.isFinite(c.total) && c.total > 0, it.slug);
+    const sum = c.lines.reduce((a, l) => a + l.cost, 0) + c.groups.reduce((a, g) => a + g.cost, 0) + (c.waste || 0) + (c.energy || 0) + (c.box || 0);
+    near(sum, c.total, 1e-9);
+    near(c.fc, c.total / (it.price / 1.1) * 100, 1e-9);
+    const ids = (it.r || []).map(x => x[0]);
+    assert.equal(new Set(ids).size, ids.length, 'ingrediente duplicato in ' + it.slug);
+    if (it.note) assert.ok(it.noteEs, 'nota ES mancante ' + it.slug);
+  }
+});
+
+test('traduzioni ES presenti per ingredienti, categorie e impasti', () => {
+  for (const i of D.ings) { assert.ok(i.es && i.es.n && i.es.f, i.id); if (i.nota) assert.ok(i.es.nota, i.id); }
+  for (const i of D.ings) assert.ok(D.catEs[i.c], i.c);
+  for (const [k, d] of Object.entries(D.doughs)) assert.ok(d.es && d.es.n && d.es.d, k);
+});

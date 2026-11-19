@@ -73,12 +73,14 @@
   function clone(o) { return JSON.parse(JSON.stringify(o)); }
   function state() {
     var ings = {};
-    D.ings.concat(LS.custom).forEach(function (i) { var x = Object.assign({}, i); if (LS.p[i.id] != null) x.p = +LS.p[i.id]; ings[x.id] = x; });
+    D.ings.concat(LS.custom).forEach(function (i) { var x = Object.assign({}, i); x.nIt = i.n; if (lang === 'es' && i.es) { Object.assign(x, i.es); x.src = srcL(i.src); } if (LS.p[i.id] != null) x.p = +LS.p[i.id]; ings[x.id] = x; });
     var doughs = {};
-    Object.keys(D.doughs).forEach(function (k) { doughs[k] = Object.assign({}, D.doughs[k], LS.d[k] || {}); });
+    Object.keys(D.doughs).forEach(function (k) { doughs[k] = Object.assign({}, D.doughs[k], lang === 'es' && D.doughs[k].es ? D.doughs[k].es : {}, LS.d[k] || {}); });
     var items = {};
     D.items.forEach(function (i) {
       var x = Object.assign({}, i);
+      if (lang === 'es' && i.noteEs) x.note = i.noteEs;
+      x.sub = subL(i.sub);
       if (LS.r[i.slug]) x.r = LS.r[i.slug];
       if (LS.ds[i.slug]) x.dough = LS.ds[i.slug];
       if (LS.ball[i.slug]) x.ball = +LS.ball[i.slug];
@@ -87,6 +89,11 @@
     });
     return { ings: ings, doughs: doughs, items: items, s: Object.assign({}, D.defaults, LS.s) };
   }
+  var SRC_ES = { 'CIFO Cash & Carry (listino online, IVA esclusa)': 'CIFO Cash & Carry (lista online, sin IVA)', 'Mozzalat (distributore, prezzo HT = IVA esclusa)': 'Mozzalat (distribuidor, precio HT = sin IVA)', 'Stima BOLLA STUDIO': 'Estimación BOLLA STUDIO', 'Royal Distribuzione (listino HoReCa online, IVA esclusa)': 'Royal Distribuzione (lista HoReCa online, sin IVA)', 'Allevatori Sulcitani (shop online)': 'Allevatori Sulcitani (tienda online)', 'Spesati.it (Olbia, prezzo al kg)': 'Spesati.it (Olbia, precio por kg)', 'Sibiriu Petza Bella (shop online)': 'Sibiriu Petza Bella (tienda online)', 'La Sardegna dei Sapori (shop online)': 'La Sardegna dei Sapori (tienda online)' };
+  function srcL(s) { return (lang === 'es' && SRC_ES[s]) || s; }
+  var SUB_ES = { 'Pizze Carpe Diem': 'Pizzas Carpe Diem', 'I Sette Peccati Capitali': 'Los siete pecados capitales', 'Pizze Stellate': 'Pizzas estrella', 'Le Nostre Pizze': 'Nuestras pizzas', 'Contorni': 'Guarniciones', 'Dolci': 'Postres' };
+  function subL(s) { return (lang === 'es' && SUB_ES[s]) || s; }
+  function catL(c) { return (lang === 'es' && D.catEs && D.catEs[c]) || c; }
   var ST = state();
   function refresh() { ST = state(); }
 
@@ -122,10 +129,12 @@
   // ---------- i18n statico ----------
   function applyLang() {
     document.documentElement.lang = lang;
+    $('#back').setAttribute('aria-label', lang === 'es' ? 'Atrás' : 'Indietro');
+    $('#sheetX').setAttribute('aria-label', t('close'));
     $$('[data-t]').forEach(function (el) { el.innerHTML = t(el.getAttribute('data-t')); });
     $$('#langs button').forEach(function (b) { b.classList.toggle('on', b.getAttribute('data-l') === lang); });
   }
-  $$('#langs button').forEach(function (b) { b.addEventListener('click', function () { lang = b.getAttribute('data-l'); save(); applyLang(); render(); track('lang-' + lang); }); });
+  $$('#langs button').forEach(function (b) { b.addEventListener('click', function () { lang = b.getAttribute('data-l'); save(); refresh(); applyLang(); render(); track('lang-' + lang); }); });
 
   // ---------- router ----------
   var view = $('#view'), ui = { cat: 'all', q: '', sc: 'all', sq: '', open: {} };
@@ -167,7 +176,7 @@
     var list = D.items.filter(function (i) { return (ui.cat === 'all' || i.cat === ui.cat) && (!qq || norm(i.n + ' ' + i.desc).indexOf(qq) >= 0); });
     list.forEach(function (i) {
       var it = ST.items[i.slug], c = C.item(it, ST);
-      if (!qq && i.sub !== lastSub) { html += (lastSub ? '</div>' : '') + '<h3 class="sec">' + esc(i.sub) + '</h3><div class="list">'; lastSub = i.sub; }
+      if (!qq && i.sub !== lastSub) { html += (lastSub ? '</div>' : '') + '<h3 class="sec">' + esc(subL(i.sub)) + '</h3><div class="list">'; lastSub = i.sub; }
       else if (qq && !lastSub) { html += '<div class="list">'; lastSub = '1'; }
       html += '<button class="card" data-s="' + i.slug + '"><div class="tx"><div class="nm">' + esc(i.n) + '</div><div class="ds">' + esc(i.desc || t(i.cat)) + '</div>' +
         '<div class="pr">' + t('cost') + ' <b>' + eur(c.total) + '</b> · ' + t('price') + ' ' + eur(i.price) + '</div></div>' +
@@ -184,7 +193,7 @@
   function stepFor(ing, v) { if (ing.u === 'pz') return v < 1 ? 0.1 : 0.5; return v >= 100 ? 10 : v >= 20 ? 5 : v >= 5 ? 1 : 0.5; }
   function viewItem(slug) {
     var it = ST.items[slug], c = C.item(it, ST), base = ITEMS[slug];
-    setHeader(it.n, t(it.cat) + ' · ' + it.sub, true);
+    setHeader(it.n, norm(t(it.cat)) === norm(it.sub) ? it.sub : t(it.cat) + ' · ' + it.sub, true);
     var isPizza = it.kind === 'pizza' || it.kind === 'scrocchiarella';
     var h = '<div class="dhead"><div style="flex:1;min-width:0"><h2>' + esc(it.n) + '</h2><p>' + esc(it.desc) + '</p></div>' +
       '<div class="price-tag">' + eur(it.price) + '<small>' + t('price') + '</small></div></div>';
@@ -284,6 +293,7 @@
   function openSheet(html) { $('#sheetBody').innerHTML = html; $('#sheet').classList.add('open'); $('#sheetBg').classList.add('open'); }
   function closeSheet() { $('#sheet').classList.remove('open'); $('#sheetBg').classList.remove('open'); }
   $('#sheetBg').addEventListener('click', closeSheet);
+  $('#sheetX').addEventListener('click', closeSheet);
   function ingCardHTML(ing) {
     var edited = LS.p[ing.id] != null;
     return '<div class="ing' + (edited ? ' edited' : '') + '" data-id="' + ing.id + '"><div class="h"><div class="t"><div class="nm">' + esc(ing.n) + '</div><div class="q">' + esc(ing.q) + '</div></div>' + srcBadge(ing) + '</div>' +
@@ -318,7 +328,7 @@
     openSheet('<h3>' + t('pick') + '</h3><div class="search"><input id="pq" type="search" autocomplete="off" placeholder="' + esc(t('stockS')) + '"></div><div class="pick" id="plist"></div>');
     var draw = function () {
       var qq = norm($('#pq').value).trim();
-      var arr = Object.keys(ST.ings).map(function (k) { return ST.ings[k]; }).filter(function (i) { return (!filterCat || i.c === filterCat) && i.c !== 'Costi extra' && (!qq || norm(i.n + ' ' + i.q).indexOf(qq) >= 0); });
+      var arr = Object.keys(ST.ings).map(function (k) { return ST.ings[k]; }).filter(function (i) { return (!filterCat || i.c === filterCat) && i.c !== 'Costi extra' && (!qq || norm(i.n + ' ' + i.nIt + ' ' + i.q).indexOf(qq) >= 0); });
       $('#plist').innerHTML = arr.slice(0, 80).map(function (i) { return '<button data-id="' + i.id + '"><b>' + esc(i.n) + '</b><small>' + esc(i.q) + ' · ' + upLabel(i) + '</small></button>'; }).join('') || '<p class="empty">' + t('noRes') + '</p>';
       $$('#plist button').forEach(function (b) { b.addEventListener('click', function () { cb(b.getAttribute('data-id')); }); });
     };
@@ -330,7 +340,7 @@
     setHeader(t('tStock'), lang === 'es' ? 'Materias primas · precios' : 'Materie prime · prezzi', false);
     var chips = ['all', 'edited'].concat(CATS);
     view.innerHTML = '<div class="search"><input id="sq" type="search" autocomplete="off" placeholder="' + esc(t('stockS')) + '" value="' + esc(ui.sq) + '"></div>' +
-      '<div class="chips" id="scats">' + chips.map(function (c) { return '<button class="chip' + (ui.sc === c ? ' on' : '') + '" data-c="' + esc(c) + '">' + (c === 'all' ? t('all') : c === 'edited' ? '✎ ' + t('edited') : esc(c)) + '</button>'; }).join('') + '</div>' +
+      '<div class="chips" id="scats">' + chips.map(function (c) { return '<button class="chip' + (ui.sc === c ? ' on' : '') + '" data-c="' + esc(c) + '">' + (c === 'all' ? t('all') : c === 'edited' ? '✎ ' + t('edited') : esc(catL(c))) + '</button>'; }).join('') + '</div>' +
       '<div class="note">' + t('aboutTxt') + '</div><div id="slist" class="list"></div><div class="btns"><button class="btn" id="newIng">' + t('newIng') + '</button></div>';
     $('#sq').addEventListener('input', function (e) { ui.sq = e.target.value; stockList(); });
     $$('#scats .chip').forEach(function (b) { b.addEventListener('click', function () { ui.sc = b.getAttribute('data-c'); $$('#scats .chip').forEach(function (x) { x.classList.toggle('on', x === b); }); stockList(); }); });
@@ -341,7 +351,7 @@
     var qq = norm(ui.sq).trim();
     var arr = Object.keys(ST.ings).map(function (k) { return ST.ings[k]; }).filter(function (i) {
       if (ui.sc === 'edited') { if (LS.p[i.id] == null && !(i.t === 'U')) return false; } else if (ui.sc !== 'all' && i.c !== ui.sc) return false;
-      return !qq || norm(i.n + ' ' + i.q + ' ' + i.c).indexOf(qq) >= 0;
+      return !qq || norm(i.n + ' ' + i.nIt + ' ' + i.q + ' ' + i.c + ' ' + catL(i.c)).indexOf(qq) >= 0;
     });
     $('#slist').innerHTML = arr.map(ingCardHTML).join('') || '<p class="empty">' + t('noRes') + '</p>';
     $$('#slist .ing').forEach(function (card) { bindIngCard(card, function () { var y = window.scrollY; stockList(); window.scrollTo(0, y); }); });
@@ -349,8 +359,8 @@
   function newIngSheet() {
     openSheet('<h3>' + t('newIng').replace('+ ', '') + '</h3><div class="opts">' +
       '<div class="opt"><label>' + t('name') + '</label><input id="nn" style="flex:2;height:44px;border-radius:10px;border:2px solid var(--line);padding:0 10px"></div>' +
-      '<div class="opt"><label>' + t('cat') + '</label><select id="nc" style="flex:2;height:44px;border-radius:10px;border:2px solid var(--line)">' + CATS.map(function (c) { return '<option>' + esc(c) + '</option>'; }).join('') + '</select></div>' +
-      '<div class="opt"><label>' + t('qtyFmt') + '</label><input id="nq" inputmode="decimal" value="1" style="width:80px;height:44px;border-radius:10px;border:2px solid var(--line);text-align:center"><select id="nu" style="height:44px;border-radius:10px;border:2px solid var(--line)"><option value="kg">kg</option><option value="l">L</option><option value="pz">pz</option></select></div>' +
+      '<div class="opt"><label>' + t('cat') + '</label><select id="nc" style="flex:2;height:44px;border-radius:10px;border:2px solid var(--line)">' + CATS.map(function (c) { return '<option value="' + esc(c) + '">' + esc(catL(c)) + '</option>'; }).join('') + '</select></div>' +
+      '<div class="opt"><label>' + t('qtyFmt') + '</label><input id="nq" inputmode="decimal" value="1" style="width:80px;height:44px;border-radius:10px;border:2px solid var(--line);text-align:center"><select id="nu" style="height:44px;border-radius:10px;border:2px solid var(--line)"><option value="kg">kg</option><option value="l">L</option><option value="pz">' + (lang === 'es' ? 'u' : 'pz') + '</option></select></div>' +
       '<div class="opt"><label>' + t('priceFmt') + '</label><input id="np" inputmode="decimal" style="width:100px;height:44px;border-radius:10px;border:2px solid var(--line);text-align:right;padding:0 8px"></div>' +
       '</div><div class="btns"><button class="btn red" id="ns">' + t('save') + '</button><button class="btn ghost" id="clS">' + t('close') + '</button></div>');
     $('#clS').addEventListener('click', closeSheet);
@@ -446,29 +456,29 @@
     toast('⬇ ' + name); track('csv/' + name);
   }
   function exportCSV(kind) {
-    var rows = [];
+    var rows = [], es = lang === 'es';
     if (kind === 'stock') {
-      rows.push(['Categoria', 'Ingrediente', 'Marca/qualità', 'Formato', 'Prezzo formato € (IVA escl.)', 'Unità', '€/kg-L-pz', '€/g-ml', 'Tipo fonte', 'Fonte', 'URL', 'Data', 'Nota']);
-      Object.keys(ST.ings).forEach(function (k) { var i = ST.ings[k], up = C.unitPrice(i); rows.push([i.c, i.n, i.q, i.f, i.p, i.u, up, i.u === 'pz' ? '' : up / 1000, t('src' + (i.t || 'U')), i.src, i.url, i.d, i.nota]); });
+      rows.push(es ? ['Categoría', 'Ingrediente', 'Marca/calidad', 'Formato', 'Precio formato € (sin IVA)', 'Unidad', '€/kg-L-u', '€/g-ml', 'Tipo de fuente', 'Fuente', 'URL', 'Fecha', 'Nota'] : ['Categoria', 'Ingrediente', 'Marca/qualità', 'Formato', 'Prezzo formato € (IVA escl.)', 'Unità', '€/kg-L-pz', '€/g-ml', 'Tipo fonte', 'Fonte', 'URL', 'Data', 'Nota']);
+      Object.keys(ST.ings).forEach(function (k) { var i = ST.ings[k], up = C.unitPrice(i); rows.push([catL(i.c), i.n, i.q, i.f, i.p, i.u, up, i.u === 'pz' ? '' : up / 1000, t('src' + (i.t || 'U')), i.src, i.url, i.d, i.nota]); });
       return download('serafino-magazzino.csv', rows);
     }
     if (kind === 'menu') {
-      rows.push(['Categoria', 'Piatto', 'Impasto', 'Prezzo menu €', 'Prezzo base calcolo €', 'Costo €', 'Food cost %', 'Margine €']);
+      rows.push(es ? ['Categoría', 'Plato', 'Masa', 'Precio carta €', 'Precio base de cálculo €', 'Costo €', 'Food cost %', 'Margen €'] : ['Categoria', 'Piatto', 'Impasto', 'Prezzo menu €', 'Prezzo base calcolo €', 'Costo €', 'Food cost %', 'Margine €']);
       D.items.forEach(function (b) { var it = ST.items[b.slug], c = C.item(it, ST); rows.push([it.sub, it.n, it.dough ? ST.doughs[it.dough].n : '', it.price, c.priceBase, c.total, c.fc, c.margin]); });
       return download('serafino-food-cost-menu.csv', rows);
     }
-    rows.push(['Piatto', 'Voce', 'Ingrediente', 'Quantità', 'Unità', '€/unità (kg-L-pz)', 'Costo €']);
+    rows.push(es ? ['Plato', 'Partida', 'Ingrediente', 'Cantidad', 'Unidad', '€/unidad (kg-L-u)', 'Costo €'] : ['Piatto', 'Voce', 'Ingrediente', 'Quantità', 'Unità', '€/unità (kg-L-pz)', 'Costo €']);
     D.items.forEach(function (b) {
       var it = ST.items[b.slug], c = C.item(it, ST);
       c.lines.forEach(function (l) {
-        if (l.id === '__dough') { c.dough.calc.lines.forEach(function (dl) { var ing = ST.ings[dl.id]; rows.push([it.n, 'Impasto ' + ST.doughs[c.dough.id].n, ing.n, dl.q, unitOf(ing), C.unitPrice(ing), dl.cost]); }); return; }
-        var ing = ST.ings[l.id]; rows.push([it.n, l.auto ? 'Spolvero' : 'Farcitura', ing.n, l.q, unitOf(ing), C.unitPrice(ing), l.cost]);
+        if (l.id === '__dough') { c.dough.calc.lines.forEach(function (dl) { var ing = ST.ings[dl.id]; rows.push([it.n, t('dough') + ' ' + ST.doughs[c.dough.id].n, ing.n, dl.q, unitOf(ing), C.unitPrice(ing), dl.cost]); }); return; }
+        var ing = ST.ings[l.id]; rows.push([it.n, l.auto ? t('spolvero') : (es ? 'Ingrediente' : 'Farcitura'), ing.n, l.q, unitOf(ing), C.unitPrice(ing), l.cost]);
       });
-      c.groups.forEach(function (gp) { gp.lines.forEach(function (l) { var ing = ST.ings[l.id]; rows.push([it.n, 'Metà ' + (gp.half + 1) + ': ' + ST.items[gp.slug].n, ing.n, l.q, unitOf(ing), C.unitPrice(ing), l.cost]); }); });
-      if (c.waste) rows.push([it.n, 'Extra', 'Scarto ' + ST.s.waste + '%', '', '', '', c.waste]);
-      if (c.energy) rows.push([it.n, 'Extra', 'Energia', 1, 'pz', c.energy, c.energy]);
-      if (c.box) rows.push([it.n, 'Extra', 'Cartone asporto', 1, 'pz', c.box, c.box]);
-      rows.push([it.n, 'TOTALE', '', '', '', '', c.total]);
+      c.groups.forEach(function (gp) { gp.lines.forEach(function (l) { var ing = ST.ings[l.id]; rows.push([it.n, t('half') + ' ' + (gp.half + 1) + ': ' + ST.items[gp.slug].n, ing.n, l.q, unitOf(ing), C.unitPrice(ing), l.cost]); }); });
+      if (c.waste) rows.push([it.n, 'Extra', t('waste') + ' ' + ST.s.waste + '%', '', '', '', c.waste]);
+      if (c.energy) rows.push([it.n, 'Extra', t('energy'), 1, 'pz', c.energy, c.energy]);
+      if (c.box) rows.push([it.n, 'Extra', t('box'), 1, 'pz', c.box, c.box]);
+      rows.push([it.n, es ? 'TOTAL' : 'TOTALE', '', '', '', '', c.total]);
     });
     download('serafino-ricette-dettaglio.csv', rows);
   }
