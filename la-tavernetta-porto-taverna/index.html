@@ -114,8 +114,8 @@ footer{max-width:980px;margin:0 auto;padding:18px 20px calc(120px + env(safe-are
 <div class="studio"><div class="studio-in">
   <p><span class="pill">DEMO</span><span data-k="studio"></span></p>
   <div class="studio-actions">
-    <a class="btn btn-w" href="tel:+393445240254">Marcelo · +39 344 524 0254</a>
-    <a class="btn btn-o" href="https://bollastudio.com" target="_blank" rel="noopener">bollastudio.com</a>
+    <a class="btn btn-w" href="tel:+393445240254" data-track="/la-tavernetta-porto-taverna/bolla-tel" data-title="bolla-tel">Marcelo · +39 344 524 0254</a>
+    <a class="btn btn-o" href="https://bollastudio.com" target="_blank" rel="noopener" data-track="/la-tavernetta-porto-taverna/bolla-web" data-title="bolla-web">bollastudio.com</a>
     <div class="langs" id="langs"><button type="button" data-l="it" class="on">IT</button><button type="button" data-l="en">EN</button></div>
   </div>
 </div></div>
@@ -127,8 +127,8 @@ footer{max-width:980px;margin:0 auto;padding:18px 20px calc(120px + env(safe-are
     <h1 data-k="h1"></h1>
     <p class="lead" data-k="lead"></p>
     <div class="cta">
-      <a class="btn b-wa" href="#chat" data-k="ctaWa"></a>
-      <a class="btn b-ph" href="#voce" data-k="ctaPh"></a>
+      <a class="btn b-wa" href="#chat" data-k="ctaWa" data-track="/la-tavernetta-porto-taverna/cta-whatsapp" data-title="cta-whatsapp"></a>
+      <a class="btn b-ph" href="#voce" data-k="ctaPh" data-track="/la-tavernetta-porto-taverna/cta-voice" data-title="cta-voice"></a>
     </div>
   </div>
 </section>
@@ -147,7 +147,7 @@ footer{max-width:980px;margin:0 auto;padding:18px 20px calc(120px + env(safe-are
       <div class="card voice" id="voce">
         <h3 data-k="voiceTitle"></h3>
         <p data-k="voiceText"></p>
-        <button class="btn" type="button" id="voiceBtn" data-k="voiceBtn"></button>
+        <button class="btn" type="button" id="voiceBtn" data-k="voiceBtn" data-track="/la-tavernetta-porto-taverna/voice-click" data-title="voice-click"></button>
         <p class="note" style="color:#d6e7ec;margin-top:10px" data-k="voiceNote"></p>
       </div>
       <div class="card staff">
@@ -167,7 +167,7 @@ footer{max-width:980px;margin:0 auto;padding:18px 20px calc(120px + env(safe-are
   <h2 data-k="venuesTitle"></h2>
   <p class="sub" data-k="venuesSub"></p>
   <div class="venues">
-    <div class="venue"><div class="ph" style="background-image:url(img/vista-mare.jpg)"></div><div class="tx"><h3>Ristorante La Tavernetta</h3><p data-k="v1"></p><p><a href="tel:+3907891776873">+39 0789 1776873</a></p></div></div>
+    <div class="venue"><div class="ph" style="background-image:url(img/vista-mare.jpg)"></div><div class="tx"><h3>Ristorante La Tavernetta</h3><p data-k="v1"></p><p><a href="tel:+3907891776873" data-track="/la-tavernetta-porto-taverna/tel-restaurant" data-title="tel-restaurant">+39 0789 1776873</a></p></div></div>
     <div class="venue"><div class="ph" style="background-image:url(img/beach.jpg)"></div><div class="tx"><h3>Tavernetta Beach</h3><p data-k="v2"></p></div></div>
     <div class="venue"><div class="ph" style="background:linear-gradient(135deg,#1b6f8a,#7cc3d6)"></div><div class="tx"><h3>Mare Azzurro</h3><p data-k="v3"></p></div></div>
   </div>
@@ -175,7 +175,7 @@ footer{max-width:980px;margin:0 auto;padding:18px 20px calc(120px + env(safe-are
 </main>
 <footer>
   <p data-k="foot"></p>
-  <p><a href="tel:+393445240254">+39 344 524 0254</a> · <a href="https://bollastudio.com" target="_blank" rel="noopener">bollastudio.com</a></p>
+  <p><a href="tel:+393445240254" data-track="/la-tavernetta-porto-taverna/bolla-tel" data-title="bolla-tel">+39 344 524 0254</a> · <a href="https://bollastudio.com" target="_blank" rel="noopener" data-track="/la-tavernetta-porto-taverna/bolla-web" data-title="bolla-web">bollastudio.com</a></p>
 </footer>
 
 <script>
@@ -225,7 +225,7 @@ function apply(l){lang=COPY[l]?l:"it";var t=COPY[lang];document.documentElement.
  document.querySelectorAll("[data-k]").forEach(function(el){var k=el.getAttribute("data-k");if(typeof t[k]==="string")el.textContent=t[k];});
  document.querySelectorAll("[data-ph]").forEach(function(el){el.placeholder=t[el.getAttribute("data-ph")];});
  document.querySelectorAll("#langs button").forEach(function(b){b.classList.toggle("on",b.dataset.l===lang);});
- var c=document.getElementById("chips");c.innerHTML="";t.chips.forEach(function(x){var b=document.createElement("button");b.type="button";b.textContent=x;b.onclick=function(){send(x);};c.appendChild(b);});
+ var c=document.getElementById("chips");c.innerHTML="";t.chips.forEach(function(x,i){var b=document.createElement("button");b.type="button";b.textContent=x;b.onclick=function(){if(window.bsTrack)window.bsTrack("/la-tavernetta-porto-taverna/chat/"+i,"example");send(x);};c.appendChild(b);});
  var w=document.querySelector("elevenlabs-convai");if(w)w.setAttribute("override-language",lang);
 }
 document.querySelectorAll("#langs button").forEach(function(b){b.addEventListener("click",function(){apply(b.dataset.l);resetChat();if(window.bsTrack)window.bsTrack("/la-tavernetta-porto-taverna/lang-"+b.dataset.l,"Lang "+b.dataset.l);});});
@@ -248,7 +248,7 @@ function connect(){
   if(m.type==="ping"){ws.send(JSON.stringify({type:"pong",event_id:m.ping_event.event_id}));return;}
   if(m.type==="conversation_initiation_metadata"){ready=true;setTimeout(function(){pending.forEach(function(p){ws.send(JSON.stringify({type:"user_message",text:p}));});pending=[];},300);return;}
   if(m.type==="agent_response"){var txt=m.agent_response_event.agent_response;
-   typing(false);bubble("bot",txt);capture(txt);
+   typing(false);bubble("bot",txt);capture(txt);if(window.bsTrack&&!body.dataset.resp){body.dataset.resp=1;window.bsTrack("/la-tavernetta-porto-taverna/chat-response","chat-response");}
    if(!started){started=true;if(waiting>0)typing(true);}else{waiting=Math.max(0,waiting-1);if(waiting>0)typing(true);}}
  };
  ws.onerror=function(){typing(false);sys(COPY[lang].err);};
@@ -268,6 +268,8 @@ function send(text){text=String(text||"").trim();if(!text)return;bubble("me",tex
 document.getElementById("waForm").addEventListener("submit",function(e){e.preventDefault();var i=document.getElementById("waInput");send(i.value);i.value="";});
 resetChat();
 
+/* ---- Uso: link/pulsanti con data-track (nessun testo digitato) ---- */
+document.addEventListener("click",function(e){var a=e.target&&e.target.closest?e.target.closest("[data-track]"):null;if(a&&window.bsTrack)window.bsTrack(a.getAttribute("data-track"),a.getAttribute("data-title"));},true);
 /* ---- Voice: ElevenLabs widget with the same agent ---- */
 if(validAgent(AGENT_ID)){
  var el=document.createElement("elevenlabs-convai");el.setAttribute("agent-id",AGENT_ID);el.setAttribute("placement","bottom-right");el.setAttribute("override-language",lang);el.style.display="none";
