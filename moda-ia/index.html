@@ -1,0 +1,206 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Moda · Video con IA | BOLLA STUDIO</title>
+<meta name="description" content="Fashion film generati con intelligenza artificiale da BOLLA STUDIO (Olbia): sartoria butter yellow, styling, tessuti, luce e direzione artistica descritti look per look.">
+<meta name="robots" content="noindex">
+<meta property="og:title" content="Moda · Video con IA | BOLLA STUDIO">
+<meta property="og:image" content="v/profilo-stola.webp">
+<link rel="preload" href="fonts/dm-sans-400.woff2" as="font" type="font/woff2" crossorigin>
+<!--
+  Moda · Video con IA — BOLLA STUDIO. Pagina portfolio (anteprima per bollastudio.com).
+  Tutti i video sono generati con IA (concept "AURE"). Nessuna persona reale, nessun capo in vendita. Video senza audio.
+  Testi in content.js (it/es/en/de). Lingua: ?lang=xx, altrimenti lingua del browser, default it.
+  GoatCounter: visita /moda-ia/ (+ ?p=). Uso con event:true: prima riproduzione per video (/moda-ia/video-play/<id>),
+  cambio lingua, clic sui contatti. ?internal=1 o p=bmaudit-* non carica il contatore.
+-->
+<script>
+(function(){
+ var BASE='/moda-ia';
+ var m=(location.search+location.hash).match(/[?&#]internal=([01])/);
+ var mo=(location.search+location.hash).match(/[?&#]interno=([01])/);
+ var bollaOff=false;
+ function bollaCookie(on){try{var secure="";try{if(location.protocol==="https:")secure="; Secure";}catch(e){}document.cookie=on?"bolla_internal=1; Path=/; Max-Age=34560000; SameSite=Lax"+secure:"bolla_internal=; Path=/; Max-Age=0; SameSite=Lax";}catch(e){}}
+ function bollaStore(on){try{if(on)localStorage.setItem("skipgc","t");else localStorage.removeItem("skipgc");}catch(e){}bollaCookie(on);}
+ try{var qh=location.search+location.hash;var ia=m?qh.lastIndexOf("internal="):-1;var io=mo?qh.lastIndexOf("interno="):-1;if(ia>=0||io>=0){var bollaOn=(io>ia?mo[1]:m[1])==="1";bollaOff=!bollaOn;bollaStore(bollaOn);}}catch(e){}
+ var internal=false;try{internal=localStorage.getItem("skipgc")==="t";}catch(e){}
+ try{if(!internal&&/(?:^|; )bolla_internal=1(?:;|$)/.test(document.cookie||"")){internal=true;try{localStorage.setItem("skipgc","t");}catch(e){}}else if(internal)bollaCookie(true);}catch(e){}
+ var bollaAudit="";try{var bollaPm=location.search.match(/[?&]p=([^&#]*)/)||location.search.match(/[?&]link_id=([^&#]*)/);if(bollaPm)bollaAudit=decodeURIComponent(bollaPm[1]).toLowerCase().replace(/[^a-z0-9-]/g,"").slice(0,60);}catch(e){}if(bollaAudit.indexOf("bmaudit-")===0){internal=true;if(!bollaOff)bollaStore(true);}
+ var sm=location.search.match(/[?&]p=([^&#]*)/);
+ var tag=sm?decodeURIComponent(sm[1]).toLowerCase().replace(/[^a-z0-9-]/g,"").slice(0,60):"";
+ var q=[]; window.bsTrack=function(sub,title){ if(internal) return;
+   var ep=sub+(tag && sub.indexOf("?p=")<0 ? "?p="+tag : "");
+   if(window.goatcounter&&window.goatcounter.count) window.goatcounter.count({path:ep,title:title||sub,event:true}); else q.push([ep,title||sub]); };
+ var once={}; window.bsOnce=function(k){if(once[k])return false;once[k]=1;return true;};
+ if(internal) return;
+ window.goatcounter={no_onload:true};
+ var s=document.createElement("script"); s.async=true; s.src="https://gc.zgo.at/count.js";
+ s.setAttribute("data-goatcounter","https://bollastudio.goatcounter.com/count");
+ s.onload=function(){ try{ window.goatcounter.count({path:BASE+'/'+(tag?'?p='+tag:''),title:'Moda video IA'});
+   q.forEach(function(e){window.goatcounter.count({path:e[0],title:e[1],event:true});}); q=[]; }catch(e){} };
+ document.head.appendChild(s);
+})();
+</script>
+<style>
+@font-face{font-family:"DM Sans";src:url(fonts/dm-sans-400.woff2) format("woff2");font-weight:400;font-display:swap}
+@font-face{font-family:"DM Sans";src:url(fonts/dm-sans-500.woff2) format("woff2");font-weight:500 700;font-display:swap}
+@font-face{font-family:"Barlow Condensed";src:url(fonts/barlow-condensed-700.woff2) format("woff2");font-weight:700;font-display:swap}
+:root{--bg:#f5f3ef;--card:#fffefa;--ink:#242320;--muted:#68655f;--line:#d8d4cb;--stone:#8a8275;--accent:#e1ded6;--butter:#efe3b0}
+*{box-sizing:border-box}html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 17px/1.6 "DM Sans",Arial,Helvetica,sans-serif}
+a{color:inherit}
+.wrap{max-width:1180px;margin:0 auto;padding:0 22px}
+header.top{position:sticky;top:0;z-index:10;background:rgba(245,243,239,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+header.top .wrap{display:flex;align-items:center;justify-content:space-between;height:60px;gap:12px}
+.logo{font:700 20px/0.9 "Barlow Condensed","Arial Narrow",Arial,sans-serif;letter-spacing:.06em;text-decoration:none;text-transform:uppercase}
+.logo span{display:block}
+.nav{display:flex;align-items:center;gap:14px;font-size:14px}
+.nav a.back{color:var(--muted);text-decoration:none}
+.langs{display:flex;gap:2px}
+.langs button{font:500 13px "DM Sans",sans-serif;background:none;border:1px solid transparent;border-radius:999px;padding:6px 9px;min-width:40px;min-height:36px;color:var(--muted);cursor:pointer}
+.langs button[aria-pressed=true]{border-color:var(--ink);color:var(--ink)}
+.hero{display:grid;grid-template-columns:1.05fr .95fr;gap:48px;align-items:center;padding:56px 0 40px}
+.kicker{font:700 15px "Barlow Condensed","Arial Narrow",sans-serif;letter-spacing:.14em;text-transform:uppercase;color:var(--stone);margin:0 0 14px}
+h1{font:700 clamp(44px,6.4vw,84px)/.95 "Barlow Condensed","Arial Narrow",sans-serif;text-transform:uppercase;letter-spacing:.01em;margin:0 0 22px}
+.lead{font-size:19px;color:#3b3a35;max-width:560px;margin:0 0 22px}
+.honest{border-left:3px solid var(--butter);background:var(--card);padding:14px 16px;font-size:14.5px;color:var(--muted);max-width:560px;border-radius:0 10px 10px 0}
+.honest b{color:var(--ink);font-weight:600;display:block;margin-bottom:2px;text-transform:uppercase;letter-spacing:.08em;font-size:12px}
+.herovid{position:relative;border-radius:14px;overflow:hidden;background:#ece8df;aspect-ratio:3/4;max-height:78vh;justify-self:center;width:100%;max-width:520px}
+.herovid video{width:100%;height:100%;object-fit:cover;display:block}
+.chip{position:absolute;left:12px;top:12px;background:rgba(36,35,32,.72);color:#fff;font-size:12px;letter-spacing:.06em;padding:5px 10px;border-radius:999px;text-transform:uppercase}
+.hp{position:absolute;right:12px;bottom:12px;width:44px;height:44px;border-radius:50%;border:0;background:rgba(255,254,250,.9);color:var(--ink);font-size:15px;cursor:pointer}
+section{padding:48px 0;border-top:1px solid var(--line)}
+h2{font:700 clamp(32px,4vw,48px)/1 "Barlow Condensed","Arial Narrow",sans-serif;text-transform:uppercase;margin:0 0 6px}
+.sub{color:var(--muted);margin:0 0 28px}
+.look{display:grid;grid-template-columns:repeat(2,1fr);gap:0 40px;margin:0}
+.look div{padding:16px 0;border-bottom:1px solid var(--line)}
+.look dt{font:700 14px "Barlow Condensed","Arial Narrow",sans-serif;letter-spacing:.12em;text-transform:uppercase;color:var(--stone);margin-bottom:4px}
+.look dd{margin:0;font-size:16px}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;overflow:hidden;display:flex;flex-direction:column}
+.card.feat{grid-column:span 3;display:grid;grid-template-columns:minmax(260px,420px) 1fr}
+.media{position:relative;aspect-ratio:3/4;background:#ece8df;cursor:pointer}
+.media video,.media img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
+.media .pl{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:64px;height:64px;border-radius:50%;border:0;background:rgba(255,254,250,.92);color:var(--ink);font-size:20px;cursor:pointer;box-shadow:0 6px 20px rgba(0,0,0,.15)}
+.media.playing .pl{opacity:0;pointer-events:none}.media.playing .meta{display:none}
+.media .meta{position:absolute;left:10px;bottom:10px;background:rgba(36,35,32,.7);color:#fff;font-size:12px;padding:4px 9px;border-radius:999px}
+.body{padding:20px 20px 22px}
+.body h3{font:700 24px/1.05 "Barlow Condensed","Arial Narrow",sans-serif;text-transform:uppercase;margin:0 0 10px}
+.body p{margin:0 0 14px;font-size:15.5px}
+.body dl{margin:0;font-size:14px;color:var(--muted)}
+.body dl div{padding:7px 0;border-top:1px solid var(--accent)}
+.body dt{display:inline;font-weight:600;color:var(--ink)}.body dt:after{content:" · "}
+.body dd{display:inline;margin:0}
+.card.feat .body{padding:28px 30px}
+.card.feat .body h3{font-size:30px}
+.card.feat .body p{font-size:17px}
+.cta{background:var(--ink);color:#f5f3ef;border-radius:18px;padding:40px;display:grid;grid-template-columns:1.2fr 1fr;gap:30px;align-items:center}
+.cta h2{color:#fff}
+.cta p{color:#d9d5cc;margin:0}
+.btns{display:flex;flex-wrap:wrap;gap:10px}
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:0 20px;border-radius:999px;text-decoration:none;font-weight:500;font-size:15px;border:1px solid #f5f3ef}
+.btn.pri{background:#f5f3ef;color:var(--ink)}
+.btn.wide{flex-basis:100%}
+footer{padding:34px 0 60px;color:var(--muted);font-size:14px}
+footer a{color:var(--ink)}
+@media (max-width:900px){.hero{grid-template-columns:1fr;gap:28px;padding:30px 0}.herovid{max-width:440px;order:-1;max-height:66vh}.grid{grid-template-columns:1fr 1fr;gap:18px}.card.feat{grid-column:span 2;grid-template-columns:1fr}.look{grid-template-columns:1fr}.cta{grid-template-columns:1fr;padding:28px}}
+@media (max-width:560px){body{font-size:16px}.wrap{padding:0 16px}.nav a.back{display:none}.grid{grid-template-columns:1fr}.card.feat{grid-column:auto}.lead{font-size:17px}section{padding:36px 0}.body h3{font-size:22px}}
+@media (prefers-reduced-motion:reduce){*{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+<header class="top"><div class="wrap">
+ <a class="logo" id="logo" href="https://bollastudio.com/it"><span>Bolla</span><span>Studio</span></a>
+ <nav class="nav"><a class="back" id="back" href="https://bollastudio.com/it">Torna allo studio</a>
+  <div class="langs" id="langs" role="group" aria-label="Lingua"><button data-l="it">IT</button><button data-l="es">ES</button><button data-l="en">EN</button><button data-l="de">DE</button></div>
+ </nav>
+</div></header>
+<main class="wrap">
+ <div class="hero">
+  <div>
+   <p class="kicker" id="kicker"></p>
+   <h1 id="h1"></h1>
+   <p class="lead" id="lead"></p>
+   <div class="honest"><b id="honestT"></b><span id="honest"></span></div>
+  </div>
+  <div class="herovid">
+   <video id="hv" muted loop playsinline preload="metadata" poster="v/film-aure.webp" aria-hidden="true"><source src="v/film-aure.mp4" type="video/mp4"></video>
+   <span class="chip" id="chip"></span>
+   <button class="hp" id="hp" aria-label="Pausa">❚❚</button>
+  </div>
+ </div>
+ <section aria-labelledby="lookT"><h2 id="lookT"></h2><p class="sub" id="lookSub"></p><dl class="look" id="look"></dl></section>
+ <section aria-labelledby="galT"><h2 id="galT"></h2><p class="sub" id="galSub"></p><div class="grid" id="grid"></div></section>
+ <section><div class="cta">
+  <div><h2 id="ctaT"></h2><p id="ctaP"></p></div>
+  <div class="btns">
+   <a class="btn pri" id="bWa" data-track="/moda-ia/cta-whatsapp" target="_blank" rel="noopener"></a>
+   <a class="btn" id="bCall" data-track="/moda-ia/cta-call" href="tel:+393445240254"></a>
+   <a class="btn" id="bMail" data-track="/moda-ia/cta-email" href="mailto:marcelo@bollastudio.com"></a>
+   <a class="btn wide" id="bForm" data-track="/moda-ia/cta-form"></a>
+  </div>
+ </div></section>
+</main>
+<footer class="wrap"><div id="footer"></div><div id="footer2"></div><div style="margin-top:8px"><a id="more" data-track="/moda-ia/link-audiovisual"></a> · +39 344 524 0254 · <a href="mailto:marcelo@bollastudio.com">marcelo@bollastudio.com</a></div></footer>
+<noscript><p style="padding:20px">BOLLA STUDIO · Moda · Video con IA — +39 344 524 0254 · marcelo@bollastudio.com</p></noscript>
+<script src="content.js"></script>
+<script>
+(function(){
+var M=window.MODA,L=["it","es","en","de"],lang="it";
+var qm=location.search.match(/[?&]lang=(it|es|en|de)\b/);
+if(qm)lang=qm[1];else{try{var n=(navigator.language||"it").slice(0,2).toLowerCase();if(L.indexOf(n)>=0)lang=n;}catch(e){}}
+var $=function(i){return document.getElementById(i)};
+var reduce=window.matchMedia&&matchMedia("(prefers-reduced-motion: reduce)").matches;
+var saveData=navigator.connection&&navigator.connection.saveData;
+function esc(s){return String(s).replace(/[&<>"]/g,function(c){return{"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]})}
+function build(){
+ var T=M.t[lang],K=M.links[lang];
+ document.documentElement.lang=T.htmlLang;document.title=T.title;
+ document.querySelector('meta[name=description]').setAttribute("content",T.metaDesc);
+ ["kicker","h1","lead","honestT","honest","lookT","lookSub","galT","galSub","ctaT","ctaP","footer","footer2","more"].forEach(function(k){$(k).textContent=T[k]});
+ $("back").textContent=T.back;$("back").href=K.studio;$("logo").href=K.studio;$("more").href=K.av;
+ $("chip").textContent=T.count;
+ $("bWa").textContent=T.ctaWa;$("bWa").href="https://wa.me/393445240254?text="+encodeURIComponent(T.waText);
+ $("bCall").textContent=T.ctaCall+" +39 344 524 0254";$("bMail").textContent=T.ctaMail;
+ $("bForm").textContent=T.ctaForm;$("bForm").href=K.form;
+ $("look").innerHTML=T.look.map(function(r){return "<div><dt>"+esc(r[0])+"</dt><dd>"+esc(r[1])+"</dd></div>"}).join("");
+ $("grid").innerHTML=M.videos.map(function(v){var c=T.v[v.id];
+  return '<article class="card'+(v.feat?' feat':'')+'" id="'+v.id+'"><div class="media" data-id="'+v.id+'">'+
+  '<img src="v/'+v.id+'.webp" alt="'+esc(c.t)+'" loading="lazy" decoding="async" width="720" height="960">'+
+  '<button class="pl" aria-label="'+esc(T.play+": "+c.t)+'">▶</button><span class="meta">'+v.dur+' '+T.sec+' · 3:4 '+T.vert+'</span></div>'+
+  '<div class="body"><h3>'+esc(c.t)+'</h3><p>'+esc(c.d)+'</p><dl>'+
+  '<div><dt>'+esc(T.labels.cam)+'</dt><dd>'+esc(c.cam)+'</dd></div>'+
+  '<div><dt>'+esc(T.labels.focus)+'</dt><dd>'+esc(c.focus)+'</dd></div>'+
+  '<div><dt>'+esc(T.labels.use)+'</dt><dd>'+esc(c.use)+'</dd></div></dl></div></article>'}).join("");
+ document.querySelectorAll("#langs button").forEach(function(b){b.setAttribute("aria-pressed",b.dataset.l===lang)});
+ $("hp").setAttribute("aria-label",T.pause);
+}
+build();
+document.querySelectorAll("#langs button").forEach(function(b){b.addEventListener("click",function(){if(b.dataset.l===lang)return;lang=b.dataset.l;build();
+ try{var u=new URL(location.href);u.searchParams.set("lang",lang);history.replaceState(null,"",u)}catch(e){}
+ if(window.bsTrack)bsTrack("/moda-ia/lang-"+lang,"lang-"+lang);});});
+/* Galleria: il video si carica solo al tocco (preload none). Un solo video alla volta. */
+var current=null;
+document.getElementById("grid").addEventListener("click",function(e){
+ var m=e.target.closest(".media");if(!m)return;var vid=m.querySelector("video");
+ if(!vid){vid=document.createElement("video");vid.src="v/"+m.dataset.id+".mp4";vid.muted=true;vid.playsInline=true;vid.setAttribute("playsinline","");vid.loop=true;vid.preload="auto";vid.poster="v/"+m.dataset.id+".webp";vid.controls=true;
+  m.insertBefore(vid,m.firstChild);var img=m.querySelector("img");if(img)img.remove();}
+ else if(!vid.paused){return;}
+ if(current&&current!==vid){current.pause();current.parentNode.classList.remove("playing");}
+ current=vid;m.classList.add("playing");var p=vid.play();if(p&&p.catch)p.catch(function(){});
+ vid.addEventListener("pause",function(){m.classList.remove("playing")});vid.addEventListener("play",function(){m.classList.add("playing")});
+ if(window.bsOnce&&bsOnce("vp-"+m.dataset.id))bsTrack("/moda-ia/video-play/"+m.dataset.id,"video-play");
+});
+document.addEventListener("click",function(e){var a=e.target.closest&&e.target.closest("[data-track]");if(a&&window.bsTrack&&bsOnce(a.dataset.track))bsTrack(a.dataset.track,a.dataset.track.split("/").pop());},true);
+/* Hero: film in loop muto, solo se visibile; niente autoplay con riduzione movimento o risparmio dati. */
+var hv=$("hv"),hp=$("hp"),userPaused=reduce||saveData;
+function setBtn(){hp.textContent=hv.paused?"▶":"❚❚";}
+if("IntersectionObserver" in window){new IntersectionObserver(function(en){en.forEach(function(x){if(x.isIntersecting&&!userPaused){var p=hv.play();if(p&&p.catch)p.catch(function(){});}else hv.pause();setTimeout(setBtn,50)})},{threshold:.25}).observe(hv);}
+hp.addEventListener("click",function(){if(hv.paused){userPaused=false;hv.play();if(bsOnce("hero"))bsTrack("/moda-ia/video-play/hero","video-play");}else{userPaused=true;hv.pause();}setTimeout(setBtn,50)});
+hv.addEventListener("play",setBtn);hv.addEventListener("pause",setBtn);setBtn();
+})();
+</script>
+</body>
+</html>
